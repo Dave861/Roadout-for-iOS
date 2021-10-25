@@ -30,11 +30,13 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var legalBtn: UIButton!
     
     @IBAction func signInTapped(_ sender: Any) {
-    
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SignInVC") as! SignInViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func signUpTapped(_ sender: Any) {
-        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func legalTapped(_ sender: Any) {
