@@ -45,8 +45,8 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signInBtn.layer.cornerRadius = 12.0
-        signUpBtn.layer.cornerRadius = 12.0
+        signInBtn.layer.cornerRadius = 13.0
+        signUpBtn.layer.cornerRadius = 13.0
         
         signInBtn.setAttributedTitle(signInTitle, for: .normal)
         signUpBtn.setAttributedTitle(signUpTitle, for: .normal)

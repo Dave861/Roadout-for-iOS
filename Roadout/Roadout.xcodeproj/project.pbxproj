@@ -21,6 +21,8 @@
 		9AC92702272697F20054E453 /* RoadoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC92701272697F20054E453 /* RoadoutTests.swift */; };
 		9AC9270C272697F20054E453 /* RoadoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9270B272697F20054E453 /* RoadoutUITests.swift */; };
 		9AC9270E272697F20054E453 /* RoadoutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9270D272697F20054E453 /* RoadoutUITestsLaunchTests.swift */; };
+		9ACBFF54272704F90011B58F /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBFF53272704F90011B58F /* PermissionsViewController.swift */; };
+		9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBFF55272705060011B58F /* PermissionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		9AC92707272697F20054E453 /* RoadoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoadoutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC9270B272697F20054E453 /* RoadoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutUITests.swift; sourceTree = "<group>"; };
 		9AC9270D272697F20054E453 /* RoadoutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9ACBFF53272704F90011B58F /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
+		9ACBFF55272705060011B58F /* PermissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,8 @@
 				9A1ABE962726A5EF00D4AA4B /* InfoTableViewCell.swift */,
 				9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */,
 				9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */,
+				9ACBFF53272704F90011B58F /* PermissionsViewController.swift */,
+				9ACBFF55272705060011B58F /* PermissionTableViewCell.swift */,
 			);
 			path = "On-Boarding";
 			sourceTree = "<group>";
@@ -323,9 +329,11 @@
 			files = (
 				9AC926EF272697F00054E453 /* WelcomeViewController.swift in Sources */,
 				9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */,
+				9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */,
 				9A1ABE972726A5EF00D4AA4B /* InfoTableViewCell.swift in Sources */,
 				9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */,
 				9AA9C41B2726CC4000ECCCE1 /* PaddedTextField.swift.swift in Sources */,
+				9ACBFF54272704F90011B58F /* PermissionsViewController.swift in Sources */,
 				9AA9C4152726C5D700ECCCE1 /* KeyboardConstraint.swift in Sources */,
 				9AC926EB272697F00054E453 /* AppDelegate.swift in Sources */,
 				9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */,

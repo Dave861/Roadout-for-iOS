@@ -21,6 +21,8 @@ class SignInViewController: UIViewController {
     
   
     @IBAction func signInTapped(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+        self.present(vc, animated: false, completion: nil)
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
@@ -43,7 +45,7 @@ class SignInViewController: UIViewController {
         cardView.clipsToBounds = true
         cardView.layer.cornerRadius = 15
         cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        signInBtn.layer.cornerRadius = 12.0
+        signInBtn.layer.cornerRadius = 13.0
         signInBtn.setAttributedTitle(signInTitle, for: .normal)
         
         emailField.layer.cornerRadius = 12.0
