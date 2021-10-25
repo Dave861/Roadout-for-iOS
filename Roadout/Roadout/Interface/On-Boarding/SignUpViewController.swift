@@ -43,7 +43,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cardView.clipsToBounds = true
-        cardView.layer.cornerRadius = 23
+        cardView.layer.cornerRadius = 15
         cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         signUpBtn.layer.cornerRadius = 12.0
         signUpBtn.setAttributedTitle(signUpTitle, for: .normal)
