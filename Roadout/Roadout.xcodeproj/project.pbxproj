@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */; };
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
 		9AA9C41B2726CC4000ECCCE1 /* PaddedTextField.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C41A2726CC3F00ECCCE1 /* PaddedTextField.swift.swift */; };
+		9AC6D9D92727DE0D004E838C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC6D9D82727DE0D004E838C /* SettingsViewController.swift */; };
 		9AC926EB272697F00054E453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC926EA272697F00054E453 /* AppDelegate.swift */; };
 		9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC926EC272697F00054E453 /* SceneDelegate.swift */; };
 		9AC926EF272697F00054E453 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC926EE272697F00054E453 /* WelcomeViewController.swift */; };
@@ -52,6 +53,7 @@
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9AA9C41A2726CC3F00ECCCE1 /* PaddedTextField.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift.swift; sourceTree = "<group>"; };
+		9AC6D9D82727DE0D004E838C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "Roadout/Interface/Home Views/SettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		9AC926E7272697F00054E453 /* Roadout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roadout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC926EA272697F00054E453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AC926EC272697F00054E453 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 		9AC9271C27269B6E0054E453 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				9AC6D9D82727DE0D004E838C /* SettingsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -282,7 +285,7 @@
 				};
 			};
 			buildConfigurationList = 9AC926E2272697F00054E453 /* Build configuration list for PBXProject "Roadout" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -345,6 +348,7 @@
 				9AA9C4152726C5D700ECCCE1 /* KeyboardConstraint.swift in Sources */,
 				9AC926EB272697F00054E453 /* AppDelegate.swift in Sources */,
 				9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */,
+				9AC6D9D92727DE0D004E838C /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
