@@ -15,7 +15,8 @@ class HomeViewController: UIViewController {
         print("Search")
     }
     @IBAction func settingsTapped(_ sender: Any) {
-        print("Settings")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
+        self.presentDetail(vc)
     }
     
     @IBOutlet weak var searchTapArea: UIButton!
@@ -36,6 +37,7 @@ class HomeViewController: UIViewController {
         searchBar.layer.shadowPath = UIBezierPath(rect: searchBar.bounds).cgPath
         searchBar.layer.shouldRasterize = true
         searchBar.layer.rasterizationScale = UIScreen.main.scale
+        
     }
     
 
