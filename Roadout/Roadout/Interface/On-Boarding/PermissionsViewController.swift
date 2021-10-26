@@ -33,12 +33,18 @@ class PermissionsViewController: UIViewController {
     @IBAction func nextTapped(_ sender: Any) {
         manageNotifications()
         manageLocation()
-        //go to homescreen
+        let sb = UIStoryboard(name: "Home", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
+        self.view.window?.rootViewController = vc
+        self.view.window?.makeKeyAndVisible()
     }
     
     @IBAction func skipTapped(_ sender: Any) {
         print("Skipped")
-        //go to homescreen
+        let sb = UIStoryboard(name: "Home", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
+        self.view.window?.rootViewController = vc
+        self.view.window?.makeKeyAndVisible()
     }
     
     override func viewDidLoad() {
@@ -63,7 +69,7 @@ class PermissionsViewController: UIViewController {
     }
     
     func askNotificationPermission() {
-        center.requestAuthorization(options: [.alert, .sound, .provisional]) { granted, error in
+        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
             if granted {
                 print("Granted")
             } else {
