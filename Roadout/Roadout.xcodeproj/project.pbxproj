@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		9A0357152727CC4D002A9ED9 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A0357142727CC4D002A9ED9 /* Home.storyboard */; };
 		9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0357162727CC61002A9ED9 /* HomeViewController.swift */; };
+		9A089E43272A7B53005B3FFE /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A089E42272A7B53005B3FFE /* CustomTableView.swift */; };
+		9A089E45272A7D78005B3FFE /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A089E44272A7D78005B3FFE /* AddReminderViewController.swift */; };
 		9A1ABE972726A5EF00D4AA4B /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1ABE962726A5EF00D4AA4B /* InfoTableViewCell.swift */; };
+		9A310783272A707100B1F84A /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A310782272A707100B1F84A /* RemindersViewController.swift */; };
+		9A310785272A708300B1F84A /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A310784272A708300B1F84A /* ReminderCell.swift */; };
 		9A39B0CC272847FC008E7FD0 /* UserSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0CB272847FC008E7FD0 /* UserSettingsCell.swift */; };
 		9A39B0CE27284803008E7FD0 /* SpacerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0CD27284803008E7FD0 /* SpacerCell.swift */; };
 		9A39B0D02728480E008E7FD0 /* UpCornerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0CF2728480E008E7FD0 /* UpCornerCell.swift */; };
@@ -17,6 +21,16 @@
 		9A39B0D427284825008E7FD0 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0D327284825008E7FD0 /* SettingCell.swift */; };
 		9A39B0D62728482C008E7FD0 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0D52728482C008E7FD0 /* ButtonCell.swift */; };
 		9A39B0D827284B38008E7FD0 /* SettingsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0D727284B38008E7FD0 /* SettingsTextCell.swift */; };
+		9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A4A2E27293171008F69B3 /* SearchViewController.swift */; };
+		9A6A4A3127293184008F69B3 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A4A3027293184008F69B3 /* SearchCell.swift */; };
+		9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7331FD272877F400ACE30A /* NotificationsViewController.swift */; };
+		9A7332002728780300ACE30A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A7331FF2728780300ACE30A /* Settings.storyboard */; };
+		9A7332032728798300ACE30A /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7332022728798300ACE30A /* NotificationCell.swift */; };
+		9A8484C22729A8AD00862685 /* DirectionsAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */; };
+		9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F872272B09DF008B58FE /* AddCardViewController.swift */; };
+		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
+		9A96F877272B0A25008B58FE /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F876272B0A25008B58FE /* CardCell.swift */; };
+		9A96F87B272B2098008B58FE /* MonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F87A272B2098008B58FE /* MonthPickerView.swift */; };
 		9AA9C4152726C5D700ECCCE1 /* KeyboardConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4142726C5D700ECCCE1 /* KeyboardConstraint.swift */; };
 		9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */; };
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
@@ -56,7 +70,11 @@
 /* Begin PBXFileReference section */
 		9A0357142727CC4D002A9ED9 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		9A0357162727CC61002A9ED9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9A089E42272A7B53005B3FFE /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		9A089E44272A7D78005B3FFE /* AddReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
 		9A1ABE962726A5EF00D4AA4B /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		9A310782272A707100B1F84A /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
+		9A310784272A708300B1F84A /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
 		9A39B0CB272847FC008E7FD0 /* UserSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsCell.swift; sourceTree = "<group>"; };
 		9A39B0CD27284803008E7FD0 /* SpacerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerCell.swift; sourceTree = "<group>"; };
 		9A39B0CF2728480E008E7FD0 /* UpCornerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpCornerCell.swift; sourceTree = "<group>"; };
@@ -64,6 +82,16 @@
 		9A39B0D327284825008E7FD0 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		9A39B0D52728482C008E7FD0 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		9A39B0D727284B38008E7FD0 /* SettingsTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextCell.swift; sourceTree = "<group>"; };
+		9A6A4A2E27293171008F69B3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9A6A4A3027293184008F69B3 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		9A7331FD272877F400ACE30A /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		9A7331FF2728780300ACE30A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		9A7332022728798300ACE30A /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsAppViewController.swift; sourceTree = "<group>"; };
+		9A96F872272B09DF008B58FE /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
+		9A96F874272B09F1008B58FE /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		9A96F876272B0A25008B58FE /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		9A96F87A272B2098008B58FE /* MonthPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthPickerView.swift; sourceTree = "<group>"; };
 		9AA9C4142726C5D700ECCCE1 /* KeyboardConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardConstraint.swift; sourceTree = "<group>"; };
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +140,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A089E46272A7D7D005B3FFE /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				9A089E44272A7D78005B3FFE /* AddReminderViewController.swift */,
+				9A96F872272B09DF008B58FE /* AddCardViewController.swift */,
+			);
+			path = Extras;
+			sourceTree = "<group>";
+		};
 		9A39B0C9272847C8008E7FD0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,12 +172,24 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		9A7332012728796A00ACE30A /* Setting Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9A310784272A708300B1F84A /* ReminderCell.swift */,
+				9A7332022728798300ACE30A /* NotificationCell.swift */,
+				9A96F876272B0A25008B58FE /* CardCell.swift */,
+			);
+			path = "Setting Cells";
+			sourceTree = "<group>";
+		};
 		9AA9C4132726C5A500ECCCE1 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
 				9AA9C4142726C5D700ECCCE1 /* KeyboardConstraint.swift */,
 				9AA9C41A2726CC3F00ECCCE1 /* PaddedTextField.swift.swift */,
 				9AD6D5892728010300C47B6F /* Extensions.swift */,
+				9A089E42272A7B53005B3FFE /* CustomTableView.swift */,
+				9A96F87A272B2098008B58FE /* MonthPickerView.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -221,8 +270,14 @@
 		9AC9271C27269B6E0054E453 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				9A089E46272A7D7D005B3FFE /* Extras */,
+				9A7332012728796A00ACE30A /* Setting Cells */,
 				9A39B0CA272847D1008E7FD0 /* Cells */,
 				9AC6D9D82727DE0D004E838C /* SettingsViewController.swift */,
+				9A7331FD272877F400ACE30A /* NotificationsViewController.swift */,
+				9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */,
+				9A310782272A707100B1F84A /* RemindersViewController.swift */,
+				9A96F874272B09F1008B58FE /* PaymentViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -231,6 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				9A0357162727CC61002A9ED9 /* HomeViewController.swift */,
+				9A6A4A2E27293171008F69B3 /* SearchViewController.swift */,
+				9A6A4A3027293184008F69B3 /* SearchCell.swift */,
 			);
 			path = "Home Views";
 			sourceTree = "<group>";
@@ -241,6 +298,7 @@
 				9AC926F0272697F00054E453 /* Main.storyboard */,
 				9AC926F5272697F20054E453 /* LaunchScreen.storyboard */,
 				9A0357142727CC4D002A9ED9 /* Home.storyboard */,
+				9A7331FF2728780300ACE30A /* Settings.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -353,6 +411,7 @@
 				9AC926F4272697F20054E453 /* Assets.xcassets in Resources */,
 				9AC926F2272697F00054E453 /* Main.storyboard in Resources */,
 				9A0357152727CC4D002A9ED9 /* Home.storyboard in Resources */,
+				9A7332002728780300ACE30A /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,8 +437,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A39B0D62728482C008E7FD0 /* ButtonCell.swift in Sources */,
+				9A6A4A3127293184008F69B3 /* SearchCell.swift in Sources */,
+				9A089E45272A7D78005B3FFE /* AddReminderViewController.swift in Sources */,
+				9A96F877272B0A25008B58FE /* CardCell.swift in Sources */,
 				9AC926EF272697F00054E453 /* WelcomeViewController.swift in Sources */,
 				9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */,
+				9A310785272A708300B1F84A /* ReminderCell.swift in Sources */,
+				9A96F87B272B2098008B58FE /* MonthPickerView.swift in Sources */,
 				9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */,
 				9A1ABE972726A5EF00D4AA4B /* InfoTableViewCell.swift in Sources */,
 				9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */,
@@ -388,9 +452,17 @@
 				9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */,
 				9A39B0D427284825008E7FD0 /* SettingCell.swift in Sources */,
 				9A39B0D227284818008E7FD0 /* DownCornerCell.swift in Sources */,
+				9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */,
 				9AD6D58A2728010300C47B6F /* Extensions.swift in Sources */,
+				9A7332032728798300ACE30A /* NotificationCell.swift in Sources */,
+				9A310783272A707100B1F84A /* RemindersViewController.swift in Sources */,
+				9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */,
+				9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */,
+				9A089E43272A7B53005B3FFE /* CustomTableView.swift in Sources */,
+				9A8484C22729A8AD00862685 /* DirectionsAppViewController.swift in Sources */,
 				9AA9C4152726C5D700ECCCE1 /* KeyboardConstraint.swift in Sources */,
 				9AC926EB272697F00054E453 /* AppDelegate.swift in Sources */,
+				9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */,
 				9A39B0D02728480E008E7FD0 /* UpCornerCell.swift in Sources */,
 				9A39B0CC272847FC008E7FD0 /* UserSettingsCell.swift in Sources */,
 				9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */,

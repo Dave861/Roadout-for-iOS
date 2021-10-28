@@ -23,6 +23,8 @@ class SignUpViewController: UIViewController {
     
   
     @IBAction func signUpTapped(_ sender: Any) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
         let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
         self.present(vc, animated: false, completion: nil)
     }

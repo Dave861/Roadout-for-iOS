@@ -14,30 +14,26 @@ class SettingsViewController: UIViewController {
     let cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "globe"]
     let cellSettings = ["", "", "Notifications", "Payment Methods", "Default Directions App", "Reminders", "Reservation History", "", "Invite Friends", "Prizes", "", "Report a Bug", "Privacy Policy & Terms of Use", "About Roadout"]
 
+    let cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AboutVC"]
+    
     @IBAction func backTapped(_ sender: Any) {
-        self.dismissDetail()
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBOutlet weak var backBtn: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
     
-    @objc func backSegue() {
-        self.dismissDetail()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         backBtn.setTitle("", for: .normal)
-        let swipeLeft = UISwipeGestureRecognizer()
-        swipeLeft.addTarget(self, action: #selector(backSegue) )
-        swipeLeft.direction = .right
-        self.view.addGestureRecognizer(swipeLeft)
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
 
 
 }
@@ -79,6 +75,18 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SpacerCell") as! SpacerCell
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if cellTypes[indexPath.row] == "UserSettingCell" {
+            //show settings alert
+        } else if cellTypes[indexPath.row] == "ButtonCell" {
+            //sign out
+        } else if cellTypes[indexPath.row] != "SpacerCell" {
+            let sb = UIStoryboard(name: "Settings", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: cellVCs[indexPath.row])
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

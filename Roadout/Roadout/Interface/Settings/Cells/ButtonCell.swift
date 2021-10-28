@@ -17,7 +17,7 @@ class ButtonCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        card.layer.cornerRadius = 16.0
+        card.layer.cornerRadius = 14.0
         cellButton.setAttributedTitle(buttonTitle, for: .normal)
     }
 

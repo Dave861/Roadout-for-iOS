@@ -21,6 +21,8 @@ class SignInViewController: UIViewController {
     
   
     @IBAction func signInTapped(_ sender: Any) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
         let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
         self.present(vc, animated: false, completion: nil)
     }
