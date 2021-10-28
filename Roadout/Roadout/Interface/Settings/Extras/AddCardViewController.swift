@@ -95,7 +95,7 @@ class AddCardViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 0.5) {
-            self.blurButton.alpha = 1
+            self.blurButton.alpha = 1.0
         }
     }
 }
