@@ -11,7 +11,7 @@ class AddCardViewController: UIViewController {
 
     let refreshCardsID = "ro.codebranch.Roadout.refreshCards"
     
-    let setTitle = NSAttributedString(string: "Set", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let setTitle = NSAttributedString(string: "Add", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurButton: UIButton!

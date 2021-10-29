@@ -80,9 +80,51 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if cellTypes[indexPath.row] == "UserSettingCell" {
-            //show settings alert
+            
+            let sb = UIStoryboard(name: "Home", bundle: nil)
+            let optionMenu = UIAlertController(title: nil, message: "Choose what do you want to edit", preferredStyle: .actionSheet)
+            
+            let editNameAction = UIAlertAction(title: "Edit Name", style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                let vc = sb.instantiateViewController(withIdentifier: "EditNameVC") as! EditNameViewController
+                self.present(vc, animated: true, completion: nil)
+            })
+            let editPasswordAction = UIAlertAction(title: "Edit Password", style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                let vc = sb.instantiateViewController(withIdentifier: "EditPasswordVC") as! EditPasswordViewController
+                self.present(vc, animated: true, completion: nil)
+            })
+            let deleteAccountAction = UIAlertAction(title: "Delete Account", style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                print("Delete Account")
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            editNameAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
+            editPasswordAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
+            deleteAccountAction.setValue(UIColor(named: "Redish")!, forKey: "titleTextColor")
+            cancelAction.setValue(UIColor(named: "Main Yellow")!, forKey: "titleTextColor")
+            
+            optionMenu.addAction(editNameAction)
+            optionMenu.addAction(editPasswordAction)
+            optionMenu.addAction(deleteAccountAction)
+            optionMenu.addAction(cancelAction)
+            
+            self.present(optionMenu, animated: true, completion: nil)
         } else if cellTypes[indexPath.row] == "ButtonCell" {
-            //sign out
+            let alert = UIAlertController(title: "Sign Out", message: "Are you sure you want to sign out?", preferredStyle: .alert)
+            alert.view.tintColor = UIColor(named: "Dark Orange")
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { action in
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
+                self.view.window?.rootViewController = vc
+                self.view.window?.makeKeyAndVisible()
+            }
+            alert.addAction(signOutAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
         } else if cellTypes[indexPath.row] != "SpacerCell" {
             let sb = UIStoryboard(name: "Settings", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: cellVCs[indexPath.row])

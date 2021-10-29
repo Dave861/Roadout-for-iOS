@@ -22,6 +22,7 @@ class WelcomeViewController: UIViewController {
     let legalTitle = NSAttributedString(string: "Privacy Policy & Terms of Use",
                                                        attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14, weight: .medium)])
 
+    
     @IBOutlet weak var infoTableView: UITableView!
     
     @IBOutlet weak var signInBtn: UIButton!
