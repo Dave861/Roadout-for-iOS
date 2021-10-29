@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class SettingsViewController: UIViewController {
     
@@ -35,7 +36,29 @@ class SettingsViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.view.tintColor = UIColor(named: "Greyish")
+            mail.setToRecipients(["roadout.ro@gmail.com"])
+            mail.setSubject("Bug Report")
+            mail.setMessageBody("Roadout for iOS: Please describe your issue and steps to reproduce it. If you have any screenshots please attach them - Roadout Team", isHTML: false)
 
+            present(mail, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Error", message: "This device cannot send email, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com", preferredStyle: .alert)
+            alert.view.tintColor = UIColor(named: "Greyish")
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+}
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
 }
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -125,10 +148,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             alert.addAction(signOutAction)
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
-        } else if cellTypes[indexPath.row] != "SpacerCell" {
-            let sb = UIStoryboard(name: "Settings", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: cellVCs[indexPath.row])
-            self.navigationController?.pushViewController(vc, animated: true)
+        } else if cellTypes[indexPath.row] != "SpacerCell" &&  cellTypes[indexPath.row] != "TextCell" {
+            if cellVCs[indexPath.row] == "ReportVC" {
+                sendEmail()
+            } else {
+                let sb = UIStoryboard(name: "Settings", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: cellVCs[indexPath.row])
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }

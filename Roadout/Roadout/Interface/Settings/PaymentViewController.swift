@@ -26,6 +26,8 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var addBtnOutline: UIView!
     @IBOutlet weak var addCardBtn: UIButton!
     @IBAction func addCardTapped(_ sender: Any) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
         let vc = storyboard?.instantiateViewController(withIdentifier: "AddCardVC") as! AddCardViewController
         self.present(vc, animated: true, completion: nil)
     }

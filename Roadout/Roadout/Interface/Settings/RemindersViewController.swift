@@ -16,9 +16,12 @@ class RemindersViewController: UIViewController {
     @IBOutlet weak var addBtn: UIButton!
     
     @IBAction func addTapped(_ sender: Any) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
         let vc = storyboard?.instantiateViewController(withIdentifier: "AddReminderVC") as! AddReminderViewController
         self.present(vc, animated: true, completion: nil)
     }
+    
     @IBOutlet weak var tableView: ContentSizedTableView!
     
     @IBOutlet weak var backButton: UIButton!

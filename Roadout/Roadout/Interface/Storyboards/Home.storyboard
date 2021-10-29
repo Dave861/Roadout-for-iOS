@@ -35,9 +35,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map" translatesAutoresizingMaskIntoConstraints="NO" id="rTt-ie-UU0">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oc8-he-wio">
                                 <rect key="frame" x="13" y="795" width="388" height="52"/>
                                 <subviews>
@@ -118,12 +115,8 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
-                            <constraint firstItem="rTt-ie-UU0" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="3sN-51-MV9"/>
                             <constraint firstItem="Oc8-he-wio" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="13" id="5NV-DK-n5m"/>
-                            <constraint firstAttribute="bottom" secondItem="rTt-ie-UU0" secondAttribute="bottom" id="F0O-Wu-IgT"/>
                             <constraint firstItem="Ptr-6X-WXM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="51" id="HOu-Ml-y6u"/>
-                            <constraint firstItem="rTt-ie-UU0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="UZX-0O-qPg"/>
-                            <constraint firstItem="rTt-ie-UU0" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Ufk-Nf-8vX"/>
                             <constraint firstItem="Ptr-6X-WXM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="ZGo-pw-2RJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Oc8-he-wio" secondAttribute="trailing" constant="13" id="cHo-0A-V3J"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Oc8-he-wio" secondAttribute="bottom" constant="15" id="lB6-NC-i4D"/>
@@ -1029,7 +1022,6 @@ Made in Cluj :)</string>
     </scenes>
     <resources>
         <image name="Logo Icon" width="598" height="594"/>
-        <image name="Map" width="390" height="844"/>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
