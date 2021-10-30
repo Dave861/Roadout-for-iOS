@@ -151,6 +151,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         } else if cellTypes[indexPath.row] != "SpacerCell" &&  cellTypes[indexPath.row] != "TextCell" {
             if cellVCs[indexPath.row] == "ReportVC" {
                 sendEmail()
+            } else if cellVCs[indexPath.row] == "AboutVC" {
+                if let url = URL(string: "https://www.roadout.ro") {
+                    UIApplication.shared.open(url)
+                }
             } else {
                 let sb = UIStoryboard(name: "Settings", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: cellVCs[indexPath.row])

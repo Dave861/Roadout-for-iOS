@@ -1533,6 +1533,134 @@ Made in Cluj :)</string>
             </objects>
             <point key="canvasLocation" x="3950.7246376811599" y="75.669642857142847"/>
         </scene>
+        <!--Legal View Controller-->
+        <scene sceneID="eH7-Iv-gAJ">
+            <objects>
+                <viewController storyboardIdentifier="LegalVC" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aS3-A4-F9q" customClass="LegalViewController" customModule="Roadout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xPP-EN-Me6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mb-An-acP">
+                                <rect key="frame" x="15" y="89" width="32" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="2R6-bf-Zt8"/>
+                                    <constraint firstAttribute="height" constant="46" id="UoM-yt-RbY"/>
+                                </constraints>
+                                <color key="tintColor" name="Brownish"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="chevron.left" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="26" scale="large" weight="semibold"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backTapped:" destination="aS3-A4-F9q" eventType="touchUpInside" id="kxG-hC-WR5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy Terms of Use" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3p-iF-0PL">
+                                <rect key="frame" x="46" y="96" width="175" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="cbM-T1-9AL"/>
+                                    <constraint firstAttribute="width" constant="175" id="rW7-b8-XYo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slL-sC-bQu">
+                                <rect key="frame" x="139.5" y="824" width="135" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="3LM-E4-LSe"/>
+                                    <constraint firstAttribute="height" constant="43" id="hgJ-st-dmF"/>
+                                </constraints>
+                                <string key="text">Roadout
+Made in Cluj :)</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5be-zF-mnm">
+                                <rect key="frame" x="20" y="170" width="374" height="646"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Sectiuni si expresii necesare pentru pagina Termeni si conditii
+Utilizarea acestei aplicatii presupune acceptarea termenilor și condițiilor menționate mai jos. Toate comenzile plasate în aplicatia Roadout sunt subiect al termenilor și condițiilor definite mai jos, în forma în care sunt publicate la momentul plasării comenzii.
+Termenii și condițiile actuale se aplică tuturor inchirierilor de locuri de parcare prin intermediul aplicatiei Roadout
+Roadout își rezervă dreptul de a face modificări ale acestor prevederi, fără o notificare prealabilă. Pagina “Termeni și condiții” conține întotdeauna cea mai recentă versiune a acestor prevederi.
+DEFINIȚII ȘI TERMENI
+Vânzător – CodeBranch
+Cumpărător – persoană fizică sau persoană juridică care efectuează o comandă și rezerva un loc de parcare prin intermediul aplicatiei indiferent de durata rezervarii
+Utilizator – orice persoană fizică/juridică înregistrată in aplicatie, care, prin finalizarea procesului de creare a contului, și-a dat acordul cu privire la clauzele specifice aplicatiei din secțiunea Termeni și Condiții
+Cont – secțiune din site formată dintr-o adresă de e-mail și o parolă care permite cumpărătorului transmiterea comenzii și care conține informații despre cumpărător și istoricul cumpărătorului în site.
+Serviciile se adreseaza Utilizatorilor care vor sa gaseasca un loc de parcare in diverse zone din Cluj si vor sa se asigure ca au acel loc liber.
+Pentru a folosi Serviciile va obligati sa:
+-	furnizati date adevarate, exacte si complete, prin completarea campurilor din formularul de rezervare a locului de parcare;
+-	actualizati, atunci cand situatia o cere, datele privind rezervarea locului de parcare 
+-	dupa finalizarea procesului de rezervare a unui loc de parcare, Utilizatorul va primi pe adresa de e-mail furnizata in procesul de rezervare, un e-mail de confirmare care va contine toate informatiile necesare privind parcarea. 
+-	Daca veti furniza informatii care nu sunt conforme cu realitatea, inexacte sau incomplete, Roadout are dreptul sa sa refuze toate incercarile curente sau viitoare de folosire a Serviciilor.
+-	Roadout NU are obligatia de a verifica informatiile furnizate de Utilizatori. Societatea nu raspunde in niciun mod cu privire la informatiile si datele transmise de catre Utilizatorii sai.
+-	In acest sens, acceptati si sunteti de acord cu faptul ca veti respecta regula bunei credinte atunci cand furnizati informatii pentru a rezerva un loc de parcare. Astfel, va obligati sa nu completati date incomplete sau incorecte. In situatia in care nu veti respecta aceste reguli, intelegeti si sunteti de acord cu faptul ca Roadout are dreptul de a va restrictiona accesul la Serviciile sale.
+-	Tariful de parcare este stabilit in functie de numarul de minute de rezervare inainte de parcarea propriu-zisa. Asadar, accesul la Servicii furnizate Utilizatorilor este permis doar dupa plata unui tarif, in functie de nevoile fiecarui Utilizator. Toate platile vor fi realizate in avans, in Ron, cu cardul bancar. 
+-	In situatia in care doriti incetarea furnizarii Serviciilor catre dumneavoastra, din motive care nu tin de Societate (de exemplu, intervine un eveniment si Dvs.), suma va fi partial returnata in functie de minutele ramase pana la ora rezervarii. Suma datorata pentru minutele trecute, va fi pastrata cu titlu de penalitate, pentru spatiu rezervat si nefolosit.
+-	Societatea isi poate schimba tarifele stabilite pentru furnizarea Serviciilor, la fel cum poate modifica orice alta clauza a prezentelor termeni si conditii. Schimbarea se poate produce in orice moment si va fi vizibila prin majorarea/ reducerea tarifelor afisate in aplicatie.
+DREPTURI DE AUTOR (COPYRIGHT)
+Întregul conținut al acestui site - imagini, texte, grafice, simboluri, elemente de grafica WEB, scripturi, programe si alte date - este proprietatea Roadout și/sau a furnizorilor săi si este protejat prin legea pentru protecția drepturilor de autor.
+Fotografiile și datele din acest site pot fi folosite numai cu acordul scris al Roadout și numai cu menționarea sursei. Folosirea fără acordul explicit - în scris - al Roadout a oricăror elemente este interzisă și se pedepsește conform legilor în vigoare. 
+DATE PERSONALE, CONFIDENȚIALITATE
+Datele personale furnizate prin utilizarea acestui site vor fi folosite de către Roadout numai în scopul declarat al acestei aplicatii, rezervarea de locuri de parcare. Datele cu caracter personal nu vor fi transmise, nici măcar parţial, unor firme sau persoane fizice neautorizate din România, din Uniunea Europeană sau din afara Uniunii. Datele dumneavoastră nu vor fi afișate pe materiale publicitare, în documente publice sau pe site. 
+Datele cu caracter personal ale clienților vor fi furnizate doar partenerilor cu care Roadout colaborează pentru a furniza serviciile solicitate (de ex. firme de curierat) și autorităților statului (de ex. Administrația Fiscală) - în urma unor solicitări legale justificate.
+Pentru detalii despre accesarea, modificarea sau ștergerea datelor personale stocate, vă rugăm să consultați Politica de confidențialitate.
+
+INFORMAȚII DIN SITE
+Roadout depune eforturi constante pentru ca informația prezentată in aplicatie să fie corectă și completă. Totuși, erorile sunt posibile, iar Roadout își rezervă dreptul de a corecta fără notificare prealabilă orice neconcordanță.
+Toate preturile produselor din aplicatia Roadout sunt exprimate în RON si conțin TVA.	
+COMANDA
+Cumpărătorul poate efectua comenzi in aplicatie, prin selectarea locului de parcare dorit in functie de zona unde se afla si intervalului orar, urmând a finaliza comanda efectuând plata prin una dintre modalitățile indicate. Un loc de parcare nu poate fi selectat decat daca este marcat ca disponibil. Selectarea locului de parcare nu atrage după sine înregistrarea unei comenzi, implicit nici rezervarea automată a acelui loc daca plata nu este efectuata.
+Prin finalizarea comenzii, Cumpărătorul consimte că toate datele furnizate de acesta, necesare procesului de rezervare, sunt corecte, complete și adevărate la data plasării comenzii.
+Prin finalizarea comenzii, Cumpărătorul consimte că Vânzătorul poate să îl contacteze, folosind datele de contact furnizate la plasarea comenzii.
+Vânzătorul poate anula comanda efectuată de către Cumpărător în urma unei notificări prealabile adresate Cumpărătorului, fără nici o obligație ulterioară a vreunei părți față de cealaltă sau fără ca vreo parte să poată pretinde celeilalte daune-interese, în următoarele cazuri:
+– neacceptarea de către banca emitentă a cardului Cumpărătorului, a tranzacției, în cazul plății online;
+– invalidarea tranzacției de către procesatorul de carduri agreat de MAGAZIN, în cazul plății online;
+– datele furnizate de către Cumpărător pe site sunt incomplete și/sau incorecte.
+Cumpărătorul poate anula comanda efectuata si Vânzătorul ii va inapoia suma provenita din diferenta dintre plata efectuata si minutele trecute din rezervarea initiala.
+FACTURARE ȘI PLATĂ
+Prețurile produselor afișate în cadrul aplicatiei Roadout includ T.V.A. conform legislației în vigoare.
+Prețul, modalitatea de plată și termenul de plată sunt specificate în fiecare Comandă. Vânzătorul va emite către Cumpărător o factură pentru produsele livrate, obligația Cumpărătorului fiind să furnizeze toate informațiile necesare emiterii facturii conform cu legislația în vigoare.
+Vânzătorul va transmite Cumpărătorului factura aferentă comenzii ce conține produsele vândute de MAGAZIN, în format electronic, la adresa de e-mail menționată de Cumpărător în Contul său.
+Plata se poate realiza astfel:
+Plata online cu card bancar: La finalizarea comenzii se va face redirecționarea către serverele securizate ale …. [aici scrieti numele partenerului pt plati online], furnizor al MAGAZIN de servicii de plată online. În cazul în care operațiunea a fost finalizată cu succes, suma aferentă comenzii va fi retrasă din contul Cumpărătorului.
+DISPUTE
+Orice dispută apărută între MAGAZIN și clienții săi va fi rezolvată pe cale amiabilă prin înțelegere între cele două părți. În cazul în care acest lucru nu este posibil se vor aplica prevederile legale în vigoare și soluționarea disputelor se va face prin apel la instanțele judecătorești competente din România.
+ 
+Protecția consumatorului
+În România, drepturile consumatorilor persoane fizice sunt supravegheate de Autoritatea Națională pentru Protecția Consumatorului, http://www.anpc.gov.ro.</mutableString>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="N5j-4c-lrO"/>
+                        <color key="backgroundColor" name="Second Background"/>
+                        <constraints>
+                            <constraint firstItem="z3p-iF-0PL" firstAttribute="leading" secondItem="N5j-4c-lrO" secondAttribute="leading" constant="46" id="2Ad-2Z-Cre"/>
+                            <constraint firstItem="slL-sC-bQu" firstAttribute="bottom" secondItem="N5j-4c-lrO" secondAttribute="bottom" constant="5" id="3qP-gu-ff6"/>
+                            <constraint firstItem="9Mb-An-acP" firstAttribute="leading" secondItem="N5j-4c-lrO" secondAttribute="leading" constant="15" id="Ege-if-nzF"/>
+                            <constraint firstItem="slL-sC-bQu" firstAttribute="top" secondItem="5be-zF-mnm" secondAttribute="bottom" constant="8" symbolic="YES" id="PO8-eY-JjH"/>
+                            <constraint firstItem="N5j-4c-lrO" firstAttribute="trailing" secondItem="5be-zF-mnm" secondAttribute="trailing" constant="20" id="fOy-Xa-tKw"/>
+                            <constraint firstItem="5be-zF-mnm" firstAttribute="leading" secondItem="N5j-4c-lrO" secondAttribute="leading" constant="20" id="jhJ-1Q-PDQ"/>
+                            <constraint firstItem="5be-zF-mnm" firstAttribute="top" secondItem="z3p-iF-0PL" secondAttribute="bottom" constant="8" symbolic="YES" id="lk8-tV-rEf"/>
+                            <constraint firstItem="z3p-iF-0PL" firstAttribute="top" secondItem="N5j-4c-lrO" secondAttribute="top" constant="52" id="pk2-8A-2MJ"/>
+                            <constraint firstItem="9Mb-An-acP" firstAttribute="top" secondItem="N5j-4c-lrO" secondAttribute="top" constant="45" id="srW-sC-Ab6"/>
+                            <constraint firstItem="slL-sC-bQu" firstAttribute="centerX" secondItem="xPP-EN-Me6" secondAttribute="centerX" id="yiq-nh-Ycc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="9Mb-An-acP" id="R1x-gL-sVd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="klU-zK-mbU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4615.9420289855079" y="75.669642857142847"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Apple Maps" width="144" height="144"/>
