@@ -1,0 +1,56 @@
+//
+//  ResultView.swift
+//  Roadout
+//
+//  Created by David Retegan on 30.10.2021.
+//
+
+import UIKit
+
+class ResultView: UIView {
+    
+    let removeResultCardID = "ro.codebranch.Roadout.removeResultCardID"
+    let addSectionCardID = "ro.codebranch.Roadout.addSectionCardID"
+
+    @IBOutlet weak var locationLbl: UILabel!
+    @IBOutlet weak var distanceLbl: UILabel!
+    
+    @IBOutlet weak var pickBtn: UIButton!
+    @IBAction func pickTapped(_ sender: Any) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        NotificationCenter.default.post(name: Notification.Name(addSectionCardID), object: nil)
+    }
+    @IBAction func backTapped(_ sender: Any) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        NotificationCenter.default.post(name: Notification.Name(removeResultCardID), object: nil)
+    }
+    @IBOutlet weak var backBtn: UIButton!
+    
+    let pickTitle = NSAttributedString(string: "Pick", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    
+    
+    override func willMove(toSuperview newSuperview: UIView?) {
+        self.layer.cornerRadius = 13.0
+        print(selectedLocation)
+        locationLbl.text = selectedLocation
+        pickBtn.layer.cornerRadius = 12.0
+        backBtn.setTitle("", for: .normal)
+        pickBtn.setAttributedTitle(pickTitle, for: .normal)
+        pickBtn.backgroundColor = selectedLocationColor
+        
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.1
+        self.layer.shadowOffset = .zero
+        self.layer.shadowRadius = 10
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    class func instanceFromNib() -> UIView {
+        return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+    }
+
+}

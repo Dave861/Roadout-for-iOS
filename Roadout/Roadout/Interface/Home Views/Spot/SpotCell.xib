@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SpotCell" id="gTV-IL-0wX" customClass="SpotCell" customModule="Roadout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="35" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="35" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFa-1w-6a4">
+                        <rect key="frame" x="0.0" y="0.0" width="35" height="50"/>
+                        <subviews>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whg-Th-emn">
+                                <rect key="frame" x="2" y="2" width="31" height="46"/>
+                                <color key="backgroundColor" name="Background"/>
+                                <color key="tintColor" name="Main Yellow"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="checkmark" catalog="system" symbolScale="medium"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18" scale="medium" weight="medium"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="Main Yellow"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="whg-Th-emn" secondAttribute="trailing" constant="2" id="IPO-n2-KmM"/>
+                            <constraint firstAttribute="bottom" secondItem="whg-Th-emn" secondAttribute="bottom" constant="2" id="Kd7-Yj-kzc"/>
+                            <constraint firstAttribute="height" constant="50" id="LaQ-PY-Xnh"/>
+                            <constraint firstAttribute="width" constant="35" id="Ura-8w-Q2E"/>
+                            <constraint firstItem="whg-Th-emn" firstAttribute="leading" secondItem="lFa-1w-6a4" secondAttribute="leading" constant="2" id="d5y-3N-gBb"/>
+                            <constraint firstItem="whg-Th-emn" firstAttribute="top" secondItem="lFa-1w-6a4" secondAttribute="top" constant="2" id="qgB-Tg-3sr"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" name="Second Background"/>
+            <constraints>
+                <constraint firstItem="lFa-1w-6a4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EZm-D6-QXf"/>
+                <constraint firstAttribute="trailing" secondItem="lFa-1w-6a4" secondAttribute="trailing" id="HPl-dY-zm0"/>
+                <constraint firstItem="lFa-1w-6a4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="TYw-pv-Moc"/>
+                <constraint firstAttribute="bottom" secondItem="lFa-1w-6a4" secondAttribute="bottom" id="n1N-aZ-nNy"/>
+            </constraints>
+            <connections>
+                <outlet property="mainBtn" destination="whg-Th-emn" id="xlj-v7-3El"/>
+                <outlet property="outlineView" destination="lFa-1w-6a4" id="bIZ-Tr-jBj"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
+        <namedColor name="Background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Main Yellow">
+            <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Second Background">
+            <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -12,6 +12,8 @@ class SearchViewController: UIViewController {
     let parkNames = ["Buna Ziua", "Airport", "Marasti", "Old Town", "21 Decembrie", "Mihai Viteazu", "Eroilor", "Gheorgheni", "Manastur"]
     var results = ["Buna Ziua", "Airport", "Marasti", "Old Town", "21 Decembrie", "Mihai Viteazu", "Eroilor", "Gheorgheni", "Manastur"]
     let colors = ["Main Yellow", "Redish", "Dark Yellow", "Brownish", "Icons", "Greyish", "Second Orange", "Dark Orange"]
+    
+    let addResultCardID = "ro.codebranch.Roadout.addResultCardID"
 
     @IBOutlet weak var card: UIView!
     
@@ -89,5 +91,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.numberLbl.textColor = color
         cell.spotsLbl.textColor = color
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        selectedLocation = results[indexPath.row]
+        let cell = tableView.cellForRow(at: indexPath) as! SearchCell
+        selectedLocationColor = cell.numberLbl.textColor
+        NotificationCenter.default.post(name: Notification.Name(addResultCardID), object: nil)
+        self.view.endEditing(true)
+        self.dismiss(animated: false, completion: nil)
     }
 }
