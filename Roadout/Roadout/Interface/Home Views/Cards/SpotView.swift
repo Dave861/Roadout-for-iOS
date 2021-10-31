@@ -10,6 +10,7 @@ import UIKit
 class SpotView: UIView {
     
     let removeSpotCardID = "ro.codebranch.Roadout.removeSpotCardID"
+    let addReserveCardID = "ro.codebranch.Roadout.addReserveCardID"
     let spotStates = [0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 2, 0]
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -21,12 +22,36 @@ class SpotView: UIView {
     
     @IBOutlet weak var continueBtn: UIButton!
     @IBAction func continueTapped(_ sender: Any) {
+       /* let selectedItem = collectionView.indexPathsForSelectedItems?.first
+        if selectedItem != nil {
+            let cell = collectionView.cellForItem(at: selectedItem!) as! SpotCell
+            let index = (selectedItem![0])*collectionView.numberOfItems(inSection: 0) + selectedItem![1]
+            switch spotStates[index] {
+                case 0:
+                    cell.mainBtn.backgroundColor = UIColor(named: "Background")
+                    cell.mainBtn.tintColor = UIColor(named: "Main Yellow")
+                case 1:
+                    cell.mainBtn.backgroundColor = UIColor(named: "Background")
+                    cell.mainBtn.tintColor = UIColor(named: "Redish")
+                default:
+                    cell.mainBtn.backgroundColor = UIColor(named: "Background")
+                    cell.mainBtn.tintColor = UIColor(named: "Dark Yellow")
+            }
+            infoIcon.image = UIImage(systemName: "info.circle")
+            infoIcon.tintColor = UIColor.label
+            infoText.text = "Pick a spot to get info about it"
+            continueBtn.isEnabled = false
+            continueBtn.backgroundColor = UIColor(named: "Main Yellow")?.withAlphaComponent(0.5)
+        }
+        collectionView.allowsSelection = false
+        collectionView.allowsSelection = true */
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        NotificationCenter.default.post(name: Notification.Name(addReserveCardID), object: nil)
         
     }
     @IBAction func backTapped(_ sender: Any) {
-         let selectedItem = collectionView.indexPathsForSelectedItems?.first
+         /*let selectedItem = collectionView.indexPathsForSelectedItems?.first
          if selectedItem != nil {
              let cell = collectionView.cellForItem(at: selectedItem!) as! SpotCell
              let index = (selectedItem![0])*collectionView.numberOfItems(inSection: 0) + selectedItem![1]
@@ -48,7 +73,7 @@ class SpotView: UIView {
              continueBtn.backgroundColor = UIColor(named: "Main Yellow")?.withAlphaComponent(0.5)
          }
         collectionView.allowsSelection = false
-        collectionView.allowsSelection = true
+        collectionView.allowsSelection = true */
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         NotificationCenter.default.post(name: Notification.Name(removeSpotCardID), object: nil)
@@ -64,7 +89,15 @@ class SpotView: UIView {
         backBtn.setTitle("", for: .normal)
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         continueBtn.isEnabled = false
-        continueBtn.backgroundColor = UIColor(named: "Main Yellow")?.withAlphaComponent(0.5)
+        continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
+        let selectedItem = collectionView.indexPathsForSelectedItems?.first
+        if selectedItem != nil {
+            let index = (selectedItem![0])*collectionView.numberOfItems(inSection: 0) + selectedItem![1]
+            if spotStates[index] == 0 {
+                continueBtn.isEnabled = true
+                continueBtn.backgroundColor = UIColor(named: "Main Yellow")?.withAlphaComponent(1.0)
+            }
+        }
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1
@@ -130,13 +163,13 @@ class SpotView: UIView {
             infoText.text = "Selected spot is free"
         case 1:
             continueBtn.isEnabled = false
-            continueBtn.backgroundColor = UIColor(named: "Main Yellow")?.withAlphaComponent(0.5)
+            continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
             infoIcon.image = UIImage(systemName: "xmark")
             infoIcon.tintColor = UIColor(named: "Redish")
             infoText.text = "Selected spot is occupied"
         default:
             continueBtn.isEnabled = false
-            continueBtn.backgroundColor = UIColor(named: "Main Yellow")?.withAlphaComponent(0.5)
+            continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
             infoIcon.image = UIImage(systemName: "hammer")
             infoIcon.tintColor = UIColor(named: "Dark Yellow")
             infoText.text = "Selected spot is under maintenance"

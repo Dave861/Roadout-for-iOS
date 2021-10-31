@@ -31,6 +31,20 @@ class HomeViewController: UIViewController {
     let removeSpotCardID = "ro.codebranch.Roadout.removeSpotCardID"
     let spotView = SpotView.instanceFromNib()
     
+    let addReserveCardID = "ro.codebranch.Roadout.addReserveCardID"
+    let removeReserveCardID = "ro.codebranch.Roadout.removeReserveCardID"
+    let reserveView = ReserveView.instanceFromNib()
+    
+    let addPayCardID = "ro.codebranch.Roadout.addPayCardID"
+    let removePayCardID = "ro.codebranch.Roadout.removePayCardID"
+    let payView = PayView.instanceFromNib()
+    
+    let showPaidBarID = "ro.codebranch.Roadout.showPaidBarID"
+    let paidBar = PaidView.instanceFromNib()
+    
+    let showActiveBarID = "ro.codebranch.Roadout.showActiveBarID"
+    let activeBar = ActiveView.instanceFromNib()
+    
     @IBOutlet weak var searchBar: UIView!
     
     @IBAction func searchTapped(_ sender: Any) {
@@ -46,6 +60,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchTapArea: UIButton!
     @IBOutlet weak var settingsTapArea: UIButton!
     
+    //MARK: - Card Functions-
+    //Result Card
     @objc func addResultCard() {
         searchBar.layer.shadowOpacity = 0.0
         var dif = 15.0
@@ -64,7 +80,7 @@ class HomeViewController: UIViewController {
             self.resultView.removeFromSuperview()
         }
     }
-    
+    //Section Card
     @objc func addSectionCard() {
         resultView.removeFromSuperview()
         var dif = 15.0
@@ -88,7 +104,7 @@ class HomeViewController: UIViewController {
             self.sectionView.removeFromSuperview()
         }
     }
-    
+    //Spot Card
     @objc func addSpotCard() {
         sectionView.removeFromSuperview()
         var dif = 15.0
@@ -112,6 +128,81 @@ class HomeViewController: UIViewController {
             self.spotView.removeFromSuperview()
         }
     }
+    //Reserve Card
+    @objc func addReserveCard() {
+        spotView.removeFromSuperview()
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.view.addSubview(self.reserveView)
+        }
+    }
+    @objc func removeReserveCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.spotView.frame = CGRect(x: 13, y: self.screenSize.height-318-dif, width: self.screenSize.width - 26, height: 318)
+            self.view.addSubview(self.spotView)
+            self.reserveView.removeFromSuperview()
+        }
+    }
+    //Pay Card
+    @objc func addPayCard() {
+        reserveView.removeFromSuperview()
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.view.addSubview(self.payView)
+        }
+    }
+    @objc func removePayCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.view.addSubview(self.reserveView)
+            self.payView.removeFromSuperview()
+        }
+    }
+    
+    //MARK: -Bar functions-
+    
+    @objc func showPaidBar() {
+        payView.removeFromSuperview()
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.paidBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.paidBar)
+        }
+    }
+    
+    @objc func showActiveBar() {
+        paidBar.removeFromSuperview()
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.activeBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.activeBar)
+        }
+    }
+    
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
@@ -119,11 +210,25 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(addResultCard), name: Notification.Name(addResultCardID), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeResultCard), name: Notification.Name(removeResultCardID), object: nil)
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(addSectionCard), name: Notification.Name(addSectionCardID), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeSectionCard), name: Notification.Name(removeSectionCardID), object: nil)
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(addSpotCard), name: Notification.Name(addSpotCardID), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeSpotCard), name: Notification.Name(removeSpotCardID), object: nil)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addReserveCard), name: Notification.Name(addReserveCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeReserveCard), name: Notification.Name(removeReserveCardID), object: nil)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addPayCard), name: Notification.Name(addPayCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removePayCard), name: Notification.Name(removePayCardID), object: nil)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showPaidBar), name: Notification.Name(showPaidBarID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showActiveBar), name: Notification.Name(showActiveBarID), object: nil)
     }
     
     override func viewDidLoad() {
