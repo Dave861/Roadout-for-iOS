@@ -9,23 +9,24 @@ import UIKit
 
 class ActiveView: UIView {
     
-    var secondsRemaining = 300
+    let addReservationCardID = "ro.codebranch.Roadout.addReservationCardID"
     
     @IBOutlet weak var timerLbl: UILabel!
     
     @IBOutlet weak var moreBtn: UIButton!
     
     @IBAction func moreTapped(_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name(addReservationCardID), object: nil)
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 12.0
         moreBtn.setTitle("", for: .normal)
-        let seconds = self.secondsRemaining - (self.secondsRemaining/60)*60
+        let seconds = timerSeconds - (timerSeconds/60)*60
         if seconds < 10 {
-            self.timerLbl.text = "\(self.secondsRemaining/60):0\(seconds)"
+            self.timerLbl.text = "\(timerSeconds/60):0\(seconds)"
         } else {
-            self.timerLbl.text = "\(self.secondsRemaining/60):\(seconds)"
+            self.timerLbl.text = "\(timerSeconds/60):\(seconds)"
         }
         
         self.layer.shadowColor = UIColor.black.cgColor
@@ -36,21 +37,24 @@ class ActiveView: UIView {
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
         
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
-                if self.secondsRemaining > 0 {
-                    let seconds = self.secondsRemaining - (self.secondsRemaining/60)*60
-                    if seconds < 10 {
-                        self.timerLbl.text = "\(self.secondsRemaining/60):0\(seconds)"
+        if startedTimers == 1 {
+            startedTimers = 2
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
+                    if timerSeconds > 0 {
+                        let seconds = timerSeconds - (timerSeconds/60)*60
+                        if seconds < 10 {
+                            self.timerLbl.text = "\(timerSeconds/60):0\(seconds)"
+                        } else {
+                            self.timerLbl.text = "\(timerSeconds/60):\(seconds)"
+                        }
                     } else {
-                        self.timerLbl.text = "\(self.secondsRemaining/60):\(seconds)"
+                        self.timerLbl.text = "00:00"
+                        Timer.invalidate()
                     }
-                    self.secondsRemaining -= 1
-                } else {
-                    self.timerLbl.text = "00:00"
-                    Timer.invalidate()
-                }
+            }
         }
     }
+    
     
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Bars", bundle: nil).instantiate(withOwner: nil, options: nil)[1] as! UIView

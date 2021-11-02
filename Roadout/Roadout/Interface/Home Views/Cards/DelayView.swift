@@ -1,23 +1,21 @@
 //
-//  ReserveView.swift
+//  DelayView.swift
 //  Roadout
 //
-//  Created by David Retegan on 31.10.2021.
+//  Created by David Retegan on 01.11.2021.
 //
 
 import UIKit
 
-var timerSeconds = 0
+class DelayView: UIView {
 
-class ReserveView: UIView {
-    
-    let removeReserveCardID = "ro.codebranch.Roadout.removeReserveCardID"
-    let addPayCardID = "ro.codebranch.Roadout.addPayCardID"
+    let removeDelayCardID = "ro.codebranch.Roadout.removeDelayCardID"
+    let addPayDelayCardID = "ro.codebranch.Roadout.addPayDelayCardID"
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(removeReserveCardID), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(removeDelayCardID), object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
     
@@ -25,23 +23,20 @@ class ReserveView: UIView {
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(addPayCardID), object: nil)
+        returnToDelay = true
+        NotificationCenter.default.post(name: Notification.Name(addPayDelayCardID), object: nil)
         
     }
-    
-    @IBOutlet weak var coordonatesLbl: UILabel!
-    @IBOutlet weak var priceLbl: UILabel!
     
     @IBOutlet weak var minuteSlider: UISlider!
     @IBAction func slided(_ sender: Any) {
         let roundedValue = round(minuteSlider.value/1.0)*1.0
         minuteSlider.value = roundedValue
-        timerSeconds = Int(roundedValue*60)
-        totalLbl.text = "\(Int(minuteSlider.value)) Minutes - \(Int(minuteSlider.value)) RON"
-        totalLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: totalLbl.range(after: " - "))
+        priceLbl.text = "Charge - \(Int(minuteSlider.value)) RON"
+        priceLbl.set(textColor: UIColor(named: "Dark Orange")!, range: priceLbl.range(after: " - "))
     }
     
-    @IBOutlet weak var totalLbl: UILabel!
+    @IBOutlet weak var priceLbl: UILabel!
     
     let continueTitle = NSAttributedString(string: "Continue", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
@@ -52,7 +47,7 @@ class ReserveView: UIView {
         backBtn.setTitle("", for: .normal)
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         
-        totalLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: totalLbl.range(after: " - "))
+        priceLbl.set(textColor: UIColor(named: "Dark Orange")!, range: priceLbl.range(after: " - "))
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1
@@ -64,7 +59,7 @@ class ReserveView: UIView {
     }
     
     class func instanceFromNib() -> UIView {
-        return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[3] as! UIView
+        return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[6] as! UIView
     }
-
 }
+

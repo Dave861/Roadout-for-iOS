@@ -138,16 +138,178 @@
             </connections>
             <point key="canvasLocation" x="100.00000000000001" y="195.6521739130435"/>
         </view>
+        <view contentMode="scaleToFill" id="IDh-ZS-uvV" customClass="UnlockedView" customModule="Roadout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.open" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="e0l-cK-Ie7">
+                    <rect key="frame" x="9" y="12.666666666666666" width="32" height="26.666666666666671"/>
+                    <color key="tintColor" name="Brownish"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="U5j-UM-yKp"/>
+                        <constraint firstAttribute="height" constant="28.670000000000002" id="g3J-hP-bpp"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlocked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zb-P8-mXM">
+                    <rect key="frame" x="49" y="4" width="78" height="44"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bK2-6A-7M9">
+                    <rect key="frame" x="301" y="9" width="113" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="113" id="1tS-F1-Cdo"/>
+                    </constraints>
+                    <color key="tintColor" name="Brownish"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Directions">
+                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="directionsTapped:" destination="IDh-ZS-uvV" eventType="touchUpInside" id="wSb-vM-hu7"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="UNX-48-sEG"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="9zb-P8-mXM" firstAttribute="top" secondItem="UNX-48-sEG" secondAttribute="top" constant="4" id="2z9-bA-mug"/>
+                <constraint firstItem="UNX-48-sEG" firstAttribute="bottom" secondItem="9zb-P8-mXM" secondAttribute="bottom" constant="4" id="Q8d-Wd-lyf"/>
+                <constraint firstAttribute="trailing" secondItem="bK2-6A-7M9" secondAttribute="trailing" id="jHY-Hx-htU"/>
+                <constraint firstItem="9zb-P8-mXM" firstAttribute="leading" secondItem="e0l-cK-Ie7" secondAttribute="trailing" constant="8" symbolic="YES" id="mVz-fD-CJk"/>
+                <constraint firstItem="e0l-cK-Ie7" firstAttribute="centerY" secondItem="IDh-ZS-uvV" secondAttribute="centerY" id="nuZ-ZK-84x"/>
+                <constraint firstItem="bK2-6A-7M9" firstAttribute="top" secondItem="UNX-48-sEG" secondAttribute="top" constant="9" id="vaY-Vt-ZRP"/>
+                <constraint firstItem="e0l-cK-Ie7" firstAttribute="leading" secondItem="UNX-48-sEG" secondAttribute="leading" constant="9" id="y0F-ps-Bnb"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="directionsBtn" destination="bK2-6A-7M9" id="rIv-RM-6zu"/>
+            </connections>
+            <point key="canvasLocation" x="100.00000000000001" y="274.72826086956525"/>
+        </view>
+        <view contentMode="scaleToFill" id="idu-jF-tvt" customClass="CancelledView" customModule="Roadout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancelled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6o-gR-yBH">
+                    <rect key="frame" x="49" y="4" width="82" height="44"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBn-92-2WR">
+                    <rect key="frame" x="298" y="9" width="113" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="113" id="aAs-dj-pmx"/>
+                    </constraints>
+                    <color key="tintColor" name="Redish"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Done">
+                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="doneTapped:" destination="idu-jF-tvt" eventType="touchUpInside" id="CIA-pg-HDz"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.app" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GEq-FV-baD">
+                    <rect key="frame" x="11" y="13.333333333333329" width="26" height="25.666666666666657"/>
+                    <color key="tintColor" name="Redish"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28.670000000000002" id="WZ6-yw-TGZ"/>
+                        <constraint firstAttribute="width" constant="26" id="svZ-Xf-7gj"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="S1G-EX-uCN"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="S1G-EX-uCN" firstAttribute="bottom" secondItem="V6o-gR-yBH" secondAttribute="bottom" constant="4" id="43U-ei-rbz"/>
+                <constraint firstItem="V6o-gR-yBH" firstAttribute="top" secondItem="S1G-EX-uCN" secondAttribute="top" constant="4" id="IXq-qz-Fpj"/>
+                <constraint firstItem="GEq-FV-baD" firstAttribute="leading" secondItem="S1G-EX-uCN" secondAttribute="leading" constant="11" id="JoY-M4-XcC"/>
+                <constraint firstItem="V6o-gR-yBH" firstAttribute="leading" secondItem="GEq-FV-baD" secondAttribute="trailing" constant="12" id="NCv-JS-2t2"/>
+                <constraint firstAttribute="trailing" secondItem="fBn-92-2WR" secondAttribute="trailing" constant="3" id="PeC-Fc-as8"/>
+                <constraint firstItem="fBn-92-2WR" firstAttribute="top" secondItem="S1G-EX-uCN" secondAttribute="top" constant="9" id="fe9-Lw-YDm"/>
+                <constraint firstItem="GEq-FV-baD" firstAttribute="centerY" secondItem="idu-jF-tvt" secondAttribute="centerY" id="hq6-47-t4g"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="doneBtn" destination="fBn-92-2WR" id="H73-Eg-4sL"/>
+            </connections>
+            <point key="canvasLocation" x="100.00000000000001" y="354.61956521739131"/>
+        </view>
+        <view contentMode="scaleToFill" id="Rli-7c-2Qo" customClass="NoWifiView" customModule="Roadout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Internet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lch-cb-uQy">
+                    <rect key="frame" x="49" y="4" width="93" height="44"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRs-aV-nQd">
+                    <rect key="frame" x="287" y="9" width="125" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="125" id="Dw2-LJ-ZSa"/>
+                    </constraints>
+                    <color key="tintColor" name="Greyish"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Wifi Settings">
+                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="settingsTapped:" destination="Rli-7c-2Qo" eventType="touchUpInside" id="QWo-Rl-10D"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wifi.slash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rag-Oh-Ii9">
+                    <rect key="frame" x="11" y="11.999999999999996" width="26" height="26.333333333333332"/>
+                    <color key="tintColor" name="Greyish"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28.670000000000002" id="QRH-gJ-7kp"/>
+                        <constraint firstAttribute="width" constant="26" id="jd5-7n-8u6"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="mVW-qb-Vg4"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Lch-cb-uQy" firstAttribute="leading" secondItem="rag-Oh-Ii9" secondAttribute="trailing" constant="12" id="Dj8-bW-cln"/>
+                <constraint firstItem="rag-Oh-Ii9" firstAttribute="centerY" secondItem="Rli-7c-2Qo" secondAttribute="centerY" id="TUS-SG-Jvf"/>
+                <constraint firstItem="rag-Oh-Ii9" firstAttribute="leading" secondItem="mVW-qb-Vg4" secondAttribute="leading" constant="11" id="n3b-iP-FVL"/>
+                <constraint firstItem="mVW-qb-Vg4" firstAttribute="bottom" secondItem="Lch-cb-uQy" secondAttribute="bottom" constant="4" id="pLR-1K-yRn"/>
+                <constraint firstAttribute="trailing" secondItem="cRs-aV-nQd" secondAttribute="trailing" constant="2" id="sTL-d8-2n7"/>
+                <constraint firstItem="cRs-aV-nQd" firstAttribute="top" secondItem="mVW-qb-Vg4" secondAttribute="top" constant="9" id="scM-dF-6Za"/>
+                <constraint firstItem="Lch-cb-uQy" firstAttribute="top" secondItem="mVW-qb-Vg4" secondAttribute="top" constant="4" id="svL-UJ-8gj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="settingsBtn" destination="cRs-aV-nQd" id="R6I-qi-Mve"/>
+            </connections>
+            <point key="canvasLocation" x="100.00000000000001" y="436.95652173913049"/>
+        </view>
     </objects>
     <resources>
         <image name="checkmark.seal" catalog="system" width="128" height="128"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
         <image name="lock" catalog="system" width="128" height="128"/>
+        <image name="lock.open" catalog="system" width="128" height="110"/>
+        <image name="wifi.slash" catalog="system" width="128" height="102"/>
+        <image name="xmark.app" catalog="system" width="128" height="114"/>
+        <namedColor name="Brownish">
+            <color red="0.40400001406669617" green="0.28200000524520874" blue="0.019999999552965164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Dark Orange">
             <color red="0.83899998664855957" green="0.42699998617172241" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="Greyish">
+            <color red="0.53299999237060547" green="0.49399998784065247" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Icons">
             <color red="0.86299997568130493" green="0.66699999570846558" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Redish">
+            <color red="0.58399999141693115" green="0.18000000715255737" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

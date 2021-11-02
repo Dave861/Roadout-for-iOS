@@ -42,6 +42,7 @@ class PaymentViewController: UIViewController {
     
     @objc func refreshTableView() {
         DispatchQueue.main.async {
+            UserDefaults.standard.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
             self.tableView.reloadData()
         }
     }
@@ -54,6 +55,9 @@ class PaymentViewController: UIViewController {
         backButton.setTitle("", for: .normal)
         addCardBtn.setAttributedTitle(buttonTitle, for: .normal)
         addBtnOutline.layer.cornerRadius = 12.0
+        cardNumbers = UserDefaults.standard.stringArray(forKey: "ro.roadout.paymentMethods") ?? ["**** **** **** 9000", "**** **** **** 7250", "**** **** **** 7784", "**** **** **** 9432"]
+        UserDefaults.standard.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+        cardIndex = UserDefaults.standard.integer(forKey: "ro.roadout.defaultPaymentMethod")
         tableView.reloadData()
     }
     
@@ -99,6 +103,7 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         cardIndex = indexPath.row
+        UserDefaults.standard.set(indexPath.row, forKey: "ro.roadout.defaultPaymentMethod")
         tableView.reloadData()
     }
 }

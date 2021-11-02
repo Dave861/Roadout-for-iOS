@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		9A0357152727CC4D002A9ED9 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A0357142727CC4D002A9ED9 /* Home.storyboard */; };
 		9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0357162727CC61002A9ED9 /* HomeViewController.swift */; };
-		9A089E43272A7B53005B3FFE /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A089E42272A7B53005B3FFE /* CustomTableView.swift */; };
 		9A089E45272A7D78005B3FFE /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A089E44272A7D78005B3FFE /* AddReminderViewController.swift */; };
 		9A0C7771272E7B1700ECBFB2 /* SpotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C7770272E7B1700ECBFB2 /* SpotView.swift */; };
 		9A0C7775272E831E00ECBFB2 /* SpotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C7773272E831E00ECBFB2 /* SpotCell.swift */; };
 		9A0C7776272E831E00ECBFB2 /* SpotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0C7774272E831E00ECBFB2 /* SpotCell.xib */; };
+		9A14B914273142A400967417 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B913273142A400967417 /* CustomTableView.swift */; };
+		9A14B916273142C100967417 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B915273142C100967417 /* Extensions.swift */; };
+		9A14B918273142E100967417 /* KeyboardConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B917273142E100967417 /* KeyboardConstraint.swift */; };
+		9A14B91A2731430400967417 /* MonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B9192731430400967417 /* MonthPickerView.swift */; };
+		9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91B2731431B00967417 /* PaddedTextField.swift */; };
+		9A14B91E2731436300967417 /* UserPrefsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91D2731436300967417 /* UserPrefsUtils.swift */; };
 		9A150833272BFC3E008C083B /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 9A150832272BFC3E008C083B /* GoogleMaps */; };
 		9A150835272BFC3E008C083B /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 9A150834272BFC3E008C083B /* GoogleMapsBase */; };
 		9A150837272BFC3E008C083B /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9A150836272BFC3E008C083B /* GoogleMapsCore */; };
@@ -31,10 +36,18 @@
 		9A46BBA4272EF343002280DD /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA3272EF343002280DD /* PayView.swift */; };
 		9A46BBA6272EF83D002280DD /* PaidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA5272EF83D002280DD /* PaidView.swift */; };
 		9A46BBA8272EF84A002280DD /* Bars.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A46BBA7272EF84A002280DD /* Bars.xib */; };
+		9A49BFA6272FDA2000234A9F /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFA5272FDA2000234A9F /* ReservationView.swift */; };
+		9A49BFA8272FED5900234A9F /* DelayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFA7272FED5900234A9F /* DelayView.swift */; };
+		9A49BFAB272FF41B00234A9F /* UnlockedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFAA272FF41B00234A9F /* UnlockedView.swift */; };
+		9A49BFAD272FF42100234A9F /* CancelledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFAC272FF42100234A9F /* CancelledView.swift */; };
+		9A49BFAF272FF42B00234A9F /* NoWifiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFAE272FF42B00234A9F /* NoWifiView.swift */; };
+		9A49BFB1272FF8CB00234A9F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFB0272FF8CB00234A9F /* Reachability.swift */; };
+		9A49BFB4272FF8E600234A9F /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFB3272FF8E600234A9F /* ConnectivityManager.swift */; };
 		9A5CC58B272C133A00A735A3 /* darkStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A5CC589272C133900A735A3 /* darkStyle.json */; };
 		9A5CC58C272C133A00A735A3 /* lightStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A5CC58A272C133A00A735A3 /* lightStyle.json */; };
 		9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A4A2E27293171008F69B3 /* SearchViewController.swift */; };
 		9A6A4A3127293184008F69B3 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A4A3027293184008F69B3 /* SearchCell.swift */; };
+		9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */ = {isa = PBXBuildFile; productRef = 9A6E1C362731324B002E29F9 /* BarChartKit-static */; };
 		9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7331FD272877F400ACE30A /* NotificationsViewController.swift */; };
 		9A7332002728780300ACE30A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A7331FF2728780300ACE30A /* Settings.storyboard */; };
 		9A7332032728798300ACE30A /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7332022728798300ACE30A /* NotificationCell.swift */; };
@@ -42,13 +55,10 @@
 		9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F872272B09DF008B58FE /* AddCardViewController.swift */; };
 		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
 		9A96F877272B0A25008B58FE /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F876272B0A25008B58FE /* CardCell.swift */; };
-		9A96F87B272B2098008B58FE /* MonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F87A272B2098008B58FE /* MonthPickerView.swift */; };
 		9AA0AEFE272D195400DA04A2 /* LegalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */; };
 		9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA65124272D7DD10057DA24 /* SectionView.swift */; };
-		9AA9C4152726C5D700ECCCE1 /* KeyboardConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4142726C5D700ECCCE1 /* KeyboardConstraint.swift */; };
 		9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */; };
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
-		9AA9C41B2726CC4000ECCCE1 /* PaddedTextField.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C41A2726CC3F00ECCCE1 /* PaddedTextField.swift.swift */; };
 		9AB96428272EFCE0008462E7 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB96427272EFCE0008462E7 /* ActiveView.swift */; };
 		9AC6D9D92727DE0D004E838C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC6D9D82727DE0D004E838C /* SettingsViewController.swift */; };
 		9AC926EB272697F00054E453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC926EA272697F00054E453 /* AppDelegate.swift */; };
@@ -62,7 +72,6 @@
 		9AC9270E272697F20054E453 /* RoadoutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9270D272697F20054E453 /* RoadoutUITestsLaunchTests.swift */; };
 		9ACBFF54272704F90011B58F /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBFF53272704F90011B58F /* PermissionsViewController.swift */; };
 		9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBFF55272705060011B58F /* PermissionTableViewCell.swift */; };
-		9AD6D58A2728010300C47B6F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6D5892728010300C47B6F /* Extensions.swift */; };
 		9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFF6272BBFD70088A3ED /* HistoryViewController.swift */; };
 		9AE2AFF9272BC0B80088A3ED /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFF8272BC0B80088A3ED /* HistoryCell.swift */; };
 		9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */; };
@@ -70,7 +79,6 @@
 		9AEF29F0272D704D00FEE390 /* Cards.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEF29EF272D704D00FEE390 /* Cards.xib */; };
 		9AEF29F2272D71A600FEE390 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF29F1272D71A600FEE390 /* ResultView.swift */; };
 		9AF798EE272C3B530096D4C3 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF798ED272C3B530096D4C3 /* InviteViewController.swift */; };
-		9AF798F1272C43200096D4C3 /* BarChartKit-static in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF798F0272C43200096D4C3 /* BarChartKit-static */; };
 		9AF798F3272C4BF70096D4C3 /* PrizesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF798F2272C4BF70096D4C3 /* PrizesViewController.swift */; };
 		9AF798F5272C4C060096D4C3 /* PrizesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF798F4272C4C060096D4C3 /* PrizesCell.swift */; };
 /* End PBXBuildFile section */
@@ -95,11 +103,17 @@
 /* Begin PBXFileReference section */
 		9A0357142727CC4D002A9ED9 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		9A0357162727CC61002A9ED9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		9A089E42272A7B53005B3FFE /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		9A089E44272A7D78005B3FFE /* AddReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
 		9A0C7770272E7B1700ECBFB2 /* SpotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotView.swift; sourceTree = "<group>"; };
 		9A0C7773272E831E00ECBFB2 /* SpotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCell.swift; sourceTree = "<group>"; };
 		9A0C7774272E831E00ECBFB2 /* SpotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotCell.xib; sourceTree = "<group>"; };
+		9A14B913273142A400967417 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		9A14B915273142C100967417 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9A14B917273142E100967417 /* KeyboardConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardConstraint.swift; sourceTree = "<group>"; };
+		9A14B9192731430400967417 /* MonthPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthPickerView.swift; sourceTree = "<group>"; };
+		9A14B91B2731431B00967417 /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
+		9A14B91D2731436300967417 /* UserPrefsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefsUtils.swift; sourceTree = "<group>"; };
+		9A14B91F273147D400967417 /* Roadout.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Roadout.entitlements; sourceTree = "<group>"; };
 		9A150811272BFA49008C083B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9A150813272BFA51008C083B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9A150815272BFA59008C083B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,6 +144,13 @@
 		9A46BBA3272EF343002280DD /* PayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayView.swift; sourceTree = "<group>"; };
 		9A46BBA5272EF83D002280DD /* PaidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidView.swift; sourceTree = "<group>"; };
 		9A46BBA7272EF84A002280DD /* Bars.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Bars.xib; sourceTree = "<group>"; };
+		9A49BFA5272FDA2000234A9F /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
+		9A49BFA7272FED5900234A9F /* DelayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayView.swift; sourceTree = "<group>"; };
+		9A49BFAA272FF41B00234A9F /* UnlockedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockedView.swift; sourceTree = "<group>"; };
+		9A49BFAC272FF42100234A9F /* CancelledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelledView.swift; sourceTree = "<group>"; };
+		9A49BFAE272FF42B00234A9F /* NoWifiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWifiView.swift; sourceTree = "<group>"; };
+		9A49BFB0272FF8CB00234A9F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		9A49BFB3272FF8E600234A9F /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		9A5CC589272C133900A735A3 /* darkStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = darkStyle.json; sourceTree = "<group>"; };
 		9A5CC58A272C133A00A735A3 /* lightStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lightStyle.json; sourceTree = "<group>"; };
 		9A6A4A2E27293171008F69B3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -141,13 +162,10 @@
 		9A96F872272B09DF008B58FE /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		9A96F874272B09F1008B58FE /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		9A96F876272B0A25008B58FE /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
-		9A96F87A272B2098008B58FE /* MonthPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthPickerView.swift; sourceTree = "<group>"; };
 		9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
 		9AA65124272D7DD10057DA24 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
-		9AA9C4142726C5D700ECCCE1 /* KeyboardConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardConstraint.swift; sourceTree = "<group>"; };
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		9AA9C41A2726CC3F00ECCCE1 /* PaddedTextField.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift.swift; sourceTree = "<group>"; };
 		9AB96427272EFCE0008462E7 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
 		9AC6D9D82727DE0D004E838C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "Roadout/Interface/Home Views/SettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		9AC926E7272697F00054E453 /* Roadout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roadout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +183,6 @@
 		9AC9270D272697F20054E453 /* RoadoutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9ACBFF53272704F90011B58F /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		9ACBFF55272705060011B58F /* PermissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionTableViewCell.swift; sourceTree = "<group>"; };
-		9AD6D5892728010300C47B6F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9AE2AFF6272BBFD70088A3ED /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		9AE2AFF8272BC0B80088A3ED /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryCell.swift; path = Roadout/Interface/Settings/HistoryCell.swift; sourceTree = SOURCE_ROOT; };
 		9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
@@ -184,7 +201,7 @@
 			files = (
 				9A150833272BFC3E008C083B /* GoogleMaps in Frameworks */,
 				9A150837272BFC3E008C083B /* GoogleMapsCore in Frameworks */,
-				9AF798F1272C43200096D4C3 /* BarChartKit-static in Frameworks */,
+				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
 				9A150835272BFC3E008C083B /* GoogleMapsBase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,13 +237,14 @@
 		9A0C7772272E830500ECBFB2 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				9A49BFA9272FF40D00234A9F /* Bars */,
 				9AEF29F1272D71A600FEE390 /* ResultView.swift */,
 				9AA65124272D7DD10057DA24 /* SectionView.swift */,
 				9A0C7770272E7B1700ECBFB2 /* SpotView.swift */,
 				9A46BBA1272EE764002280DD /* ReserveView.swift */,
 				9A46BBA3272EF343002280DD /* PayView.swift */,
-				9A46BBA5272EF83D002280DD /* PaidView.swift */,
-				9AB96427272EFCE0008462E7 /* ActiveView.swift */,
+				9A49BFA5272FDA2000234A9F /* ReservationView.swift */,
+				9A49BFA7272FED5900234A9F /* DelayView.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -238,6 +256,15 @@
 				9A0C7774272E831E00ECBFB2 /* SpotCell.xib */,
 			);
 			path = Spot;
+			sourceTree = "<group>";
+		};
+		9A14B912273141E200967417 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9A49BFB2272FF8D000234A9F /* Wifi Helper */,
+				9A14B91D2731436300967417 /* UserPrefsUtils.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		9A150810272BFA49008C083B /* Frameworks */ = {
@@ -286,6 +313,28 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		9A49BFA9272FF40D00234A9F /* Bars */ = {
+			isa = PBXGroup;
+			children = (
+				9A46BBA5272EF83D002280DD /* PaidView.swift */,
+				9AB96427272EFCE0008462E7 /* ActiveView.swift */,
+				9A49BFAA272FF41B00234A9F /* UnlockedView.swift */,
+				9A49BFAC272FF42100234A9F /* CancelledView.swift */,
+				9A49BFAE272FF42B00234A9F /* NoWifiView.swift */,
+			);
+			path = Bars;
+			sourceTree = "<group>";
+		};
+		9A49BFB2272FF8D000234A9F /* Wifi Helper */ = {
+			isa = PBXGroup;
+			children = (
+				9A49BFB0272FF8CB00234A9F /* Reachability.swift */,
+				9A49BFB3272FF8E600234A9F /* ConnectivityManager.swift */,
+			);
+			name = "Wifi Helper";
+			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
 		9A7332012728796A00ACE30A /* Setting Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,11 +350,11 @@
 		9AA9C4132726C5A500ECCCE1 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
-				9AA9C4142726C5D700ECCCE1 /* KeyboardConstraint.swift */,
-				9AA9C41A2726CC3F00ECCCE1 /* PaddedTextField.swift.swift */,
-				9AD6D5892728010300C47B6F /* Extensions.swift */,
-				9A089E42272A7B53005B3FFE /* CustomTableView.swift */,
-				9A96F87A272B2098008B58FE /* MonthPickerView.swift */,
+				9A14B913273142A400967417 /* CustomTableView.swift */,
+				9A14B915273142C100967417 /* Extensions.swift */,
+				9A14B917273142E100967417 /* KeyboardConstraint.swift */,
+				9A14B9192731430400967417 /* MonthPickerView.swift */,
+				9A14B91B2731431B00967417 /* PaddedTextField.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -334,6 +383,8 @@
 		9AC926E9272697F00054E453 /* Roadout */ = {
 			isa = PBXGroup;
 			children = (
+				9A14B91F273147D400967417 /* Roadout.entitlements */,
+				9A14B912273141E200967417 /* Utilities */,
 				9AC926EA272697F00054E453 /* AppDelegate.swift */,
 				9AC926EC272697F00054E453 /* SceneDelegate.swift */,
 				9AC9271A27269B460054E453 /* Interface */,
@@ -450,7 +501,7 @@
 				9A150832272BFC3E008C083B /* GoogleMaps */,
 				9A150834272BFC3E008C083B /* GoogleMapsBase */,
 				9A150836272BFC3E008C083B /* GoogleMapsCore */,
-				9AF798F0272C43200096D4C3 /* BarChartKit-static */,
+				9A6E1C362731324B002E29F9 /* BarChartKit-static */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -526,7 +577,7 @@
 			mainGroup = 9AC926DE272697F00054E453;
 			packageReferences = (
 				9A150831272BFC3E008C083B /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
-				9AF798EF272C43200096D4C3 /* XCRemoteSwiftPackageReference "BarChart" */,
+				9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -584,40 +635,47 @@
 				9A46BBA4272EF343002280DD /* PayView.swift in Sources */,
 				9AA0AEFE272D195400DA04A2 /* LegalViewController.swift in Sources */,
 				9A96F877272B0A25008B58FE /* CardCell.swift in Sources */,
+				9A49BFB4272FF8E600234A9F /* ConnectivityManager.swift in Sources */,
+				9A49BFA8272FED5900234A9F /* DelayView.swift in Sources */,
 				9AEF29F2272D71A600FEE390 /* ResultView.swift in Sources */,
 				9A0C7771272E7B1700ECBFB2 /* SpotView.swift in Sources */,
 				9AE2AFFD272BD25C0088A3ED /* EditPasswordViewController.swift in Sources */,
 				9AF798EE272C3B530096D4C3 /* InviteViewController.swift in Sources */,
 				9AC926EF272697F00054E453 /* WelcomeViewController.swift in Sources */,
+				9A49BFAF272FF42B00234A9F /* NoWifiView.swift in Sources */,
 				9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */,
 				9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */,
+				9A49BFAD272FF42100234A9F /* CancelledView.swift in Sources */,
 				9A310785272A708300B1F84A /* ReminderCell.swift in Sources */,
-				9A96F87B272B2098008B58FE /* MonthPickerView.swift in Sources */,
+				9A49BFB1272FF8CB00234A9F /* Reachability.swift in Sources */,
 				9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */,
 				9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */,
 				9A1ABE972726A5EF00D4AA4B /* InfoTableViewCell.swift in Sources */,
 				9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */,
-				9AA9C41B2726CC4000ECCCE1 /* PaddedTextField.swift.swift in Sources */,
 				9ACBFF54272704F90011B58F /* PermissionsViewController.swift in Sources */,
 				9AB96428272EFCE0008462E7 /* ActiveView.swift in Sources */,
+				9A14B918273142E100967417 /* KeyboardConstraint.swift in Sources */,
 				9AF798F3272C4BF70096D4C3 /* PrizesViewController.swift in Sources */,
+				9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */,
+				9A14B914273142A400967417 /* CustomTableView.swift in Sources */,
 				9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */,
+				9A14B91A2731430400967417 /* MonthPickerView.swift in Sources */,
+				9A49BFAB272FF41B00234A9F /* UnlockedView.swift in Sources */,
 				9A39B0D427284825008E7FD0 /* SettingCell.swift in Sources */,
 				9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */,
 				9A0C7775272E831E00ECBFB2 /* SpotCell.swift in Sources */,
 				9A46BBA2272EE764002280DD /* ReserveView.swift in Sources */,
 				9A39B0D227284818008E7FD0 /* DownCornerCell.swift in Sources */,
 				9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */,
-				9AD6D58A2728010300C47B6F /* Extensions.swift in Sources */,
 				9A7332032728798300ACE30A /* NotificationCell.swift in Sources */,
 				9AF798F5272C4C060096D4C3 /* PrizesCell.swift in Sources */,
 				9A310783272A707100B1F84A /* RemindersViewController.swift in Sources */,
 				9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */,
 				9A46BBA6272EF83D002280DD /* PaidView.swift in Sources */,
 				9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */,
-				9A089E43272A7B53005B3FFE /* CustomTableView.swift in Sources */,
+				9A49BFA6272FDA2000234A9F /* ReservationView.swift in Sources */,
 				9A8484C22729A8AD00862685 /* DirectionsAppViewController.swift in Sources */,
-				9AA9C4152726C5D700ECCCE1 /* KeyboardConstraint.swift in Sources */,
+				9A14B91E2731436300967417 /* UserPrefsUtils.swift in Sources */,
 				9AC926EB272697F00054E453 /* AppDelegate.swift in Sources */,
 				9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */,
 				9A39B0D02728480E008E7FD0 /* UpCornerCell.swift in Sources */,
@@ -626,6 +684,7 @@
 				9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */,
 				9AC6D9D92727DE0D004E838C /* SettingsViewController.swift in Sources */,
 				9A39B0CE27284803008E7FD0 /* SpacerCell.swift in Sources */,
+				9A14B916273142C100967417 /* Extensions.swift in Sources */,
 				9A39B0D827284B38008E7FD0 /* SettingsTextCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -805,6 +864,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T5769DN25J;
@@ -840,6 +900,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T5769DN25J;
@@ -1032,7 +1093,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		9AF798EF272C43200096D4C3 /* XCRemoteSwiftPackageReference "BarChart" */ = {
+		9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marekpridal/BarChart";
 			requirement = {
@@ -1058,9 +1119,9 @@
 			package = 9A150831272BFC3E008C083B /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
 			productName = GoogleMapsCore;
 		};
-		9AF798F0272C43200096D4C3 /* BarChartKit-static */ = {
+		9A6E1C362731324B002E29F9 /* BarChartKit-static */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9AF798EF272C43200096D4C3 /* XCRemoteSwiftPackageReference "BarChart" */;
+			package = 9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */;
 			productName = "BarChartKit-static";
 		};
 /* End XCSwiftPackageProductDependency section */

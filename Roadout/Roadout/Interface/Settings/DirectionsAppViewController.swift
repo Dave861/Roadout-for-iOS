@@ -22,18 +22,21 @@ class DirectionsAppViewController: UIViewController {
     
     @IBAction func appleMapsTapped(_ sender: Any) {
         index = 1
+        UserDefaults.standard.set("Apple Maps", forKey: "ro.roadout.defaultDirectionsApp")
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         updateSelection()
     }
     @IBAction func googleMapsTapped(_ sender: Any) {
         index = 2
+        UserDefaults.standard.set("Google Maps", forKey: "ro.roadout.defaultDirectionsApp")
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         updateSelection()
     }
     @IBAction func wazeTapped(_ sender: Any) {
         index = 3
+        UserDefaults.standard.set("Waze", forKey: "ro.roadout.defaultDirectionsApp")
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         updateSelection()
@@ -57,6 +60,15 @@ class DirectionsAppViewController: UIViewController {
         button1.setTitle("", for: .normal)
         button2.setTitle("", for: .normal)
         button3.setTitle("", for: .normal)
+        switch UserPrefsUtils.sharedInstance.returnPrefferedMapsApp() {
+        case "Google Maps":
+            index = 2
+        case "Waze":
+            index = 3
+        default:
+            index = 1
+        }
+        updateSelection()
     }
     
     func updateSelection() {

@@ -30,6 +30,18 @@ class PaidView: UIView {
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
+        
+        if startedTimers == 0 {
+            startedTimers = 1
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
+                    if timerSeconds > 0 {
+                        timerSeconds -= 1
+                    } else {
+                        startedTimers = 0
+                        Timer.invalidate()
+                    }
+            }
+        }
     }
     
     class func instanceFromNib() -> UIView {

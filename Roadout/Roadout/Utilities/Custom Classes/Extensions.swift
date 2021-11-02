@@ -4,6 +4,7 @@
 //
 //  Created by David Retegan on 26.10.2021.
 //
+
 import Foundation
 import UIKit
 
@@ -193,7 +194,6 @@ extension UILabel {
     }
 }
 extension UIView {
-    //Get Parent View Controller from any view
     func parentViewController() -> UIViewController {
         var responder: UIResponder? = self
         while !(responder is UIViewController) {

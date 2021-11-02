@@ -11,15 +11,22 @@ class PayView: UIView {
     
     let removePayCardID = "ro.codebranch.Roadout.removePayCardID"
     let showPaidBarID = "ro.codebranch.Roadout.showPaidBarID"
-
+    let removePayDelayCardID = "ro.codebranch.Roadout.removePayDelayCardID"
+    
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(removePayCardID), object: nil)
+        if returnToDelay {
+            returnToDelay = false
+            NotificationCenter.default.post(name: Notification.Name(removePayDelayCardID), object: nil)
+        } else {
+            NotificationCenter.default.post(name: Notification.Name(removePayCardID), object: nil)
+        }
     }
     @IBOutlet weak var backBtn: UIButton!
     
     @IBOutlet weak var priceLbl: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var applePayBtn: UIButton!
     @IBOutlet weak var mainCardBtn: UIButton!
@@ -42,7 +49,7 @@ class PayView: UIView {
     
     
     let applePayTitle = NSAttributedString(string: "Pay with Apple Pay", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let mainCardTitle = NSAttributedString(string: "Pay with **** **** **** 9000", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let mainCardTitle = NSAttributedString(string: "Pay with \(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let diffPaymentTitle = NSAttributedString(string: "Different Payment Method", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     
@@ -58,6 +65,12 @@ class PayView: UIView {
         differentPaymentBtn.setAttributedTitle(diffPaymentTitle, for: .normal)
         
         priceLbl.set(textColor: UIColor(named: "Dark Orange")!, range: priceLbl.range(after: " - "))
+        
+        if returnToDelay {
+            titleLbl.text = "Pay Delay"
+        } else {
+            titleLbl.text = "Pay Spot"
+        }
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1

@@ -11,6 +11,10 @@ import CoreLocation
 
 var selectedLocation = "Location"
 var selectedLocationColor = UIColor(named: "Main Yellow")
+var returnToDelay = false
+var reservationTimer: Timer!
+
+var startedTimers = 0
 
 class HomeViewController: UIViewController {
 
@@ -39,11 +43,35 @@ class HomeViewController: UIViewController {
     let removePayCardID = "ro.codebranch.Roadout.removePayCardID"
     let payView = PayView.instanceFromNib()
     
+    let addReservationCardID = "ro.codebranch.Roadout.addReservationCardID"
+    let removeReservationCardID = "ro.codebranch.Roadout.removeReservationCardID"
+    let reservationView = ReservationView.instanceFromNib()
+    
+    let addDelayCardID = "ro.codebranch.Roadout.addDelayCardID"
+    let removeDelayCardID = "ro.codebranch.Roadout.removeDelayCardID"
+    let delayView = DelayView.instanceFromNib()
+    
+    let addPayDelayCardID = "ro.codebranch.Roadout.addPayDelayCardID"
+    let removePayDelayCardID = "ro.codebranch.Roadout.removePayDelayCardID"
+    
+    
+    
     let showPaidBarID = "ro.codebranch.Roadout.showPaidBarID"
     let paidBar = PaidView.instanceFromNib()
     
     let showActiveBarID = "ro.codebranch.Roadout.showActiveBarID"
     let activeBar = ActiveView.instanceFromNib()
+    
+    let showUnlockedBarID = "ro.codebranch.Roadout.showUnlockedBarID"
+    let unlockedBar = UnlockedView.instanceFromNib()
+    
+    let showCancelledBarID = "ro.codebranch.Roadout.showCancelledBarID"
+    let cancelledBar = CancelledView.instanceFromNib()
+    
+    let showNoWifiBarID = "ro.codebranch.Roadout.showNoWifiBarID"
+    let noWifiBar = NoWifiView.instanceFromNib()
+    
+    let returnToSearchBarID = "ro.codebranch.Roadout.returnToSearchBarID"
     
     @IBOutlet weak var searchBar: UIView!
     
@@ -59,6 +87,8 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var searchTapArea: UIButton!
     @IBOutlet weak var settingsTapArea: UIButton!
+    
+    @IBOutlet weak var titleLbl: UILabel!
     
     //MARK: - Card Functions-
     //Result Card
@@ -176,6 +206,78 @@ class HomeViewController: UIViewController {
             self.payView.removeFromSuperview()
         }
     }
+    //Reservation Card
+    @objc func addReservationCard() {
+        activeBar.removeFromSuperview()
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
+            self.view.addSubview(self.reservationView)
+        }
+    }
+    @objc func removeReservationCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.activeBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.activeBar)
+            self.reservationView.removeFromSuperview()
+        }
+    }
+    //Delay Card
+    @objc func addDelayCard() {
+        reservationView.removeFromSuperview()
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.delayView.frame = CGRect(x: 13, y: self.screenSize.height-205-dif, width: self.screenSize.width - 26, height: 205)
+            self.view.addSubview(self.delayView)
+        }
+    }
+    @objc func removeDelayCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
+            self.view.addSubview(self.reservationView)
+            self.delayView.removeFromSuperview()
+        }
+    }
+    //Pay Delay Card
+    @objc func addPayDelayCard() {
+        delayView.removeFromSuperview()
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.view.addSubview(self.payView)
+        }
+    }
+    @objc func removePayDelayCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.delayView.frame = CGRect(x: 13, y: self.screenSize.height-205-dif, width: self.screenSize.width - 26, height: 205)
+            self.view.addSubview(self.delayView)
+            self.payView.removeFromSuperview()
+        }
+    }
     
     //MARK: -Bar functions-
     
@@ -203,6 +305,54 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc func showUnlockedBar() {
+        reservationView.removeFromSuperview()
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.unlockedBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.unlockedBar)
+        }
+    }
+    
+    @objc func showCancelledBar() {
+        reservationView.removeFromSuperview()
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.cancelledBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.cancelledBar)
+        }
+    }
+    
+    @objc func showNoWifiBar() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.noWifiBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.noWifiBar)
+        }
+    }
+    
+    //MARK: -Return to Search Bar-
+    @objc func returnToSearchBar() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        }
+        self.searchBar.layer.shadowOpacity = 0.1
+    }
+    
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
@@ -227,13 +377,32 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(removePayCard), name: Notification.Name(removePayCardID), object: nil)
         
         
+        NotificationCenter.default.addObserver(self, selector: #selector(addReservationCard), name: Notification.Name(addReservationCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeReservationCard), name: Notification.Name(removeReservationCardID), object: nil)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addDelayCard), name: Notification.Name(addDelayCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeDelayCard), name: Notification.Name(removeDelayCardID), object: nil)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addPayDelayCard), name: Notification.Name(addPayDelayCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removePayDelayCard), name: Notification.Name(removePayDelayCardID), object: nil)
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(showPaidBar), name: Notification.Name(showPaidBarID), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showActiveBar), name: Notification.Name(showActiveBarID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showUnlockedBar), name: Notification.Name(showUnlockedBarID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showCancelledBar), name: Notification.Name(showCancelledBarID), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showNoWifiBar), name: Notification.Name(showNoWifiBarID), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: Notification.Name(returnToSearchBarID), object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         manageObs()
+        
         searchTapArea.setTitle("", for: .normal)
         settingsTapArea.setTitle("", for: .normal)
         
