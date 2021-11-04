@@ -9,8 +9,8 @@ import UIKit
 
 class ResultView: UIView {
     
-    let removeResultCardID = "ro.codebranch.Roadout.removeResultCardID"
-    let addSectionCardID = "ro.codebranch.Roadout.addSectionCardID"
+    let removeResultCardID = "ro.roadout.Roadout.removeResultCardID"
+    let addSectionCardID = "ro.roadout.Roadout.addSectionCardID"
 
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!

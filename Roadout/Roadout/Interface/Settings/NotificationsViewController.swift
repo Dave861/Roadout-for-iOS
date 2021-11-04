@@ -32,6 +32,8 @@ class NotificationsViewController: UIViewController {
         seeSettingsBtn.setTitle("", for: .normal)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        NotificationHelper.sharedInstance.manageNotifications()
     }
     
 

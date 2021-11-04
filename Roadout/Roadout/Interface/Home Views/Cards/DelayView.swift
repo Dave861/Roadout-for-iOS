@@ -7,10 +7,12 @@
 
 import UIKit
 
+var delaySeconds = 300
+
 class DelayView: UIView {
 
-    let removeDelayCardID = "ro.codebranch.Roadout.removeDelayCardID"
-    let addPayDelayCardID = "ro.codebranch.Roadout.addPayDelayCardID"
+    let removeDelayCardID = "ro.roadout.Roadout.removeDelayCardID"
+    let addPayDelayCardID = "ro.roadout.Roadout.addPayDelayCardID"
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -32,6 +34,7 @@ class DelayView: UIView {
     @IBAction func slided(_ sender: Any) {
         let roundedValue = round(minuteSlider.value/1.0)*1.0
         minuteSlider.value = roundedValue
+        delaySeconds = Int(roundedValue)*60
         priceLbl.text = "Charge - \(Int(minuteSlider.value)) RON"
         priceLbl.set(textColor: UIColor(named: "Dark Orange")!, range: priceLbl.range(after: " - "))
     }

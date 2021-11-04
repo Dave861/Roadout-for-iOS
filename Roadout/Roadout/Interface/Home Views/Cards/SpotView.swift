@@ -9,8 +9,8 @@ import UIKit
 
 class SpotView: UIView {
     
-    let removeSpotCardID = "ro.codebranch.Roadout.removeSpotCardID"
-    let addReserveCardID = "ro.codebranch.Roadout.addReserveCardID"
+    let removeSpotCardID = "ro.roadout.Roadout.removeSpotCardID"
+    let addReserveCardID = "ro.roadout.Roadout.addReserveCardID"
     let spotStates = [0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 2, 0]
 
     @IBOutlet weak var collectionView: UICollectionView!

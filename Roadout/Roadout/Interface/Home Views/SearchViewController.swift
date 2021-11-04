@@ -7,13 +7,16 @@
 
 import UIKit
 
+let parkNames = ["Buna Ziua", "Airport", "Marasti", "Old Town", "21 Decembrie", "Mihai Viteazu", "Eroilor", "Gheorgheni", "Manastur"]
+let parkLatitudes = [46.752207, 46.781864, 46.782288, 46.772051, 46.772798, 46.775235, 46.769916, 46.768776, 46.758061]
+let parkLongitudes = [23.603324, 23.671744, 23.613756, 23.587260, 23.594725, 23.590412, 23.593454, 23.618535, 23.554228]
+
 class SearchViewController: UIViewController {
     
-    let parkNames = ["Buna Ziua", "Airport", "Marasti", "Old Town", "21 Decembrie", "Mihai Viteazu", "Eroilor", "Gheorgheni", "Manastur"]
     var results = ["Buna Ziua", "Airport", "Marasti", "Old Town", "21 Decembrie", "Mihai Viteazu", "Eroilor", "Gheorgheni", "Manastur"]
     let colors = ["Main Yellow", "Redish", "Dark Yellow", "Brownish", "Icons", "Greyish", "Second Orange", "Dark Orange"]
     
-    let addResultCardID = "ro.codebranch.Roadout.addResultCardID"
+    let addResultCardID = "ro.roadout.Roadout.addResultCardID"
 
     @IBOutlet weak var card: UIView!
     
@@ -62,7 +65,7 @@ class SearchViewController: UIViewController {
         if searchField.text == "" {
             results = parkNames
         } else {
-            results = self.parkNames.filter { $0.localizedCaseInsensitiveContains(searchField.text!) }
+            results = parkNames.filter { $0.localizedCaseInsensitiveContains(searchField.text!) }
         }
         tableView.reloadData()
     }

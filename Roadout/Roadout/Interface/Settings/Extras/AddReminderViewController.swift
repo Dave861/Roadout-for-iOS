@@ -9,7 +9,7 @@ import UIKit
 
 class AddReminderViewController: UIViewController {
 
-    let refreshReminderID = "ro.codebranch.Roadout.refreshReminder"
+    let refreshReminderID = "ro.roadout.Roadout.refreshReminder"
     
     let setTitle = NSAttributedString(string: "Set", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
@@ -19,15 +19,51 @@ class AddReminderViewController: UIViewController {
     
     @IBOutlet weak var setBtn: UIButton!
     @IBAction func setTapped(_ sender: Any) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, HH:mm a"
-        let formattedDate = formatter.string(from: datePicker.date)
-        reminderDates.append(formattedDate)
-        NotificationCenter.default.post(name: Notification.Name(refreshReminderID), object: nil)
-        UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
-        } completion: { done in
-            self.dismiss(animated: true, completion: nil)
+        var ok = true
+        for reminder in reminders {
+            if reminder.label == labelField.text {
+                ok = false
+            }
+        }
+        if ok == true {
+            if labelField.text != "" {
+                let reminder = Reminder(label: labelField.text!, date: datePicker.date, identifier: "ro.roadout.reminder.\(labelField.text!.replacingOccurrences(of: " ", with: ""))")
+                NotificationHelper.sharedInstance.scheduleReminder(reminder: reminder)
+                saveReminder(reminder: reminder)
+                NotificationCenter.default.post(name: Notification.Name(refreshReminderID), object: nil)
+                UIView.animate(withDuration: 0.1) {
+                    self.blurButton.alpha = 0
+                } completion: { done in
+                    self.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                let alert = UIAlertController(title: "Error", message: "Please add a label to the reminder", preferredStyle: .alert)
+                alert.view.tintColor = UIColor(named: "Icons")
+                let okAction = UIAlertAction(title: "Ok", style: .default) { action in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+        } else {
+            let alert = UIAlertController(title: "Error", message: "There is already an active reminder with this label, please pick another label", preferredStyle: .alert)
+            alert.view.tintColor = UIColor(named: "Icons")
+            let okAction = UIAlertAction(title: "Ok", style: .default) { action in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func saveReminder(reminder: Reminder) {
+        reminders.append(reminder)
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(reminders)
+            UserDefaults.standard.set(data, forKey: "ro.roadout.remindersList")
+        } catch {
+            print("Unable to Encode Array of Reminders (\(error))")
         }
     }
     

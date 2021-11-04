@@ -23,55 +23,56 @@ class HomeViewController: UIViewController {
     let screenSize: CGRect = UIScreen.main.bounds
     
     //Card Views
-    let addResultCardID = "ro.codebranch.Roadout.addResultCardID"
-    let removeResultCardID = "ro.codebranch.Roadout.removeResultCardID"
+    let addResultCardID = "ro.roadout.Roadout.addResultCardID"
+    let removeResultCardID = "ro.roadout.Roadout.removeResultCardID"
     let resultView = ResultView.instanceFromNib()
     
-    let addSectionCardID = "ro.codebranch.Roadout.addSectionCardID"
-    let removeSectionCardID = "ro.codebranch.Roadout.removeSectionCardID"
+    let addSectionCardID = "ro.roadout.Roadout.addSectionCardID"
+    let removeSectionCardID = "ro.roadout.Roadout.removeSectionCardID"
     let sectionView = SectionView.instanceFromNib()
     
-    let addSpotCardID = "ro.codebranch.Roadout.addSpotCardID"
-    let removeSpotCardID = "ro.codebranch.Roadout.removeSpotCardID"
+    let addSpotCardID = "ro.roadout.Roadout.addSpotCardID"
+    let removeSpotCardID = "ro.roadout.Roadout.removeSpotCardID"
     let spotView = SpotView.instanceFromNib()
     
-    let addReserveCardID = "ro.codebranch.Roadout.addReserveCardID"
-    let removeReserveCardID = "ro.codebranch.Roadout.removeReserveCardID"
+    let addReserveCardID = "ro.roadout.Roadout.addReserveCardID"
+    let removeReserveCardID = "ro.roadout.Roadout.removeReserveCardID"
     let reserveView = ReserveView.instanceFromNib()
     
-    let addPayCardID = "ro.codebranch.Roadout.addPayCardID"
-    let removePayCardID = "ro.codebranch.Roadout.removePayCardID"
+    let addPayCardID = "ro.roadout.Roadout.addPayCardID"
+    let removePayCardID = "ro.roadout.Roadout.removePayCardID"
     let payView = PayView.instanceFromNib()
     
-    let addReservationCardID = "ro.codebranch.Roadout.addReservationCardID"
-    let removeReservationCardID = "ro.codebranch.Roadout.removeReservationCardID"
+    let addReservationCardID = "ro.roadout.Roadout.addReservationCardID"
+    let removeReservationCardID = "ro.roadout.Roadout.removeReservationCardID"
     let reservationView = ReservationView.instanceFromNib()
     
-    let addDelayCardID = "ro.codebranch.Roadout.addDelayCardID"
-    let removeDelayCardID = "ro.codebranch.Roadout.removeDelayCardID"
+    let addDelayCardID = "ro.roadout.Roadout.addDelayCardID"
+    let removeDelayCardID = "ro.roadout.Roadout.removeDelayCardID"
     let delayView = DelayView.instanceFromNib()
     
-    let addPayDelayCardID = "ro.codebranch.Roadout.addPayDelayCardID"
-    let removePayDelayCardID = "ro.codebranch.Roadout.removePayDelayCardID"
+    let addPayDelayCardID = "ro.roadout.Roadout.addPayDelayCardID"
+    let removePayDelayCardID = "ro.roadout.Roadout.removePayDelayCardID"
     
     
     
-    let showPaidBarID = "ro.codebranch.Roadout.showPaidBarID"
+    let showPaidBarID = "ro.roadout.Roadout.showPaidBarID"
     let paidBar = PaidView.instanceFromNib()
     
-    let showActiveBarID = "ro.codebranch.Roadout.showActiveBarID"
+    let showActiveBarID = "ro.roadout.Roadout.showActiveBarID"
     let activeBar = ActiveView.instanceFromNib()
     
-    let showUnlockedBarID = "ro.codebranch.Roadout.showUnlockedBarID"
+    let showUnlockedBarID = "ro.roadout.Roadout.showUnlockedBarID"
     let unlockedBar = UnlockedView.instanceFromNib()
     
-    let showCancelledBarID = "ro.codebranch.Roadout.showCancelledBarID"
+    let showCancelledBarID = "ro.roadout.Roadout.showCancelledBarID"
     let cancelledBar = CancelledView.instanceFromNib()
     
-    let showNoWifiBarID = "ro.codebranch.Roadout.showNoWifiBarID"
+    let showNoWifiBarID = "ro.roadout.Roadout.showNoWifiBarID"
+    let removeNoWifiBarID = "ro.roadout.Roadout.removeNoWifiBarID"
     let noWifiBar = NoWifiView.instanceFromNib()
     
-    let returnToSearchBarID = "ro.codebranch.Roadout.returnToSearchBarID"
+    let returnToSearchBarID = "ro.roadout.Roadout.returnToSearchBarID"
     
     @IBOutlet weak var searchBar: UIView!
     
@@ -353,6 +354,13 @@ class HomeViewController: UIViewController {
         self.searchBar.layer.shadowOpacity = 0.1
     }
     
+    @objc func removeNoWifiBar() {
+        if self.view.subviews.last == noWifiBar {
+            self.view.subviews.last!.removeFromSuperview()
+            self.searchBar.layer.shadowOpacity = 0.1
+        }
+    }
+    
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
@@ -395,9 +403,25 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showCancelledBar), name: Notification.Name(showCancelledBarID), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showNoWifiBar), name: Notification.Name(showNoWifiBarID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeNoWifiBar), name: Notification.Name(removeNoWifiBarID), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: Notification.Name(returnToSearchBarID), object: nil)
     }
+    
+    func addMarkers() {
+        var index = 0
+        for parkName in parkNames {
+            let markerPosition = CLLocationCoordinate2D(latitude: parkLatitudes[index], longitude: parkLongitudes[index])
+            index += 1
+            let marker = GMSMarker(position: markerPosition)
+            marker.title = parkName
+            marker.infoWindowAnchor = CGPoint()
+            marker.icon = UIImage(named: "Marker")?.withResize(scaledToSize: CGSize(width: 36.0, height: 49.0))
+            marker.map = mapView
+            
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -418,7 +442,10 @@ class HomeViewController: UIViewController {
         
         let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
+        mapView.delegate = self
         self.view.insertSubview(mapView, at: 0)
+        
+        addMarkers()
         
         switch traitCollection.userInterfaceStyle {
                 case .light, .unspecified:
@@ -520,5 +547,18 @@ extension HomeViewController: CLLocationManagerDelegate {
 
             //Finally stop updating location otherwise it will come again and again in this delegate
         self.locationManager.stopUpdatingLocation()
+    }
+}
+extension HomeViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedBar && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
+            selectedLocation = marker.title!
+            selectedLocationColor = UIColor(named: "Dark Orange")!
+            if self.view.subviews.last != searchBar && self.view.subviews.last != titleLbl && self.view.subviews.last != mapView {
+                self.view.subviews.last?.removeFromSuperview()
+            }
+            addResultCard()
+        }
+        return true
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class ActiveView: UIView {
     
-    let addReservationCardID = "ro.codebranch.Roadout.addReservationCardID"
+    let addReservationCardID = "ro.roadout.Roadout.addReservationCardID"
     
     @IBOutlet weak var timerLbl: UILabel!
     

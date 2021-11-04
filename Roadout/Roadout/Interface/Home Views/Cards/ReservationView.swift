@@ -9,11 +9,11 @@ import UIKit
 
 class ReservationView: UIView {
 
-    let removeReservationCardID = "ro.codebranch.Roadout.removeReservationCardID"
-    let addDelayCardID = "ro.codebranch.Roadout.addDelayCardID"
+    let removeReservationCardID = "ro.roadout.Roadout.removeReservationCardID"
+    let addDelayCardID = "ro.roadout.Roadout.addDelayCardID"
     
-    let showUnlockedBarID = "ro.codebranch.Roadout.showUnlockedBarID"
-    let showCancelledBarID = "ro.codebranch.Roadout.showCancelledBarID"
+    let showUnlockedBarID = "ro.roadout.Roadout.showUnlockedBarID"
+    let showCancelledBarID = "ro.roadout.Roadout.showCancelledBarID"
     
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -38,6 +38,7 @@ class ReservationView: UIView {
         let proceedAction = UIAlertAction(title: "Yes", style: .destructive) { action in
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
+            NotificationHelper.sharedInstance.cancelReservationNotification()
             NotificationCenter.default.post(name: Notification.Name(self.showUnlockedBarID), object: nil)
         }
         alert.addAction(proceedAction)
@@ -74,6 +75,7 @@ class ReservationView: UIView {
         let proceedAction = UIAlertAction(title: "Yes", style: .destructive) { action in
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
+            NotificationHelper.sharedInstance.cancelReservationNotification()
             NotificationCenter.default.post(name: Notification.Name(self.showCancelledBarID), object: nil)
         }
         alert.addAction(proceedAction)

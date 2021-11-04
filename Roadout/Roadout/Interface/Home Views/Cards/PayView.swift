@@ -9,9 +9,9 @@ import UIKit
 
 class PayView: UIView {
     
-    let removePayCardID = "ro.codebranch.Roadout.removePayCardID"
-    let showPaidBarID = "ro.codebranch.Roadout.showPaidBarID"
-    let removePayDelayCardID = "ro.codebranch.Roadout.removePayDelayCardID"
+    let removePayCardID = "ro.roadout.Roadout.removePayCardID"
+    let showPaidBarID = "ro.roadout.Roadout.showPaidBarID"
+    let removePayDelayCardID = "ro.roadout.Roadout.removePayDelayCardID"
     
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -35,12 +35,22 @@ class PayView: UIView {
     @IBAction func paidApplePay(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        if returnToDelay {
+            returnToDelay = false
+            timerSeconds += delaySeconds
+        }
+        NotificationHelper.sharedInstance.scheduleReservationNotification()
         NotificationCenter.default.post(name: Notification.Name(showPaidBarID), object: nil)
     }
     
     @IBAction func payMainCard(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        if returnToDelay {
+            returnToDelay = false
+            timerSeconds += delaySeconds
+        }
+        NotificationHelper.sharedInstance.scheduleReservationNotification()
         NotificationCenter.default.post(name: Notification.Name(showPaidBarID), object: nil)
     }
     
@@ -49,7 +59,7 @@ class PayView: UIView {
     
     
     let applePayTitle = NSAttributedString(string: "Pay with Apple Pay", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let mainCardTitle = NSAttributedString(string: "Pay with \(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    var mainCardTitle = NSAttributedString(string: "Pay with \(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let diffPaymentTitle = NSAttributedString(string: "Different Payment Method", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     
@@ -59,6 +69,7 @@ class PayView: UIView {
         
         applePayBtn.layer.cornerRadius = 12.0
         applePayBtn.setAttributedTitle(applePayTitle, for: .normal)
+        mainCardTitle = NSAttributedString(string: "Pay with \(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         mainCardBtn.layer.cornerRadius = 12.0
         mainCardBtn.setAttributedTitle(mainCardTitle, for: .normal)
         differentPaymentBtn.layer.cornerRadius = 12.0

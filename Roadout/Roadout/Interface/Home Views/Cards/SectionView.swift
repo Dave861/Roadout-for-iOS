@@ -9,8 +9,8 @@ import UIKit
 
 class SectionView: UIView {
 
-    let removeSectionCardID = "ro.codebranch.Roadout.removeSectionCardID"
-    let addSpotCardID = "ro.codebranch.Roadout.addSpotCardID"
+    let removeSectionCardID = "ro.roadout.Roadout.removeSectionCardID"
+    let addSpotCardID = "ro.roadout.Roadout.addSpotCardID"
     
     var letter = "A"
     var letterTitle: NSAttributedString!

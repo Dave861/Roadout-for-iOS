@@ -14,7 +14,7 @@ class PaymentViewController: UIViewController {
     var cardIndex = 0
     var indexNr = 0
     
-    let refreshCardsID = "ro.codebranch.Roadout.refreshCards"
+    let refreshCardsID = "ro.roadout.Roadout.refreshCards"
     
     @IBOutlet weak var backButton: UIButton!
     @IBAction func backTapped(_ sender: Any) {
@@ -52,6 +52,8 @@ class PaymentViewController: UIViewController {
         manageObs()
         tableView.delegate = self
         tableView.dataSource = self
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        tableView.addGestureRecognizer(longPress)
         backButton.setTitle("", for: .normal)
         addCardBtn.setAttributedTitle(buttonTitle, for: .normal)
         addBtnOutline.layer.cornerRadius = 12.0
@@ -63,6 +65,31 @@ class PaymentViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
+    }
+    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
+                let alert = UIAlertController(title: "Delete", message: "Do you want to delete this card?", preferredStyle: .actionSheet)
+                let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+                    cardNumbers.remove(at: indexPath.row)
+                    if self.cardIndex == indexPath.row {
+                        self.cardIndex = 0
+                        UserDefaults.standard.set(indexPath.row, forKey: "ro.roadout.defaultPaymentMethod")
+                    }
+                    UserDefaults.standard.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+                    self.tableView.reloadData()
+                }
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alert.view.tintColor = UIColor(named: "Dark Orange")
+                alert.addAction(deleteAction)
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     func decideColor() -> Int {
@@ -106,4 +133,5 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
         UserDefaults.standard.set(indexPath.row, forKey: "ro.roadout.defaultPaymentMethod")
         tableView.reloadData()
     }
+    
 }

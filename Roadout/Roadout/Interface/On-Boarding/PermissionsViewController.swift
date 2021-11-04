@@ -73,11 +73,21 @@ class PermissionsViewController: UIViewController {
     }
     
     func askNotificationPermission() {
-        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
-            if granted {
-                print("Granted")
-            } else {
-                print("Bad Luck")
+        if #available(iOS 15.0, *) {
+            center.requestAuthorization(options: [.alert, .sound, .timeSensitive]) { granted, error in
+                if granted {
+                    print("Granted")
+                } else {
+                    print("Bad Luck")
+                }
+            }
+        } else {
+            center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+                if granted {
+                    print("Granted")
+                } else {
+                    print("Bad Luck")
+                }
             }
         }
     }

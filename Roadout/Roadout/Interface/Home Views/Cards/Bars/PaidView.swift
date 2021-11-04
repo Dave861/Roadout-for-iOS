@@ -11,7 +11,7 @@ class PaidView: UIView {
     
     let buttonTitle = NSAttributedString(string: "See Reservation",
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Orange")!])
-    let showActiveBarID = "ro.codebranch.Roadout.showActiveBarID"
+    let showActiveBarID = "ro.roadout.Roadout.showActiveBarID"
     
     @IBOutlet weak var seeBtn: UIButton!
     

@@ -31,6 +31,7 @@ class UnlockedView: UIView {
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 12.0
         directionsBtn.setAttributedTitle(buttonTitle, for: .normal)
+        timerSeconds = 0
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1

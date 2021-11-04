@@ -11,8 +11,8 @@ var timerSeconds = 0
 
 class ReserveView: UIView {
     
-    let removeReserveCardID = "ro.codebranch.Roadout.removeReserveCardID"
-    let addPayCardID = "ro.codebranch.Roadout.addPayCardID"
+    let removeReserveCardID = "ro.roadout.Roadout.removeReserveCardID"
+    let addPayCardID = "ro.roadout.Roadout.addPayCardID"
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -25,6 +25,7 @@ class ReserveView: UIView {
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        timerSeconds = Int(minuteSlider.value*60)
         NotificationCenter.default.post(name: Notification.Name(addPayCardID), object: nil)
         
     }
@@ -36,7 +37,6 @@ class ReserveView: UIView {
     @IBAction func slided(_ sender: Any) {
         let roundedValue = round(minuteSlider.value/1.0)*1.0
         minuteSlider.value = roundedValue
-        timerSeconds = Int(roundedValue*60)
         totalLbl.text = "\(Int(minuteSlider.value)) Minutes - \(Int(minuteSlider.value)) RON"
         totalLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: totalLbl.range(after: " - "))
     }

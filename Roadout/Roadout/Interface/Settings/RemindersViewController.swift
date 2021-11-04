@@ -7,11 +7,11 @@
 
 import UIKit
 
-var reminderDates = ["Oct 19, 13:45", "Oct 31, 11:15", "Nov 05, 16:30", "Dec 07, 08:00", "Dec 22, 21:20"]
+var reminders = [Reminder]()
 
 class RemindersViewController: UIViewController {
     
-    let refreshReminderID = "ro.codebranch.Roadout.refreshReminder"
+    let refreshReminderID = "ro.roadout.Roadout.refreshReminder"
 
     @IBOutlet weak var addBtn: UIButton!
     
@@ -55,6 +55,39 @@ class RemindersViewController: UIViewController {
         tableView.dataSource = self
         tableView.layer.cornerRadius = 15.0
         addBtnOutline.layer.cornerRadius = 12.0
+        
+        getReminders()
+        var index = 0
+        for reminder in reminders {
+            if reminder.date < Date() {
+                reminders.remove(at: index)
+            }
+            index += 1
+        }
+        saveReminders()
+    }
+    
+    func getReminders() {
+        if let data = UserDefaults.standard.data(forKey: "ro.roadout.remindersList") {
+            do {
+                let decoder = JSONDecoder()
+                reminders = try decoder.decode([Reminder].self, from: data)
+            } catch {
+                reminders = [Reminder]()
+                print("Unable to Decode Reminders (\(error))")
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    func saveReminders() {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(reminders)
+            UserDefaults.standard.set(data, forKey: "ro.roadout.remindersList")
+        } catch {
+            print("Unable to Encode Array of Reminders (\(error))")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,7 +98,7 @@ class RemindersViewController: UIViewController {
 }
 extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reminderDates.count
+        return reminders.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -74,8 +107,29 @@ extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReminderCell") as! ReminderCell
-        cell.reminderLbl.text = "Reminder \(indexPath.row+1)"
-        cell.dateLbl.text = reminderDates[indexPath.row]
+        cell.reminderLbl.text = reminders[indexPath.row].label
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, hh:mm"
+        cell.dateLbl.text = dateFormatter.string(from: reminders[indexPath.row].date)
         return cell
+    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+            let alert = UIAlertController(title: "Delete", message: "Do you want to delete this reminder?", preferredStyle: .actionSheet)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+                NotificationHelper.sharedInstance.removeReminder(reminder: reminders[indexPath.row])
+                reminders.remove(at: indexPath.row)
+                self.saveReminders()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+                self.tableView.reloadData()
+            }
+            alert.view.tintColor = UIColor(named: "Icons")
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+        action.backgroundColor = UIColor.systemRed
+        return UISwipeActionsConfiguration(actions: [action])
     }
 }

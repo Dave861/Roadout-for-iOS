@@ -11,7 +11,7 @@ class CancelledView: UIView {
     
     let buttonTitle = NSAttributedString(string: "Done",
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Redish")!])
-    let returnToSearchBarID = "ro.codebranch.Roadout.returnToSearchBarID"
+    let returnToSearchBarID = "ro.roadout.Roadout.returnToSearchBarID"
 
     @IBOutlet weak var doneBtn: UIButton!
     
@@ -22,6 +22,7 @@ class CancelledView: UIView {
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 12.0
         doneBtn.setAttributedTitle(buttonTitle, for: .normal)
+        timerSeconds = 0
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1

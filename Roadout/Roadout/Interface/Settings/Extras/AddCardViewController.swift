@@ -9,7 +9,7 @@ import UIKit
 
 class AddCardViewController: UIViewController {
 
-    let refreshCardsID = "ro.codebranch.Roadout.refreshCards"
+    let refreshCardsID = "ro.roadout.Roadout.refreshCards"
     
     let setTitle = NSAttributedString(string: "Add", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
