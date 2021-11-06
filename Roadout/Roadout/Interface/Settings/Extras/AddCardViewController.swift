@@ -53,9 +53,7 @@ class AddCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.clipsToBounds = true
-        cardView.layer.cornerRadius = 15
-        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        cardView.layer.cornerRadius = 13.0
         addBtn.layer.cornerRadius = 13.0
         addBtn.setAttributedTitle(setTitle, for: .normal)
         

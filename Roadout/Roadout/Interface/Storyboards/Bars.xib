@@ -212,12 +212,12 @@
                         <action selector="doneTapped:" destination="idu-jF-tvt" eventType="touchUpInside" id="CIA-pg-HDz"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.app" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GEq-FV-baD">
-                    <rect key="frame" x="11" y="13.333333333333329" width="26" height="25.666666666666657"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark_app" translatesAutoresizingMaskIntoConstraints="NO" id="GEq-FV-baD">
+                    <rect key="frame" x="15" y="15" width="20" height="23"/>
                     <color key="tintColor" name="Redish"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="28.670000000000002" id="WZ6-yw-TGZ"/>
-                        <constraint firstAttribute="width" constant="26" id="svZ-Xf-7gj"/>
+                        <constraint firstAttribute="height" constant="23" id="WZ6-yw-TGZ"/>
+                        <constraint firstAttribute="width" constant="20" id="svZ-Xf-7gj"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -226,8 +226,8 @@
             <constraints>
                 <constraint firstItem="S1G-EX-uCN" firstAttribute="bottom" secondItem="V6o-gR-yBH" secondAttribute="bottom" constant="4" id="43U-ei-rbz"/>
                 <constraint firstItem="V6o-gR-yBH" firstAttribute="top" secondItem="S1G-EX-uCN" secondAttribute="top" constant="4" id="IXq-qz-Fpj"/>
-                <constraint firstItem="GEq-FV-baD" firstAttribute="leading" secondItem="S1G-EX-uCN" secondAttribute="leading" constant="11" id="JoY-M4-XcC"/>
-                <constraint firstItem="V6o-gR-yBH" firstAttribute="leading" secondItem="GEq-FV-baD" secondAttribute="trailing" constant="12" id="NCv-JS-2t2"/>
+                <constraint firstItem="GEq-FV-baD" firstAttribute="leading" secondItem="S1G-EX-uCN" secondAttribute="leading" constant="15" id="JoY-M4-XcC"/>
+                <constraint firstItem="V6o-gR-yBH" firstAttribute="leading" secondItem="GEq-FV-baD" secondAttribute="trailing" constant="14" id="NCv-JS-2t2"/>
                 <constraint firstAttribute="trailing" secondItem="fBn-92-2WR" secondAttribute="trailing" constant="3" id="PeC-Fc-as8"/>
                 <constraint firstItem="fBn-92-2WR" firstAttribute="top" secondItem="S1G-EX-uCN" secondAttribute="top" constant="9" id="fe9-Lw-YDm"/>
                 <constraint firstItem="GEq-FV-baD" firstAttribute="centerY" secondItem="idu-jF-tvt" secondAttribute="centerY" id="hq6-47-t4g"/>
@@ -295,7 +295,7 @@
         <image name="lock" catalog="system" width="128" height="128"/>
         <image name="lock.open" catalog="system" width="128" height="110"/>
         <image name="wifi.slash" catalog="system" width="128" height="102"/>
-        <image name="xmark.app" catalog="system" width="128" height="114"/>
+        <image name="xmark_app" width="12" height="12"/>
         <namedColor name="Brownish">
             <color red="0.40400001406669617" green="0.28200000524520874" blue="0.019999999552965164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

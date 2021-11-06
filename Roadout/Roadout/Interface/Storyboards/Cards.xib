@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -26,7 +27,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeL-kM-Ju6">
-                    <rect key="frame" x="351" y="12" width="57" height="30"/>
+                    <rect key="frame" x="339" y="12" width="69" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="qCW-H0-4Ib"/>
                     </constraints>
@@ -50,7 +51,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoM-uf-3lj">
-                    <rect key="frame" x="0.0" y="7" width="343" height="38"/>
+                    <rect key="frame" x="0.0" y="7" width="339" height="38"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="38" id="e6v-Gk-sEW"/>
                     </constraints>
@@ -60,7 +61,7 @@
                         <action selector="backTapped:" destination="QV9-ue-75M" eventType="touchUpInside" id="EJq-Ih-eJI"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qvc-oT-0hy">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qvc-oT-0hy">
                     <rect key="frame" x="6" y="15.666666666666659" width="18" height="26.000000000000014"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
@@ -83,8 +84,8 @@
                 <constraint firstItem="UxY-VP-NeA" firstAttribute="leading" secondItem="04W-Jj-719" secondAttribute="leading" constant="10" id="QOp-Nz-NZR"/>
                 <constraint firstItem="CeL-kM-Ju6" firstAttribute="top" secondItem="04W-Jj-719" secondAttribute="top" constant="12" id="cjz-Ju-7XJ"/>
                 <constraint firstItem="04W-Jj-719" firstAttribute="trailing" secondItem="PVN-ST-fCA" secondAttribute="trailing" constant="71" id="cuH-go-kEp"/>
-                <constraint firstItem="CeL-kM-Ju6" firstAttribute="leading" secondItem="hoM-uf-3lj" secondAttribute="trailing" constant="8" symbolic="YES" id="e2I-AU-Po1"/>
-                <constraint firstItem="CeL-kM-Ju6" firstAttribute="leading" secondItem="PVN-ST-fCA" secondAttribute="trailing" constant="8" symbolic="YES" id="kg4-31-gB3"/>
+                <constraint firstItem="CeL-kM-Ju6" firstAttribute="leading" secondItem="hoM-uf-3lj" secondAttribute="trailing" id="e2I-AU-Po1"/>
+                <constraint firstItem="CeL-kM-Ju6" firstAttribute="leading" secondItem="PVN-ST-fCA" secondAttribute="trailing" constant="-4" id="kg4-31-gB3"/>
                 <constraint firstItem="Qvc-oT-0hy" firstAttribute="leading" secondItem="04W-Jj-719" secondAttribute="leading" constant="6" id="oln-FF-OUT"/>
                 <constraint firstItem="04W-Jj-719" firstAttribute="trailing" secondItem="CeL-kM-Ju6" secondAttribute="trailing" constant="6" id="tjK-5J-oJC"/>
                 <constraint firstItem="PVN-ST-fCA" firstAttribute="leading" secondItem="04W-Jj-719" secondAttribute="leading" constant="28" id="wNn-BU-j0Z"/>
@@ -96,7 +97,7 @@
                 <outlet property="locationLbl" destination="PVN-ST-fCA" id="70k-L8-Xlh"/>
                 <outlet property="pickBtn" destination="UxY-VP-NeA" id="djL-qw-hEj"/>
             </connections>
-            <point key="canvasLocation" x="20" y="151"/>
+            <point key="canvasLocation" x="18.840579710144929" y="150.40760869565219"/>
         </view>
         <view contentMode="scaleToFill" id="JWz-dS-cdx" customClass="SectionView" customModule="Roadout" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="331"/>
@@ -111,7 +112,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZXv-W7-S1N">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZXv-W7-S1N">
                     <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
@@ -220,7 +221,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bkk-85-ump">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bkk-85-ump">
                     <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
@@ -344,7 +345,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3WV-h2-DmC">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3WV-h2-DmC">
                     <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
@@ -515,7 +516,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5hr-Wg-Zeq">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5hr-Wg-Zeq">
                     <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
@@ -639,7 +640,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ttG-CK-skK">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ttG-CK-skK">
                     <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
@@ -677,20 +678,22 @@
                         <constraint firstAttribute="width" constant="40" id="uwM-Py-Y6r"/>
                     </constraints>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="arrow.branch" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0lV-dy-ESa">
-                    <rect key="frame" x="135" y="110.33333333333333" width="40" height="27.999999999999986"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0lV-dy-ESa">
+                    <rect key="frame" x="135" y="112" width="40" height="27.333333333333343"/>
                     <color key="tintColor" name="Greyish"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="007-Lc-z4F"/>
-                        <constraint firstAttribute="height" constant="31.329999999999998" id="kOV-9k-vnn"/>
+                        <constraint firstAttribute="height" constant="27.329999923706055" id="kOV-9k-vnn"/>
                     </constraints>
+                    <imageReference key="image" image="arrow_triangle_branch" symbolScale="small"/>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13" scale="small"/>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.wave" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CdB-SX-UFw">
-                    <rect key="frame" x="232" y="108.66666666666667" width="40" height="32"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand_wave" translatesAutoresizingMaskIntoConstraints="NO" id="CdB-SX-UFw">
+                    <rect key="frame" x="232" y="109" width="40" height="32"/>
                     <color key="tintColor" name="Dark Orange"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="1Ki-CN-1C5"/>
-                        <constraint firstAttribute="height" constant="33" id="CGX-h9-BcD"/>
+                        <constraint firstAttribute="height" constant="32" id="CGX-h9-BcD"/>
                     </constraints>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bwo-1s-6C0">
@@ -842,7 +845,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="P0J-jI-3J7">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="P0J-jI-3J7">
                     <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
@@ -954,9 +957,9 @@
     </objects>
     <resources>
         <image name="SectionMap" width="338" height="173"/>
-        <image name="arrow.branch" catalog="system" width="128" height="108"/>
-        <image name="chevron.backward" catalog="system" width="96" height="128"/>
-        <image name="hand.wave" catalog="system" width="128" height="128"/>
+        <image name="arrow_triangle_branch" width="12" height="12"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="hand_wave" width="13" height="13"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="lock" catalog="system" width="128" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

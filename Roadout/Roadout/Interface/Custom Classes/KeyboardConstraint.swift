@@ -108,7 +108,7 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
 }
 
 @available(tvOS, unavailable)
-public class SearchLayoutConstraint: NSLayoutConstraint {
+public class SafeAreaLayoutConstraint: NSLayoutConstraint {
     
     private var offset : CGFloat = 0
     private var keyboardVisibleHeight : CGFloat = 0
@@ -190,7 +190,11 @@ public class SearchLayoutConstraint: NSLayoutConstraint {
         if keyboardVisibleHeight == 0 {
             self.constant = offset
         } else {
-            self.constant = offset + keyboardVisibleHeight - 34
+            if UIDevice.current.hasNotch {
+                self.constant = offset + keyboardVisibleHeight - 34
+            } else {
+                self.constant = offset + keyboardVisibleHeight
+            }
         }
     }
     

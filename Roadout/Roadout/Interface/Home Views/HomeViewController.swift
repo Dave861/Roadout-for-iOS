@@ -11,6 +11,8 @@ import CoreLocation
 
 var selectedLocation = "Location"
 var selectedLocationColor = UIColor(named: "Main Yellow")
+var selectedLocationCoord: CLLocationCoordinate2D!
+var currentLocationCoord: CLLocationCoordinate2D?
 var returnToDelay = false
 var reservationTimer: Timer!
 
@@ -410,11 +412,11 @@ class HomeViewController: UIViewController {
     
     func addMarkers() {
         var index = 0
-        for parkName in parkNames {
-            let markerPosition = CLLocationCoordinate2D(latitude: parkLatitudes[index], longitude: parkLongitudes[index])
+        for parkLocation in parkLocations {
+            let markerPosition = CLLocationCoordinate2D(latitude: parkLocation.latitude, longitude: parkLocation.longitude)
             index += 1
             let marker = GMSMarker(position: markerPosition)
-            marker.title = parkName
+            marker.title = parkLocation.name
             marker.infoWindowAnchor = CGPoint()
             marker.icon = UIImage(named: "Marker")?.withResize(scaledToSize: CGSize(width: 36.0, height: 49.0))
             marker.map = mapView
@@ -540,7 +542,7 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
-
+        currentLocationCoord = location?.coordinate
         let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17.0)
 
         self.mapView?.animate(to: camera)
@@ -554,6 +556,9 @@ extension HomeViewController: GMSMapViewDelegate {
         if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedBar && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
             selectedLocation = marker.title!
             selectedLocationColor = UIColor(named: "Dark Orange")!
+            selectedLocationCoord = marker.position
+            let camera = GMSCameraPosition.camera(withLatitude: (marker.position.latitude), longitude: (marker.position.longitude), zoom: 17.0)
+            self.mapView?.animate(to: camera)
             if self.view.subviews.last != searchBar && self.view.subviews.last != titleLbl && self.view.subviews.last != mapView {
                 self.view.subviews.last?.removeFromSuperview()
             }

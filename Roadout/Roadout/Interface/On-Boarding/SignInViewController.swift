@@ -44,9 +44,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.clipsToBounds = true
-        cardView.layer.cornerRadius = 15
-        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        cardView.layer.cornerRadius = 13.0
         signInBtn.layer.cornerRadius = 13.0
         signInBtn.setAttributedTitle(signInTitle, for: .normal)
         

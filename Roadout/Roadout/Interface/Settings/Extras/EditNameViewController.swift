@@ -53,9 +53,7 @@ class EditNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.clipsToBounds = true
-        cardView.layer.cornerRadius = 15
-        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        cardView.layer.cornerRadius = 13.0
         
         saved.layer.cornerRadius = 12
         saved.setAttributedTitle(savedTitle, for: .normal)

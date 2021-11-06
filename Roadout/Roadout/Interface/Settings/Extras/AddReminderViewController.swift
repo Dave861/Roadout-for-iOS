@@ -88,9 +88,7 @@ class AddReminderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.clipsToBounds = true
-        cardView.layer.cornerRadius = 15
-        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        cardView.layer.cornerRadius = 13.0
         setBtn.layer.cornerRadius = 13.0
         setBtn.setAttributedTitle(setTitle, for: .normal)
         

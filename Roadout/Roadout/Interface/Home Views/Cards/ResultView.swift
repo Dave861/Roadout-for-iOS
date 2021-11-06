@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ResultView: UIView {
     
@@ -47,6 +48,19 @@ class ResultView: UIView {
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
+        
+        if currentLocationCoord != nil {
+            let c1 = CLLocation(latitude: selectedLocationCoord.latitude, longitude: selectedLocationCoord.longitude)
+            let c2 = CLLocation(latitude: currentLocationCoord!.latitude, longitude: currentLocationCoord!.longitude)
+            
+            let distance = c1.distance(from: c2)
+            let distanceKM = Double(distance)/1000.0
+            let roundedDist = Double(round(100*distanceKM)/100)
+            
+            distanceLbl.text = "\(roundedDist) km"
+        } else {
+            distanceLbl.text = "- km"
+        }
     }
     
     class func instanceFromNib() -> UIView {

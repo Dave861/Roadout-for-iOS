@@ -6,14 +6,22 @@
 //
 
 import UIKit
+import CoreLocation
 
-let parkNames = ["Buna Ziua", "Airport", "Marasti", "Old Town", "21 Decembrie", "Mihai Viteazu", "Eroilor", "Gheorgheni", "Manastur"]
-let parkLatitudes = [46.752207, 46.781864, 46.782288, 46.772051, 46.772798, 46.775235, 46.769916, 46.768776, 46.758061]
-let parkLongitudes = [23.603324, 23.671744, 23.613756, 23.587260, 23.594725, 23.590412, 23.593454, 23.618535, 23.554228]
+
+let parkLocations = [ParkLocation(name: "Buna Ziua", latitude: 46.752207, longitude: 23.603324),
+                 ParkLocation(name: "Airport", latitude: 46.781864, longitude: 23.671744),
+                 ParkLocation(name: "Marasti", latitude: 46.782288, longitude: 23.613756),
+                 ParkLocation(name: "Old Town", latitude: 46.772051, longitude: 23.587260),
+                 ParkLocation(name: "21 Decembrie", latitude: 46.772798, longitude: 23.594725),
+                 ParkLocation(name: "Mihai Viteazu", latitude: 46.775235, longitude: 23.590412),
+                 ParkLocation(name: "Eroilor", latitude: 46.769916, longitude: 23.593454),
+                 ParkLocation(name: "Gheorgheni", latitude: 46.768776, longitude: 23.618535),
+                 ParkLocation(name: "Manastur", latitude: 46.758061, longitude: 23.554228)]
 
 class SearchViewController: UIViewController {
     
-    var results = ["Buna Ziua", "Airport", "Marasti", "Old Town", "21 Decembrie", "Mihai Viteazu", "Eroilor", "Gheorgheni", "Manastur"]
+    var results = parkLocations
     let colors = ["Main Yellow", "Redish", "Dark Yellow", "Brownish", "Icons", "Greyish", "Second Orange", "Dark Orange"]
     
     let addResultCardID = "ro.roadout.Roadout.addResultCardID"
@@ -61,11 +69,10 @@ class SearchViewController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        print("Changed")
         if searchField.text == "" {
-            results = parkNames
+            results = parkLocations
         } else {
-            results = parkNames.filter { $0.localizedCaseInsensitiveContains(searchField.text!) }
+            results = parkLocations.filter { $0.name.localizedCaseInsensitiveContains(searchField.text!) }
         }
         tableView.reloadData()
     }
@@ -87,8 +94,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell") as! SearchCell
-        cell.nameLbl.text = results[indexPath.row]
-        cell.distanceLbl.text = "\(Int.random(in: 1..<10)) km"
+        cell.nameLbl.text = results[indexPath.row].name
+        let coord = CLLocationCoordinate2D(latitude: results[indexPath.row].latitude, longitude: results[indexPath.row].longitude)
+        if currentLocationCoord != nil {
+            let c1 = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
+            let c2 = CLLocation(latitude: currentLocationCoord!.latitude, longitude: currentLocationCoord!.longitude)
+            
+            let distance = c1.distance(from: c2)
+            let distanceKM = Double(distance)/1000.0
+            let roundedDist = Double(round(100*distanceKM)/100)
+            
+            cell.distanceLbl.text = "\(roundedDist) km"
+        } else {
+            cell.distanceLbl.text = "- km"
+        }
         cell.numberLbl.text = "\(Int.random(in: 5..<30))"
         let color = UIColor(named: colors.randomElement() ?? "Main Yellow")
         cell.numberLbl.textColor = color
@@ -99,7 +118,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        selectedLocation = results[indexPath.row]
+        selectedLocation = results[indexPath.row].name
+        selectedLocationCoord = CLLocationCoordinate2D(latitude: results[indexPath.row].latitude, longitude: results[indexPath.row].longitude)
         let cell = tableView.cellForRow(at: indexPath) as! SearchCell
         selectedLocationColor = cell.numberLbl.textColor
         NotificationCenter.default.post(name: Notification.Name(addResultCardID), object: nil)

@@ -61,10 +61,7 @@ class EditPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        cardView.clipsToBounds = true
-        cardView.layer.cornerRadius = 15
-        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        cardView.layer.cornerRadius = 13.0
         
         save.layer.cornerRadius = 12
         save.setAttributedTitle(savedTitle, for: .normal)
