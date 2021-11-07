@@ -76,6 +76,42 @@ class HomeViewController: UIViewController {
     
     let returnToSearchBarID = "ro.roadout.Roadout.returnToSearchBarID"
     
+    //MARK: -Express Reserve-
+    let expressPickView = ExpressPickView.instanceFromNib()
+    let expressView = ExpressView.instanceFromNib()
+    
+    let addExpressViewID = "ro.roadout.Roadout.addExpressViewID"
+    let removeExpressViewID = "ro.roadout.Roadout.removeExpressViewID"
+    
+    @objc func addExpressView() {
+        let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
+        self.mapView?.animate(to: camera)
+        expressPickView.removeFromSuperview()
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.expressView.frame = CGRect(x: 13, y: self.screenSize.height-391-dif, width: self.screenSize.width - 26, height: 391)
+            self.view.addSubview(self.expressView)
+        }
+    }
+    
+    @objc func removeExpressView() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-350-dif, width: self.screenSize.width - 26, height: 350)
+            self.view.addSubview(self.expressPickView)
+            self.expressView.removeFromSuperview()
+        }
+    }
+    
+    //MARK: -IBOutlets-
+    
     @IBOutlet weak var searchBar: UIView!
     
     @IBAction func searchTapped(_ sender: Any) {
@@ -85,7 +121,35 @@ class HomeViewController: UIViewController {
         self.present(vc, animated: false, completion: nil)
     }
     @IBAction func settingsTapped(_ sender: Any) {
-        print("Settings")
+        let alert = UIAlertController(title: "", message: "What would you like to do?", preferredStyle: .actionSheet)
+        let settingsAction = UIAlertAction(title: "Preferences", style: .default) { action in
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        settingsAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
+        
+        let expressAction = UIAlertAction(title: "Express Reserve", style: .default) { action in
+            self.searchBar.layer.shadowOpacity = 0.0
+            var dif = 15.0
+            DispatchQueue.main.async {
+                if (UIDevice.current.hasNotch) {
+                    dif = 49.0
+                    print("YESS")
+                }
+                self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-350-dif, width: self.screenSize.width - 26, height: 350)
+                print(self.view.frame.height)
+                self.view.addSubview(self.expressPickView)
+            }
+        }
+        expressAction.setValue(UIColor(named: "Dark Orange")!, forKey: "titleTextColor")
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
+        
+        alert.addAction(settingsAction)
+        alert.addAction(expressAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBOutlet weak var searchTapArea: UIButton!
@@ -96,6 +160,8 @@ class HomeViewController: UIViewController {
     //MARK: - Card Functions-
     //Result Card
     @objc func addResultCard() {
+        let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
+        self.mapView?.animate(to: camera)
         searchBar.layer.shadowOpacity = 0.0
         var dif = 15.0
         DispatchQueue.main.async {
@@ -399,6 +465,10 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(removePayDelayCard), name: Notification.Name(removePayDelayCardID), object: nil)
         
         
+        NotificationCenter.default.addObserver(self, selector: #selector(addExpressView), name: Notification.Name(addExpressViewID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeExpressView), name: Notification.Name(removeExpressViewID), object: nil)
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(showPaidBar), name: Notification.Name(showPaidBarID), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showActiveBar), name: Notification.Name(showActiveBarID), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showUnlockedBar), name: Notification.Name(showUnlockedBarID), object: nil)
@@ -544,10 +614,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         let location = locations.last
         currentLocationCoord = location?.coordinate
         let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17.0)
-
         self.mapView?.animate(to: camera)
-
-            //Finally stop updating location otherwise it will come again and again in this delegate
         self.locationManager.stopUpdatingLocation()
     }
 }
@@ -557,8 +624,6 @@ extension HomeViewController: GMSMapViewDelegate {
             selectedLocation = marker.title!
             selectedLocationColor = UIColor(named: "Dark Orange")!
             selectedLocationCoord = marker.position
-            let camera = GMSCameraPosition.camera(withLatitude: (marker.position.latitude), longitude: (marker.position.longitude), zoom: 17.0)
-            self.mapView?.animate(to: camera)
             if self.view.subviews.last != searchBar && self.view.subviews.last != titleLbl && self.view.subviews.last != mapView {
                 self.view.subviews.last?.removeFromSuperview()
             }

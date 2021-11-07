@@ -1,24 +1,20 @@
 //
-//  UserSettingsCell.swift
+//  ExpressLocationCell.swift
 //  Roadout
 //
-//  Created by David Retegan on 26.10.2021.
+//  Created by David Retegan on 07.11.2021.
 //
 
 import UIKit
 
-class UserSettingsCell: UITableViewCell {
+class ExpressLocationCell: UITableViewCell {
 
     @IBOutlet weak var nameLbl: UILabel!
-    
-    @IBOutlet weak var editBtn: UIButton!
-    
-    @IBOutlet weak var card: UIView!
+    @IBOutlet weak var distanceLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        card.layer.cornerRadius = 16.0
-        editBtn.setTitle("", for: .normal)
+        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,5 +22,5 @@ class UserSettingsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

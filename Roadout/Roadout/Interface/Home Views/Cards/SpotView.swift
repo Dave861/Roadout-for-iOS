@@ -22,58 +22,12 @@ class SpotView: UIView {
     
     @IBOutlet weak var continueBtn: UIButton!
     @IBAction func continueTapped(_ sender: Any) {
-       /* let selectedItem = collectionView.indexPathsForSelectedItems?.first
-        if selectedItem != nil {
-            let cell = collectionView.cellForItem(at: selectedItem!) as! SpotCell
-            let index = (selectedItem![0])*collectionView.numberOfItems(inSection: 0) + selectedItem![1]
-            switch spotStates[index] {
-                case 0:
-                    cell.mainBtn.backgroundColor = UIColor(named: "Background")
-                    cell.mainBtn.tintColor = UIColor(named: "Main Yellow")
-                case 1:
-                    cell.mainBtn.backgroundColor = UIColor(named: "Background")
-                    cell.mainBtn.tintColor = UIColor(named: "Redish")
-                default:
-                    cell.mainBtn.backgroundColor = UIColor(named: "Background")
-                    cell.mainBtn.tintColor = UIColor(named: "Dark Yellow")
-            }
-            infoIcon.image = UIImage(systemName: "info.circle")
-            infoIcon.tintColor = UIColor.label
-            infoText.text = "Pick a spot to get info about it"
-            continueBtn.isEnabled = false
-            continueBtn.backgroundColor = UIColor(named: "Main Yellow")?.withAlphaComponent(0.5)
-        }
-        collectionView.allowsSelection = false
-        collectionView.allowsSelection = true */
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         NotificationCenter.default.post(name: Notification.Name(addReserveCardID), object: nil)
         
     }
     @IBAction func backTapped(_ sender: Any) {
-         /*let selectedItem = collectionView.indexPathsForSelectedItems?.first
-         if selectedItem != nil {
-             let cell = collectionView.cellForItem(at: selectedItem!) as! SpotCell
-             let index = (selectedItem![0])*collectionView.numberOfItems(inSection: 0) + selectedItem![1]
-             switch spotStates[index] {
-                 case 0:
-                     cell.mainBtn.backgroundColor = UIColor(named: "Background")
-                     cell.mainBtn.tintColor = UIColor(named: "Main Yellow")
-                 case 1:
-                     cell.mainBtn.backgroundColor = UIColor(named: "Background")
-                     cell.mainBtn.tintColor = UIColor(named: "Redish")
-                 default:
-                     cell.mainBtn.backgroundColor = UIColor(named: "Background")
-                     cell.mainBtn.tintColor = UIColor(named: "Dark Yellow")
-             }
-             infoIcon.image = UIImage(systemName: "info.circle")
-             infoIcon.tintColor = UIColor.label
-             infoText.text = "Pick a spot to get info about it"
-             continueBtn.isEnabled = false
-             continueBtn.backgroundColor = UIColor(named: "Main Yellow")?.withAlphaComponent(0.5)
-         }
-        collectionView.allowsSelection = false
-        collectionView.allowsSelection = true */
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         NotificationCenter.default.post(name: Notification.Name(removeSpotCardID), object: nil)
