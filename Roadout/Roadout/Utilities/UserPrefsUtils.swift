@@ -22,5 +22,15 @@ class UserPrefsUtils {
         let card = cardNumbers[cardIndex]
         return card
     }
+     
+    func reservationNotificationsEnabled() -> Bool {
+        let enabled = UserDefaults.standard.bool(forKey: "ro.roadout.reservationNotificationsEnabled")
+        return enabled
+    }
+    
+    func reminderNotificationsEnabled() -> Bool {
+        let enabled = UserDefaults.standard.bool(forKey: "ro.roadout.reminderNotificationsEnabled")
+        return enabled
+    }
     
 }

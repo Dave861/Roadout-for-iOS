@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SignInViewController: UIViewController {
     
@@ -23,8 +24,16 @@ class SignInViewController: UIViewController {
     @IBAction func signInTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
-        self.present(vc, animated: false, completion: nil)
+        if isValidEmail(emailField.text ?? "") {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+            self.present(vc, animated: false, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Error", message: "Please enter a valid email address", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: "Icons")
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
@@ -68,4 +77,10 @@ class SignInViewController: UIViewController {
         }
     }
     
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
 }

@@ -24,8 +24,9 @@
 		9A150835272BFC3E008C083B /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 9A150834272BFC3E008C083B /* GoogleMapsBase */; };
 		9A150837272BFC3E008C083B /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9A150836272BFC3E008C083B /* GoogleMapsCore */; };
 		9A1ABE972726A5EF00D4AA4B /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1ABE962726A5EF00D4AA4B /* InfoTableViewCell.swift */; };
-		9A1D05882736B793001CB837 /* UnlockController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1D05872736B793001CB837 /* UnlockController.swift */; };
 		9A292B872732F22D00E509C9 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
+		9A2D4BD1275788210007EE2E /* Find.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2D4BD0275788210007EE2E /* Find.xib */; };
+		9A2D4BD32757883E0007EE2E /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D4BD22757883E0007EE2E /* FindView.swift */; };
 		9A310783272A707100B1F84A /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A310782272A707100B1F84A /* RemindersViewController.swift */; };
 		9A310785272A708300B1F84A /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A310784272A708300B1F84A /* ReminderCell.swift */; };
 		9A39B0CC272847FC008E7FD0 /* UserSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0CB272847FC008E7FD0 /* UserSettingsCell.swift */; };
@@ -52,13 +53,23 @@
 		9A6727B32737B68E0078479D /* UnlockedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6727B22737B68E0078479D /* UnlockedController.swift */; };
 		9A6727BC2737C5AB0078479D /* Express.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6727BB2737C5AB0078479D /* Express.xib */; };
 		9A6727BE2737C5CE0078479D /* ExpressPickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6727BD2737C5CE0078479D /* ExpressPickView.swift */; };
-		9A6727C12737C5E30078479D /* ExpressLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6727BF2737C5E30078479D /* ExpressLocationCell.swift */; };
-		9A6727C22737C5E30078479D /* ExpressLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6727C02737C5E30078479D /* ExpressLocationCell.xib */; };
 		9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A4A2E27293171008F69B3 /* SearchViewController.swift */; };
 		9A6A4A3127293184008F69B3 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A4A3027293184008F69B3 /* SearchCell.swift */; };
 		9A6D80A22733CF4C00C354EF /* carkeysound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6D80A02733CF4C00C354EF /* carkeysound.aiff */; };
 		9A6D80A32733CF4C00C354EF /* hornsound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6D80A12733CF4C00C354EF /* hornsound.aiff */; };
 		9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */ = {isa = PBXBuildFile; productRef = 9A6E1C362731324B002E29F9 /* BarChartKit-static */; };
+		9A6E7E8E275645A300E09B75 /* IntentDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E8D275645A300E09B75 /* IntentDataExtension.swift */; };
+		9A6E7E912756486700E09B75 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E902756486700E09B75 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
+		9A6E7E972756528800E09B75 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6E7E6927563F3200E09B75 /* Intents.framework */; };
+		9A6E7E9A2756528800E09B75 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E992756528800E09B75 /* IntentHandler.swift */; };
+		9A6E7EA12756528800E09B75 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6E7E7427563F3300E09B75 /* IntentsUI.framework */; };
+		9A6E7EA42756528800E09B75 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7EA32756528800E09B75 /* IntentViewController.swift */; };
+		9A6E7EA72756528800E09B75 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A6E7EA52756528800E09B75 /* MainInterface.storyboard */; };
+		9A6E7EAB2756528800E09B75 /* Quick ReserveUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A6E7EA02756528800E09B75 /* Quick ReserveUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9A6E7EAE2756528800E09B75 /* Quick Reserve.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A6E7E962756528800E09B75 /* Quick Reserve.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9A6E7EB5275652F200E09B75 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E902756486700E09B75 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
+		9A6E7EB6275652F300E09B75 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E902756486700E09B75 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
+		9A6E7EB8275653A200E09B75 /* QuickReserveIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7EB7275653A200E09B75 /* QuickReserveIntentHandler.swift */; };
 		9A728C512732D849000F9DED /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
 		9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7331FD272877F400ACE30A /* NotificationsViewController.swift */; };
 		9A7332002728780300ACE30A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A7331FF2728780300ACE30A /* Settings.storyboard */; };
@@ -83,6 +94,16 @@
 		9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */; };
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
 		9AB96428272EFCE0008462E7 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB96427272EFCE0008462E7 /* ActiveView.swift */; };
+		9ABBF822275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7EB7275653A200E09B75 /* QuickReserveIntentHandler.swift */; };
+		9ABBF823275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7EB7275653A200E09B75 /* QuickReserveIntentHandler.swift */; };
+		9ABBF824275654BA005D2FFD /* IntentDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E8D275645A300E09B75 /* IntentDataExtension.swift */; };
+		9ABBF825275654BB005D2FFD /* IntentDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E8D275645A300E09B75 /* IntentDataExtension.swift */; };
+		9ABBF827275655D4005D2FFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC926F3272697F20054E453 /* Assets.xcassets */; };
+		9ABBF828275655D4005D2FFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC926F3272697F20054E453 /* Assets.xcassets */; };
+		9ABC12C3275B650D00659D76 /* SiriBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC12C2275B650D00659D76 /* SiriBtn.swift */; };
+		9AC48D1C273FBDE200DBCEF8 /* iCarousel in Frameworks */ = {isa = PBXBuildFile; productRef = 9AC48D1B273FBDE200DBCEF8 /* iCarousel */; };
+		9AC48D1E273FC11300DBCEF8 /* ExpressPickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC48D1D273FC11300DBCEF8 /* ExpressPickCell.swift */; };
+		9AC48D20273FC11A00DBCEF8 /* ExpressPickCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC48D1F273FC11A00DBCEF8 /* ExpressPickCell.xib */; };
 		9AC6D9D92727DE0D004E838C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC6D9D82727DE0D004E838C /* SettingsViewController.swift */; };
 		9AC926EB272697F00054E453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC926EA272697F00054E453 /* AppDelegate.swift */; };
 		9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC926EC272697F00054E453 /* SceneDelegate.swift */; };
@@ -107,6 +128,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9A6E7EA92756528800E09B75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AC926DF272697F00054E453 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A6E7E9F2756528800E09B75;
+			remoteInfo = "Quick ReserveUI";
+		};
+		9A6E7EAC2756528800E09B75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AC926DF272697F00054E453 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A6E7E952756528800E09B75;
+			remoteInfo = "Quick Reserve";
+		};
 		9A82681D2736A70100737DD3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AC926DF272697F00054E453 /* Project object */;
@@ -152,6 +187,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		9A6E7E8327563F3300E09B75 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9A6E7EAE2756528800E09B75 /* Quick Reserve.appex in Embed App Extensions */,
+				9A6E7EAB2756528800E09B75 /* Quick ReserveUI.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9A8268452736A70100737DD3 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -208,8 +255,9 @@
 		9A150824272BFAD8008C083B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9A15082F272BFAE1008C083B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9A1ABE962726A5EF00D4AA4B /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
-		9A1D05872736B793001CB837 /* UnlockController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockController.swift; sourceTree = "<group>"; };
 		9A292B862732F22D00E509C9 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		9A2D4BD0275788210007EE2E /* Find.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Find.xib; sourceTree = "<group>"; };
+		9A2D4BD22757883E0007EE2E /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		9A310782272A707100B1F84A /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		9A310784272A708300B1F84A /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
 		9A39B0CB272847FC008E7FD0 /* UserSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsCell.swift; sourceTree = "<group>"; };
@@ -236,12 +284,22 @@
 		9A6727B22737B68E0078479D /* UnlockedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockedController.swift; sourceTree = "<group>"; };
 		9A6727BB2737C5AB0078479D /* Express.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Express.xib; sourceTree = "<group>"; };
 		9A6727BD2737C5CE0078479D /* ExpressPickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressPickView.swift; sourceTree = "<group>"; };
-		9A6727BF2737C5E30078479D /* ExpressLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressLocationCell.swift; sourceTree = "<group>"; };
-		9A6727C02737C5E30078479D /* ExpressLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpressLocationCell.xib; sourceTree = "<group>"; };
 		9A6A4A2E27293171008F69B3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9A6A4A3027293184008F69B3 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		9A6D80A02733CF4C00C354EF /* carkeysound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = carkeysound.aiff; sourceTree = "<group>"; };
 		9A6D80A12733CF4C00C354EF /* hornsound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = hornsound.aiff; sourceTree = "<group>"; };
+		9A6E7E6927563F3200E09B75 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		9A6E7E7427563F3300E09B75 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		9A6E7E8D275645A300E09B75 /* IntentDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentDataExtension.swift; sourceTree = "<group>"; };
+		9A6E7E902756486700E09B75 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		9A6E7E962756528800E09B75 /* Quick Reserve.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Quick Reserve.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A6E7E992756528800E09B75 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		9A6E7E9B2756528800E09B75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A6E7EA02756528800E09B75 /* Quick ReserveUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Quick ReserveUI.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A6E7EA32756528800E09B75 /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
+		9A6E7EA62756528800E09B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		9A6E7EA82756528800E09B75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A6E7EB7275653A200E09B75 /* QuickReserveIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickReserveIntentHandler.swift; sourceTree = "<group>"; };
 		9A728C502732D849000F9DED /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		9A7331FD272877F400ACE30A /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		9A7331FF2728780300ACE30A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -269,6 +327,9 @@
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9AB96427272EFCE0008462E7 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
+		9ABC12C2275B650D00659D76 /* SiriBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriBtn.swift; sourceTree = "<group>"; };
+		9AC48D1D273FC11300DBCEF8 /* ExpressPickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressPickCell.swift; sourceTree = "<group>"; };
+		9AC48D1F273FC11A00DBCEF8 /* ExpressPickCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpressPickCell.xib; sourceTree = "<group>"; };
 		9AC6D9D82727DE0D004E838C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "Roadout/Interface/Home Views/SettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		9AC926E7272697F00054E453 /* Roadout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roadout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC926EA272697F00054E453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -297,6 +358,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9A6E7E932756528800E09B75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A6E7E972756528800E09B75 /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A6E7E9D2756528800E09B75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A6E7EA12756528800E09B75 /* IntentsUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9A8268182736A70100737DD3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A150833272BFC3E008C083B /* GoogleMaps in Frameworks */,
+				9AC48D1C273FBDE200DBCEF8 /* iCarousel in Frameworks */,
 				9A150837272BFC3E008C083B /* GoogleMapsCore in Frameworks */,
 				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
 				9A150835272BFC3E008C083B /* GoogleMapsBase in Frameworks */,
@@ -412,8 +490,19 @@
 				9A150815272BFA59008C083B /* CoreGraphics.framework */,
 				9A150813272BFA51008C083B /* CoreData.framework */,
 				9A150811272BFA49008C083B /* Accelerate.framework */,
+				9A6E7E6927563F3200E09B75 /* Intents.framework */,
+				9A6E7E7427563F3300E09B75 /* IntentsUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A2D4BD4275788520007EE2E /* Find me a spot */ = {
+			isa = PBXGroup;
+			children = (
+				9A2D4BD0275788210007EE2E /* Find.xib */,
+				9A2D4BD22757883E0007EE2E /* FindView.swift */,
+			);
+			path = "Find me a spot";
 			sourceTree = "<group>";
 		};
 		9A39B0C9272847C8008E7FD0 /* Cells */ = {
@@ -465,7 +554,6 @@
 			isa = PBXGroup;
 			children = (
 				9A8268202736A70100737DD3 /* MainController.swift */,
-				9A1D05872736B793001CB837 /* UnlockController.swift */,
 				9A6727B22737B68E0078479D /* UnlockedController.swift */,
 			);
 			path = "Interface Controllers";
@@ -484,11 +572,40 @@
 			isa = PBXGroup;
 			children = (
 				9A6727BD2737C5CE0078479D /* ExpressPickView.swift */,
-				9A6727BF2737C5E30078479D /* ExpressLocationCell.swift */,
-				9A6727C02737C5E30078479D /* ExpressLocationCell.xib */,
+				9AC48D1D273FC11300DBCEF8 /* ExpressPickCell.swift */,
+				9AC48D1F273FC11A00DBCEF8 /* ExpressPickCell.xib */,
 				9A5A01822737CDD000BD7E70 /* ExpressView.swift */,
 			);
 			path = "Express Reserve";
+			sourceTree = "<group>";
+		};
+		9A6E7E8F275645A600E09B75 /* Siri Integration */ = {
+			isa = PBXGroup;
+			children = (
+				9A6E7E8D275645A300E09B75 /* IntentDataExtension.swift */,
+				9A6E7E902756486700E09B75 /* Intents.intentdefinition */,
+				9A6E7EB7275653A200E09B75 /* QuickReserveIntentHandler.swift */,
+			);
+			path = "Siri Integration";
+			sourceTree = "<group>";
+		};
+		9A6E7E982756528800E09B75 /* Quick Reserve */ = {
+			isa = PBXGroup;
+			children = (
+				9A6E7E992756528800E09B75 /* IntentHandler.swift */,
+				9A6E7E9B2756528800E09B75 /* Info.plist */,
+			);
+			path = "Quick Reserve";
+			sourceTree = "<group>";
+		};
+		9A6E7EA22756528800E09B75 /* Quick ReserveUI */ = {
+			isa = PBXGroup;
+			children = (
+				9A6E7EA32756528800E09B75 /* IntentViewController.swift */,
+				9A6E7EA52756528800E09B75 /* MainInterface.storyboard */,
+				9A6E7EA82756528800E09B75 /* Info.plist */,
+			);
+			path = "Quick ReserveUI";
 			sourceTree = "<group>";
 		};
 		9A7332012728796A00ACE30A /* Setting Cells */ = {
@@ -549,6 +666,7 @@
 				9A14B917273142E100967417 /* KeyboardConstraint.swift */,
 				9A14B9192731430400967417 /* MonthPickerView.swift */,
 				9A14B91B2731431B00967417 /* PaddedTextField.swift */,
+				9ABC12C2275B650D00659D76 /* SiriBtn.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -557,6 +675,8 @@
 			isa = PBXGroup;
 			children = (
 				9AC926E9272697F00054E453 /* Roadout */,
+				9A6E7E982756528800E09B75 /* Quick Reserve */,
+				9A6E7EA22756528800E09B75 /* Quick ReserveUI */,
 				9AC92700272697F20054E453 /* RoadoutTests */,
 				9AC9270A272697F20054E453 /* RoadoutUITests */,
 				9A8268112736A70000737DD3 /* Roadout for Watch */,
@@ -578,6 +698,8 @@
 				9A82681B2736A70100737DD3 /* Roadout for Watch WatchKit Extension.appex */,
 				9A8268302736A70100737DD3 /* Roadout for WatchTests.xctest */,
 				9A82683A2736A70100737DD3 /* Roadout for WatchUITests.xctest */,
+				9A6E7E962756528800E09B75 /* Quick Reserve.appex */,
+				9A6E7EA02756528800E09B75 /* Quick ReserveUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -596,6 +718,7 @@
 				9A6D80A02733CF4C00C354EF /* carkeysound.aiff */,
 				9A6D80A12733CF4C00C354EF /* hornsound.aiff */,
 				9AC926F8272697F20054E453 /* Info.plist */,
+				9A6E7E8F275645A600E09B75 /* Siri Integration */,
 			);
 			path = Roadout;
 			sourceTree = "<group>";
@@ -668,6 +791,7 @@
 				9A6727B82737C0050078479D /* Express Reserve */,
 				9A0C7772272E830500ECBFB2 /* Cards */,
 				9A0C7777272E832800ECBFB2 /* Spot */,
+				9A2D4BD4275788520007EE2E /* Find me a spot */,
 			);
 			path = "Home Views";
 			sourceTree = "<group>";
@@ -689,6 +813,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9A6E7E952756528800E09B75 /* Quick Reserve */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A6E7EB22756528800E09B75 /* Build configuration list for PBXNativeTarget "Quick Reserve" */;
+			buildPhases = (
+				9A6E7E922756528800E09B75 /* Sources */,
+				9A6E7E932756528800E09B75 /* Frameworks */,
+				9A6E7E942756528800E09B75 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Quick Reserve";
+			productName = "Quick Reserve";
+			productReference = 9A6E7E962756528800E09B75 /* Quick Reserve.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		9A6E7E9F2756528800E09B75 /* Quick ReserveUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A6E7EAF2756528800E09B75 /* Build configuration list for PBXNativeTarget "Quick ReserveUI" */;
+			buildPhases = (
+				9A6E7E9C2756528800E09B75 /* Sources */,
+				9A6E7E9D2756528800E09B75 /* Frameworks */,
+				9A6E7E9E2756528800E09B75 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Quick ReserveUI";
+			productName = "Quick ReserveUI";
+			productReference = 9A6E7EA02756528800E09B75 /* Quick ReserveUI.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		9A82680F2736A70000737DD3 /* Roadout for Watch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A8268502736A70100737DD3 /* Build configuration list for PBXNativeTarget "Roadout for Watch" */;
@@ -767,11 +925,14 @@
 				9AC926E4272697F00054E453 /* Frameworks */,
 				9AC926E5272697F00054E453 /* Resources */,
 				9A8268452736A70100737DD3 /* Embed Watch Content */,
+				9A6E7E8327563F3300E09B75 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				9A8268432736A70100737DD3 /* PBXTargetDependency */,
+				9A6E7EAA2756528800E09B75 /* PBXTargetDependency */,
+				9A6E7EAD2756528800E09B75 /* PBXTargetDependency */,
 			);
 			name = Roadout;
 			packageProductDependencies = (
@@ -779,6 +940,7 @@
 				9A150834272BFC3E008C083B /* GoogleMapsBase */,
 				9A150836272BFC3E008C083B /* GoogleMapsCore */,
 				9A6E1C362731324B002E29F9 /* BarChartKit-static */,
+				9AC48D1B273FBDE200DBCEF8 /* iCarousel */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -830,6 +992,12 @@
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					9A6E7E952756528800E09B75 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					9A6E7E9F2756528800E09B75 = {
+						CreatedOnToolsVersion = 13.1;
+					};
 					9A82680F2736A70000737DD3 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -869,6 +1037,7 @@
 			packageReferences = (
 				9A150831272BFC3E008C083B /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 				9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */,
+				9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -881,11 +1050,30 @@
 				9A82681A2736A70100737DD3 /* Roadout for Watch WatchKit Extension */,
 				9A82682F2736A70100737DD3 /* Roadout for WatchTests */,
 				9A8268392736A70100737DD3 /* Roadout for WatchUITests */,
+				9A6E7E952756528800E09B75 /* Quick Reserve */,
+				9A6E7E9F2756528800E09B75 /* Quick ReserveUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9A6E7E942756528800E09B75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ABBF827275655D4005D2FFD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A6E7E9E2756528800E09B75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ABBF828275655D4005D2FFD /* Assets.xcassets in Resources */,
+				9A6E7EA72756528800E09B75 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9A82680E2736A70000737DD3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -922,19 +1110,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC926F7272697F20054E453 /* LaunchScreen.storyboard in Resources */,
+				9A2D4BD1275788210007EE2E /* Find.xib in Resources */,
 				9A46BBA8272EF84A002280DD /* Bars.xib in Resources */,
 				9AC926F4272697F20054E453 /* Assets.xcassets in Resources */,
 				9A0C7776272E831E00ECBFB2 /* SpotCell.xib in Resources */,
 				9AC926F2272697F00054E453 /* Main.storyboard in Resources */,
 				9A6D80A22733CF4C00C354EF /* carkeysound.aiff in Resources */,
 				9A6D80A32733CF4C00C354EF /* hornsound.aiff in Resources */,
+				9AC48D20273FC11A00DBCEF8 /* ExpressPickCell.xib in Resources */,
 				9A6727BC2737C5AB0078479D /* Express.xib in Resources */,
 				9A0357152727CC4D002A9ED9 /* Home.storyboard in Resources */,
 				9A7332002728780300ACE30A /* Settings.storyboard in Resources */,
 				9A5CC58B272C133A00A735A3 /* darkStyle.json in Resources */,
 				9A5CC58C272C133A00A735A3 /* lightStyle.json in Resources */,
 				9AEF29F0272D704D00FEE390 /* Cards.xib in Resources */,
-				9A6727C22737C5E30078479D /* ExpressLocationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,12 +1144,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9A6E7E922756528800E09B75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A6E7EB5275652F200E09B75 /* Intents.intentdefinition in Sources */,
+				9ABBF824275654BA005D2FFD /* IntentDataExtension.swift in Sources */,
+				9A6E7E9A2756528800E09B75 /* IntentHandler.swift in Sources */,
+				9ABBF822275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A6E7E9C2756528800E09B75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A6E7EB6275652F300E09B75 /* Intents.intentdefinition in Sources */,
+				9ABBF825275654BB005D2FFD /* IntentDataExtension.swift in Sources */,
+				9A6E7EA42756528800E09B75 /* IntentViewController.swift in Sources */,
+				9ABBF823275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9A8268172736A70100737DD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9A8268272736A70100737DD3 /* ComplicationController.swift in Sources */,
-				9A1D05882736B793001CB837 /* UnlockController.swift in Sources */,
 				9A6727B32737B68E0078479D /* UnlockedController.swift in Sources */,
 				9A8268232736A70100737DD3 /* ExtensionDelegate.swift in Sources */,
 				9A8268212736A70100737DD3 /* MainController.swift in Sources */,
@@ -995,6 +1205,7 @@
 				9AA0AEFE272D195400DA04A2 /* LegalViewController.swift in Sources */,
 				9A96F877272B0A25008B58FE /* CardCell.swift in Sources */,
 				9A6727BE2737C5CE0078479D /* ExpressPickView.swift in Sources */,
+				9ABC12C3275B650D00659D76 /* SiriBtn.swift in Sources */,
 				9A49BFB4272FF8E600234A9F /* ConnectivityManager.swift in Sources */,
 				9A49BFA8272FED5900234A9F /* DelayView.swift in Sources */,
 				9A0A23292733D2D6007C1B08 /* ParkLocation.swift in Sources */,
@@ -1013,10 +1224,13 @@
 				9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */,
 				9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */,
 				9A1ABE972726A5EF00D4AA4B /* InfoTableViewCell.swift in Sources */,
+				9A2D4BD32757883E0007EE2E /* FindView.swift in Sources */,
 				9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */,
 				9ACBFF54272704F90011B58F /* PermissionsViewController.swift in Sources */,
 				9AB96428272EFCE0008462E7 /* ActiveView.swift in Sources */,
 				9A14B918273142E100967417 /* KeyboardConstraint.swift in Sources */,
+				9A6E7EB8275653A200E09B75 /* QuickReserveIntentHandler.swift in Sources */,
+				9A6E7E8E275645A300E09B75 /* IntentDataExtension.swift in Sources */,
 				9AF798F3272C4BF70096D4C3 /* PrizesViewController.swift in Sources */,
 				9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */,
 				9A14B914273142A400967417 /* CustomTableView.swift in Sources */,
@@ -1027,7 +1241,6 @@
 				9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */,
 				9A0C7775272E831E00ECBFB2 /* SpotCell.swift in Sources */,
 				9A46BBA2272EE764002280DD /* ReserveView.swift in Sources */,
-				9A6727C12737C5E30078479D /* ExpressLocationCell.swift in Sources */,
 				9A5A01832737CDD000BD7E70 /* ExpressView.swift in Sources */,
 				9A39B0D227284818008E7FD0 /* DownCornerCell.swift in Sources */,
 				9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */,
@@ -1046,10 +1259,12 @@
 				9A39B0D02728480E008E7FD0 /* UpCornerCell.swift in Sources */,
 				9AE2AFF9272BC0B80088A3ED /* HistoryCell.swift in Sources */,
 				9A39B0CC272847FC008E7FD0 /* UserSettingsCell.swift in Sources */,
+				9AC48D1E273FC11300DBCEF8 /* ExpressPickCell.swift in Sources */,
 				9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */,
 				9AC6D9D92727DE0D004E838C /* SettingsViewController.swift in Sources */,
 				9A39B0CE27284803008E7FD0 /* SpacerCell.swift in Sources */,
 				9A14B916273142C100967417 /* Extensions.swift in Sources */,
+				9A6E7E912756486700E09B75 /* Intents.intentdefinition in Sources */,
 				9A39B0D827284B38008E7FD0 /* SettingsTextCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1074,6 +1289,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9A6E7EAA2756528800E09B75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A6E7E9F2756528800E09B75 /* Quick ReserveUI */;
+			targetProxy = 9A6E7EA92756528800E09B75 /* PBXContainerItemProxy */;
+		};
+		9A6E7EAD2756528800E09B75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A6E7E952756528800E09B75 /* Quick Reserve */;
+			targetProxy = 9A6E7EAC2756528800E09B75 /* PBXContainerItemProxy */;
+		};
 		9A82681E2736A70100737DD3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9A82681A2736A70100737DD3 /* Roadout for Watch WatchKit Extension */;
@@ -1107,6 +1332,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9A6E7EA52756528800E09B75 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A6E7EA62756528800E09B75 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		9A8268122736A70000737DD3 /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1134,6 +1367,110 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9A6E7EB02756528800E09B75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T5769DN25J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Quick ReserveUI";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ro.roadout.Roadout.Quick-ReserveUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9A6E7EB12756528800E09B75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T5769DN25J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Quick ReserveUI";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ro.roadout.Roadout.Quick-ReserveUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		9A6E7EB32756528800E09B75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T5769DN25J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Quick Reserve/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Quick Reserve";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ro.roadout.Roadout.Quick-Reserve";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9A6E7EB42756528800E09B75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T5769DN25J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Quick Reserve/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Quick Reserve";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ro.roadout.Roadout.Quick-Reserve";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		9A8268462736A70100737DD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1465,6 +1802,7 @@
 		9AC92712272697F20054E453 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
@@ -1504,6 +1842,7 @@
 		9AC92713272697F20054E453 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
@@ -1663,6 +2002,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9A6E7EAF2756528800E09B75 /* Build configuration list for PBXNativeTarget "Quick ReserveUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A6E7EB02756528800E09B75 /* Debug */,
+				9A6E7EB12756528800E09B75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A6E7EB22756528800E09B75 /* Build configuration list for PBXNativeTarget "Quick Reserve" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A6E7EB32756528800E09B75 /* Debug */,
+				9A6E7EB42756528800E09B75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9A82684F2736A70100737DD3 /* Build configuration list for PBXNativeTarget "Roadout for Watch WatchKit Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1754,6 +2111,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicklockwood/iCarousel";
+			requirement = {
+				kind = revision;
+				revision = d4b4db80df0aa7744d5bc0dced74474540a114ce;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1776,6 +2141,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */;
 			productName = "BarChartKit-static";
+		};
+		9AC48D1B273FBDE200DBCEF8 /* iCarousel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */;
+			productName = iCarousel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -35,6 +35,15 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qvc-oT-0hy">
+                    <rect key="frame" x="10" y="15.333333333333334" width="14" height="26"/>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="14" id="eoU-3Q-M1X"/>
+                        <constraint firstAttribute="height" constant="28.670000000000002" id="ylP-Vd-II3"/>
+                    </constraints>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="14" scale="medium" weight="regular"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxY-VP-NeA">
                     <rect key="frame" x="10" y="55" width="394" height="50"/>
                     <color key="backgroundColor" name="Main Yellow"/>
@@ -61,15 +70,6 @@
                         <action selector="backTapped:" destination="QV9-ue-75M" eventType="touchUpInside" id="EJq-Ih-eJI"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qvc-oT-0hy">
-                    <rect key="frame" x="6" y="15.666666666666659" width="18" height="26.000000000000014"/>
-                    <color key="tintColor" systemColor="labelColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="18" id="eoU-3Q-M1X"/>
-                        <constraint firstAttribute="height" constant="28.670000000000002" id="ylP-Vd-II3"/>
-                    </constraints>
-                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="semibold"/>
-                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="04W-Jj-719"/>
             <color key="backgroundColor" name="Background"/>
@@ -86,7 +86,7 @@
                 <constraint firstItem="04W-Jj-719" firstAttribute="trailing" secondItem="PVN-ST-fCA" secondAttribute="trailing" constant="71" id="cuH-go-kEp"/>
                 <constraint firstItem="CeL-kM-Ju6" firstAttribute="leading" secondItem="hoM-uf-3lj" secondAttribute="trailing" id="e2I-AU-Po1"/>
                 <constraint firstItem="CeL-kM-Ju6" firstAttribute="leading" secondItem="PVN-ST-fCA" secondAttribute="trailing" constant="-4" id="kg4-31-gB3"/>
-                <constraint firstItem="Qvc-oT-0hy" firstAttribute="leading" secondItem="04W-Jj-719" secondAttribute="leading" constant="6" id="oln-FF-OUT"/>
+                <constraint firstItem="Qvc-oT-0hy" firstAttribute="leading" secondItem="04W-Jj-719" secondAttribute="leading" constant="10" id="oln-FF-OUT"/>
                 <constraint firstItem="04W-Jj-719" firstAttribute="trailing" secondItem="CeL-kM-Ju6" secondAttribute="trailing" constant="6" id="tjK-5J-oJC"/>
                 <constraint firstItem="PVN-ST-fCA" firstAttribute="leading" secondItem="04W-Jj-719" secondAttribute="leading" constant="28" id="wNn-BU-j0Z"/>
             </constraints>
@@ -113,13 +113,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZXv-W7-S1N">
-                    <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
+                    <rect key="frame" x="10" y="14" width="14" height="25"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28.670000000000002" id="Ny2-hF-98v"/>
-                        <constraint firstAttribute="width" constant="18" id="hLm-Iv-sN0"/>
+                        <constraint firstAttribute="width" constant="14" id="hLm-Iv-sN0"/>
                     </constraints>
-                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="semibold"/>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="regular"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krm-EU-0BJ">
                     <rect key="frame" x="10" y="271" width="394" height="50"/>
@@ -171,12 +171,15 @@
                     <buttonConfiguration key="configuration" style="plain" title="A">
                         <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="sectionTapped:" destination="JWz-dS-cdx" eventType="touchUpInside" id="aCu-Ik-tab"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="616-5R-hqi"/>
             <color key="backgroundColor" name="Background"/>
             <constraints>
-                <constraint firstItem="ZXv-W7-S1N" firstAttribute="leading" secondItem="616-5R-hqi" secondAttribute="leading" constant="6" id="9s6-Xn-vcf"/>
+                <constraint firstItem="ZXv-W7-S1N" firstAttribute="leading" secondItem="616-5R-hqi" secondAttribute="leading" constant="10" id="9s6-Xn-vcf"/>
                 <constraint firstItem="kOO-ll-iuO" firstAttribute="leading" secondItem="616-5R-hqi" secondAttribute="leading" id="ADq-v0-PhG"/>
                 <constraint firstItem="LQY-9N-BvQ" firstAttribute="top" secondItem="616-5R-hqi" secondAttribute="top" constant="12" id="IuM-p8-imc"/>
                 <constraint firstItem="X6V-CA-sok" firstAttribute="top" secondItem="kOO-ll-iuO" secondAttribute="bottom" constant="5" id="M6p-uJ-cqn"/>
@@ -222,13 +225,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bkk-85-ump">
-                    <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
+                    <rect key="frame" x="10" y="14" width="14" height="25"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="18" id="hn3-IJ-oYf"/>
+                        <constraint firstAttribute="width" constant="14" id="hn3-IJ-oYf"/>
                         <constraint firstAttribute="height" constant="28.670000000000002" id="uzC-cH-wgV"/>
                     </constraints>
-                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="semibold"/>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="regular"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rz0-Hs-qoe">
                     <rect key="frame" x="10" y="257" width="394" height="50"/>
@@ -317,7 +320,7 @@
                 <constraint firstItem="rz0-Hs-qoe" firstAttribute="top" secondItem="3tE-1t-mEo" secondAttribute="bottom" constant="10" id="n3P-8x-bXT"/>
                 <constraint firstItem="0wr-XN-JUq" firstAttribute="top" secondItem="Tm5-8L-BZ6" secondAttribute="bottom" constant="3" id="ohr-MJ-jBx"/>
                 <constraint firstItem="0wr-XN-JUq" firstAttribute="leading" secondItem="2zE-1a-d4j" secondAttribute="leading" constant="10" id="rMc-jq-jIW"/>
-                <constraint firstItem="bkk-85-ump" firstAttribute="leading" secondItem="2zE-1a-d4j" secondAttribute="leading" constant="6" id="sIs-QA-sSP"/>
+                <constraint firstItem="bkk-85-ump" firstAttribute="leading" secondItem="2zE-1a-d4j" secondAttribute="leading" constant="10" id="sIs-QA-sSP"/>
                 <constraint firstItem="3tE-1t-mEo" firstAttribute="leading" secondItem="2zE-1a-d4j" secondAttribute="leading" constant="20" id="wpm-Zn-LsJ"/>
                 <constraint firstItem="2zE-1a-d4j" firstAttribute="trailing" secondItem="itr-uY-IlN" secondAttribute="trailing" constant="71" id="zaj-aU-w8R"/>
             </constraints>
@@ -346,13 +349,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3WV-h2-DmC">
-                    <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
+                    <rect key="frame" x="10" y="14" width="14" height="25"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="18" id="BEi-cZ-vfP"/>
+                        <constraint firstAttribute="width" constant="14" id="BEi-cZ-vfP"/>
                         <constraint firstAttribute="height" constant="28.670000000000002" id="nAH-ja-19i"/>
                     </constraints>
-                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="semibold"/>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="regular"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trX-H7-MMn">
                     <rect key="frame" x="10" y="210" width="394" height="50"/>
@@ -490,7 +493,7 @@
                 <constraint firstItem="3WV-h2-DmC" firstAttribute="top" secondItem="4yU-UR-gTv" secondAttribute="top" constant="12" id="pHk-XC-dpR"/>
                 <constraint firstItem="6PB-ZP-Kpv" firstAttribute="leading" secondItem="LUN-fz-Zol" secondAttribute="trailing" constant="8" symbolic="YES" id="tXU-JS-r8J"/>
                 <constraint firstItem="9IQ-SH-VTG" firstAttribute="top" secondItem="goJ-cn-jBW" secondAttribute="bottom" constant="8" symbolic="YES" id="vNY-5e-DIk"/>
-                <constraint firstItem="3WV-h2-DmC" firstAttribute="leading" secondItem="4yU-UR-gTv" secondAttribute="leading" constant="6" id="ynj-nx-AIe"/>
+                <constraint firstItem="3WV-h2-DmC" firstAttribute="leading" secondItem="4yU-UR-gTv" secondAttribute="leading" constant="10" id="ynj-nx-AIe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -517,13 +520,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5hr-Wg-Zeq">
-                    <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
+                    <rect key="frame" x="10" y="14" width="14" height="25"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28.670000000000002" id="cU9-JW-zvp"/>
-                        <constraint firstAttribute="width" constant="18" id="nlA-Uv-NH6"/>
+                        <constraint firstAttribute="width" constant="14" id="nlA-Uv-NH6"/>
                     </constraints>
-                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="semibold"/>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="regular"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAv-wi-gqj">
                     <rect key="frame" x="10" y="210" width="394" height="50"/>
@@ -574,8 +577,8 @@
                     </constraints>
                     <color key="tintColor" name="Background"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Pay with Apple Pay">
-                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                    <buttonConfiguration key="configuration" style="plain" image="applelogo" catalog="system" title=" Apple Pay">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
                     </buttonConfiguration>
                     <connections>
                         <action selector="paidApplePay:" destination="BAZ-Fv-mVf" eventType="touchUpInside" id="olA-7I-tg1"/>
@@ -612,7 +615,7 @@
                 <constraint firstItem="b1d-zO-ylg" firstAttribute="leading" secondItem="Lbw-ZC-vc9" secondAttribute="leading" constant="10" id="Pyu-ul-33k"/>
                 <constraint firstItem="RAv-wi-gqj" firstAttribute="top" secondItem="kZw-at-oJQ" secondAttribute="bottom" constant="8" symbolic="YES" id="SzY-IE-r3r"/>
                 <constraint firstItem="Lbw-ZC-vc9" firstAttribute="trailing" secondItem="7Jm-5R-8Rf" secondAttribute="trailing" constant="10" id="Zk6-Zv-TM5"/>
-                <constraint firstItem="5hr-Wg-Zeq" firstAttribute="leading" secondItem="Lbw-ZC-vc9" secondAttribute="leading" constant="6" id="c0a-8Z-ahI"/>
+                <constraint firstItem="5hr-Wg-Zeq" firstAttribute="leading" secondItem="Lbw-ZC-vc9" secondAttribute="leading" constant="10" id="c0a-8Z-ahI"/>
                 <constraint firstItem="7Jm-5R-8Rf" firstAttribute="top" secondItem="Lbw-ZC-vc9" secondAttribute="top" constant="4" id="nsL-GA-hE9"/>
                 <constraint firstItem="b1d-zO-ylg" firstAttribute="top" secondItem="oI1-Sq-i2D" secondAttribute="bottom" constant="12" id="pjA-Rf-Y31"/>
             </constraints>
@@ -641,13 +644,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ttG-CK-skK">
-                    <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
+                    <rect key="frame" x="10" y="14" width="14" height="25"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28.670000000000002" id="aIS-ew-1lN"/>
-                        <constraint firstAttribute="width" constant="18" id="meS-cC-ghc"/>
+                        <constraint firstAttribute="width" constant="14" id="meS-cC-ghc"/>
                     </constraints>
-                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="semibold"/>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="regular"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kg8-Hj-Fv8">
                     <rect key="frame" x="0.0" y="4" width="404" height="41"/>
@@ -795,7 +798,7 @@
                 <constraint firstItem="0lV-dy-ESa" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ilP-EX-Q2U" secondAttribute="trailing" constant="55" id="BrI-x9-SOD"/>
                 <constraint firstItem="6iu-Wu-hDJ" firstAttribute="trailing" secondItem="AJ5-bb-Isx" secondAttribute="trailing" constant="11" id="Eze-iN-N8l"/>
                 <constraint firstItem="M1Q-HK-TC9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6iu-Wu-hDJ" secondAttribute="leading" constant="5" id="FBb-Tq-znx"/>
-                <constraint firstItem="ttG-CK-skK" firstAttribute="leading" secondItem="6iu-Wu-hDJ" secondAttribute="leading" constant="6" id="FhP-9E-OJb"/>
+                <constraint firstItem="ttG-CK-skK" firstAttribute="leading" secondItem="6iu-Wu-hDJ" secondAttribute="leading" constant="10" id="FhP-9E-OJb"/>
                 <constraint firstItem="M1Q-HK-TC9" firstAttribute="top" secondItem="ilP-EX-Q2U" secondAttribute="bottom" constant="6" id="LMR-av-XII"/>
                 <constraint firstItem="AJ5-bb-Isx" firstAttribute="top" secondItem="IaP-JJ-fxA" secondAttribute="bottom" constant="8" symbolic="YES" id="M5Z-Ih-PWR"/>
                 <constraint firstItem="AJ5-bb-Isx" firstAttribute="leading" secondItem="6iu-Wu-hDJ" secondAttribute="leading" constant="11" id="NGr-l8-jst"/>
@@ -846,13 +849,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="P0J-jI-3J7">
-                    <rect key="frame" x="6" y="13.666666666666663" width="18" height="26"/>
+                    <rect key="frame" x="10" y="14" width="14" height="25"/>
                     <color key="tintColor" systemColor="labelColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="18" id="QmZ-tK-nvP"/>
+                        <constraint firstAttribute="width" constant="14" id="QmZ-tK-nvP"/>
                         <constraint firstAttribute="height" constant="28.670000000000002" id="Rdk-LH-7zr"/>
                     </constraints>
-                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="semibold"/>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="medium" weight="regular"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xF-5F-7DK">
                     <rect key="frame" x="0.0" y="4" width="404" height="41"/>
@@ -937,7 +940,7 @@
                 <constraint firstItem="8xF-5F-7DK" firstAttribute="top" secondItem="KIm-j1-LGH" secondAttribute="top" constant="4" id="ZaI-M9-ahT"/>
                 <constraint firstItem="Z9m-0u-xw2" firstAttribute="top" secondItem="KIm-j1-LGH" secondAttribute="top" constant="12" id="aS1-5X-FDi"/>
                 <constraint firstItem="oWr-ar-epm" firstAttribute="top" secondItem="8xF-5F-7DK" secondAttribute="bottom" constant="10" id="b7G-HU-RXn"/>
-                <constraint firstItem="P0J-jI-3J7" firstAttribute="leading" secondItem="KIm-j1-LGH" secondAttribute="leading" constant="6" id="c1M-3Y-zwN"/>
+                <constraint firstItem="P0J-jI-3J7" firstAttribute="leading" secondItem="KIm-j1-LGH" secondAttribute="leading" constant="10" id="c1M-3Y-zwN"/>
                 <constraint firstItem="8xF-5F-7DK" firstAttribute="leading" secondItem="KIm-j1-LGH" secondAttribute="leading" id="cU6-rN-htY"/>
                 <constraint firstItem="pbF-cT-aOk" firstAttribute="leading" secondItem="KIm-j1-LGH" secondAttribute="leading" constant="10" id="i2C-WJ-IQ9"/>
                 <constraint firstItem="Z9m-0u-xw2" firstAttribute="leading" secondItem="P0J-jI-3J7" secondAttribute="trailing" constant="4" id="kF2-Xn-Rc8"/>
@@ -957,6 +960,7 @@
     </objects>
     <resources>
         <image name="SectionMap" width="338" height="173"/>
+        <image name="applelogo" catalog="system" width="103" height="128"/>
         <image name="arrow_triangle_branch" width="12" height="12"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="hand_wave" width="13" height="13"/>

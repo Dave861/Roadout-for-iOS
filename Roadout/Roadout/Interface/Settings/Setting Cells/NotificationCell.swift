@@ -8,10 +8,17 @@
 import UIKit
 
 class NotificationCell: UITableViewCell {
-
+        
     @IBOutlet weak var titleLbl: UILabel!
     
+    @IBOutlet weak var enabledSwitch: UISwitch!
+    
     @IBAction func switched(_ sender: UISwitch) {
+        if titleLbl.text == "Reservation Status Notifications" {
+            UserDefaults.standard.set(sender.isOn, forKey: "ro.roadout.reservationNotificationsEnabled")
+        } else {
+            UserDefaults.standard.set(sender.isOn, forKey: "ro.roadout.reminderNotificationsEnabled")
+        }
     }
     
     @IBOutlet weak var card: UIView!
@@ -21,7 +28,18 @@ class NotificationCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         card.layer.cornerRadius = 16.0
+
     }
+    
+    override func didMoveToSuperview() {
+        if titleLbl.text == "Reservation Status Notifications" {
+            enabledSwitch.isOn = UserPrefsUtils.sharedInstance.reservationNotificationsEnabled()
+        } else {
+            enabledSwitch.isOn = UserPrefsUtils.sharedInstance.reminderNotificationsEnabled()
+        }
+    }
+    
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

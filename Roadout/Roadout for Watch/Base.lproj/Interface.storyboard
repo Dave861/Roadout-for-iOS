@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="19455" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="19455" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Xm7-b5-9c7">
     <device id="watch44"/>
     <dependencies>
         <deployment identifier="watchOS"/>
@@ -9,40 +9,9 @@
     </dependencies>
     <scenes>
         <!--Roadout-->
-        <scene sceneID="aou-V4-d1y">
-            <objects>
-                <controller identifier="MainVC" title="Roadout" id="AgC-eL-Hgc" customClass="MainController" customModule="Roadout_for_Watch_WatchKit_Extension">
-                    <items>
-                        <label alignment="center" verticalAlignment="bottom" text="-" id="Eju-wa-C9l">
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </label>
-                        <button width="1" alignment="center" verticalAlignment="bottom" title="Express Reserve" id="jXg-3c-r3f">
-                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="backgroundColor" name="Dark Orange"/>
-                            <fontDescription key="font" type="system" pointSize="16"/>
-                            <connections>
-                                <action selector="expressReserveTapped" destination="AgC-eL-Hgc" id="zt4-PV-EDV"/>
-                            </connections>
-                        </button>
-                        <imageView width="59" height="43" alignment="center" verticalAlignment="center" image="flag.2.crossed" catalog="system" contentMode="scaleAspectFit" id="k9D-RJ-5vX">
-                            <color key="tintColor" name="Dark Orange"/>
-                        </imageView>
-                        <label alignment="center" verticalAlignment="center" text="Quickly reserve a spot in a location you pick" textAlignment="center" numberOfLines="0" id="G4e-mF-51s">
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
-                        </label>
-                        <label alignment="center" text="-" id="wGe-U8-Tka">
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </label>
-                    </items>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="266.82608695652175" y="413.61607142857144"/>
-        </scene>
-        <!--Roadout-->
         <scene sceneID="4Ca-f2-ARS">
             <objects>
-                <controller identifier="UnlockVC" title="Roadout" id="Xm7-b5-9c7" customClass="UnlockController" customModule="Roadout_for_Watch_WatchKit_Extension">
+                <controller identifier="MainVC" title="Roadout" id="Xm7-b5-9c7" customClass="MainController" customModule="Roadout_for_Watch_WatchKit_Extension">
                     <items>
                         <button width="1" alignment="center" verticalAlignment="bottom" title="Unlock" id="f3G-pr-bCa">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -53,7 +22,7 @@
                             </connections>
                         </button>
                         <imageView width="59" height="43" alignment="center" verticalAlignment="center" image="lock" catalog="system" contentMode="scaleAspectFit" id="GUv-41-XZU">
-                            <color key="tintColor" name="Main Yellow"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
                         <group width="1" alignment="center" verticalAlignment="center" id="0PO-Db-tLe">
                             <items>
@@ -73,7 +42,6 @@
                     <connections>
                         <outlet property="explanationLbl" destination="X1k-BC-Udl" id="qB2-Au-dVo"/>
                         <outlet property="icon" destination="GUv-41-XZU" id="dg9-9a-t1m"/>
-                        <outlet property="mainBtn" destination="f3G-pr-bCa" id="t40-vc-88J"/>
                         <outlet property="timerLbl" destination="m6f-Qo-Tn7" id="dSe-ey-Pxv"/>
                     </connections>
                 </controller>
@@ -86,7 +54,7 @@
                 <controller identifier="UnlockedVC" title="Roadout" id="3mf-iS-K2J" customClass="UnlockedController" customModule="Roadout_for_Watch_WatchKit_Extension">
                     <items>
                         <imageView width="59" height="43" alignment="center" verticalAlignment="center" image="lock.open" catalog="system" contentMode="scaleAspectFit" id="tgY-dI-8yn">
-                            <color key="tintColor" name="Dark Yellow"/>
+                            <color key="tintColor" name="Main Yellow"/>
                         </imageView>
                         <label alignment="center" verticalAlignment="center" text="Your spot is now unlocked, you can get directions to your spot on your iPhone" textAlignment="center" numberOfLines="0" id="fiF-oh-ZeY">
                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -101,19 +69,12 @@
             <point key="canvasLocation" x="655" y="414"/>
         </scene>
     </scenes>
-    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+    <color key="tintColor" name="Main Yellow"/>
     <resources>
-        <image name="flag.2.crossed" catalog="system" width="128" height="72"/>
         <image name="lock" catalog="system" width="124" height="128"/>
         <image name="lock.open" catalog="system" width="128" height="109"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Dark Orange">
-            <color red="0.83899998664855957" green="0.42699998617172241" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Dark Yellow">
-            <color red="0.56099998950958252" green="0.40000000596046448" blue="0.050999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Main Yellow">
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

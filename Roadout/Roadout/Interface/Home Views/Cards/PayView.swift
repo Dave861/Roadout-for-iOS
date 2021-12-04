@@ -39,7 +39,9 @@ class PayView: UIView {
             returnToDelay = false
             timerSeconds += delaySeconds
         }
-        NotificationHelper.sharedInstance.scheduleReservationNotification()
+        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
+            NotificationHelper.sharedInstance.scheduleReservationNotification()
+        }
         NotificationCenter.default.post(name: Notification.Name(showPaidBarID), object: nil)
     }
     
@@ -50,15 +52,20 @@ class PayView: UIView {
             returnToDelay = false
             timerSeconds += delaySeconds
         }
-        NotificationHelper.sharedInstance.scheduleReservationNotification()
+        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
+            NotificationHelper.sharedInstance.scheduleReservationNotification()
+        }
         NotificationCenter.default.post(name: Notification.Name(showPaidBarID), object: nil)
     }
     
     @IBAction func selectDifferentPayment(_ sender: Any) {
+        let sb = UIStoryboard(name: "Settings", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "PaymentVC") as! PaymentViewController
+        self.parentViewController().navigationController?.pushViewController(vc, animated: true)
     }
     
     
-    let applePayTitle = NSAttributedString(string: "Pay with Apple Pay", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let applePayTitle = NSAttributedString(string: " Apple Pay", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
     var mainCardTitle = NSAttributedString(string: "Pay with \(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let diffPaymentTitle = NSAttributedString(string: "Different Payment Method", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
@@ -96,6 +103,11 @@ class PayView: UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[4] as! UIView
     }
 
+    func reloadMainCard() {
+        print("HERE")
+        mainCardTitle = NSAttributedString(string: "Pay with \(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+        mainCardBtn.setAttributedTitle(mainCardTitle, for: .normal)
+    }
     
     
 }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ExpressPickCell" customModule="Roadout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yek-pG-5gr">
+                    <rect key="frame" x="6" y="5.9999999999999982" width="99" height="31.333333333333329"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                    <color key="textColor" name="Background"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free Spots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXH-5B-kdz">
+                    <rect key="frame" x="6" y="36" width="65.333333333333329" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="6UV-Bd-3Qe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" name="Background"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old Town" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="841-43-84r">
+                    <rect key="frame" x="2" y="56" width="101" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="z4M-s0-8Vu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" name="Background"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="ExpressFocus"/>
+            <constraints>
+                <constraint firstItem="fXH-5B-kdz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="652-7e-9Wg"/>
+                <constraint firstItem="fXH-5B-kdz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="6ef-hR-eTu"/>
+                <constraint firstItem="841-43-84r" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="2" id="CdI-8m-g85"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="841-43-84r" secondAttribute="bottom" constant="3" id="E4w-na-dID"/>
+                <constraint firstItem="Yek-pG-5gr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="6" id="hSE-Lx-aKv"/>
+                <constraint firstItem="Yek-pG-5gr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="lcL-ml-1x6"/>
+                <constraint firstItem="Yek-pG-5gr" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="nqn-wY-P5F"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="841-43-84r" secondAttribute="trailing" constant="2" id="oOd-wQ-a40"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="freeLbl" destination="fXH-5B-kdz" id="6Vq-Md-zC2"/>
+                <outlet property="freeSpotsLbl" destination="Yek-pG-5gr" id="0jU-eb-8YV"/>
+                <outlet property="nameLbl" destination="841-43-84r" id="MLd-2T-mWt"/>
+            </connections>
+            <point key="canvasLocation" x="138.40579710144928" y="109.6467391304348"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="Background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ExpressFocus">
+            <color red="0.40400001406669617" green="0.22699999809265137" blue="0.039000000804662704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

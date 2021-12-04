@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Intent View Controller-->
+        <scene sceneID="7MM-of-jgj">
+            <objects>
+                <viewController id="ObA-dk-sSI" customClass="IntentViewController" customModule="Quick_ReserveUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS">
+                        <rect key="frame" x="0.0" y="0.0" width="322" height="80"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNq-9I-ppf">
+                                <rect key="frame" x="36" y="15" width="270" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="H3D-NT-dd4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please open the app to see your reservation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Daj-oG-POi">
+                                <rect key="frame" x="7" y="44" width="308" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fQ4-a3-9cr">
+                                <rect key="frame" x="10" y="15" width="21" height="21"/>
+                                <color key="tintColor" name="Icons"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="qJS-c8-Rvj"/>
+                                    <constraint firstAttribute="height" constant="19.5" id="xnE-OI-ioQ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4PN-XC-lEE"/>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="Daj-oG-POi" firstAttribute="leading" secondItem="4PN-XC-lEE" secondAttribute="leading" constant="7" id="6l8-mk-L9c"/>
+                            <constraint firstItem="YNq-9I-ppf" firstAttribute="top" secondItem="zMn-AG-sqS" secondAttribute="top" constant="15" id="8gJ-IA-TOQ"/>
+                            <constraint firstItem="fQ4-a3-9cr" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" constant="10" id="D8Z-t9-pwf"/>
+                            <constraint firstAttribute="trailing" secondItem="YNq-9I-ppf" secondAttribute="trailing" constant="16" id="KPE-DO-wkq"/>
+                            <constraint firstItem="fQ4-a3-9cr" firstAttribute="top" secondItem="zMn-AG-sqS" secondAttribute="top" constant="16" id="P4Z-Pn-L4K"/>
+                            <constraint firstItem="YNq-9I-ppf" firstAttribute="leading" secondItem="fQ4-a3-9cr" secondAttribute="trailing" constant="5" id="d3U-Rc-wBS"/>
+                            <constraint firstItem="4PN-XC-lEE" firstAttribute="trailing" secondItem="Daj-oG-POi" secondAttribute="trailing" constant="7" id="l5Q-5f-1X1"/>
+                            <constraint firstItem="Daj-oG-POi" firstAttribute="top" secondItem="YNq-9I-ppf" secondAttribute="bottom" constant="8" id="xzR-Hb-6UJ"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="322" height="80"/>
+                    <connections>
+                        <outlet property="explanationLbl" destination="Daj-oG-POi" id="3Oq-CY-ywE"/>
+                        <outlet property="icon" destination="fQ4-a3-9cr" id="QTU-Uj-vzb"/>
+                        <outlet property="statusLbl" destination="YNq-9I-ppf" id="EHL-Gd-tDP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-142.02898550724638" y="71.651785714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="checkmark.seal" catalog="system" width="128" height="128"/>
+        <namedColor name="Background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Icons">
+            <color red="0.86299997568130493" green="0.66699999570846558" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

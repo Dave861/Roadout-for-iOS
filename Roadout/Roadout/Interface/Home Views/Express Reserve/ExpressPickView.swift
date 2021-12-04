@@ -7,13 +7,15 @@
 
 import UIKit
 import CoreLocation
+import iCarousel
 
 class ExpressPickView: UIView {
     
     let returnToSearchBarID = "ro.roadout.Roadout.returnToSearchBarID"
     let addExpressViewID = "ro.roadout.Roadout.addExpressViewID"
-
-    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var carousel: iCarousel!
+    
     
     @IBOutlet weak var backBtn: UIButton!
     
@@ -36,10 +38,11 @@ class ExpressPickView: UIView {
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
         
-        tableView.register(UINib(nibName: "ExpressLocationCell", bundle: nil), forCellReuseIdentifier: "ExpressLocationCell")
-        tableView.delegate = self
-        tableView.dataSource = self
+        carousel.type = .invertedCylinder
+        carousel.clipsToBounds = true
         
+        carousel.dataSource = self
+        carousel.delegate = self
     }
     
     override func didMoveToSuperview() {
@@ -53,40 +56,78 @@ class ExpressPickView: UIView {
     
     
 }
-extension ExpressPickView: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ExpressPickView: iCarouselDataSource, iCarouselDelegate {
+    func numberOfItems(in carousel: iCarousel) -> Int {
         return parkLocations.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
+    func carouselItemWidth(_ carousel: iCarousel) -> CGFloat {
+        return 115
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpressLocationCell") as! ExpressLocationCell
-        cell.nameLbl.text = parkLocations[indexPath.row].name
-        let coord = CLLocationCoordinate2D(latitude: parkLocations[indexPath.row].latitude, longitude: parkLocations[indexPath.row].longitude)
-        if currentLocationCoord != nil {
-            let c1 = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
-            let c2 = CLLocation(latitude: currentLocationCoord!.latitude, longitude: currentLocationCoord!.longitude)
-            
-            let distance = c1.distance(from: c2)
-            let distanceKM = Double(distance)/1000.0
-            let roundedDist = Double(round(100*distanceKM)/100)
-            
-            cell.distanceLbl.text = "\(roundedDist) km"
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
+        let view = ExpressPickCell.instanceFromNib() as! ExpressPickCell
+        view.nameLbl.text = parkLocations[index].name
+        if index == carousel.currentItemIndex {
+            view.backgroundColor = UIColor(named: "ExpressFocus")!
+            view.nameLbl.textColor = UIColor.white
+            view.freeSpotsLbl.textColor = UIColor.white
+            view.freeLbl.textColor = UIColor.white
         } else {
-            cell.distanceLbl.text = "- km"
+            view.backgroundColor = UIColor(named: "ExpressSecond")!
+            view.nameLbl.textColor = UIColor.black
+            view.freeSpotsLbl.textColor = UIColor.black
+            view.freeLbl.textColor = UIColor.black
         }
-        return cell
+        view.freeSpotsLbl.text = String(describing: parkLocations[index].freeSpots)
+        return view
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        selectedLocation = parkLocations[indexPath.row].name
+        selectedLocation = parkLocations[index].name
         selectedLocationColor = UIColor(named: "Dark Orange")!
-        selectedLocationCoord = CLLocationCoordinate2DMake(parkLocations[indexPath.row].latitude, parkLocations[indexPath.row].longitude)
+        selectedLocationCoord = CLLocationCoordinate2DMake(parkLocations[index].latitude, parkLocations[index].longitude)
         NotificationCenter.default.post(name: Notification.Name(addExpressViewID), object: nil)
     }
+    
+    func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        let index = carousel.currentItemIndex
+        if index-1 >= 0 {
+            let previousView = carousel.itemView(at: index-1) as! ExpressPickCell
+            previousView.backgroundColor = UIColor(named: "ExpressSecond")!
+            previousView.nameLbl.textColor = UIColor.black
+            previousView.freeSpotsLbl.textColor = UIColor.black
+            previousView.freeLbl.textColor = UIColor.black
+        }
+        if index+1 < parkLocations.count {
+            let nextView = carousel.itemView(at: index+1) as! ExpressPickCell
+            nextView.backgroundColor = UIColor(named: "ExpressSecond")!
+            nextView.nameLbl.textColor = UIColor.black
+            nextView.freeSpotsLbl.textColor = UIColor.black
+            nextView.freeLbl.textColor = UIColor.black
+        }
+        if index == 0 {
+            let previousView = carousel.itemView(at: parkLocations.count-1) as! ExpressPickCell
+            previousView.backgroundColor = UIColor(named: "ExpressSecond")!
+            previousView.nameLbl.textColor = UIColor.black
+            previousView.freeSpotsLbl.textColor = UIColor.black
+            previousView.freeLbl.textColor = UIColor.black
+        } else if index == parkLocations.count-1 {
+            let nextView = carousel.itemView(at: 0) as! ExpressPickCell
+            nextView.backgroundColor = UIColor(named: "ExpressSecond")!
+            nextView.nameLbl.textColor = UIColor.black
+            nextView.freeSpotsLbl.textColor = UIColor.black
+            nextView.freeLbl.textColor = UIColor.black
+        }
+        let view = carousel.currentItemView as! ExpressPickCell
+        view.backgroundColor = UIColor(named: "ExpressFocus")!
+        view.nameLbl.textColor = UIColor.white
+        view.freeSpotsLbl.textColor = UIColor.white
+        view.freeLbl.textColor = UIColor.white
+    }
+    
 }

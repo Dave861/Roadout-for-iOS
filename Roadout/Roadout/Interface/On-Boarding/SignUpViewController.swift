@@ -25,8 +25,28 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
-        self.present(vc, animated: false, completion: nil)
+        if !isValidEmail(emailField.text ?? "") {
+            let alert = UIAlertController(title: "Error", message: "Please enter a valid email address", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: "Icons")
+            self.present(alert, animated: true, completion: nil)
+        } else if !isValidPassword(passwordField.text ?? "") {
+            let alert = UIAlertController(title: "Error", message: "Please enter a password with minimum 8 characters, one capital letter and one number", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: "Icons")
+            self.present(alert, animated: true, completion: nil)
+        } else if !isValidReenter() {
+            let alert = UIAlertController(title: "Error", message: "Passwords do not match", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: "Icons")
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+            self.present(vc, animated: false, completion: nil)
+        }
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
@@ -80,5 +100,22 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    func isValidPassword(_ password: String) -> Bool {
+        let pswRegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
+
+        let pswPred = NSPredicate(format:"SELF MATCHES %@", pswRegEx)
+        return pswPred.evaluate(with: password)
+    }
+    
+    func isValidReenter() -> Bool {
+        return passwordField.text == confirmPasswordField.text
+    }
 
 }

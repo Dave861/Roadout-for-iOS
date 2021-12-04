@@ -82,6 +82,65 @@ class SectionView: UIView {
     }
     @IBOutlet weak var backBtn: UIButton!
     
+    @IBAction func sectionTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "", message: "Choose a section", preferredStyle: .actionSheet)
+        alert.view.tintColor = UIColor(named: "Icons")
+        let sectionAAction = UIAlertAction(title: "Section A", style: .default) { action in
+            self.letter = "A"
+            self.letterTitle = NSAttributedString(string: self.letter,
+                                             attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+            self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
+        }
+        let sectionBAction = UIAlertAction(title: "Section B", style: .default) { action in
+            self.letter = "B"
+            self.letterTitle = NSAttributedString(string: self.letter,
+                                             attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+            self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
+        }
+        let sectionCAction = UIAlertAction(title: "Section C", style: .default) { action in
+            self.letter = "C"
+            self.letterTitle = NSAttributedString(string: self.letter,
+                                             attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+            self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
+        }
+        let sectionDAction = UIAlertAction(title: "Section D", style: .default) { action in
+            self.letter = "D"
+            self.letterTitle = NSAttributedString(string: self.letter,
+                                             attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+            self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
+        }
+        let sectionEAction = UIAlertAction(title: "Section E", style: .default) { action in
+            self.letter = "E"
+            self.letterTitle = NSAttributedString(string: self.letter,
+                                             attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+            self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
+        }
+        let sectionFAction = UIAlertAction(title: "Section F", style: .default) { action in
+            self.letter = "F"
+            self.letterTitle = NSAttributedString(string: self.letter,
+                                             attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+            self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
+        }
+        let sectionGAction = UIAlertAction(title: "Section G", style: .default) { action in
+            self.letter = "G"
+            self.letterTitle = NSAttributedString(string: self.letter,
+                                             attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+            self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
+        }        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
+        
+        alert.addAction(sectionAAction)
+        alert.addAction(sectionBAction)
+        alert.addAction(sectionCAction)
+        alert.addAction(sectionDAction)
+        alert.addAction(sectionEAction)
+        alert.addAction(sectionFAction)
+        alert.addAction(sectionGAction)
+        alert.addAction(cancelAction)
+        self.parentViewController().present(alert, animated: true, completion: nil)
+    }
+    
     let continueTitle = NSAttributedString(string: "Continue", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     

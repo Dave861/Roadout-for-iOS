@@ -11,8 +11,9 @@ import Foundation
 
 class MainController: WKInterfaceController {
     
-    @IBAction func expressReserveTapped() {
-        let rootControllerIdentifier = "UnlockVC"
+    @IBAction func unlockTapped() {
+        WKInterfaceDevice.current().play(.success)
+        let rootControllerIdentifier = "UnlockedVC"
         WKInterfaceController.reloadRootControllers(withNamesAndContexts: [(name: rootControllerIdentifier, context: [:] as AnyObject)])
     }
     

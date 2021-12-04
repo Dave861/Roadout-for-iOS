@@ -92,7 +92,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.expressView.frame = CGRect(x: 13, y: self.screenSize.height-391-dif, width: self.screenSize.width - 26, height: 391)
+            self.expressView.frame = CGRect(x: 13, y: self.screenSize.height-334-dif, width: self.screenSize.width - 26, height: 334)
             self.view.addSubview(self.expressView)
         }
     }
@@ -104,11 +104,15 @@ class HomeViewController: UIViewController {
                 dif = 49.0
                 print("YESS")
             }
-            self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-350-dif, width: self.screenSize.width - 26, height: 350)
+            self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-195-dif, width: self.screenSize.width - 26, height: 195)
             self.view.addSubview(self.expressPickView)
             self.expressView.removeFromSuperview()
         }
     }
+    
+    //MARK: -Find me a spot-
+    let findView = FindView.instanceFromNib()
+    
     
     //MARK: -IBOutlets-
     
@@ -128,6 +132,21 @@ class HomeViewController: UIViewController {
         }
         settingsAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
         
+        let findAction = UIAlertAction(title: "Find Spot", style: .default) { action in
+            self.searchBar.layer.shadowOpacity = 0.0
+            var dif = 15.0
+            DispatchQueue.main.async {
+                if (UIDevice.current.hasNotch) {
+                    dif = 49.0
+                    print("YESS")
+                }
+                self.findView.frame = CGRect(x: 13, y: self.screenSize.height-255-dif, width: self.screenSize.width - 26, height: 255)
+                print(self.view.frame.height)
+                self.view.addSubview(self.findView)
+            }
+        }
+        findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
+        
         let expressAction = UIAlertAction(title: "Express Reserve", style: .default) { action in
             self.searchBar.layer.shadowOpacity = 0.0
             var dif = 15.0
@@ -136,7 +155,7 @@ class HomeViewController: UIViewController {
                     dif = 49.0
                     print("YESS")
                 }
-                self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-350-dif, width: self.screenSize.width - 26, height: 350)
+                self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-195-dif, width: self.screenSize.width - 26, height: 195)
                 print(self.view.frame.height)
                 self.view.addSubview(self.expressPickView)
             }
@@ -147,6 +166,7 @@ class HomeViewController: UIViewController {
         cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
         
         alert.addAction(settingsAction)
+        alert.addAction(findAction)
         alert.addAction(expressAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
@@ -351,7 +371,7 @@ class HomeViewController: UIViewController {
     //MARK: -Bar functions-
     
     @objc func showPaidBar() {
-        payView.removeFromSuperview()
+        self.view.subviews.last!.removeFromSuperview()
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -494,6 +514,44 @@ class HomeViewController: UIViewController {
         }
     }
     
+    var menuItems: [UIAction] {
+        return [
+            UIAction(title: "Preferences", image: UIImage(systemName: "gearshape.2"), handler: { (_) in
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+            }),
+            UIAction(title: "Find Spot", image: UIImage(systemName: "loupe"), handler: { (_) in
+                self.searchBar.layer.shadowOpacity = 0.0
+                var dif = 15.0
+                DispatchQueue.main.async {
+                    if (UIDevice.current.hasNotch) {
+                        dif = 49.0
+                        print("YESS")
+                    }
+                    self.findView.frame = CGRect(x: 13, y: self.screenSize.height-255-dif, width: self.screenSize.width - 26, height: 255)
+                    print(self.view.frame.height)
+                    self.view.addSubview(self.findView)
+                }
+            }),
+            UIAction(title: "Express Reserve", image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
+                self.searchBar.layer.shadowOpacity = 0.0
+                var dif = 15.0
+                DispatchQueue.main.async {
+                    if (UIDevice.current.hasNotch) {
+                        dif = 49.0
+                        print("YESS")
+                    }
+                    self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-195-dif, width: self.screenSize.width - 26, height: 195)
+                    print(self.view.frame.height)
+                    self.view.addSubview(self.expressPickView)
+                }
+            }),
+        ]
+    }
+    var moreMenu: UIMenu {
+        return UIMenu(title: "What would you like to do?", image: nil, identifier: nil, options: [], children: menuItems)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -557,6 +615,11 @@ class HomeViewController: UIViewController {
                 mapView.isMyLocationEnabled = true
             }
         }
+        
+        if #available(iOS 14.0, *) {
+            settingsTapArea.menu = moreMenu
+            settingsTapArea.showsMenuAsPrimaryAction = true
+        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -590,6 +653,10 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        if self.view.subviews.last == payView {
+            let payV = payView as! PayView
+            payV.reloadMainCard()
+        }
     }
     
 
@@ -618,6 +685,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
     }
 }
+
 extension HomeViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedBar && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {

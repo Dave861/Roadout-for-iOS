@@ -11,5 +11,6 @@ struct ParkLocation {
     let name: String
     let latitude: Double
     let longitude: Double
+    let freeSpots: Int
 }
 
