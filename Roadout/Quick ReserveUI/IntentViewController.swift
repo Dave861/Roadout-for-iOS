@@ -39,7 +39,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
         } else if interaction.intentHandlingStatus == .failure || interaction.intentHandlingStatus == .unspecified {
             self.updateViews(color: UIColor(named: "Redish")!, status: "Failure", explanation: "There was an error. Please send a bug report", iconImage: UIImage(systemName: "xmark.app")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
         } else if interaction.intentHandlingStatus == .inProgress || interaction.intentHandlingStatus == .userConfirmationRequired || interaction.intentHandlingStatus == .ready {
-            self.updateViews(color: UIColor(named: "ExpressFocus")!, status: "Confirm", explanation: "Old Town - Section A - Spot 12", iconImage: UIImage(systemName: "loupe")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
+            self.updateViews(color: UIColor(named: "Greyish")!, status: "Confirm", explanation: "Old Town - Section A - Spot 12", iconImage: UIImage(systemName: "loupe")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
             
         }
         

@@ -92,7 +92,7 @@ class RemindersViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
-        if UserPrefsUtils.sharedInstance.reminderNotificationsEnabled() {
+        if UserPrefsUtils.sharedInstance.reminderNotificationsEnabled() == false {
             let alert = UIAlertController(title: "Warning", message: "Reminder notifications are disabled, you will NOT be notified by Roadout unless you enable reminder notifications", preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Icons")
             let okAction = UIAlertAction(title: "Ok", style: .default) { action in

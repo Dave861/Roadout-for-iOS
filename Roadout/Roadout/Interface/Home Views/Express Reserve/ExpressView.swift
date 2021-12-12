@@ -71,7 +71,7 @@ class ExpressView: UIView {
         mainCardBtn.layer.cornerRadius = 12.0
         mainCardBtn.setAttributedTitle(mainCardTitle, for: .normal)
         
-        chargeLbl.set(textColor: UIColor(named: "Dark Orange")!, range: chargeLbl.range(after: " - "))
+        chargeLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: chargeLbl.range(after: " - "))
         
         locationLbl.text = selectedLocation
         
