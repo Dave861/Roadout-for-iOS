@@ -53,7 +53,7 @@ class EditNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 13.0
+        cardView.layer.cornerRadius = 16.0
         
         saved.layer.cornerRadius = 12
         saved.setAttributedTitle(savedTitle, for: .normal)

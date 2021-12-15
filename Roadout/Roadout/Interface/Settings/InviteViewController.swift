@@ -46,7 +46,6 @@ class InviteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backButton.setTitle("", for: .normal)
         chartView.dataSet = mockBarChartDataSet
         shareBtn.setAttributedTitle(buttonTitle, for: .normal)
         shareBtnOutline.layer.cornerRadius = 12.0

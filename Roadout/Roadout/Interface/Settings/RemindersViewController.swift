@@ -49,7 +49,6 @@ class RemindersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         manageObs()
-        backButton.setTitle("", for: .normal)
         addBtn.setAttributedTitle(buttonTitle, for: .normal)
         tableView.delegate = self
         tableView.dataSource = self

@@ -56,7 +56,6 @@ class DirectionsAppViewController: UIViewController {
         card2.layer.cornerRadius = 16.0
         card3.layer.cornerRadius = 16.0
         
-        backButton.setTitle("", for: .normal)
         button1.setTitle("", for: .normal)
         button2.setTitle("", for: .normal)
         button3.setTitle("", for: .normal)

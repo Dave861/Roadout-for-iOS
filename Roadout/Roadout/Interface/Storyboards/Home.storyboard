@@ -338,17 +338,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4A-f6-F8g">
-                                <rect key="frame" x="46" y="88" width="166" height="32"/>
+                                <rect key="frame" x="20" y="95" width="197" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Cgj-NA-k26"/>
-                                    <constraint firstAttribute="width" constant="166" id="eUO-qc-lsx"/>
+                                    <constraint firstAttribute="width" constant="197" id="eUO-qc-lsx"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vHg-S3-9pK">
-                                <rect key="frame" x="20" y="145" width="374" height="751"/>
+                                <rect key="frame" x="20" y="143" width="374" height="753"/>
                                 <color key="backgroundColor" name="Second Background"/>
                                 <color key="sectionIndexBackgroundColor" name="Second Background"/>
                                 <prototypes>
@@ -758,17 +758,18 @@ Made in Cluj :)</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWx-Xn-qoA">
-                                <rect key="frame" x="17" y="89" width="24" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWx-Xn-qoA">
+                                <rect key="frame" x="7" y="56" width="89" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="bF0-Ys-eOe"/>
+                                    <constraint firstAttribute="width" constant="89" id="bF0-Ys-eOe"/>
                                     <constraint firstAttribute="height" constant="31" id="y4d-DM-rQn"/>
                                 </constraints>
                                 <color key="tintColor" name="Icons"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="chevron.left" catalog="system" symbolScale="medium"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="26" scale="large" weight="semibold"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Home">
+                                    <imageReference key="image" image="chevron.left" catalog="system" symbolScale="small"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="backTapped:" destination="nJf-S9-F6e" eventType="touchUpInside" id="n3c-kj-69N"/>
@@ -778,13 +779,13 @@ Made in Cluj :)</string>
                         <viewLayoutGuide key="safeArea" id="4D8-o0-n3t"/>
                         <color key="backgroundColor" name="Second Background"/>
                         <constraints>
-                            <constraint firstItem="v4A-f6-F8g" firstAttribute="top" secondItem="4D8-o0-n3t" secondAttribute="top" constant="44" id="8nG-tP-G1h"/>
-                            <constraint firstItem="vHg-S3-9pK" firstAttribute="top" secondItem="GWx-Xn-qoA" secondAttribute="bottom" constant="25" id="9lT-je-q53"/>
-                            <constraint firstItem="v4A-f6-F8g" firstAttribute="leading" secondItem="4D8-o0-n3t" secondAttribute="leading" constant="46" id="LJf-4Y-2xr"/>
+                            <constraint firstItem="v4A-f6-F8g" firstAttribute="top" secondItem="4D8-o0-n3t" secondAttribute="top" constant="51" id="8nG-tP-G1h"/>
+                            <constraint firstItem="v4A-f6-F8g" firstAttribute="leading" secondItem="4D8-o0-n3t" secondAttribute="leading" constant="20" id="LJf-4Y-2xr"/>
+                            <constraint firstItem="vHg-S3-9pK" firstAttribute="top" secondItem="v4A-f6-F8g" secondAttribute="bottom" constant="16" id="pbu-y0-ihW"/>
                             <constraint firstItem="vHg-S3-9pK" firstAttribute="leading" secondItem="4D8-o0-n3t" secondAttribute="leading" constant="20" id="r5V-2i-R9J"/>
                             <constraint firstItem="4D8-o0-n3t" firstAttribute="trailing" secondItem="vHg-S3-9pK" secondAttribute="trailing" constant="20" id="rIP-vb-Tby"/>
-                            <constraint firstItem="GWx-Xn-qoA" firstAttribute="leading" secondItem="4D8-o0-n3t" secondAttribute="leading" constant="17" id="rrb-no-Rfj"/>
-                            <constraint firstItem="GWx-Xn-qoA" firstAttribute="top" secondItem="4D8-o0-n3t" secondAttribute="top" constant="45" id="tTy-Y3-MOx"/>
+                            <constraint firstItem="GWx-Xn-qoA" firstAttribute="leading" secondItem="4D8-o0-n3t" secondAttribute="leading" constant="7" id="rrb-no-Rfj"/>
+                            <constraint firstItem="GWx-Xn-qoA" firstAttribute="top" secondItem="4D8-o0-n3t" secondAttribute="top" constant="12" id="tTy-Y3-MOx"/>
                             <constraint firstAttribute="bottom" secondItem="vHg-S3-9pK" secondAttribute="bottom" id="zs7-1G-qPy"/>
                         </constraints>
                     </view>
@@ -816,10 +817,10 @@ Made in Cluj :)</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDj-5P-Kug">
-                                <rect key="frame" x="5" y="623" width="404" height="234"/>
+                                <rect key="frame" x="0.0" y="628" width="414" height="234"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agB-Hm-7h3">
-                                        <rect key="frame" x="322" y="18" width="79" height="17"/>
+                                        <rect key="frame" x="332" y="18" width="79" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="pd6-Rg-h1J"/>
                                             <constraint firstAttribute="width" constant="79" id="rk3-XK-Sbh"/>
@@ -835,7 +836,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL5-oT-4XE">
-                                        <rect key="frame" x="15" y="169" width="374" height="50"/>
+                                        <rect key="frame" x="15" y="169" width="384" height="50"/>
                                         <color key="backgroundColor" name="Main Yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="uj7-Zg-cSw"/>
@@ -869,7 +870,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A7q-sC-Frp" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="111" width="374" height="40"/>
+                                        <rect key="frame" x="15" y="111" width="384" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.75700002909999997" blue="0.09799999744" alpha="0.22" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="AccentColor"/>
                                         <constraints>
@@ -913,10 +914,10 @@ Made in Cluj :)</string>
                         <viewLayoutGuide key="safeArea" id="cLi-nR-ewK"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cLi-nR-ewK" firstAttribute="bottom" secondItem="dDj-5P-Kug" secondAttribute="bottom" constant="5" id="42q-Wa-Lij" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
-                            <constraint firstItem="dDj-5P-Kug" firstAttribute="leading" secondItem="cLi-nR-ewK" secondAttribute="leading" constant="5" id="HvR-lj-fyQ"/>
+                            <constraint firstItem="cLi-nR-ewK" firstAttribute="bottom" secondItem="dDj-5P-Kug" secondAttribute="bottom" id="42q-Wa-Lij" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstItem="dDj-5P-Kug" firstAttribute="leading" secondItem="cLi-nR-ewK" secondAttribute="leading" id="HvR-lj-fyQ"/>
                             <constraint firstItem="n4x-6q-fk2" firstAttribute="leading" secondItem="cLi-nR-ewK" secondAttribute="leading" id="d0r-72-Owo"/>
-                            <constraint firstItem="dDj-5P-Kug" firstAttribute="trailing" secondItem="cLi-nR-ewK" secondAttribute="trailing" constant="-5" id="kRy-ns-ST4"/>
+                            <constraint firstItem="dDj-5P-Kug" firstAttribute="trailing" secondItem="cLi-nR-ewK" secondAttribute="trailing" id="kRy-ns-ST4"/>
                             <constraint firstItem="n4x-6q-fk2" firstAttribute="trailing" secondItem="cLi-nR-ewK" secondAttribute="trailing" id="qjS-3w-Vro"/>
                             <constraint firstAttribute="bottom" secondItem="n4x-6q-fk2" secondAttribute="bottom" id="wnO-kS-Vfi"/>
                             <constraint firstItem="n4x-6q-fk2" firstAttribute="top" secondItem="NoP-h0-DV6" secondAttribute="top" id="z63-Ib-AwR"/>
@@ -952,7 +953,7 @@ Made in Cluj :)</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRd-jR-7A9">
-                                <rect key="frame" x="5" y="568" width="404" height="289"/>
+                                <rect key="frame" x="0.0" y="573" width="414" height="289"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDS-7y-vs7">
                                         <rect key="frame" x="15" y="15" width="141" height="27"/>
@@ -961,7 +962,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EP3-IM-wPs">
-                                        <rect key="frame" x="322" y="20" width="79" height="17"/>
+                                        <rect key="frame" x="332" y="20" width="79" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="kGR-xI-Wuq"/>
                                             <constraint firstAttribute="width" constant="79" id="sep-We-DOZ"/>
@@ -977,7 +978,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmF-hw-K8Y">
-                                        <rect key="frame" x="15" y="224" width="374" height="50"/>
+                                        <rect key="frame" x="15" y="224" width="384" height="50"/>
                                         <color key="backgroundColor" name="Dark Yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="1Xl-kb-snB"/>
@@ -992,7 +993,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RPo-3n-Poc" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="166" width="374" height="40"/>
+                                        <rect key="frame" x="15" y="166" width="384" height="40"/>
                                         <color key="backgroundColor" red="0.56099998949999996" green="0.40000000600000002" blue="0.050999999050000001" alpha="0.26849489799999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Dark Yellow"/>
                                         <constraints>
@@ -1002,7 +1003,7 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b7Y-Jp-TRF" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="70" width="374" height="40"/>
+                                        <rect key="frame" x="15" y="70" width="384" height="40"/>
                                         <color key="backgroundColor" red="0.53299999239999996" green="0.49399998779999998" blue="0.45100000499999998" alpha="0.28555484689999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Greyish"/>
                                         <constraints>
@@ -1012,7 +1013,7 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4P2-9j-3vk" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="118" width="374" height="40"/>
+                                        <rect key="frame" x="15" y="118" width="384" height="40"/>
                                         <color key="backgroundColor" red="0.40400001410000003" green="0.28200000520000001" blue="0.019999999550000001" alpha="0.37016369049999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Brownish"/>
                                         <constraints>
@@ -1050,11 +1051,11 @@ Made in Cluj :)</string>
                         <constraints>
                             <constraint firstItem="dPU-v4-K95" firstAttribute="top" secondItem="X9T-ID-b0C" secondAttribute="top" id="SZn-0G-KHF"/>
                             <constraint firstItem="dPU-v4-K95" firstAttribute="trailing" secondItem="l09-24-xUV" secondAttribute="trailing" id="SvV-p4-cVE"/>
-                            <constraint firstItem="l09-24-xUV" firstAttribute="bottom" secondItem="JRd-jR-7A9" secondAttribute="bottom" constant="5" id="fxK-qV-w4F" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
-                            <constraint firstItem="l09-24-xUV" firstAttribute="trailing" secondItem="JRd-jR-7A9" secondAttribute="trailing" constant="5" id="iQA-fA-nhh"/>
+                            <constraint firstItem="l09-24-xUV" firstAttribute="bottom" secondItem="JRd-jR-7A9" secondAttribute="bottom" id="fxK-qV-w4F" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstItem="l09-24-xUV" firstAttribute="trailing" secondItem="JRd-jR-7A9" secondAttribute="trailing" id="iQA-fA-nhh"/>
                             <constraint firstItem="dPU-v4-K95" firstAttribute="leading" secondItem="l09-24-xUV" secondAttribute="leading" id="j08-gg-UKc"/>
                             <constraint firstAttribute="bottom" secondItem="dPU-v4-K95" secondAttribute="bottom" id="pv7-dg-R0A"/>
-                            <constraint firstItem="JRd-jR-7A9" firstAttribute="leading" secondItem="l09-24-xUV" secondAttribute="leading" constant="5" id="ss5-S1-No8"/>
+                            <constraint firstItem="JRd-jR-7A9" firstAttribute="leading" secondItem="l09-24-xUV" secondAttribute="leading" id="ss5-S1-No8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1071,128 +1072,6 @@ Made in Cluj :)</string>
             </objects>
             <point key="canvasLocation" x="1341" y="427"/>
         </scene>
-        <!--Pick Location View Controller-->
-        <scene sceneID="isr-5w-46L">
-            <objects>
-                <viewController storyboardIdentifier="PickLocationVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4IS-Ef-LZH" customClass="PickLocationViewController" customModule="Roadout" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ciZ-WM-FdW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJb-iQ-7H7">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" name="Blur"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title=""/>
-                                <connections>
-                                    <action selector="dismissTapped:" destination="4IS-Ef-LZH" eventType="touchUpInside" id="DPh-Lq-zqN"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55h-MC-hzD">
-                                <rect key="frame" x="5" y="447" width="404" height="410"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKl-qC-zAF">
-                                        <rect key="frame" x="15" y="15" width="134" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYd-zB-LpX">
-                                        <rect key="frame" x="322" y="20" width="79" height="17"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="17" id="c8w-k9-NuR"/>
-                                            <constraint firstAttribute="width" constant="79" id="xCJ-Gj-k9r"/>
-                                        </constraints>
-                                        <color key="tintColor" name="Dark Orange"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Cancel">
-                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="cancelTapped:" destination="Nz6-kX-gTD" eventType="touchUpInside" id="AcP-s1-zMx"/>
-                                            <action selector="cancelTapped:" destination="4IS-Ef-LZH" eventType="touchUpInside" id="e6S-z9-4Ui"/>
-                                            <action selector="cancelTapped:" destination="3RF-gB-cKE" eventType="touchUpInside" id="rP5-pU-UJd"/>
-                                        </connections>
-                                    </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ljs-gz-R2X">
-                                        <rect key="frame" x="15" y="50" width="374" height="352"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PickLocationCell" rowHeight="40" id="wTX-iG-tOr" customClass="PickLocationCell" customModule="Roadout" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="374" height="40"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wTX-iG-tOr" id="QtG-yk-Aaw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Name 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITh-Do-SSu">
-                                                            <rect key="frame" x="13" y="9.5" width="301" height="21"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="Oum-Yc-1BL"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF3-Hh-g8A">
-                                                            <rect key="frame" x="319" y="8.5" width="48" height="23"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="48" id="Dcf-jl-NMg"/>
-                                                                <constraint firstAttribute="height" constant="23" id="lhV-tO-mM7"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                            <color key="textColor" name="Dark Orange"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="ITh-Do-SSu" firstAttribute="centerY" secondItem="QtG-yk-Aaw" secondAttribute="centerY" id="7mS-d9-3hE"/>
-                                                        <constraint firstItem="aF3-Hh-g8A" firstAttribute="centerY" secondItem="QtG-yk-Aaw" secondAttribute="centerY" id="97Q-NI-3LU"/>
-                                                        <constraint firstItem="aF3-Hh-g8A" firstAttribute="leading" secondItem="ITh-Do-SSu" secondAttribute="trailing" constant="5" id="BQh-7q-zd5"/>
-                                                        <constraint firstAttribute="trailing" secondItem="aF3-Hh-g8A" secondAttribute="trailing" constant="7" id="Ma8-SD-3Ua"/>
-                                                        <constraint firstItem="ITh-Do-SSu" firstAttribute="leading" secondItem="QtG-yk-Aaw" secondAttribute="leading" constant="13" id="yfQ-f5-9J2"/>
-                                                    </constraints>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" name="Background"/>
-                                <constraints>
-                                    <constraint firstItem="ljs-gz-R2X" firstAttribute="leading" secondItem="55h-MC-hzD" secondAttribute="leading" constant="15" id="5Fg-JU-SJ6"/>
-                                    <constraint firstAttribute="height" constant="410" id="7hm-5p-2Fz"/>
-                                    <constraint firstAttribute="trailing" secondItem="ljs-gz-R2X" secondAttribute="trailing" constant="15" id="9EL-yq-Xxe"/>
-                                    <constraint firstAttribute="bottom" secondItem="ljs-gz-R2X" secondAttribute="bottom" constant="8" id="SZ5-Vg-PQm"/>
-                                    <constraint firstAttribute="trailing" secondItem="sYd-zB-LpX" secondAttribute="trailing" constant="3" id="Tba-KL-WjU"/>
-                                    <constraint firstItem="cKl-qC-zAF" firstAttribute="leading" secondItem="55h-MC-hzD" secondAttribute="leading" constant="15" id="qk0-Yl-Gah"/>
-                                    <constraint firstItem="cKl-qC-zAF" firstAttribute="top" secondItem="55h-MC-hzD" secondAttribute="top" constant="15" id="uMr-Hk-nM7"/>
-                                    <constraint firstItem="sYd-zB-LpX" firstAttribute="top" secondItem="55h-MC-hzD" secondAttribute="top" constant="20" symbolic="YES" id="wF1-vN-O9D"/>
-                                    <constraint firstItem="ljs-gz-R2X" firstAttribute="top" secondItem="cKl-qC-zAF" secondAttribute="bottom" constant="8" symbolic="YES" id="zLX-cZ-Mdh"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Dhn-hj-sg0"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="KJb-iQ-7H7" secondAttribute="bottom" id="NI5-2i-0Db"/>
-                            <constraint firstItem="KJb-iQ-7H7" firstAttribute="leading" secondItem="Dhn-hj-sg0" secondAttribute="leading" id="OBj-Ej-apU"/>
-                            <constraint firstItem="KJb-iQ-7H7" firstAttribute="top" secondItem="ciZ-WM-FdW" secondAttribute="top" id="Ozq-dX-5nb"/>
-                            <constraint firstItem="KJb-iQ-7H7" firstAttribute="trailing" secondItem="Dhn-hj-sg0" secondAttribute="trailing" id="ULX-Rv-gJb"/>
-                            <constraint firstItem="Dhn-hj-sg0" firstAttribute="trailing" secondItem="55h-MC-hzD" secondAttribute="trailing" constant="5" id="cS5-js-sfG"/>
-                            <constraint firstItem="Dhn-hj-sg0" firstAttribute="bottom" secondItem="55h-MC-hzD" secondAttribute="bottom" constant="5" id="eje-to-ucF" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
-                            <constraint firstItem="55h-MC-hzD" firstAttribute="leading" secondItem="Dhn-hj-sg0" secondAttribute="leading" constant="5" id="kSo-Uf-ETa"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="blurButton" destination="KJb-iQ-7H7" id="WCM-SC-EH6"/>
-                        <outlet property="cardView" destination="55h-MC-hzD" id="l6y-yI-GuP"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dRT-PN-kba" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="3RF-gB-cKE" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="666.66666666666674" y="754.6875"/>
-        </scene>
     </scenes>
     <resources>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
@@ -1202,7 +1081,7 @@ Made in Cluj :)</string>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <namedColor name="AccentColor">
-            <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

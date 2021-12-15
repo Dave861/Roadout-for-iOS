@@ -27,7 +27,6 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backBtn.setTitle("", for: .normal)
         tableView.delegate = self
         tableView.dataSource = self
     }

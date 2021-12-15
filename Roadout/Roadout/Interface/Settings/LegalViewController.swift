@@ -17,7 +17,7 @@ class LegalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backButton.setTitle("", for: .normal)
+
     }
 
 }

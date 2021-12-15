@@ -54,7 +54,6 @@ class PaymentViewController: UIViewController {
         tableView.dataSource = self
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
         tableView.addGestureRecognizer(longPress)
-        backButton.setTitle("", for: .normal)
         addCardBtn.setAttributedTitle(buttonTitle, for: .normal)
         addBtnOutline.layer.cornerRadius = 12.0
         cardNumbers = UserDefaults.standard.stringArray(forKey: "ro.roadout.paymentMethods") ?? ["**** **** **** 9000", "**** **** **** 7250", "**** **** **** 7784", "**** **** **** 9432"]

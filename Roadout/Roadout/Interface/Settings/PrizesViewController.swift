@@ -23,7 +23,6 @@ class PrizesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        backButton.setTitle("", for: .normal)
         tableView.delegate = self
         tableView.dataSource = self
     }

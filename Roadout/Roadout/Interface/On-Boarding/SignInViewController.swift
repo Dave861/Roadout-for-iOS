@@ -53,7 +53,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 13.0
+        cardView.layer.cornerRadius = 16.0
         signInBtn.layer.cornerRadius = 13.0
         signInBtn.setAttributedTitle(signInTitle, for: .normal)
         
