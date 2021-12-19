@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ParkLocation {
+struct ParkLocation: Hashable, Codable {
     let name: String
     let latitude: Double
     let longitude: Double

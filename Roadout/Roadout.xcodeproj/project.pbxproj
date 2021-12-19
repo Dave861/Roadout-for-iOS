@@ -93,6 +93,10 @@
 		9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA65124272D7DD10057DA24 /* SectionView.swift */; };
 		9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */; };
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
+		9AB12373276F115E003C5AE9 /* SharePlayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12372276F115E003C5AE9 /* SharePlayManager.swift */; };
+		9AB12375276F1170003C5AE9 /* GroupReserveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12374276F1170003C5AE9 /* GroupReserveActivity.swift */; };
+		9AB12377276F1188003C5AE9 /* SharePlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12376276F1188003C5AE9 /* SharePlayButton.swift */; };
+		9AB12379276F11C3003C5AE9 /* GroupReserveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12378276F11C3003C5AE9 /* GroupReserveViewController.swift */; };
 		9AB96428272EFCE0008462E7 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB96427272EFCE0008462E7 /* ActiveView.swift */; };
 		9ABBF822275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7EB7275653A200E09B75 /* QuickReserveIntentHandler.swift */; };
 		9ABBF823275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7EB7275653A200E09B75 /* QuickReserveIntentHandler.swift */; };
@@ -308,6 +312,10 @@
 		9AA65124272D7DD10057DA24 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		9AB12372276F115E003C5AE9 /* SharePlayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayManager.swift; sourceTree = "<group>"; };
+		9AB12374276F1170003C5AE9 /* GroupReserveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupReserveActivity.swift; sourceTree = "<group>"; };
+		9AB12376276F1188003C5AE9 /* SharePlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayButton.swift; sourceTree = "<group>"; };
+		9AB12378276F11C3003C5AE9 /* GroupReserveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupReserveViewController.swift; sourceTree = "<group>"; };
 		9AB96427272EFCE0008462E7 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
 		9AC48D1D273FC11300DBCEF8 /* ExpressPickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressPickCell.swift; sourceTree = "<group>"; };
 		9AC48D1F273FC11A00DBCEF8 /* ExpressPickCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpressPickCell.xib; sourceTree = "<group>"; };
@@ -622,6 +630,17 @@
 			path = "Custom Classes";
 			sourceTree = "<group>";
 		};
+		9AB12371276F10E9003C5AE9 /* Group Reserve */ = {
+			isa = PBXGroup;
+			children = (
+				9AB12372276F115E003C5AE9 /* SharePlayManager.swift */,
+				9AB12374276F1170003C5AE9 /* GroupReserveActivity.swift */,
+				9AB12376276F1188003C5AE9 /* SharePlayButton.swift */,
+				9AB12378276F11C3003C5AE9 /* GroupReserveViewController.swift */,
+			);
+			path = "Group Reserve";
+			sourceTree = "<group>";
+		};
 		9AC926DE272697F00054E453 = {
 			isa = PBXGroup;
 			children = (
@@ -665,6 +684,7 @@
 				9A6D80A02733CF4C00C354EF /* carkeysound.aiff */,
 				9A6D80A12733CF4C00C354EF /* hornsound.aiff */,
 				9AC926F8272697F20054E453 /* Info.plist */,
+				9AB12371276F10E9003C5AE9 /* Group Reserve */,
 				9A6E7E8F275645A600E09B75 /* Siri Integration */,
 			);
 			path = Roadout;
@@ -1076,6 +1096,7 @@
 				9A089E45272A7D78005B3FFE /* AddReminderViewController.swift in Sources */,
 				9A46BBA4272EF343002280DD /* PayView.swift in Sources */,
 				9AA0AEFE272D195400DA04A2 /* LegalViewController.swift in Sources */,
+				9AB12373276F115E003C5AE9 /* SharePlayManager.swift in Sources */,
 				9A96F877272B0A25008B58FE /* CardCell.swift in Sources */,
 				9A6727BE2737C5CE0078479D /* ExpressPickView.swift in Sources */,
 				9A49BFB4272FF8E600234A9F /* ConnectivityManager.swift in Sources */,
@@ -1106,6 +1127,7 @@
 				9AF798F3272C4BF70096D4C3 /* PrizesViewController.swift in Sources */,
 				9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */,
 				9A14B914273142A400967417 /* CustomTableView.swift in Sources */,
+				9AB12375276F1170003C5AE9 /* GroupReserveActivity.swift in Sources */,
 				9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */,
 				9A14B91A2731430400967417 /* MonthPickerView.swift in Sources */,
 				9A49BFAB272FF41B00234A9F /* UnlockedView.swift in Sources */,
@@ -1120,6 +1142,7 @@
 				9AF798F5272C4C060096D4C3 /* PrizesCell.swift in Sources */,
 				9A310783272A707100B1F84A /* RemindersViewController.swift in Sources */,
 				9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */,
+				9AB12379276F11C3003C5AE9 /* GroupReserveViewController.swift in Sources */,
 				9A46BBA6272EF83D002280DD /* PaidView.swift in Sources */,
 				9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */,
 				9A49BFA6272FDA2000234A9F /* ReservationView.swift in Sources */,
@@ -1136,6 +1159,7 @@
 				9AC6D9D92727DE0D004E838C /* SettingsViewController.swift in Sources */,
 				9A39B0CE27284803008E7FD0 /* SpacerCell.swift in Sources */,
 				9A14B916273142C100967417 /* Extensions.swift in Sources */,
+				9AB12377276F1188003C5AE9 /* SharePlayButton.swift in Sources */,
 				9A6E7E912756486700E09B75 /* Intents.intentdefinition in Sources */,
 				9A39B0D827284B38008E7FD0 /* SettingsTextCell.swift in Sources */,
 			);

@@ -8,6 +8,7 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import SwiftUI
 
 var selectedLocation = "Location"
 var selectedLocationColor = UIColor(named: "Main Yellow")
@@ -176,6 +177,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var settingsTapArea: UIButton!
     
     @IBOutlet weak var titleLbl: UILabel!
+    
+    @IBOutlet weak var shareplayView: UIView!
     
     //MARK: - Card Functions-
     //Result Card
@@ -498,6 +501,10 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(removeNoWifiBar), name: Notification.Name(removeNoWifiBarID), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: Notification.Name(returnToSearchBarID), object: nil)
+        
+        if #available(iOS 15.0, *) {
+            NotificationCenter.default.addObserver(self, selector: #selector(showGroupReserveVC), name: Notification.Name("ro.roadout.Roadout.groupSessionStarted"), object: nil)
+        }
     }
     
     func addMarkers() {
@@ -550,6 +557,34 @@ class HomeViewController: UIViewController {
     }
     var moreMenu: UIMenu {
         return UIMenu(title: "What would you like to do?", image: nil, identifier: nil, options: [], children: menuItems)
+    }
+    
+    func addSharePlayButtonView() {
+        if #available(iOS 15.0, *) {
+            let host = UIHostingController(rootView: SharePlayButton())
+            guard let hostView = host.view else { return }
+            hostView.translatesAutoresizingMaskIntoConstraints = false
+            self.shareplayView.addSubview(hostView)
+            NSLayoutConstraint.activate([
+                hostView.centerXAnchor.constraint(equalTo: self.shareplayView.centerXAnchor),
+                hostView.centerYAnchor.constraint(equalTo: self.shareplayView.centerYAnchor),
+                
+                hostView.widthAnchor.constraint(equalTo: self.shareplayView.widthAnchor),
+                hostView.heightAnchor.constraint(equalTo: self.shareplayView.heightAnchor),
+                
+                hostView.bottomAnchor.constraint(equalTo: self.shareplayView.bottomAnchor),
+                hostView.topAnchor.constraint(equalTo: self.shareplayView.topAnchor),
+                hostView.leftAnchor.constraint(equalTo: self.shareplayView.leftAnchor),
+                hostView.rightAnchor.constraint(equalTo: self.shareplayView.rightAnchor)
+            ])
+        }
+    }
+    
+    @objc func showGroupReserveVC() {
+        DispatchQueue.main.async {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "GroupReserveVC") as! GroupReserveViewController
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     
@@ -619,6 +654,11 @@ class HomeViewController: UIViewController {
         if #available(iOS 14.0, *) {
             settingsTapArea.menu = moreMenu
             settingsTapArea.showsMenuAsPrimaryAction = true
+        }
+        
+        if #available(iOS 15.0, *) {
+            addSharePlayButtonView()
+            SharePlayManager.sharedInstance.receiveSessions()
         }
     }
     
