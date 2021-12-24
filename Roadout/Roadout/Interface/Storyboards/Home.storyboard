@@ -39,24 +39,19 @@
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
                                 </buttonConfiguration>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 people" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ra8-aR-TGi">
-                                <rect key="frame" x="318" y="830" width="72" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <color key="textColor" name="Redish"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8uV-FS-I1y">
-                                <rect key="frame" x="277" y="826.5" width="33" height="26"/>
-                                <color key="tintColor" name="Redish"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="mvA-TX-CY4"/>
-                                    <constraint firstAttribute="width" constant="33" id="rla-KG-uOT"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u31-Ku-sEm">
                                 <rect key="frame" x="20" y="152" width="76" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="AIx-Rf-Wdt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZM-kD-u6J">
+                                <rect key="frame" x="20" y="237" width="52" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="dEF-gJ-hQO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <nil key="textColor"/>
@@ -90,31 +85,37 @@
                                     <constraint firstAttribute="bottom" secondItem="l6Y-kv-bpK" secondAttribute="bottom" id="zNj-FK-Hbh"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhM-i5-fjW">
+                                <rect key="frame" x="20" y="268" width="374" height="594"/>
+                                <color key="backgroundColor" name="Second Background"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="did-V9-LH8"/>
                         <color key="backgroundColor" name="Second Background"/>
                         <constraints>
-                            <constraint firstItem="did-V9-LH8" firstAttribute="bottom" secondItem="8uV-FS-I1y" secondAttribute="bottom" constant="8" id="3bY-wL-azW"/>
+                            <constraint firstItem="KZM-kD-u6J" firstAttribute="top" secondItem="xhi-dr-P1A" secondAttribute="bottom" constant="12" id="62E-aC-J8w"/>
+                            <constraint firstItem="KZM-kD-u6J" firstAttribute="leading" secondItem="did-V9-LH8" secondAttribute="leading" constant="20" id="9bh-Jv-4ja"/>
                             <constraint firstItem="did-V9-LH8" firstAttribute="trailing" secondItem="xhi-dr-P1A" secondAttribute="trailing" constant="20" id="9vR-YI-X9j"/>
                             <constraint firstItem="gKv-rm-Z7q" firstAttribute="top" secondItem="did-V9-LH8" secondAttribute="top" constant="51" id="AKp-hB-8Nd"/>
+                            <constraint firstItem="zhM-i5-fjW" firstAttribute="top" secondItem="KZM-kD-u6J" secondAttribute="bottom" constant="8" id="Anv-Pr-QXo"/>
                             <constraint firstItem="u31-Ku-sEm" firstAttribute="top" secondItem="gKv-rm-Z7q" secondAttribute="bottom" constant="19" id="IrK-Yg-RYa"/>
                             <constraint firstItem="xhi-dr-P1A" firstAttribute="leading" secondItem="did-V9-LH8" secondAttribute="leading" constant="20" id="N9l-mg-uT2"/>
                             <constraint firstItem="gKv-rm-Z7q" firstAttribute="leading" secondItem="did-V9-LH8" secondAttribute="leading" constant="20" id="Njy-TJ-Aty"/>
                             <constraint firstItem="did-V9-LH8" firstAttribute="trailing" secondItem="Ky0-C9-CDW" secondAttribute="trailing" constant="16" id="Oh4-E9-WQq"/>
                             <constraint firstItem="xhi-dr-P1A" firstAttribute="top" secondItem="u31-Ku-sEm" secondAttribute="bottom" constant="8" symbolic="YES" id="UUS-fI-OuC"/>
-                            <constraint firstItem="did-V9-LH8" firstAttribute="bottom" secondItem="ra8-aR-TGi" secondAttribute="bottom" constant="11" id="V4h-xU-g57"/>
                             <constraint firstItem="Ky0-C9-CDW" firstAttribute="top" secondItem="did-V9-LH8" secondAttribute="top" constant="15" id="Vma-ua-H49"/>
-                            <constraint firstItem="did-V9-LH8" firstAttribute="trailing" secondItem="ra8-aR-TGi" secondAttribute="trailing" constant="24" id="frF-fu-o4M"/>
+                            <constraint firstItem="did-V9-LH8" firstAttribute="trailing" secondItem="zhM-i5-fjW" secondAttribute="trailing" constant="20" id="cIt-Yt-BiF"/>
+                            <constraint firstItem="zhM-i5-fjW" firstAttribute="bottom" secondItem="did-V9-LH8" secondAttribute="bottom" id="dbE-nL-Tyz"/>
                             <constraint firstItem="u31-Ku-sEm" firstAttribute="leading" secondItem="did-V9-LH8" secondAttribute="leading" constant="20" id="jbv-D2-OVl"/>
-                            <constraint firstItem="ra8-aR-TGi" firstAttribute="leading" secondItem="8uV-FS-I1y" secondAttribute="trailing" constant="8" symbolic="YES" id="qdY-ND-MrT"/>
+                            <constraint firstItem="zhM-i5-fjW" firstAttribute="leading" secondItem="did-V9-LH8" secondAttribute="leading" constant="20" id="tEg-bF-8Pj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="changeLocationBtn" destination="l6Y-kv-bpK" id="esg-37-JmS"/>
                         <outlet property="doneBtn" destination="Ky0-C9-CDW" id="1VG-A8-zuF"/>
+                        <outlet property="hostingView" destination="zhM-i5-fjW" id="mIM-sA-aSf"/>
                         <outlet property="locationCard" destination="xhi-dr-P1A" id="A6p-sf-QdW"/>
                         <outlet property="locationLbl" destination="VJE-AJ-GHE" id="rQN-Fk-CjA"/>
-                        <outlet property="peopleCounterLbl" destination="ra8-aR-TGi" id="zeu-Qg-Teh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o2M-Kp-GPo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1198,10 +1199,9 @@ Made in Cluj :)</string>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <namedColor name="AccentColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

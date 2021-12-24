@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9A0357152727CC4D002A9ED9 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A0357142727CC4D002A9ED9 /* Home.storyboard */; };
 		9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0357162727CC61002A9ED9 /* HomeViewController.swift */; };
+		9A0631272775A92700E3AB5F /* GroupSpotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0631262775A92700E3AB5F /* GroupSpotsView.swift */; };
 		9A089E45272A7D78005B3FFE /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A089E44272A7D78005B3FFE /* AddReminderViewController.swift */; };
 		9A0A23292733D2D6007C1B08 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
 		9A0C7771272E7B1700ECBFB2 /* SpotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C7770272E7B1700ECBFB2 /* SpotView.swift */; };
@@ -215,6 +216,7 @@
 /* Begin PBXFileReference section */
 		9A0357142727CC4D002A9ED9 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		9A0357162727CC61002A9ED9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9A0631262775A92700E3AB5F /* GroupSpotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSpotsView.swift; sourceTree = "<group>"; };
 		9A089E44272A7D78005B3FFE /* AddReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
 		9A0A23282733D2D6007C1B08 /* ParkLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkLocation.swift; sourceTree = "<group>"; };
 		9A0C7770272E7B1700ECBFB2 /* SpotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotView.swift; sourceTree = "<group>"; };
@@ -637,6 +639,7 @@
 				9AB12374276F1170003C5AE9 /* GroupReserveActivity.swift */,
 				9AB12376276F1188003C5AE9 /* SharePlayButton.swift */,
 				9AB12378276F11C3003C5AE9 /* GroupReserveViewController.swift */,
+				9A0631262775A92700E3AB5F /* GroupSpotsView.swift */,
 			);
 			path = "Group Reserve";
 			sourceTree = "<group>";
@@ -1137,6 +1140,7 @@
 				9A46BBA2272EE764002280DD /* ReserveView.swift in Sources */,
 				9A5A01832737CDD000BD7E70 /* ExpressView.swift in Sources */,
 				9A39B0D227284818008E7FD0 /* DownCornerCell.swift in Sources */,
+				9A0631272775A92700E3AB5F /* GroupSpotsView.swift in Sources */,
 				9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */,
 				9A7332032728798300ACE30A /* NotificationCell.swift in Sources */,
 				9AF798F5272C4C060096D4C3 /* PrizesCell.swift in Sources */,
@@ -1253,7 +1257,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1279,7 +1283,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1302,7 +1306,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1333,7 +1337,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1363,7 +1367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1389,7 +1393,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1415,7 +1419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1441,7 +1445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1589,7 +1593,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1629,7 +1633,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

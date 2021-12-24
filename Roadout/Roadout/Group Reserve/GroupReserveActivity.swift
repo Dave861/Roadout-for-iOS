@@ -30,5 +30,4 @@ struct GroupReserveActivity: GroupActivity {
 @available(iOS 15, *)
 struct SharePlayMessage: Hashable, Codable {
     let location: ParkLocation
-    let people: Int
 }

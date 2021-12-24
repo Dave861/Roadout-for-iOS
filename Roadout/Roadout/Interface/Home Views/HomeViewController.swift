@@ -580,6 +580,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @available(iOS 15.0, *)
     @objc func showGroupReserveVC() {
         DispatchQueue.main.async {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "GroupReserveVC") as! GroupReserveViewController

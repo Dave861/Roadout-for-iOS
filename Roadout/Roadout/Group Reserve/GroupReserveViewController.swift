@@ -6,17 +6,21 @@
 //
 
 import UIKit
+import SwiftUI
+import GroupActivities
 
+@available(iOS 15, *)
 class GroupReserveViewController: UIViewController {
-    
+        
     @IBOutlet weak var doneBtn: UIButton!
     
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var locationCard: UIView!
     @IBOutlet weak var changeLocationBtn: UIButton!
-     
-    @IBOutlet weak var peopleCounterLbl: UILabel!
     
+    @IBOutlet weak var hostingView: UIView!
+    
+         
     @available (iOS 15.0, *)
     var menuItems: [UIAction] {
         return [
@@ -43,42 +47,51 @@ class GroupReserveViewController: UIViewController {
     
     @objc func updateUI() {
         DispatchQueue.main.async {
-            if #available(iOS 15.0, *) {
-                self.locationLbl.text = SharePlayManager.sharedInstance.selectedLocation.name
-                self.peopleCounterLbl.text = "\(SharePlayManager.sharedInstance.peopleNumber) people"
-                if SharePlayManager.sharedInstance.peopleNumber == 1 {
-                    self.peopleCounterLbl.text = "\(SharePlayManager.sharedInstance.peopleNumber) person"
-                }
-            }
+            self.locationLbl.text = SharePlayManager.sharedInstance.selectedLocation.name
         }
+       
     }
+    
+    func addHostedView() {
+        let host = UIHostingController(rootView: GroupSpotsView())
+        guard let hostView = host.view else { return }
+        hostView.translatesAutoresizingMaskIntoConstraints = false
+        self.hostingView.addSubview(hostView)
+        NSLayoutConstraint.activate([
+            hostView.centerXAnchor.constraint(equalTo: self.hostingView.centerXAnchor),
+            hostView.centerYAnchor.constraint(equalTo: self.hostingView.centerYAnchor),
+            
+            hostView.widthAnchor.constraint(equalTo: self.hostingView.widthAnchor),
+            hostView.heightAnchor.constraint(equalTo: self.hostingView.heightAnchor),
+            
+            hostView.bottomAnchor.constraint(equalTo: self.hostingView.bottomAnchor),
+            hostView.topAnchor.constraint(equalTo: self.hostingView.topAnchor),
+            hostView.leftAnchor.constraint(equalTo: self.hostingView.leftAnchor),
+            hostView.rightAnchor.constraint(equalTo: self.hostingView.rightAnchor)
+        ])
+    }
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addObs()
-        if #available(iOS 15.0, *) {
-            doneBtn.menu = dismissMenu
-            doneBtn.showsMenuAsPrimaryAction = true
-            
-            locationLbl.text = SharePlayManager.sharedInstance.selectedLocation.name
-            peopleCounterLbl.text = "\(SharePlayManager.sharedInstance.peopleNumber) people"
-            if SharePlayManager.sharedInstance.peopleNumber == 1 {
-                peopleCounterLbl.text = "\(SharePlayManager.sharedInstance.peopleNumber) person"
-            }
-            
-            changeLocationBtn.menu = makeLocationsMenu()
-            changeLocationBtn.showsMenuAsPrimaryAction = true
-        }
+        doneBtn.menu = dismissMenu
+        doneBtn.showsMenuAsPrimaryAction = true
+        locationLbl.text = SharePlayManager.sharedInstance.selectedLocation.name
+        
+        changeLocationBtn.menu = makeLocationsMenu()
+        changeLocationBtn.showsMenuAsPrimaryAction = true
         doneBtn.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         locationCard.layer.cornerRadius = 12.0
+        
+        addHostedView()
     }
     
-    @available (iOS 15.0, *)
     func makeLocationsMenu() -> UIMenu {
         var locationMenuItems = [UIAction]()
         for location in parkLocations {
             locationMenuItems.append(UIAction(title: location.name, image: nil, handler: { (_) in
-                SharePlayManager.sharedInstance.sendMessage(location, SharePlayManager.sharedInstance.peopleNumber)
+                SharePlayManager.sharedInstance.sendMessage(location)
             }))
         }
         let locationsMenu = UIMenu(title: "Pick location", image: nil, identifier: nil, options: [], children: locationMenuItems)

@@ -18,7 +18,8 @@ class SharePlayManager {
     var groupMessenger: GroupSessionMessenger?
     
     var selectedLocation = parkLocations.first!
-    var peopleNumber = 0
+    
+    var peopleNumber: Int!
     
     func activateSession() {
         Task.init(priority: .high) {
@@ -53,12 +54,15 @@ class SharePlayManager {
         }
         NotificationCenter.default.post(name: Notification.Name("ro.roadout.Roadout.groupSessionStarted"), object: nil)
         groupSession?.join()
-        sendMessage(selectedLocation, peopleNumber+1)
+        sendMessage(selectedLocation)
+        NotificationCenter.default.post(name: Notification.Name("ro.roadout.Roadout.groupMessageReceived"), object: nil)
     }
     
-    func sendMessage(_ parkLocation: ParkLocation, _ people: Int) {
+    func sendMessage(_ parkLocation: ParkLocation) {
+        peopleNumber = groupSession?.activeParticipants.count
+        print(groupSession?.activeParticipants.count)
         if let messenger = SharePlayManager.sharedInstance.groupMessenger {
-            let msg = SharePlayMessage(location: parkLocation, people: people)
+            let msg = SharePlayMessage(location: parkLocation)
             self.handleMessage(msg)
             Task.init(priority: .high, operation: {
                 do {
@@ -71,28 +75,27 @@ class SharePlayManager {
     }
     
     func leaveSession() {
-        sendMessage(selectedLocation, peopleNumber-1)
+        sendMessage(selectedLocation)
         groupMessenger = nil
         if groupSession != nil {
             groupSession?.leave()
             groupSession = nil
-            
+            NotificationCenter.default.post(name: Notification.Name("ro.roadout.Roadout.groupMessageReceived"), object: nil)
         }
     }
     
     func endSession() {
-        sendMessage(selectedLocation, 0)
+        sendMessage(selectedLocation)
         groupMessenger = nil
         if groupSession != nil {
             groupSession?.end()
             groupSession = nil
-            
+            NotificationCenter.default.post(name: Notification.Name("ro.roadout.Roadout.groupMessageReceived"), object: nil)
         }
     }
     
     func handleMessage(_ message: SharePlayMessage) {
         selectedLocation = message.location
-        peopleNumber = message.people
         NotificationCenter.default.post(name: Notification.Name("ro.roadout.Roadout.groupMessageReceived"), object: nil)
         print(message.location.name)
     }
