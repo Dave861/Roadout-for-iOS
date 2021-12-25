@@ -33,7 +33,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
     }
         
     func configureView(for parameters: Set<INParameter>, of interaction: INInteraction, interactiveBehavior: INUIInteractiveBehavior, context: INUIHostedViewContext, completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void) {
-
+        
         if interaction.intentHandlingStatus == .success {
             self.updateViews(color: UIColor(named: "Icons")!, status: "Success", explanation: "Please open the app to see your reservation", iconImage: UIImage(systemName: "checkmark.seal")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
         } else if interaction.intentHandlingStatus == .failure || interaction.intentHandlingStatus == .unspecified {

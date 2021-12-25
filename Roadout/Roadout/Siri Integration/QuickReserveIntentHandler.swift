@@ -13,15 +13,18 @@ public class QuickReserveIntentHandler: NSObject, QuickReserveIntentHandling {
     public func handle(intent: QuickReserveIntent, completion: @escaping (QuickReserveIntentResponse) -> Void) {
         print("Confirmed")
         print("Do the reservation")
+        reserveSpot()
         completion(QuickReserveIntentResponse(code: .success, userActivity: nil))
         
     }
     
     public func confirm(intent: QuickReserveIntent, completion: @escaping (QuickReserveIntentResponse) -> Void) {
         print("Handling")
-        print("Found: Old Town - Section A - Spot 12")
-        checkReservation()
+        if checkReservation() {
+            completion(QuickReserveIntentResponse(code: .reservationActive, userActivity: nil))
+        }
         findSpot()
+        print("Found: Old Town - Section A - Spot 12")
         completion(QuickReserveIntentResponse(code: .ready, userActivity: nil))
     }
     
@@ -29,8 +32,13 @@ public class QuickReserveIntentHandler: NSObject, QuickReserveIntentHandling {
         //if not found return .noSpotFound
     }
     
-    func checkReservation() {
-        //if not found return .reservationActive
+    func checkReservation() -> Bool {
+        return ReservationManager.sharedInstance.checkActiveReservation()
+    }
+    
+    func reserveSpot() {
+        ReservationManager.sharedInstance.saveReservationDate(Date().addingTimeInterval(TimeInterval(900)))
+        ReservationManager.sharedInstance.saveActiveReservation(true)
     }
     
 }

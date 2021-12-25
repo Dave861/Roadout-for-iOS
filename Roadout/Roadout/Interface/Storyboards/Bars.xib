@@ -87,16 +87,13 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Reservation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rp5-Nz-3xZ">
-                    <rect key="frame" x="49" y="4" width="153.33333333333334" height="44"/>
+                    <rect key="frame" x="49" y="4" width="153.66666666666666" height="44"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:49" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ws3-qE-Hcb">
-                    <rect key="frame" x="307" y="0.0" width="62" height="52"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="62" id="9GN-Bs-8Nu"/>
-                    </constraints>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ws3-qE-Hcb">
+                    <rect key="frame" x="313" y="0.0" width="53" height="52"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                     <color key="textColor" name="Icons"/>
                     <nil key="highlightedColor"/>
@@ -108,7 +105,7 @@
                     </constraints>
                     <color key="tintColor" name="Dark Orange"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain"/>
+                    <buttonConfiguration key="configuration" style="plain" title=""/>
                     <connections>
                         <action selector="moreTapped:" destination="5W2-Oy-UZ9" eventType="touchUpInside" id="A8H-4u-nMh"/>
                     </connections>
@@ -117,7 +114,7 @@
             <viewLayoutGuide key="safeArea" id="AYZ-M4-UUf"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="aIU-C6-ZRB" firstAttribute="leading" secondItem="Ws3-qE-Hcb" secondAttribute="trailing" constant="3" id="4EE-cb-T4A"/>
+                <constraint firstItem="aIU-C6-ZRB" firstAttribute="leading" secondItem="Ws3-qE-Hcb" secondAttribute="trailing" constant="6" id="4EE-cb-T4A"/>
                 <constraint firstItem="AYZ-M4-UUf" firstAttribute="bottom" secondItem="dx9-2g-UwI" secondAttribute="bottom" constant="9" id="BQT-mF-DdD"/>
                 <constraint firstItem="Ws3-qE-Hcb" firstAttribute="bottom" secondItem="AYZ-M4-UUf" secondAttribute="bottom" id="DBg-aB-Yrc"/>
                 <constraint firstItem="AYZ-M4-UUf" firstAttribute="bottom" secondItem="Rp5-Nz-3xZ" secondAttribute="bottom" constant="4" id="GuJ-jh-jlV"/>
@@ -213,7 +210,7 @@
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark_app" translatesAutoresizingMaskIntoConstraints="NO" id="GEq-FV-baD">
-                    <rect key="frame" x="15" y="15" width="20" height="23"/>
+                    <rect key="frame" x="15" y="14.666666666666664" width="20" height="23"/>
                     <color key="tintColor" name="Redish"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="WZ6-yw-TGZ"/>

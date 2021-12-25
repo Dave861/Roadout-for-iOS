@@ -40,7 +40,11 @@ class ExpressView: UIView {
     @IBAction func paidApplePay(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        
         timerSeconds = Int(slider.value*60)
+        ReservationManager.sharedInstance.saveReservationDate(Date().addingTimeInterval(TimeInterval(timerSeconds)))
+        ReservationManager.sharedInstance.saveActiveReservation(true)
+        
         if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
             NotificationHelper.sharedInstance.scheduleReservationNotification()
         }
@@ -50,7 +54,11 @@ class ExpressView: UIView {
     @IBAction func payMainCard(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        
         timerSeconds = Int(slider.value*60)
+        ReservationManager.sharedInstance.saveReservationDate(Date().addingTimeInterval(TimeInterval(timerSeconds)))
+        ReservationManager.sharedInstance.saveActiveReservation(true)
+        
         if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
             NotificationHelper.sharedInstance.scheduleReservationNotification()
         }

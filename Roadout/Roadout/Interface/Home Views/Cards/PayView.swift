@@ -38,7 +38,12 @@ class PayView: UIView {
         if returnToDelay {
             returnToDelay = false
             timerSeconds += delaySeconds
+            ReservationManager.sharedInstance.manageDelay()
         }
+        
+        ReservationManager.sharedInstance.saveReservationDate(Date().addingTimeInterval(TimeInterval(timerSeconds)))
+        ReservationManager.sharedInstance.saveActiveReservation(true)
+        
         if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
             NotificationHelper.sharedInstance.scheduleReservationNotification()
         }
@@ -51,7 +56,12 @@ class PayView: UIView {
         if returnToDelay {
             returnToDelay = false
             timerSeconds += delaySeconds
+            ReservationManager.sharedInstance.manageDelay()
         }
+        
+        ReservationManager.sharedInstance.saveReservationDate(Date().addingTimeInterval(TimeInterval(timerSeconds)))
+        ReservationManager.sharedInstance.saveActiveReservation(true)
+        
         if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
             NotificationHelper.sharedInstance.scheduleReservationNotification()
         }

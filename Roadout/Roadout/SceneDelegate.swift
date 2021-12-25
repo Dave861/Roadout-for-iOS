@@ -10,14 +10,29 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    let showActiveBarID = "ro.roadout.Roadout.showActiveBarID"
+    let showUnlockedBarID = "ro.roadout.Roadout.showUnlockedBarID"
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         let sb = UIStoryboard(name: "Home", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
+        
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+      /*  print(ReservationManager.sharedInstance.getReservationDate())
+        
+        if ReservationManager.sharedInstance.checkActiveReservation() {
+            if ReservationManager.sharedInstance.reservationDate > Date() {
+                NotificationCenter.default.post(name: Notification.Name(showActiveBarID), object: nil)
+                ReservationManager.sharedInstance.saveActiveReservation(true)
+            } else {
+                NotificationCenter.default.post(name: Notification.Name(showUnlockedBarID), object: nil)
+                ReservationManager.sharedInstance.saveActiveReservation(false)
+            }
+        } */
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -28,18 +43,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        print(ReservationManager.sharedInstance.getReservationDate())
+          
+          if ReservationManager.sharedInstance.checkActiveReservation() {
+              if ReservationManager.sharedInstance.reservationDate > Date() {
+                  NotificationCenter.default.post(name: Notification.Name(showActiveBarID), object: nil)
+                  ReservationManager.sharedInstance.saveActiveReservation(true)
+              } else {
+                  NotificationCenter.default.post(name: Notification.Name(showUnlockedBarID), object: nil)
+                  ReservationManager.sharedInstance.saveActiveReservation(false)
+              }
+          }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
+        print(ReservationManager.sharedInstance.getReservationDate())
+        ReservationManager.sharedInstance.saveReservationDate((ReservationManager.sharedInstance.reservationDate))
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
+        print(ReservationManager.sharedInstance.getReservationDate())
+        if ReservationManager.sharedInstance.checkActiveReservation() {
+            if ReservationManager.sharedInstance.reservationDate > Date() {
+                NotificationCenter.default.post(name: Notification.Name(showActiveBarID), object: nil)
+                ReservationManager.sharedInstance.saveActiveReservation(true)
+            } else {
+                NotificationCenter.default.post(name: Notification.Name(showUnlockedBarID), object: nil)
+                ReservationManager.sharedInstance.saveActiveReservation(false)
+            }
+        }
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {

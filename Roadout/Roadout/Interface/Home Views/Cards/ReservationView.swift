@@ -92,13 +92,6 @@ class ReservationView: UIView {
         delayBtn.setTitle("", for: .normal)
         cancelBrn.setTitle("", for: .normal)
         
-        let seconds = timerSeconds - (timerSeconds/60)*60
-        if seconds < 10 {
-            self.timerLbl.text = "\(timerSeconds/60):0\(seconds)"
-        } else {
-            self.timerLbl.text = "\(timerSeconds/60):\(seconds)"
-        }
-        
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1
         self.layer.shadowOffset = .zero
@@ -107,22 +100,11 @@ class ReservationView: UIView {
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
         
-        if startedTimers == 2 {
-            startedTimers = 3
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
-                    if timerSeconds > 0 {
-                        let seconds = timerSeconds - (timerSeconds/60)*60
-                        if seconds < 10 {
-                            self.timerLbl.text = "\(timerSeconds/60):0\(seconds)"
-                        } else {
-                            self.timerLbl.text = "\(timerSeconds/60):\(seconds)"
-                        }
-                    } else {
-                        self.timerLbl.text = "00:00"
-                        Timer.invalidate()
-                 }
-            }
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let formattedDate = dateFormatter.string(from: ReservationManager.sharedInstance.getReservationDate())
+        self.timerLbl.text = "Reserved for " + formattedDate
+        self.timerLbl.set(textColor: UIColor.label, range: timerLbl.range(before: formattedDate))
     }
 
     

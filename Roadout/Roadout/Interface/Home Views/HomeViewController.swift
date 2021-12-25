@@ -15,9 +15,6 @@ var selectedLocationColor = UIColor(named: "Main Yellow")
 var selectedLocationCoord: CLLocationCoordinate2D!
 var currentLocationCoord: CLLocationCoordinate2D?
 var returnToDelay = false
-var reservationTimer: Timer!
-
-var startedTimers = 0
 
 class HomeViewController: UIViewController {
 
@@ -180,277 +177,6 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var shareplayView: UIView!
     
-    //MARK: - Card Functions-
-    //Result Card
-    @objc func addResultCard() {
-        let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
-        self.mapView?.animate(to: camera)
-        searchBar.layer.shadowOpacity = 0.0
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-                print("YESS")
-            }
-            self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-115-dif, width: self.screenSize.width - 26, height: 115)
-            self.view.addSubview(self.resultView)
-        }
-    }
-    @objc func removeResultCard() {
-        DispatchQueue.main.async {
-            self.searchBar.layer.shadowOpacity = 0.1
-            self.resultView.removeFromSuperview()
-        }
-    }
-    //Section Card
-    @objc func addSectionCard() {
-        resultView.removeFromSuperview()
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.sectionView.frame = CGRect(x: 13, y: self.screenSize.height-331-dif, width: self.screenSize.width - 26, height: 331)
-            self.view.addSubview(self.sectionView)
-        }
-    }
-    @objc func removeSectionCard() {
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-                print("YESS")
-            }
-            self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-110-dif, width: self.screenSize.width - 26, height: 110)
-            self.view.addSubview(self.resultView)
-            self.sectionView.removeFromSuperview()
-        }
-    }
-    //Spot Card
-    @objc func addSpotCard() {
-        sectionView.removeFromSuperview()
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.spotView.frame = CGRect(x: 13, y: self.screenSize.height-318-dif, width: self.screenSize.width - 26, height: 318)
-            self.view.addSubview(self.spotView)
-        }
-    }
-    @objc func removeSpotCard() {
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-                print("YESS")
-            }
-            self.sectionView.frame = CGRect(x: 13, y: self.screenSize.height-331-dif, width: self.screenSize.width - 26, height: 331)
-            self.view.addSubview(self.sectionView)
-            self.spotView.removeFromSuperview()
-        }
-    }
-    //Reserve Card
-    @objc func addReserveCard() {
-        spotView.removeFromSuperview()
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
-            self.view.addSubview(self.reserveView)
-        }
-    }
-    @objc func removeReserveCard() {
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-                print("YESS")
-            }
-            self.spotView.frame = CGRect(x: 13, y: self.screenSize.height-318-dif, width: self.screenSize.width - 26, height: 318)
-            self.view.addSubview(self.spotView)
-            self.reserveView.removeFromSuperview()
-        }
-    }
-    //Pay Card
-    @objc func addPayCard() {
-        reserveView.removeFromSuperview()
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
-            self.view.addSubview(self.payView)
-        }
-    }
-    @objc func removePayCard() {
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-                print("YESS")
-            }
-            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
-            self.view.addSubview(self.reserveView)
-            self.payView.removeFromSuperview()
-        }
-    }
-    //Reservation Card
-    @objc func addReservationCard() {
-        activeBar.removeFromSuperview()
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
-            self.view.addSubview(self.reservationView)
-        }
-    }
-    @objc func removeReservationCard() {
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-                print("YESS")
-            }
-            self.activeBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
-            self.view.addSubview(self.activeBar)
-            self.reservationView.removeFromSuperview()
-        }
-    }
-    //Delay Card
-    @objc func addDelayCard() {
-        reservationView.removeFromSuperview()
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.delayView.frame = CGRect(x: 13, y: self.screenSize.height-205-dif, width: self.screenSize.width - 26, height: 205)
-            self.view.addSubview(self.delayView)
-        }
-    }
-    @objc func removeDelayCard() {
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-                print("YESS")
-            }
-            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
-            self.view.addSubview(self.reservationView)
-            self.delayView.removeFromSuperview()
-        }
-    }
-    //Pay Delay Card
-    @objc func addPayDelayCard() {
-        delayView.removeFromSuperview()
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
-            self.view.addSubview(self.payView)
-        }
-    }
-    @objc func removePayDelayCard() {
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-                print("YESS")
-            }
-            self.delayView.frame = CGRect(x: 13, y: self.screenSize.height-205-dif, width: self.screenSize.width - 26, height: 205)
-            self.view.addSubview(self.delayView)
-            self.payView.removeFromSuperview()
-        }
-    }
-    
-    //MARK: -Bar functions-
-    
-    @objc func showPaidBar() {
-        self.view.subviews.last!.removeFromSuperview()
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.paidBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
-            self.view.addSubview(self.paidBar)
-        }
-    }
-    
-    @objc func showActiveBar() {
-        paidBar.removeFromSuperview()
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.activeBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
-            self.view.addSubview(self.activeBar)
-        }
-    }
-    
-    @objc func showUnlockedBar() {
-        reservationView.removeFromSuperview()
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.unlockedBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
-            self.view.addSubview(self.unlockedBar)
-        }
-    }
-    
-    @objc func showCancelledBar() {
-        reservationView.removeFromSuperview()
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.cancelledBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
-            self.view.addSubview(self.cancelledBar)
-        }
-    }
-    
-    @objc func showNoWifiBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.layer.shadowOpacity = 0.0
-        }
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.noWifiBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
-            self.view.addSubview(self.noWifiBar)
-        }
-    }
-    
-    //MARK: -Return to Search Bar-
-    @objc func returnToSearchBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        }
-        self.searchBar.layer.shadowOpacity = 0.1
-    }
-    
-    @objc func removeNoWifiBar() {
-        if self.view.subviews.last == noWifiBar {
-            self.view.subviews.last!.removeFromSuperview()
-            self.searchBar.layer.shadowOpacity = 0.1
-        }
-    }
     
     
     func manageObs() {
@@ -699,6 +425,337 @@ class HomeViewController: UIViewController {
             payV.reloadMainCard()
         }
     }
+    
+    
+    //MARK: - Card Functions-
+    //Result Card
+    @objc func addResultCard() {
+        let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
+        self.mapView?.animate(to: camera)
+        searchBar.layer.shadowOpacity = 0.0
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-115-dif, width: self.screenSize.width - 26, height: 115)
+            self.view.addSubview(self.resultView)
+        }
+    }
+    @objc func removeResultCard() {
+        DispatchQueue.main.async {
+            self.searchBar.layer.shadowOpacity = 0.1
+            self.resultView.removeFromSuperview()
+        }
+    }
+    //Section Card
+    @objc func addSectionCard() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.sectionView.frame = CGRect(x: 13, y: self.screenSize.height-331-dif, width: self.screenSize.width - 26, height: 331)
+            self.view.addSubview(self.sectionView)
+        }
+    }
+    @objc func removeSectionCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-110-dif, width: self.screenSize.width - 26, height: 110)
+            self.view.addSubview(self.resultView)
+            self.sectionView.removeFromSuperview()
+        }
+    }
+    //Spot Card
+    @objc func addSpotCard() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.spotView.frame = CGRect(x: 13, y: self.screenSize.height-318-dif, width: self.screenSize.width - 26, height: 318)
+            self.view.addSubview(self.spotView)
+        }
+    }
+    @objc func removeSpotCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.sectionView.frame = CGRect(x: 13, y: self.screenSize.height-331-dif, width: self.screenSize.width - 26, height: 331)
+            self.view.addSubview(self.sectionView)
+            self.spotView.removeFromSuperview()
+        }
+    }
+    //Reserve Card
+    @objc func addReserveCard() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.view.addSubview(self.reserveView)
+        }
+    }
+    @objc func removeReserveCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.spotView.frame = CGRect(x: 13, y: self.screenSize.height-318-dif, width: self.screenSize.width - 26, height: 318)
+            self.view.addSubview(self.spotView)
+            self.reserveView.removeFromSuperview()
+        }
+    }
+    //Pay Card
+    @objc func addPayCard() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.view.addSubview(self.payView)
+        }
+    }
+    @objc func removePayCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.view.addSubview(self.reserveView)
+            self.payView.removeFromSuperview()
+        }
+    }
+    //Reservation Card
+    @objc func addReservationCard() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
+            self.view.addSubview(self.reservationView)
+        }
+    }
+    @objc func removeReservationCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.activeBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.activeBar)
+            self.reservationView.removeFromSuperview()
+        }
+    }
+    //Delay Card
+    @objc func addDelayCard() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.delayView.frame = CGRect(x: 13, y: self.screenSize.height-205-dif, width: self.screenSize.width - 26, height: 205)
+            self.view.addSubview(self.delayView)
+        }
+    }
+    @objc func removeDelayCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
+            self.view.addSubview(self.reservationView)
+            self.delayView.removeFromSuperview()
+        }
+    }
+    //Pay Delay Card
+    @objc func addPayDelayCard() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.view.addSubview(self.payView)
+        }
+    }
+    @objc func removePayDelayCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.delayView.frame = CGRect(x: 13, y: self.screenSize.height-205-dif, width: self.screenSize.width - 26, height: 205)
+            self.view.addSubview(self.delayView)
+            self.payView.removeFromSuperview()
+        }
+    }
+    
+    //MARK: -Bar functions-
+    
+    @objc func showPaidBar() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.paidBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.paidBar)
+        }
+    }
+    
+    @objc func showActiveBar() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.activeBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.activeBar)
+        }
+    }
+    
+    @objc func showUnlockedBar() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.unlockedBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.unlockedBar)
+        }
+    }
+    
+    @objc func showCancelledBar() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.cancelledBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.cancelledBar)
+        }
+    }
+    
+    @objc func showNoWifiBar() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.noWifiBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.noWifiBar)
+        }
+    }
+    
+    //MARK: -Return to Search Bar-
+    @objc func returnToSearchBar() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        }
+        self.searchBar.layer.shadowOpacity = 0.1
+    }
+    
+    @objc func removeNoWifiBar() {
+        if self.view.subviews.last == noWifiBar {
+            self.view.subviews.last!.removeFromSuperview()
+            self.searchBar.layer.shadowOpacity = 0.1
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
 }
