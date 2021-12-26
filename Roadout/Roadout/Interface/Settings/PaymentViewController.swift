@@ -14,6 +14,7 @@ class PaymentViewController: UIViewController {
     var cardIndex = 0
     var indexNr = 0
     
+    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
     let refreshCardsID = "ro.roadout.Roadout.refreshCards"
     
     @IBOutlet weak var backButton: UIButton!
@@ -42,7 +43,7 @@ class PaymentViewController: UIViewController {
     
     @objc func refreshTableView() {
         DispatchQueue.main.async {
-            UserDefaults.standard.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+            self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
             self.tableView.reloadData()
         }
     }
@@ -56,9 +57,9 @@ class PaymentViewController: UIViewController {
         tableView.addGestureRecognizer(longPress)
         addCardBtn.setAttributedTitle(buttonTitle, for: .normal)
         addBtnOutline.layer.cornerRadius = 12.0
-        cardNumbers = UserDefaults.standard.stringArray(forKey: "ro.roadout.paymentMethods") ?? ["**** **** **** 9000", "**** **** **** 7250", "**** **** **** 7784", "**** **** **** 9432"]
-        UserDefaults.standard.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
-        cardIndex = UserDefaults.standard.integer(forKey: "ro.roadout.defaultPaymentMethod")
+        cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? ["**** **** **** 9000", "**** **** **** 7250", "**** **** **** 7784", "**** **** **** 9432"]
+        UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+        cardIndex = UserDefaultsSuite.integer(forKey: "ro.roadout.defaultPaymentMethod")
         tableView.reloadData()
     }
     
@@ -77,9 +78,9 @@ class PaymentViewController: UIViewController {
                     cardNumbers.remove(at: indexPath.row)
                     if self.cardIndex == indexPath.row {
                         self.cardIndex = 0
-                        UserDefaults.standard.set(indexPath.row, forKey: "ro.roadout.defaultPaymentMethod")
+                        self.UserDefaultsSuite.set(indexPath.row, forKey: "ro.roadout.defaultPaymentMethod")
                     }
-                    UserDefaults.standard.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+                    self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
                     self.tableView.reloadData()
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -129,7 +130,7 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         cardIndex = indexPath.row
-        UserDefaults.standard.set(indexPath.row, forKey: "ro.roadout.defaultPaymentMethod")
+        UserDefaultsSuite.set(indexPath.row, forKey: "ro.roadout.defaultPaymentMethod")
         tableView.reloadData()
     }
     

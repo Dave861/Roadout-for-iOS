@@ -14,11 +14,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
 
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
         let descriptors = [
-            CLKComplicationDescriptor(identifier: "complication", displayName: "Roadout", supportedFamilies: CLKComplicationFamily.allCases)
-            // Multiple complication support can be added here with more descriptors
+            CLKComplicationDescriptor(identifier: "complication", displayName: "Reservation", supportedFamilies: CLKComplicationFamily.allCases)
         ]
         
-        // Call the handler with the currently supported complication descriptors
         handler(descriptors)
     }
     

@@ -7,11 +7,14 @@
 
 import Foundation
 
+var timerSeconds = 0
+
 class ReservationManager {
     
     static let sharedInstance = ReservationManager()
     
     let showUnlockedBarID = "ro.roadout.Roadout.showUnlockedBarID"
+    let returnToSearchBarID = "ro.roadout.Roadout.returnToSearchBarID"
     
     let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
     
@@ -48,6 +51,7 @@ class ReservationManager {
             if checkActiveReservation() {
                 saveActiveReservation(false)
                 saveReservationDate(Date())
+                prepareForReturn()
                 NotificationCenter.default.post(name: Notification.Name(showUnlockedBarID), object: nil)
             }
         } else {
@@ -57,6 +61,15 @@ class ReservationManager {
     
     func manageDelay() {
         UserDefaultsSuite.set(true, forKey: "ro.roadout.Roadout.reservationDelayed")
+    }
+    
+    func prepareForReturn() {
+        let timer = Timer(fireAt: Date().addingTimeInterval(TimeInterval(300)), interval: 0, target: self, selector: #selector(makeReturn), userInfo: nil, repeats: false)
+        RunLoop.main.add(timer, forMode: .common)
+    }
+    
+    @objc func makeReturn() {
+        NotificationCenter.default.post(name: Notification.Name(returnToSearchBarID), object: nil)
     }
     
 }

@@ -22,6 +22,8 @@ class PermissionsViewController: UIViewController {
         attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
     
+    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
+    
     let center = UNUserNotificationCenter.current()
     var locationManager: CLLocationManager?
     
@@ -43,8 +45,8 @@ class PermissionsViewController: UIViewController {
     
     @IBAction func skipTapped(_ sender: Any) {
         print("Skipped")
-        UserDefaults.standard.set(false, forKey: "ro.roadout.reservationNotificationsEnabled")
-        UserDefaults.standard.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
+        UserDefaultsSuite.set(false, forKey: "ro.roadout.reservationNotificationsEnabled")
+        UserDefaultsSuite.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
         let sb = UIStoryboard(name: "Home", bundle: nil)
@@ -79,24 +81,24 @@ class PermissionsViewController: UIViewController {
             center.requestAuthorization(options: [.alert, .sound, .timeSensitive]) { granted, error in
                 if granted {
                     print("Granted")
-                    UserDefaults.standard.set(true, forKey: "ro.roadout.reservationNotificationsEnabled")
-                    UserDefaults.standard.set(true, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reservationNotificationsEnabled")
+                    self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reminderNotificationsEnabled")
                 } else {
                     print("Bad Luck")
-                    UserDefaults.standard.set(false, forKey: "ro.roadout.reservationNotificationsEnabled")
-                    UserDefaults.standard.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reservationNotificationsEnabled")
+                    self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
                 }
             }
         } else {
             center.requestAuthorization(options: [.alert, .sound]) { granted, error in
                 if granted {
                     print("Granted")
-                    UserDefaults.standard.set(true, forKey: "ro.roadout.reservationNotificationsEnabled")
-                    UserDefaults.standard.set(true, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reservationNotificationsEnabled")
+                    self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reminderNotificationsEnabled")
                 } else {
                     print("Bad Luck")
-                    UserDefaults.standard.set(false, forKey: "ro.roadout.reservationNotificationsEnabled")
-                    UserDefaults.standard.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reservationNotificationsEnabled")
+                    self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
                 }
             }
         }

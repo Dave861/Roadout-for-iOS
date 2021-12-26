@@ -7,8 +7,6 @@
 
 import UIKit
 
-var timerSeconds = 0
-
 class ReserveView: UIView {
     
     let removeReserveCardID = "ro.roadout.Roadout.removeReserveCardID"

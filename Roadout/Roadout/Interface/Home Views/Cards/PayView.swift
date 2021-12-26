@@ -12,6 +12,7 @@ class PayView: UIView {
     let removePayCardID = "ro.roadout.Roadout.removePayCardID"
     let showPaidBarID = "ro.roadout.Roadout.showPaidBarID"
     let removePayDelayCardID = "ro.roadout.Roadout.removePayDelayCardID"
+    let showFindCardID = "ro.roadout.Roadout.showFindCardID"
     
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -19,6 +20,9 @@ class PayView: UIView {
         if returnToDelay {
             returnToDelay = false
             NotificationCenter.default.post(name: Notification.Name(removePayDelayCardID), object: nil)
+        } else if returnToFind {
+            returnToFind = false
+            NotificationCenter.default.post(name: Notification.Name(showFindCardID), object: nil)
         } else {
             NotificationCenter.default.post(name: Notification.Name(removePayCardID), object: nil)
         }
@@ -35,6 +39,11 @@ class PayView: UIView {
     @IBAction func paidApplePay(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        
+        if returnToFind {
+            returnToFind = false
+        }
+        
         if returnToDelay {
             returnToDelay = false
             timerSeconds += delaySeconds
@@ -53,6 +62,11 @@ class PayView: UIView {
     @IBAction func payMainCard(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        
+        if returnToFind {
+            returnToFind = false
+        }
+        
         if returnToDelay {
             returnToDelay = false
             timerSeconds += delaySeconds

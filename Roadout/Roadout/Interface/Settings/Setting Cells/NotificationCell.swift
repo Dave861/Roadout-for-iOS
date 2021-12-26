@@ -8,6 +8,8 @@
 import UIKit
 
 class NotificationCell: UITableViewCell {
+    
+    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
         
     @IBOutlet weak var titleLbl: UILabel!
     
@@ -15,9 +17,9 @@ class NotificationCell: UITableViewCell {
     
     @IBAction func switched(_ sender: UISwitch) {
         if titleLbl.text == "Reservation Status Notifications" {
-            UserDefaults.standard.set(sender.isOn, forKey: "ro.roadout.reservationNotificationsEnabled")
+            UserDefaultsSuite.set(sender.isOn, forKey: "ro.roadout.reservationNotificationsEnabled")
         } else {
-            UserDefaults.standard.set(sender.isOn, forKey: "ro.roadout.reminderNotificationsEnabled")
+            UserDefaultsSuite.set(sender.isOn, forKey: "ro.roadout.reminderNotificationsEnabled")
         }
     }
     

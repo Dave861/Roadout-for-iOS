@@ -6,54 +6,63 @@
 //
 
 import SwiftUI
+import WatchKit
 
 struct ContentView: View {
+    
+    @State var spotUnlocked = false
+        
     var body: some View {
-        List {
-            Text("What would you like to do?")
-                .font(.footnote)
-                .fontWeight(.regular)
-                .foregroundColor(Color.gray)
-                .listRowPlatterColor(Color.clear)
-            NavigationLink(destination: ActiveView()) {
-                Group {
-                    HStack {
-                        Image(systemName: "lock")
-                            .foregroundColor(Color.white)
-                            .frame(width: 30, height: 30, alignment: .center)
-                            .font(.system(size: 25))
-                        Text("Active Reservation")
-                    }
+        if spotUnlocked == false {
+            VStack {
+                Spacer(minLength: 10)
+                HStack {
+                    Image(systemName: "lock")
+                        .foregroundColor(Color("Main Yellow"))
+                        .font(.system(size: 26))
+                    Text(Date(), style: .time)
+                        .font(.system(size: 24, weight: .medium))
+                        .foregroundColor(Color("Main Yellow"))
                 }
-            }
-            .listRowPlatterColor(Color("Action1"))
-            NavigationLink(destination: ExpressView()) {
-                Group {
-                    HStack {
-                        Image(systemName: "flag.2.crossed")
-                            .foregroundColor(Color.white)
-                            .frame(width: 30, height: 30, alignment: .center)
-                            .font(.system(size: 18))
-                        Text("Express Reserve")
-                    }
+                .frame(height: 40, alignment: .center)
+                Text("Spot is locked")
+                    .font(.system(size: 18, weight: .medium))
+                Spacer(minLength: 15)
+                Button("Unlock") {
+                    spotUnlocked = true
+                    
+                    WKInterfaceDevice.current().play(.success)
+                    print("Yes")
                 }
+                .foregroundColor(.black)
+                .background(Color("Main Yellow"))
+                .cornerRadius(20)
+                
             }
-            .listRowPlatterColor(Color("Action2"))
-            NavigationLink(destination: FindView()) {
-                Group {
-                    HStack {
-                        Image(systemName: "loupe")
-                            .foregroundColor(Color.white)
-                            .frame(width: 30, height: 30, alignment: .center)
-                            .font(.system(size: 20))
-                        Text("Find Spot")
-                    }
+            .navigationTitle("Roadout")
+            .navBarLargeTitleDisplayMode()
+        } else {
+            VStack {
+                Spacer(minLength: 10)
+                HStack {
+                    Image(systemName: "lock.open")
+                        .foregroundColor(Color("Main Yellow"))
+                        .font(.system(size: 34))
                 }
+                .frame(height: 40, alignment: .center)
+                Text("Spot is unlocked")
+                    .font(.system(size: 18, weight: .medium))
+                Spacer(minLength: 15)
+                Button("Directions") {
+                    spotUnlocked = false
+                }
+                .foregroundColor(.black)
+                .background(Color("Main Yellow"))
+                .cornerRadius(20)
             }
-            .listRowPlatterColor(Color("Action3"))
+            .navigationTitle("Roadout")
+            .navBarLargeTitleDisplayMode()
         }
-        .navigationTitle("Roadout")
-        .navBarLargeTitleDisplayMode()
     }
 }
 
@@ -68,7 +77,7 @@ extension View {
     @ViewBuilder
     func navBarLargeTitleDisplayMode() -> some View {
         if #available(watchOSApplicationExtension 8.0, *) {
-            self.navigationBarTitleDisplayMode(.large)
+            self.navigationBarTitleDisplayMode(.automatic)
         } else {
             
         }

@@ -20,7 +20,6 @@
 		9A0D58D727770EEA0093B3D3 /* WidgetConfig.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D427770C670093B3D3 /* WidgetConfig.intentdefinition */; };
 		9A0D58D9277721DA0093B3D3 /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */; };
 		9A0D58DA277736160093B3D3 /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */; };
-		9A0D58DB277736160093B3D3 /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */; };
 		9A14B914273142A400967417 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B913273142A400967417 /* CustomTableView.swift */; };
 		9A14B916273142C100967417 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B915273142C100967417 /* Extensions.swift */; };
 		9A14B918273142E100967417 /* KeyboardConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B917273142E100967417 /* KeyboardConstraint.swift */; };
@@ -94,10 +93,7 @@
 		9A7C1A102776035F0088B54A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A7C1A0F2776035F0088B54A /* Assets.xcassets */; };
 		9A7C1A142776035F0088B54A /* Roadout WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A7C1A072776035E0088B54A /* Roadout WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9A8484C22729A8AD00862685 /* DirectionsAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */; };
-		9A9239AD2764DEB800C40706 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9239AC2764DEB800C40706 /* ActiveView.swift */; };
 		9A9239B22764E26100C40706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A59B75A2764A6B500BC0497 /* Assets.xcassets */; };
-		9A9239B42764E74E00C40706 /* ExpressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9239B32764E74E00C40706 /* ExpressView.swift */; };
-		9A9239B62764EA6500C40706 /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9239B52764EA6500C40706 /* FindView.swift */; };
 		9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F872272B09DF008B58FE /* AddCardViewController.swift */; };
 		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
 		9A96F877272B0A25008B58FE /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F876272B0A25008B58FE /* CardCell.swift */; };
@@ -105,6 +101,16 @@
 		9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA65124272D7DD10057DA24 /* SectionView.swift */; };
 		9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */; };
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
+		9AAB6E5B2778A2AF003F9A6F /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
+		9AAB6E5C2778A2B0003F9A6F /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
+		9AAB6E5D2778A312003F9A6F /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */; };
+		9AAB6E5E2778A319003F9A6F /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
+		9AAB6E5F2778A321003F9A6F /* UserPrefsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91D2731436300967417 /* UserPrefsUtils.swift */; };
+		9AAB6E602778A324003F9A6F /* UserPrefsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91D2731436300967417 /* UserPrefsUtils.swift */; };
+		9AAB6E612778A388003F9A6F /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */; };
+		9AAB6E622778A4EC003F9A6F /* UserPrefsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91D2731436300967417 /* UserPrefsUtils.swift */; };
+		9AAB6E632778A4EE003F9A6F /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
+		9AAB6E642778A5D3003F9A6F /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
 		9AB12373276F115E003C5AE9 /* SharePlayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12372276F115E003C5AE9 /* SharePlayManager.swift */; };
 		9AB12375276F1170003C5AE9 /* GroupReserveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12374276F1170003C5AE9 /* GroupReserveActivity.swift */; };
 		9AB12377276F1188003C5AE9 /* SharePlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12376276F1188003C5AE9 /* SharePlayButton.swift */; };
@@ -137,6 +143,8 @@
 		9AE2AFFD272BD25C0088A3ED /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFFC272BD25C0088A3ED /* EditPasswordViewController.swift */; };
 		9AEF29F0272D704D00FEE390 /* Cards.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEF29EF272D704D00FEE390 /* Cards.xib */; };
 		9AEF29F2272D71A600FEE390 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF29F1272D71A600FEE390 /* ResultView.swift */; };
+		9AF4BA2427787A7200F3C3B4 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
+		9AF4BA252778A0B400F3C3B4 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
 		9AF798EE272C3B530096D4C3 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF798ED272C3B530096D4C3 /* InviteViewController.swift */; };
 		9AF798F3272C4BF70096D4C3 /* PrizesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF798F2272C4BF70096D4C3 /* PrizesViewController.swift */; };
 		9AF798F5272C4C060096D4C3 /* PrizesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF798F4272C4C060096D4C3 /* PrizesCell.swift */; };
@@ -337,9 +345,6 @@
 		9A7C1A0F2776035F0088B54A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A7C1A112776035F0088B54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsAppViewController.swift; sourceTree = "<group>"; };
-		9A9239AC2764DEB800C40706 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
-		9A9239B32764E74E00C40706 /* ExpressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressView.swift; sourceTree = "<group>"; };
-		9A9239B52764EA6500C40706 /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		9A96F872272B09DF008B58FE /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		9A96F874272B09F1008B58FE /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		9A96F876272B0A25008B58FE /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
@@ -347,6 +352,8 @@
 		9AA65124272D7DD10057DA24 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		9AAB6E672778AECD003F9A6F /* Roadout Watch WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Roadout Watch WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		9AAB6E682778AED9003F9A6F /* Roadout Watch WatchKit ExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Roadout Watch WatchKit ExtensionRelease.entitlements"; sourceTree = "<group>"; };
 		9AB12372276F115E003C5AE9 /* SharePlayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayManager.swift; sourceTree = "<group>"; };
 		9AB12374276F1170003C5AE9 /* GroupReserveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupReserveActivity.swift; sourceTree = "<group>"; };
 		9AB12376276F1188003C5AE9 /* SharePlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayButton.swift; sourceTree = "<group>"; };
@@ -585,10 +592,9 @@
 		9A59B7642764A6B500BC0497 /* Roadout Watch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9AAB6E682778AED9003F9A6F /* Roadout Watch WatchKit ExtensionRelease.entitlements */,
+				9AAB6E672778AECD003F9A6F /* Roadout Watch WatchKit Extension.entitlements */,
 				9A59B7652764A6B500BC0497 /* ContentView.swift */,
-				9A9239AC2764DEB800C40706 /* ActiveView.swift */,
-				9A9239B32764E74E00C40706 /* ExpressView.swift */,
-				9A9239B52764EA6500C40706 /* FindView.swift */,
 				9A59B7672764A6B500BC0497 /* RoadoutApp.swift */,
 				9A59B7692764A6B500BC0497 /* ComplicationController.swift */,
 				9A59B76B2764A6B600BC0497 /* Assets.xcassets */,
@@ -1154,11 +1160,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A59B7682764A6B500BC0497 /* RoadoutApp.swift in Sources */,
-				9A9239B42764E74E00C40706 /* ExpressView.swift in Sources */,
+				9AAB6E5D2778A312003F9A6F /* ReservationManager.swift in Sources */,
+				9AF4BA2427787A7200F3C3B4 /* ParkLocation.swift in Sources */,
+				9AAB6E5C2778A2B0003F9A6F /* Reminder.swift in Sources */,
 				9A59B7662764A6B500BC0497 /* ContentView.swift in Sources */,
-				9A9239AD2764DEB800C40706 /* ActiveView.swift in Sources */,
 				9A59B76A2764A6B500BC0497 /* ComplicationController.swift in Sources */,
-				9A9239B62764EA6500C40706 /* FindView.swift in Sources */,
+				9AAB6E602778A324003F9A6F /* UserPrefsUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1166,8 +1173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AF4BA252778A0B400F3C3B4 /* NotificationHelper.swift in Sources */,
+				9AAB6E5F2778A321003F9A6F /* UserPrefsUtils.swift in Sources */,
+				9AAB6E5B2778A2AF003F9A6F /* Reminder.swift in Sources */,
 				9A6E7EB5275652F200E09B75 /* Intents.intentdefinition in Sources */,
 				9ABBF824275654BA005D2FFD /* IntentDataExtension.swift in Sources */,
+				9AAB6E5E2778A319003F9A6F /* ParkLocation.swift in Sources */,
 				9A6E7E9A2756528800E09B75 /* IntentHandler.swift in Sources */,
 				9A0D58DA277736160093B3D3 /* ReservationManager.swift in Sources */,
 				9ABBF822275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */,
@@ -1179,10 +1190,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A6E7EB6275652F300E09B75 /* Intents.intentdefinition in Sources */,
+				9AAB6E622778A4EC003F9A6F /* UserPrefsUtils.swift in Sources */,
 				9ABBF825275654BB005D2FFD /* IntentDataExtension.swift in Sources */,
 				9A6E7EA42756528800E09B75 /* IntentViewController.swift in Sources */,
-				9A0D58DB277736160093B3D3 /* ReservationManager.swift in Sources */,
+				9AAB6E612778A388003F9A6F /* ReservationManager.swift in Sources */,
 				9ABBF823275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */,
+				9AAB6E632778A4EE003F9A6F /* NotificationHelper.swift in Sources */,
+				9AAB6E642778A5D3003F9A6F /* Reminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1371,7 +1385,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout Watch.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1398,7 +1412,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout WatchRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1420,8 +1434,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1451,8 +1466,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit ExtensionRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1483,7 +1499,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1510,7 +1526,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUIRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1537,7 +1553,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick Reserve.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1564,7 +1580,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick ReserveRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1594,7 +1610,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1625,7 +1641,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1774,7 +1790,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1814,7 +1830,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

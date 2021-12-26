@@ -21,18 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         
         guard let _ = (scene as? UIWindowScene) else { return }
-        
-      /*  print(ReservationManager.sharedInstance.getReservationDate())
-        
-        if ReservationManager.sharedInstance.checkActiveReservation() {
-            if ReservationManager.sharedInstance.reservationDate > Date() {
-                NotificationCenter.default.post(name: Notification.Name(showActiveBarID), object: nil)
-                ReservationManager.sharedInstance.saveActiveReservation(true)
-            } else {
-                NotificationCenter.default.post(name: Notification.Name(showUnlockedBarID), object: nil)
-                ReservationManager.sharedInstance.saveActiveReservation(false)
-            }
-        } */
+    
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -14,7 +14,9 @@ var selectedLocation = "Location"
 var selectedLocationColor = UIColor(named: "Main Yellow")
 var selectedLocationCoord: CLLocationCoordinate2D!
 var currentLocationCoord: CLLocationCoordinate2D?
+
 var returnToDelay = false
+var returnToFind = false
 
 class HomeViewController: UIViewController {
 
@@ -80,6 +82,8 @@ class HomeViewController: UIViewController {
     
     let addExpressViewID = "ro.roadout.Roadout.addExpressViewID"
     let removeExpressViewID = "ro.roadout.Roadout.removeExpressViewID"
+    
+    let showFindCardID = "ro.roadout.Roadout.showFindCardID"
     
     @objc func addExpressView() {
         let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
@@ -227,6 +231,8 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(removeNoWifiBar), name: Notification.Name(removeNoWifiBarID), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: Notification.Name(returnToSearchBarID), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showFindCard), name: Notification.Name(showFindCardID), object: nil)
         
         if #available(iOS 15.0, *) {
             NotificationCenter.default.addObserver(self, selector: #selector(showGroupReserveVC), name: Notification.Name("ro.roadout.Roadout.groupSessionStarted"), object: nil)
@@ -743,21 +749,25 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc func showFindCard() {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.layer.shadowOpacity = 0.0
+            }
+            var dif = 15.0
+            DispatchQueue.main.async {
+                if (UIDevice.current.hasNotch) {
+                    dif = 49.0
+                    print("YESS")
+                }
+                self.findView.frame = CGRect(x: 13, y: self.screenSize.height-255-dif, width: self.screenSize.width - 26, height: 255)
+                print(self.view.frame.height)
+                self.view.addSubview(self.findView)
+        }
+    }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 }
 extension HomeViewController: CLLocationManagerDelegate {
 

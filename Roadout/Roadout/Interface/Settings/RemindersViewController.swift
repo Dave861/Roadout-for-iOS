@@ -11,6 +11,8 @@ var reminders = [Reminder]()
 
 class RemindersViewController: UIViewController {
     
+    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
+    
     let refreshReminderID = "ro.roadout.Roadout.refreshReminder"
 
     @IBOutlet weak var addBtn: UIButton!
@@ -67,7 +69,7 @@ class RemindersViewController: UIViewController {
     }
     
     func getReminders() {
-        if let data = UserDefaults.standard.data(forKey: "ro.roadout.remindersList") {
+        if let data = UserDefaultsSuite.data(forKey: "ro.roadout.remindersList") {
             do {
                 let decoder = JSONDecoder()
                 reminders = try decoder.decode([Reminder].self, from: data)
@@ -83,7 +85,7 @@ class RemindersViewController: UIViewController {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(reminders)
-            UserDefaults.standard.set(data, forKey: "ro.roadout.remindersList")
+            UserDefaultsSuite.set(data, forKey: "ro.roadout.remindersList")
         } catch {
             print("Unable to Encode Array of Reminders (\(error))")
         }

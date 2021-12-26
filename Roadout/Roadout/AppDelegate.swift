@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 NotificationCenter.default.post(name: Notification.Name(showUnlockedBarID), object: nil)
                 ReservationManager.sharedInstance.saveActiveReservation(false)
             }
-        }
+        } 
         
         return true
     }

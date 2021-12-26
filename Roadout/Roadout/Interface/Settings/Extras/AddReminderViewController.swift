@@ -10,6 +10,7 @@ import UIKit
 class AddReminderViewController: UIViewController {
 
     let refreshReminderID = "ro.roadout.Roadout.refreshReminder"
+    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
     
     let setTitle = NSAttributedString(string: "Set", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
@@ -63,7 +64,7 @@ class AddReminderViewController: UIViewController {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(reminders)
-            UserDefaults.standard.set(data, forKey: "ro.roadout.remindersList")
+            UserDefaultsSuite.set(data, forKey: "ro.roadout.remindersList")
         } catch {
             print("Unable to Encode Array of Reminders (\(error))")
         }

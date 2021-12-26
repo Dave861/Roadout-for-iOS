@@ -14,6 +14,7 @@ class FindView: UIView {
     var minutesValue = 15
 
     let returnToSearchBarID = "ro.roadout.Roadout.returnToSearchBarID"
+    let addPayCardID = "ro.roadout.Roadout.addPayCardID"
     
     @IBOutlet weak var backBtn: UIButton!
     
@@ -32,7 +33,9 @@ class FindView: UIView {
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        
+        returnToFind = true
+        timerSeconds = minutesValue*60
+        NotificationCenter.default.post(name: Notification.Name(addPayCardID), object: nil)
     }
     
     @IBOutlet weak var changeBtn: UIButton!

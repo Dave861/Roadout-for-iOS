@@ -12,6 +12,7 @@ class NotificationHelper {
     
     static let sharedInstance = NotificationHelper()
     let center = UNUserNotificationCenter.current()
+    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
     
   //MARK: - Authorization -
     
@@ -88,7 +89,7 @@ class NotificationHelper {
         center.add(request) { err in
             if err == nil {
                 print("Done")
-                UserDefaults.standard.set(true, forKey: "ro.roadout.setDoneReservation")
+                self.UserDefaultsSuite.set(true, forKey: "ro.roadout.setDoneReservation")
             }
         }
     }
@@ -105,7 +106,7 @@ class NotificationHelper {
         let request = UNNotificationRequest(identifier: "ro.roadout.reservation1", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {
-                UserDefaults.standard.set(true, forKey: "ro.roadout.set1Reservation")
+                self.UserDefaultsSuite.set(true, forKey: "ro.roadout.set1Reservation")
             }
         }
     }
@@ -122,23 +123,23 @@ class NotificationHelper {
         let request = UNNotificationRequest(identifier: "ro.roadout.reservation5", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {
-                UserDefaults.standard.set(true, forKey: "ro.roadout.set5Reservation")
+                self.UserDefaultsSuite.set(true, forKey: "ro.roadout.set5Reservation")
             }
         }
     }
     
     func cancelReservationNotification() {
-        if UserDefaults.standard.bool(forKey: "ro.roadout.set5Reservation") {
+        if UserDefaultsSuite.bool(forKey: "ro.roadout.set5Reservation") {
             center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.reservation5"])
-            UserDefaults.standard.set(false, forKey: "ro.roadout.set5Reservation")
+            self.UserDefaultsSuite.set(false, forKey: "ro.roadout.set5Reservation")
         }
-        if UserDefaults.standard.bool(forKey: "ro.roadout.set1Reservation") {
+        if UserDefaultsSuite.bool(forKey: "ro.roadout.set1Reservation") {
             center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.reservation1"])
-            UserDefaults.standard.set(false, forKey: "ro.roadout.set1Reservation")
+            self.UserDefaultsSuite.set(false, forKey: "ro.roadout.set1Reservation")
         }
-        if UserDefaults.standard.bool(forKey: "ro.roadout.setDoneReservation") {
+        if UserDefaultsSuite.bool(forKey: "ro.roadout.setDoneReservation") {
             center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.reservationDone"])
-            UserDefaults.standard.set(false, forKey: "ro.roadout.setDoneReservation")
+            self.UserDefaultsSuite.set(false, forKey: "ro.roadout.setDoneReservation")
         }
     }
     

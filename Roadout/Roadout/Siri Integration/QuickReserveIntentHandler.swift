@@ -14,6 +14,10 @@ public class QuickReserveIntentHandler: NSObject, QuickReserveIntentHandling {
         print("Confirmed")
         print("Do the reservation")
         reserveSpot()
+        timerSeconds = 15*60
+        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
+            NotificationHelper.sharedInstance.scheduleReservationNotification()
+        }
         completion(QuickReserveIntentResponse(code: .success, userActivity: nil))
         
     }
