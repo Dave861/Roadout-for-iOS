@@ -87,6 +87,14 @@
 		9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7331FD272877F400ACE30A /* NotificationsViewController.swift */; };
 		9A7332002728780300ACE30A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A7331FF2728780300ACE30A /* Settings.storyboard */; };
 		9A7332032728798300ACE30A /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7332022728798300ACE30A /* NotificationCell.swift */; };
+		9A799322277A0E410088E3FD /* ParkSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799321277A0E410088E3FD /* ParkSection.swift */; };
+		9A799324277A0E460088E3FD /* ParkSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799323277A0E460088E3FD /* ParkSpot.swift */; };
+		9A799325277A0E870088E3FD /* ParkSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799321277A0E410088E3FD /* ParkSection.swift */; };
+		9A799326277A0E870088E3FD /* ParkSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799323277A0E460088E3FD /* ParkSpot.swift */; };
+		9A799327277A0E870088E3FD /* ParkSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799321277A0E410088E3FD /* ParkSection.swift */; };
+		9A799328277A0E870088E3FD /* ParkSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799323277A0E460088E3FD /* ParkSpot.swift */; };
+		9A799329277A0E880088E3FD /* ParkSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799321277A0E410088E3FD /* ParkSection.swift */; };
+		9A79932A277A0E880088E3FD /* ParkSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799323277A0E460088E3FD /* ParkSpot.swift */; };
 		9A7C1A092776035E0088B54A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7C1A082776035E0088B54A /* WidgetKit.framework */; };
 		9A7C1A0B2776035E0088B54A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7C1A0A2776035E0088B54A /* SwiftUI.framework */; };
 		9A7C1A0E2776035E0088B54A /* Roadout_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7C1A0D2776035E0088B54A /* Roadout_Widget.swift */; };
@@ -338,6 +346,8 @@
 		9A7331FD272877F400ACE30A /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		9A7331FF2728780300ACE30A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		9A7332022728798300ACE30A /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		9A799321277A0E410088E3FD /* ParkSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSection.swift; sourceTree = "<group>"; };
+		9A799323277A0E460088E3FD /* ParkSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSpot.swift; sourceTree = "<group>"; };
 		9A7C1A072776035E0088B54A /* Roadout WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Roadout WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7C1A082776035E0088B54A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		9A7C1A0A2776035E0088B54A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -492,7 +502,7 @@
 				9A14B91D2731436300967417 /* UserPrefsUtils.swift */,
 				9A728C502732D849000F9DED /* NotificationHelper.swift */,
 				9A292B862732F22D00E509C9 /* Reminder.swift */,
-				9A0A23282733D2D6007C1B08 /* ParkLocation.swift */,
+				9A799320277A0E2F0088E3FD /* Entities */,
 				9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */,
 			);
 			path = Utilities;
@@ -592,12 +602,12 @@
 		9A59B7642764A6B500BC0497 /* Roadout Watch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				9AAB6E682778AED9003F9A6F /* Roadout Watch WatchKit ExtensionRelease.entitlements */,
-				9AAB6E672778AECD003F9A6F /* Roadout Watch WatchKit Extension.entitlements */,
 				9A59B7652764A6B500BC0497 /* ContentView.swift */,
 				9A59B7672764A6B500BC0497 /* RoadoutApp.swift */,
-				9A59B7692764A6B500BC0497 /* ComplicationController.swift */,
+				9A79932B277A16820088E3FD /* Complications */,
 				9A59B76B2764A6B600BC0497 /* Assets.xcassets */,
+				9AAB6E682778AED9003F9A6F /* Roadout Watch WatchKit ExtensionRelease.entitlements */,
+				9AAB6E672778AECD003F9A6F /* Roadout Watch WatchKit Extension.entitlements */,
 				9A59B7702764A6B600BC0497 /* Info.plist */,
 				9A59B76D2764A6B600BC0497 /* Preview Content */,
 			);
@@ -675,6 +685,24 @@
 				9AF798F4272C4C060096D4C3 /* PrizesCell.swift */,
 			);
 			path = "Setting Cells";
+			sourceTree = "<group>";
+		};
+		9A799320277A0E2F0088E3FD /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				9A0A23282733D2D6007C1B08 /* ParkLocation.swift */,
+				9A799321277A0E410088E3FD /* ParkSection.swift */,
+				9A799323277A0E460088E3FD /* ParkSpot.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		9A79932B277A16820088E3FD /* Complications */ = {
+			isa = PBXGroup;
+			children = (
+				9A59B7692764A6B500BC0497 /* ComplicationController.swift */,
+			);
+			name = Complications;
 			sourceTree = "<group>";
 		};
 		9A7C1A0C2776035E0088B54A /* Roadout Widget */ = {
@@ -1160,12 +1188,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A59B7682764A6B500BC0497 /* RoadoutApp.swift in Sources */,
+				9A799328277A0E870088E3FD /* ParkSpot.swift in Sources */,
 				9AAB6E5D2778A312003F9A6F /* ReservationManager.swift in Sources */,
 				9AF4BA2427787A7200F3C3B4 /* ParkLocation.swift in Sources */,
 				9AAB6E5C2778A2B0003F9A6F /* Reminder.swift in Sources */,
 				9A59B7662764A6B500BC0497 /* ContentView.swift in Sources */,
 				9A59B76A2764A6B500BC0497 /* ComplicationController.swift in Sources */,
 				9AAB6E602778A324003F9A6F /* UserPrefsUtils.swift in Sources */,
+				9A799327277A0E870088E3FD /* ParkSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1173,6 +1203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A799326277A0E870088E3FD /* ParkSpot.swift in Sources */,
 				9AF4BA252778A0B400F3C3B4 /* NotificationHelper.swift in Sources */,
 				9AAB6E5F2778A321003F9A6F /* UserPrefsUtils.swift in Sources */,
 				9AAB6E5B2778A2AF003F9A6F /* Reminder.swift in Sources */,
@@ -1180,6 +1211,7 @@
 				9ABBF824275654BA005D2FFD /* IntentDataExtension.swift in Sources */,
 				9AAB6E5E2778A319003F9A6F /* ParkLocation.swift in Sources */,
 				9A6E7E9A2756528800E09B75 /* IntentHandler.swift in Sources */,
+				9A799325277A0E870088E3FD /* ParkSection.swift in Sources */,
 				9A0D58DA277736160093B3D3 /* ReservationManager.swift in Sources */,
 				9ABBF822275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */,
 			);
@@ -1207,6 +1239,8 @@
 				9A0D58D627770CC80093B3D3 /* ParkLocation.swift in Sources */,
 				9A0D58D727770EEA0093B3D3 /* WidgetConfig.intentdefinition in Sources */,
 				9A7C1A0E2776035E0088B54A /* Roadout_Widget.swift in Sources */,
+				9A79932A277A0E880088E3FD /* ParkSpot.swift in Sources */,
+				9A799329277A0E880088E3FD /* ParkSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1236,6 +1270,7 @@
 				9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */,
 				9A49BFAD272FF42100234A9F /* CancelledView.swift in Sources */,
 				9A310785272A708300B1F84A /* ReminderCell.swift in Sources */,
+				9A799322277A0E410088E3FD /* ParkSection.swift in Sources */,
 				9A49BFB1272FF8CB00234A9F /* Reachability.swift in Sources */,
 				9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */,
 				9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */,
@@ -1270,6 +1305,7 @@
 				9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */,
 				9AB12379276F11C3003C5AE9 /* GroupReserveViewController.swift in Sources */,
 				9A46BBA6272EF83D002280DD /* PaidView.swift in Sources */,
+				9A799324277A0E460088E3FD /* ParkSpot.swift in Sources */,
 				9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */,
 				9A49BFA6272FDA2000234A9F /* ReservationView.swift in Sources */,
 				9A8484C22729A8AD00862685 /* DirectionsAppViewController.swift in Sources */,
@@ -1385,7 +1421,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout Watch.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1412,7 +1448,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout WatchRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1436,7 +1472,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1468,7 +1504,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit ExtensionRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1610,7 +1646,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1641,7 +1677,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1790,7 +1826,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1830,7 +1866,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -61,7 +61,7 @@ struct GroupSpotsView: View {
 
     @ObservedObject var session = SharePlayManager.sharedInstance.groupSession!
     
-    let spots = [
+    @State var spots = [
         Spot(number: 11, section: "A"),
         Spot(number: 12, section: "A"),
         Spot(number: 13, section: "A"),
@@ -75,9 +75,12 @@ struct GroupSpotsView: View {
     var body: some View {
         VStack {
             VStack {
-                ForEach((0..<session.activeParticipants.count), id: \.self) {
-                    SpotRow(spot: spots[$0])
+                ForEach((0..<session.activeParticipants.count), id: \.self) { i in
+                    SpotRow(spot: spots[i])
                         .padding(.bottom, 4.0)
+                        .onTapGesture {
+                    
+                        }
                 }
             }
             Spacer()

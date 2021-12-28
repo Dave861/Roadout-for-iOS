@@ -18,9 +18,7 @@ class SharePlayManager {
     var groupMessenger: GroupSessionMessenger?
     
     var selectedLocation = parkLocations.first!
-    
-    var peopleNumber: Int!
-    
+        
     func activateSession() {
         Task.init(priority: .high) {
             do {
@@ -59,8 +57,6 @@ class SharePlayManager {
     }
     
     func sendMessage(_ parkLocation: ParkLocation) {
-        peopleNumber = groupSession?.activeParticipants.count
-        print(groupSession?.activeParticipants.count)
         if let messenger = SharePlayManager.sharedInstance.groupMessenger {
             let msg = SharePlayMessage(location: parkLocation)
             self.handleMessage(msg)

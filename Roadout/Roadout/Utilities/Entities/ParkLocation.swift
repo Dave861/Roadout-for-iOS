@@ -8,10 +8,14 @@
 import Foundation
 
 struct ParkLocation: Hashable, Codable {
-    let name: String
-    let latitude: Double
-    let longitude: Double
-    let freeSpots: Int
+    var name: String
+    //var keywords: [String]
+    //var rID: String
+    var latitude: Double
+    var longitude: Double
+    //var totalSpots: Int
+    var freeSpots: Int
+    //var sections: [ParkSection]
 }
 
 let parkLocations = [ParkLocation(name: "Buna Ziua", latitude: 46.752207, longitude: 23.603324, freeSpots: 11),

@@ -97,7 +97,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.distanceLbl.text = "- km"
         }
-        cell.numberLbl.text = "\(Int.random(in: 5..<30))"
+        cell.numberLbl.text = "\(results[indexPath.row].freeSpots)"
         let color = UIColor(named: colors.randomElement() ?? "Main Yellow")
         cell.numberLbl.textColor = color
         cell.spotsLbl.textColor = color
