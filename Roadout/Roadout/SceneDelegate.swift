@@ -15,10 +15,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let showUnlockedBarID = "ro.roadout.Roadout.showUnlockedBarID"
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let sb = UIStoryboard(name: "Home", bundle: nil)
+      /*  let sb = UIStoryboard(name: "Home", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
         window?.rootViewController = vc
-        window?.makeKeyAndVisible()
+        window?.makeKeyAndVisible() */
         
         guard let _ = (scene as? UIWindowScene) else { return }
     

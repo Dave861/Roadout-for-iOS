@@ -10,7 +10,8 @@ import UIKit
 class SignUpViewController: UIViewController {
 
     let signUpTitle = NSAttributedString(string: "Sign Up", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-
+    let manageServerSideSignUpID = "ro.roadout.Roadout.manageServerSideSignUpID"
+    
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurButton: UIButton!
     
@@ -43,9 +44,14 @@ class SignUpViewController: UIViewController {
             alert.addAction(okAction)
             alert.view.tintColor = UIColor(named: "Icons")
             self.present(alert, animated: true, completion: nil)
+        } else if !isValidReenter() {
+            let alert = UIAlertController(title: "Error", message: "Please enter a name", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: "Icons")
+            self.present(alert, animated: true, completion: nil)
         } else {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
-            self.present(vc, animated: false, completion: nil)
+            AuthManager.sharedInstance.sendSignUpData(nameField.text!, emailField.text!, passwordField.text!)
         }
     }
     
@@ -66,6 +72,8 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addObs()
+        
         cardView.layer.cornerRadius = 16.0
         signUpBtn.layer.cornerRadius = 13.0
         signUpBtn.setAttributedTitle(signUpTitle, for: .normal)
@@ -91,6 +99,13 @@ class SignUpViewController: UIViewController {
             string: "Confirm Password",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
+        
+    }
+    
+    
+    func addObs() {
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(manageServerSide), name: Notification.Name(manageServerSideSignUpID), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -116,6 +131,50 @@ class SignUpViewController: UIViewController {
     
     func isValidReenter() -> Bool {
         return passwordField.text == confirmPasswordField.text
+    }
+    
+    func isValidName() -> Bool {
+        return nameField.text != ""
+    }
+    
+    @objc func manageServerSide() {
+        switch AuthManager.sharedInstance.callResult {
+            case "Success":
+                let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+                self.present(vc, animated: false, completion: nil)
+            case "error":
+                let alert = UIAlertController(title: "Error", message: "User might already exist, please use another email", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Icons")
+                self.present(alert, animated: true, completion: nil)
+            case "network error":
+                let alert = UIAlertController(title: "Error", message: "Please check you network connection", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Icons")
+                self.present(alert, animated: true, completion: nil)
+            case "database error":
+                let alert = UIAlertController(title: "Error", message: "There was an internal problem, please wait and try again a little later", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Icons")
+                self.present(alert, animated: true, completion: nil)
+            case "unknown error":
+                let alert = UIAlertController(title: "Error", message: "There was an unknown error, please screenshot this and send it to roadout.ro@gmail.com; Code: unknown", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Icons")
+                self.present(alert, animated: true, completion: nil)
+            case "error with json":
+                let alert = UIAlertController(title: "Error", message: "There was an unknown error, please screenshot this and send it to roadout.ro@gmail.com; Code: error with json", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Icons")
+                self.present(alert, animated: true, completion: nil)
+            default:
+                fatalError()
+        }
     }
 
 }

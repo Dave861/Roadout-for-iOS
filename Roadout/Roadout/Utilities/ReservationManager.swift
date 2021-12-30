@@ -42,7 +42,9 @@ class ReservationManager {
         UserDefaultsSuite.set(value, forKey: "ro.roadout.Roadout.reservationExists")
         if value == true {
             let timer = Timer(fireAt: getReservationDate(), interval: 0, target: self, selector: #selector(finishReservation), userInfo: nil, repeats: false)
-            RunLoop.main.add(timer, forMode: .common)
+            DispatchQueue.main.async {
+                RunLoop.main.add(timer, forMode: .common)
+            }
         }
     }
     

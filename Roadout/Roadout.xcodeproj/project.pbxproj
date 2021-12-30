@@ -106,6 +106,8 @@
 		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
 		9A96F877272B0A25008B58FE /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F876272B0A25008B58FE /* CardCell.swift */; };
 		9AA0AEFE272D195400DA04A2 /* LegalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */; };
+		9AA0EFCE277B3DDD00B0F52A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */; };
+		9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9AA0EFD1277B5D5800B0F52A /* Alamofire */; };
 		9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA65124272D7DD10057DA24 /* SectionView.swift */; };
 		9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */; };
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
@@ -359,6 +361,8 @@
 		9A96F874272B09F1008B58FE /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		9A96F876272B0A25008B58FE /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
+		9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		9AA0EFCF277B4C7C00B0F52A /* RoadoutRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RoadoutRelease.entitlements; sourceTree = "<group>"; };
 		9AA65124272D7DD10057DA24 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -438,6 +442,7 @@
 				9A150833272BFC3E008C083B /* GoogleMaps in Frameworks */,
 				9AC48D1C273FBDE200DBCEF8 /* iCarousel in Frameworks */,
 				9A150837272BFC3E008C083B /* GoogleMapsCore in Frameworks */,
+				9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */,
 				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
 				9A150835272BFC3E008C083B /* GoogleMapsBase in Frameworks */,
 			);
@@ -502,6 +507,7 @@
 				9A14B91D2731436300967417 /* UserPrefsUtils.swift */,
 				9A728C502732D849000F9DED /* NotificationHelper.swift */,
 				9A292B862732F22D00E509C9 /* Reminder.swift */,
+				9AA0EFCC277B3DCF00B0F52A /* Authentification */,
 				9A799320277A0E2F0088E3FD /* Entities */,
 				9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */,
 			);
@@ -716,6 +722,14 @@
 			path = "Roadout Widget";
 			sourceTree = "<group>";
 		};
+		9AA0EFCC277B3DCF00B0F52A /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */,
+			);
+			path = Authentification;
+			sourceTree = "<group>";
+		};
 		9AA9C4132726C5A500ECCCE1 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -774,6 +788,7 @@
 		9AC926E9272697F00054E453 /* Roadout */ = {
 			isa = PBXGroup;
 			children = (
+				9AA0EFCF277B4C7C00B0F52A /* RoadoutRelease.entitlements */,
 				9A14B91F273147D400967417 /* Roadout.entitlements */,
 				9A14B912273141E200967417 /* Utilities */,
 				9AC926EA272697F00054E453 /* AppDelegate.swift */,
@@ -991,6 +1006,7 @@
 				9A150836272BFC3E008C083B /* GoogleMapsCore */,
 				9A6E1C362731324B002E29F9 /* BarChartKit-static */,
 				9AC48D1B273FBDE200DBCEF8 /* iCarousel */,
+				9AA0EFD1277B5D5800B0F52A /* Alamofire */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1083,6 +1099,7 @@
 				9A150831272BFC3E008C083B /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 				9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */,
 				9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */,
+				9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -1256,6 +1273,7 @@
 				9AB12373276F115E003C5AE9 /* SharePlayManager.swift in Sources */,
 				9A96F877272B0A25008B58FE /* CardCell.swift in Sources */,
 				9A6727BE2737C5CE0078479D /* ExpressPickView.swift in Sources */,
+				9AA0EFCE277B3DDD00B0F52A /* AuthManager.swift in Sources */,
 				9A49BFB4272FF8E600234A9F /* ConnectivityManager.swift in Sources */,
 				9A49BFA8272FED5900234A9F /* DelayView.swift in Sources */,
 				9A0A23292733D2D6007C1B08 /* ParkLocation.swift in Sources */,
@@ -1535,7 +1553,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1562,7 +1580,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUIRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1589,7 +1607,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick Reserve.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1616,7 +1634,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick ReserveRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1864,7 +1882,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = T5769DN25J;
@@ -2121,6 +2139,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nicklockwood/iCarousel";
@@ -2151,6 +2177,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */;
 			productName = "BarChartKit-static";
+		};
+		9AA0EFD1277B5D5800B0F52A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		9AC48D1B273FBDE200DBCEF8 /* iCarousel */ = {
 			isa = XCSwiftPackageProductDependency;
