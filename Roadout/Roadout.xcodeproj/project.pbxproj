@@ -101,6 +101,7 @@
 		9A7C1A102776035F0088B54A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A7C1A0F2776035F0088B54A /* Assets.xcassets */; };
 		9A7C1A142776035F0088B54A /* Roadout WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A7C1A072776035E0088B54A /* Roadout WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9A8484C22729A8AD00862685 /* DirectionsAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */; };
+		9A9208CF277EE14500E099C7 /* ComplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9208CE277EE14500E099C7 /* ComplicationManager.swift */; };
 		9A9239B22764E26100C40706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A59B75A2764A6B500BC0497 /* Assets.xcassets */; };
 		9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F872272B09DF008B58FE /* AddCardViewController.swift */; };
 		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
@@ -357,6 +358,7 @@
 		9A7C1A0F2776035F0088B54A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A7C1A112776035F0088B54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsAppViewController.swift; sourceTree = "<group>"; };
+		9A9208CE277EE14500E099C7 /* ComplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationManager.swift; sourceTree = "<group>"; };
 		9A96F872272B09DF008B58FE /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		9A96F874272B09F1008B58FE /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		9A96F876272B0A25008B58FE /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 			isa = PBXGroup;
 			children = (
 				9A59B7692764A6B500BC0497 /* ComplicationController.swift */,
+				9A9208CE277EE14500E099C7 /* ComplicationManager.swift */,
 			);
 			name = Complications;
 			sourceTree = "<group>";
@@ -1209,6 +1212,7 @@
 				9AAB6E5D2778A312003F9A6F /* ReservationManager.swift in Sources */,
 				9AF4BA2427787A7200F3C3B4 /* ParkLocation.swift in Sources */,
 				9AAB6E5C2778A2B0003F9A6F /* Reminder.swift in Sources */,
+				9A9208CF277EE14500E099C7 /* ComplicationManager.swift in Sources */,
 				9A59B7662764A6B500BC0497 /* ContentView.swift in Sources */,
 				9A59B76A2764A6B500BC0497 /* ComplicationController.swift in Sources */,
 				9AAB6E602778A324003F9A6F /* UserPrefsUtils.swift in Sources */,
