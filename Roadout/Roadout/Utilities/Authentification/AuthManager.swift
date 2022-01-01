@@ -12,8 +12,6 @@ import Alamofire
 class AuthManager {
     
     var callResult = "network error"
-    let manageServerSideSignUpID = "ro.roadout.Roadout.manageServerSideSignUpID"
-    let manageServerSideSignInID = "ro.roadout.Roadout.manageServerSideSignInID"
     
     static let sharedInstance = AuthManager()
     
@@ -25,7 +23,7 @@ class AuthManager {
             print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
-                NotificationCenter.default.post(name: Notification.Name(self.manageServerSideSignUpID), object: nil)
+                NotificationCenter.default.post(name: .manageServerSideSignUpID, object: nil)
                 return
             }
             let data = response.value!.data(using: .utf8)!
@@ -34,16 +32,16 @@ class AuthManager {
                     print(jsonArray["status"]!)
                     print(jsonArray["message"]!)
                     self.callResult = jsonArray["status"] as! String
-                    NotificationCenter.default.post(name: Notification.Name(self.manageServerSideSignUpID), object: nil)
+                    NotificationCenter.default.post(name: .manageServerSideSignUpID, object: nil)
                 } else {
                     print("unknown error")
                     self.callResult = "unknown error"
-                    NotificationCenter.default.post(name: Notification.Name(self.manageServerSideSignUpID), object: nil)
+                    NotificationCenter.default.post(name: .manageServerSideSignUpID, object: nil)
                 }
             } catch let error as NSError {
                 print(error)
                 self.callResult = "error with json"
-                NotificationCenter.default.post(name: Notification.Name(self.manageServerSideSignUpID), object: nil)
+                NotificationCenter.default.post(name: .manageServerSideSignUpID, object: nil)
             }
         }
     }
@@ -56,7 +54,7 @@ class AuthManager {
             print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
-                NotificationCenter.default.post(name: Notification.Name(self.manageServerSideSignInID), object: nil)
+                NotificationCenter.default.post(name: .manageServerSideSignInID, object: nil)
                 return
             }
             let data = response.value!.data(using: .utf8)!
@@ -65,16 +63,16 @@ class AuthManager {
                     print(jsonArray["status"]!)
                     print(jsonArray["message"]!)
                     self.callResult = jsonArray["status"] as! String
-                    NotificationCenter.default.post(name: Notification.Name(self.manageServerSideSignInID), object: nil)
+                    NotificationCenter.default.post(name: .manageServerSideSignInID, object: nil)
                 } else {
                     print("unknown error")
                     self.callResult = "unknown error"
-                    NotificationCenter.default.post(name: Notification.Name(self.manageServerSideSignInID), object: nil)
+                    NotificationCenter.default.post(name: .manageServerSideSignInID, object: nil)
                 }
             } catch let error as NSError {
                 print(error)
                 self.callResult = "error with json"
-                NotificationCenter.default.post(name: Notification.Name(self.manageServerSideSignInID), object: nil)
+                NotificationCenter.default.post(name: .manageServerSideSignInID, object: nil)
             }
         }
         

@@ -9,22 +9,17 @@ import UIKit
 
 class PayView: UIView {
     
-    let removePayCardID = "ro.roadout.Roadout.removePayCardID"
-    let showPaidBarID = "ro.roadout.Roadout.showPaidBarID"
-    let removePayDelayCardID = "ro.roadout.Roadout.removePayDelayCardID"
-    let showFindCardID = "ro.roadout.Roadout.showFindCardID"
-    
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         if returnToDelay {
             returnToDelay = false
-            NotificationCenter.default.post(name: Notification.Name(removePayDelayCardID), object: nil)
+            NotificationCenter.default.post(name: .removePayDelayCardID, object: nil)
         } else if returnToFind {
             returnToFind = false
-            NotificationCenter.default.post(name: Notification.Name(showFindCardID), object: nil)
+            NotificationCenter.default.post(name: .showFindCardID, object: nil)
         } else {
-            NotificationCenter.default.post(name: Notification.Name(removePayCardID), object: nil)
+            NotificationCenter.default.post(name: .removePayCardID, object: nil)
         }
     }
     @IBOutlet weak var backBtn: UIButton!
@@ -56,7 +51,7 @@ class PayView: UIView {
         if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
             NotificationHelper.sharedInstance.scheduleReservationNotification()
         }
-        NotificationCenter.default.post(name: Notification.Name(showPaidBarID), object: nil)
+        NotificationCenter.default.post(name: .showPaidBarID, object: nil)
     }
     
     @IBAction func payMainCard(_ sender: Any) {
@@ -79,7 +74,7 @@ class PayView: UIView {
         if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
             NotificationHelper.sharedInstance.scheduleReservationNotification()
         }
-        NotificationCenter.default.post(name: Notification.Name(showPaidBarID), object: nil)
+        NotificationCenter.default.post(name: .showPaidBarID, object: nil)
     }
     
     @IBAction func selectDifferentPayment(_ sender: Any) {

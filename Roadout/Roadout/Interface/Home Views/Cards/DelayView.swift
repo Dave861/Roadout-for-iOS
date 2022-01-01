@@ -11,13 +11,10 @@ var delaySeconds = 300
 
 class DelayView: UIView {
 
-    let removeDelayCardID = "ro.roadout.Roadout.removeDelayCardID"
-    let addPayDelayCardID = "ro.roadout.Roadout.addPayDelayCardID"
-
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(removeDelayCardID), object: nil)
+        NotificationCenter.default.post(name: .removeDelayCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
     
@@ -26,7 +23,7 @@ class DelayView: UIView {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         returnToDelay = true
-        NotificationCenter.default.post(name: Notification.Name(addPayDelayCardID), object: nil)
+        NotificationCenter.default.post(name: .addPayDelayCardID, object: nil)
         
     }
     

@@ -10,9 +10,6 @@ import CoreLocation
 
 class ResultView: UIView {
     
-    let removeResultCardID = "ro.roadout.Roadout.removeResultCardID"
-    let addSectionCardID = "ro.roadout.Roadout.addSectionCardID"
-
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
     
@@ -20,12 +17,12 @@ class ResultView: UIView {
     @IBAction func pickTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(addSectionCardID), object: nil)
+        NotificationCenter.default.post(name: .addSectionCardID, object: nil)
     }
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(removeResultCardID), object: nil)
+        NotificationCenter.default.post(name: .removeResultCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
     

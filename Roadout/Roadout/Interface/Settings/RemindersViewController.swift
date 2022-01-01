@@ -12,8 +12,6 @@ var reminders = [Reminder]()
 class RemindersViewController: UIViewController {
     
     let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
-    
-    let refreshReminderID = "ro.roadout.Roadout.refreshReminder"
 
     @IBOutlet weak var addBtn: UIButton!
     
@@ -39,7 +37,7 @@ class RemindersViewController: UIViewController {
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(refreshReminderID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: .refreshReminderID, object: nil)
     }
     
     @objc func refreshTableView() {

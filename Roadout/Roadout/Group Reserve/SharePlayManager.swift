@@ -50,10 +50,10 @@ class SharePlayManager {
                 print(message.location.name)
             }
         }
-        NotificationCenter.default.post(name: Notification.Name("ro.roadout.Roadout.groupSessionStarted"), object: nil)
+        NotificationCenter.default.post(name: .groupSessionStartedID, object: nil)
         groupSession?.join()
         sendMessage(selectedLocation)
-        NotificationCenter.default.post(name: Notification.Name("ro.roadout.Roadout.groupMessageReceived"), object: nil)
+        NotificationCenter.default.post(name: .groupMessageReceivedID, object: nil)
     }
     
     func sendMessage(_ parkLocation: ParkLocation) {
@@ -76,7 +76,7 @@ class SharePlayManager {
         if groupSession != nil {
             groupSession?.leave()
             groupSession = nil
-            NotificationCenter.default.post(name: Notification.Name("ro.roadout.Roadout.groupMessageReceived"), object: nil)
+            NotificationCenter.default.post(name: .groupMessageReceivedID, object: nil)
         }
     }
     
@@ -86,13 +86,13 @@ class SharePlayManager {
         if groupSession != nil {
             groupSession?.end()
             groupSession = nil
-            NotificationCenter.default.post(name: Notification.Name("ro.roadout.Roadout.groupMessageReceived"), object: nil)
+            NotificationCenter.default.post(name: .groupMessageReceivedID, object: nil)
         }
     }
     
     func handleMessage(_ message: SharePlayMessage) {
         selectedLocation = message.location
-        NotificationCenter.default.post(name: Notification.Name("ro.roadout.Roadout.groupMessageReceived"), object: nil)
+        NotificationCenter.default.post(name: .groupMessageReceivedID, object: nil)
         print(message.location.name)
     }
     

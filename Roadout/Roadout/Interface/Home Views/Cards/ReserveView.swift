@@ -8,14 +8,11 @@
 import UIKit
 
 class ReserveView: UIView {
-    
-    let removeReserveCardID = "ro.roadout.Roadout.removeReserveCardID"
-    let addPayCardID = "ro.roadout.Roadout.addPayCardID"
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(removeReserveCardID), object: nil)
+        NotificationCenter.default.post(name: .removeReserveCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
     
@@ -24,7 +21,7 @@ class ReserveView: UIView {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         timerSeconds = Int(minuteSlider.value*60)
-        NotificationCenter.default.post(name: Notification.Name(addPayCardID), object: nil)
+        NotificationCenter.default.post(name: .addPayCardID, object: nil)
         
     }
     

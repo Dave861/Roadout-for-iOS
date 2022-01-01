@@ -8,17 +8,11 @@
 import UIKit
 
 class ReservationView: UIView {
-
-    let removeReservationCardID = "ro.roadout.Roadout.removeReservationCardID"
-    let addDelayCardID = "ro.roadout.Roadout.addDelayCardID"
-    
-    let showUnlockedBarID = "ro.roadout.Roadout.showUnlockedBarID"
-    let showCancelledBarID = "ro.roadout.Roadout.showCancelledBarID"
     
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(removeReservationCardID), object: nil)
+        NotificationCenter.default.post(name: .removeReservationCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
     
@@ -39,7 +33,7 @@ class ReservationView: UIView {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             NotificationHelper.sharedInstance.cancelReservationNotification()
-            NotificationCenter.default.post(name: Notification.Name(self.showUnlockedBarID), object: nil)
+            NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
         }
         alert.addAction(proceedAction)
         alert.addAction(cancelAction)
@@ -63,7 +57,7 @@ class ReservationView: UIView {
     @IBAction func delayTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(addDelayCardID), object: nil)
+        NotificationCenter.default.post(name: .addDelayCardID, object: nil)
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
@@ -76,7 +70,7 @@ class ReservationView: UIView {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             NotificationHelper.sharedInstance.cancelReservationNotification()
-            NotificationCenter.default.post(name: Notification.Name(self.showCancelledBarID), object: nil)
+            NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
         }
         alert.addAction(proceedAction)
         alert.addAction(cancelAction)

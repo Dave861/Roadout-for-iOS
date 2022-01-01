@@ -12,16 +12,13 @@ import Intents
 class FindView: UIView {
     
     var minutesValue = 15
-
-    let returnToSearchBarID = "ro.roadout.Roadout.returnToSearchBarID"
-    let addPayCardID = "ro.roadout.Roadout.addPayCardID"
     
     @IBOutlet weak var backBtn: UIButton!
     
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(returnToSearchBarID), object: nil)
+        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
     @IBOutlet weak var locationLbl: UILabel!
@@ -35,7 +32,7 @@ class FindView: UIView {
         generator.impactOccurred()
         returnToFind = true
         timerSeconds = minutesValue*60
-        NotificationCenter.default.post(name: Notification.Name(addPayCardID), object: nil)
+        NotificationCenter.default.post(name: .addPayCardID, object: nil)
     }
     
     @IBOutlet weak var changeBtn: UIButton!

@@ -15,7 +15,6 @@ class PaymentViewController: UIViewController {
     var indexNr = 0
     
     let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
-    let refreshCardsID = "ro.roadout.Roadout.refreshCards"
     
     @IBOutlet weak var backButton: UIButton!
     @IBAction func backTapped(_ sender: Any) {
@@ -38,7 +37,7 @@ class PaymentViewController: UIViewController {
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: Notification.Name(refreshCardsID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView), name: .refreshCardsID, object: nil)
     }
     
     @objc func refreshTableView() {

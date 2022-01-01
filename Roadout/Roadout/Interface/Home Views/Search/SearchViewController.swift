@@ -13,8 +13,6 @@ class SearchViewController: UIViewController {
     var results = parkLocations
     let colors = ["Main Yellow", "Redish", "Dark Yellow", "Brownish", "Icons", "Greyish", "Second Orange", "Dark Orange"]
     
-    let addResultCardID = "ro.roadout.Roadout.addResultCardID"
-
     @IBOutlet weak var card: UIView!
     
     @IBOutlet weak var searchField: UITextField!
@@ -111,7 +109,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         selectedLocationCoord = CLLocationCoordinate2D(latitude: results[indexPath.row].latitude, longitude: results[indexPath.row].longitude)
         let cell = tableView.cellForRow(at: indexPath) as! SearchCell
         selectedLocationColor = cell.numberLbl.textColor
-        NotificationCenter.default.post(name: Notification.Name(addResultCardID), object: nil)
+        NotificationCenter.default.post(name: .addResultCardID, object: nil)
         self.view.endEditing(true)
         self.dismiss(animated: false, completion: nil)
     }

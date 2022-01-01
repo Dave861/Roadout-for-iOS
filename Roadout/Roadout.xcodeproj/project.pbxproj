@@ -64,6 +64,11 @@
 		9A5A01832737CDD000BD7E70 /* ExpressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A01822737CDD000BD7E70 /* ExpressView.swift */; };
 		9A5CC58B272C133A00A735A3 /* darkStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A5CC589272C133900A735A3 /* darkStyle.json */; };
 		9A5CC58C272C133A00A735A3 /* lightStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A5CC58A272C133A00A735A3 /* lightStyle.json */; };
+		9A65C5F227804B140060ABCA /* NotificationNameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */; };
+		9A65C5F327804E120060ABCA /* NotificationNameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */; };
+		9A65C5F427804E130060ABCA /* NotificationNameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */; };
+		9A65C5F527804E140060ABCA /* NotificationNameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */; };
+		9A65C5F627804E150060ABCA /* NotificationNameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */; };
 		9A6727BC2737C5AB0078479D /* Express.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6727BB2737C5AB0078479D /* Express.xib */; };
 		9A6727BE2737C5CE0078479D /* ExpressPickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6727BD2737C5CE0078479D /* ExpressPickView.swift */; };
 		9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A4A2E27293171008F69B3 /* SearchViewController.swift */; };
@@ -327,6 +332,7 @@
 		9A5A01822737CDD000BD7E70 /* ExpressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressView.swift; sourceTree = "<group>"; };
 		9A5CC589272C133900A735A3 /* darkStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = darkStyle.json; sourceTree = "<group>"; };
 		9A5CC58A272C133A00A735A3 /* lightStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lightStyle.json; sourceTree = "<group>"; };
+		9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameCenter.swift; sourceTree = "<group>"; };
 		9A6727BB2737C5AB0078479D /* Express.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Express.xib; sourceTree = "<group>"; };
 		9A6727BD2737C5CE0078479D /* ExpressPickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressPickView.swift; sourceTree = "<group>"; };
 		9A6A4A2E27293171008F69B3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -512,6 +518,7 @@
 				9AA0EFCC277B3DCF00B0F52A /* Authentification */,
 				9A799320277A0E2F0088E3FD /* Entities */,
 				9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */,
+				9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1211,6 +1218,7 @@
 				9A799328277A0E870088E3FD /* ParkSpot.swift in Sources */,
 				9AAB6E5D2778A312003F9A6F /* ReservationManager.swift in Sources */,
 				9AF4BA2427787A7200F3C3B4 /* ParkLocation.swift in Sources */,
+				9A65C5F527804E140060ABCA /* NotificationNameCenter.swift in Sources */,
 				9AAB6E5C2778A2B0003F9A6F /* Reminder.swift in Sources */,
 				9A9208CF277EE14500E099C7 /* ComplicationManager.swift in Sources */,
 				9A59B7662764A6B500BC0497 /* ContentView.swift in Sources */,
@@ -1224,6 +1232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A65C5F327804E120060ABCA /* NotificationNameCenter.swift in Sources */,
 				9A799326277A0E870088E3FD /* ParkSpot.swift in Sources */,
 				9AF4BA252778A0B400F3C3B4 /* NotificationHelper.swift in Sources */,
 				9AAB6E5F2778A321003F9A6F /* UserPrefsUtils.swift in Sources */,
@@ -1248,6 +1257,7 @@
 				9A6E7EA42756528800E09B75 /* IntentViewController.swift in Sources */,
 				9AAB6E612778A388003F9A6F /* ReservationManager.swift in Sources */,
 				9ABBF823275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */,
+				9A65C5F427804E130060ABCA /* NotificationNameCenter.swift in Sources */,
 				9AAB6E632778A4EE003F9A6F /* NotificationHelper.swift in Sources */,
 				9AAB6E642778A5D3003F9A6F /* Reminder.swift in Sources */,
 			);
@@ -1257,6 +1267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A65C5F627804E150060ABCA /* NotificationNameCenter.swift in Sources */,
 				9A0D58D627770CC80093B3D3 /* ParkLocation.swift in Sources */,
 				9A0D58D727770EEA0093B3D3 /* WidgetConfig.intentdefinition in Sources */,
 				9A7C1A0E2776035E0088B54A /* Roadout_Widget.swift in Sources */,
@@ -1305,6 +1316,7 @@
 				9A6E7EB8275653A200E09B75 /* QuickReserveIntentHandler.swift in Sources */,
 				9A6E7E8E275645A300E09B75 /* IntentDataExtension.swift in Sources */,
 				9AF798F3272C4BF70096D4C3 /* PrizesViewController.swift in Sources */,
+				9A65C5F227804B140060ABCA /* NotificationNameCenter.swift in Sources */,
 				9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */,
 				9A14B914273142A400967417 /* CustomTableView.swift in Sources */,
 				9AB12375276F1170003C5AE9 /* GroupReserveActivity.swift in Sources */,

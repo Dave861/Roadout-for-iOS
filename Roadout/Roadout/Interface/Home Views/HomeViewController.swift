@@ -25,65 +25,23 @@ class HomeViewController: UIViewController {
     let screenSize: CGRect = UIScreen.main.bounds
     
     //Card Views
-    let addResultCardID = "ro.roadout.Roadout.addResultCardID"
-    let removeResultCardID = "ro.roadout.Roadout.removeResultCardID"
     let resultView = ResultView.instanceFromNib()
-    
-    let addSectionCardID = "ro.roadout.Roadout.addSectionCardID"
-    let removeSectionCardID = "ro.roadout.Roadout.removeSectionCardID"
     let sectionView = SectionView.instanceFromNib()
-    
-    let addSpotCardID = "ro.roadout.Roadout.addSpotCardID"
-    let removeSpotCardID = "ro.roadout.Roadout.removeSpotCardID"
     let spotView = SpotView.instanceFromNib()
-    
-    let addReserveCardID = "ro.roadout.Roadout.addReserveCardID"
-    let removeReserveCardID = "ro.roadout.Roadout.removeReserveCardID"
     let reserveView = ReserveView.instanceFromNib()
-    
-    let addPayCardID = "ro.roadout.Roadout.addPayCardID"
-    let removePayCardID = "ro.roadout.Roadout.removePayCardID"
     let payView = PayView.instanceFromNib()
-    
-    let addReservationCardID = "ro.roadout.Roadout.addReservationCardID"
-    let removeReservationCardID = "ro.roadout.Roadout.removeReservationCardID"
     let reservationView = ReservationView.instanceFromNib()
-    
-    let addDelayCardID = "ro.roadout.Roadout.addDelayCardID"
-    let removeDelayCardID = "ro.roadout.Roadout.removeDelayCardID"
     let delayView = DelayView.instanceFromNib()
     
-    let addPayDelayCardID = "ro.roadout.Roadout.addPayDelayCardID"
-    let removePayDelayCardID = "ro.roadout.Roadout.removePayDelayCardID"
-    
-    
-    
-    let showPaidBarID = "ro.roadout.Roadout.showPaidBarID"
     let paidBar = PaidView.instanceFromNib()
-    
-    let showActiveBarID = "ro.roadout.Roadout.showActiveBarID"
     let activeBar = ActiveView.instanceFromNib()
-    
-    let showUnlockedBarID = "ro.roadout.Roadout.showUnlockedBarID"
     let unlockedBar = UnlockedView.instanceFromNib()
-    
-    let showCancelledBarID = "ro.roadout.Roadout.showCancelledBarID"
     let cancelledBar = CancelledView.instanceFromNib()
-    
-    let showNoWifiBarID = "ro.roadout.Roadout.showNoWifiBarID"
-    let removeNoWifiBarID = "ro.roadout.Roadout.removeNoWifiBarID"
     let noWifiBar = NoWifiView.instanceFromNib()
-    
-    let returnToSearchBarID = "ro.roadout.Roadout.returnToSearchBarID"
     
     //MARK: -Express Reserve-
     let expressPickView = ExpressPickView.instanceFromNib()
     let expressView = ExpressView.instanceFromNib()
-    
-    let addExpressViewID = "ro.roadout.Roadout.addExpressViewID"
-    let removeExpressViewID = "ro.roadout.Roadout.removeExpressViewID"
-    
-    let showFindCardID = "ro.roadout.Roadout.showFindCardID"
     
     @objc func addExpressView() {
         let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
@@ -179,63 +137,52 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var titleLbl: UILabel!
     
-    @IBOutlet weak var shareplayView: UIView!
-    
-    
+    @IBOutlet weak var shareplayView: UIView!    
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(addResultCard), name: Notification.Name(addResultCardID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeResultCard), name: Notification.Name(removeResultCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addResultCard), name: .addResultCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeResultCard), name: .removeResultCardID, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(addSectionCard), name: .addSectionCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeSectionCard), name: .removeSectionCardID, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(addSectionCard), name: Notification.Name(addSectionCardID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeSectionCard), name: Notification.Name(removeSectionCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addSpotCard), name: .addSpotCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeSpotCard), name: .removeSpotCardID, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(addReserveCard), name: .addReserveCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeReserveCard), name: .removeReserveCardID, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(addSpotCard), name: Notification.Name(addSpotCardID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeSpotCard), name: Notification.Name(removeSpotCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addPayCard), name: .addPayCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removePayCard), name: .removePayCardID, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(addReservationCard), name: .addReservationCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeReservationCard), name: .removeReservationCardID, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(addReserveCard), name: Notification.Name(addReserveCardID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeReserveCard), name: Notification.Name(removeReserveCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addDelayCard), name: .addDelayCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeDelayCard), name: .removeDelayCardID, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(addPayDelayCard), name: .addPayDelayCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removePayDelayCard), name: .removePayDelayCardID, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(addPayCard), name: Notification.Name(addPayCardID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removePayCard), name: Notification.Name(removePayCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addExpressView), name: .addExpressViewID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeExpressView), name: .removeExpressViewID, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(showPaidBar), name: .showPaidBarID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showActiveBar), name: .showActiveBarID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showUnlockedBar), name: .showUnlockedBarID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showCancelledBar), name: .showCancelledBarID, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(addReservationCard), name: Notification.Name(addReservationCardID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeReservationCard), name: Notification.Name(removeReservationCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showNoWifiBar), name: .showNoWifiBarID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeNoWifiBar), name: .removeNoWifiBarID, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: .returnToSearchBarID, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(addDelayCard), name: Notification.Name(addDelayCardID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeDelayCard), name: Notification.Name(removeDelayCardID), object: nil)
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(addPayDelayCard), name: Notification.Name(addPayDelayCardID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removePayDelayCard), name: Notification.Name(removePayDelayCardID), object: nil)
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(addExpressView), name: Notification.Name(addExpressViewID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeExpressView), name: Notification.Name(removeExpressViewID), object: nil)
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(showPaidBar), name: Notification.Name(showPaidBarID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showActiveBar), name: Notification.Name(showActiveBarID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showUnlockedBar), name: Notification.Name(showUnlockedBarID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showCancelledBar), name: Notification.Name(showCancelledBarID), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(showNoWifiBar), name: Notification.Name(showNoWifiBarID), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeNoWifiBar), name: Notification.Name(removeNoWifiBarID), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: Notification.Name(returnToSearchBarID), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(showFindCard), name: Notification.Name(showFindCardID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showFindCard), name: .showFindCardID, object: nil)
         
         if #available(iOS 15.0, *) {
-            NotificationCenter.default.addObserver(self, selector: #selector(showGroupReserveVC), name: Notification.Name("ro.roadout.Roadout.groupSessionStarted"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(showGroupReserveVC), name: .groupSessionStartedID, object: nil)
         }
     }
     

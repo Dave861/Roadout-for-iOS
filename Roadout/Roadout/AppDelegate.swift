@@ -10,9 +10,6 @@ import GoogleMaps
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    let showActiveBarID = "ro.roadout.Roadout.showActiveBarID"
-    let showUnlockedBarID = "ro.roadout.Roadout.showUnlockedBarID"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyCGi6_yxY1g5857pCuiBoYQZYMU7dUxPGI")
@@ -22,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if ReservationManager.sharedInstance.checkActiveReservation() {
             if ReservationManager.sharedInstance.reservationDate > Date() {
-                NotificationCenter.default.post(name: Notification.Name(showActiveBarID), object: nil)
+                NotificationCenter.default.post(name: .showActiveBarID, object: nil)
                 ReservationManager.sharedInstance.saveActiveReservation(true)
             } else {
-                NotificationCenter.default.post(name: Notification.Name(showUnlockedBarID), object: nil)
+                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
                 ReservationManager.sharedInstance.saveActiveReservation(false)
             }
         } 

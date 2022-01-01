@@ -9,9 +9,6 @@ import UIKit
 
 class ExpressView: UIView {
     
-    let removeExpressViewID = "ro.roadout.Roadout.removeExpressViewID"
-    let showPaidBarID = "ro.roadout.Roadout.showPaidBarID"
-    
     @IBOutlet weak var backBtn: UIButton!
     
     @IBOutlet weak var chargeLbl: UILabel!
@@ -19,7 +16,7 @@ class ExpressView: UIView {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(removeExpressViewID), object: nil)
+        NotificationCenter.default.post(name: .removeExpressViewID, object: nil)
     }
     
     @IBOutlet weak var slider: UISlider!
@@ -48,7 +45,7 @@ class ExpressView: UIView {
         if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
             NotificationHelper.sharedInstance.scheduleReservationNotification()
         }
-        NotificationCenter.default.post(name: Notification.Name(showPaidBarID), object: nil)
+        NotificationCenter.default.post(name: .showPaidBarID, object: nil)
     }
     
     @IBAction func payMainCard(_ sender: Any) {
@@ -62,7 +59,7 @@ class ExpressView: UIView {
         if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
             NotificationHelper.sharedInstance.scheduleReservationNotification()
         }
-        NotificationCenter.default.post(name: Notification.Name(showPaidBarID), object: nil)
+        NotificationCenter.default.post(name: .showPaidBarID, object: nil)
     }
     
     let applePayTitle = NSAttributedString(string: " Apple Pay", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])

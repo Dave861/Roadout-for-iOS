@@ -11,12 +11,11 @@ class CancelledView: UIView {
     
     let buttonTitle = NSAttributedString(string: "Done",
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Redish")!])
-    let returnToSearchBarID = "ro.roadout.Roadout.returnToSearchBarID"
-
+    
     @IBOutlet weak var doneBtn: UIButton!
     
     @IBAction func doneTapped(_ sender: Any) {
-        NotificationCenter.default.post(name: Notification.Name(returnToSearchBarID), object: nil)
+        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {

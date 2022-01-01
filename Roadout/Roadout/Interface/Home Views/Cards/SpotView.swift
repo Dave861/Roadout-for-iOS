@@ -9,8 +9,6 @@ import UIKit
 
 class SpotView: UIView {
     
-    let removeSpotCardID = "ro.roadout.Roadout.removeSpotCardID"
-    let addReserveCardID = "ro.roadout.Roadout.addReserveCardID"
     let spotStates = [0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 2, 0]
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -24,13 +22,13 @@ class SpotView: UIView {
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(addReserveCardID), object: nil)
+        NotificationCenter.default.post(name: .addReserveCardID, object: nil)
         
     }
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(removeSpotCardID), object: nil)
+        NotificationCenter.default.post(name: .removeSpotCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
     

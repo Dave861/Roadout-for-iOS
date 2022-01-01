@@ -10,10 +10,7 @@ import CoreLocation
 import iCarousel
 
 class ExpressPickView: UIView {
-    
-    let returnToSearchBarID = "ro.roadout.Roadout.returnToSearchBarID"
-    let addExpressViewID = "ro.roadout.Roadout.addExpressViewID"
-    
+        
     @IBOutlet weak var carousel: iCarousel!
     
     
@@ -22,7 +19,7 @@ class ExpressPickView: UIView {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(returnToSearchBarID), object: nil)
+        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -89,7 +86,7 @@ extension ExpressPickView: iCarouselDataSource, iCarouselDelegate {
         selectedLocation = parkLocations[index].name
         selectedLocationColor = UIColor(named: "Dark Orange")!
         selectedLocationCoord = CLLocationCoordinate2DMake(parkLocations[index].latitude, parkLocations[index].longitude)
-        NotificationCenter.default.post(name: Notification.Name(addExpressViewID), object: nil)
+        NotificationCenter.default.post(name: .addExpressViewID, object: nil)
     }
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {

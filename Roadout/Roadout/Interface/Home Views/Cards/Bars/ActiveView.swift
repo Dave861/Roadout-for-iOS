@@ -8,15 +8,13 @@
 import UIKit
 
 class ActiveView: UIView {
-    
-    let addReservationCardID = "ro.roadout.Roadout.addReservationCardID"
-    
+        
     @IBOutlet weak var timerLbl: UILabel!
     
     @IBOutlet weak var moreBtn: UIButton!
     
     @IBAction func moreTapped(_ sender: Any) {
-        NotificationCenter.default.post(name: Notification.Name(addReservationCardID), object: nil)
+        NotificationCenter.default.post(name: .addReservationCardID, object: nil)
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {

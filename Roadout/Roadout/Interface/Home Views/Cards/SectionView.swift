@@ -8,9 +8,6 @@
 import UIKit
 
 class SectionView: UIView {
-
-    let removeSectionCardID = "ro.roadout.Roadout.removeSectionCardID"
-    let addSpotCardID = "ro.roadout.Roadout.addSpotCardID"
     
     var letter = "A"
     var letterTitle: NSAttributedString!
@@ -73,12 +70,12 @@ class SectionView: UIView {
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(addSpotCardID), object: nil)
+        NotificationCenter.default.post(name: .addSpotCardID, object: nil)
     }
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: Notification.Name(removeSectionCardID), object: nil)
+        NotificationCenter.default.post(name: .removeSectionCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
     

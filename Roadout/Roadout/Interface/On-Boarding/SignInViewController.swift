@@ -12,8 +12,6 @@ class SignInViewController: UIViewController {
     
     let signInTitle = NSAttributedString(string: "Sign In", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
-    let manageServerSideSignInID = "ro.roadout.Roadout.manageServerSideSignInID"
-
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurButton: UIButton!
     
@@ -75,7 +73,7 @@ class SignInViewController: UIViewController {
     
     func addObs() {
         NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(manageServerSide), name: Notification.Name(manageServerSideSignInID), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(manageServerSide), name: .manageServerSideSignInID, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,6 +93,8 @@ class SignInViewController: UIViewController {
     @objc func manageServerSide() {
         switch AuthManager.sharedInstance.callResult {
             case "Success":
+                //TO REMOVE
+                UserDefaults.standard.set(true, forKey: "roadout.testing.isSigned")
                 let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
                 self.present(vc, animated: false, completion: nil)
             case "error":

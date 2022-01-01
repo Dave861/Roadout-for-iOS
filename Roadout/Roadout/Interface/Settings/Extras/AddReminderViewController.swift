@@ -9,7 +9,6 @@ import UIKit
 
 class AddReminderViewController: UIViewController {
 
-    let refreshReminderID = "ro.roadout.Roadout.refreshReminder"
     let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
     
     let setTitle = NSAttributedString(string: "Set", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
@@ -33,7 +32,7 @@ class AddReminderViewController: UIViewController {
                     NotificationHelper.sharedInstance.scheduleReminder(reminder: reminder)
                 }
                 saveReminder(reminder: reminder)
-                NotificationCenter.default.post(name: Notification.Name(refreshReminderID), object: nil)
+                NotificationCenter.default.post(name: .refreshReminderID, object: nil)
                 UIView.animate(withDuration: 0.1) {
                     self.blurButton.alpha = 0
                 } completion: { done in

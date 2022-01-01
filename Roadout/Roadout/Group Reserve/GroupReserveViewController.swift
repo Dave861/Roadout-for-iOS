@@ -42,7 +42,7 @@ class GroupReserveViewController: UIViewController {
     
     func addObs() {
         NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: Notification.Name("ro.roadout.Roadout.groupMessageReceived"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: .groupMessageReceivedID, object: nil)
     }
     
     @objc func updateUI() {

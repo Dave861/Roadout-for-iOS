@@ -8,8 +8,6 @@
 import UIKit
 
 class AddCardViewController: UIViewController {
-
-    let refreshCardsID = "ro.roadout.Roadout.refreshCards"
     
     let setTitle = NSAttributedString(string: "Add", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
@@ -22,7 +20,7 @@ class AddCardViewController: UIViewController {
         if cvvField.text?.count == 3 && expiryField.text != "" && numberField.text?.count == 16 {
             let blurredNr = "**** **** **** \(numberField.text!.suffix(4))"
             cardNumbers.append(blurredNr)
-            NotificationCenter.default.post(name: Notification.Name(refreshCardsID), object: nil)
+            NotificationCenter.default.post(name: .refreshCardsID, object: nil)
             UIView.animate(withDuration: 0.1) {
                 self.blurButton.alpha = 0
             } completion: { done in

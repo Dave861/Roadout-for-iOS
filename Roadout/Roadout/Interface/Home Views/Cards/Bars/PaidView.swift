@@ -11,12 +11,11 @@ class PaidView: UIView {
     
     let buttonTitle = NSAttributedString(string: "See Reservation",
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Orange")!])
-    let showActiveBarID = "ro.roadout.Roadout.showActiveBarID"
     
     @IBOutlet weak var seeBtn: UIButton!
     
     @IBAction func seeTapped(_ sender: Any) {
-        NotificationCenter.default.post(name: Notification.Name(showActiveBarID), object: nil)
+        NotificationCenter.default.post(name: .showActiveBarID, object: nil)
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {

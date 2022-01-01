@@ -54,7 +54,7 @@ class ReservationManager {
                 saveActiveReservation(false)
                 saveReservationDate(Date())
                 prepareForReturn()
-                NotificationCenter.default.post(name: Notification.Name(showUnlockedBarID), object: nil)
+                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
             }
         } else {
             UserDefaultsSuite.set(false, forKey: "ro.roadout.Roadout.reservationDelayed")
@@ -71,7 +71,7 @@ class ReservationManager {
     }
     
     @objc func makeReturn() {
-        NotificationCenter.default.post(name: Notification.Name(returnToSearchBarID), object: nil)
+        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
 }

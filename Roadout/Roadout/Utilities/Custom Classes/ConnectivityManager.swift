@@ -8,9 +8,6 @@
 import Foundation
 
 class ConnectionManager {
-
-let showNoWifiBarID = "ro.roadout.Roadout.showNoWifiBarID"
-let removeNoWifiBarID = "ro.roadout.Roadout.removeNoWifiBarID"
     
 static let sharedInstance = ConnectionManager()
 private var reachability : Reachability!
@@ -31,15 +28,15 @@ func observeReachability(){
     switch reachability.connection {
     case .cellular:
         print("Network available via Cellular Data.")
-        NotificationCenter.default.post(name: Notification.Name(removeNoWifiBarID), object: nil)
+        NotificationCenter.default.post(name: .removeNoWifiBarID, object: nil)
         break
     case .wifi:
         print("Network available via WiFi.")
-        NotificationCenter.default.post(name: Notification.Name(removeNoWifiBarID), object: nil)
+        NotificationCenter.default.post(name: .removeNoWifiBarID, object: nil)
         break
     case .unavailable:
         print("Network available via WiFi.")
-        NotificationCenter.default.post(name: Notification.Name(showNoWifiBarID), object: nil)
+        NotificationCenter.default.post(name: .showNoWifiBarID, object: nil)
         break
     }
   }

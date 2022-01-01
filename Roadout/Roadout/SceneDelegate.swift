@@ -10,18 +10,17 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    
-    let showActiveBarID = "ro.roadout.Roadout.showActiveBarID"
-    let showUnlockedBarID = "ro.roadout.Roadout.showUnlockedBarID"
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-      /*  let sb = UIStoryboard(name: "Home", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
-        window?.rootViewController = vc
-        window?.makeKeyAndVisible() */
+        //TO REMOVE
+        if UserDefaults.standard.bool(forKey: "roadout.testing.isSigned") {
+            let sb = UIStoryboard(name: "Home", bundle: nil)
+              let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
+              window?.rootViewController = vc
+              window?.makeKeyAndVisible()
+        }
         
         guard let _ = (scene as? UIWindowScene) else { return }
-    
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -36,10 +35,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           
           if ReservationManager.sharedInstance.checkActiveReservation() {
               if ReservationManager.sharedInstance.reservationDate > Date() {
-                  NotificationCenter.default.post(name: Notification.Name(showActiveBarID), object: nil)
+                  NotificationCenter.default.post(name: .showActiveBarID, object: nil)
                   ReservationManager.sharedInstance.saveActiveReservation(true)
               } else {
-                  NotificationCenter.default.post(name: Notification.Name(showUnlockedBarID), object: nil)
+                  NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
                   ReservationManager.sharedInstance.saveActiveReservation(false)
               }
           }
@@ -54,10 +53,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print(ReservationManager.sharedInstance.getReservationDate())
         if ReservationManager.sharedInstance.checkActiveReservation() {
             if ReservationManager.sharedInstance.reservationDate > Date() {
-                NotificationCenter.default.post(name: Notification.Name(showActiveBarID), object: nil)
+                NotificationCenter.default.post(name: .showActiveBarID, object: nil)
                 ReservationManager.sharedInstance.saveActiveReservation(true)
             } else {
-                NotificationCenter.default.post(name: Notification.Name(showUnlockedBarID), object: nil)
+                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
                 ReservationManager.sharedInstance.saveActiveReservation(false)
             }
         }
