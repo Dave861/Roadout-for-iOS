@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -651,6 +651,21 @@ Made in Cluj :)</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXx-BF-yVa">
+                                        <rect key="frame" x="64" y="125" width="335" height="31"/>
+                                        <color key="backgroundColor" name="Background"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="3bP-qP-MBW"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Icons"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Pick">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="pickTapped:" destination="MeD-bb-lBO" eventType="touchUpInside" id="pwv-1u-nR4"/>
+                                        </connections>
+                                    </button>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="DOc-o9-Faw">
                                         <rect key="frame" x="64" y="125" width="335" height="31"/>
                                         <color key="tintColor" name="Icons"/>
@@ -679,8 +694,12 @@ Made in Cluj :)</string>
                                     <constraint firstAttribute="height" constant="238" id="Jlw-0j-HfE"/>
                                     <constraint firstItem="JNE-Mp-MPO" firstAttribute="height" secondItem="DOc-o9-Faw" secondAttribute="height" multiplier="0.967742" id="MOd-sH-FVu"/>
                                     <constraint firstItem="rdQ-n6-6OI" firstAttribute="leading" secondItem="D18-ei-0Sf" secondAttribute="leading" constant="15" id="Q4j-BJ-egp"/>
+                                    <constraint firstItem="u9i-wE-D9F" firstAttribute="top" secondItem="MXx-BF-yVa" secondAttribute="bottom" constant="17" id="TKc-TE-jTs"/>
                                     <constraint firstItem="u9i-wE-D9F" firstAttribute="top" secondItem="JNE-Mp-MPO" secondAttribute="bottom" constant="18" id="UAy-zm-2dh"/>
+                                    <constraint firstItem="MXx-BF-yVa" firstAttribute="leading" secondItem="JNE-Mp-MPO" secondAttribute="trailing" constant="10" id="VdK-rp-6TZ"/>
+                                    <constraint firstItem="MXx-BF-yVa" firstAttribute="top" secondItem="YWP-RV-7mB" secondAttribute="bottom" constant="15" id="b8Y-GM-77f"/>
                                     <constraint firstItem="YWP-RV-7mB" firstAttribute="top" secondItem="rdQ-n6-6OI" secondAttribute="bottom" constant="28" id="buK-Mn-ipG"/>
+                                    <constraint firstAttribute="trailing" secondItem="MXx-BF-yVa" secondAttribute="trailing" constant="15" id="dS8-L9-orf"/>
                                     <constraint firstItem="u9i-wE-D9F" firstAttribute="top" secondItem="DOc-o9-Faw" secondAttribute="bottom" constant="17" id="dXt-uN-JDh"/>
                                     <constraint firstAttribute="trailing" secondItem="YWP-RV-7mB" secondAttribute="trailing" constant="15" id="ex2-mA-yAB"/>
                                     <constraint firstAttribute="trailing" secondItem="8SC-bh-460" secondAttribute="trailing" constant="3" id="iqs-JA-UKn"/>
@@ -710,6 +729,7 @@ Made in Cluj :)</string>
                         <outlet property="cardView" destination="D18-ei-0Sf" id="GgX-4j-6Wz"/>
                         <outlet property="datePicker" destination="DOc-o9-Faw" id="23J-MN-EaU"/>
                         <outlet property="labelField" destination="YWP-RV-7mB" id="SaK-Hg-pKz"/>
+                        <outlet property="pickBtn" destination="MXx-BF-yVa" id="gIN-Sb-JUX"/>
                         <outlet property="setBtn" destination="u9i-wE-D9F" id="8UP-nc-B4K"/>
                     </connections>
                 </viewController>
@@ -1171,7 +1191,7 @@ Made in Cluj :)</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reservation History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crc-ED-aM6">
-                                <rect key="frame" x="20" y="88" width="222.5" height="32"/>
+                                <rect key="frame" x="20" y="88" width="223" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="g4I-6f-CND"/>
                                 </constraints>
