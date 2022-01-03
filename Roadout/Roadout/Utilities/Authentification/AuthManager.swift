@@ -7,6 +7,7 @@
 
 import Foundation
 import Network
+import CryptoKit
 import Alamofire
 
 class AuthManager {
@@ -17,9 +18,11 @@ class AuthManager {
     
     func sendSignUpData(_ name: String, _ email: String, _ password: String) {
         
-        let params = "name=\(name)&email=\(email)&password=\(password)"
+        let hashedPswd = MD5(string: password)
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["name":name,"email":email,"password":hashedPswd]
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/userRegister.php?\(params)", method: .get, encoding: JSONEncoding.default).responseString { response in
+        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/userRegister.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
@@ -48,9 +51,11 @@ class AuthManager {
     
     func sendSignInData(_ email: String, _ password: String) {
         
-        let params = "email=\(email)&password=\(password)"
+        let hashedPswd = MD5(string: password)
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["email":email,"password":hashedPswd]
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/userLogin.php?\(params)", method: .get, encoding: JSONEncoding.default).responseString { response in
+        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/userLogin.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
@@ -75,7 +80,15 @@ class AuthManager {
                 NotificationCenter.default.post(name: .manageServerSideSignInID, object: nil)
             }
         }
-        
     }
+    
+    func MD5(string: String) -> String {
+        let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
+
+        return digest.map {
+            String(format: "%02hhx", $0)
+        }.joined()
+    }
+    
     
 }
