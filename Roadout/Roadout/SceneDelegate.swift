@@ -14,10 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
-            let sb = UIStoryboard(name: "Home", bundle: nil)
+              let sb = UIStoryboard(name: "Home", bundle: nil)
               let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
               window?.rootViewController = vc
               window?.makeKeyAndVisible()
+              let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+              UserManager.sharedInstance.getUserName(id)
         }
         
         guard let _ = (scene as? UIWindowScene) else { return }

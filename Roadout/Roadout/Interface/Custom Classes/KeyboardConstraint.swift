@@ -22,7 +22,6 @@
 import UIKit
 
 #if !os(tvOS)
-@available(tvOS, unavailable)
 public class KeyboardLayoutConstraint: NSLayoutConstraint {
     
     private var offset : CGFloat = 0
@@ -107,7 +106,6 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
     
 }
 
-@available(tvOS, unavailable)
 public class SafeAreaLayoutConstraint: NSLayoutConstraint {
     
     private var offset : CGFloat = 0

@@ -16,6 +16,10 @@ class UserManager {
     
     var callResult = "network error"
     
+    //MARK: -User Data-
+    var userName = UserDefaults.roadout!.string(forKey: "ro.roadout.UserName") ?? "User Name"
+    
+    
     func updateName(_ id: String, _ name: String) {
         
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
@@ -125,5 +129,39 @@ class UserManager {
         }.joined()
     }
     
+    func getUserName(_ id: String) {
+        
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["id":id]
+        
+        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/GetUserData.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
+            guard response.value != nil else {
+                self.callResult = "database error"
+                
+                return
+            }
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
+                    print(jsonArray["status"]!)
+                    print(jsonArray["message"]!)
+                    self.callResult = jsonArray["status"] as! String
+                    if self.callResult == "Success" {
+                        self.userName = jsonArray["name"] as! String
+                        UserDefaults.roadout!.set(self.userName, forKey: "ro.roadout.UserName")
+                    }
+                } else {
+                    print("unknown error")
+                    self.callResult = "unknown error"
+                }
+            } catch let error as NSError {
+                print(error)
+                self.callResult = "error with json"
+                
+            }
+        }
+        
+    }
     
 }

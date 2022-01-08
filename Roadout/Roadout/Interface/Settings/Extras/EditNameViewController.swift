@@ -15,6 +15,7 @@ class EditNameViewController: UIViewController {
     @IBOutlet weak var saved: UIButton!
     @IBOutlet weak var userNamelField: PaddedTextField!
     
+    @IBOutlet weak var nameLbl: UILabel!
     
     @IBAction func dismissTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
@@ -32,7 +33,6 @@ class EditNameViewController: UIViewController {
         }
     }
     
-    
     @IBAction func savedTapped(_ sender: Any) {
         guard userNamelField.text != "" else { return }
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
@@ -42,6 +42,9 @@ class EditNameViewController: UIViewController {
     @objc func manageServerResponse() {
         switch UserManager.sharedInstance.callResult {
             case "Success":
+                let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+                UserManager.sharedInstance.getUserName(id)
+                nameLbl.text = UserManager.sharedInstance.userName
                 let alert = UIAlertController(title: "Success", message: "Your name was successfully changed!", preferredStyle: UIAlertController.Style.alert)
                 let alertAction = UIAlertAction(title: "Ok", style: .default) { action in
                     UIView.animate(withDuration: 0.1) {
@@ -49,6 +52,7 @@ class EditNameViewController: UIViewController {
                     } completion: { done in
                         self.dismiss(animated: true, completion: nil)
                     }
+                    NotificationCenter.default.post(name: .reloadUserNameID, object: nil)
                 }
                 alertAction.setValue(UIColor(named: "Main Yellow")!, forKey: "titleTextColor")
                 alert.addAction(alertAction)
@@ -109,6 +113,10 @@ class EditNameViewController: UIViewController {
             string: "New Name",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
+        
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        UserManager.sharedInstance.getUserName(id)
+        nameLbl.text = UserManager.sharedInstance.userName
     }
     
     

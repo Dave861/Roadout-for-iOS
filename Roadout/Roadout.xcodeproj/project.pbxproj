@@ -54,6 +54,8 @@
 		9A49BFAF272FF42B00234A9F /* NoWifiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFAE272FF42B00234A9F /* NoWifiView.swift */; };
 		9A49BFB1272FF8CB00234A9F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFB0272FF8CB00234A9F /* Reachability.swift */; };
 		9A49BFB4272FF8E600234A9F /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFB3272FF8E600234A9F /* ConnectivityManager.swift */; };
+		9A5381142789CA1600462D63 /* VerifyMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5381132789CA1600462D63 /* VerifyMailViewController.swift */; };
+		9A5381162789CA2400462D63 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5381152789CA2400462D63 /* ResetPasswordViewController.swift */; };
 		9A59B75B2764A6B500BC0497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A59B75A2764A6B500BC0497 /* Assets.xcassets */; };
 		9A59B7612764A6B500BC0497 /* Roadout Watch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A59B7602764A6B500BC0497 /* Roadout Watch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9A59B7662764A6B500BC0497 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A59B7652764A6B500BC0497 /* ContentView.swift */; };
@@ -114,6 +116,7 @@
 		9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F872272B09DF008B58FE /* AddCardViewController.swift */; };
 		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
 		9A96F877272B0A25008B58FE /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F876272B0A25008B58FE /* CardCell.swift */; };
+		9AA01DDF2789D78E0004211A /* CHIOTPField in Frameworks */ = {isa = PBXBuildFile; productRef = 9AA01DDE2789D78E0004211A /* CHIOTPField */; };
 		9AA0AEFE272D195400DA04A2 /* LegalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */; };
 		9AA0EFCE277B3DDD00B0F52A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */; };
 		9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9AA0EFD1277B5D5800B0F52A /* Alamofire */; };
@@ -324,6 +327,8 @@
 		9A49BFB3272FF8E600234A9F /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		9A49CD102777421000FC3992 /* Quick ReserveUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quick ReserveUI.entitlements"; sourceTree = "<group>"; };
 		9A49CD112777424800FC3992 /* Quick ReserveUIRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quick ReserveUIRelease.entitlements"; sourceTree = "<group>"; };
+		9A5381132789CA1600462D63 /* VerifyMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMailViewController.swift; sourceTree = "<group>"; };
+		9A5381152789CA2400462D63 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		9A59B7582764A6B400BC0497 /* Roadout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roadout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A59B75A2764A6B500BC0497 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A59B7602764A6B500BC0497 /* Roadout Watch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Roadout Watch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -458,6 +463,7 @@
 				9A150837272BFC3E008C083B /* GoogleMapsCore in Frameworks */,
 				9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */,
 				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
+				9AA01DDF2789D78E0004211A /* CHIOTPField in Frameworks */,
 				9A150835272BFC3E008C083B /* GoogleMapsBase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -862,6 +868,8 @@
 				9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */,
 				9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */,
 				9ACBFF53272704F90011B58F /* PermissionsViewController.swift */,
+				9A5381132789CA1600462D63 /* VerifyMailViewController.swift */,
+				9A5381152789CA2400462D63 /* ResetPasswordViewController.swift */,
 			);
 			path = "On-Boarding";
 			sourceTree = "<group>";
@@ -1026,6 +1034,7 @@
 				9A6E1C362731324B002E29F9 /* BarChartKit-static */,
 				9AC48D1B273FBDE200DBCEF8 /* iCarousel */,
 				9AA0EFD1277B5D5800B0F52A /* Alamofire */,
+				9AA01DDE2789D78E0004211A /* CHIOTPField */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1119,6 +1128,7 @@
 				9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */,
 				9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */,
 				9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				9AA01DDD2789D78E0004211A /* XCRemoteSwiftPackageReference "CHIOTPField" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -1323,6 +1333,7 @@
 				9ACBFF54272704F90011B58F /* PermissionsViewController.swift in Sources */,
 				9AB96428272EFCE0008462E7 /* ActiveView.swift in Sources */,
 				9A14B918273142E100967417 /* KeyboardConstraint.swift in Sources */,
+				9A5381142789CA1600462D63 /* VerifyMailViewController.swift in Sources */,
 				9A6E7EB8275653A200E09B75 /* QuickReserveIntentHandler.swift in Sources */,
 				9A6E7E8E275645A300E09B75 /* IntentDataExtension.swift in Sources */,
 				9AF798F3272C4BF70096D4C3 /* PrizesViewController.swift in Sources */,
@@ -1334,6 +1345,7 @@
 				9A14B91A2731430400967417 /* MonthPickerView.swift in Sources */,
 				9A49BFAB272FF41B00234A9F /* UnlockedView.swift in Sources */,
 				9A300CE42789970C0038A085 /* DeleteAccountViewController.swift in Sources */,
+				9A5381162789CA2400462D63 /* ResetPasswordViewController.swift in Sources */,
 				9A39B0D427284825008E7FD0 /* SettingCell.swift in Sources */,
 				9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */,
 				9A0C7775272E831E00ECBFB2 /* SpotCell.swift in Sources */,
@@ -2167,6 +2179,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		9AA01DDD2789D78E0004211A /* XCRemoteSwiftPackageReference "CHIOTPField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ChiliLabs/CHIOTPField.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -2205,6 +2225,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */;
 			productName = "BarChartKit-static";
+		};
+		9AA01DDE2789D78E0004211A /* CHIOTPField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AA01DDD2789D78E0004211A /* XCRemoteSwiftPackageReference "CHIOTPField" */;
+			productName = CHIOTPField;
 		};
 		9AA0EFD1277B5D5800B0F52A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

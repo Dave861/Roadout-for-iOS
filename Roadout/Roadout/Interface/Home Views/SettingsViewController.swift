@@ -25,10 +25,24 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    func addObs() {
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadName), name: .reloadUserNameID, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        UserManager.sharedInstance.getUserName(id)
         tableView.delegate = self
         tableView.dataSource = self
+        addObs()
+    }
+    
+    @objc func reloadName() {
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        UserManager.sharedInstance.getUserName(id)
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +83,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         switch cellTypes[indexPath.row] {
         case "UserSettingCell":
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserSettingCell") as! UserSettingsCell
+            cell.nameLbl.text = UserManager.sharedInstance.userName
             return cell
         case "UpCell":
             let cell = tableView.dequeueReusableCell(withIdentifier: "UpCell") as! UpCornerCell

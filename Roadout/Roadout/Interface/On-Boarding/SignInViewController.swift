@@ -57,6 +57,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var forgotBtn: UIButton!
     
     @IBAction func forgotTapped(_ sender: Any) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
     func manageForgotView(_ show: Bool) {
@@ -122,7 +125,9 @@ class SignInViewController: UIViewController {
             case "Success":
                 UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
                 UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
-                let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+                //if not verified
+                //else let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+                let vc = storyboard?.instantiateViewController(withIdentifier: "VerifyMailVC") as! VerifyMailViewController
                 self.present(vc, animated: false, completion: nil)
             case "error":
                 let alert = UIAlertController(title: "Sign In Error", message: "Wrong email or password.", preferredStyle: .alert)

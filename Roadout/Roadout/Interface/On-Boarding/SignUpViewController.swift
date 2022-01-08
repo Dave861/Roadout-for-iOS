@@ -141,7 +141,9 @@ class SignUpViewController: UIViewController {
             case "Success":
                 UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
                 UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
-                let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+                //if not verified
+                //else let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+                let vc = storyboard?.instantiateViewController(withIdentifier: "VerifyMailVC") as! VerifyMailViewController
                 self.present(vc, animated: false, completion: nil)
             case "error":
                 let alert = UIAlertController(title: "Error", message: "User already exists, sign in or use another email.", preferredStyle: .alert)

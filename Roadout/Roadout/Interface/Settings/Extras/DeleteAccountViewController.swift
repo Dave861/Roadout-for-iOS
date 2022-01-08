@@ -57,6 +57,9 @@ class DeleteAccountViewController: UIViewController {
     @IBOutlet weak var forgotBtn: UIButton!
     
     @IBAction func forgotTapped(_ sender: Any) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
     func manageForgotView(_ show: Bool) {
