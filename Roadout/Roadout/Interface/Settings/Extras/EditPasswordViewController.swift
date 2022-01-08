@@ -10,6 +10,7 @@ import UIKit
 class EditPasswordViewController: UIViewController {
 
     let savedTitle = NSAttributedString(string: "Save", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    var errorCounter = 0
     
     
     @IBOutlet weak var cardView: UIView!
@@ -44,23 +45,133 @@ class EditPasswordViewController: UIViewController {
     }
     
     @IBAction func saveTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Success", message: "Your password was successfully changed!", preferredStyle: UIAlertController.Style.alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .default) { action in
-        
-                UIView.animate(withDuration: 0.1) {
-                    self.blurButton.alpha = 0
-                } completion: { done in
-                    self.dismiss(animated: true, completion: nil)
-                }
-
+        if validateFields() {
+            let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+            UserManager.sharedInstance.updatePassword(id, oldPswField.text!, newPswField.text!)
+        } else {
+            let alert = UIAlertController(title: "Error", message: "Please check all text fields", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alertAction.setValue(UIColor(named: "Redish")!, forKey: "titleTextColor")
+            alert.addAction(alertAction)
+            self.present(alert, animated: true, completion: nil)
         }
-        alertAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
-        alert.addAction(alertAction)
-        self.present(alert, animated: true, completion: nil)
     }
+    
+    
+    
+    func validateFields() -> Bool {
+        if oldPswField.text == "" {
+            return false
+        }
+        if isValidPassword() == false {
+            return false
+        }
+        if isValidReenter() == false {
+            return false
+        }
+        
+        return true
+    }
+    
+    func isValidPassword() -> Bool {
+        let pswRegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
+
+        let pswPred = NSPredicate(format:"SELF MATCHES %@", pswRegEx)
+        return pswPred.evaluate(with: newPswField.text)
+    }
+    
+    func isValidReenter() -> Bool {
+        return newPswField.text == confPswField.text
+    }
+    
+    @objc func manageServerSide() {
+        switch UserManager.sharedInstance.callResult {
+            case "Success":
+                let alert = UIAlertController(title: "Success", message: "Your password was successfully changed!", preferredStyle: UIAlertController.Style.alert)
+                let alertAction = UIAlertAction(title: "Ok", style: .default) { action in
+                    UIView.animate(withDuration: 0.1) {
+                        self.blurButton.alpha = 0
+                    } completion: { done in
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+                alertAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
+                alert.addAction(alertAction)
+                self.present(alert, animated: true, completion: nil)
+            case "Fail":
+                let alert = UIAlertController(title: "Error", message: "Old password is incorrect.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
+                    self.errorCounter += 1
+                    if self.errorCounter >= 2 {
+                        self.manageForgotView(true)
+                    }
+                })
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+                self.present(alert, animated: true, completion: nil)
+            case "error":
+                let alert = UIAlertController(title: "Error", message: "There was an error when changing your password, please try again.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+                self.present(alert, animated: true, completion: nil)
+            case "network error":
+                let alert = UIAlertController(title: "Network Error", message: "Please check you network connection", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+                self.present(alert, animated: true, completion: nil)
+            case "database error":
+                let alert = UIAlertController(title: "Internal Error", message: "There was an internal problem, please wait and try again a little later", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+                self.present(alert, animated: true, completion: nil)
+            case "unknown error":
+                let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+                self.present(alert, animated: true, completion: nil)
+            case "error with json":
+                let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+                self.present(alert, animated: true, completion: nil)
+            default:
+                fatalError()
+        }
+    }
+    
+    func addObs() {
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(manageServerSide), name: .manageServerSideUpdatePswID, object: nil)
+    }
+    
+    //MARK: -Forgot password-
+        
+    @IBOutlet weak var forgotBtn: UIButton!
+    
+    @IBAction func forgotTapped(_ sender: Any) {
+    }
+    
+    func manageForgotView(_ show: Bool) {
+        if show {
+            forgotBtn.isEnabled = true
+            forgotBtn.alpha = 1
+            forgotBtn.shake()
+        } else {
+            forgotBtn.isEnabled = false
+            forgotBtn.alpha = 0
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addObs()
+        
         cardView.layer.cornerRadius = 16.0
         
         save.layer.cornerRadius = 12
@@ -88,6 +199,7 @@ class EditPasswordViewController: UIViewController {
             [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
          )
         
+        manageForgotView(false)
         
     }
     

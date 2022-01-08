@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -322,7 +322,6 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4j-wh-Xta">
                                         <rect key="frame" x="15" y="15" width="68" height="27"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="68" id="l7U-Sy-P0g"/>
                                             <constraint firstAttribute="height" constant="27" id="nMN-gj-a95"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
@@ -379,13 +378,30 @@
                                             <action selector="signInTapped:" destination="XIK-wc-AE1" eventType="touchUpInside" id="IoZ-Et-cml"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egx-Av-q3k">
+                                        <rect key="frame" x="261" y="9" width="150" height="38"/>
+                                        <color key="backgroundColor" name="Background"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="Nco-DM-82k"/>
+                                        </constraints>
+                                        <color key="tintColor" name="AccentColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Forgot Password?">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="forgotTapped:" destination="XIK-wc-AE1" eventType="touchUpInside" id="FYy-LL-bLI"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
                                     <constraint firstItem="isH-Fy-rAU" firstAttribute="top" secondItem="6S7-lK-rg2" secondAttribute="bottom" constant="18" id="8l0-TA-85a"/>
                                     <constraint firstAttribute="trailing" secondItem="6S7-lK-rg2" secondAttribute="trailing" constant="15" id="B7l-gC-QI7"/>
+                                    <constraint firstAttribute="trailing" secondItem="Egx-Av-q3k" secondAttribute="trailing" constant="3" id="Fa2-k8-KF6"/>
                                     <constraint firstItem="6S7-lK-rg2" firstAttribute="leading" secondItem="cbj-pr-CIG" secondAttribute="leading" constant="15" id="GlD-Qy-CWi"/>
                                     <constraint firstItem="isH-Fy-rAU" firstAttribute="leading" secondItem="cbj-pr-CIG" secondAttribute="leading" constant="15" id="KJp-sD-kV4"/>
+                                    <constraint firstItem="Egx-Av-q3k" firstAttribute="top" secondItem="cbj-pr-CIG" secondAttribute="top" constant="9" id="V54-sf-s3n"/>
                                     <constraint firstItem="wts-Pb-jG5" firstAttribute="top" secondItem="a4j-wh-Xta" secondAttribute="bottom" constant="28" id="VZD-0v-BJn"/>
                                     <constraint firstAttribute="trailing" secondItem="isH-Fy-rAU" secondAttribute="trailing" constant="15" id="XTP-Ha-dkP"/>
                                     <constraint firstAttribute="height" constant="241" id="Yvu-CV-V45"/>
@@ -416,6 +432,7 @@
                         <outlet property="blurButton" destination="LWp-vt-nPg" id="45w-si-Sc2"/>
                         <outlet property="cardView" destination="cbj-pr-CIG" id="s2H-Ll-wvh"/>
                         <outlet property="emailField" destination="wts-Pb-jG5" id="2vI-Mi-tZi"/>
+                        <outlet property="forgotBtn" destination="Egx-Av-q3k" id="s2x-ZV-fHt"/>
                         <outlet property="passwordField" destination="6S7-lK-rg2" id="F6H-2l-g95"/>
                         <outlet property="signInBtn" destination="isH-Fy-rAU" id="6ww-9M-AAr"/>
                     </connections>
@@ -518,10 +535,9 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kkn-40-F63">
-                                        <rect key="frame" x="15" y="15" width="82" height="27"/>
+                                        <rect key="frame" x="15" y="15" width="78.5" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="OTd-kM-okA"/>
-                                            <constraint firstAttribute="width" constant="82" id="Xam-ai-h0i"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                         <nil key="textColor"/>
@@ -585,7 +601,7 @@
         <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="car.fill" catalog="system" width="128" height="93"/>
         <namedColor name="AccentColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

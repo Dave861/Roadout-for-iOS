@@ -33,6 +33,7 @@
 		9A292B872732F22D00E509C9 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
 		9A2D4BD1275788210007EE2E /* Find.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2D4BD0275788210007EE2E /* Find.xib */; };
 		9A2D4BD32757883E0007EE2E /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D4BD22757883E0007EE2E /* FindView.swift */; };
+		9A300CE42789970C0038A085 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A300CE32789970C0038A085 /* DeleteAccountViewController.swift */; };
 		9A310783272A707100B1F84A /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A310782272A707100B1F84A /* RemindersViewController.swift */; };
 		9A310785272A708300B1F84A /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A310784272A708300B1F84A /* ReminderCell.swift */; };
 		9A39B0CC272847FC008E7FD0 /* UserSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0CB272847FC008E7FD0 /* UserSettingsCell.swift */; };
@@ -64,6 +65,8 @@
 		9A5A01832737CDD000BD7E70 /* ExpressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A01822737CDD000BD7E70 /* ExpressView.swift */; };
 		9A5CC58B272C133A00A735A3 /* darkStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A5CC589272C133900A735A3 /* darkStyle.json */; };
 		9A5CC58C272C133A00A735A3 /* lightStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A5CC58A272C133A00A735A3 /* lightStyle.json */; };
+		9A5FC64227875F8D00CDB49D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5FC64127875F8D00CDB49D /* UserManager.swift */; };
+		9A5FC6442787685200CDB49D /* UserDefSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5FC6432787685200CDB49D /* UserDefSuite.swift */; };
 		9A65C5F227804B140060ABCA /* NotificationNameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */; };
 		9A65C5F327804E120060ABCA /* NotificationNameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */; };
 		9A65C5F427804E130060ABCA /* NotificationNameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */; };
@@ -298,6 +301,7 @@
 		9A292B862732F22D00E509C9 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		9A2D4BD0275788210007EE2E /* Find.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Find.xib; sourceTree = "<group>"; };
 		9A2D4BD22757883E0007EE2E /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
+		9A300CE32789970C0038A085 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		9A310782272A707100B1F84A /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		9A310784272A708300B1F84A /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
 		9A39B0CB272847FC008E7FD0 /* UserSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsCell.swift; sourceTree = "<group>"; };
@@ -332,6 +336,8 @@
 		9A5A01822737CDD000BD7E70 /* ExpressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressView.swift; sourceTree = "<group>"; };
 		9A5CC589272C133900A735A3 /* darkStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = darkStyle.json; sourceTree = "<group>"; };
 		9A5CC58A272C133A00A735A3 /* lightStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lightStyle.json; sourceTree = "<group>"; };
+		9A5FC64127875F8D00CDB49D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		9A5FC6432787685200CDB49D /* UserDefSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefSuite.swift; sourceTree = "<group>"; };
 		9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameCenter.swift; sourceTree = "<group>"; };
 		9A6727BB2737C5AB0078479D /* Express.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Express.xib; sourceTree = "<group>"; };
 		9A6727BD2737C5CE0078479D /* ExpressPickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressPickView.swift; sourceTree = "<group>"; };
@@ -480,6 +486,7 @@
 				9A96F872272B09DF008B58FE /* AddCardViewController.swift */,
 				9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */,
 				9AE2AFFC272BD25C0088A3ED /* EditPasswordViewController.swift */,
+				9A300CE32789970C0038A085 /* DeleteAccountViewController.swift */,
 			);
 			path = Extras;
 			sourceTree = "<group>";
@@ -519,6 +526,7 @@
 				9A799320277A0E2F0088E3FD /* Entities */,
 				9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */,
 				9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */,
+				9A5FC6432787685200CDB49D /* UserDefSuite.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -736,6 +744,7 @@
 			isa = PBXGroup;
 			children = (
 				9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */,
+				9A5FC64127875F8D00CDB49D /* UserManager.swift */,
 			);
 			path = Authentification;
 			sourceTree = "<group>";
@@ -1291,6 +1300,7 @@
 				9AA0EFCE277B3DDD00B0F52A /* AuthManager.swift in Sources */,
 				9A49BFB4272FF8E600234A9F /* ConnectivityManager.swift in Sources */,
 				9A49BFA8272FED5900234A9F /* DelayView.swift in Sources */,
+				9A5FC64227875F8D00CDB49D /* UserManager.swift in Sources */,
 				9A0A23292733D2D6007C1B08 /* ParkLocation.swift in Sources */,
 				9A292B872732F22D00E509C9 /* Reminder.swift in Sources */,
 				9AEF29F2272D71A600FEE390 /* ResultView.swift in Sources */,
@@ -1323,6 +1333,7 @@
 				9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */,
 				9A14B91A2731430400967417 /* MonthPickerView.swift in Sources */,
 				9A49BFAB272FF41B00234A9F /* UnlockedView.swift in Sources */,
+				9A300CE42789970C0038A085 /* DeleteAccountViewController.swift in Sources */,
 				9A39B0D427284825008E7FD0 /* SettingCell.swift in Sources */,
 				9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */,
 				9A0C7775272E831E00ECBFB2 /* SpotCell.swift in Sources */,
@@ -1348,6 +1359,7 @@
 				9AC926EB272697F00054E453 /* AppDelegate.swift in Sources */,
 				9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */,
 				9A39B0D02728480E008E7FD0 /* UpCornerCell.swift in Sources */,
+				9A5FC6442787685200CDB49D /* UserDefSuite.swift in Sources */,
 				9AE2AFF9272BC0B80088A3ED /* HistoryCell.swift in Sources */,
 				9A39B0CC272847FC008E7FD0 /* UserSettingsCell.swift in Sources */,
 				9AC48D1E273FC11300DBCEF8 /* ExpressPickCell.swift in Sources */,

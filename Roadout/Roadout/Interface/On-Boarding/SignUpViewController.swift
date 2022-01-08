@@ -139,39 +139,39 @@ class SignUpViewController: UIViewController {
     @objc func manageServerSide() {
         switch AuthManager.sharedInstance.callResult {
             case "Success":
-                //TO REMOVE
-                UserDefaults.standard.set(true, forKey: "roadout.testing.isSigned")
+                UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
+                UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
                 let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
                 self.present(vc, animated: false, completion: nil)
             case "error":
-                let alert = UIAlertController(title: "Error", message: "User might already exist, please use another email", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: "User already exists, sign in or use another email.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Icons")
+                alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "network error":
-                let alert = UIAlertController(title: "Error", message: "Please check you network connection", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Network Error", message: "Please check you network connection.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Icons")
+                alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "database error":
-                let alert = UIAlertController(title: "Error", message: "There was an internal problem, please wait and try again a little later", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Internal Error", message: "There was an internal problem, please wait and try again a little later.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Icons")
+                alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "unknown error":
-                let alert = UIAlertController(title: "Error", message: "There was an unknown error, please screenshot this and send it to roadout.ro@gmail.com; Code: unknown", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Icons")
+                alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "error with json":
-                let alert = UIAlertController(title: "Error", message: "There was an unknown error, please screenshot this and send it to roadout.ro@gmail.com; Code: error with json", preferredStyle: .alert)
+                let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Icons")
+                alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             default:
                 fatalError()

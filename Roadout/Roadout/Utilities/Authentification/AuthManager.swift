@@ -13,6 +13,7 @@ import Alamofire
 class AuthManager {
     
     var callResult = "network error"
+    var userID: String!
     
     static let sharedInstance = AuthManager()
     
@@ -34,6 +35,7 @@ class AuthManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
                     print(jsonArray["status"]!)
                     print(jsonArray["message"]!)
+                    self.userID = jsonArray["id"] as? String
                     self.callResult = jsonArray["status"] as! String
                     NotificationCenter.default.post(name: .manageServerSideSignUpID, object: nil)
                 } else {
@@ -67,6 +69,7 @@ class AuthManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
                     print(jsonArray["status"]!)
                     print(jsonArray["message"]!)
+                    self.userID = jsonArray["id"] as? String
                     self.callResult = jsonArray["status"] as! String
                     NotificationCenter.default.post(name: .manageServerSideSignInID, object: nil)
                 } else {

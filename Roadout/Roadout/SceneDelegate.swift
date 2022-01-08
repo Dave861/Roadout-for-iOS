@@ -12,8 +12,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        //TO REMOVE
-        if UserDefaults.standard.bool(forKey: "roadout.testing.isSigned") {
+
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
             let sb = UIStoryboard(name: "Home", bundle: nil)
               let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
               window?.rootViewController = vc

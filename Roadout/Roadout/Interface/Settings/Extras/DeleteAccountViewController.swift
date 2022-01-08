@@ -1,15 +1,15 @@
 //
-//  SignInViewController.swift
+//  DeleteAccountViewController.swift
 //  Roadout
 //
-//  Created by David Retegan on 25.10.2021.
+//  Created by David Retegan on 08.01.2022.
 //
 
 import UIKit
 
-class SignInViewController: UIViewController {
-    
-    let signInTitle = NSAttributedString(string: "Sign In", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+class DeleteAccountViewController: UIViewController {
+
+    let deleteTitle = NSAttributedString(string: "Confirm", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     var errorCounter = 0
     
     //MARK: -IB Connections-
@@ -17,22 +17,22 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurButton: UIButton!
     
-    @IBOutlet weak var signInBtn: UIButton!
+    @IBOutlet weak var deleteBtn: UIButton!
     
     @IBOutlet weak var emailField: PaddedTextField!
     @IBOutlet weak var passwordField: PaddedTextField!
     
   
-    @IBAction func signInTapped(_ sender: Any) {
+    @IBAction func deleteTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         if isValidEmail(emailField.text ?? "") && passwordField.text != "" {
-            AuthManager.sharedInstance.sendSignInData(emailField.text!, passwordField.text!)
+           UserManager.sharedInstance.deleteAccount(emailField.text!, passwordField.text!)
         } else {
-            let alert = UIAlertController(title: "Error", message: "Please enter a valid email address", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error", message: "Please enter a valid email address and password", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             alert.addAction(okAction)
-            alert.view.tintColor = UIColor(named: "Icons")
+            alert.view.tintColor = UIColor(named: "Redish")
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -75,7 +75,7 @@ class SignInViewController: UIViewController {
     
     func addObs() {
         NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(manageServerSide), name: .manageServerSideSignInID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(manageServerSide), name: .manageServerSideDeleteID, object: nil)
     }
     
     override func viewDidLoad() {
@@ -83,21 +83,20 @@ class SignInViewController: UIViewController {
         addObs()
         
         cardView.layer.cornerRadius = 16.0
-        signInBtn.layer.cornerRadius = 13.0
-        signInBtn.setAttributedTitle(signInTitle, for: .normal)
+        deleteBtn.layer.cornerRadius = 13.0
+        deleteBtn.setAttributedTitle(deleteTitle, for: .normal)
         
         emailField.layer.cornerRadius = 12.0
         passwordField.layer.cornerRadius = 12.0
         
         emailField.attributedPlaceholder = NSAttributedString(
             string: "Email",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Kinda Red")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
         passwordField.attributedPlaceholder = NSAttributedString(
             string: "Password",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Second Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Redish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
-        
         manageForgotView(false)
     }
     
@@ -118,14 +117,22 @@ class SignInViewController: UIViewController {
     }
     
     @objc func manageServerSide() {
-        switch AuthManager.sharedInstance.callResult {
+        switch UserManager.sharedInstance.callResult {
             case "Success":
-                UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
-                UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
-                let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
-                self.present(vc, animated: false, completion: nil)
+                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
+                UserDefaults.roadout!.set("000", forKey: "ro.roadout.Roadout.userID")
+                let alert = UIAlertController(title: "Success", message: "User deleted successfully.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
+                    self.view.window?.rootViewController = vc
+                    self.view.window?.makeKeyAndVisible()
+                })
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+                self.present(alert, animated: true, completion: nil)
             case "error":
-                let alert = UIAlertController(title: "Sign In Error", message: "Wrong email or password.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Verification Error", message: "Wrong email or password.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
                     self.errorCounter += 1
                     if self.errorCounter >= 2 {
@@ -163,5 +170,5 @@ class SignInViewController: UIViewController {
                 fatalError()
         }
     }
-    
+
 }

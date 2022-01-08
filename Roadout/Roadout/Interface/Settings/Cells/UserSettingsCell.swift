@@ -32,7 +32,8 @@ class UserSettingsCell: UITableViewCell {
         })
         let deleteAccountAction = UIAlertAction(title: "Delete Account", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
-            print("Delete Account")
+            let vc = self.sb.instantiateViewController(withIdentifier: "DeleteAccountVC") as! DeleteAccountViewController
+            self.parentViewController().present(vc, animated: true, completion: nil)
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -61,7 +62,8 @@ class UserSettingsCell: UITableViewCell {
                 self.parentViewController().present(vc, animated: true, completion: nil)
             }),
             UIAction(title: "Delete Account", image: UIImage(systemName: "trash"), handler: { (_) in
-                print("Delete Account")
+                let vc = self.sb.instantiateViewController(withIdentifier: "DeleteAccountVC") as! DeleteAccountViewController
+                self.parentViewController().present(vc, animated: true, completion: nil)
             }),
 
         ]

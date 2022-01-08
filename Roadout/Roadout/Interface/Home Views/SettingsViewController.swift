@@ -110,8 +110,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             alert.view.tintColor = UIColor(named: "Dark Orange")
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { action in
-                //TO REMOVE
-                UserDefaults.standard.set(false, forKey: "roadout.testing.isSigned")
+                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
                 self.view.window?.rootViewController = vc
