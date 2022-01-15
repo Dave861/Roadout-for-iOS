@@ -267,6 +267,26 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func manageTutorial() {
+        if UserDefaults.roadout?.bool(forKey: "ro.roadout.Roadout.launchedBefore") == false {
+        
+            let alert = UIAlertController(title: "Tutorial", message: "Would you like a quick tutorial of the app?", preferredStyle: .alert)
+            let yesAction = UIAlertAction(title: "Yes", style: .default) { action in
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "TutorialVC") as! TutorialViewController
+                self.present(vc, animated: true, completion: nil)
+            }
+            let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+            
+            alert.addAction(yesAction)
+            alert.addAction(noAction)
+            alert.view.tintColor = UIColor(named: "Greyish")
+            self.present(alert, animated: true) {
+                UserDefaults.roadout?.set(true, forKey: "ro.roadout.Roadout.launchedBefore")
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -340,6 +360,8 @@ class HomeViewController: UIViewController {
             addSharePlayButtonView()
             SharePlayManager.sharedInstance.receiveSessions()
         }
+        
+        manageTutorial()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

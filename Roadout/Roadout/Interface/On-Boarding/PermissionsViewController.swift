@@ -27,6 +27,8 @@ class PermissionsViewController: UIViewController {
     let center = UNUserNotificationCenter.current()
     var locationManager: CLLocationManager?
     
+    var permissionCounter = 0
+    
     @IBOutlet weak var permissionsTableView: UITableView!
     
     @IBOutlet weak var nextBtn: UIButton!
@@ -64,12 +66,20 @@ class PermissionsViewController: UIViewController {
         permissionsTableView.dataSource = self
         locationManager = CLLocationManager()
         locationManager?.delegate = self
+        
     }
     
     func manageNotifications() {
         center.getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
                 print("We good")
+                self.permissionCounter += 1
+                if self.permissionCounter >= 2 {
+                    let sb = UIStoryboard(name: "Home", bundle: nil)
+                    let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
+                    self.view.window?.rootViewController = vc
+                    self.view.window?.makeKeyAndVisible()
+                }
             } else {
                 self.askNotificationPermission()
             }
@@ -108,6 +118,15 @@ class PermissionsViewController: UIViewController {
         if #available(iOS 14.0, *) {
             if locationManager!.authorizationStatus != .authorizedWhenInUse && locationManager!.authorizationStatus != .authorizedAlways {
                 locationManager?.requestWhenInUseAuthorization()
+            } else {
+                print("Yesyees")
+                self.permissionCounter += 1
+                if self.permissionCounter >= 2 {
+                    let sb = UIStoryboard(name: "Home", bundle: nil)
+                    let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
+                    self.view.window?.rootViewController = vc
+                    self.view.window?.makeKeyAndVisible()
+                }
             }
         } else {
             locationManager?.requestWhenInUseAuthorization()

@@ -12,6 +12,8 @@
 		9A0631272775A92700E3AB5F /* GroupSpotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0631262775A92700E3AB5F /* GroupSpotsView.swift */; };
 		9A089E45272A7D78005B3FFE /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A089E44272A7D78005B3FFE /* AddReminderViewController.swift */; };
 		9A0A23292733D2D6007C1B08 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
+		9A0BDACD2792C90500EB9CF8 /* SPPerspective in Frameworks */ = {isa = PBXBuildFile; productRef = 9A0BDACC2792C90500EB9CF8 /* SPPerspective */; };
+		9A0BDACF2792C91D00EB9CF8 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0BDACE2792C91D00EB9CF8 /* TutorialViewController.swift */; };
 		9A0C7771272E7B1700ECBFB2 /* SpotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C7770272E7B1700ECBFB2 /* SpotView.swift */; };
 		9A0C7775272E831E00ECBFB2 /* SpotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C7773272E831E00ECBFB2 /* SpotCell.swift */; };
 		9A0C7776272E831E00ECBFB2 /* SpotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0C7774272E831E00ECBFB2 /* SpotCell.xib */; };
@@ -268,6 +270,7 @@
 		9A0631262775A92700E3AB5F /* GroupSpotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSpotsView.swift; sourceTree = "<group>"; };
 		9A089E44272A7D78005B3FFE /* AddReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
 		9A0A23282733D2D6007C1B08 /* ParkLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkLocation.swift; sourceTree = "<group>"; };
+		9A0BDACE2792C91D00EB9CF8 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		9A0C7770272E7B1700ECBFB2 /* SpotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotView.swift; sourceTree = "<group>"; };
 		9A0C7773272E831E00ECBFB2 /* SpotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCell.swift; sourceTree = "<group>"; };
 		9A0C7774272E831E00ECBFB2 /* SpotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotCell.xib; sourceTree = "<group>"; };
@@ -460,6 +463,7 @@
 			files = (
 				9A150833272BFC3E008C083B /* GoogleMaps in Frameworks */,
 				9AC48D1C273FBDE200DBCEF8 /* iCarousel in Frameworks */,
+				9A0BDACD2792C90500EB9CF8 /* SPPerspective in Frameworks */,
 				9A150837272BFC3E008C083B /* GoogleMapsCore in Frameworks */,
 				9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */,
 				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
@@ -870,6 +874,7 @@
 				9ACBFF53272704F90011B58F /* PermissionsViewController.swift */,
 				9A5381132789CA1600462D63 /* VerifyMailViewController.swift */,
 				9A5381152789CA2400462D63 /* ResetPasswordViewController.swift */,
+				9A0BDACE2792C91D00EB9CF8 /* TutorialViewController.swift */,
 			);
 			path = "On-Boarding";
 			sourceTree = "<group>";
@@ -1035,6 +1040,7 @@
 				9AC48D1B273FBDE200DBCEF8 /* iCarousel */,
 				9AA0EFD1277B5D5800B0F52A /* Alamofire */,
 				9AA01DDE2789D78E0004211A /* CHIOTPField */,
+				9A0BDACC2792C90500EB9CF8 /* SPPerspective */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1129,6 +1135,7 @@
 				9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */,
 				9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9AA01DDD2789D78E0004211A /* XCRemoteSwiftPackageReference "CHIOTPField" */,
+				9A0BDACB2792C90500EB9CF8 /* XCRemoteSwiftPackageReference "SPPerspective" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -1321,6 +1328,7 @@
 				9A49BFAF272FF42B00234A9F /* NoWifiView.swift in Sources */,
 				9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */,
 				9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */,
+				9A0BDACF2792C91D00EB9CF8 /* TutorialViewController.swift in Sources */,
 				9A49BFAD272FF42100234A9F /* CancelledView.swift in Sources */,
 				9A310785272A708300B1F84A /* ReminderCell.swift in Sources */,
 				9A799322277A0E410088E3FD /* ParkSection.swift in Sources */,
@@ -2163,6 +2171,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9A0BDACB2792C90500EB9CF8 /* XCRemoteSwiftPackageReference "SPPerspective" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPPerspective.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		9A150831272BFC3E008C083B /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/YAtechnologies/GoogleMaps-SP";
@@ -2206,6 +2222,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9A0BDACC2792C90500EB9CF8 /* SPPerspective */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A0BDACB2792C90500EB9CF8 /* XCRemoteSwiftPackageReference "SPPerspective" */;
+			productName = SPPerspective;
+		};
 		9A150832272BFC3E008C083B /* GoogleMaps */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9A150831272BFC3E008C083B /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
