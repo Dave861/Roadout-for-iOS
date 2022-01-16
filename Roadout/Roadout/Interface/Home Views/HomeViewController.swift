@@ -362,6 +362,8 @@ class HomeViewController: UIViewController {
         }
         
         manageTutorial()
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        UserManager.sharedInstance.getUserName(id)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

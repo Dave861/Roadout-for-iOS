@@ -84,7 +84,7 @@ struct RoadoutView: View {
                             Spacer()
                             Image("YellowThing")
                                 .resizable()
-                                .frame(width: 31.0, height: 36.0)
+                                .frame(width: 36.0, height: 30.0)
                         }
                     }
                     .padding([.leading, .bottom], 10.0)
@@ -118,7 +118,7 @@ struct RoadoutView: View {
                                 Spacer()
                                 Image("YellowThing")
                                     .resizable()
-                                    .frame(width: 31.0, height: 36.0)
+                                    .frame(width: 36.0, height: 30.0)
                             }
                         }
                         .padding([.leading, .bottom], 10.0)
@@ -149,7 +149,7 @@ struct RoadoutView: View {
                                 Spacer()
                                 Image("OrangeThing")
                                     .resizable()
-                                    .frame(width: 31.0, height: 39.0)
+                                    .frame(width: 36.0, height: 30.0)
                             }
                         }
                         .padding([.leading, .bottom], 12.0)

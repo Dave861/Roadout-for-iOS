@@ -60,27 +60,6 @@
                                     <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eru-xm-bn4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLO-wU-a6V">
-                                <rect key="frame" x="112" y="834" width="221" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="ecw-Da-bVc"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Terms of Use &amp; Privacy Policy">
-                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="legalTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x8L-ou-miU"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="9Yz-ch-mrs">
-                                <rect key="frame" x="92" y="833" width="23" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="23" id="LUd-Bx-zbM"/>
-                                    <constraint firstAttribute="height" constant="22" id="jWV-nv-hB4"/>
-                                </constraints>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="n2K-vz-CNh">
                                 <rect key="frame" x="20" y="178" width="374" height="515"/>
                                 <color key="backgroundColor" name="Background"/>
@@ -139,6 +118,27 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLO-wU-a6V">
+                                <rect key="frame" x="107" y="834" width="221" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ecw-Da-bVc"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Terms of Use &amp; Privacy Policy">
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="legalTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x8L-ou-miU"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="9Yz-ch-mrs">
+                                <rect key="frame" x="87" y="826" width="27" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="27" id="LUd-Bx-zbM"/>
+                                    <constraint firstAttribute="height" constant="29" id="jWV-nv-hB4"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Background"/>
@@ -151,15 +151,15 @@
                             <constraint firstItem="NsK-uO-oiw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LuG-3b-2y6"/>
                             <constraint firstItem="NsK-uO-oiw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="M7M-Mx-SaD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n2K-vz-CNh" secondAttribute="trailing" constant="20" id="RGq-Lk-rP8"/>
-                            <constraint firstItem="KLO-wU-a6V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="15.5" id="WQI-6D-nqU"/>
+                            <constraint firstItem="KLO-wU-a6V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="10.5" id="WQI-6D-nqU"/>
                             <constraint firstItem="NsK-uO-oiw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="46" id="XVT-DO-3Gq"/>
                             <constraint firstItem="IlP-X7-EFR" firstAttribute="top" secondItem="n2K-vz-CNh" secondAttribute="bottom" constant="17" id="Y7q-gP-vvs"/>
-                            <constraint firstItem="9Yz-ch-mrs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-103.5" id="asw-qk-9gp"/>
+                            <constraint firstItem="9Yz-ch-mrs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-106.5" id="asw-qk-9gp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NsK-uO-oiw" secondAttribute="trailing" constant="20" id="e1n-0g-yqq"/>
                             <constraint firstItem="n2K-vz-CNh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="f6h-XH-YTN"/>
                             <constraint firstItem="qkX-ad-waa" firstAttribute="top" secondItem="IlP-X7-EFR" secondAttribute="bottom" constant="8" symbolic="YES" id="fW3-Bs-Zmp"/>
                             <constraint firstItem="qkX-ad-waa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="h9o-eu-U49"/>
-                            <constraint firstItem="9Yz-ch-mrs" firstAttribute="top" secondItem="qkX-ad-waa" secondAttribute="bottom" constant="15" id="s2n-hG-OU5"/>
+                            <constraint firstItem="9Yz-ch-mrs" firstAttribute="top" secondItem="qkX-ad-waa" secondAttribute="bottom" constant="8" id="s2n-hG-OU5"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1089,7 +1089,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="Logo" width="598" height="594"/>
+        <image name="Logo" width="2094" height="2094"/>
         <image name="Marker" width="86" height="118"/>
         <image name="arrow.left.arrow.right" catalog="system" width="119" height="128"/>
         <image name="bell.fill" catalog="system" width="128" height="124"/>

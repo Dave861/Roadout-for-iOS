@@ -139,12 +139,20 @@ class SignUpViewController: UIViewController {
     @objc func manageServerSide() {
         switch AuthManager.sharedInstance.callResult {
             case "Success":
-                UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
-                UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
-                //if not verified
-                //else let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
-                let vc = storyboard?.instantiateViewController(withIdentifier: "VerifyMailVC") as! VerifyMailViewController
-                self.present(vc, animated: false, completion: nil)
+                if AuthManager.sharedInstance.userID != nil {
+                    UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
+                    UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
+                    //if not verified
+                    //else let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+                    let vc = storyboard?.instantiateViewController(withIdentifier: "VerifyMailVC") as! VerifyMailViewController
+                    self.present(vc, animated: false, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Error", message: "There was an unknown error, please try again", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+                }
             case "error":
                 let alert = UIAlertController(title: "Error", message: "User already exists, sign in or use another email.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)

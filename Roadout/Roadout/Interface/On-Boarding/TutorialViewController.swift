@@ -13,7 +13,7 @@ class TutorialViewController: UIViewController {
     var tCounter = 1
     
     var tutorialTitles = ["Search Bar", "More Button", "Express Reserve", "Find Spot", "Preferences", "Markers"]
-    var tutorialTexts = ["Use the search bar to find specific perking locations in your city and easily reserve the perfect spot for you.", "Use the more button to access more powerful options of the app. Tap it for more info.", "This is a quick and easy way to reserve a spot in a desired location.", "The fastest way to find a parking spot near you, great for you just need to park quickly.", "The place to see stats, add cards, reminders and manage permissions.", "Markers are easily glanceable indicators of where parking locations are relative to your location"]
+    var tutorialTexts = ["Use the search bar to find specific parking locations in your city and easily reserve the perfect spot for you.", "Use the more button to access more powerful options of the app. Tap it for more info.", "This is a quick and easy way to reserve a spot in a desired location.", "The fastest way to find a parking spot near you, great for you just need to park quickly.", "The place to see stats, add cards, reminders and manage permissions.", "Markers are easily glanceable indicators of where parking locations are relative to your location"]
     
     @IBOutlet weak var t1: UIView!
     
