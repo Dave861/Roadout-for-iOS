@@ -156,9 +156,6 @@
 		9AC926F2272697F00054E453 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC926F0272697F00054E453 /* Main.storyboard */; };
 		9AC926F4272697F20054E453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC926F3272697F20054E453 /* Assets.xcassets */; };
 		9AC926F7272697F20054E453 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC926F5272697F20054E453 /* LaunchScreen.storyboard */; };
-		9AC92702272697F20054E453 /* RoadoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC92701272697F20054E453 /* RoadoutTests.swift */; };
-		9AC9270C272697F20054E453 /* RoadoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9270B272697F20054E453 /* RoadoutUITests.swift */; };
-		9AC9270E272697F20054E453 /* RoadoutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9270D272697F20054E453 /* RoadoutUITestsLaunchTests.swift */; };
 		9ACBFF54272704F90011B58F /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBFF53272704F90011B58F /* PermissionsViewController.swift */; };
 		9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBFF55272705060011B58F /* PermissionTableViewCell.swift */; };
 		9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFF6272BBFD70088A3ED /* HistoryViewController.swift */; };
@@ -209,20 +206,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9A7C1A062776035E0088B54A;
 			remoteInfo = "Roadout WidgetExtension";
-		};
-		9AC926FE272697F20054E453 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AC926DF272697F00054E453 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9AC926E6272697F00054E453;
-			remoteInfo = Roadout;
-		};
-		9AC92708272697F20054E453 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AC926DF272697F00054E453 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9AC926E6272697F00054E453;
-			remoteInfo = Roadout;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -406,11 +389,6 @@
 		9AC926F3272697F20054E453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9AC926F6272697F20054E453 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9AC926F8272697F20054E453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9AC926FD272697F20054E453 /* RoadoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoadoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AC92701272697F20054E453 /* RoadoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutTests.swift; sourceTree = "<group>"; };
-		9AC92707272697F20054E453 /* RoadoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoadoutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AC9270B272697F20054E453 /* RoadoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutUITests.swift; sourceTree = "<group>"; };
-		9AC9270D272697F20054E453 /* RoadoutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9ACBFF53272704F90011B58F /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		9ACBFF55272705060011B58F /* PermissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionTableViewCell.swift; sourceTree = "<group>"; };
 		9AE2AFF6272BBFD70088A3ED /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -469,20 +447,6 @@
 				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
 				9AA01DDF2789D78E0004211A /* CHIOTPField in Frameworks */,
 				9A150835272BFC3E008C083B /* GoogleMapsBase in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AC926FA272697F20054E453 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AC92704272697F20054E453 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,8 +753,6 @@
 				9AC926E9272697F00054E453 /* Roadout */,
 				9A6E7E982756528800E09B75 /* Quick Reserve */,
 				9A6E7EA22756528800E09B75 /* Quick ReserveUI */,
-				9AC92700272697F20054E453 /* RoadoutTests */,
-				9AC9270A272697F20054E453 /* RoadoutUITests */,
 				9A59B7592764A6B400BC0497 /* Roadout Watch */,
 				9A59B7642764A6B500BC0497 /* Roadout Watch WatchKit Extension */,
 				9A7C1A0C2776035E0088B54A /* Roadout Widget */,
@@ -803,8 +765,6 @@
 			isa = PBXGroup;
 			children = (
 				9AC926E7272697F00054E453 /* Roadout.app */,
-				9AC926FD272697F20054E453 /* RoadoutTests.xctest */,
-				9AC92707272697F20054E453 /* RoadoutUITests.xctest */,
 				9A6E7E962756528800E09B75 /* Quick Reserve.appex */,
 				9A6E7EA02756528800E09B75 /* Quick ReserveUI.appex */,
 				9A59B7582764A6B400BC0497 /* Roadout.app */,
@@ -833,23 +793,6 @@
 				9A6E7E8F275645A600E09B75 /* Siri Integration */,
 			);
 			path = Roadout;
-			sourceTree = "<group>";
-		};
-		9AC92700272697F20054E453 /* RoadoutTests */ = {
-			isa = PBXGroup;
-			children = (
-				9AC92701272697F20054E453 /* RoadoutTests.swift */,
-			);
-			path = RoadoutTests;
-			sourceTree = "<group>";
-		};
-		9AC9270A272697F20054E453 /* RoadoutUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9AC9270B272697F20054E453 /* RoadoutUITests.swift */,
-				9AC9270D272697F20054E453 /* RoadoutUITestsLaunchTests.swift */,
-			);
-			path = RoadoutUITests;
 			sourceTree = "<group>";
 		};
 		9AC9271A27269B460054E453 /* Interface */ = {
@@ -1046,42 +989,6 @@
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9AC926FC272697F20054E453 /* RoadoutTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9AC92714272697F20054E453 /* Build configuration list for PBXNativeTarget "RoadoutTests" */;
-			buildPhases = (
-				9AC926F9272697F20054E453 /* Sources */,
-				9AC926FA272697F20054E453 /* Frameworks */,
-				9AC926FB272697F20054E453 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9AC926FF272697F20054E453 /* PBXTargetDependency */,
-			);
-			name = RoadoutTests;
-			productName = RoadoutTests;
-			productReference = 9AC926FD272697F20054E453 /* RoadoutTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		9AC92706272697F20054E453 /* RoadoutUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9AC92717272697F20054E453 /* Build configuration list for PBXNativeTarget "RoadoutUITests" */;
-			buildPhases = (
-				9AC92703272697F20054E453 /* Sources */,
-				9AC92704272697F20054E453 /* Frameworks */,
-				9AC92705272697F20054E453 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9AC92709272697F20054E453 /* PBXTargetDependency */,
-			);
-			name = RoadoutUITests;
-			productName = RoadoutUITests;
-			productReference = 9AC92707272697F20054E453 /* RoadoutUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1110,14 +1017,6 @@
 					9AC926E6272697F00054E453 = {
 						CreatedOnToolsVersion = 13.0;
 					};
-					9AC926FC272697F20054E453 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 9AC926E6272697F00054E453;
-					};
-					9AC92706272697F20054E453 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 9AC926E6272697F00054E453;
-					};
 				};
 			};
 			buildConfigurationList = 9AC926E2272697F00054E453 /* Build configuration list for PBXProject "Roadout" */;
@@ -1142,8 +1041,6 @@
 			projectRoot = "";
 			targets = (
 				9AC926E6272697F00054E453 /* Roadout */,
-				9AC926FC272697F20054E453 /* RoadoutTests */,
-				9AC92706272697F20054E453 /* RoadoutUITests */,
 				9A6E7E952756528800E09B75 /* Quick Reserve */,
 				9A6E7E9F2756528800E09B75 /* Quick ReserveUI */,
 				9A59B7572764A6B400BC0497 /* Roadout Watch */,
@@ -1216,20 +1113,6 @@
 				9A5CC58B272C133A00A735A3 /* darkStyle.json in Resources */,
 				9A5CC58C272C133A00A735A3 /* lightStyle.json in Resources */,
 				9AEF29F0272D704D00FEE390 /* Cards.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AC926FB272697F20054E453 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AC92705272697F20054E453 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1393,23 +1276,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9AC926F9272697F20054E453 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AC92702272697F20054E453 /* RoadoutTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AC92703272697F20054E453 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9AC9270C272697F20054E453 /* RoadoutUITests.swift in Sources */,
-				9AC9270E272697F20054E453 /* RoadoutUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1437,16 +1303,6 @@
 			isa = PBXTargetDependency;
 			target = 9A7C1A062776035E0088B54A /* Roadout WidgetExtension */;
 			targetProxy = 9A7C1A122776035F0088B54A /* PBXContainerItemProxy */;
-		};
-		9AC926FF272697F20054E453 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9AC926E6272697F00054E453 /* Roadout */;
-			targetProxy = 9AC926FE272697F20054E453 /* PBXContainerItemProxy */;
-		};
-		9AC92709272697F20054E453 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9AC926E6272697F00054E453 /* Roadout */;
-			targetProxy = 9AC92708272697F20054E453 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1487,7 +1343,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout Watch.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1514,7 +1370,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout WatchRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1538,7 +1394,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1570,7 +1426,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit ExtensionRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1601,7 +1457,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1628,7 +1484,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUIRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1655,7 +1511,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick Reserve.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1682,7 +1538,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick ReserveRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1712,7 +1568,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1743,7 +1599,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1892,7 +1748,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1932,7 +1788,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1961,126 +1817,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		9AC92715272697F20054E453 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T5769DN25J;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ro.codebranch.RoadoutTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Roadout.app/Roadout";
-			};
-			name = Debug;
-		};
-		9AC92716272697F20054E453 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T5769DN25J;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ro.codebranch.RoadoutTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Roadout.app/Roadout";
-			};
-			name = Release;
-		};
-		9AC92718272697F20054E453 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T5769DN25J;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ro.codebranch.RoadoutUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Roadout;
-			};
-			name = Debug;
-		};
-		9AC92719272697F20054E453 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T5769DN25J;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ro.codebranch.RoadoutUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Roadout;
 			};
 			name = Release;
 		};
@@ -2146,24 +1882,6 @@
 			buildConfigurations = (
 				9AC92712272697F20054E453 /* Debug */,
 				9AC92713272697F20054E453 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9AC92714272697F20054E453 /* Build configuration list for PBXNativeTarget "RoadoutTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9AC92715272697F20054E453 /* Debug */,
-				9AC92716272697F20054E453 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9AC92717272697F20054E453 /* Build configuration list for PBXNativeTarget "RoadoutUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9AC92718272697F20054E453 /* Debug */,
-				9AC92719272697F20054E453 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
