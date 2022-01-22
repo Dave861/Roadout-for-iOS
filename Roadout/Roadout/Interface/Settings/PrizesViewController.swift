@@ -26,6 +26,7 @@ class PrizesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+  
 
 }
 extension PrizesViewController: UITableViewDelegate, UITableViewDataSource {

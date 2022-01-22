@@ -43,6 +43,7 @@ extension Notification.Name {
     static let manageServerSideUpdateNameID = Notification.Name("ro.roadout.Roadout.manageServerSideUpdateNameID")
     static let manageServerSideUpdatePswID = Notification.Name("ro.roadout.Roadout.manageServerSideUpdatePswID")
     static let manageServerSideDeleteID = Notification.Name("ro.roadout.Roadout.manageServerSideDeleteID")
+    static let manageServerSideRegisterID = Notification.Name("ro.roadout.Roadout.manageServerSideRegisterID")
     
     //SHAREPLAY
     static let groupMessageReceivedID = Notification.Name("ro.roadout.Roadout.groupMessageReceivedID")
@@ -54,4 +55,9 @@ extension Notification.Name {
     
     //OTHERS
     static let reloadUserNameID = Notification.Name("ro.roadout.Roadout.reloadUserNameID")
+    static let userNotFoundID = Notification.Name("ro.roadout.Roadout.userNotFoundID")
+    
+    //USER MANAGER
+    static let manageSignInForgotServerSideID = Notification.Name("ro.roadout.Roadout.manageSignInForgotServerSideID")
+    static let manageResetPasswordServerSideID = Notification.Name("ro.roadout.Roadout.manageResetPasswordServerSideID")
 }

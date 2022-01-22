@@ -181,6 +181,8 @@ class HomeViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(showFindCard), name: .showFindCardID, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(userNotFoundAbort), name: .userNotFoundID, object: nil)
+        
         if #available(iOS 15.0, *) {
             NotificationCenter.default.addObserver(self, selector: #selector(showGroupReserveVC), name: .groupSessionStartedID, object: nil)
         }
@@ -292,6 +294,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         manageObs()
         
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        AuthManager.sharedInstance.checkIfUserExists(with: id)
+        
         searchTapArea.setTitle("", for: .normal)
         settingsTapArea.setTitle("", for: .normal)
         
@@ -362,7 +367,6 @@ class HomeViewController: UIViewController {
         }
         
         manageTutorial()
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         UserManager.sharedInstance.getUserName(id)
     }
     
@@ -403,6 +407,13 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc func userNotFoundAbort() {
+        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
+        self.view.window?.rootViewController = vc
+        self.view.window?.makeKeyAndVisible()
+    }
     
     //MARK: - Card Functions-
     //Result Card

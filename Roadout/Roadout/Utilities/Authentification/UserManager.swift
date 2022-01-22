@@ -16,8 +16,15 @@ class UserManager {
     
     var callResult = "network error"
     
+    //Which screen handles with alerts when user forgets password
+    var forgotResumeScreen = "Sign In"
+    
+    var resetCode = 0
+    var dateToken = Date.yesterday
+    var userEmail = ""
+    
     //MARK: -User Data-
-    var userName = UserDefaults.roadout!.string(forKey: "ro.roadout.UserName") ?? "User Name"
+    var userName = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserName") ?? "User Name"
     
     
     func updateName(_ id: String, _ name: String) {
@@ -149,7 +156,9 @@ class UserManager {
                     self.callResult = jsonArray["status"] as! String
                     if self.callResult == "Success" {
                         self.userName = jsonArray["name"] as! String
-                        UserDefaults.roadout!.set(self.userName, forKey: "ro.roadout.UserName")
+                        self.userEmail = jsonArray["email"] as! String
+                        UserDefaults.roadout!.set(self.userEmail, forKey: "ro.roadout.Roadout.UserMail")
+                        UserDefaults.roadout!.set(self.userName, forKey: "ro.roadout.Roadout.UserName")
                     }
                 } else {
                     print("unknown error")
@@ -161,7 +170,87 @@ class UserManager {
                 
             }
         }
+    }
+    
+    func sendForgotData(_ email: String) {
         
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["email":email]
+        
+        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/ForgotPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
+            guard response.value != nil else {
+                self.callResult = "database error"
+                NotificationCenter.default.post(name: .manageSignInForgotServerSideID, object: nil)
+                return
+            }
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
+                    print(jsonArray["status"]!)
+                    self.callResult = jsonArray["status"] as! String
+                    if self.callResult == "Success" {
+                        let code = jsonArray["accessCode"] as! String
+                        let token = jsonArray["token"] as! String
+                        let formatter = DateFormatter()
+                        let dateFormat = "yyyy-MM-dd HH:mm:ss"
+                        formatter.dateFormat = dateFormat
+                        self.resetCode = Int(code)!
+                        self.dateToken = formatter.date(from: token) ?? Date.yesterday
+                        NotificationCenter.default.post(name: .manageSignInForgotServerSideID, object: nil)
+                    } else {
+                        NotificationCenter.default.post(name: .manageSignInForgotServerSideID, object: nil)
+                    }
+                } else {
+                    print("unknown error")
+                    self.callResult = "unknown error"
+                    NotificationCenter.default.post(name: .manageSignInForgotServerSideID, object: nil)
+                }
+            } catch let error as NSError {
+                print(error)
+                self.callResult = "error with json"
+                NotificationCenter.default.post(name: .manageSignInForgotServerSideID, object: nil)
+            }
+        }
+        
+    }
+    
+    func resetPassword(_ password: String) {
+        
+        var email = UserManager.sharedInstance.userEmail
+        if email == "" {
+            email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail") ?? "WHAAAAAAAAAT"
+        }
+        print(email)
+        print(password)
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let hashedPswd = MD5(string: password)
+        let params : Parameters = ["email":email,"psw":hashedPswd]
+        
+        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/ResetPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
+            guard response.value != nil else {
+                self.callResult = "database error"
+                NotificationCenter.default.post(name: .manageResetPasswordServerSideID, object: nil)
+                return
+            }
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
+                    print(jsonArray["status"]!)
+                    self.callResult = jsonArray["status"] as! String
+                    NotificationCenter.default.post(name: .manageResetPasswordServerSideID, object: nil)
+                } else {
+                    print("unknown error")
+                    self.callResult = "unknown error"
+                    NotificationCenter.default.post(name: .manageResetPasswordServerSideID, object: nil)
+                }
+            } catch let error as NSError {
+                print(error)
+                self.callResult = "error with json"
+                NotificationCenter.default.post(name: .manageResetPasswordServerSideID, object: nil)
+            }
+        }
     }
     
 }

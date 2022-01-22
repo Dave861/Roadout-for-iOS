@@ -147,6 +147,7 @@ class EditPasswordViewController: UIViewController {
     func addObs() {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(manageServerSide), name: .manageServerSideUpdatePswID, object: nil)
+        NotificationCenter.default.addObserver(self,  selector: #selector(manageForgotServerSide), name: .manageSignInForgotServerSideID, object: nil)
     }
     
     //MARK: -Forgot password-
@@ -154,9 +155,17 @@ class EditPasswordViewController: UIViewController {
     @IBOutlet weak var forgotBtn: UIButton!
     
     @IBAction func forgotTapped(_ sender: Any) {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
-        self.present(vc, animated: true, completion: nil)
+        let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
+        let alert = UIAlertController(title: "Forgot Password", message: "We will send an email with a verification code to: \(email). Do you want to proceed?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Proceed", style: .default) { _ in
+            UserManager.sharedInstance.sendForgotData(email)
+        }
+        let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        alert.view.tintColor = UIColor(named: "Brownish")!
+        UserManager.sharedInstance.forgotResumeScreen = "Edit Password"
+        self.present(alert, animated: true, completion: nil)
     }
     
     func manageForgotView(_ show: Bool) {
@@ -204,6 +213,49 @@ class EditPasswordViewController: UIViewController {
         
         manageForgotView(false)
         
+    }
+    
+    @objc func manageForgotServerSide() {
+        if UserManager.sharedInstance.forgotResumeScreen == "Edit Password" {
+            switch UserManager.sharedInstance.callResult {
+                case "Success":
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
+                    self.present(vc, animated: true, completion: nil)
+                case "error":
+                    let alert = UIAlertController(title: "Error", message: "No user found with this email address.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+                case "network error":
+                    let alert = UIAlertController(title: "Network Error", message: "Please check you network connection.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+                case "database error":
+                    let alert = UIAlertController(title: "Internal Error", message: "There was an internal problem, please wait and try again a little later.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+                case "unknown error":
+                    let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+                case "error with json":
+                    let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+                default:
+                    fatalError()
+            }
+        }
     }
     
 

@@ -43,14 +43,18 @@ class SignUpViewController: UIViewController {
             alert.addAction(okAction)
             alert.view.tintColor = UIColor(named: "Icons")
             self.present(alert, animated: true, completion: nil)
-        } else if !isValidReenter() {
+        } else if !isValidName() {
             let alert = UIAlertController(title: "Error", message: "Please enter a name", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             alert.addAction(okAction)
             alert.view.tintColor = UIColor(named: "Icons")
             self.present(alert, animated: true, completion: nil)
         } else {
-            AuthManager.sharedInstance.sendSignUpData(nameField.text!, emailField.text!, passwordField.text!)
+            UserManager.sharedInstance.userEmail = self.emailField.text!
+            UserDefaults.roadout!.set(self.nameField.text!, forKey: "ro.roadout.Roadout.UserName")
+            UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
+            UserDefaults.roadout!.set(self.passwordField.text!, forKey: "ro.roadout.Roadout.UserPassword")
+            AuthManager.sharedInstance.sendRegisterData(emailField.text!)
         }
     }
     
@@ -104,7 +108,7 @@ class SignUpViewController: UIViewController {
     
     func addObs() {
         NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(manageServerSide), name: .manageServerSideSignUpID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(manageServerSideResponse), name: .manageServerSideRegisterID, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -136,25 +140,20 @@ class SignUpViewController: UIViewController {
         return nameField.text != ""
     }
     
-    @objc func manageServerSide() {
+    
+    @objc func manageServerSideResponse() {
         switch AuthManager.sharedInstance.callResult {
             case "Success":
-                if AuthManager.sharedInstance.userID != nil {
-                    UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
-                    UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
-                    //if not verified
-                    //else let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
-                    let vc = storyboard?.instantiateViewController(withIdentifier: "VerifyMailVC") as! VerifyMailViewController
-                    self.present(vc, animated: false, completion: nil)
-                } else {
-                    let alert = UIAlertController(title: "Error", message: "There was an unknown error, please try again", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                    alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
-                    self.present(alert, animated: true, completion: nil)
-                }
+                let vc = storyboard?.instantiateViewController(withIdentifier: "VerifyMailVC") as! VerifyMailViewController
+                self.present(vc, animated: true, completion: nil)
             case "error":
-                let alert = UIAlertController(title: "Error", message: "User already exists, sign in or use another email.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: "There was an error. Try force quiting the app and reopening.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+                self.present(alert, animated: true, completion: nil)
+            case "user exists":
+                let alert = UIAlertController(title: "Error", message: "User with this email already exists.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")

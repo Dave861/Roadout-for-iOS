@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import CoreLocation
+import UserNotifications
 
 class SignInViewController: UIViewController {
     
     let signInTitle = NSAttributedString(string: "Sign In", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     var errorCounter = 0
+    
+    let center = UNUserNotificationCenter.current()
+    var locationManager: CLLocationManager?
     
     //MARK: -IB Connections-
     
@@ -27,6 +32,8 @@ class SignInViewController: UIViewController {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         if isValidEmail(emailField.text ?? "") && passwordField.text != "" {
+            UserManager.sharedInstance.userEmail = self.emailField.text!
+            UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
             AuthManager.sharedInstance.sendSignInData(emailField.text!, passwordField.text!)
         } else {
             let alert = UIAlertController(title: "Error", message: "Please enter a valid email address", preferredStyle: .alert)
@@ -57,9 +64,25 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var forgotBtn: UIButton!
     
     @IBAction func forgotTapped(_ sender: Any) {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
-        self.present(vc, animated: true, completion: nil)
+        guard isValidEmail(emailField.text ?? "") else {
+            let alert = UIAlertController(title: "Error", message: "Please enter a valid email in order to get a verification code to reset your password.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        let alert = UIAlertController(title: "Forgot Password", message: "We will send an email with a verification code to: \(emailField.text!). Do you want to proceed?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Proceed", style: .default) { _ in
+            UserManager.sharedInstance.sendForgotData(self.emailField.text!)
+            UserManager.sharedInstance.userEmail = self.emailField.text!
+            UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
+        }
+        let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        alert.view.tintColor = UIColor(named: "Main Yellow")!
+        UserManager.sharedInstance.forgotResumeScreen = "Sign In"
+        self.present(alert, animated: true, completion: nil)
     }
     
     func manageForgotView(_ show: Bool) {
@@ -78,7 +101,8 @@ class SignInViewController: UIViewController {
     
     func addObs() {
         NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(manageServerSide), name: .manageServerSideSignInID, object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(manageServerSide), name: .manageServerSideSignInID, object: nil)
+        NotificationCenter.default.addObserver(self,  selector: #selector(manageForgotServerSide), name: .manageSignInForgotServerSideID, object: nil)
     }
     
     override func viewDidLoad() {
@@ -100,7 +124,7 @@ class SignInViewController: UIViewController {
             string: "Password",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Second Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
-        
+        locationManager = CLLocationManager()
         manageForgotView(false)
     }
     
@@ -111,6 +135,32 @@ class SignInViewController: UIViewController {
         }
     }
     
+    func manageScreens() {
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
+                if #available(iOS 14.0, *) {
+                    if self.locationManager!.authorizationStatus == .authorizedWhenInUse || self.locationManager!.authorizationStatus == .authorizedAlways {
+                        DispatchQueue.main.async {
+                            let sb = UIStoryboard(name: "Home", bundle: nil)
+                            let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
+                            self.view.window?.rootViewController = vc
+                            self.view.window?.makeKeyAndVisible()
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+                        self.present(vc, animated: false, completion: nil)
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+                    self.present(vc, animated: false, completion: nil)
+                }
+            }
+        }
+    }
     
     
     func isValidEmail(_ email: String) -> Bool {
@@ -126,10 +176,7 @@ class SignInViewController: UIViewController {
                 if AuthManager.sharedInstance.userID != nil {
                     UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
                     UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
-                    //if not verified
-                    //else let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
-                    let vc = storyboard?.instantiateViewController(withIdentifier: "VerifyMailVC") as! VerifyMailViewController
-                    self.present(vc, animated: false, completion: nil)
+                    manageScreens()
                 } else {
                     let alert = UIAlertController(title: "Error", message: "There was an unknown error, please try again", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
@@ -174,6 +221,50 @@ class SignInViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             default:
                 fatalError()
+        }
+    }
+    
+    
+    @objc func manageForgotServerSide() {
+        if UserManager.sharedInstance.forgotResumeScreen == "Sign In" {
+            switch UserManager.sharedInstance.callResult {
+                case "Success":
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
+                    self.present(vc, animated: true, completion: nil)
+                case "error":
+                    let alert = UIAlertController(title: "Error", message: "No user found with this email address.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+                case "network error":
+                    let alert = UIAlertController(title: "Network Error", message: "Please check you network connection.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+                case "database error":
+                    let alert = UIAlertController(title: "Internal Error", message: "There was an internal problem, please wait and try again a little later.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+                case "unknown error":
+                    let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+                case "error with json":
+                    let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+                default:
+                    fatalError()
+            }
         }
     }
     
