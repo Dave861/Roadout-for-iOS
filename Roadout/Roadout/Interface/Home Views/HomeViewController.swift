@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
     var mapView: GMSMapView!
     let locationManager = CLLocationManager()
     let screenSize: CGRect = UIScreen.main.bounds
+    var selectedMarker: GMSMarker!
+    var markers = [GMSMarker]()
     
     //Card Views
     let resultView = ResultView.instanceFromNib()
@@ -196,8 +198,13 @@ class HomeViewController: UIViewController {
             let marker = GMSMarker(position: markerPosition)
             marker.title = parkLocation.name
             marker.infoWindowAnchor = CGPoint()
-            marker.icon = UIImage(named: "Marker")?.withResize(scaledToSize: CGSize(width: 36.0, height: 49.0))
+            //Snippet used for marker color coordination
+            let randomNr = [1, 2, 3, 4].randomElement()!
+            marker.snippet = "\(randomNr)"
+            print("Marker\(randomNr)")
+            marker.icon = UIImage(named: "Marker\(randomNr)")?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
             marker.map = mapView
+            markers.append(marker)
             
         }
     }
@@ -420,6 +427,12 @@ class HomeViewController: UIViewController {
     @objc func addResultCard() {
         let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
         self.mapView?.animate(to: camera)
+        for marker in markers {
+            if marker.position.latitude == selectedLocationCoord!.latitude && marker.position.longitude == selectedLocationCoord!.longitude {
+                self.shakeMarkerView(marker: marker)
+                self.selectedMarker = marker
+            }
+        }
         searchBar.layer.shadowOpacity = 0.0
         var dif = 15.0
         DispatchQueue.main.async {
@@ -435,6 +448,15 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             self.searchBar.layer.shadowOpacity = 0.1
             self.resultView.removeFromSuperview()
+            if self.selectedMarker != nil {
+
+                self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                imageView.contentMode = .scaleAspectFit
+                imageView.image = UIImage(named: "Marker" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
+                self.selectedMarker.iconView?.addSubview(imageView)
+                
+            }
         }
     }
     //Section Card
@@ -637,6 +659,13 @@ class HomeViewController: UIViewController {
     //MARK: -Bar functions-
     
     @objc func showPaidBar() {
+        if self.selectedMarker != nil {
+            self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = UIImage(named: "Marker" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
+            self.selectedMarker.iconView?.addSubview(imageView)
+        }
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
@@ -774,19 +803,61 @@ extension HomeViewController: CLLocationManagerDelegate {
         self.mapView?.animate(to: camera)
         self.locationManager.stopUpdatingLocation()
     }
+    
+    func shakeMarkerView(marker: GMSMarker) {
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "transform.rotation.z"
+        animation.values = [ 0, -30 * .pi / 180.0, 30 * .pi / 180.0 , 0]
+        animation.keyTimes = [0, 0.33 , 0.66 , 1]
+        animation.duration = 1;
+        animation.isAdditive = false;
+        animation.isRemovedOnCompletion = true
+        animation.repeatCount = 1
+        
+        marker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 90))
+        let imageView = UIImageView(frame: CGRect(x: (marker.iconView?.frame.width)!/2 - 29.25, y: (marker.iconView?.frame.height)! - 75, width: 58.5, height: 75))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "SelectedMarker" + marker.snippet!)
+        imageView.layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
+        imageView.layer.frame = CGRect(x: (marker.iconView?.frame.width)!/2 - 29.25, y: (marker.iconView?.frame.height)! - 75, width: 58.5, height: 75)
+        
+        marker.iconView?.addSubview(imageView)
+        marker.iconView!.subviews[0].layer.add(animation, forKey: "shakeAnimation")
+    }
 }
 
 extension HomeViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedBar && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
             selectedLocation = marker.title!
-            selectedLocationColor = UIColor(named: "Dark Orange")!
+            let colorSnipper = Int(marker.snippet!)
+            switch colorSnipper {
+                case 1:
+                    selectedLocationColor = UIColor(named: "Main Yellow")!
+                case 2:
+                    selectedLocationColor = UIColor(named: "Dark Yellow")!
+                case 3:
+                    selectedLocationColor = UIColor(named: "Dark Orange")!
+                case 4:
+                    selectedLocationColor = UIColor(named: "Icons")!
+                default:
+                    selectedLocationColor = UIColor(named: "Main Yellow")!
+            }
             selectedLocationCoord = marker.position
             if self.view.subviews.last != searchBar && self.view.subviews.last != titleLbl && self.view.subviews.last != mapView {
                 self.view.subviews.last?.removeFromSuperview()
             }
+            if self.selectedMarker != nil {
+                self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                imageView.contentMode = .scaleAspectFit
+                imageView.image = UIImage(named: "Marker" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
+                self.selectedMarker.iconView?.addSubview(imageView)
+            }
+            self.selectedMarker = marker
             addResultCard()
         }
         return true
     }
+   
 }
