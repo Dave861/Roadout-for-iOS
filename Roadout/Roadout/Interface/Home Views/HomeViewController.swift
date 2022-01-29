@@ -102,7 +102,7 @@ class HomeViewController: UIViewController {
                     dif = 49.0
                     print("YESS")
                 }
-                self.findView.frame = CGRect(x: 13, y: self.screenSize.height-255-dif, width: self.screenSize.width - 26, height: 255)
+                self.findView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
                 print(self.view.frame.height)
                 self.view.addSubview(self.findView)
             }
@@ -223,7 +223,7 @@ class HomeViewController: UIViewController {
                         dif = 49.0
                         print("YESS")
                     }
-                    self.findView.frame = CGRect(x: 13, y: self.screenSize.height-255-dif, width: self.screenSize.width - 26, height: 255)
+                    self.findView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
                     print(self.view.frame.height)
                     self.view.addSubview(self.findView)
                 }
@@ -772,7 +772,7 @@ class HomeViewController: UIViewController {
                     dif = 49.0
                     print("YESS")
                 }
-                self.findView.frame = CGRect(x: 13, y: self.screenSize.height-255-dif, width: self.screenSize.width - 26, height: 255)
+                self.findView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
                 print(self.view.frame.height)
                 self.view.addSubview(self.findView)
         }
