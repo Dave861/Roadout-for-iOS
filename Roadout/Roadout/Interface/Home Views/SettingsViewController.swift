@@ -10,12 +10,12 @@ import MessageUI
 
 class SettingsViewController: UIViewController {
     
-    let cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
-    let cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "Main Yellow"]
-    let cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "globe"]
-    let cellSettings = ["", "", "Notifications", "Payment Methods", "Default Directions App", "Reminders", "Reservation History", "", "Invite Friends", "Prizes", "", "Report a Bug", "Privacy Policy & Terms of Use", "About Roadout"]
+    let cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
+    let cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
+    let cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "signature" ,"globe"]
+    let cellSettings = ["", "", "Notifications", "Payment Methods", "Default Directions App", "Reminders", "Reservation History", "", "Invite Friends", "Prizes", "", "Report a Bug", "Privacy Policy & Terms of Use", "Acknowledgements", "About Roadout"]
 
-    let cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AboutVC"]
+    let cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
     
     @IBAction func backTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -55,12 +55,12 @@ class SettingsViewController: UIViewController {
             mail.mailComposeDelegate = self
             mail.view.tintColor = UIColor(named: "Greyish")
             mail.setToRecipients(["roadout.ro@gmail.com"])
-            mail.setSubject("Bug Report")
-            mail.setMessageBody("Roadout for iOS: Please describe your issue and steps to reproduce it. If you have any screenshots please attach them - Roadout Team", isHTML: false)
+            mail.setSubject("Roadout for iOS - Report")
+            mail.setMessageBody("Please describe your issue and steps to reproduce it. If you have any screenshots please attach them - Roadout Team", isHTML: false)
 
             present(mail, animated: true)
         } else {
-            let alert = UIAlertController(title: "Error", message: "This device cannot send email, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error", message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com", preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Greyish")
             let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             alert.addAction(okAction)

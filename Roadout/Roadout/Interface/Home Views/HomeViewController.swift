@@ -10,11 +10,6 @@ import GoogleMaps
 import CoreLocation
 import SwiftUI
 
-var selectedLocation = "Location"
-var selectedLocationColor = UIColor(named: "Main Yellow")
-var selectedLocationCoord: CLLocationCoordinate2D!
-var currentLocationCoord: CLLocationCoordinate2D?
-
 var returnToDelay = false
 var returnToFind = false
 
@@ -48,7 +43,13 @@ class HomeViewController: UIViewController {
     @objc func addExpressView() {
         let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
         self.mapView?.animate(to: camera)
-        expressPickView.removeFromSuperview()
+        
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -59,7 +60,12 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func removeExpressView() {
+    @objc func addExpressPickView() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -68,13 +74,31 @@ class HomeViewController: UIViewController {
             }
             self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-195-dif, width: self.screenSize.width - 26, height: 195)
             self.view.addSubview(self.expressPickView)
-            self.expressView.removeFromSuperview()
         }
     }
     
     //MARK: -Find me a spot-
     let findView = FindView.instanceFromNib()
     
+    @objc func showFindCard() {
+            let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
+            self.mapView?.animate(to: camera)
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.layer.shadowOpacity = 0.0
+            }
+            var dif = 15.0
+            DispatchQueue.main.async {
+                if (UIDevice.current.hasNotch) {
+                    dif = 49.0
+                    print("YESS")
+                }
+                self.findView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
+                print(self.view.frame.height)
+                self.view.addSubview(self.findView)
+        }
+    }
     
     //MARK: -IBOutlets-
     
@@ -95,32 +119,20 @@ class HomeViewController: UIViewController {
         settingsAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
         
         let findAction = UIAlertAction(title: "Find Spot", style: .default) { action in
-            self.searchBar.layer.shadowOpacity = 0.0
-            var dif = 15.0
-            DispatchQueue.main.async {
-                if (UIDevice.current.hasNotch) {
-                    dif = 49.0
-                    print("YESS")
+            guard currentLocationCoord != nil else { return }
+            FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
+                if success {
+                    self.showFindCard()
+                } else {
+                    //MANAGE
                 }
-                self.findView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
-                print(self.view.frame.height)
-                self.view.addSubview(self.findView)
             }
+
         }
         findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
         
         let expressAction = UIAlertAction(title: "Express Reserve", style: .default) { action in
-            self.searchBar.layer.shadowOpacity = 0.0
-            var dif = 15.0
-            DispatchQueue.main.async {
-                if (UIDevice.current.hasNotch) {
-                    dif = 49.0
-                    print("YESS")
-                }
-                self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-195-dif, width: self.screenSize.width - 26, height: 195)
-                print(self.view.frame.height)
-                self.view.addSubview(self.expressPickView)
-            }
+            self.addExpressPickView()
         }
         expressAction.setValue(UIColor(named: "Dark Orange")!, forKey: "titleTextColor")
         
@@ -139,7 +151,9 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var titleLbl: UILabel!
     
-    @IBOutlet weak var shareplayView: UIView!    
+    @IBOutlet weak var shareplayView: UIView!
+    
+    //MARK: -OBSERVERS-
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
@@ -169,7 +183,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(removePayDelayCard), name: .removePayDelayCardID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(addExpressView), name: .addExpressViewID, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeExpressView), name: .removeExpressViewID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addExpressPickView), name: .addExpressPickViewID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showPaidBar), name: .showPaidBarID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showActiveBar), name: .showActiveBarID, object: nil)
@@ -189,6 +203,7 @@ class HomeViewController: UIViewController {
             NotificationCenter.default.addObserver(self, selector: #selector(showGroupReserveVC), name: .groupSessionStartedID, object: nil)
         }
     }
+   //MARK: -Markers-
     
     func addMarkers() {
         var index = 0
@@ -209,6 +224,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+    //Menu
     var menuItems: [UIAction] {
         return [
             UIAction(title: "Preferences", image: UIImage(systemName: "gearshape.2"), handler: { (_) in
@@ -216,37 +232,25 @@ class HomeViewController: UIViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }),
             UIAction(title: "Find Spot", image: UIImage(systemName: "loupe"), handler: { (_) in
-                self.searchBar.layer.shadowOpacity = 0.0
-                var dif = 15.0
-                DispatchQueue.main.async {
-                    if (UIDevice.current.hasNotch) {
-                        dif = 49.0
-                        print("YESS")
+                
+                guard currentLocationCoord != nil else { return }
+                FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
+                    if success {
+                        self.showFindCard()
+                    } else {
+                        //MANAGE
                     }
-                    self.findView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
-                    print(self.view.frame.height)
-                    self.view.addSubview(self.findView)
                 }
             }),
             UIAction(title: "Express Reserve", image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
-                self.searchBar.layer.shadowOpacity = 0.0
-                var dif = 15.0
-                DispatchQueue.main.async {
-                    if (UIDevice.current.hasNotch) {
-                        dif = 49.0
-                        print("YESS")
-                    }
-                    self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-195-dif, width: self.screenSize.width - 26, height: 195)
-                    print(self.view.frame.height)
-                    self.view.addSubview(self.expressPickView)
-                }
+                self.addExpressPickView()
             }),
         ]
     }
     var moreMenu: UIMenu {
         return UIMenu(title: "What would you like to do?", image: nil, identifier: nil, options: [], children: menuItems)
     }
-    
+  //SharePlay
     func addSharePlayButtonView() {
         if #available(iOS 15.0, *) {
             let host = UIHostingController(rootView: SharePlayButton())
@@ -296,6 +300,14 @@ class HomeViewController: UIViewController {
         }
     }
     
+    //MARK: -ViewDidLoad-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        AuthManager.sharedInstance.checkIfUserExists(with: id)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -321,6 +333,8 @@ class HomeViewController: UIViewController {
         mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
         mapView.delegate = self
         self.view.insertSubview(mapView, at: 0)
+        let mapInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 60.0, right: 0.0)
+        mapView.padding = mapInsets
         
         addMarkers()
         
@@ -427,12 +441,22 @@ class HomeViewController: UIViewController {
     @objc func addResultCard() {
         let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
         self.mapView?.animate(to: camera)
+        
+        for location in parkLocations {
+            if location.name == selectedLocationName {
+                selectedParkLocation = location
+                EntityManager.sharedInstance.getSpotsInLocation(in: selectedParkLocation)
+                break
+            }
+        }
+        
         for marker in markers {
             if marker.position.latitude == selectedLocationCoord!.latitude && marker.position.longitude == selectedLocationCoord!.longitude {
                 self.shakeMarkerView(marker: marker)
                 self.selectedMarker = marker
             }
         }
+    
         searchBar.layer.shadowOpacity = 0.0
         var dif = 15.0
         DispatchQueue.main.async {
@@ -760,25 +784,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func showFindCard() {
-            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
-                self.view.subviews.last!.removeFromSuperview()
-            } else {
-                self.searchBar.layer.shadowOpacity = 0.0
-            }
-            var dif = 15.0
-            DispatchQueue.main.async {
-                if (UIDevice.current.hasNotch) {
-                    dif = 49.0
-                    print("YESS")
-                }
-                self.findView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
-                print(self.view.frame.height)
-                self.view.addSubview(self.findView)
-        }
-    }
-    
-    
 }
 extension HomeViewController: CLLocationManagerDelegate {
 
@@ -829,7 +834,7 @@ extension HomeViewController: CLLocationManagerDelegate {
 extension HomeViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedBar && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
-            selectedLocation = marker.title!
+            selectedLocationName = marker.title!
             let colorSnipper = Int(marker.snippet!)
             switch colorSnipper {
                 case 1:

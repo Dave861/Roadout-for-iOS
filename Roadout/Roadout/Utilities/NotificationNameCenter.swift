@@ -34,7 +34,7 @@ extension Notification.Name {
     static let removeNoWifiBarID = Notification.Name("ro.roadout.Roadout.removeNoWifiBarID")
     static let returnToSearchBarID = Notification.Name("ro.roadout.Roadout.returnToSearchBarID")
     static let addExpressViewID = Notification.Name("ro.roadout.Roadout.addExpressViewID")
-    static let removeExpressViewID = Notification.Name("ro.roadout.Roadout.removeExpressViewID")
+    static let addExpressPickViewID = Notification.Name("ro.roadout.Roadout.removeExpressViewID")
     static let showFindCardID = Notification.Name("ro.roadout.Roadout.showFindCardID")
     
     //AUTH MANAGER

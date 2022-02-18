@@ -233,7 +233,7 @@ class SignInViewController: UIViewController {
                     let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
                     self.present(vc, animated: true, completion: nil)
                 case "error":
-                    let alert = UIAlertController(title: "Error", message: "No user found with this email address.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "User Error", message: "No user found with this email address. Try signing up.", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
@@ -251,13 +251,13 @@ class SignInViewController: UIViewController {
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)
                 case "unknown error":
-                    let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)
                 case "error with json":
-                    let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")

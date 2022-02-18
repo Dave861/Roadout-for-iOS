@@ -11,9 +11,9 @@
 	<key>INIntentDefinitionSystemVersion</key>
 	<string>21A559</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>13A1030d</string>
+	<string>13C100</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>13.1</string>
+	<string>13.2.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -22,7 +22,7 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDefaultImageName</key>
-			<string>LogoSquare</string>
+			<string>YellowCar</string>
 			<key>INIntentDescription</key>
 			<string>Quickly reserve a parking spot in the nearest location for 15 minutes</string>
 			<key>INIntentDescriptionID</key>
@@ -116,6 +116,18 @@
 						<string>vJ5tTi</string>
 						<key>INIntentResponseCodeName</key>
 						<string>reservationActive</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>User location is not enabled, please enable access if you'd like to use find spot.</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>juT3eG</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>User location is not enabled, please enable access if you'd like to use find spot.</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>6fGktS</string>
+						<key>INIntentResponseCodeName</key>
+						<string>locationDisabled</string>
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>

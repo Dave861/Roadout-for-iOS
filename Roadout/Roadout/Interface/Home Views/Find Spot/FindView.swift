@@ -8,10 +8,12 @@
 import UIKit
 import IntentsUI
 import Intents
+import SPAlert
 
 class FindView: UIView {
     
     var minutesValue = 15
+    var alertView: SPAlertView!
     
     @IBOutlet weak var backBtn: UIButton!
     
@@ -45,85 +47,11 @@ class FindView: UIView {
     @IBOutlet weak var siriBtnView: UIView!
     
     
-    @IBAction func locationTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "Choose another location", preferredStyle: .actionSheet)
-        alert.view.tintColor = UIColor(named: "Greyish")
-        let action1 = UIAlertAction(title: "Old Town", style: .default) { action in
-            self.locationLbl.text = "Old Town"
-        }
-        let action2 = UIAlertAction(title: "Airport", style: .default) { action in
-            self.locationLbl.text = "Airport"
-        }
-        let action3 = UIAlertAction(title: "Marasti", style: .default) { action in
-            self.locationLbl.text = "Marasti"
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        cancelAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
-        
-        alert.addAction(action1)
-        alert.addAction(action2)
-        alert.addAction(action3)
 
-        self.parentViewController().present(alert, animated: true, completion: nil)
-    }
     @IBOutlet weak var locationBtn: UIButton!
     
-    
-    @IBAction func sectionTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "Choose another section", preferredStyle: .actionSheet)
-        alert.view.tintColor = UIColor(named: "Greyish")
-        let action1 = UIAlertAction(title: "Section A", style: .default) { action in
-            self.sectionLbl.text = "Section A"
-        }
-        let action2 = UIAlertAction(title: "Section D", style: .default) { action in
-            self.locationLbl.text = "Section D"
-        }
-        let action3 = UIAlertAction(title: "Section F", style: .default) { action in
-            self.locationLbl.text = "Section F"
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        cancelAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
-        
-        alert.addAction(action1)
-        alert.addAction(action2)
-        alert.addAction(action3)
-
-        self.parentViewController().present(alert, animated: true, completion: nil)
-    }
     @IBOutlet weak var sectionBtn: UIButton!
     
-    
-    @IBAction func spotTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "Choose another spot", preferredStyle: .actionSheet)
-        alert.view.tintColor = UIColor(named: "Greyish")
-        let action1 = UIAlertAction(title: "Spot 9", style: .default) { action in
-            self.spotLbl.text = "Spot 9"
-        }
-        let action2 = UIAlertAction(title: "Spot 12", style: .default) { action in
-            self.spotLbl.text = "Spot 12"
-        }
-        let action3 = UIAlertAction(title: "Spot 16", style: .default) { action in
-            self.spotLbl.text = "Spot 16"
-        }
-        let action4 = UIAlertAction(title: "Spot 19", style: .default) { action in
-            self.spotLbl.text = "Spot 19"
-        }
-        let action5 = UIAlertAction(title: "Spot 21", style: .default) { action in
-            self.spotLbl.text = "Spot 21"
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        cancelAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
-        
-        alert.addAction(action1)
-        alert.addAction(action2)
-        alert.addAction(action3)
-        alert.addAction(action4)
-        alert.addAction(action5)
-
-        self.parentViewController().present(alert, animated: true, completion: nil)
-    }
     @IBOutlet weak var spotBtn: UIButton!
     
     
@@ -182,15 +110,13 @@ class FindView: UIView {
         sectionBtn.setTitle("", for: .normal)
         spotBtn.setTitle("", for: .normal)
         timeBtn.setTitle("", for: .normal)
+     
+        locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name
+        sectionLbl.text = "Section " + FunctionsManager.sharedInstance.foundSection.name
+        spotLbl.text = "Spot \(FunctionsManager.sharedInstance.foundSpot.number)"
         
         if #available(iOS 14.0, *) {
-            locationBtn.menu = locationsMenu
-            sectionBtn.menu = sectionsMenu
-            spotBtn.menu = spotsMenu
             timeBtn.menu = durationMenu
-            locationBtn.showsMenuAsPrimaryAction = true
-            sectionBtn.showsMenuAsPrimaryAction = true
-            spotBtn.showsMenuAsPrimaryAction = true
             timeBtn.showsMenuAsPrimaryAction = true
         }
 
@@ -203,70 +129,12 @@ class FindView: UIView {
         self.layer.rasterizationScale = UIScreen.main.scale
         donateInteration()
         addToSiriBtn()
+        
     }
 
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Find", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
-    
-    var locationsMenuItems: [UIAction] {
-        return [
-            UIAction(title: "Old Town", image: nil, handler: { (_) in
-                self.locationLbl.text = "Old Town"
-            }),
-            UIAction(title: "Airport", image: nil, handler: { (_) in
-                self.locationLbl.text = "Airport"
-            }),
-            UIAction(title: "Marasti", image: nil, handler: { (_) in
-                self.locationLbl.text = "Marasti"
-            })
-        ]
-    }
-    var locationsMenu: UIMenu {
-        return UIMenu(title: "Choose another location", image: nil, identifier: nil, options: [], children: locationsMenuItems)
-    }
-    
-    var sectionsMenuItems: [UIAction] {
-        return [
-            UIAction(title: "Section F", image: nil, handler: { (_) in
-                self.sectionLbl.text = "Section F"
-            }),
-            UIAction(title: "Section D", image: nil, handler: { (_) in
-                self.sectionLbl.text = "Section D"
-            }),
-            UIAction(title: "Section A", image: nil, handler: { (_) in
-                self.sectionLbl.text = "Section A"
-            })
-        ]
-    }
-    var sectionsMenu: UIMenu {
-        return UIMenu(title: "Choose another section", image: nil, identifier: nil, options: [], children: sectionsMenuItems)
-    }
-    
-    var spotsMenuItems: [UIAction] {
-        return [
-            UIAction(title: "Spot 21", image: nil, handler: { (_) in
-                self.spotLbl.text = "Spot 21"
-            }),
-            UIAction(title: "Spot 19", image: nil, handler: { (_) in
-                self.spotLbl.text = "Spot 19"
-            }),
-            UIAction(title: "Spot 16", image: nil, handler: { (_) in
-                self.spotLbl.text = "Spot 16"
-            }),
-            UIAction(title: "Spot 12", image: nil, handler: { (_) in
-                self.spotLbl.text = "Spot 12"
-            }),
-            UIAction(title: "Spot 9", image: nil, handler: { (_) in
-                self.spotLbl.text = "Spot 9"
-            })
-        ]
-    }
-    var spotsMenu: UIMenu {
-        return UIMenu(title: "Choose another spot", image: nil, identifier: nil, options: [], children: spotsMenuItems)
-    }
-    
-
     
     var durationMenuItems: [UIAction] {
         return [
@@ -291,19 +159,7 @@ class FindView: UIView {
     var durationMenu: UIMenu {
         return UIMenu(title: "Choose duration", image: nil, identifier: nil, options: [], children: durationMenuItems)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        
     func donateInteration() {
         let intent = QuickReserveIntent()
         intent.suggestedInvocationPhrase = "Find me a parking spot"
@@ -312,7 +168,7 @@ class FindView: UIView {
             if err == nil {
                 print("Great Success")
             } else {
-                print(err?.localizedDescription)
+                print(String(describing: err?.localizedDescription))
             }
         }
     }

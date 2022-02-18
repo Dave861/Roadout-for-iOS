@@ -23,13 +23,6 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
         icon.image = iconImage
         statusLbl.text = status
         explanationLbl.text = explanation
-        if color == UIColor(named: "Dark Orange")! {
-            explanationLbl.font = UIFont.systemFont(ofSize: 15.0, weight: .medium)
-            explanationLbl.textColor = UIColor.label
-        } else {
-            explanationLbl.font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
-            explanationLbl.textColor = UIColor.systemGray
-        }
     }
         
     func configureView(for parameters: Set<INParameter>, of interaction: INInteraction, interactiveBehavior: INUIInteractiveBehavior, context: INUIHostedViewContext, completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void) {
@@ -39,7 +32,10 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
         } else if interaction.intentHandlingStatus == .failure || interaction.intentHandlingStatus == .unspecified {
             self.updateViews(color: UIColor(named: "Redish")!, status: "Failure", explanation: "There was an error. Please send a bug report", iconImage: UIImage(systemName: "xmark.app")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
         } else if interaction.intentHandlingStatus == .inProgress || interaction.intentHandlingStatus == .userConfirmationRequired || interaction.intentHandlingStatus == .ready {
-            self.updateViews(color: UIColor(named: "Greyish")!, status: "Confirm", explanation: "Old Town - Section A - Spot 12", iconImage: UIImage(systemName: "loupe")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
+            let location = SiriDataManager.sharedInstance.parkName
+            let section = "Section " + SiriDataManager.sharedInstance.parkSection
+            let spot = "Spot \(SiriDataManager.sharedInstance.parkSpot)"
+            self.updateViews(color: UIColor(named: "Greyish")!, status: "Confirm", explanation: "\(location) - \(section) - \(spot)", iconImage: UIImage(systemName: "loupe")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
             
         }
         

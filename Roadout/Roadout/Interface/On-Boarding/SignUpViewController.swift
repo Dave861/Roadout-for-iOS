@@ -153,7 +153,7 @@ class SignUpViewController: UIViewController {
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "user exists":
-                let alert = UIAlertController(title: "Error", message: "User with this email already exists.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "User Error", message: "User with this email already exists. Try signing in.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
@@ -171,13 +171,13 @@ class SignUpViewController: UIViewController {
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "unknown error":
-                let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "error with json":
-                let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")

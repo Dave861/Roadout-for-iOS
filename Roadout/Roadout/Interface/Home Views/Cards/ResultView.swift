@@ -31,8 +31,8 @@ class ResultView: UIView {
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 13.0
-        print(selectedLocation)
-        locationLbl.text = selectedLocation
+        print(selectedLocationName)
+        locationLbl.text = selectedLocationName
         pickBtn.layer.cornerRadius = 12.0
         backBtn.setTitle("", for: .normal)
         pickBtn.setAttributedTitle(pickTitle, for: .normal)

@@ -12,7 +12,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
+        
+        EntityManager.sharedInstance.getParkLocations()
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
               let sb = UIStoryboard(name: "Home", bundle: nil)
               let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController

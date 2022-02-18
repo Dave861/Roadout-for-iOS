@@ -41,7 +41,9 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func legalTapped(_ sender: Any) {
-       
+        let sb = UIStoryboard(name: "Settings", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "LegalVC") as! LegalViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

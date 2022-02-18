@@ -30,6 +30,65 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var moreButton: UIButton!
+    
+    @IBAction func moreTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "", message: "What would you like to do?", preferredStyle: .actionSheet)
+        
+        let findAction = UIAlertAction(title: "Find Spot", style: .default) { action in
+            guard currentLocationCoord != nil else { return }
+            FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
+                if success {
+                    self.dismiss(animated: false, completion: nil)
+                    NotificationCenter.default.post(name: .showFindCardID, object: nil)
+                } else {
+                    //MANAGE
+                }
+            }
+
+        }
+        findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
+        
+        let expressAction = UIAlertAction(title: "Express Reserve", style: .default) { action in
+            self.dismiss(animated: false, completion: nil)
+            NotificationCenter.default.post(name: .addExpressPickViewID, object: nil)
+        }
+        expressAction.setValue(UIColor(named: "Dark Orange")!, forKey: "titleTextColor")
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
+        
+        alert.addAction(findAction)
+        alert.addAction(expressAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    var menuItems: [UIAction] {
+        return [
+            UIAction(title: "Find Spot", image: UIImage(systemName: "loupe"), handler: { (_) in
+                
+                guard currentLocationCoord != nil else { return }
+                FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
+                    if success {
+                        self.dismiss(animated: false, completion: nil)
+                        NotificationCenter.default.post(name: .showFindCardID, object: nil)
+                    } else {
+                        //MANAGE
+                    }
+                }
+            }),
+            UIAction(title: "Express Reserve", image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
+                self.dismiss(animated: false, completion: nil)
+                NotificationCenter.default.post(name: .addExpressPickViewID, object: nil)
+            }),
+        ]
+    }
+    var moreMenu: UIMenu {
+        return UIMenu(title: "What would you like to do?", image: nil, identifier: nil, options: [], children: menuItems)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         card.layer.cornerRadius = 12.0
@@ -37,6 +96,12 @@ class SearchViewController: UIViewController {
         card.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
+        moreButton.setTitle("", for: .normal)
+        
+        if #available(iOS 14.0, *) {
+            moreButton.menu = moreMenu
+            moreButton.showsMenuAsPrimaryAction = true
+        }
         
         searchBar.layer.cornerRadius = 13.0
         
@@ -105,7 +170,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        selectedLocation = results[indexPath.row].name
+        selectedLocationName = results[indexPath.row].name
         selectedLocationCoord = CLLocationCoordinate2D(latitude: results[indexPath.row].latitude, longitude: results[indexPath.row].longitude)
         let cell = tableView.cellForRow(at: indexPath) as! SearchCell
         selectedLocationColor = cell.numberLbl.textColor

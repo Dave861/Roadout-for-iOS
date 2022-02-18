@@ -16,7 +16,7 @@ class ExpressView: UIView {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: .removeExpressViewID, object: nil)
+        NotificationCenter.default.post(name: .addExpressPickViewID, object: nil)
     }
     
     @IBOutlet weak var slider: UISlider!
@@ -25,7 +25,7 @@ class ExpressView: UIView {
         let roundedValue = round(slider.value/1.0)*1.0
         slider.value = roundedValue
         chargeLbl.text = "\(Int(slider.value)) Minutes - \(Int(slider.value)) RON"
-        chargeLbl.set(textColor: UIColor(named: "Dark Orange")!, range: chargeLbl.range(after: " - "))
+        chargeLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: chargeLbl.range(after: " - "))
     }
     
     @IBOutlet weak var locationLbl: UILabel!
@@ -78,7 +78,9 @@ class ExpressView: UIView {
         
         chargeLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: chargeLbl.range(after: " - "))
         
-        locationLbl.text = selectedLocation
+        locationLbl.text = selectedLocationName
+        spotSectionLbl.text = "Section " + FunctionsManager.sharedInstance.foundSection.name + " - Spot \(FunctionsManager.sharedInstance.foundSpot.number)"
+        
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1

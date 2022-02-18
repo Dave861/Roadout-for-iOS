@@ -83,7 +83,12 @@ extension ExpressPickView: iCarouselDataSource, iCarouselDelegate {
     func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        selectedLocation = parkLocations[index].name
+        
+        //API call here
+        FunctionsManager.sharedInstance.findInLocation(parkLocations[index])
+        
+        selectedLocationName = parkLocations[index].name
+        selectedParkLocation = parkLocations[index]
         selectedLocationColor = UIColor(named: "Dark Orange")!
         selectedLocationCoord = CLLocationCoordinate2DMake(parkLocations[index].latitude, parkLocations[index].longitude)
         NotificationCenter.default.post(name: .addExpressViewID, object: nil)
