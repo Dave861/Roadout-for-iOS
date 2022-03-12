@@ -128,7 +128,9 @@ class SpotView: UIView, PusherDelegate {
         
           let _ = channel.bind(eventName: "spots-changed", eventCallback: { (event: PusherEvent) in
               if let data = event.data {
-                let intData = self.getNumbers(data: data)
+                  print(data.replacingOccurrences(of: "\"", with: ""))
+                  
+                let intData = self.getNumbers(data: data.replacingOccurrences(of: "\"", with: ""))
                 selectedSection.spots[intData[1]-1].state = intData[0]
                 self.collectionView.reloadData()
                 self.updateInfo(spotState: 100)

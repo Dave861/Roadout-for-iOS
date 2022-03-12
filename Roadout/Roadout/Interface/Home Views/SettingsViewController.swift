@@ -10,12 +10,12 @@ import MessageUI
 
 class SettingsViewController: UIViewController {
     
-    let cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
-    let cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
-    let cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "signature" ,"globe"]
-    let cellSettings = ["", "", "Notifications", "Payment Methods", "Default Directions App", "Reminders", "Reservation History", "", "Invite Friends", "Prizes", "", "Report a Bug", "Privacy Policy & Terms of Use", "Acknowledgements", "About Roadout"]
+    var cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
+    var cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
+    var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "signature" ,"globe"]
+    var cellSettings = ["", "", "Notifications", "Payment Methods", "Default Directions App", "Reminders", "Reservation History", "", "Invite Friends", "Prizes", "", "Report a Bug", "Privacy Policy & Terms of Use", "Acknowledgements", "About Roadout"]
 
-    let cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
+    var cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
     
     @IBAction func backTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -25,6 +25,24 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    func setDeveloperView(_ id: Int) {
+        if id == 16 {
+            cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
+            cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "ExpressFocus", "DevBrown", "Main Yellow"]
+            cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "signature", "screwdriver.fill" ,"globe"]
+            cellSettings = ["", "", "Notifications", "Payment Methods", "Default Directions App", "Reminders", "Reservation History", "", "Invite Friends", "Prizes", "", "Report a Bug", "Privacy Policy & Terms of Use", "Acknowledgements", "Developer", "About Roadout"]
+
+            cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AckVC", "DeveloperVC", "AboutVC"]
+        } else {
+            cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
+            cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
+            cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "signature" ,"globe"]
+            cellSettings = ["", "", "Notifications", "Payment Methods", "Default Directions App", "Reminders", "Reservation History", "", "Invite Friends", "Prizes", "", "Report a Bug", "Privacy Policy & Terms of Use", "Acknowledgements", "About Roadout"]
+
+            cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
+        }
+    }
+    
     func addObs() {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadName), name: .reloadUserNameID, object: nil)
@@ -33,7 +51,10 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        UserManager.sharedInstance.getUserName(id)
+        UserManager.sharedInstance.getUserName(id) { result in
+            print(result)
+        }
+        self.setDeveloperView(Int(id) ?? 0)
         tableView.delegate = self
         tableView.dataSource = self
         addObs()
@@ -41,7 +62,9 @@ class SettingsViewController: UIViewController {
     
     @objc func reloadName() {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        UserManager.sharedInstance.getUserName(id)
+        UserManager.sharedInstance.getUserName(id) { result in
+            print(result)
+        }
         tableView.reloadData()
     }
     
@@ -62,7 +85,7 @@ class SettingsViewController: UIViewController {
         } else {
             let alert = UIAlertController(title: "Error", message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com", preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Greyish")
-            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
         }

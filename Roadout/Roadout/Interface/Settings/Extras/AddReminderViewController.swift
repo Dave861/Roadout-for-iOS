@@ -30,7 +30,7 @@ class AddReminderViewController: UIViewController {
         }
         alertDatePicker.minuteInterval = 15
         alertController.view.addSubview(alertDatePicker)
-        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             self.oldSelectedDate = alertDatePicker.date
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -73,7 +73,7 @@ class AddReminderViewController: UIViewController {
             } else {
                 let alert = UIAlertController(title: "Error", message: "Please add a label to the reminder", preferredStyle: .alert)
                 alert.view.tintColor = UIColor(named: "Icons")
-                let okAction = UIAlertAction(title: "Ok", style: .default) { action in
+                let okAction = UIAlertAction(title: "OK", style: .default) { action in
                     self.dismiss(animated: true, completion: nil)
                 }
                 alert.addAction(okAction)
@@ -82,7 +82,7 @@ class AddReminderViewController: UIViewController {
         } else {
             let alert = UIAlertController(title: "Error", message: "There is already an active reminder with this label, please pick another label", preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Icons")
-            let okAction = UIAlertAction(title: "Ok", style: .default) { action in
+            let okAction = UIAlertAction(title: "OK", style: .default) { action in
                 self.dismiss(animated: true, completion: nil)
             }
             alert.addAction(okAction)

@@ -9,6 +9,9 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 import SwiftUI
+import LocalConsole
+
+let consoleManager = LCManager.shared
 
 var returnToDelay = false
 var returnToFind = false
@@ -80,9 +83,9 @@ class HomeViewController: UIViewController {
     //MARK: -Find me a spot-
     let findView = FindView.instanceFromNib()
     
+    var findRequested = false
+    
     @objc func showFindCard() {
-            let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
-            self.mapView?.animate(to: camera)
             if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
                 self.view.subviews.last!.removeFromSuperview()
             } else {
@@ -99,6 +102,27 @@ class HomeViewController: UIViewController {
                 self.view.addSubview(self.findView)
         }
     }
+    
+    @objc func animateCameraToFoundLocation() {
+        let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
+        self.mapView?.animate(to: camera)
+    }
+    
+    /*func performRequestedFind() {
+        self.findRequested = false
+        guard currentLocationCoord != nil else { return }
+        FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
+            if success {
+                self.showFindCard()
+            } else {
+                let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(action)
+                alert.view.tintColor = UIColor(named: "DevBrown")
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }*/
     
     //MARK: -IBOutlets-
     
@@ -119,14 +143,44 @@ class HomeViewController: UIViewController {
         settingsAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
         
         let findAction = UIAlertAction(title: "Find Spot", style: .default) { action in
-            guard currentLocationCoord != nil else { return }
-            FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
+            guard let coord = self.mapView.myLocation?.coordinate else {
+                let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(action)
+                alert.view.tintColor = UIColor(named: "DevBrown")
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            consoleManager.print("HERE COORDS")
+            consoleManager.print(coord.latitude)
+            consoleManager.print(coord.longitude)
+            consoleManager.print("NOT HERE COORDS")
+            FunctionsManager.sharedInstance.findSpot(coord) { success in
                 if success {
                     self.showFindCard()
                 } else {
-                    //MANAGE
+                    let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alert.addAction(action)
+                    alert.view.tintColor = UIColor(named: "DevBrown")
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
+            /*self.updateLocationWithHandler { result in
+                switch result {
+                case .success():
+                    print("Performing find")
+                    consoleManager.print("Performing find")
+                case .failure(let err):
+                    consoleManager.print(err.localizedDescription)
+                    print(err.localizedDescription)
+                    let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alert.addAction(action)
+                    alert.view.tintColor = UIColor(named: "DevBrown")
+                    self.present(alert, animated: true, completion: nil)
+                }
+            } */
 
         }
         findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
@@ -196,12 +250,13 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: .returnToSearchBarID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showFindCard), name: .showFindCardID, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(userNotFoundAbort), name: .userNotFoundID, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(animateCameraToFoundLocation), name: .animateCameraToFoundID, object: nil)
+                
         if #available(iOS 15.0, *) {
             NotificationCenter.default.addObserver(self, selector: #selector(showGroupReserveVC), name: .groupSessionStartedID, object: nil)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLocation), name: .updateLocationID, object: nil)
     }
    //MARK: -Markers-
     
@@ -232,15 +287,44 @@ class HomeViewController: UIViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }),
             UIAction(title: "Find Spot", image: UIImage(systemName: "loupe"), handler: { (_) in
-                
-                guard currentLocationCoord != nil else { return }
-                FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
+                guard let coord = self.mapView.myLocation?.coordinate else {
+                    let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alert.addAction(action)
+                    alert.view.tintColor = UIColor(named: "DevBrown")
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                consoleManager.print("HERE COORDS")
+                consoleManager.print(coord.latitude)
+                consoleManager.print(coord.longitude)
+                consoleManager.print("NOT HERE COORDS")
+                FunctionsManager.sharedInstance.findSpot(coord) { success in
                     if success {
                         self.showFindCard()
                     } else {
-                        //MANAGE
+                        let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alert.addAction(action)
+                        alert.view.tintColor = UIColor(named: "DevBrown")
+                        self.present(alert, animated: true, completion: nil)
                     }
                 }
+                /*self.updateLocationWithHandler { result in
+                    switch result {
+                    case .success():
+                        print("Performing find")
+                        consoleManager.print("Performing find")
+                    case .failure(let err):
+                        consoleManager.print(err.localizedDescription)
+                        print(err.localizedDescription)
+                        let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alert.addAction(action)
+                        alert.view.tintColor = UIColor(named: "DevBrown")
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                } */
             }),
             UIAction(title: "Express Reserve", image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
                 self.addExpressPickView()
@@ -305,7 +389,17 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        AuthManager.sharedInstance.checkIfUserExists(with: id)
+        AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
+            switch result {
+            case .success():
+                print("Yay we got user")
+                print(id)
+                //self.manageGettingDataScreen()
+            case .failure(let err):
+                print(err)
+                self.userNotFoundAbort()
+            }
+        }
     }
     
     
@@ -314,7 +408,16 @@ class HomeViewController: UIViewController {
         manageObs()
         
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        AuthManager.sharedInstance.checkIfUserExists(with: id)
+        AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
+            switch result {
+            case .success():
+                print("Yay we got user")
+                print(id)
+            case .failure(let err):
+                print(err)
+                self.userNotFoundAbort()
+            }
+        }
         
         searchTapArea.setTitle("", for: .normal)
         settingsTapArea.setTitle("", for: .normal)
@@ -335,8 +438,7 @@ class HomeViewController: UIViewController {
         self.view.insertSubview(mapView, at: 0)
         let mapInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 60.0, right: 0.0)
         mapView.padding = mapInsets
-        
-        addMarkers()
+        self.addMarkers()
         
         switch traitCollection.userInterfaceStyle {
                 case .light, .unspecified:
@@ -386,9 +488,10 @@ class HomeViewController: UIViewController {
             addSharePlayButtonView()
             SharePlayManager.sharedInstance.receiveSessions()
         }
-        
         manageTutorial()
-        UserManager.sharedInstance.getUserName(id)
+        UserManager.sharedInstance.getUserName(id) { result in
+            print(result)
+        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -400,7 +503,7 @@ class HomeViewController: UIViewController {
                       if let styleURL = Bundle.main.url(forResource: "lightStyle", withExtension: "json") {
                         mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
                       } else {
-                        print("Unable to find style.json")
+                        print("Unable to find lightStyle.json")
                       }
                     } catch {
                         print("One or more of the map styles failed to load. \(error)")
@@ -410,7 +513,7 @@ class HomeViewController: UIViewController {
                       if let styleURL = Bundle.main.url(forResource: "darkStyle", withExtension: "json") {
                         mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
                       } else {
-                        print("Unable to find style.json")
+                        print("Unable to find darkStyle.json")
                       }
                     } catch {
                         print("One or more of the map styles failed to load. \(error)")
@@ -428,13 +531,54 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func userNotFoundAbort() {
+    func manageGettingDataScreen() {
+        let sb = UIStoryboard(name: "Home", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "GetDataVC") as! GetDataViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func userNotFoundAbort() {
         UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
         self.view.window?.rootViewController = vc
         self.view.window?.makeKeyAndVisible()
     }
+    
+    @objc func updateLocation() {
+        if #available(iOS 14.0, *) {
+            if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
+                locationManager.startUpdatingLocation()
+                mapView.isMyLocationEnabled = true
+            }
+        } else {
+            if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+                locationManager.startUpdatingLocation()
+                mapView.isMyLocationEnabled = true
+            }
+        }
+    }
+    
+    /*func updateLocationWithHandler(completion: @escaping(Result<Void, Error>) -> Void) {
+        self.findRequested = true
+        if #available(iOS 14.0, *) {
+            if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
+                locationManager.startUpdatingLocation()
+                completion(.success(()))
+            } else {
+                let locationError = CancellationError()
+                completion(.failure(locationError))
+            }
+        } else {
+            if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+                locationManager.startUpdatingLocation()
+                completion(.success(()))
+            } else {
+                let locationError = CancellationError()
+                completion(.failure(locationError))
+            }
+        }
+    }*/
     
     //MARK: - Card Functions-
     //Result Card
@@ -445,7 +589,6 @@ class HomeViewController: UIViewController {
         for location in parkLocations {
             if location.name == selectedLocationName {
                 selectedParkLocation = location
-                EntityManager.sharedInstance.getSpotsInLocation(in: selectedParkLocation)
                 break
             }
         }
@@ -804,6 +947,13 @@ extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         currentLocationCoord = location?.coordinate
+        /*if self.findRequested == true {
+            self.performRequestedFind()
+        }*/
+        if #available(iOS 14.0, *) {
+            consoleManager.print(currentLocationCoord?.latitude as Any)
+            consoleManager.print(currentLocationCoord?.longitude as Any)
+        }
         let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17.0)
         self.mapView?.animate(to: camera)
         self.locationManager.stopUpdatingLocation()

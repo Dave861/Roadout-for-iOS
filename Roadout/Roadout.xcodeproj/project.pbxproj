@@ -28,9 +28,6 @@
 		9A14B91A2731430400967417 /* MonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B9192731430400967417 /* MonthPickerView.swift */; };
 		9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91B2731431B00967417 /* PaddedTextField.swift */; };
 		9A14B91E2731436300967417 /* UserPrefsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91D2731436300967417 /* UserPrefsUtils.swift */; };
-		9A150833272BFC3E008C083B /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 9A150832272BFC3E008C083B /* GoogleMaps */; };
-		9A150835272BFC3E008C083B /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 9A150834272BFC3E008C083B /* GoogleMapsBase */; };
-		9A150837272BFC3E008C083B /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9A150836272BFC3E008C083B /* GoogleMapsCore */; };
 		9A1ABE972726A5EF00D4AA4B /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1ABE962726A5EF00D4AA4B /* InfoTableViewCell.swift */; };
 		9A292B872732F22D00E509C9 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
 		9A2D4BD1275788210007EE2E /* Find.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2D4BD0275788210007EE2E /* Find.xib */; };
@@ -46,6 +43,11 @@
 		9A39B0D62728482C008E7FD0 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0D52728482C008E7FD0 /* ButtonCell.swift */; };
 		9A39B0D827284B38008E7FD0 /* SettingsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0D727284B38008E7FD0 /* SettingsTextCell.swift */; };
 		9A4131D627BFD8950012EADB /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4131D527BFD8950012EADB /* SearchManager.swift */; };
+		9A4131D927BFDCE00012EADB /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 9A4131D827BFDCE00012EADB /* GoogleMaps */; };
+		9A4131DB27BFDCE00012EADB /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 9A4131DA27BFDCE00012EADB /* GoogleMapsBase */; };
+		9A4131DD27BFDCE00012EADB /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9A4131DC27BFDCE00012EADB /* GoogleMapsCore */; };
+		9A4131DF27BFDCE00012EADB /* GoogleMapsM4B in Frameworks */ = {isa = PBXBuildFile; productRef = 9A4131DE27BFDCE00012EADB /* GoogleMapsM4B */; };
+		9A4131E127BFDCE00012EADB /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 9A4131E027BFDCE00012EADB /* GooglePlaces */; };
 		9A46BBA2272EE764002280DD /* ReserveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA1272EE764002280DD /* ReserveView.swift */; };
 		9A46BBA4272EF343002280DD /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA3272EF343002280DD /* PayView.swift */; };
 		9A46BBA6272EF83D002280DD /* PaidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA5272EF83D002280DD /* PaidView.swift */; };
@@ -128,6 +130,8 @@
 		9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9A8D8D3B27BADDAC0037DFE3 /* PusherSwift */; };
 		9A9208CF277EE14500E099C7 /* ComplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9208CE277EE14500E099C7 /* ComplicationManager.swift */; };
 		9A9239B22764E26100C40706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A59B75A2764A6B500BC0497 /* Assets.xcassets */; };
+		9A96248327C96E9E00A17087 /* DeveloperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96248227C96E9E00A17087 /* DeveloperViewController.swift */; };
+		9A96248627C9719C00A17087 /* LocalConsole in Frameworks */ = {isa = PBXBuildFile; productRef = 9A96248527C9719C00A17087 /* LocalConsole */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F872272B09DF008B58FE /* AddCardViewController.swift */; };
 		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
 		9A96F877272B0A25008B58FE /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F876272B0A25008B58FE /* CardCell.swift */; };
@@ -153,6 +157,7 @@
 		9AB12377276F1188003C5AE9 /* SharePlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12376276F1188003C5AE9 /* SharePlayButton.swift */; };
 		9AB12379276F11C3003C5AE9 /* GroupReserveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12378276F11C3003C5AE9 /* GroupReserveViewController.swift */; };
 		9AB96428272EFCE0008462E7 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB96427272EFCE0008462E7 /* ActiveView.swift */; };
+		9ABA39B227C13382001660E7 /* GetDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA39B127C13382001660E7 /* GetDataViewController.swift */; };
 		9ABBF822275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7EB7275653A200E09B75 /* QuickReserveIntentHandler.swift */; };
 		9ABBF824275654BA005D2FFD /* IntentDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E8D275645A300E09B75 /* IntentDataExtension.swift */; };
 		9ABBF825275654BB005D2FFD /* IntentDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E8D275645A300E09B75 /* IntentDataExtension.swift */; };
@@ -380,6 +385,7 @@
 		9A81E5F827B8DED600F571C3 /* FunctionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsManager.swift; sourceTree = "<group>"; };
 		9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsAppViewController.swift; sourceTree = "<group>"; };
 		9A9208CE277EE14500E099C7 /* ComplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationManager.swift; sourceTree = "<group>"; };
+		9A96248227C96E9E00A17087 /* DeveloperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperViewController.swift; sourceTree = "<group>"; };
 		9A96F872272B09DF008B58FE /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		9A96F874272B09F1008B58FE /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		9A96F876272B0A25008B58FE /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
@@ -396,6 +402,7 @@
 		9AB12376276F1188003C5AE9 /* SharePlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayButton.swift; sourceTree = "<group>"; };
 		9AB12378276F11C3003C5AE9 /* GroupReserveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupReserveViewController.swift; sourceTree = "<group>"; };
 		9AB96427272EFCE0008462E7 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
+		9ABA39B127C13382001660E7 /* GetDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataViewController.swift; sourceTree = "<group>"; };
 		9AC48D1D273FC11300DBCEF8 /* ExpressPickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressPickCell.swift; sourceTree = "<group>"; };
 		9AC48D1F273FC11A00DBCEF8 /* ExpressPickCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpressPickCell.xib; sourceTree = "<group>"; };
 		9AC566E527BE354200955F7D /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
@@ -460,16 +467,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A4131D927BFDCE00012EADB /* GoogleMaps in Frameworks */,
+				9A4131DF27BFDCE00012EADB /* GoogleMapsM4B in Frameworks */,
 				9AF7142C27AFC0E000FEA4C4 /* SPAlert in Frameworks */,
-				9A150833272BFC3E008C083B /* GoogleMaps in Frameworks */,
 				9AC48D1C273FBDE200DBCEF8 /* iCarousel in Frameworks */,
+				9A4131DB27BFDCE00012EADB /* GoogleMapsBase in Frameworks */,
 				9A0BDACD2792C90500EB9CF8 /* SPPerspective in Frameworks */,
-				9A150837272BFC3E008C083B /* GoogleMapsCore in Frameworks */,
+				9A96248627C9719C00A17087 /* LocalConsole in Frameworks */,
+				9A4131DD27BFDCE00012EADB /* GoogleMapsCore in Frameworks */,
 				9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */,
 				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
+				9A4131E127BFDCE00012EADB /* GooglePlaces in Frameworks */,
 				9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */,
 				9AA01DDF2789D78E0004211A /* CHIOTPField in Frameworks */,
-				9A150835272BFC3E008C083B /* GoogleMapsBase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,6 +875,7 @@
 				9AF798F2272C4BF70096D4C3 /* PrizesViewController.swift */,
 				9AF7142D27AFC41E00FEA4C4 /* AckViewController.swift */,
 				9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */,
+				9A96248227C96E9E00A17087 /* DeveloperViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -873,6 +884,7 @@
 			isa = PBXGroup;
 			children = (
 				9A0357162727CC61002A9ED9 /* HomeViewController.swift */,
+				9ABA39B127C13382001660E7 /* GetDataViewController.swift */,
 				9A6727B72737BFFB0078479D /* Search */,
 				9A6727B82737C0050078479D /* Express Reserve */,
 				9A0C7772272E830500ECBFB2 /* Cards */,
@@ -1004,9 +1016,6 @@
 			);
 			name = Roadout;
 			packageProductDependencies = (
-				9A150832272BFC3E008C083B /* GoogleMaps */,
-				9A150834272BFC3E008C083B /* GoogleMapsBase */,
-				9A150836272BFC3E008C083B /* GoogleMapsCore */,
 				9A6E1C362731324B002E29F9 /* BarChartKit-static */,
 				9AC48D1B273FBDE200DBCEF8 /* iCarousel */,
 				9AA0EFD1277B5D5800B0F52A /* Alamofire */,
@@ -1014,6 +1023,12 @@
 				9A0BDACC2792C90500EB9CF8 /* SPPerspective */,
 				9AF7142B27AFC0E000FEA4C4 /* SPAlert */,
 				9A8D8D3B27BADDAC0037DFE3 /* PusherSwift */,
+				9A4131D827BFDCE00012EADB /* GoogleMaps */,
+				9A4131DA27BFDCE00012EADB /* GoogleMapsBase */,
+				9A4131DC27BFDCE00012EADB /* GoogleMapsCore */,
+				9A4131DE27BFDCE00012EADB /* GoogleMapsM4B */,
+				9A4131E027BFDCE00012EADB /* GooglePlaces */,
+				9A96248527C9719C00A17087 /* LocalConsole */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1059,7 +1074,6 @@
 			);
 			mainGroup = 9AC926DE272697F00054E453;
 			packageReferences = (
-				9A150831272BFC3E008C083B /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 				9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */,
 				9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */,
 				9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */,
@@ -1067,6 +1081,8 @@
 				9A0BDACB2792C90500EB9CF8 /* XCRemoteSwiftPackageReference "SPPerspective" */,
 				9AF7142A27AFC0E000FEA4C4 /* XCRemoteSwiftPackageReference "SPAlert" */,
 				9A8D8D3A27BADDAC0037DFE3 /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */,
+				9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
+				9A96248427C9719C00A17087 /* XCRemoteSwiftPackageReference "LocalConsole" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -1285,6 +1301,7 @@
 				9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */,
 				9A0C7775272E831E00ECBFB2 /* SpotCell.swift in Sources */,
 				9A46BBA2272EE764002280DD /* ReserveView.swift in Sources */,
+				9A96248327C96E9E00A17087 /* DeveloperViewController.swift in Sources */,
 				9A5A01832737CDD000BD7E70 /* ExpressView.swift in Sources */,
 				9A39B0D227284818008E7FD0 /* DownCornerCell.swift in Sources */,
 				9A0631272775A92700E3AB5F /* GroupSpotsView.swift in Sources */,
@@ -1312,6 +1329,7 @@
 				9A39B0CC272847FC008E7FD0 /* UserSettingsCell.swift in Sources */,
 				9AC48D1E273FC11300DBCEF8 /* ExpressPickCell.swift in Sources */,
 				9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */,
+				9ABA39B227C13382001660E7 /* GetDataViewController.swift in Sources */,
 				9AF7142E27AFC41E00FEA4C4 /* AckViewController.swift in Sources */,
 				9AC6D9D92727DE0D004E838C /* SettingsViewController.swift in Sources */,
 				9A39B0CE27284803008E7FD0 /* SpacerCell.swift in Sources */,
@@ -1389,7 +1407,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout Watch.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1416,7 +1434,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout WatchRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1440,7 +1458,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1472,7 +1490,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit ExtensionRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1503,7 +1521,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1511,7 +1529,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1532,7 +1550,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUIRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1540,7 +1558,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1561,7 +1579,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick Reserve.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1569,7 +1587,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1590,7 +1608,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick ReserveRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1598,7 +1616,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1622,7 +1640,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1653,7 +1671,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1802,7 +1820,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1819,7 +1837,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1842,7 +1860,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1859,7 +1877,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1951,12 +1969,12 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		9A150831272BFC3E008C083B /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */ = {
+		9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/YAtechnologies/GoogleMaps-SP";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */ = {
@@ -1973,6 +1991,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 9.0.0;
+			};
+		};
+		9A96248427C9719C00A17087 /* XCRemoteSwiftPackageReference "LocalConsole" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/duraidabdul/LocalConsole";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		9AA01DDD2789D78E0004211A /* XCRemoteSwiftPackageReference "CHIOTPField" */ = {
@@ -2015,20 +2041,30 @@
 			package = 9A0BDACB2792C90500EB9CF8 /* XCRemoteSwiftPackageReference "SPPerspective" */;
 			productName = SPPerspective;
 		};
-		9A150832272BFC3E008C083B /* GoogleMaps */ = {
+		9A4131D827BFDCE00012EADB /* GoogleMaps */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9A150831272BFC3E008C083B /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			package = 9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
 			productName = GoogleMaps;
 		};
-		9A150834272BFC3E008C083B /* GoogleMapsBase */ = {
+		9A4131DA27BFDCE00012EADB /* GoogleMapsBase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9A150831272BFC3E008C083B /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			package = 9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
 			productName = GoogleMapsBase;
 		};
-		9A150836272BFC3E008C083B /* GoogleMapsCore */ = {
+		9A4131DC27BFDCE00012EADB /* GoogleMapsCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9A150831272BFC3E008C083B /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			package = 9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
 			productName = GoogleMapsCore;
+		};
+		9A4131DE27BFDCE00012EADB /* GoogleMapsM4B */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMapsM4B;
+		};
+		9A4131E027BFDCE00012EADB /* GooglePlaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GooglePlaces;
 		};
 		9A6E1C362731324B002E29F9 /* BarChartKit-static */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2039,6 +2075,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9A8D8D3A27BADDAC0037DFE3 /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */;
 			productName = PusherSwift;
+		};
+		9A96248527C9719C00A17087 /* LocalConsole */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A96248427C9719C00A17087 /* XCRemoteSwiftPackageReference "LocalConsole" */;
+			productName = LocalConsole;
 		};
 		9AA01DDE2789D78E0004211A /* CHIOTPField */ = {
 			isa = XCSwiftPackageProductDependency;

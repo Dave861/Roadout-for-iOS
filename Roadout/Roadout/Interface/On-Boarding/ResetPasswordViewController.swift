@@ -31,7 +31,7 @@ class ResetPasswordViewController: UIViewController {
                 codeField.isEnabled = false
             } else {
                 let alert = UIAlertController(title: "Error", message: "Code is not valid or expired. Please check your email.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor.label
                 self.present(alert, animated: true, completion: nil)
@@ -51,18 +51,26 @@ class ResetPasswordViewController: UIViewController {
     @IBAction func resetTapped(_ sender: Any) {
         if !isValidPassword(passwordField.text ?? "") {
             let alert = UIAlertController(title: "Error", message: "Please enter a password with minimum 8 characters, one capital letter and one number", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alert.addAction(okAction)
             alert.view.tintColor = UIColor.label
             self.present(alert, animated: true, completion: nil)
         } else if !isValidReenter() {
             let alert = UIAlertController(title: "Error", message: "Passwords do not match", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alert.addAction(okAction)
             alert.view.tintColor = UIColor.label
             self.present(alert, animated: true, completion: nil)
         } else {
-            UserManager.sharedInstance.resetPassword(passwordField.text!)
+            UserManager.sharedInstance.resetPassword(passwordField.text!) { result in
+                switch result {
+                case .success():
+                    self.dismiss(animated: true, completion: nil)
+                case .failure(let err):
+                    print(err)
+                    self.manageResetPasswordServerSideErrors()
+                }
+            }
         }
     }
     
@@ -71,16 +79,9 @@ class ResetPasswordViewController: UIViewController {
         string: "Cancel",
         attributes: [NSAttributedString.Key.foregroundColor: UIColor.label, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
-    
-    func addObs() {
-        NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(manageResetPasswordServerSide), name: .manageResetPasswordServerSideID, object: nil)
-    }
         
     override func viewDidLoad() {
-        super.viewDidLoad()
-        addObs()
-        
+        super.viewDidLoad()        
         passwordField.alpha = 0
         confirmPasswordField.alpha = 0
         passwordField.isEnabled = false
@@ -122,37 +123,35 @@ class ResetPasswordViewController: UIViewController {
         return passwordField.text == confirmPasswordField.text
     }
     
-    @objc func manageResetPasswordServerSide() {
+    func manageResetPasswordServerSideErrors() {
         switch UserManager.sharedInstance.callResult {
-            case "Success":
-                self.dismiss(animated: true, completion: nil)
             case "error":
                 let alert = UIAlertController(title: "Error", message: "There was an error. Try force quiting the app and reopening.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "network error":
                 let alert = UIAlertController(title: "Network Error", message: "Please check you network connection.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "database error":
                 let alert = UIAlertController(title: "Internal Error", message: "There was an internal problem, please wait and try again a little later.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "unknown error":
                 let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "error with json":
                 let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)

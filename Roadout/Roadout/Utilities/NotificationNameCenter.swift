@@ -36,14 +36,7 @@ extension Notification.Name {
     static let addExpressViewID = Notification.Name("ro.roadout.Roadout.addExpressViewID")
     static let addExpressPickViewID = Notification.Name("ro.roadout.Roadout.removeExpressViewID")
     static let showFindCardID = Notification.Name("ro.roadout.Roadout.showFindCardID")
-    
-    //AUTH MANAGER
-    static let manageServerSideSignUpID = Notification.Name("ro.roadout.Roadout.manageServerSideSignUpID")
-    static let manageServerSideSignInID = Notification.Name("ro.roadout.Roadout.manageServerSideSignInID")
-    static let manageServerSideUpdateNameID = Notification.Name("ro.roadout.Roadout.manageServerSideUpdateNameID")
-    static let manageServerSideUpdatePswID = Notification.Name("ro.roadout.Roadout.manageServerSideUpdatePswID")
-    static let manageServerSideDeleteID = Notification.Name("ro.roadout.Roadout.manageServerSideDeleteID")
-    static let manageServerSideRegisterID = Notification.Name("ro.roadout.Roadout.manageServerSideRegisterID")
+    static let animateCameraToFoundID = Notification.Name("ro.roadout.Roadout.animateCameraToFoundID")
     
     //SHAREPLAY
     static let groupMessageReceivedID = Notification.Name("ro.roadout.Roadout.groupMessageReceivedID")
@@ -55,9 +48,5 @@ extension Notification.Name {
     
     //OTHERS
     static let reloadUserNameID = Notification.Name("ro.roadout.Roadout.reloadUserNameID")
-    static let userNotFoundID = Notification.Name("ro.roadout.Roadout.userNotFoundID")
-    
-    //USER MANAGER
-    static let manageSignInForgotServerSideID = Notification.Name("ro.roadout.Roadout.manageSignInForgotServerSideID")
-    static let manageResetPasswordServerSideID = Notification.Name("ro.roadout.Roadout.manageResetPasswordServerSideID")
+    static let updateLocationID = Notification.Name("ro.roadout.Roadout.updateLocationID")
 }

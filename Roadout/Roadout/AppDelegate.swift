@@ -7,12 +7,15 @@
 
 import UIKit
 import GoogleMaps
+import GooglePlaces
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         GMSServices.provideAPIKey("AIzaSyCGi6_yxY1g5857pCuiBoYQZYMU7dUxPGI")
+        GMSPlacesClient.provideAPIKey("AIzaSyDsBR6LpKv1fNOCDM7BILZ7oj5JmYlYy64")
         ConnectionManager.sharedInstance.observeReachability()
         
         print(ReservationManager.sharedInstance.getReservationDate())

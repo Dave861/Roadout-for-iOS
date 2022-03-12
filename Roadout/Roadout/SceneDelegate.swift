@@ -6,21 +6,24 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
-        EntityManager.sharedInstance.getParkLocations()
+    
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
               let sb = UIStoryboard(name: "Home", bundle: nil)
               let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
               window?.rootViewController = vc
               window?.makeKeyAndVisible()
               let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-              UserManager.sharedInstance.getUserName(id)
+            UserManager.sharedInstance.getUserName(id) { result in
+                print(result)
+            }
         }
         
         guard let _ = (scene as? UIWindowScene) else { return }
@@ -34,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
+        NotificationCenter.default.post(name: .updateLocationID, object: nil)
         print(ReservationManager.sharedInstance.getReservationDate())
           
           if ReservationManager.sharedInstance.checkActiveReservation() {

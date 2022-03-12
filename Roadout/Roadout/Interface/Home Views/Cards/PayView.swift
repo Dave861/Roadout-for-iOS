@@ -9,6 +9,11 @@ import UIKit
 
 class PayView: UIView {
     
+    var cardNumbers = [String]()
+    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
+    var selectedCard: String?
+
+    
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
@@ -101,6 +106,14 @@ class PayView: UIView {
         differentPaymentBtn.layer.cornerRadius = 12.0
         differentPaymentBtn.setAttributedTitle(diffPaymentTitle, for: .normal)
         
+        cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? ["**** **** **** 9000", "**** **** **** 7250", "**** **** **** 7784", "**** **** **** 9432"]
+        selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
+        
+        if #available(iOS 14.0, *) {
+            differentPaymentBtn.menu = UIMenu(title: "Choose a card", image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+            differentPaymentBtn.showsMenuAsPrimaryAction = true
+        }
+        
         priceLbl.set(textColor: UIColor(named: "Dark Orange")!, range: priceLbl.range(after: " - "))
         
         if returnToDelay {
@@ -128,5 +141,29 @@ class PayView: UIView {
         mainCardBtn.setAttributedTitle(mainCardTitle, for: .normal)
     }
     
+    func makeMenuActions(cards: [String]) -> [UIAction] {
+        var menuItems = [UIAction]()
+        for card in cards {
+            let action = UIAction(title: card, image: nil, handler: { (_) in
+                self.UserDefaultsSuite.set(self.getIndexInArray(card, cards), forKey: "ro.roadout.defaultPaymentMethod")
+                self.reloadMainCard()
+            })
+            menuItems.append(action)
+        }
+        
+        return menuItems
+    }
+    
+    func getIndexInArray(_ element: String, _ array: [String]) -> Int {
+        var index = 0
+        for el in array {
+            if el == element {
+                break
+            }
+            index += 1
+        }
+        print(index)
+        return index
+    }
     
 }

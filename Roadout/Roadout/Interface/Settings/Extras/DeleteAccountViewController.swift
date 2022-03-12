@@ -27,10 +27,29 @@ class DeleteAccountViewController: UIViewController {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         if isValidEmail(emailField.text ?? "") && passwordField.text != "" {
-           UserManager.sharedInstance.deleteAccount(emailField.text!, passwordField.text!)
+           UserManager.sharedInstance.deleteAccount(emailField.text!, passwordField.text!) { result in
+               switch result {
+                   case .success():
+                       UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
+                       UserDefaults.roadout!.set("000", forKey: "ro.roadout.Roadout.userID")
+                       let alert = UIAlertController(title: "Success", message: "User deleted successfully.", preferredStyle: .alert)
+                       let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+                           let sb = UIStoryboard(name: "Main", bundle: nil)
+                           let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
+                           self.view.window?.rootViewController = vc
+                           self.view.window?.makeKeyAndVisible()
+                       })
+                       alert.addAction(okAction)
+                       alert.view.tintColor = UIColor(named: "Redish")
+                       self.present(alert, animated: true, completion: nil)
+                   case .failure(let err):
+                       print(err)
+                       self.manageServerSideErrors()
+                }
+           }
         } else {
             let alert = UIAlertController(title: "Error", message: "Please enter a valid email address and password", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alert.addAction(okAction)
             alert.view.tintColor = UIColor(named: "Redish")
             self.present(alert, animated: true, completion: nil)
@@ -60,7 +79,17 @@ class DeleteAccountViewController: UIViewController {
         let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
         let alert = UIAlertController(title: "Forgot Password", message: "We will send an email with a verification code to: \(email). Do you want to proceed?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Proceed", style: .default) { _ in
-            UserManager.sharedInstance.sendForgotData(email)
+            UserManager.sharedInstance.sendForgotData(email) { result in
+                switch result {
+                    case .success():
+                        let sb = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
+                        self.present(vc, animated: true, completion: nil)
+                    case .failure(let err):
+                        print(err)
+                        self.manageForgotServerSideErrors()
+                }
+            }
         }
         let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(noAction)
@@ -84,16 +113,8 @@ class DeleteAccountViewController: UIViewController {
     
     //MARK: -View Configuration-
     
-    func addObs() {
-        NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(manageServerSide), name: .manageServerSideDeleteID, object: nil)
-        NotificationCenter.default.addObserver(self,  selector: #selector(manageForgotServerSide), name: .manageSignInForgotServerSideID, object: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        addObs()
-        
         cardView.layer.cornerRadius = 16.0
         deleteBtn.layer.cornerRadius = 13.0
         deleteBtn.setAttributedTitle(deleteTitle, for: .normal)
@@ -128,24 +149,11 @@ class DeleteAccountViewController: UIViewController {
         return emailPred.evaluate(with: email)
     }
     
-    @objc func manageServerSide() {
+    func manageServerSideErrors() {
         switch UserManager.sharedInstance.callResult {
-            case "Success":
-                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
-                UserDefaults.roadout!.set("000", forKey: "ro.roadout.Roadout.userID")
-                let alert = UIAlertController(title: "Success", message: "User deleted successfully.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
-                    let sb = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
-                    self.view.window?.rootViewController = vc
-                    self.view.window?.makeKeyAndVisible()
-                })
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
             case "error":
                 let alert = UIAlertController(title: "Verification Error", message: "Wrong email or password.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
                     self.errorCounter += 1
                     if self.errorCounter >= 2 {
                         self.manageForgotView(true)
@@ -156,25 +164,25 @@ class DeleteAccountViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             case "network error":
                 let alert = UIAlertController(title: "Network Error", message: "Please check you network connection.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "database error":
                 let alert = UIAlertController(title: "Internal Error", message: "There was an internal problem, please wait and try again a little later.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "unknown error":
                 let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "error with json":
                 let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
@@ -183,40 +191,36 @@ class DeleteAccountViewController: UIViewController {
         }
     }
     
-    @objc func manageForgotServerSide() {
+    func manageForgotServerSideErrors() {
         if UserManager.sharedInstance.forgotResumeScreen == "Delete Account" {
             switch UserManager.sharedInstance.callResult {
-                case "Success":
-                    let sb = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
-                    self.present(vc, animated: true, completion: nil)
                 case "error":
                     let alert = UIAlertController(title: "Error", message: "No user found with this email address.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)
                 case "network error":
                     let alert = UIAlertController(title: "Network Error", message: "Please check you network connection.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)
                 case "database error":
                     let alert = UIAlertController(title: "Internal Error", message: "There was an internal problem, please wait and try again a little later.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)
                 case "unknown error":
                     let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)
                 case "error with json":
                     let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)

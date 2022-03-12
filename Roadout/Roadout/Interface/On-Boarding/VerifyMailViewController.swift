@@ -28,10 +28,33 @@ class VerifyMailViewController: UIViewController {
                 let name = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserName")!
                 let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
                 let password = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserPassword")!
-                AuthManager.sharedInstance.sendSignUpData(name, email, password)
+                AuthManager.sharedInstance.sendSignUpData(name, email, password) { result in
+                    switch result {
+                    case .success():
+                        if AuthManager.sharedInstance.userID != nil {
+                            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
+                            UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
+                            self.manageScreens()
+                            let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
+                            AuthManager.sharedInstance.deleteBadData(email)
+                            UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.UserName")
+                            UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.UserMail")
+                            UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.UserPassword")
+                        } else {
+                            let alert = UIAlertController(title: "Error", message: "There was an unknown error, please try again", preferredStyle: .alert)
+                            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                            alert.addAction(okAction)
+                            alert.view.tintColor = UIColor(named: "Redish")
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    case .failure(let err):
+                        print(err)
+                        self.manageServerSideErrors()
+                    }
+                }
             } else {
                 let alert = UIAlertController(title: "Error", message: "Code is not valid or expired. Please check your email.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "ExpressFocus")!
                 self.present(alert, animated: true, completion: nil)
@@ -51,15 +74,9 @@ class VerifyMailViewController: UIViewController {
         attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
     
-    func addObs() {
-        NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(manageServerSideResponse), name: .manageServerSideSignUpID, object: nil)
-    }
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        addObs()
-        
         continueBtn.layer.cornerRadius = 10.0
         cancelBtn.layer.cornerRadius = 13.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
@@ -94,52 +111,35 @@ class VerifyMailViewController: UIViewController {
         }
     }
     
-    @objc func manageServerSideResponse() {
+    func manageServerSideErrors() {
         switch AuthManager.sharedInstance.callResult {
-            case "Success":
-                if AuthManager.sharedInstance.userID != nil {
-                    UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
-                    UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
-                    manageScreens()
-                    let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
-                    AuthManager.sharedInstance.deleteBadData(email)
-                    UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.UserName")
-                    UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.UserMail")
-                    UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.UserPassword")
-                } else {
-                    let alert = UIAlertController(title: "Error", message: "There was an unknown error, please try again", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                    alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
-                    self.present(alert, animated: true, completion: nil)
-                }
             case "error":
                 let alert = UIAlertController(title: "Error", message: "User already exists, sign in or use another email.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "network error":
                 let alert = UIAlertController(title: "Network Error", message: "Please check you network connection.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "database error":
                 let alert = UIAlertController(title: "Internal Error", message: "There was an internal problem, please wait and try again a little later.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "unknown error":
                 let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "error with json":
                 let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)

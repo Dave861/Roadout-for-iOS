@@ -26,21 +26,27 @@ class FunctionsManager {
     var foundSection: ParkSection!
     var foundSpot: ParkSpot!
     
+    var sortedLocations = [ParkLocation]()
+    
     func findSpot(_ currentLocation: CLLocationCoordinate2D, completion: (_ success: Bool) -> Void) {
-        let sortedLocations = sortLocations(currentLocation: currentLocation)
-        var runs = 0
-        while foundSpot == nil {
-            //Will call server api here
-            findInLocation(sortedLocations[runs])
-            runs += 1
-        }
-        completion(true)
+        self.sortLocations(currentLocation: currentLocation, completion: { success in
+            for location in sortedLocations {
+                print(location.name)
+            }
+            var runs = 0
+            while foundSpot == nil {
+                //Will call server api here
+                findInLocation(sortedLocations[runs])
+                runs += 1
+            }
+            completion(true)
+        })
     }
     
-    func sortLocations(currentLocation: CLLocationCoordinate2D) -> [ParkLocation] {
+    func sortLocations(currentLocation: CLLocationCoordinate2D, completion: (_ success: Bool) -> Void) {
         let current = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
         var dictArray = [[String: Any]]()
-        for i in 0..<parkLocations.count {
+        for i in 0 ..< parkLocations.count {
             let loc = CLLocation(latitude: parkLocations[i].latitude, longitude: parkLocations[i].longitude)
             let distanceInMeters = current.distance(from: loc)
             let a:[String: Any] = ["distance": distanceInMeters, "location": parkLocations[i]]
@@ -49,11 +55,13 @@ class FunctionsManager {
         dictArray = dictArray.sorted(by: {($0["distance"] as! CLLocationDistance) < ($1["distance"] as! CLLocationDistance)})
         
         var sortedArray = [ParkLocation]()
-        for i in dictArray{
+        print("Running this shi...")
+        for i in dictArray {
             sortedArray.append(i["location"] as! ParkLocation)
         }
         
-        return sortedArray
+        sortedLocations = sortedArray
+        completion(true)
     }
     
     func findInLocation(_ location: ParkLocation) {

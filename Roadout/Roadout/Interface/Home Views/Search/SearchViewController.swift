@@ -121,12 +121,64 @@ class SearchViewController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let query = searchField.text,
+          !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+              self.bruteFind() { success in
+                  if success {
+                      self.tableView.reloadData()
+                  }
+              }
+              return
+        }
+        let adjustedQuery = "Cluj-Napoca, " + query
+        SearchManager.sharedInstance.startSearching(query: adjustedQuery) { result in
+            switch result {
+                case .success(let searchCoordinates):
+                    print("\(searchCoordinates.latitude), \(searchCoordinates.longitude)")
+                self.findByCoordinate(coords: searchCoordinates) { success in
+                    if success {
+                        self.tableView.reloadData()
+                    }
+                }
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    self.bruteFind() { success in
+                        if success {
+                            self.tableView.reloadData()
+                        }
+                    }
+            }
+        }
+        
+    }
+    
+    func bruteFind(completion: (_ success: Bool) -> Void) {
         if searchField.text == "" {
             results = parkLocations
         } else {
             results = parkLocations.filter { $0.name.localizedCaseInsensitiveContains(searchField.text!) }
         }
-        tableView.reloadData()
+        completion(true)
+    }
+    
+    func findByCoordinate(coords: CLLocationCoordinate2D, completion: (_ success: Bool) -> Void) {
+        let foundLocation = CLLocation(latitude: coords.latitude, longitude: coords.longitude)
+        var dictArray = [[String: Any]]()
+        for i in 0..<parkLocations.count {
+            let loc = CLLocation(latitude: parkLocations[i].latitude, longitude: parkLocations[i].longitude)
+            let distanceInMeters = foundLocation.distance(from: loc)
+            let a:[String: Any] = ["distance": distanceInMeters, "location": parkLocations[i]]
+            dictArray.append(a)
+        }
+        dictArray = dictArray.sorted(by: {($0["distance"] as! CLLocationDistance) < ($1["distance"] as! CLLocationDistance)})
+        
+        var sortedArray = [ParkLocation]()
+        for i in dictArray{
+            sortedArray.append(i["location"] as! ParkLocation)
+        }
+        
+        results = sortedArray
+        completion(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

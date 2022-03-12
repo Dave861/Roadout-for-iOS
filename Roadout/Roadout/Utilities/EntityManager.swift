@@ -12,8 +12,10 @@ class EntityManager {
     
     static let sharedInstance = EntityManager()
     
-    func getParkLocations() {
-        
+    func getParkLocations(completion: @escaping(Result<Void, Error>) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            completion(.success(()))
+        }
     }
     
     func getSections(in: ParkLocation) {

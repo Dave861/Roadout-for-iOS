@@ -127,10 +127,13 @@ class FindView: UIView {
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
+        NotificationCenter.default.post(name: .animateCameraToFoundID, object: nil)
         donateInteration()
         addToSiriBtn()
         
     }
+    
+    
 
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Find", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
