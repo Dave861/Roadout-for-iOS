@@ -9,8 +9,8 @@ import UIKit
 
 class NotificationsViewController: UIViewController {
     
-    let titles = ["Reservation Status Notifications", "Reminders Notifications"]
-    let explanations = ["Get timely notifications about the remaining time", "Get reminder notfications, set by you inside the app"]
+    let titles = ["Reservation Status Notifications".localized(), "Reminders Notifications".localized()]
+    let explanations = ["Get timely notifications about the remaining time".localized(), "Get reminder notfications, set by you inside the app".localized()]
 
     @IBOutlet weak var backButton: UIButton!
     
@@ -20,8 +20,12 @@ class NotificationsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var seeSettingsLbl: UILabel!
+    
     @IBAction func seeSettingsTapped(_ sender: Any) {
-        UIApplication.shared.open(URL(string: "App-prefs:Notifications")!)
+        if let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) {
+            UIApplication.shared.open(appSettings)
+        }
     }
     
     @IBOutlet weak var seeSettingsBtn: UIButton!
@@ -29,6 +33,10 @@ class NotificationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         seeSettingsBtn.setTitle("", for: .normal)
+        seeSettingsLbl.text = "Notifications are enabled. See settings".localized()
+        seeSettingsLbl.set(textColor: UIColor(named: "Redish")!, range: seeSettingsLbl.range(after: ". "))
+        seeSettingsLbl.set(font: .systemFont(ofSize: 18.0, weight: .medium), range: seeSettingsLbl.range(after: ". "))
+        
         tableView.delegate = self
         tableView.dataSource = self
         

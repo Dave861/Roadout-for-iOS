@@ -11,7 +11,7 @@ import UserNotifications
 
 class SignInViewController: UIViewController {
     
-    let signInTitle = NSAttributedString(string: "Sign In", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let signInTitle = NSAttributedString(string: "Sign In".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     var errorCounter = 0
     
     let center = UNUserNotificationCenter.current()
@@ -42,8 +42,8 @@ class SignInViewController: UIViewController {
                         UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
                         self.manageScreens()
                     } else {
-                        let alert = UIAlertController(title: "Error", message: "There was an unknown error, please try again", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        let alert = UIAlertController(title: "Error".localized(), message: "There was an unknown error, please try again".localized(), preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                         alert.addAction(okAction)
                         alert.view.tintColor = UIColor(named: "Redish")
                         self.present(alert, animated: true, completion: nil)
@@ -54,8 +54,8 @@ class SignInViewController: UIViewController {
                 }
             }
         } else {
-            let alert = UIAlertController(title: "Error", message: "Please enter a valid email address", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            let alert = UIAlertController(title: "Error".localized(), message: "Please enter a valid email address".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
             alert.addAction(okAction)
             alert.view.tintColor = UIColor(named: "Icons")
             self.present(alert, animated: true, completion: nil)
@@ -83,14 +83,14 @@ class SignInViewController: UIViewController {
     
     @IBAction func forgotTapped(_ sender: Any) {
         guard isValidEmail(emailField.text ?? "") else {
-            let alert = UIAlertController(title: "Error", message: "Please enter a valid email in order to get a verification code to reset your password.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            let alert = UIAlertController(title: "Error".localized(), message: "Please enter a valid email in order to get a verification code to reset your password.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
             return
         }
-        let alert = UIAlertController(title: "Forgot Password", message: "We will send an email with a verification code to: \(emailField.text!). Do you want to proceed?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Proceed", style: .default) { _ in
+        let alert = UIAlertController(title: "Forgot Password".localized(), message: "We will send an email with a verification code to ".localized() + emailField.text!, preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Proceed".localized(), style: .default) { _ in
             UserManager.sharedInstance.sendForgotData(self.emailField.text!) { result in
                 switch result {
                     case .success():
@@ -105,7 +105,7 @@ class SignInViewController: UIViewController {
             UserManager.sharedInstance.userEmail = self.emailField.text!
             UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
         }
-        let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let noAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
         alert.addAction(noAction)
         alert.addAction(yesAction)
         alert.view.tintColor = UIColor(named: "Main Yellow")!
@@ -138,11 +138,11 @@ class SignInViewController: UIViewController {
         passwordField.layer.cornerRadius = 12.0
         
         emailField.attributedPlaceholder = NSAttributedString(
-            string: "Email",
+            string: "Email".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
         passwordField.attributedPlaceholder = NSAttributedString(
-            string: "Password",
+            string: "Password".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Second Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
         locationManager = CLLocationManager()
@@ -194,8 +194,8 @@ class SignInViewController: UIViewController {
     func manageServerSideErrors() {
         switch AuthManager.sharedInstance.callResult {
             case "error":
-                let alert = UIAlertController(title: "Sign In Error", message: "Wrong email or password.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+            let alert = UIAlertController(title: "Sign In Error".localized(), message: "Wrong email or password.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: { _ in
                     self.errorCounter += 1
                     if self.errorCounter >= 2 {
                         self.manageForgotView(true)
@@ -205,26 +205,26 @@ class SignInViewController: UIViewController {
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "network error":
-                let alert = UIAlertController(title: "Network Error", message: "Please check you network connection.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "database error":
-                let alert = UIAlertController(title: "Internal Error", message: "There was an internal problem, please wait and try again a little later.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "unknown error":
-                let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             case "error with json":
-                let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
@@ -238,32 +238,32 @@ class SignInViewController: UIViewController {
         if UserManager.sharedInstance.forgotResumeScreen == "Sign In" {
             switch UserManager.sharedInstance.callResult {
                 case "error":
-                    let alert = UIAlertController(title: "User Error", message: "No user found with this email address. Try signing up.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                let alert = UIAlertController(title: "User Error".localized(), message: "No user found with this email address. Try signing up.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)
                 case "network error":
-                    let alert = UIAlertController(title: "Network Error", message: "Please check you network connection.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)
                 case "database error":
-                    let alert = UIAlertController(title: "Internal Error", message: "There was an internal problem, please wait and try again a little later.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)
                 case "unknown error":
-                    let alert = UIAlertController(title: "Unknown Error", message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)
                 case "error with json":
-                    let alert = UIAlertController(title: "JSON Error", message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)

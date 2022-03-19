@@ -11,7 +11,7 @@ class AddReminderViewController: UIViewController {
 
     let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
     
-    let setTitle = NSAttributedString(string: "Set", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let setTitle = NSAttributedString(string: "Set".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     var oldSelectedDate = Date().addingTimeInterval(900)
 
@@ -30,10 +30,10 @@ class AddReminderViewController: UIViewController {
         }
         alertDatePicker.minuteInterval = 15
         alertController.view.addSubview(alertDatePicker)
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+        let okAction = UIAlertAction(title: "OK".localized(), style: .default) { _ in
             self.oldSelectedDate = alertDatePicker.date
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         alertController.view.tintColor = UIColor(named: "Icons")
@@ -71,18 +71,18 @@ class AddReminderViewController: UIViewController {
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
-                let alert = UIAlertController(title: "Error", message: "Please add a label to the reminder", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error".localized(), message: "Please add a label to the reminder".localized(), preferredStyle: .alert)
                 alert.view.tintColor = UIColor(named: "Icons")
-                let okAction = UIAlertAction(title: "OK", style: .default) { action in
+                let okAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                     self.dismiss(animated: true, completion: nil)
                 }
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)
             }
         } else {
-            let alert = UIAlertController(title: "Error", message: "There is already an active reminder with this label, please pick another label", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error".localized(), message: "There is already an active reminder with this label, please pick another label".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Icons")
-            let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            let okAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                 self.dismiss(animated: true, completion: nil)
             }
             alert.addAction(okAction)
@@ -130,7 +130,7 @@ class AddReminderViewController: UIViewController {
         
         labelField.layer.cornerRadius = 12.0
         labelField.attributedPlaceholder = NSAttributedString(
-            string: "Notification Label",
+            string: "Notification Label".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
         if #available(iOS 14.0, *) {

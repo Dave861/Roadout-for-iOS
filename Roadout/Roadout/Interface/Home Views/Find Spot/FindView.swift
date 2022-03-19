@@ -56,25 +56,25 @@ class FindView: UIView {
     
     
     @IBAction func timeTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "Choose duration", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "", message: "Choose duration".localized(), preferredStyle: .actionSheet)
         alert.view.tintColor = UIColor(named: "Greyish")
-        let action1 = UIAlertAction(title: "5 Minutes", style: .default) { action in
-            self.timeLbl.text = "5 Minutes"
+        let action1 = UIAlertAction(title: "5" + " Minutes".localized(), style: .default) { action in
+            self.timeLbl.text = "5" + " Minutes".localized()
             self.minutesValue = 5
         }
-        let action2 = UIAlertAction(title: "10 Minutes", style: .default) { action in
-            self.timeLbl.text = "10 Minutes"
+        let action2 = UIAlertAction(title: "10" + " Minutes".localized(), style: .default) { action in
+            self.timeLbl.text = "10" + " Minutes".localized()
             self.minutesValue = 10
         }
-        let action3 = UIAlertAction(title: "15 Minutes", style: .default) { action in
-            self.timeLbl.text = "15 Minutes"
+        let action3 = UIAlertAction(title: "15" + " Minutes".localized(), style: .default) { action in
+            self.timeLbl.text = "15" + " Minutes".localized()
             self.minutesValue = 15
         }
-        let action4 = UIAlertAction(title: "20 Minutes", style: .default) { action in
-            self.timeLbl.text = "20 Minutes"
+        let action4 = UIAlertAction(title: "20" + " Minutes".localized(), style: .default) { action in
+            self.timeLbl.text = "20" + " Minutes".localized()
             self.minutesValue = 20
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
         cancelAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
         
         alert.addAction(action1)
@@ -88,7 +88,7 @@ class FindView: UIView {
     
     
         
-    let continueTitle = NSAttributedString(string: "Continue", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
    
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 13.0
@@ -99,7 +99,7 @@ class FindView: UIView {
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         
         
-        timeLbl.text = "\(minutesValue) Minutes"
+        timeLbl.text = "\(minutesValue)" + " Minutes".localized()
         
         locationCard.layer.cornerRadius = 12.0
         sectionCard.layer.cornerRadius = 12.0
@@ -112,8 +112,8 @@ class FindView: UIView {
         timeBtn.setTitle("", for: .normal)
      
         locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name
-        sectionLbl.text = "Section " + FunctionsManager.sharedInstance.foundSection.name
-        spotLbl.text = "Spot \(FunctionsManager.sharedInstance.foundSpot.number)"
+        sectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name
+        spotLbl.text = "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
         
         if #available(iOS 14.0, *) {
             timeBtn.menu = durationMenu
@@ -131,6 +131,11 @@ class FindView: UIView {
         donateInteration()
         addToSiriBtn()
         
+        consoleManager.print("SORTED LOCATIONS")
+        for fLocation in FunctionsManager.sharedInstance.sortedLocations {
+            consoleManager.print(fLocation.name)
+        }
+        consoleManager.print("END SORTED LOCATIONS")
     }
     
     
@@ -141,26 +146,26 @@ class FindView: UIView {
     
     var durationMenuItems: [UIAction] {
         return [
-            UIAction(title: "20 Minutes", image: nil, handler: { (_) in
-                self.timeLbl.text = "20 Minutes"
+            UIAction(title: "20" + " Minutes".localized(), image: nil, handler: { (_) in
+                self.timeLbl.text = "20" + " Minutes".localized()
                 self.minutesValue = 20
             }),
-            UIAction(title: "15 Minutes", image: nil, handler: { (_) in
-                self.timeLbl.text = "15 Minutes"
+            UIAction(title: "15" + " Minutes".localized(), image: nil, handler: { (_) in
+                self.timeLbl.text = "15" + " Minutes".localized()
                 self.minutesValue = 15
             }),
-            UIAction(title: "10 Minutes", image: nil, handler: { (_) in
-                self.timeLbl.text = "10 Minutes"
+            UIAction(title: "10" + " Minutes".localized(), image: nil, handler: { (_) in
+                self.timeLbl.text = "10" + " Minutes".localized()
                 self.minutesValue = 10
             }),
-            UIAction(title: "5 Minutes", image: nil, handler: { (_) in
-                self.timeLbl.text = "5 Minutes"
+            UIAction(title: "5" + " Minutes".localized(), image: nil, handler: { (_) in
+                self.timeLbl.text = "5" + " Minutes".localized()
                 self.minutesValue = 5
             })
         ]
     }
     var durationMenu: UIMenu {
-        return UIMenu(title: "Choose duration", image: nil, identifier: nil, options: [], children: durationMenuItems)
+        return UIMenu(title: "Choose duration".localized(), image: nil, identifier: nil, options: [], children: durationMenuItems)
     }
         
     func donateInteration() {

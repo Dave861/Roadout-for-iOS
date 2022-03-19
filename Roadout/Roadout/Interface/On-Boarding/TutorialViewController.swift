@@ -12,34 +12,34 @@ class TutorialViewController: UIViewController {
 
     var tCounter = 1
     
-    var tutorialTitles = ["Search Bar", "More Button", "Express Reserve", "Find Spot", "Preferences", "Markers"]
-    var tutorialTexts = ["Use the search bar to find specific parking locations in your city and easily reserve the perfect spot for you.", "Use the more button to access more powerful options of the app. Tap it for more info.", "This is a quick and easy way to reserve a spot in a desired location.", "The fastest way to find a parking spot near you, great for you just need to park quickly.", "The place to see stats, add cards, reminders and manage permissions.", "Markers are easily glanceable indicators of where parking locations are relative to your location"]
+    var tutorialTitles = ["Search Bar".localized(), "More Button".localized(), "Express Reserve".localized(), "Find Spot".localized(), "Preferences".localized(), "Markers".localized()]
+    var tutorialTexts = ["Use the search bar to find specific parking locations in your city and easily reserve the perfect spot for you.".localized(), "Use the more button to access more powerful options of the app. Tap it for more info.".localized(), "This is a quick and easy way to reserve a spot in a desired location.".localized(), "The fastest way to find a parking spot near you, great for you just need to park quickly.".localized(), "The place to see stats, add cards, reminders and manage permissions.".localized(), "Markers are easily glanceable indicators of where parking locations are relative to your location".localized()]
     
     @IBOutlet weak var t1: UIView!
     
     @IBOutlet weak var t2: UIView!
     @IBOutlet weak var t2Btn: UIButton!
     @IBAction func t2Tapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "What would you like to do?", preferredStyle: .actionSheet)
-        let settingsAction = UIAlertAction(title: "Preferences", style: .default) { action in
+        let alert = UIAlertController(title: "", message: "What would you like to do?".localized(), preferredStyle: .actionSheet)
+        let settingsAction = UIAlertAction(title: "Preferences".localized(), style: .default) { action in
             self.tutorialTitle.text = self.tutorialTitles[4]
             self.tutorialText.text = self.tutorialTexts[4]
         }
         settingsAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
         
-        let findAction = UIAlertAction(title: "Find Spot", style: .default) { action in
+        let findAction = UIAlertAction(title: "Find Spot".localized(), style: .default) { action in
             self.tutorialTitle.text = self.tutorialTitles[3]
             self.tutorialText.text = self.tutorialTexts[3]
         }
         findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
         
-        let expressAction = UIAlertAction(title: "Express Reserve", style: .default) { action in
+        let expressAction = UIAlertAction(title: "Express Reserve".localized(), style: .default) { action in
             self.tutorialTitle.text = self.tutorialTitles[2]
             self.tutorialText.text = self.tutorialTexts[2]
         }
         expressAction.setValue(UIColor(named: "Dark Orange")!, forKey: "titleTextColor")
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
         cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
         
         alert.addAction(settingsAction)
@@ -90,28 +90,28 @@ class TutorialViewController: UIViewController {
     
     var menuItems: [UIAction] {
         return [
-            UIAction(title: "Preferences", image: UIImage(systemName: "gearshape.2"), handler: { (_) in
+            UIAction(title: "Preferences".localized(), image: UIImage(systemName: "gearshape.2"), handler: { (_) in
                 self.tutorialTitle.text = self.tutorialTitles[4]
                 self.tutorialText.text = self.tutorialTexts[4]
             }),
-            UIAction(title: "Find Spot", image: UIImage(systemName: "loupe"), handler: { (_) in
+            UIAction(title: "Find Spot".localized(), image: UIImage(systemName: "loupe"), handler: { (_) in
                 self.tutorialTitle.text = self.tutorialTitles[3]
                 self.tutorialText.text = self.tutorialTexts[3]
             }),
-            UIAction(title: "Express Reserve", image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
+            UIAction(title: "Express Reserve".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
                 self.tutorialTitle.text = self.tutorialTitles[2]
                 self.tutorialText.text = self.tutorialTexts[2]
             }),
         ]
     }
     var moreMenu: UIMenu {
-        return UIMenu(title: "What would you like to do?", image: nil, identifier: nil, options: [], children: menuItems)
+        return UIMenu(title: "What would you like to do?".localized(), image: nil, identifier: nil, options: [], children: menuItems)
     }
     
-    let continueTitle = NSAttributedString(string: "Continue", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let doneTitle = NSAttributedString(string: "Done", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let skipTitle = NSAttributedString(
-        string: "Skip Tutorial",
+        string: "Skip Tutorial".localized(),
         attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
     

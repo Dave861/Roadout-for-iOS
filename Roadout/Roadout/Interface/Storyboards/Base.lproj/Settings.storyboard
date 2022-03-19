@@ -124,27 +124,13 @@ Made in Cluj :)</string>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6x-BI-Dfb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications are enabled. See settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6x-BI-Dfb">
                                 <rect key="frame" x="60.5" y="790" width="293" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="SPM-q2-0Uy"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Notifications are enabled. ">
-                                        <attributes>
-                                            <color key="NSColor" systemColor="systemGrayColor"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="See settings">
-                                        <attributes>
-                                            <color key="NSColor" red="0.53725492949999998" green="0.2117646933" blue="0.078431375319999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
                                 <color key="highlightedColor" systemColor="systemGrayColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzW-Ux-ETF">
@@ -190,6 +176,7 @@ Made in Cluj :)</string>
                     <connections>
                         <outlet property="backButton" destination="Lau-2H-tem" id="kW8-XO-d15"/>
                         <outlet property="seeSettingsBtn" destination="nzW-Ux-ETF" id="dPE-S9-hgQ"/>
+                        <outlet property="seeSettingsLbl" destination="c6x-BI-Dfb" id="dXH-uQ-QaJ"/>
                         <outlet property="tableView" destination="lzc-Do-hXB" id="3dV-2W-rxx"/>
                     </connections>
                 </viewController>
@@ -616,9 +603,8 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8SC-bh-460">
-                                        <rect key="frame" x="332" y="20" width="79" height="17"/>
+                                        <rect key="frame" x="338.5" y="20" width="72.5" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="79" id="AsA-9M-kn7"/>
                                             <constraint firstAttribute="height" constant="17" id="c9I-Rc-QWp"/>
                                         </constraints>
                                         <color key="tintColor" name="Icons"/>
@@ -935,9 +921,8 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkA-RX-1jg">
-                                        <rect key="frame" x="332" y="20" width="79" height="17"/>
+                                        <rect key="frame" x="338.5" y="20" width="72.5" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="79" id="47c-OT-lUg"/>
                                             <constraint firstAttribute="height" constant="17" id="bBo-K5-WHb"/>
                                         </constraints>
                                         <color key="tintColor" name="Dark Orange"/>
@@ -1956,7 +1941,7 @@ Made in Cluj :)</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPw-2D-DOK">
-                                <rect key="frame" x="20" y="137" width="374" height="45"/>
+                                <rect key="frame" x="20" y="137" width="374" height="88"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hh7-yd-xeh">
                                         <rect key="frame" x="307" y="7" width="49" height="31"/>
@@ -1978,47 +1963,42 @@ Made in Cluj :)</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjo-aE-Qcs">
+                                        <rect key="frame" x="0.0" y="46" width="374" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="Dp9-Hf-c6T"/>
+                                        </constraints>
+                                        <color key="tintColor" name="DevBrown"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Refresh City Data">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="refreshTapped:" destination="Nih-IX-pED" eventType="touchUpInside" id="Pbj-hj-4Lh"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4X-hM-nTK">
+                                        <rect key="frame" x="20" y="45" width="354" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="NhQ-lK-jlX"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" name="Secondary Detail"/>
                                 <constraints>
                                     <constraint firstItem="Hh7-yd-xeh" firstAttribute="top" secondItem="qPw-2D-DOK" secondAttribute="top" constant="7" id="8q4-bI-ioF"/>
-                                    <constraint firstAttribute="height" constant="45" id="Arr-Vz-nqX"/>
+                                    <constraint firstAttribute="height" constant="88" id="Arr-Vz-nqX"/>
                                     <constraint firstItem="Zno-2c-VLL" firstAttribute="top" secondItem="qPw-2D-DOK" secondAttribute="top" constant="12" id="DsM-St-UV1"/>
+                                    <constraint firstItem="Bjo-aE-Qcs" firstAttribute="leading" secondItem="qPw-2D-DOK" secondAttribute="leading" id="OyY-ZI-AEh"/>
+                                    <constraint firstAttribute="trailing" secondItem="b4X-hM-nTK" secondAttribute="trailing" id="PPM-3b-GCq"/>
+                                    <constraint firstItem="b4X-hM-nTK" firstAttribute="top" secondItem="Hh7-yd-xeh" secondAttribute="bottom" constant="7" id="RHw-CI-Fyr"/>
+                                    <constraint firstItem="b4X-hM-nTK" firstAttribute="leading" secondItem="qPw-2D-DOK" secondAttribute="leading" constant="20" id="WYm-Sd-5jM"/>
+                                    <constraint firstItem="Bjo-aE-Qcs" firstAttribute="top" secondItem="b4X-hM-nTK" secondAttribute="bottom" id="ffl-XF-rZU"/>
                                     <constraint firstAttribute="trailing" secondItem="Hh7-yd-xeh" secondAttribute="trailing" constant="20" id="hHD-dw-B7E"/>
                                     <constraint firstItem="Zno-2c-VLL" firstAttribute="leading" secondItem="qPw-2D-DOK" secondAttribute="leading" constant="12" id="hqT-tI-fbA"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YdB-mM-8Eh">
-                                <rect key="frame" x="20" y="189" width="374" height="45"/>
-                                <subviews>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mq8-KH-lxe">
-                                        <rect key="frame" x="307" y="7" width="49" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="47" id="Jhq-UT-1Hi"/>
-                                            <constraint firstAttribute="height" constant="31" id="jdu-lY-9Vb"/>
-                                        </constraints>
-                                        <color key="onTintColor" name="DevBrown"/>
-                                        <connections>
-                                            <action selector="consoleSwitched:" destination="Nih-IX-pED" eventType="valueChanged" id="c8f-Jr-ysg"/>
-                                        </connections>
-                                    </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6q-da-hNF">
-                                        <rect key="frame" x="12" y="12" width="96" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="YNC-oS-SO5"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="Secondary Detail"/>
-                                <constraints>
-                                    <constraint firstItem="mq8-KH-lxe" firstAttribute="top" secondItem="YdB-mM-8Eh" secondAttribute="top" constant="7" id="3cs-Bt-g4d"/>
-                                    <constraint firstItem="g6q-da-hNF" firstAttribute="leading" secondItem="YdB-mM-8Eh" secondAttribute="leading" constant="12" id="4qv-nQ-iMN"/>
-                                    <constraint firstItem="g6q-da-hNF" firstAttribute="top" secondItem="YdB-mM-8Eh" secondAttribute="top" constant="12" id="RGW-yV-GWI"/>
-                                    <constraint firstAttribute="height" constant="45" id="V37-Ux-Aeg"/>
-                                    <constraint firstAttribute="trailing" secondItem="mq8-KH-lxe" secondAttribute="trailing" constant="20" id="n4r-MC-31t"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bjo-aE-Qcs" secondAttribute="bottom" id="mrb-Wd-Ov1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bjo-aE-Qcs" secondAttribute="trailing" id="zWR-B9-c44"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0x-db-MEW">
@@ -2030,56 +2010,24 @@ Made in Cluj :)</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jsh-9E-W0S">
-                                <rect key="frame" x="20" y="248" width="374" height="42"/>
-                                <subviews>
-                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjo-aE-Qcs">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="42"/>
-                                        <color key="tintColor" name="DevBrown"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Refresh City Data">
-                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="refreshTapped:" destination="Nih-IX-pED" eventType="touchUpInside" id="Pbj-hj-4Lh"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" name="Secondary Detail"/>
-                                <constraints>
-                                    <constraint firstItem="Bjo-aE-Qcs" firstAttribute="top" secondItem="Jsh-9E-W0S" secondAttribute="top" id="3X7-JK-vFB"/>
-                                    <constraint firstItem="Bjo-aE-Qcs" firstAttribute="leading" secondItem="Jsh-9E-W0S" secondAttribute="leading" id="FjG-xP-ZAe"/>
-                                    <constraint firstAttribute="height" constant="42" id="cRa-VL-7Md"/>
-                                    <constraint firstAttribute="trailing" secondItem="Bjo-aE-Qcs" secondAttribute="trailing" id="hEP-u1-gwc"/>
-                                    <constraint firstAttribute="bottom" secondItem="Bjo-aE-Qcs" secondAttribute="bottom" id="s5a-8F-IK2"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ykk-x2-RDM"/>
                         <color key="backgroundColor" name="Second Background"/>
                         <constraints>
                             <constraint firstItem="qPw-2D-DOK" firstAttribute="leading" secondItem="Ykk-x2-RDM" secondAttribute="leading" constant="20" id="5Js-ud-kji"/>
-                            <constraint firstItem="YdB-mM-8Eh" firstAttribute="leading" secondItem="Ykk-x2-RDM" secondAttribute="leading" constant="20" id="HBk-E8-NUt"/>
                             <constraint firstItem="QuX-Su-km8" firstAttribute="bottom" secondItem="Ykk-x2-RDM" secondAttribute="bottom" constant="5" id="O4f-UW-Jkf"/>
                             <constraint firstItem="L0x-db-MEW" firstAttribute="top" secondItem="Ykk-x2-RDM" secondAttribute="top" constant="45" id="VE3-66-2ts"/>
-                            <constraint firstItem="Jsh-9E-W0S" firstAttribute="top" secondItem="YdB-mM-8Eh" secondAttribute="bottom" constant="14" id="YfJ-PG-s0S"/>
-                            <constraint firstItem="YdB-mM-8Eh" firstAttribute="top" secondItem="qPw-2D-DOK" secondAttribute="bottom" constant="7" id="ZwE-52-2Cu"/>
                             <constraint firstItem="qPw-2D-DOK" firstAttribute="top" secondItem="L0x-db-MEW" secondAttribute="bottom" constant="16" id="a0Q-uo-2ci"/>
                             <constraint firstItem="ol8-ar-HJO" firstAttribute="top" secondItem="Ykk-x2-RDM" secondAttribute="top" constant="12" id="dWt-uj-dNn"/>
                             <constraint firstItem="QuX-Su-km8" firstAttribute="centerX" secondItem="N87-l9-cL6" secondAttribute="centerX" id="g5M-L2-jcW"/>
                             <constraint firstItem="Ykk-x2-RDM" firstAttribute="trailing" secondItem="qPw-2D-DOK" secondAttribute="trailing" constant="20" id="hBA-YA-ri8"/>
-                            <constraint firstItem="Ykk-x2-RDM" firstAttribute="trailing" secondItem="YdB-mM-8Eh" secondAttribute="trailing" constant="20" id="lAl-Iq-Cws"/>
                             <constraint firstItem="ol8-ar-HJO" firstAttribute="leading" secondItem="Ykk-x2-RDM" secondAttribute="leading" constant="7" id="qla-Bi-dfc"/>
-                            <constraint firstItem="Ykk-x2-RDM" firstAttribute="trailing" secondItem="Jsh-9E-W0S" secondAttribute="trailing" constant="20" id="rep-s5-dul"/>
                             <constraint firstItem="L0x-db-MEW" firstAttribute="leading" secondItem="Ykk-x2-RDM" secondAttribute="leading" constant="20" id="ugJ-zR-AgN"/>
-                            <constraint firstItem="Jsh-9E-W0S" firstAttribute="leading" secondItem="Ykk-x2-RDM" secondAttribute="leading" constant="20" id="uoe-fE-SSn"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="ol8-ar-HJO" id="Ac2-64-ugS"/>
                         <outlet property="card" destination="qPw-2D-DOK" id="anO-TE-QcE"/>
-                        <outlet property="card2" destination="YdB-mM-8Eh" id="FWE-XU-8ym"/>
-                        <outlet property="card3" destination="Jsh-9E-W0S" id="4Te-pl-BOT"/>
                         <outlet property="consoleSwitch" destination="Hh7-yd-xeh" id="JYC-hx-Zxv"/>
                         <outlet property="refreshBtn" destination="Bjo-aE-Qcs" id="V1O-P9-SQe"/>
                     </connections>
@@ -2118,7 +2066,7 @@ Made in Cluj :)</string>
             <color red="0.56099998950958252" green="0.40000000596046448" blue="0.050999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DevBrown">
-            <color red="0.5" green="0.24079712224677297" blue="0.073288653852343399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.5" green="0.24099999666213989" blue="0.072999998927116394" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="ExpressFocus">
             <color red="0.5690000057220459" green="0.30199998617172241" blue="0.0070000002160668373" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -2133,7 +2081,7 @@ Made in Cluj :)</string>
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Redish">
-            <color red="0.58399999141693115" green="0.18000000715255737" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.61799997091293335" green="0.22400000691413879" blue="0.11599999666213989" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Second Background">
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2149,6 +2097,9 @@ Made in Cluj :)</string>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

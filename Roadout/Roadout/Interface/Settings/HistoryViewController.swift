@@ -10,8 +10,8 @@ import UIKit
 class HistoryViewController: UIViewController {
     
     let historyDates = ["15.10.2021", "08.10.2021", "27.09.2021"]
-    let historyLocations = ["Location 1 - Section A - Spot 2", "Location 1 - Section C - Spot 6", "Location 4 - Section E - Spot 5"]
-    let historyTimes = ["11 minutes - ", "8 minutes + 5 minutes - ", "15 minutes + 10 minutes - "]
+    let historyLocations = ["Location".localized()+" 1 - "+"Section ".localized()+"A - "+"Spot ".localized()+"2", "Location".localized()+" 2 - "+"Section ".localized()+"E - "+"Spot ".localized()+"3", "Location".localized()+" 3 - "+"Section ".localized()+"C - "+"Spot ".localized()+"11"]
+    let historyTimes = ["11" + " minutes".localized() + " - ", "8" + " minutes".localized() + " + 5" + " minutes".localized() + " - ", "15" + " minutes".localized() + " + 10" + " minutes".localized() + " - "]
     let historyPrices = ["15 RON", "21 RON", "25 RON"]
 
     @IBOutlet weak var backButton: UIButton!

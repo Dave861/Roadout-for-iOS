@@ -13,7 +13,7 @@ class SectionView: UIView {
     var letterTitle: NSAttributedString!
 
     var lettersMenu: UIMenu {
-        return UIMenu(title: "Choose a section", image: nil, identifier: nil, options: [], children: makeMenuActions(sections: selectedParkLocation.sections))
+        return UIMenu(title: "Choose a section".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(sections: selectedParkLocation.sections))
     }
     
     @IBOutlet weak var sectionImage: UIImageView!
@@ -39,7 +39,7 @@ class SectionView: UIView {
         self.parentViewController().present(makeAlert(sections: selectedParkLocation.sections), animated: true, completion: nil)
     }
     
-    let continueTitle = NSAttributedString(string: "Continue", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -79,11 +79,11 @@ class SectionView: UIView {
     }
     
     func makeAlert(sections: [ParkSection]) -> UIAlertController {
-        let alert = UIAlertController(title: "", message: "Choose a section", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "", message: "Choose a section".localized(), preferredStyle: .actionSheet)
         alert.view.tintColor = UIColor(named: "Icons")
         
         for section in sections {
-            let sectionAction = UIAlertAction(title: "Section \(section.name)", style: .default) { action in
+            let sectionAction = UIAlertAction(title: "Section ".localized() + "\(section.name)", style: .default) { action in
                 self.letter = section.name
                 self.letterTitle = NSAttributedString(string: self.letter,
                                                  attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
@@ -104,7 +104,7 @@ class SectionView: UIView {
         var menuItems = [UIAction]()
         
         for section in sections {
-            let action = UIAction(title: "Section \(section.name)", image: nil, handler: { (_) in
+            let action = UIAction(title: "Section ".localized() + "\(section.name)", image: nil, handler: { (_) in
                 self.letter = section.name
                 self.letterTitle = NSAttributedString(string: self.letter,
                                                  attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])

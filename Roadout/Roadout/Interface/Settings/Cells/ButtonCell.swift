@@ -12,7 +12,7 @@ class ButtonCell: UITableViewCell {
     @IBOutlet weak var card: UIView!
     @IBOutlet weak var cellButton: UIButton!
     
-    let buttonTitle = NSAttributedString(string: "Sign Out",
+    let buttonTitle = NSAttributedString(string: "Sign Out".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Orange")])
     
     override func awakeFromNib() {

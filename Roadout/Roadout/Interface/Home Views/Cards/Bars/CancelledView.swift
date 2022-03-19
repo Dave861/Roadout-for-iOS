@@ -9,7 +9,7 @@ import UIKit
 
 class CancelledView: UIView {
     
-    let buttonTitle = NSAttributedString(string: "Done",
+    let buttonTitle = NSAttributedString(string: "Done".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Redish")!])
     
     @IBOutlet weak var doneBtn: UIButton!

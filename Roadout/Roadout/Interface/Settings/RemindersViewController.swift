@@ -32,7 +32,7 @@ class RemindersViewController: UIViewController {
     
     @IBOutlet weak var addBtnOutline: UIView!
     
-    let buttonTitle = NSAttributedString(string: "Add Reminder",
+    let buttonTitle = NSAttributedString(string: "Add Reminder".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
     
     func manageObs() {
@@ -92,9 +92,9 @@ class RemindersViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
         if UserPrefsUtils.sharedInstance.reminderNotificationsEnabled() == false {
-            let alert = UIAlertController(title: "Warning", message: "Reminder notifications are disabled, you will NOT be notified by Roadout unless you enable reminder notifications", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Warning".localized(), message: "Reminder notifications are disabled, you will NOT be notified by Roadout unless you enable reminder notifications".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Icons")
-            let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            let okAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                 self.dismiss(animated: true, completion: nil)
             }
             alert.addAction(okAction)
@@ -122,14 +122,14 @@ extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-            let alert = UIAlertController(title: "Delete", message: "Do you want to delete this reminder?", preferredStyle: .actionSheet)
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+        let action = UIContextualAction(style: .destructive, title: "Delete".localized()) { _, _, _ in
+            let alert = UIAlertController(title: "Delete".localized(), message: "Do you want to delete this reminder?".localized(), preferredStyle: .actionSheet)
+            let deleteAction = UIAlertAction(title: "Delete".localized(), style: .destructive) { action in
                 NotificationHelper.sharedInstance.removeReminder(reminder: reminders[indexPath.row])
                 reminders.remove(at: indexPath.row)
                 self.saveReminders()
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel) { action in
                 self.tableView.reloadData()
             }
             alert.view.tintColor = UIColor(named: "Icons")

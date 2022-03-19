@@ -9,7 +9,7 @@ import UIKit
 
 class PaidView: UIView {
     
-    let buttonTitle = NSAttributedString(string: "See Reservation",
+    let buttonTitle = NSAttributedString(string: "See Reservation".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Orange")!])
     
     @IBOutlet weak var seeBtn: UIButton!

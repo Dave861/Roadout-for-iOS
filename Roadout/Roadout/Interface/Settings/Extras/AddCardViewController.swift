@@ -9,7 +9,7 @@ import UIKit
 
 class AddCardViewController: UIViewController {
     
-    let setTitle = NSAttributedString(string: "Add", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let setTitle = NSAttributedString(string: "Add".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurButton: UIButton!
@@ -57,26 +57,26 @@ class AddCardViewController: UIViewController {
         
         cvvField.layer.cornerRadius = 12.0
         cvvField.attributedPlaceholder = NSAttributedString(
-            string: "CVV",
+            string: "CVV".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Brownish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
         expiryField.layer.cornerRadius = 12.0
         expiryField.attributedPlaceholder = NSAttributedString(
-            string: "Expiry Date",
+            string: "Expiry Date".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
         holderField.layer.cornerRadius = 12.0
         holderField.attributedPlaceholder = NSAttributedString(
-            string: "Card Holder",
+            string: "Card Holder".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
         numberField.layer.cornerRadius = 12.0
         numberField.attributedPlaceholder = NSAttributedString(
-            string: "Card Number",
+            string: "Card Number".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Second Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
         
-        self.expiryField.setInputViewDatePicker(target: self, selector: #selector(tapDone)) //1
+        self.expiryField.setInputViewDatePicker(target: self, selector: #selector(tapDone))
     }
             
     @objc func tapDone() {

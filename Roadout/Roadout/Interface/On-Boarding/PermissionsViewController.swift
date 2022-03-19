@@ -13,12 +13,12 @@ class PermissionsViewController: UIViewController {
 
     let permissionsIcons = [UIImage(systemName: "bell.fill"), UIImage(systemName: "map")]
     let permissionsColors = [UIColor(named: "Dark Orange"), UIColor(named: "Greyish")]
-    let permissionsTitles = ["Notifications", "Location"]
-    let permissionsTexts = ["Roadout needs permission to send notifications in order to give you status updates for your reservations and reminders about our promotions. You can control which notifications you get in notification settings.", "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.",]
+    let permissionsTitles = ["Notifications".localized(), "Location".localized()]
+    let permissionsTexts = ["Roadout needs permission to send notifications in order to give you status updates for your reservations and reminders about our promotions. You can control which notifications you get in notification settings.".localized(), "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.".localized()]
     
-    let continueTitle = NSAttributedString(string: "Continue", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let skipTitle = NSAttributedString(
-        string: "Maybe Later",
+        string: "Maybe Later".localized(),
         attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
     

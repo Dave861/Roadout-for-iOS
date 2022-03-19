@@ -9,7 +9,7 @@ import UIKit
 
 class UnlockedView: UIView {
     
-    let buttonTitle = NSAttributedString(string: "Directions",
+    let buttonTitle = NSAttributedString(string: "Directions".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Brownish")!])
     
     @IBOutlet weak var directionsBtn: UIButton!

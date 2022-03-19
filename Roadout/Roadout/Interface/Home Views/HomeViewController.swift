@@ -135,17 +135,17 @@ class HomeViewController: UIViewController {
         self.present(vc, animated: false, completion: nil)
     }
     @IBAction func settingsTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "What would you like to do?", preferredStyle: .actionSheet)
-        let settingsAction = UIAlertAction(title: "Preferences", style: .default) { action in
+        let alert = UIAlertController(title: "", message: "What would you like to do?".localized(), preferredStyle: .actionSheet)
+        let settingsAction = UIAlertAction(title: "Preferences".localized(), style: .default) { action in
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
         settingsAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
         
-        let findAction = UIAlertAction(title: "Find Spot", style: .default) { action in
+        let findAction = UIAlertAction(title: "Find Spot".localized(), style: .default) { action in
             guard let coord = self.mapView.myLocation?.coordinate else {
-                let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(action)
                 alert.view.tintColor = UIColor(named: "DevBrown")
                 self.present(alert, animated: true, completion: nil)
@@ -154,12 +154,12 @@ class HomeViewController: UIViewController {
             consoleManager.print("HERE COORDS")
             consoleManager.print(coord.latitude)
             consoleManager.print(coord.longitude)
-            consoleManager.print("NOT HERE COORDS")
+            consoleManager.print("END COORDS")
             FunctionsManager.sharedInstance.findSpot(coord) { success in
                 if success {
                     self.showFindCard()
                 } else {
-                    let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
                     let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alert.addAction(action)
                     alert.view.tintColor = UIColor(named: "DevBrown")
@@ -185,12 +185,12 @@ class HomeViewController: UIViewController {
         }
         findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
         
-        let expressAction = UIAlertAction(title: "Express Reserve", style: .default) { action in
+        let expressAction = UIAlertAction(title: "Express Reserve".localized(), style: .default) { action in
             self.addExpressPickView()
         }
         expressAction.setValue(UIColor(named: "Dark Orange")!, forKey: "titleTextColor")
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
         cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
         
         alert.addAction(settingsAction)
@@ -282,14 +282,14 @@ class HomeViewController: UIViewController {
     //Menu
     var menuItems: [UIAction] {
         return [
-            UIAction(title: "Preferences", image: UIImage(systemName: "gearshape.2"), handler: { (_) in
+            UIAction(title: "Preferences".localized(), image: UIImage(systemName: "gearshape.2"), handler: { (_) in
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
                 self.navigationController?.pushViewController(vc, animated: true)
             }),
-            UIAction(title: "Find Spot", image: UIImage(systemName: "loupe"), handler: { (_) in
+            UIAction(title: "Find Spot".localized(), image: UIImage(systemName: "loupe"), handler: { (_) in
                 guard let coord = self.mapView.myLocation?.coordinate else {
-                    let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(action)
                     alert.view.tintColor = UIColor(named: "DevBrown")
                     self.present(alert, animated: true, completion: nil)
@@ -298,12 +298,12 @@ class HomeViewController: UIViewController {
                 consoleManager.print("HERE COORDS")
                 consoleManager.print(coord.latitude)
                 consoleManager.print(coord.longitude)
-                consoleManager.print("NOT HERE COORDS")
+                consoleManager.print("END COORDS")
                 FunctionsManager.sharedInstance.findSpot(coord) { success in
                     if success {
                         self.showFindCard()
                     } else {
-                        let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
                         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                         alert.addAction(action)
                         alert.view.tintColor = UIColor(named: "DevBrown")
@@ -326,13 +326,13 @@ class HomeViewController: UIViewController {
                     }
                 } */
             }),
-            UIAction(title: "Express Reserve", image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
+            UIAction(title: "Express Reserve".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
                 self.addExpressPickView()
             }),
         ]
     }
     var moreMenu: UIMenu {
-        return UIMenu(title: "What would you like to do?", image: nil, identifier: nil, options: [], children: menuItems)
+        return UIMenu(title: "What would you like to do?".localized(), image: nil, identifier: nil, options: [], children: menuItems)
     }
   //SharePlay
     func addSharePlayButtonView() {
@@ -367,13 +367,13 @@ class HomeViewController: UIViewController {
     func manageTutorial() {
         if UserDefaults.roadout?.bool(forKey: "ro.roadout.Roadout.launchedBefore") == false {
         
-            let alert = UIAlertController(title: "Tutorial", message: "Would you like a quick tutorial of the app?", preferredStyle: .alert)
-            let yesAction = UIAlertAction(title: "Yes", style: .default) { action in
+            let alert = UIAlertController(title: "Tutorial".localized(), message: "Would you like a quick tutorial of the app?".localized(), preferredStyle: .alert)
+            let yesAction = UIAlertAction(title: "Yes".localized(), style: .default) { action in
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: "TutorialVC") as! TutorialViewController
                 self.present(vc, animated: true, completion: nil)
             }
-            let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+            let noAction = UIAlertAction(title: "No".localized(), style: .cancel, handler: nil)
             
             alert.addAction(yesAction)
             alert.addAction(noAction)

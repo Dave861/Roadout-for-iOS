@@ -26,10 +26,10 @@ class ReservationView: UIView {
     @IBAction func unlockTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        let alert = UIAlertController(title: "Unlock", message: "This cannot be undone, you are about to unlock the spot and end the reservation. Are you sure?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Unlock".localized(), message: "This cannot be undone, you are about to unlock the spot and end the reservation. Are you sure?".localized(), preferredStyle: .alert)
         alert.view.tintColor = UIColor(named: "Brownish")
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let proceedAction = UIAlertAction(title: "Yes", style: .destructive) { action in
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
+        let proceedAction = UIAlertAction(title: "Yes".localized(), style: .destructive) { action in
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             NotificationHelper.sharedInstance.cancelReservationNotification()
@@ -63,10 +63,10 @@ class ReservationView: UIView {
     @IBAction func cancelTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        let alert = UIAlertController(title: "Cancel", message: "Are you sure you want to cancel your reservation? You will only get money back for the unused minutes.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Cancel".localized(), message: "Are you sure you want to cancel your reservation? You will only get money back for the unused minutes.".localized(), preferredStyle: .alert)
         alert.view.tintColor = UIColor(named: "Redish")
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let proceedAction = UIAlertAction(title: "Yes", style: .destructive) { action in
+        let cancelAction = UIAlertAction(title: "No".localized(), style: .cancel, handler: nil)
+        let proceedAction = UIAlertAction(title: "Yes".localized(), style: .destructive) { action in
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             NotificationHelper.sharedInstance.cancelReservationNotification()
@@ -97,7 +97,7 @@ class ReservationView: UIView {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let formattedDate = dateFormatter.string(from: ReservationManager.sharedInstance.getReservationDate())
-        self.timerLbl.text = "Reserved for " + formattedDate
+        self.timerLbl.text = "Reserved for ".localized() + formattedDate
         self.timerLbl.set(textColor: UIColor.label, range: timerLbl.range(before: formattedDate))
     }
 

@@ -55,7 +55,7 @@ class FunctionsManager {
         dictArray = dictArray.sorted(by: {($0["distance"] as! CLLocationDistance) < ($1["distance"] as! CLLocationDistance)})
         
         var sortedArray = [ParkLocation]()
-        print("Running this shi...")
+        print("Running this shi... with coords \(currentLocation.latitude),  \(currentLocation.longitude)")
         for i in dictArray {
             sortedArray.append(i["location"] as! ParkLocation)
         }

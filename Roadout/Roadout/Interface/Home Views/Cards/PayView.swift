@@ -89,9 +89,9 @@ class PayView: UIView {
     }
     
     
-    let applePayTitle = NSAttributedString(string: " Apple Pay", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
-    var mainCardTitle = NSAttributedString(string: "Pay with \(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let diffPaymentTitle = NSAttributedString(string: "Different Payment Method", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let applePayTitle = NSAttributedString(string: " Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+    var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let diffPaymentTitle = NSAttributedString(string: "Different Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -100,7 +100,7 @@ class PayView: UIView {
         
         applePayBtn.layer.cornerRadius = 12.0
         applePayBtn.setAttributedTitle(applePayTitle, for: .normal)
-        mainCardTitle = NSAttributedString(string: "Pay with \(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+        mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         mainCardBtn.layer.cornerRadius = 12.0
         mainCardBtn.setAttributedTitle(mainCardTitle, for: .normal)
         differentPaymentBtn.layer.cornerRadius = 12.0
@@ -110,16 +110,17 @@ class PayView: UIView {
         selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
         
         if #available(iOS 14.0, *) {
-            differentPaymentBtn.menu = UIMenu(title: "Choose a card", image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+            differentPaymentBtn.menu = UIMenu(title: "Choose a card".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
             differentPaymentBtn.showsMenuAsPrimaryAction = true
         }
         
         priceLbl.set(textColor: UIColor(named: "Dark Orange")!, range: priceLbl.range(after: " - "))
+        priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
         
         if returnToDelay {
-            titleLbl.text = "Pay Delay"
+            titleLbl.text = "Pay Delay".localized()
         } else {
-            titleLbl.text = "Pay Spot"
+            titleLbl.text = "Pay Spot".localized()
         }
         
         self.layer.shadowColor = UIColor.black.cgColor
@@ -137,7 +138,7 @@ class PayView: UIView {
 
     func reloadMainCard() {
         print("HERE")
-        mainCardTitle = NSAttributedString(string: "Pay with \(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+        mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         mainCardBtn.setAttributedTitle(mainCardTitle, for: .normal)
     }
     

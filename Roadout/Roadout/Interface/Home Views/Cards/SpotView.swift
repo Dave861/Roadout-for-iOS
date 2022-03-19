@@ -24,14 +24,14 @@ class SpotView: UIView, PusherDelegate {
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        let alertView = SPAlertView(message: "Waiting for confirmation...")
+        let alertView = SPAlertView(message: "Waiting for confirmation...".localized())
         alertView.dismissInTime = false
         alertView.dismissByTap = false
         alertView.present()
         //check if spot is really free
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             alertView.dismiss()
-            let alert2 = SPAlertView(message: "Confirmed.")
+            let alert2 = SPAlertView(message: "Confirmed.".localized())
             alert2.duration = 0.5
             alert2.present()
             //make selected spot pending
@@ -56,7 +56,7 @@ class SpotView: UIView, PusherDelegate {
     }
     @IBOutlet weak var backBtn: UIButton!
     
-    let continueTitle = NSAttributedString(string: "Continue", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -168,31 +168,31 @@ class SpotView: UIView, PusherDelegate {
             continueBtn.backgroundColor = UIColor(named: "Main Yellow")?.withAlphaComponent(1.0)
             infoIcon.image = UIImage(systemName: "checkmark")
             infoIcon.tintColor = UIColor(named: "Main Yellow")
-            infoText.text = "Selected spot is free"
+            infoText.text = "Selected spot is free".localized()
         case 1:
             continueBtn.isEnabled = false
             continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
             infoIcon.image = UIImage(systemName: "xmark")
             infoIcon.tintColor = UIColor(named: "Redish")
-            infoText.text = "Selected spot is occupied"
+            infoText.text = "Selected spot is occupied".localized()
         case 2:
             continueBtn.isEnabled = false
             continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
             infoIcon.image = UIImage(systemName: "clock")
             infoIcon.tintColor = UIColor(named: "Dark Orange")
-            infoText.text = "Selected spot is about to be reserved"
+            infoText.text = "Selected spot is about to be reserved".localized()
         case 3:
             continueBtn.isEnabled = false
             continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
             infoIcon.image = UIImage(systemName: "hammer")
             infoIcon.tintColor = UIColor(named: "Dark Yellow")
-            infoText.text = "Selected spot is under maintenance"
+            infoText.text = "Selected spot is under maintenance".localized()
         default:
             continueBtn.isEnabled = false
             continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
             infoIcon.image = UIImage(systemName: "info.circle")
             infoIcon.tintColor = UIColor.label
-            infoText.text = "Pick a spot to get info about it"
+            infoText.text = "Pick a spot to get info about it".localized()
         }
     }
 

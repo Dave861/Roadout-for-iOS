@@ -26,7 +26,7 @@ class ResultView: UIView {
     }
     @IBOutlet weak var backBtn: UIButton!
     
-    let pickTitle = NSAttributedString(string: "Pick", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let pickTitle = NSAttributedString(string: "Pick".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     
     override func willMove(toSuperview newSuperview: UIView?) {

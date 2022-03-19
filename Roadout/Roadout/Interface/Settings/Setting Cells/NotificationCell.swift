@@ -16,7 +16,7 @@ class NotificationCell: UITableViewCell {
     @IBOutlet weak var enabledSwitch: UISwitch!
     
     @IBAction func switched(_ sender: UISwitch) {
-        if titleLbl.text == "Reservation Status Notifications" {
+        if titleLbl.text == "Reservation Status Notifications".localized() {
             UserDefaultsSuite.set(sender.isOn, forKey: "ro.roadout.reservationNotificationsEnabled")
         } else {
             UserDefaultsSuite.set(sender.isOn, forKey: "ro.roadout.reminderNotificationsEnabled")
@@ -34,7 +34,7 @@ class NotificationCell: UITableViewCell {
     }
     
     override func didMoveToSuperview() {
-        if titleLbl.text == "Reservation Status Notifications" {
+        if titleLbl.text == "Reservation Status Notifications".localized() {
             enabledSwitch.isOn = UserPrefsUtils.sharedInstance.reservationNotificationsEnabled()
         } else {
             enabledSwitch.isOn = UserPrefsUtils.sharedInstance.reminderNotificationsEnabled()

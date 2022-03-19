@@ -11,15 +11,15 @@ class WelcomeViewController: UIViewController {
     
     let infoIcons = [UIImage(systemName: "car.fill"), UIImage(systemName: "creditcard"), UIImage(systemName: "arrow.triangle.branch")]
     let infoColors = [UIColor(named: "Main Yellow"), UIColor(named: "Dark Yellow"), UIColor(named: "Second Orange")]
-    let infoTitles = ["Parking Spots", "Instant Card Payment", "Live Directions"]
-    let infoTexts = ["Check the vacancy of parking spots in real time.", "You can reserve a parking space by paying safely online in our app.", "Receive directions to the desired parking spot in your favourite maps app."]
+    let infoTitles = ["Parking Spots".localized(), "Instant Card Payment".localized(), "Live Directions".localized()]
+    let infoTexts = ["Check the vacancy of parking spots in real time.".localized(), "You can reserve a parking space by paying safely online in our app.".localized(), "Receive directions to the desired parking spot in your favourite maps app.".localized()]
     
     
-    let signInTitle = NSAttributedString(string: "Sign In",
+    let signInTitle = NSAttributedString(string: "Sign In".localized(),
                                                        attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let signUpTitle = NSAttributedString(string: "Sign Up",
+    let signUpTitle = NSAttributedString(string: "Sign Up".localized(),
                                                        attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let legalTitle = NSAttributedString(string: "Privacy Policy & Terms of Use",
+    let legalTitle = NSAttributedString(string: "Privacy Policy & Terms of Use".localized(),
                                                        attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14, weight: .medium)])
 
     

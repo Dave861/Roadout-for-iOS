@@ -261,3 +261,8 @@ extension Date {
         return dayAfter.month != month
     }
 }
+extension String {
+    func localized() -> String {
+        return NSLocalizedString(self, tableName: "Localizables", bundle: .main, value: self, comment: self)
+    }
+}

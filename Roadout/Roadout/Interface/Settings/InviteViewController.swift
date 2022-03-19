@@ -11,8 +11,8 @@ import BarChartKit
 class InviteViewController: UIViewController {
 
     let mockBarChartDataSet: BarChartView.DataSet? = BarChartView.DataSet(elements: [
-        BarChartView.DataSet.DataElement(date: nil, xLabel: "Invites", bars: [BarChartView.DataSet.DataElement.Bar(value: 20000, color: UIColor(named: "Greyish")!)]),
-        BarChartView.DataSet.DataElement(date: nil, xLabel: "Verified", bars: [BarChartView.DataSet.DataElement.Bar(value: 13000, color: UIColor(named: "Main Yellow")!)])
+        BarChartView.DataSet.DataElement(date: nil, xLabel: "Invites".localized(), bars: [BarChartView.DataSet.DataElement.Bar(value: 20000, color: UIColor(named: "Greyish")!)]),
+        BarChartView.DataSet.DataElement(date: nil, xLabel: "Verified".localized(), bars: [BarChartView.DataSet.DataElement.Bar(value: 13000, color: UIColor(named: "Main Yellow")!)])
         ], selectionColor: UIColor(named: "Main Yellow"))
     
     @IBOutlet weak var linkLbl: UILabel!
@@ -25,7 +25,7 @@ class InviteViewController: UIViewController {
     
     @IBOutlet weak var chartView: BarChartView!
     
-    let buttonTitle = NSAttributedString(string: "Share",
+    let buttonTitle = NSAttributedString(string: "Share".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Main Yellow")!])
     
     @IBOutlet weak var shareBtn: UIButton!

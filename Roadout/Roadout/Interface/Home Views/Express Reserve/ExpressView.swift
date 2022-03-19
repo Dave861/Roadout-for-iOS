@@ -24,8 +24,9 @@ class ExpressView: UIView {
     @IBAction func sliderChangedValue(_ sender: Any) {
         let roundedValue = round(slider.value/1.0)*1.0
         slider.value = roundedValue
-        chargeLbl.text = "\(Int(slider.value)) Minutes - \(Int(slider.value)) RON"
+        chargeLbl.text = "\(Int(slider.value))" + " Minutes ".localized() + "- \(Int(slider.value)) RON"
         chargeLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: chargeLbl.range(after: " - "))
+        chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
     }
     
     @IBOutlet weak var locationLbl: UILabel!
@@ -62,8 +63,8 @@ class ExpressView: UIView {
         NotificationCenter.default.post(name: .showPaidBarID, object: nil)
     }
     
-    let applePayTitle = NSAttributedString(string: " Apple Pay", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
-    var mainCardTitle = NSAttributedString(string: "Pay with \(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let applePayTitle = NSAttributedString(string: " Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+    var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -72,14 +73,15 @@ class ExpressView: UIView {
         
         applePayBtn.layer.cornerRadius = 12.0
         applePayBtn.setAttributedTitle(applePayTitle, for: .normal)
-        mainCardTitle = NSAttributedString(string: "Pay with \(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+        mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         mainCardBtn.layer.cornerRadius = 12.0
         mainCardBtn.setAttributedTitle(mainCardTitle, for: .normal)
         
         chargeLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: chargeLbl.range(after: " - "))
+        chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
         
         locationLbl.text = selectedLocationName
-        spotSectionLbl.text = "Section " + FunctionsManager.sharedInstance.foundSection.name + " - Spot \(FunctionsManager.sharedInstance.foundSpot.number)"
+        spotSectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
         
         
         self.layer.shadowColor = UIColor.black.cgColor

@@ -32,7 +32,7 @@ class PaymentViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    let buttonTitle = NSAttributedString(string: "Add Card",
+    let buttonTitle = NSAttributedString(string: "Add Card".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Orange")!])
     
     func manageObs() {
@@ -72,8 +72,8 @@ class PaymentViewController: UIViewController {
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 let generator = UIImpactFeedbackGenerator(style: .light)
                 generator.impactOccurred()
-                let alert = UIAlertController(title: "Delete", message: "Do you want to delete this card?", preferredStyle: .actionSheet)
-                let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+                let alert = UIAlertController(title: "Delete".localized(), message: "Do you want to delete this card?".localized(), preferredStyle: .actionSheet)
+                let deleteAction = UIAlertAction(title: "Delete".localized(), style: .destructive) { action in
                     cardNumbers.remove(at: indexPath.row)
                     if self.cardIndex == indexPath.row {
                         self.cardIndex = 0
@@ -82,7 +82,7 @@ class PaymentViewController: UIViewController {
                     self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
                     self.tableView.reloadData()
                 }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
                 alert.view.tintColor = UIColor(named: "Dark Orange")
                 alert.addAction(deleteAction)
                 alert.addAction(cancelAction)

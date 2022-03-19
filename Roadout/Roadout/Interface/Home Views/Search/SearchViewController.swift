@@ -11,7 +11,7 @@ import CoreLocation
 class SearchViewController: UIViewController {
     
     var results = parkLocations
-    let colors = ["Main Yellow", "Redish", "Dark Yellow", "Brownish", "Icons", "Greyish", "Second Orange", "Dark Orange"]
+    let colors = ["Main Yellow", "Redish", "Dark Yellow", "Icons", "Greyish", "Second Orange", "Dark Orange"]
     
     @IBOutlet weak var card: UIView!
     
@@ -26,17 +26,17 @@ class SearchViewController: UIViewController {
         self.dismiss(animated: false, completion: nil)
     }
     
-    let cancelTitle = NSAttributedString(string: "Cancel", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var moreButton: UIButton!
     
     @IBAction func moreTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "What would you like to do?", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "", message: "What would you like to do?".localized(), preferredStyle: .actionSheet)
         
-        let findAction = UIAlertAction(title: "Find Spot", style: .default) { action in
-            guard currentLocationCoord != nil else { return }
+        let findAction = UIAlertAction(title: "Find Spot".localized(), style: .default) { action in
+            /*guard currentLocationCoord != nil else { return }
             FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
                 if success {
                     self.dismiss(animated: false, completion: nil)
@@ -44,18 +44,18 @@ class SearchViewController: UIViewController {
                 } else {
                     //MANAGE
                 }
-            }
+            }*/
 
         }
         findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
         
-        let expressAction = UIAlertAction(title: "Express Reserve", style: .default) { action in
+        let expressAction = UIAlertAction(title: "Express Reserve".localized(), style: .default) { action in
             self.dismiss(animated: false, completion: nil)
             NotificationCenter.default.post(name: .addExpressPickViewID, object: nil)
         }
         expressAction.setValue(UIColor(named: "Dark Orange")!, forKey: "titleTextColor")
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
         cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
         
         alert.addAction(findAction)
@@ -66,9 +66,9 @@ class SearchViewController: UIViewController {
     
     var menuItems: [UIAction] {
         return [
-            UIAction(title: "Find Spot", image: UIImage(systemName: "loupe"), handler: { (_) in
+            UIAction(title: "Find Spot".localized(), image: UIImage(systemName: "loupe"), handler: { (_) in
                 
-                guard currentLocationCoord != nil else { return }
+               /* guard currentLocationCoord != nil else { return }
                 FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
                     if success {
                         self.dismiss(animated: false, completion: nil)
@@ -76,16 +76,16 @@ class SearchViewController: UIViewController {
                     } else {
                         //MANAGE
                     }
-                }
+                }*/
             }),
-            UIAction(title: "Express Reserve", image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
+            UIAction(title: "Express Reserve".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
                 self.dismiss(animated: false, completion: nil)
                 NotificationCenter.default.post(name: .addExpressPickViewID, object: nil)
             }),
         ]
     }
     var moreMenu: UIMenu {
-        return UIMenu(title: "What would you like to do?", image: nil, identifier: nil, options: [], children: menuItems)
+        return UIMenu(title: "What would you like to do?".localized(), image: nil, identifier: nil, options: [], children: menuItems)
     }
     
     

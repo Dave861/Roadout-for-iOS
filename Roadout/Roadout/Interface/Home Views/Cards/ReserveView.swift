@@ -32,13 +32,14 @@ class ReserveView: UIView {
     @IBAction func slided(_ sender: Any) {
         let roundedValue = round(minuteSlider.value/1.0)*1.0
         minuteSlider.value = roundedValue
-        totalLbl.text = "\(Int(minuteSlider.value)) Minutes - \(Int(minuteSlider.value)) RON"
+        totalLbl.text = "\(Int(minuteSlider.value))" + " Minutes ".localized() + "- \(Int(minuteSlider.value)) RON"
         totalLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: totalLbl.range(after: " - "))
+        totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
     }
     
     @IBOutlet weak var totalLbl: UILabel!
     
-    let continueTitle = NSAttributedString(string: "Continue", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -48,6 +49,7 @@ class ReserveView: UIView {
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         
         totalLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: totalLbl.range(after: " - "))
+        totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1

@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController {
     var cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
     var cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
     var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "signature" ,"globe"]
-    var cellSettings = ["", "", "Notifications", "Payment Methods", "Default Directions App", "Reminders", "Reservation History", "", "Invite Friends", "Prizes", "", "Report a Bug", "Privacy Policy & Terms of Use", "Acknowledgements", "About Roadout"]
+    var cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Reminders".localized(), "Reservation History".localized(), "", "Invite Friends".localized(), "Prizes".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
 
     var cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
     
@@ -30,14 +30,14 @@ class SettingsViewController: UIViewController {
             cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
             cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "ExpressFocus", "DevBrown", "Main Yellow"]
             cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "signature", "screwdriver.fill" ,"globe"]
-            cellSettings = ["", "", "Notifications", "Payment Methods", "Default Directions App", "Reminders", "Reservation History", "", "Invite Friends", "Prizes", "", "Report a Bug", "Privacy Policy & Terms of Use", "Acknowledgements", "Developer", "About Roadout"]
+            cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Reminders".localized(), "Reservation History".localized(), "", "Invite Friends".localized(), "Prizes".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "Developer".localized(), "About Roadout".localized()]
 
             cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AckVC", "DeveloperVC", "AboutVC"]
         } else {
             cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
             cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
             cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "signature" ,"globe"]
-            cellSettings = ["", "", "Notifications", "Payment Methods", "Default Directions App", "Reminders", "Reservation History", "", "Invite Friends", "Prizes", "", "Report a Bug", "Privacy Policy & Terms of Use", "Acknowledgements", "About Roadout"]
+            cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Reminders".localized(), "Reservation History".localized(), "", "Invite Friends".localized(), "Prizes".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
 
             cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
         }
@@ -78,14 +78,14 @@ class SettingsViewController: UIViewController {
             mail.mailComposeDelegate = self
             mail.view.tintColor = UIColor(named: "Greyish")
             mail.setToRecipients(["roadout.ro@gmail.com"])
-            mail.setSubject("Roadout for iOS - Report")
-            mail.setMessageBody("Please describe your issue and steps to reproduce it. If you have any screenshots please attach them - Roadout Team", isHTML: false)
+            mail.setSubject("Roadout for iOS - Report".localized())
+            mail.setMessageBody("Please describe your issue and steps to reproduce it. If you have any screenshots please attach them - Roadout Team".localized(), isHTML: false)
 
             present(mail, animated: true)
         } else {
-            let alert = UIAlertController(title: "Error", message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Greyish")
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
         }
@@ -144,10 +144,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if cellTypes[indexPath.row] == "UserSettingCell" {
             print("cool")
         } else if cellTypes[indexPath.row] == "ButtonCell" {
-            let alert = UIAlertController(title: "Sign Out", message: "Are you sure you want to sign out?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Sign Out".localized(), message: "Are you sure you want to sign out?".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Dark Orange")
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { action in
+            let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
+            let signOutAction = UIAlertAction(title: "Sign Out".localized(), style: .destructive) { action in
                 UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
