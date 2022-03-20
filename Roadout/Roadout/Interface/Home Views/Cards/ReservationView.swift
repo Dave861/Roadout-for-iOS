@@ -24,7 +24,7 @@ class ReservationView: UIView {
     @IBOutlet weak var cancelBrn: UIButton!
     
     @IBAction func unlockTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
+        /*let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         let alert = UIAlertController(title: "Unlock".localized(), message: "This cannot be undone, you are about to unlock the spot and end the reservation. Are you sure?".localized(), preferredStyle: .alert)
         alert.view.tintColor = UIColor(named: "Brownish")
@@ -37,7 +37,10 @@ class ReservationView: UIView {
         }
         alert.addAction(proceedAction)
         alert.addAction(cancelAction)
-        self.parentViewController().present(alert, animated: true, completion: nil)
+        self.parentViewController().present(alert, animated: true, completion: nil)*/
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        NotificationCenter.default.post(name: .addUnlockCardID, object: nil)
     }
     
     @IBAction func directionsTapped(_ sender: Any) {

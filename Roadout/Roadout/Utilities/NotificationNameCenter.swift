@@ -26,6 +26,8 @@ extension Notification.Name {
     static let removeDelayCardID = Notification.Name("ro.roadout.Roadout.removeDelayCardID")
     static let addPayDelayCardID = Notification.Name("ro.roadout.Roadout.addPayDelayCardID")
     static let removePayDelayCardID = Notification.Name("ro.roadout.Roadout.removePayDelayCardID")
+    static let addUnlockCardID = Notification.Name("ro.roadout.Roadout.addUnlockCardID")
+    static let removeUnlockCardID = Notification.Name("ro.roadout.Roadout.removeUnlockCardID")
     static let showPaidBarID = Notification.Name("ro.roadout.Roadout.showPaidBarID")
     static let showActiveBarID = Notification.Name("ro.roadout.Roadout.showActiveBarID")
     static let showUnlockedBarID = Notification.Name("ro.roadout.Roadout.showUnlockedBarID")

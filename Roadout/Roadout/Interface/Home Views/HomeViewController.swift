@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
     let payView = PayView.instanceFromNib()
     let reservationView = ReservationView.instanceFromNib()
     let delayView = DelayView.instanceFromNib()
+    let unlockView = UnlockView.instanceFromNib()
     
     let paidBar = PaidView.instanceFromNib()
     let activeBar = ActiveView.instanceFromNib()
@@ -232,6 +233,9 @@ class HomeViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(addDelayCard), name: .addDelayCardID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeDelayCard), name: .removeDelayCardID, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addUnlockCard), name: .addUnlockCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeUnlockCard), name: .removeUnlockCardID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(addPayDelayCard), name: .addPayDelayCardID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removePayDelayCard), name: .removePayDelayCardID, object: nil)
@@ -820,6 +824,34 @@ class HomeViewController: UIViewController {
             self.delayView.frame = CGRect(x: 13, y: self.screenSize.height-205-dif, width: self.screenSize.width - 26, height: 205)
             self.view.addSubview(self.delayView)
             self.payView.removeFromSuperview()
+        }
+    }
+    //Unlock Card
+    @objc func addUnlockCard() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.unlockView.frame = CGRect(x: 13, y: self.screenSize.height-221-dif, width: self.screenSize.width - 26, height: 221)
+            self.view.addSubview(self.unlockView)
+        }
+    }
+    @objc func removeUnlockCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+                print("YESS")
+            }
+            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
+            self.view.addSubview(self.reservationView)
+            self.unlockView.removeFromSuperview()
         }
     }
     

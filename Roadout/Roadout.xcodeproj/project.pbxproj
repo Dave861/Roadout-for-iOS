@@ -182,6 +182,8 @@
 		9AE2AFF9272BC0B80088A3ED /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFF8272BC0B80088A3ED /* HistoryCell.swift */; };
 		9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */; };
 		9AE2AFFD272BD25C0088A3ED /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFFC272BD25C0088A3ED /* EditPasswordViewController.swift */; };
+		9AED6DB027E7152A00B5004F /* SlidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AED6DAF27E7152A00B5004F /* SlidingButton.swift */; };
+		9AED6DB227E7156D00B5004F /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AED6DB127E7156D00B5004F /* UnlockView.swift */; };
 		9AEF29F2272D71A600FEE390 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF29F1272D71A600FEE390 /* ResultView.swift */; };
 		9AF4BA2427787A7200F3C3B4 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
 		9AF4BA252778A0B400F3C3B4 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
@@ -433,6 +435,8 @@
 		9AE2AFF8272BC0B80088A3ED /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryCell.swift; path = Roadout/Interface/Settings/HistoryCell.swift; sourceTree = SOURCE_ROOT; };
 		9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
 		9AE2AFFC272BD25C0088A3ED /* EditPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordViewController.swift; sourceTree = "<group>"; };
+		9AED6DAF27E7152A00B5004F /* SlidingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingButton.swift; sourceTree = "<group>"; };
+		9AED6DB127E7156D00B5004F /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		9AEF29F1272D71A600FEE390 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		9AF7142D27AFC41E00FEA4C4 /* AckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AckViewController.swift; sourceTree = "<group>"; };
 		9AF7142F27AFC49200FEA4C4 /* AckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AckCell.swift; sourceTree = "<group>"; };
@@ -520,6 +524,7 @@
 				9A46BBA3272EF343002280DD /* PayView.swift */,
 				9A49BFA5272FDA2000234A9F /* ReservationView.swift */,
 				9A49BFA7272FED5900234A9F /* DelayView.swift */,
+				9AED6DB127E7156D00B5004F /* UnlockView.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -781,6 +786,7 @@
 				9A14B917273142E100967417 /* KeyboardConstraint.swift */,
 				9A14B9192731430400967417 /* MonthPickerView.swift */,
 				9A14B91B2731431B00967417 /* PaddedTextField.swift */,
+				9AED6DAF27E7152A00B5004F /* SlidingButton.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -1322,6 +1328,7 @@
 				9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */,
 				9A7332032728798300ACE30A /* NotificationCell.swift in Sources */,
 				9A0D58D527770C670093B3D3 /* WidgetConfig.intentdefinition in Sources */,
+				9AED6DB227E7156D00B5004F /* UnlockView.swift in Sources */,
 				9A0D58D9277721DA0093B3D3 /* ReservationManager.swift in Sources */,
 				9AF798F5272C4C060096D4C3 /* PrizesCell.swift in Sources */,
 				9A310783272A707100B1F84A /* RemindersViewController.swift in Sources */,
@@ -1344,6 +1351,7 @@
 				9AC48D1E273FC11300DBCEF8 /* ExpressPickCell.swift in Sources */,
 				9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */,
 				9ABA39B227C13382001660E7 /* GetDataViewController.swift in Sources */,
+				9AED6DB027E7152A00B5004F /* SlidingButton.swift in Sources */,
 				9AF7142E27AFC41E00FEA4C4 /* AckViewController.swift in Sources */,
 				9AC6D9D92727DE0D004E838C /* SettingsViewController.swift in Sources */,
 				9A39B0CE27284803008E7FD0 /* SpacerCell.swift in Sources */,
