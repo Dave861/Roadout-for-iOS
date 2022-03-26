@@ -304,7 +304,9 @@ class HomeViewController: UIViewController {
                 consoleManager.print(coord.longitude)
                 consoleManager.print("END COORDS")
                 FunctionsManager.sharedInstance.findSpot(coord) { success in
+                    print("Im here")
                     if success {
+                        print("Im also here")
                         self.showFindCard()
                     } else {
                         let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)

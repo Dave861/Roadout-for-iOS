@@ -18,14 +18,14 @@ class ComplicationManager {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let bigTextProvider = CLKSimpleTextProvider(text: dateFormatter.string(from: date))
-        let smallTextProvider = CLKSimpleTextProvider(text: "Reservation")
+        let smallTextProvider = CLKSimpleTextProvider(text: "Reservation".watchLocalize())
         smallTextProvider.tintColor = UIColor(named: "Main Yellow")!
         
         return CLKComplicationTemplateGraphicCornerStackText(innerTextProvider: smallTextProvider, outerTextProvider: bigTextProvider)
     }
     
     func makeGraphicCircularComplication(_ date: Date) -> CLKComplicationTemplateGraphicCircularStackText {
-        let line1TextProvider = CLKSimpleTextProvider(text: "RES.")
+        let line1TextProvider = CLKSimpleTextProvider(text: "RES.".watchLocalize())
         line1TextProvider.tintColor = UIColor(named: "Main Yellow")!
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
@@ -41,7 +41,7 @@ class ComplicationManager {
     }
     
     func makeGraphicRectangularComplication(_ date: Date) -> CLKComplicationTemplateGraphicRectangularStandardBody {
-        let headerTextProvider = CLKSimpleTextProvider(text: "Reservation")
+        let headerTextProvider = CLKSimpleTextProvider(text: "Reservation".watchLocalize())
         headerTextProvider.tintColor = UIColor(named: "Main Yellow")!
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
@@ -56,7 +56,7 @@ class ComplicationManager {
     func makeUtilitarianLargeComplication(_ date: Date) -> CLKComplicationTemplateUtilitarianLargeFlat {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        let textProvider = CLKSimpleTextProvider(text: dateFormatter.string(from: date) + " RESERVATION")
+        let textProvider = CLKSimpleTextProvider(text: dateFormatter.string(from: date) + " RESERVATION".watchLocalize())
         
         return CLKComplicationTemplateUtilitarianLargeFlat(textProvider: textProvider)
     }
@@ -64,7 +64,7 @@ class ComplicationManager {
     func makeUtilitarianSmallFlatComplication(_ date: Date) -> CLKComplicationTemplateUtilitarianSmallFlat {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        let textProvider = CLKSimpleTextProvider(text: "RES. " + dateFormatter.string(from: date))
+        let textProvider = CLKSimpleTextProvider(text: "RES. ".watchLocalize() + dateFormatter.string(from: date))
         
         return CLKComplicationTemplateUtilitarianSmallFlat(textProvider: textProvider)
     }
@@ -75,14 +75,14 @@ class ComplicationManager {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let textProvider1 = CLKSimpleTextProvider(text: dateFormatter.string(from: date))
-        let textProvider2 = CLKSimpleTextProvider(text: "RES.")
+        let textProvider2 = CLKSimpleTextProvider(text: "RES.".watchLocalize())
         textProvider2.tintColor = UIColor(named: "Main Yellow")!
         
         return CLKComplicationTemplateModularSmallStackText(line1TextProvider: textProvider1, line2TextProvider: textProvider2)
     }
     
     func makeModularLargeComplication(_ date: Date) -> CLKComplicationTemplateModularLargeStandardBody {
-        let headerTextProvider = CLKSimpleTextProvider(text: "Reservation")
+        let headerTextProvider = CLKSimpleTextProvider(text: "Reservation".watchLocalize())
         headerTextProvider.tintColor = UIColor(named: "Main Yellow")!
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
@@ -95,7 +95,7 @@ class ComplicationManager {
     //MARK: -Circular
     
     func makeCircularSmallComplication(_ date: Date) -> CLKComplicationTemplateCircularSmallStackText {
-        let line1TextProvider = CLKSimpleTextProvider(text: "RES.")
+        let line1TextProvider = CLKSimpleTextProvider(text: "RES.".watchLocalize())
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let line2TextProvider = CLKSimpleTextProvider(text: dateFormatter.string(from: date))
@@ -109,7 +109,7 @@ class ComplicationManager {
     //MARK: -XL
     
     func makeExtraLargeComplication(_ date: Date) -> CLKComplicationTemplateExtraLargeStackText {
-        let line1TextProvider = CLKSimpleTextProvider(text: "RES.")
+        let line1TextProvider = CLKSimpleTextProvider(text: "RES.".watchLocalize())
         line1TextProvider.tintColor = UIColor(named: "Main Yellow")!
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
@@ -122,7 +122,7 @@ class ComplicationManager {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let textProvider1 = CLKSimpleTextProvider(text: dateFormatter.string(from: date))
-        let textProvider2 = CLKSimpleTextProvider(text: "RES.")
+        let textProvider2 = CLKSimpleTextProvider(text: "RES.".watchLocalize())
         textProvider2.tintColor = UIColor(named: "Main Yellow")!
         
         return CLKComplicationTemplateGraphicExtraLargeCircularStackText(line1TextProvider: textProvider2, line2TextProvider: textProvider1)

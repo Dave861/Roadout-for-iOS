@@ -157,6 +157,7 @@ class SignInViewController: UIViewController {
     }
     
     func manageScreens() {
+        print("HEREee")
         center.getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
                 if #available(iOS 14.0, *) {
@@ -166,6 +167,11 @@ class SignInViewController: UIViewController {
                             let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
                             self.view.window?.rootViewController = vc
                             self.view.window?.makeKeyAndVisible()
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+                            self.present(vc, animated: false, completion: nil)
                         }
                     }
                 } else {

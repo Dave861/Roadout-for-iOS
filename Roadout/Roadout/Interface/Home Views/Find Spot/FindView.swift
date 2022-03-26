@@ -110,10 +110,7 @@ class FindView: UIView {
         sectionBtn.setTitle("", for: .normal)
         spotBtn.setTitle("", for: .normal)
         timeBtn.setTitle("", for: .normal)
-     
-        locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name
-        sectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name
-        spotLbl.text = "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
+    
         
         if #available(iOS 14.0, *) {
             timeBtn.menu = durationMenu
@@ -136,7 +133,20 @@ class FindView: UIView {
             consoleManager.print(fLocation.name)
         }
         consoleManager.print("END SORTED LOCATIONS")
+        //LOADING
+        locationLbl.text = "Loading...".localized()
+        sectionLbl.text = "Loading...".localized()
+        spotLbl.text = "Loading...".localized()
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name
+            self.sectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name
+            self.spotLbl.text = "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
+        }
+        print("presented")
     }
+    
     
     
 

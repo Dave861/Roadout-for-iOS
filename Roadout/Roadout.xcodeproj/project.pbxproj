@@ -16,9 +16,7 @@
 		9A0C7771272E7B1700ECBFB2 /* SpotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C7770272E7B1700ECBFB2 /* SpotView.swift */; };
 		9A0C7775272E831E00ECBFB2 /* SpotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C7773272E831E00ECBFB2 /* SpotCell.swift */; };
 		9A0C7776272E831E00ECBFB2 /* SpotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0C7774272E831E00ECBFB2 /* SpotCell.xib */; };
-		9A0D58D527770C670093B3D3 /* WidgetConfig.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D427770C670093B3D3 /* WidgetConfig.intentdefinition */; };
 		9A0D58D627770CC80093B3D3 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
-		9A0D58D727770EEA0093B3D3 /* WidgetConfig.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D427770C670093B3D3 /* WidgetConfig.intentdefinition */; };
 		9A0D58D9277721DA0093B3D3 /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */; };
 		9A0D58DA277736160093B3D3 /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */; };
 		9A14B914273142A400967417 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B913273142A400967417 /* CustomTableView.swift */; };
@@ -64,6 +62,9 @@
 		9A49BFB1272FF8CB00234A9F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFB0272FF8CB00234A9F /* Reachability.swift */; };
 		9A49BFB4272FF8E600234A9F /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFB3272FF8E600234A9F /* ConnectivityManager.swift */; };
 		9A4CA21727DDE12900D2674D /* Localizables.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A4CA21927DDE12900D2674D /* Localizables.strings */; };
+		9A5348D227E7323B00CD2A98 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A5348D627E7323B00CD2A98 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
+		9A5348D327E7323B00CD2A98 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A5348D627E7323B00CD2A98 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
+		9A5348D427E7323B00CD2A98 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A5348D627E7323B00CD2A98 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		9A5381142789CA1600462D63 /* VerifyMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5381132789CA1600462D63 /* VerifyMailViewController.swift */; };
 		9A5381162789CA2400462D63 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5381152789CA2400462D63 /* ResetPasswordViewController.swift */; };
 		9A59B75B2764A6B500BC0497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A59B75A2764A6B500BC0497 /* Assets.xcassets */; };
@@ -96,7 +97,6 @@
 		9A6D80A32733CF4C00C354EF /* hornsound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6D80A12733CF4C00C354EF /* hornsound.aiff */; };
 		9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */ = {isa = PBXBuildFile; productRef = 9A6E1C362731324B002E29F9 /* BarChartKit-static */; };
 		9A6E7E8E275645A300E09B75 /* IntentDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E8D275645A300E09B75 /* IntentDataExtension.swift */; };
-		9A6E7E912756486700E09B75 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E902756486700E09B75 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		9A6E7E972756528800E09B75 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6E7E6927563F3200E09B75 /* Intents.framework */; };
 		9A6E7E9A2756528800E09B75 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E992756528800E09B75 /* IntentHandler.swift */; };
 		9A6E7EA12756528800E09B75 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6E7E7427563F3300E09B75 /* IntentsUI.framework */; };
@@ -104,8 +104,6 @@
 		9A6E7EA72756528800E09B75 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A6E7EA52756528800E09B75 /* MainInterface.storyboard */; };
 		9A6E7EAB2756528800E09B75 /* Quick ReserveUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A6E7EA02756528800E09B75 /* Quick ReserveUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9A6E7EAE2756528800E09B75 /* Quick Reserve.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A6E7E962756528800E09B75 /* Quick Reserve.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		9A6E7EB5275652F200E09B75 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E902756486700E09B75 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
-		9A6E7EB6275652F300E09B75 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E902756486700E09B75 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
 		9A6E7EB8275653A200E09B75 /* QuickReserveIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7EB7275653A200E09B75 /* QuickReserveIntentHandler.swift */; };
 		9A728C512732D849000F9DED /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
 		9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7331FD272877F400ACE30A /* NotificationsViewController.swift */; };
@@ -184,6 +182,12 @@
 		9AE2AFFD272BD25C0088A3ED /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFFC272BD25C0088A3ED /* EditPasswordViewController.swift */; };
 		9AED6DB027E7152A00B5004F /* SlidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AED6DAF27E7152A00B5004F /* SlidingButton.swift */; };
 		9AED6DB227E7156D00B5004F /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AED6DB127E7156D00B5004F /* UnlockView.swift */; };
+		9AED6DB327E723A400B5004F /* WidgetConfig.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9AED6DB627E723A400B5004F /* WidgetConfig.intentdefinition */; };
+		9AED6DB427E723A400B5004F /* WidgetConfig.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9AED6DB627E723A400B5004F /* WidgetConfig.intentdefinition */; };
+		9AED6DBF27E7263E00B5004F /* WidgetLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AED6DBB27E7244700B5004F /* WidgetLocalization.swift */; };
+		9AED6DC127E7266900B5004F /* WidgetLocalizables.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AED6DC327E7266900B5004F /* WidgetLocalizables.strings */; };
+		9AED6DC627E7288E00B5004F /* WatchLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AED6DC527E7288E00B5004F /* WatchLocalization.swift */; };
+		9AED6DC927E7296B00B5004F /* WatchLocalizables.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AED6DCB27E7296B00B5004F /* WatchLocalizables.strings */; };
 		9AEF29F2272D71A600FEE390 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF29F1272D71A600FEE390 /* ResultView.swift */; };
 		9AF4BA2427787A7200F3C3B4 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
 		9AF4BA252778A0B400F3C3B4 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
@@ -280,7 +284,6 @@
 		9A0C7770272E7B1700ECBFB2 /* SpotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotView.swift; sourceTree = "<group>"; };
 		9A0C7773272E831E00ECBFB2 /* SpotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCell.swift; sourceTree = "<group>"; };
 		9A0C7774272E831E00ECBFB2 /* SpotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotCell.xib; sourceTree = "<group>"; };
-		9A0D58D427770C670093B3D3 /* WidgetConfig.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = WidgetConfig.intentdefinition; sourceTree = "<group>"; };
 		9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationManager.swift; sourceTree = "<group>"; };
 		9A0D58DC277738450093B3D3 /* Quick Reserve.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quick Reserve.entitlements"; sourceTree = "<group>"; };
 		9A0D58DD277738500093B3D3 /* Quick ReserveRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quick ReserveRelease.entitlements"; sourceTree = "<group>"; };
@@ -352,6 +355,8 @@
 		9A49CD112777424800FC3992 /* Quick ReserveUIRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quick ReserveUIRelease.entitlements"; sourceTree = "<group>"; };
 		9A4CA21827DDE12900D2674D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizables.strings; sourceTree = "<group>"; };
 		9A4CA21A27DDE12B00D2674D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizables.strings; sourceTree = "<group>"; };
+		9A5348D527E7323B00CD2A98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/Intents.intentdefinition; sourceTree = "<group>"; };
+		9A5348D827E7323F00CD2A98 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Intents.strings; sourceTree = "<group>"; };
 		9A5381132789CA1600462D63 /* VerifyMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMailViewController.swift; sourceTree = "<group>"; };
 		9A5381152789CA2400462D63 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		9A59B7582764A6B400BC0497 /* Roadout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roadout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -377,7 +382,6 @@
 		9A6E7E6927563F3200E09B75 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		9A6E7E7427563F3300E09B75 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		9A6E7E8D275645A300E09B75 /* IntentDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentDataExtension.swift; sourceTree = "<group>"; };
-		9A6E7E902756486700E09B75 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		9A6E7E962756528800E09B75 /* Quick Reserve.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Quick Reserve.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6E7E992756528800E09B75 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		9A6E7E9B2756528800E09B75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -437,6 +441,14 @@
 		9AE2AFFC272BD25C0088A3ED /* EditPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordViewController.swift; sourceTree = "<group>"; };
 		9AED6DAF27E7152A00B5004F /* SlidingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingButton.swift; sourceTree = "<group>"; };
 		9AED6DB127E7156D00B5004F /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
+		9AED6DB527E723A400B5004F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/WidgetConfig.intentdefinition; sourceTree = "<group>"; };
+		9AED6DB827E723A800B5004F /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/WidgetConfig.strings; sourceTree = "<group>"; };
+		9AED6DBB27E7244700B5004F /* WidgetLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLocalization.swift; sourceTree = "<group>"; };
+		9AED6DC227E7266900B5004F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/WidgetLocalizables.strings; sourceTree = "<group>"; };
+		9AED6DC427E7266A00B5004F /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/WidgetLocalizables.strings; sourceTree = "<group>"; };
+		9AED6DC527E7288E00B5004F /* WatchLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLocalization.swift; sourceTree = "<group>"; };
+		9AED6DCA27E7296B00B5004F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/WatchLocalizables.strings; sourceTree = "<group>"; };
+		9AED6DCC27E7297000B5004F /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/WatchLocalizables.strings; sourceTree = "<group>"; };
 		9AEF29F1272D71A600FEE390 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		9AF7142D27AFC41E00FEA4C4 /* AckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AckViewController.swift; sourceTree = "<group>"; };
 		9AF7142F27AFC49200FEA4C4 /* AckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AckCell.swift; sourceTree = "<group>"; };
@@ -653,6 +665,8 @@
 			children = (
 				9A59B7652764A6B500BC0497 /* ContentView.swift */,
 				9A59B7672764A6B500BC0497 /* RoadoutApp.swift */,
+				9AED6DC527E7288E00B5004F /* WatchLocalization.swift */,
+				9AED6DCB27E7296B00B5004F /* WatchLocalizables.strings */,
 				9A79932B277A16820088E3FD /* Complications */,
 				9A59B76B2764A6B600BC0497 /* Assets.xcassets */,
 				9AAB6E682778AED9003F9A6F /* Roadout Watch WatchKit ExtensionRelease.entitlements */,
@@ -696,7 +710,7 @@
 			isa = PBXGroup;
 			children = (
 				9A6E7E8D275645A300E09B75 /* IntentDataExtension.swift */,
-				9A6E7E902756486700E09B75 /* Intents.intentdefinition */,
+				9A5348D627E7323B00CD2A98 /* Intents.intentdefinition */,
 				9A6E7EB7275653A200E09B75 /* QuickReserveIntentHandler.swift */,
 			);
 			path = "Siri Integration";
@@ -762,7 +776,9 @@
 			isa = PBXGroup;
 			children = (
 				9A7C1A0D2776035E0088B54A /* Roadout_Widget.swift */,
-				9A0D58D427770C670093B3D3 /* WidgetConfig.intentdefinition */,
+				9AED6DBB27E7244700B5004F /* WidgetLocalization.swift */,
+				9AED6DC327E7266900B5004F /* WidgetLocalizables.strings */,
+				9AED6DB627E723A400B5004F /* WidgetConfig.intentdefinition */,
 				9A7C1A0F2776035F0088B54A /* Assets.xcassets */,
 				9A7C1A112776035F0088B54A /* Info.plist */,
 			);
@@ -1131,6 +1147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A59B76F2764A6B600BC0497 /* Preview Assets.xcassets in Resources */,
+				9AED6DC927E7296B00B5004F /* WatchLocalizables.strings in Resources */,
 				9A9239B22764E26100C40706 /* Assets.xcassets in Resources */,
 				9A59B76C2764A6B600BC0497 /* Assets.xcassets in Resources */,
 			);
@@ -1158,6 +1175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A7C1A102776035F0088B54A /* Assets.xcassets in Resources */,
+				9AED6DC127E7266900B5004F /* WidgetLocalizables.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1201,6 +1219,7 @@
 				9A59B7662764A6B500BC0497 /* ContentView.swift in Sources */,
 				9A59B76A2764A6B500BC0497 /* ComplicationController.swift in Sources */,
 				9AAB6E602778A324003F9A6F /* UserPrefsUtils.swift in Sources */,
+				9AED6DC627E7288E00B5004F /* WatchLocalization.swift in Sources */,
 				9A799327277A0E870088E3FD /* ParkSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1214,7 +1233,7 @@
 				9AF4BA252778A0B400F3C3B4 /* NotificationHelper.swift in Sources */,
 				9AAB6E5F2778A321003F9A6F /* UserPrefsUtils.swift in Sources */,
 				9AAB6E5B2778A2AF003F9A6F /* Reminder.swift in Sources */,
-				9A6E7EB5275652F200E09B75 /* Intents.intentdefinition in Sources */,
+				9A5348D327E7323B00CD2A98 /* Intents.intentdefinition in Sources */,
 				9ABBF824275654BA005D2FFD /* IntentDataExtension.swift in Sources */,
 				9AAB6E5E2778A319003F9A6F /* ParkLocation.swift in Sources */,
 				9A5F4F8327BE3A3600097EEE /* EntityManager.swift in Sources */,
@@ -1231,7 +1250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A6E7EB6275652F300E09B75 /* Intents.intentdefinition in Sources */,
+				9A5348D427E7323B00CD2A98 /* Intents.intentdefinition in Sources */,
 				9A8D8D3927BAD7710037DFE3 /* ParkSpot.swift in Sources */,
 				9AAB6E622778A4EC003F9A6F /* UserPrefsUtils.swift in Sources */,
 				9ABBF825275654BB005D2FFD /* IntentDataExtension.swift in Sources */,
@@ -1255,10 +1274,11 @@
 			files = (
 				9A65C5F627804E150060ABCA /* NotificationNameCenter.swift in Sources */,
 				9A0D58D627770CC80093B3D3 /* ParkLocation.swift in Sources */,
-				9A0D58D727770EEA0093B3D3 /* WidgetConfig.intentdefinition in Sources */,
+				9AED6DB427E723A400B5004F /* WidgetConfig.intentdefinition in Sources */,
 				9A7C1A0E2776035E0088B54A /* Roadout_Widget.swift in Sources */,
 				9A79932A277A0E880088E3FD /* ParkSpot.swift in Sources */,
 				9A799329277A0E880088E3FD /* ParkSection.swift in Sources */,
+				9AED6DBF27E7263E00B5004F /* WidgetLocalization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1327,7 +1347,7 @@
 				9A0631272775A92700E3AB5F /* GroupSpotsView.swift in Sources */,
 				9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */,
 				9A7332032728798300ACE30A /* NotificationCell.swift in Sources */,
-				9A0D58D527770C670093B3D3 /* WidgetConfig.intentdefinition in Sources */,
+				9AED6DB327E723A400B5004F /* WidgetConfig.intentdefinition in Sources */,
 				9AED6DB227E7156D00B5004F /* UnlockView.swift in Sources */,
 				9A0D58D9277721DA0093B3D3 /* ReservationManager.swift in Sources */,
 				9AF798F5272C4C060096D4C3 /* PrizesCell.swift in Sources */,
@@ -1357,7 +1377,7 @@
 				9A39B0CE27284803008E7FD0 /* SpacerCell.swift in Sources */,
 				9A14B916273142C100967417 /* Extensions.swift in Sources */,
 				9AB12377276F1188003C5AE9 /* SharePlayButton.swift in Sources */,
-				9A6E7E912756486700E09B75 /* Intents.intentdefinition in Sources */,
+				9A5348D227E7323B00CD2A98 /* Intents.intentdefinition in Sources */,
 				9A39B0D827284B38008E7FD0 /* SettingsTextCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1465,6 +1485,15 @@
 			name = Localizables.strings;
 			sourceTree = "<group>";
 		};
+		9A5348D627E7323B00CD2A98 /* Intents.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A5348D527E7323B00CD2A98 /* Base */,
+				9A5348D827E7323F00CD2A98 /* ro */,
+			);
+			name = Intents.intentdefinition;
+			sourceTree = "<group>";
+		};
 		9A6E7EA52756528800E09B75 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1490,6 +1519,33 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		9AED6DB627E723A400B5004F /* WidgetConfig.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AED6DB527E723A400B5004F /* Base */,
+				9AED6DB827E723A800B5004F /* ro */,
+			);
+			name = WidgetConfig.intentdefinition;
+			sourceTree = "<group>";
+		};
+		9AED6DC327E7266900B5004F /* WidgetLocalizables.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AED6DC227E7266900B5004F /* en */,
+				9AED6DC427E7266A00B5004F /* ro */,
+			);
+			name = WidgetLocalizables.strings;
+			sourceTree = "<group>";
+		};
+		9AED6DCB27E7296B00B5004F /* WatchLocalizables.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AED6DCA27E7296B00B5004F /* en */,
+				9AED6DCC27E7297000B5004F /* ro */,
+			);
+			name = WatchLocalizables.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1502,7 +1558,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout Watch.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1529,7 +1585,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout WatchRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1553,7 +1609,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1585,7 +1641,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit ExtensionRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1616,7 +1672,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1645,7 +1701,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUIRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1674,7 +1730,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick Reserve.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1703,7 +1759,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick ReserveRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1735,7 +1791,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1766,7 +1822,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1917,7 +1973,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1925,9 +1981,9 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Roadout/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.\" = \"Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.\" = \"Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1957,7 +2013,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1965,9 +2021,9 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Roadout/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.\" = \"Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.\" = \"Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

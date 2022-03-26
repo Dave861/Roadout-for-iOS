@@ -34,7 +34,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
         } else if interaction.intentHandlingStatus == .inProgress || interaction.intentHandlingStatus == .userConfirmationRequired || interaction.intentHandlingStatus == .ready {
             let location = SiriDataManager.sharedInstance.parkName
             let section = "Section " + SiriDataManager.sharedInstance.parkSection
-            let spot = "Spot \(SiriDataManager.sharedInstance.parkSpot)"
+            let spot = "Spot " + "\(SiriDataManager.sharedInstance.parkSpot)"
             self.updateViews(color: UIColor(named: "Greyish")!, status: "Confirm", explanation: "\(location) - \(section) - \(spot)", iconImage: UIImage(systemName: "loupe")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
             
         }

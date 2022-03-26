@@ -25,10 +25,10 @@ struct ContentView: View {
                         .foregroundColor(Color("Main Yellow"))
                 }
                 .frame(height: 40, alignment: .center)
-                Text("Spot is locked")
+                Text("Spot is locked".watchLocalize())
                     .font(.system(size: 18, weight: .medium))
                 Spacer(minLength: 15)
-                Button("Unlock") {
+                Button("Unlock".watchLocalize()) {
                     spotUnlocked = true
                     
                     WKInterfaceDevice.current().play(.success)
@@ -50,10 +50,10 @@ struct ContentView: View {
                         .font(.system(size: 34))
                 }
                 .frame(height: 40, alignment: .center)
-                Text("Spot is unlocked")
+                Text("Spot is unlocked".watchLocalize())
                     .font(.system(size: 18, weight: .medium))
                 Spacer(minLength: 15)
-                Button("Directions") {
+                Button("Directions".watchLocalize()) {
                     spotUnlocked = false
                 }
                 .foregroundColor(.black)

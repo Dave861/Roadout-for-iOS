@@ -95,6 +95,11 @@ class VerifyMailViewController: UIViewController {
                             self.view.window?.rootViewController = vc
                             self.view.window?.makeKeyAndVisible()
                         }
+                    } else {
+                        DispatchQueue.main.async {
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
+                            self.present(vc, animated: false, completion: nil)
+                        }
                     }
                 } else {
                     DispatchQueue.main.async {

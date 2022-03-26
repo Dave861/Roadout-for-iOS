@@ -69,7 +69,7 @@ struct RoadoutView: View {
                         .multilineTextAlignment(.leading)
                         .padding(.top, 14.0)
                         .padding(.leading, 10.0)
-                    Text("Free Spots")
+                    Text("Free Spots".widgetLocalize())
                         .fontWeight(.medium)
                         .font(.system(size: 15))
                         .foregroundColor(Color("AccentColor"))
@@ -103,7 +103,7 @@ struct RoadoutView: View {
                             .multilineTextAlignment(.leading)
                             .padding(.top, 14.0)
                             .padding(.leading, 10.0)
-                        Text("Free Spots")
+                        Text("Free Spots".widgetLocalize())
                             .fontWeight(.medium)
                             .font(.system(size: 15))
                             .foregroundColor(Color("AccentColor"))
@@ -134,7 +134,7 @@ struct RoadoutView: View {
                             .foregroundColor(Color("Dark Orange"))
                             .multilineTextAlignment(.leading)
                             .padding(EdgeInsets(top: 16.0, leading: 8.0, bottom: 0.0, trailing: 0.0))
-                        Text("Free Spots")
+                        Text("Free Spots".widgetLocalize())
                             .fontWeight(.medium)
                             .font(.system(size: 15))
                             .foregroundColor(Color("Dark Orange"))
@@ -177,6 +177,6 @@ struct RoadoutWidget: Widget {
         }
         .supportedFamilies([.systemSmall, .systemMedium])
         .configurationDisplayName("Roadout")
-        .description("See in real-time free spots at certain locations right on your homescreen")
+        .description("See in real-time free spots at certain locations right on your homescreen".widgetLocalize())
     }
 }

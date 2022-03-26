@@ -86,12 +86,12 @@ extension ExpressPickView: iCarouselDataSource, iCarouselDelegate {
         
         //API call here
         FunctionsManager.sharedInstance.findInLocation(parkLocations[index])
-        
         selectedLocationName = parkLocations[index].name
         selectedParkLocation = parkLocations[index]
         selectedLocationColor = UIColor(named: "Dark Orange")!
         selectedLocationCoord = CLLocationCoordinate2DMake(parkLocations[index].latitude, parkLocations[index].longitude)
         NotificationCenter.default.post(name: .addExpressViewID, object: nil)
+        
     }
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {

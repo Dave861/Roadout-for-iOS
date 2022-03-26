@@ -36,6 +36,7 @@ class FunctionsManager {
             var runs = 0
             while foundSpot == nil {
                 //Will call server api here
+                print("RUNS ARE HERE: " + "\(runs)")
                 findInLocation(sortedLocations[runs])
                 runs += 1
             }
@@ -72,7 +73,6 @@ class FunctionsManager {
                     foundSection = section
                     foundSpot = spot
                     selectedLocationCoord = CLLocationCoordinate2D(latitude: foundLocation.latitude, longitude: foundLocation.longitude)
-                    
                     break outerLoop
                 }
             }
