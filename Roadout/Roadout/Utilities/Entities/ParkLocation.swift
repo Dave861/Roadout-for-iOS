@@ -29,3 +29,5 @@ let parkLocations = [ParkLocation(name: "Buna Ziua", rID: "Cluj.BunaZiua", latit
                  ParkLocation(name: "Gheorgheni", rID: "Cluj.Gheorgheni", latitude: 46.767300, longitude: 23.622005, totalSpots: 49, freeSpots: 29, sections: sections8, sectionImage: "Cluj.Gheorgheni.Section"),
                  ParkLocation(name: "Manastur", rID: "Cluj.Manastur", latitude: 46.758061, longitude: 23.554228, totalSpots: 82, freeSpots: 39, sections: sections9, sectionImage: "Cluj.Manastur.Section"),
                  ParkLocation(name: "Andrei Muresanu", rID: "Cluj.AndreiMuresanu", latitude: 46.758449, longitude: 23.606643, totalSpots: 69, freeSpots: 40, sections: sections10, sectionImage: "Cluj.AndreiMuresanu.Section")]
+
+let dbParkLocations = [ParkLocation]()

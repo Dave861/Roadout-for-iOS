@@ -34,6 +34,7 @@ class FunctionsManager {
                 print(location.name)
             }
             var runs = 0
+            foundSpot = nil
             while foundSpot == nil {
                 //Will call server api here
                 print("RUNS ARE HERE: " + "\(runs)")

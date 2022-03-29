@@ -80,3 +80,5 @@ let sections10 = [
     ParkSection(name: "C", totalSpots: 18, freeSpots: 12, rows: [9, 9], spots: spots2, rID: ""),
     ParkSection(name: "D", totalSpots: 17, freeSpots: 8, rows: [8, 9], spots: spots3, rID: "")
 ]
+
+let dbParkSections = [ParkSection]()
