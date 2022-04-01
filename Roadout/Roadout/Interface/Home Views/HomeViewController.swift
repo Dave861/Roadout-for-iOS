@@ -109,21 +109,6 @@ class HomeViewController: UIViewController {
         self.mapView?.animate(to: camera)
     }
     
-    /*func performRequestedFind() {
-        self.findRequested = false
-        guard currentLocationCoord != nil else { return }
-        FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
-            if success {
-                self.showFindCard()
-            } else {
-                let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alert.addAction(action)
-                alert.view.tintColor = UIColor(named: "DevBrown")
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-    }*/
     
     //MARK: -IBOutlets-
     
@@ -167,21 +152,6 @@ class HomeViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                 }
             }
-            /*self.updateLocationWithHandler { result in
-                switch result {
-                case .success():
-                    print("Performing find")
-                    consoleManager.print("Performing find")
-                case .failure(let err):
-                    consoleManager.print(err.localizedDescription)
-                    print(err.localizedDescription)
-                    let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alert.addAction(action)
-                    alert.view.tintColor = UIColor(named: "DevBrown")
-                    self.present(alert, animated: true, completion: nil)
-                }
-            } */
 
         }
         findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
@@ -205,6 +175,27 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var settingsTapArea: UIButton!
     
     @IBOutlet weak var titleLbl: UILabel!
+    
+    @IBOutlet weak var titleBtn: UIButton!
+    
+    @IBAction func titleTapped(_ sender: Any) {
+        let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 15.0)
+        if #available(iOS 14.0, *) {
+            if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
+                locationManager.startUpdatingLocation()
+                mapView.isMyLocationEnabled = true
+            } else {
+                mapView.animate(to: camera)
+            }
+        } else {
+            if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+                locationManager.startUpdatingLocation()
+                mapView.isMyLocationEnabled = true
+            } else {
+                mapView.animate(to: camera)
+            }
+        }
+    }
     
     @IBOutlet weak var shareplayView: UIView!
     
@@ -427,6 +418,7 @@ class HomeViewController: UIViewController {
         
         searchTapArea.setTitle("", for: .normal)
         settingsTapArea.setTitle("", for: .normal)
+        titleBtn.setTitle("", for: .normal)
         
         searchBar.layer.cornerRadius = 13.0
         

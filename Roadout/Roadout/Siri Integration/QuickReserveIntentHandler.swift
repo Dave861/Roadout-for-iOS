@@ -24,9 +24,9 @@ public class QuickReserveIntentHandler: NSObject, QuickReserveIntentHandling {
             self.locationManager = CLLocationManager()
             self.locationManager?.delegate = self
             self.locationManager?.startUpdatingLocation()
+            self.locationManager?.requestLocation()
             DispatchQueue.main.asyncAfter(deadline: .now()+1.5) {
                 if self.locationManager?.location != nil {
-                    //Find locations if nil
                     FunctionsManager.sharedInstance.findSpot(self.locationManager!.location!.coordinate) { success in
                         if success {
                             UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundLocation.name, forKey: "ro.roadout.Roadout.SiriName")

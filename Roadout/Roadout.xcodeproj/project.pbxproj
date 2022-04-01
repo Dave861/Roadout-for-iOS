@@ -46,11 +46,6 @@
 		9A39B0D62728482C008E7FD0 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0D52728482C008E7FD0 /* ButtonCell.swift */; };
 		9A39B0D827284B38008E7FD0 /* SettingsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0D727284B38008E7FD0 /* SettingsTextCell.swift */; };
 		9A4131D627BFD8950012EADB /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4131D527BFD8950012EADB /* SearchManager.swift */; };
-		9A4131D927BFDCE00012EADB /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 9A4131D827BFDCE00012EADB /* GoogleMaps */; };
-		9A4131DB27BFDCE00012EADB /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 9A4131DA27BFDCE00012EADB /* GoogleMapsBase */; };
-		9A4131DD27BFDCE00012EADB /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9A4131DC27BFDCE00012EADB /* GoogleMapsCore */; };
-		9A4131DF27BFDCE00012EADB /* GoogleMapsM4B in Frameworks */ = {isa = PBXBuildFile; productRef = 9A4131DE27BFDCE00012EADB /* GoogleMapsM4B */; };
-		9A4131E127BFDCE00012EADB /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 9A4131E027BFDCE00012EADB /* GooglePlaces */; };
 		9A46BBA2272EE764002280DD /* ReserveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA1272EE764002280DD /* ReserveView.swift */; };
 		9A46BBA4272EF343002280DD /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA3272EF343002280DD /* PayView.swift */; };
 		9A46BBA6272EF83D002280DD /* PaidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA5272EF83D002280DD /* PaidView.swift */; };
@@ -187,6 +182,11 @@
 		9AED6DC627E7288E00B5004F /* WatchLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AED6DC527E7288E00B5004F /* WatchLocalization.swift */; };
 		9AED6DC927E7296B00B5004F /* WatchLocalizables.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AED6DCB27E7296B00B5004F /* WatchLocalizables.strings */; };
 		9AEF29F2272D71A600FEE390 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF29F1272D71A600FEE390 /* ResultView.swift */; };
+		9AF2E8B927F743C5007FBA7E /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF2E8B827F743C5007FBA7E /* GoogleMaps */; };
+		9AF2E8BB27F743C5007FBA7E /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF2E8BA27F743C5007FBA7E /* GoogleMapsBase */; };
+		9AF2E8BD27F743C5007FBA7E /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF2E8BC27F743C5007FBA7E /* GoogleMapsCore */; };
+		9AF2E8BF27F743C5007FBA7E /* GoogleMapsM4B in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF2E8BE27F743C5007FBA7E /* GoogleMapsM4B */; };
+		9AF2E8C127F743C5007FBA7E /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF2E8C027F743C5007FBA7E /* GooglePlaces */; };
 		9AF4BA2427787A7200F3C3B4 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
 		9AF4BA252778A0B400F3C3B4 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
 		9AF7142C27AFC0E000FEA4C4 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF7142B27AFC0E000FEA4C4 /* SPAlert */; };
@@ -492,17 +492,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A4131D927BFDCE00012EADB /* GoogleMaps in Frameworks */,
-				9A4131DF27BFDCE00012EADB /* GoogleMapsM4B in Frameworks */,
 				9AF7142C27AFC0E000FEA4C4 /* SPAlert in Frameworks */,
 				9AC48D1C273FBDE200DBCEF8 /* iCarousel in Frameworks */,
-				9A4131DB27BFDCE00012EADB /* GoogleMapsBase in Frameworks */,
 				9A0BDACD2792C90500EB9CF8 /* SPPerspective in Frameworks */,
 				9A96248627C9719C00A17087 /* LocalConsole in Frameworks */,
-				9A4131DD27BFDCE00012EADB /* GoogleMapsCore in Frameworks */,
 				9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */,
+				9AF2E8BB27F743C5007FBA7E /* GoogleMapsBase in Frameworks */,
+				9AF2E8BF27F743C5007FBA7E /* GoogleMapsM4B in Frameworks */,
+				9AF2E8B927F743C5007FBA7E /* GoogleMaps in Frameworks */,
 				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
-				9A4131E127BFDCE00012EADB /* GooglePlaces in Frameworks */,
+				9AF2E8C127F743C5007FBA7E /* GooglePlaces in Frameworks */,
+				9AF2E8BD27F743C5007FBA7E /* GoogleMapsCore in Frameworks */,
 				9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */,
 				9AA01DDF2789D78E0004211A /* CHIOTPField in Frameworks */,
 			);
@@ -1055,12 +1055,12 @@
 				9A0BDACC2792C90500EB9CF8 /* SPPerspective */,
 				9AF7142B27AFC0E000FEA4C4 /* SPAlert */,
 				9A8D8D3B27BADDAC0037DFE3 /* PusherSwift */,
-				9A4131D827BFDCE00012EADB /* GoogleMaps */,
-				9A4131DA27BFDCE00012EADB /* GoogleMapsBase */,
-				9A4131DC27BFDCE00012EADB /* GoogleMapsCore */,
-				9A4131DE27BFDCE00012EADB /* GoogleMapsM4B */,
-				9A4131E027BFDCE00012EADB /* GooglePlaces */,
 				9A96248527C9719C00A17087 /* LocalConsole */,
+				9AF2E8B827F743C5007FBA7E /* GoogleMaps */,
+				9AF2E8BA27F743C5007FBA7E /* GoogleMapsBase */,
+				9AF2E8BC27F743C5007FBA7E /* GoogleMapsCore */,
+				9AF2E8BE27F743C5007FBA7E /* GoogleMapsM4B */,
+				9AF2E8C027F743C5007FBA7E /* GooglePlaces */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1114,8 +1114,8 @@
 				9A0BDACB2792C90500EB9CF8 /* XCRemoteSwiftPackageReference "SPPerspective" */,
 				9AF7142A27AFC0E000FEA4C4 /* XCRemoteSwiftPackageReference "SPAlert" */,
 				9A8D8D3A27BADDAC0037DFE3 /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */,
-				9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 				9A96248427C9719C00A17087 /* XCRemoteSwiftPackageReference "LocalConsole" */,
+				9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -2118,14 +2118,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/YAtechnologies/GoogleMaps-SP";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marekpridal/BarChart";
@@ -2174,6 +2166,14 @@
 				revision = d4b4db80df0aa7744d5bc0dced74474540a114ce;
 			};
 		};
+		9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mthole/GoogleMaps-SP";
+			requirement = {
+				kind = revision;
+				revision = "6efd771f4a9ede8c2cc5eb640025323bdbdf170d";
+			};
+		};
 		9AF7142A27AFC0E000FEA4C4 /* XCRemoteSwiftPackageReference "SPAlert" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ivanvorobei/SPAlert";
@@ -2189,31 +2189,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9A0BDACB2792C90500EB9CF8 /* XCRemoteSwiftPackageReference "SPPerspective" */;
 			productName = SPPerspective;
-		};
-		9A4131D827BFDCE00012EADB /* GoogleMaps */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
-			productName = GoogleMaps;
-		};
-		9A4131DA27BFDCE00012EADB /* GoogleMapsBase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
-			productName = GoogleMapsBase;
-		};
-		9A4131DC27BFDCE00012EADB /* GoogleMapsCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
-			productName = GoogleMapsCore;
-		};
-		9A4131DE27BFDCE00012EADB /* GoogleMapsM4B */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
-			productName = GoogleMapsM4B;
-		};
-		9A4131E027BFDCE00012EADB /* GooglePlaces */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9A4131D727BFDCE00012EADB /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
-			productName = GooglePlaces;
 		};
 		9A6E1C362731324B002E29F9 /* BarChartKit-static */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2244,6 +2219,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */;
 			productName = iCarousel;
+		};
+		9AF2E8B827F743C5007FBA7E /* GoogleMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMaps;
+		};
+		9AF2E8BA27F743C5007FBA7E /* GoogleMapsBase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMapsBase;
+		};
+		9AF2E8BC27F743C5007FBA7E /* GoogleMapsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMapsCore;
+		};
+		9AF2E8BE27F743C5007FBA7E /* GoogleMapsM4B */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMapsM4B;
+		};
+		9AF2E8C027F743C5007FBA7E /* GooglePlaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GooglePlaces;
 		};
 		9AF7142B27AFC0E000FEA4C4 /* SPAlert */ = {
 			isa = XCSwiftPackageProductDependency;

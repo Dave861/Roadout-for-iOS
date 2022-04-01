@@ -229,12 +229,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZT-jR-iwT">
+                                <rect key="frame" x="20" y="143" width="134" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="v64-c4-Efy"/>
+                                    <constraint firstAttribute="width" constant="134" id="x5X-lS-6oe"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="titleTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gtS-15-cuO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="Oc8-he-wio" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="13" id="5NV-DK-n5m"/>
+                            <constraint firstItem="OZT-jR-iwT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="55" id="8go-3P-cIs"/>
                             <constraint firstItem="Ptr-6X-WXM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="51" id="HOu-Ml-y6u"/>
+                            <constraint firstItem="OZT-jR-iwT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="N4X-NU-34n"/>
                             <constraint firstItem="Ptr-6X-WXM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="ZGo-pw-2RJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Oc8-he-wio" secondAttribute="trailing" constant="13" id="cHo-0A-V3J"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Oc8-he-wio" secondAttribute="bottom" constant="15" id="lB6-NC-i4D"/>
@@ -246,6 +260,7 @@
                         <outlet property="searchTapArea" destination="qsP-mi-FaF" id="dvD-3k-vjL"/>
                         <outlet property="settingsTapArea" destination="ObE-Ow-nJ0" id="92w-Ud-wPu"/>
                         <outlet property="shareplayView" destination="cth-mL-cnL" id="Gxs-hh-evC"/>
+                        <outlet property="titleBtn" destination="OZT-jR-iwT" id="qCU-Mj-1CM"/>
                         <outlet property="titleLbl" destination="Ptr-6X-WXM" id="6Mc-zv-Byt"/>
                     </connections>
                 </viewController>
@@ -1637,7 +1652,7 @@ Made in Cluj :)</string>
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Redish">
-            <color red="0.61799997091293335" green="0.22400000691413879" blue="0.11599999666213989" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.58399999141693115" green="0.18000000715255737" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Second Background">
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
