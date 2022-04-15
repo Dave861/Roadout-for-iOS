@@ -128,11 +128,6 @@ class FindView: UIView {
         donateInteration()
         addToSiriBtn()
         
-        consoleManager.print("SORTED LOCATIONS")
-        for fLocation in FunctionsManager.sharedInstance.sortedLocations {
-            consoleManager.print(fLocation.name)
-        }
-        consoleManager.print("END SORTED LOCATIONS")
         //LOADING
         locationLbl.text = "Loading...".localized()
         sectionLbl.text = "Loading...".localized()

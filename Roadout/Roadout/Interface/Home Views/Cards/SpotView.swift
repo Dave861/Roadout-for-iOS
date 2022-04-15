@@ -99,7 +99,7 @@ class SpotView: UIView, PusherDelegate {
     
     func layoutCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = centerItemsInCollectionView(cellWidth: 35, numberOfItems: Double(selectedSection.rows.max()!), spaceBetweenCell: 1, collectionView: collectionView)
+        layout.sectionInset = centerItemsInCollectionView(cellWidth: 35, numberOfItems: Double(parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].rows.max()!), spaceBetweenCell: 1, collectionView: collectionView)
         layout.itemSize = CGSize(width: 35, height: 50)
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 7
@@ -131,7 +131,7 @@ class SpotView: UIView, PusherDelegate {
                   print(data.replacingOccurrences(of: "\"", with: ""))
                   
                 let intData = self.getNumbers(data: data.replacingOccurrences(of: "\"", with: ""))
-                selectedSection.spots[intData[1]-1].state = intData[0]
+                  parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[intData[1]-1].state = intData[0]
                 self.collectionView.reloadData()
                 self.updateInfo(spotState: 100)
               }
@@ -199,18 +199,17 @@ class SpotView: UIView, PusherDelegate {
 }
 extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return selectedSection.rows.count
+        return parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].rows.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedSection.rows[section]
+        return parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].rows[section]
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpotCell", for: indexPath) as! SpotCell
     
         let index = (indexPath[0])*collectionView.numberOfItems(inSection: 0) + indexPath[1]
-        
-        switch selectedSection.spots[index].state {
+        switch parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state {
             case 0:
                 cell.outlineView.backgroundColor = UIColor(named: "Main Yellow")
                 cell.mainBtn.setImage(UIImage(systemName: "checkmark"), for: .normal)
@@ -238,9 +237,9 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.cellForItem(at: indexPath) as! SpotCell
         
         let index = (indexPath[0])*collectionView.numberOfItems(inSection: 0) + indexPath[1]
-        updateInfo(spotState: selectedSection.spots[index].state)
+        updateInfo(spotState: parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state)
         
-        switch selectedSection.spots[index].state {
+        switch parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state {
             case 0:
                 cell.mainBtn.backgroundColor = UIColor(named: "Main Yellow")
                 cell.mainBtn.tintColor = UIColor(named: "Background")
@@ -260,7 +259,7 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let index = (indexPath[0])*collectionView.numberOfItems(inSection: 0) + indexPath[1]
         
-        switch selectedSection.spots[index].state {
+        switch parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state {
             case 0:
                 cell.mainBtn.backgroundColor = UIColor(named: "Background")
                 cell.mainBtn.tintColor = UIColor(named: "Main Yellow")

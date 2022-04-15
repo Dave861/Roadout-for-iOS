@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0357162727CC61002A9ED9 /* HomeViewController.swift */; };
+		9A06212728096C0700D69F56 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC566E527BE354200955F7D /* EntityManager.swift */; };
+		9A06212828096C0700D69F56 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC566E527BE354200955F7D /* EntityManager.swift */; };
 		9A0631272775A92700E3AB5F /* GroupSpotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0631262775A92700E3AB5F /* GroupSpotsView.swift */; };
 		9A089E45272A7D78005B3FFE /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A089E44272A7D78005B3FFE /* AddReminderViewController.swift */; };
 		9A0A23292733D2D6007C1B08 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
@@ -125,7 +127,6 @@
 		9A9208CF277EE14500E099C7 /* ComplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9208CE277EE14500E099C7 /* ComplicationManager.swift */; };
 		9A9239B22764E26100C40706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A59B75A2764A6B500BC0497 /* Assets.xcassets */; };
 		9A96248327C96E9E00A17087 /* DeveloperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96248227C96E9E00A17087 /* DeveloperViewController.swift */; };
-		9A96248627C9719C00A17087 /* LocalConsole in Frameworks */ = {isa = PBXBuildFile; productRef = 9A96248527C9719C00A17087 /* LocalConsole */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F872272B09DF008B58FE /* AddCardViewController.swift */; };
 		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
 		9A96F877272B0A25008B58FE /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F876272B0A25008B58FE /* CardCell.swift */; };
@@ -146,6 +147,11 @@
 		9AAB6E622778A4EC003F9A6F /* UserPrefsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91D2731436300967417 /* UserPrefsUtils.swift */; };
 		9AAB6E632778A4EE003F9A6F /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
 		9AAB6E642778A5D3003F9A6F /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
+		9AAE2659280947E000BBBAC3 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE2658280947E000BBBAC3 /* GoogleMaps */; };
+		9AAE265B280947E000BBBAC3 /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE265A280947E000BBBAC3 /* GoogleMapsBase */; };
+		9AAE265D280947E000BBBAC3 /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE265C280947E000BBBAC3 /* GoogleMapsCore */; };
+		9AAE265F280947E000BBBAC3 /* GoogleMapsM4B in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE265E280947E000BBBAC3 /* GoogleMapsM4B */; };
+		9AAE2661280947E000BBBAC3 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE2660280947E000BBBAC3 /* GooglePlaces */; };
 		9AB12373276F115E003C5AE9 /* SharePlayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12372276F115E003C5AE9 /* SharePlayManager.swift */; };
 		9AB12375276F1170003C5AE9 /* GroupReserveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12374276F1170003C5AE9 /* GroupReserveActivity.swift */; };
 		9AB12377276F1188003C5AE9 /* SharePlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12376276F1188003C5AE9 /* SharePlayButton.swift */; };
@@ -182,11 +188,6 @@
 		9AED6DC627E7288E00B5004F /* WatchLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AED6DC527E7288E00B5004F /* WatchLocalization.swift */; };
 		9AED6DC927E7296B00B5004F /* WatchLocalizables.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AED6DCB27E7296B00B5004F /* WatchLocalizables.strings */; };
 		9AEF29F2272D71A600FEE390 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF29F1272D71A600FEE390 /* ResultView.swift */; };
-		9AF2E8B927F743C5007FBA7E /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF2E8B827F743C5007FBA7E /* GoogleMaps */; };
-		9AF2E8BB27F743C5007FBA7E /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF2E8BA27F743C5007FBA7E /* GoogleMapsBase */; };
-		9AF2E8BD27F743C5007FBA7E /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF2E8BC27F743C5007FBA7E /* GoogleMapsCore */; };
-		9AF2E8BF27F743C5007FBA7E /* GoogleMapsM4B in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF2E8BE27F743C5007FBA7E /* GoogleMapsM4B */; };
-		9AF2E8C127F743C5007FBA7E /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF2E8C027F743C5007FBA7E /* GooglePlaces */; };
 		9AF4BA2427787A7200F3C3B4 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
 		9AF4BA252778A0B400F3C3B4 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
 		9AF7142C27AFC0E000FEA4C4 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF7142B27AFC0E000FEA4C4 /* SPAlert */; };
@@ -495,14 +496,13 @@
 				9AF7142C27AFC0E000FEA4C4 /* SPAlert in Frameworks */,
 				9AC48D1C273FBDE200DBCEF8 /* iCarousel in Frameworks */,
 				9A0BDACD2792C90500EB9CF8 /* SPPerspective in Frameworks */,
-				9A96248627C9719C00A17087 /* LocalConsole in Frameworks */,
 				9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */,
-				9AF2E8BB27F743C5007FBA7E /* GoogleMapsBase in Frameworks */,
-				9AF2E8BF27F743C5007FBA7E /* GoogleMapsM4B in Frameworks */,
-				9AF2E8B927F743C5007FBA7E /* GoogleMaps in Frameworks */,
+				9AAE265B280947E000BBBAC3 /* GoogleMapsBase in Frameworks */,
+				9AAE265F280947E000BBBAC3 /* GoogleMapsM4B in Frameworks */,
+				9AAE2659280947E000BBBAC3 /* GoogleMaps in Frameworks */,
 				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
-				9AF2E8C127F743C5007FBA7E /* GooglePlaces in Frameworks */,
-				9AF2E8BD27F743C5007FBA7E /* GoogleMapsCore in Frameworks */,
+				9AAE2661280947E000BBBAC3 /* GooglePlaces in Frameworks */,
+				9AAE265D280947E000BBBAC3 /* GoogleMapsCore in Frameworks */,
 				9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */,
 				9AA01DDF2789D78E0004211A /* CHIOTPField in Frameworks */,
 			);
@@ -1055,12 +1055,11 @@
 				9A0BDACC2792C90500EB9CF8 /* SPPerspective */,
 				9AF7142B27AFC0E000FEA4C4 /* SPAlert */,
 				9A8D8D3B27BADDAC0037DFE3 /* PusherSwift */,
-				9A96248527C9719C00A17087 /* LocalConsole */,
-				9AF2E8B827F743C5007FBA7E /* GoogleMaps */,
-				9AF2E8BA27F743C5007FBA7E /* GoogleMapsBase */,
-				9AF2E8BC27F743C5007FBA7E /* GoogleMapsCore */,
-				9AF2E8BE27F743C5007FBA7E /* GoogleMapsM4B */,
-				9AF2E8C027F743C5007FBA7E /* GooglePlaces */,
+				9AAE2658280947E000BBBAC3 /* GoogleMaps */,
+				9AAE265A280947E000BBBAC3 /* GoogleMapsBase */,
+				9AAE265C280947E000BBBAC3 /* GoogleMapsCore */,
+				9AAE265E280947E000BBBAC3 /* GoogleMapsM4B */,
+				9AAE2660280947E000BBBAC3 /* GooglePlaces */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1114,8 +1113,7 @@
 				9A0BDACB2792C90500EB9CF8 /* XCRemoteSwiftPackageReference "SPPerspective" */,
 				9AF7142A27AFC0E000FEA4C4 /* XCRemoteSwiftPackageReference "SPAlert" */,
 				9A8D8D3A27BADDAC0037DFE3 /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */,
-				9A96248427C9719C00A17087 /* XCRemoteSwiftPackageReference "LocalConsole" */,
-				9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
+				9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -1231,6 +1229,7 @@
 				9AF4BA252778A0B400F3C3B4 /* NotificationHelper.swift in Sources */,
 				9AAB6E5F2778A321003F9A6F /* UserPrefsUtils.swift in Sources */,
 				9AAB6E5B2778A2AF003F9A6F /* Reminder.swift in Sources */,
+				9A06212728096C0700D69F56 /* EntityManager.swift in Sources */,
 				9A5348D327E7323B00CD2A98 /* Intents.intentdefinition in Sources */,
 				9ABBF824275654BA005D2FFD /* IntentDataExtension.swift in Sources */,
 				9AAB6E5E2778A319003F9A6F /* ParkLocation.swift in Sources */,
@@ -1252,6 +1251,7 @@
 				9AAB6E622778A4EC003F9A6F /* UserPrefsUtils.swift in Sources */,
 				9ABBF825275654BB005D2FFD /* IntentDataExtension.swift in Sources */,
 				9A6E7EA42756528800E09B75 /* IntentViewController.swift in Sources */,
+				9A06212828096C0700D69F56 /* EntityManager.swift in Sources */,
 				9A8D8D3827BAD76F0037DFE3 /* ParkSection.swift in Sources */,
 				9AAB6E612778A388003F9A6F /* ReservationManager.swift in Sources */,
 				9A5F4F8527BE4A2B00097EEE /* QuickReserveIntentHandler.swift in Sources */,
@@ -1676,7 +1676,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1705,7 +1705,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1734,7 +1734,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1763,7 +1763,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1986,7 +1986,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2026,7 +2026,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2134,14 +2134,6 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		9A96248427C9719C00A17087 /* XCRemoteSwiftPackageReference "LocalConsole" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/duraidabdul/LocalConsole";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		9AA01DDD2789D78E0004211A /* XCRemoteSwiftPackageReference "CHIOTPField" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ChiliLabs/CHIOTPField.git";
@@ -2158,20 +2150,20 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/YAtechnologies/GoogleMaps-SP";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nicklockwood/iCarousel";
 			requirement = {
 				kind = revision;
 				revision = d4b4db80df0aa7744d5bc0dced74474540a114ce;
-			};
-		};
-		9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mthole/GoogleMaps-SP";
-			requirement = {
-				kind = revision;
-				revision = "6efd771f4a9ede8c2cc5eb640025323bdbdf170d";
 			};
 		};
 		9AF7142A27AFC0E000FEA4C4 /* XCRemoteSwiftPackageReference "SPAlert" */ = {
@@ -2200,11 +2192,6 @@
 			package = 9A8D8D3A27BADDAC0037DFE3 /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */;
 			productName = PusherSwift;
 		};
-		9A96248527C9719C00A17087 /* LocalConsole */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9A96248427C9719C00A17087 /* XCRemoteSwiftPackageReference "LocalConsole" */;
-			productName = LocalConsole;
-		};
 		9AA01DDE2789D78E0004211A /* CHIOTPField */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9AA01DDD2789D78E0004211A /* XCRemoteSwiftPackageReference "CHIOTPField" */;
@@ -2215,35 +2202,35 @@
 			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
+		9AAE2658280947E000BBBAC3 /* GoogleMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMaps;
+		};
+		9AAE265A280947E000BBBAC3 /* GoogleMapsBase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMapsBase;
+		};
+		9AAE265C280947E000BBBAC3 /* GoogleMapsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMapsCore;
+		};
+		9AAE265E280947E000BBBAC3 /* GoogleMapsM4B */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GoogleMapsM4B;
+		};
+		9AAE2660280947E000BBBAC3 /* GooglePlaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GooglePlaces;
+		};
 		9AC48D1B273FBDE200DBCEF8 /* iCarousel */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */;
 			productName = iCarousel;
-		};
-		9AF2E8B827F743C5007FBA7E /* GoogleMaps */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
-			productName = GoogleMaps;
-		};
-		9AF2E8BA27F743C5007FBA7E /* GoogleMapsBase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
-			productName = GoogleMapsBase;
-		};
-		9AF2E8BC27F743C5007FBA7E /* GoogleMapsCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
-			productName = GoogleMapsCore;
-		};
-		9AF2E8BE27F743C5007FBA7E /* GoogleMapsM4B */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
-			productName = GoogleMapsM4B;
-		};
-		9AF2E8C027F743C5007FBA7E /* GooglePlaces */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9AF2E8B727F743C5007FBA7E /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
-			productName = GooglePlaces;
 		};
 		9AF7142B27AFC0E000FEA4C4 /* SPAlert */ = {
 			isa = XCSwiftPackageProductDependency;

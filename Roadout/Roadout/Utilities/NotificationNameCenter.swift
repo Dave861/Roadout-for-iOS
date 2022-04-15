@@ -51,4 +51,5 @@ extension Notification.Name {
     //OTHERS
     static let reloadUserNameID = Notification.Name("ro.roadout.Roadout.reloadUserNameID")
     static let updateLocationID = Notification.Name("ro.roadout.Roadout.updateLocationID")
+    static let addMarkersID = Notification.Name("ro.roadout.Roadout.addMarkersID")
 }

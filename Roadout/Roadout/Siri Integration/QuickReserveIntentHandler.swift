@@ -16,6 +16,11 @@ public class QuickReserveIntentHandler: NSObject, QuickReserveIntentHandling {
     var locationManager: CLLocationManager?
 
     public func confirm(intent: QuickReserveIntent, completion: @escaping (QuickReserveIntentResponse) -> Void) {
+        
+        if parkLocations.count < 10 {
+            self.downloadCityData()
+        }
+        
         if checkReservation() {
             completion(QuickReserveIntentResponse(code: .reservationActive, userActivity: nil))
         }
@@ -24,8 +29,7 @@ public class QuickReserveIntentHandler: NSObject, QuickReserveIntentHandling {
             self.locationManager = CLLocationManager()
             self.locationManager?.delegate = self
             self.locationManager?.startUpdatingLocation()
-            self.locationManager?.requestLocation()
-            DispatchQueue.main.asyncAfter(deadline: .now()+1.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 if self.locationManager?.location != nil {
                     FunctionsManager.sharedInstance.findSpot(self.locationManager!.location!.coordinate) { success in
                         if success {
@@ -64,6 +68,30 @@ public class QuickReserveIntentHandler: NSObject, QuickReserveIntentHandling {
     func reserveSpot() {
         ReservationManager.sharedInstance.saveReservationDate(Date().addingTimeInterval(TimeInterval(900)))
         ReservationManager.sharedInstance.saveActiveReservation(true)
+    }
+    
+    func downloadCityData() {
+        parkLocations = testParkLocations //will empty here
+        EntityManager.sharedInstance.getParkLocations("Cluj") { result in
+            switch result {
+                case .success():
+                for index in 0...dbParkLocations.count-1 {
+                    EntityManager.sharedInstance.getParkSections(dbParkLocations[index].rID) { res in
+                        switch res {
+                            case .success():
+                                print("YAYAY")
+                                dbParkLocations[index].sections = dbParkSections
+                                parkLocations.append(dbParkLocations[index])
+                            case .failure(let err):
+                                print(err)
+                        }
+                    }
+                }
+                case .failure(let err):
+                    print(err)
+            }
+        }
+        
     }
     
 }

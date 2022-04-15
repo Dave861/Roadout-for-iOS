@@ -13,7 +13,7 @@ class SectionView: UIView {
     var letterTitle: NSAttributedString!
 
     var lettersMenu: UIMenu {
-        return UIMenu(title: "Choose a section".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(sections: selectedParkLocation.sections))
+        return UIMenu(title: "Choose a section".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(sections: parkLocations[selectedParkLocationIndex].sections))
     }
     
     @IBOutlet weak var sectionImage: UIImageView!
@@ -24,19 +24,23 @@ class SectionView: UIView {
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: .addSpotCardID, object: nil)
+        if parkLocations[selectedParkLocationIndex].sections.last?.spots == [ParkSpot]() {
+            self.showLoadingAlert()
+        } else {
+            NotificationCenter.default.post(name: .addSpotCardID, object: nil)
+        }
     }
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         letter = "A"
-        selectedSection = selectedParkLocation.sections[0]
+        selectedSectionIndex = 0
         NotificationCenter.default.post(name: .removeSectionCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
     
     @IBAction func sectionTapped(_ sender: Any) {
-        self.parentViewController().present(makeAlert(sections: selectedParkLocation.sections), animated: true, completion: nil)
+        self.parentViewController().present(makeAlert(sections: parkLocations[selectedParkLocationIndex].sections), animated: true, completion: nil)
     }
     
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
@@ -48,7 +52,7 @@ class SectionView: UIView {
         backBtn.setTitle("", for: .normal)
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         
-        sectionImage.image = UIImage(named: selectedParkLocation.sectionImage)
+        sectionImage.image = UIImage(named: parkLocations[selectedParkLocationIndex].sectionImage)
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1
@@ -59,7 +63,7 @@ class SectionView: UIView {
         self.layer.rasterizationScale = UIScreen.main.scale
         
         if letter == "A" {
-            selectedSection = selectedParkLocation.sections[0]
+            selectedSectionIndex = 0
         }
         
         sectionBtn.layer.cornerRadius = 6.0
@@ -78,17 +82,25 @@ class SectionView: UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[1] as! UIView
     }
     
+    func showLoadingAlert() {
+        let alert = UIAlertController(title: "Loading...".localized(), message: "The spots are still downloading, this should not happen normally and might be caused by poor network connection. Please wait and try again.".localized(), preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.view.tintColor = UIColor(named: "Icons")
+        self.parentViewController().present(alert, animated: true, completion: nil)
+    }
+    
     func makeAlert(sections: [ParkSection]) -> UIAlertController {
         let alert = UIAlertController(title: "", message: "Choose a section".localized(), preferredStyle: .actionSheet)
         alert.view.tintColor = UIColor(named: "Icons")
         
-        for section in sections {
-            let sectionAction = UIAlertAction(title: "Section ".localized() + "\(section.name)", style: .default) { action in
-                self.letter = section.name
+        for index in 0...sections.count-1 {
+            let sectionAction = UIAlertAction(title: "Section ".localized() + "\(sections[index].name)", style: .default) { action in
+                self.letter = sections[index].name
                 self.letterTitle = NSAttributedString(string: self.letter,
                                                  attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
                 self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
-                selectedSection = section
+                selectedSectionIndex = index
             }
             alert.addAction(sectionAction)
         }
@@ -103,13 +115,13 @@ class SectionView: UIView {
     func makeMenuActions(sections: [ParkSection]) -> [UIAction] {
         var menuItems = [UIAction]()
         
-        for section in sections {
-            let action = UIAction(title: "Section ".localized() + "\(section.name)", image: nil, handler: { (_) in
-                self.letter = section.name
+        for index in 0...sections.count-1 {
+            let action = UIAction(title: "Section ".localized() + "\(sections[index].name)", image: nil, handler: { (_) in
+                self.letter = sections[index].name
                 self.letterTitle = NSAttributedString(string: self.letter,
                                                  attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
                 self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
-                selectedSection = section
+                selectedSectionIndex = index
             })
             menuItems.append(action)
         }

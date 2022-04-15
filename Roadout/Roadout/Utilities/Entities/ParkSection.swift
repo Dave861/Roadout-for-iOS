@@ -81,4 +81,4 @@ let sections10 = [
     ParkSection(name: "D", totalSpots: 17, freeSpots: 8, rows: [8, 9], spots: spots3, rID: "")
 ]
 
-let dbParkSections = [ParkSection]()
+var dbParkSections = [ParkSection]()

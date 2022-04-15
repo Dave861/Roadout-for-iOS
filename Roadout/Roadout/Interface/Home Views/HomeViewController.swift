@@ -9,9 +9,6 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 import SwiftUI
-import LocalConsole
-
-let consoleManager = LCManager.shared
 
 var returnToDelay = false
 var returnToFind = false
@@ -137,10 +134,6 @@ class HomeViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            consoleManager.print("HERE COORDS")
-            consoleManager.print(coord.latitude)
-            consoleManager.print(coord.longitude)
-            consoleManager.print("END COORDS")
             FunctionsManager.sharedInstance.findSpot(coord) { success in
                 if success {
                     self.showFindCard()
@@ -175,27 +168,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var settingsTapArea: UIButton!
     
     @IBOutlet weak var titleLbl: UILabel!
-    
-    @IBOutlet weak var titleBtn: UIButton!
-    
-    @IBAction func titleTapped(_ sender: Any) {
-        let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 15.0)
-        if #available(iOS 14.0, *) {
-            if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                mapView.isMyLocationEnabled = true
-            } else {
-                mapView.animate(to: camera)
-            }
-        } else {
-            if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                mapView.isMyLocationEnabled = true
-            } else {
-                mapView.animate(to: camera)
-            }
-        }
-    }
     
     @IBOutlet weak var shareplayView: UIView!
     
@@ -252,10 +224,13 @@ class HomeViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateLocation), name: .updateLocationID, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addMarkers), name: .addMarkersID, object: nil)
     }
    //MARK: -Markers-
     
-    func addMarkers() {
+    @objc func addMarkers() {
+        mapView.clear()
         var index = 0
         for parkLocation in parkLocations {
             let markerPosition = CLLocationCoordinate2D(latitude: parkLocation.latitude, longitude: parkLocation.longitude)
@@ -290,10 +265,6 @@ class HomeViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                     return
                 }
-                consoleManager.print("HERE COORDS")
-                consoleManager.print(coord.latitude)
-                consoleManager.print(coord.longitude)
-                consoleManager.print("END COORDS")
                 FunctionsManager.sharedInstance.findSpot(coord) { success in
                     print("Im here")
                     if success {
@@ -307,21 +278,6 @@ class HomeViewController: UIViewController {
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
-                /*self.updateLocationWithHandler { result in
-                    switch result {
-                    case .success():
-                        print("Performing find")
-                        consoleManager.print("Performing find")
-                    case .failure(let err):
-                        consoleManager.print(err.localizedDescription)
-                        print(err.localizedDescription)
-                        let alert = UIAlertController(title: "Error", message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot", preferredStyle: .alert)
-                        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        alert.addAction(action)
-                        alert.view.tintColor = UIColor(named: "DevBrown")
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                } */
             }),
             UIAction(title: "Express Reserve".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
                 self.addExpressPickView()
@@ -418,7 +374,6 @@ class HomeViewController: UIViewController {
         
         searchTapArea.setTitle("", for: .normal)
         settingsTapArea.setTitle("", for: .normal)
-        titleBtn.setTitle("", for: .normal)
         
         searchBar.layer.cornerRadius = 13.0
         
@@ -434,9 +389,14 @@ class HomeViewController: UIViewController {
         mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
         mapView.delegate = self
         self.view.insertSubview(mapView, at: 0)
-        let mapInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 60.0, right: 0.0)
+        let mapInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 65.0, right: 0.0)
         mapView.padding = mapInsets
-        self.addMarkers()
+        
+        if parkLocations.count < 10 {
+            self.manageGettingData()
+        } else if parkLocations.count == 10 {
+            self.addMarkers()
+        }
         
         switch traitCollection.userInterfaceStyle {
                 case .light, .unspecified:
@@ -529,7 +489,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func manageGettingDataScreen() {
+    func manageGettingData() {
         let sb = UIStoryboard(name: "Home", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "GetDataVC") as! GetDataViewController
         self.present(vc, animated: true, completion: nil)
@@ -556,27 +516,7 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
-    /*func updateLocationWithHandler(completion: @escaping(Result<Void, Error>) -> Void) {
-        self.findRequested = true
-        if #available(iOS 14.0, *) {
-            if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                completion(.success(()))
-            } else {
-                let locationError = CancellationError()
-                completion(.failure(locationError))
-            }
-        } else {
-            if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                completion(.success(()))
-            } else {
-                let locationError = CancellationError()
-                completion(.failure(locationError))
-            }
-        }
-    }*/
+
     
     //MARK: - Card Functions-
     //Result Card
@@ -584,11 +524,14 @@ class HomeViewController: UIViewController {
         let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
         self.mapView?.animate(to: camera)
         
+        var index = 0
         for location in parkLocations {
             if location.name == selectedLocationName {
-                selectedParkLocation = location
+                //selectedParkLocation = location
+                selectedParkLocationIndex = index
                 break
             }
+            index += 1
         }
         
         for marker in markers {
@@ -973,13 +916,6 @@ extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         currentLocationCoord = location?.coordinate
-        /*if self.findRequested == true {
-            self.performRequestedFind()
-        }*/
-        if #available(iOS 14.0, *) {
-            consoleManager.print(currentLocationCoord?.latitude as Any)
-            consoleManager.print(currentLocationCoord?.longitude as Any)
-        }
         let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17.0)
         self.mapView?.animate(to: camera)
         self.locationManager.stopUpdatingLocation()

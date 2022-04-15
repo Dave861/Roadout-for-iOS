@@ -10,8 +10,10 @@ import CoreLocation
 import UIKit
 
 var selectedLocationName = "Location"
-var selectedParkLocation = parkLocations.first!
-var selectedSection = parkLocations.first!.sections.first!
+//var selectedParkLocation = parkLocations.first!
+var selectedParkLocationIndex = 0
+//var selectedSection = parkLocations.first!.sections.first!
+var selectedSectionIndex = 0
 var selectedLocationColor = UIColor(named: "Main Yellow")
 var selectedLocationCoord: CLLocationCoordinate2D!
 var currentLocationCoord: CLLocationCoordinate2D?
@@ -39,6 +41,7 @@ class FunctionsManager {
                 //Will call server api here
                 print("RUNS ARE HERE: " + "\(runs)")
                 findInLocation(sortedLocations[runs])
+                //will crash for now because this function should call the server which has the data but client doesn't
                 runs += 1
             }
             completion(true)

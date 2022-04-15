@@ -89,4 +89,4 @@ let spots3 = [
     ParkSpot(state: 1, number: 22, rID: "")
 ]
 
-let dbParkSpots = [ParkSpot]()
+var dbParkSpots = [ParkSpot]()

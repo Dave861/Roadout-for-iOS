@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import LocalConsole
 
 
 class DeveloperViewController: UIViewController {
@@ -22,14 +21,12 @@ class DeveloperViewController: UIViewController {
     
     @IBOutlet weak var consoleSwitch: UISwitch!
     @IBAction func consoleSwitched(_ sender: Any) {
-        if #available(iOS 14.0, *) {
-            consoleManager.isVisible = consoleSwitch.isOn
-        }
+        
     }
     
     @IBOutlet weak var refreshBtn: UIButton!
     @IBAction func refreshTapped(_ sender: Any) {
-        consoleManager.print("Trying")
+        
         let sb = UIStoryboard(name: "Home", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "GetDataVC") as! GetDataViewController
         self.present(vc, animated: true, completion: nil)
@@ -42,9 +39,7 @@ class DeveloperViewController: UIViewController {
         super.viewDidLoad()
         card.layer.cornerRadius = 16.0
         refreshBtn.setAttributedTitle(refreshTitle, for: .normal)
-        if #available(iOS 14.0, *) {
-            consoleSwitch.setOn(consoleManager.isVisible, animated: false)
-        }
+        
     }
     
 }

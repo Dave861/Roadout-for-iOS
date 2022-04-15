@@ -17,6 +17,7 @@ class ResultView: UIView {
     @IBAction func pickTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        self.downloadSpots()
         NotificationCenter.default.post(name: .addSectionCardID, object: nil)
     }
     @IBAction func backTapped(_ sender: Any) {
@@ -32,7 +33,8 @@ class ResultView: UIView {
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 13.0
         print(selectedLocationName)
-        locationLbl.text = selectedLocationName
+        
+        locationLbl.text = parkLocations[selectedParkLocationIndex].name
         pickBtn.layer.cornerRadius = 12.0
         backBtn.setTitle("", for: .normal)
         pickBtn.setAttributedTitle(pickTitle, for: .normal)
@@ -47,7 +49,7 @@ class ResultView: UIView {
         self.layer.rasterizationScale = UIScreen.main.scale
         
         if currentLocationCoord != nil {
-            let c1 = CLLocation(latitude: selectedLocationCoord.latitude, longitude: selectedLocationCoord.longitude)
+            let c1 = CLLocation(latitude: parkLocations[selectedParkLocationIndex].latitude, longitude: parkLocations[selectedParkLocationIndex].longitude)
             let c2 = CLLocation(latitude: currentLocationCoord!.latitude, longitude: currentLocationCoord!.longitude)
             
             let distance = c1.distance(from: c2)
@@ -62,6 +64,25 @@ class ResultView: UIView {
     
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+    }
+    
+    func downloadSpots() {
+        for index in 0...parkLocations[selectedParkLocationIndex].sections.count-1 {
+            parkLocations[selectedParkLocationIndex].sections[index].spots = [ParkSpot]()
+        }
+        for index in 0...parkLocations[selectedParkLocationIndex].sections.count-1 {
+            EntityManager.sharedInstance.getParkSpots(parkLocations[selectedParkLocationIndex].sections[index].rID) { result in
+                switch result {
+                    case .success():
+                        parkLocations[selectedParkLocationIndex].sections[index].spots = dbParkSpots
+                        //selectedParkLocation.sections[index].spots = dbParkSpots
+                    case .failure(let err):
+                        print(err)
+                }
+            }
+        }
+        //selectedParkLocation = parkLocations[selectedParkLocationIndex]
+        print("Made it here")
     }
 
 }

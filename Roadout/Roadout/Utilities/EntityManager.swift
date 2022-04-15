@@ -26,42 +26,94 @@ class EntityManager {
         let params : Parameters = ["id":city]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Parking/GetParkingLots.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
-                //self.callResult = "database error"
-                //completion(.failure(AuthErrors.databaseFailure))
+                completion(.failure(EntityErrors.databaseFailure))
                 return
             }
-            let data = ("[" + response.value! + "]").data(using: .utf8)!
+            let data = ("[" + response.value!.dropLast() + "]").data(using: .utf8)!
             do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    //if self.callResult == "Success" {
-                        
-                       // completion(.success(()))
-                    //}
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
+                    dbParkLocations = [ParkLocation]()
+                    for json in jsonArray {
+                        dbParkLocations.append(ParkLocation(name: json["name"] as! String, rID: json["id"] as! String, latitude: Double(json["lat"] as! String)!, longitude: Double(json["lng"] as! String)!, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: Int(json["freeParkingSpots"] as! String)!, sections: [ParkSection](), sectionImage: json["id"] as! String + ".Section"))
+                    }
+                    completion(.success(()))
                 } else {
                     print("unknown error")
-
-                    //  completion(.failure(AuthErrors.unknownError))
+                    completion(.failure(EntityErrors.unknownError))
                 }
             } catch let error as NSError {
                 print(error)
 
-//                completion(.failure(AuthErrors.errorWithJson))
+                completion(.failure(EntityErrors.errorWithJson))
             }
         }
     }
     
-    func getSections(in: ParkLocation) {
+    func getParkSections(_ location: String, completion: @escaping(Result<Void, Error>) -> Void) {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["id":location]
         
+        Alamofire.Session.default.request("https://www.roadout.ro/Parking/GetParkingSections.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            guard response.value != nil else {
+                completion(.failure(EntityErrors.databaseFailure))
+                return
+            }
+            let data = ("[" + response.value!.dropLast() + "]").data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
+                    dbParkSections = [ParkSection]()
+                    for json in jsonArray {
+                        dbParkSections.append(ParkSection(name: json["name"] as! String, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: 0, rows: self.getNumbers(json["nrRows"] as! String), spots: [ParkSpot](), rID: json["sectionID"] as! String))
+                    }
+                    completion(.success(()))
+                } else {
+                    print("unknown error")
+                    completion(.failure(EntityErrors.unknownError))
+                }
+            } catch let error as NSError {
+                print(error)
+
+                completion(.failure(EntityErrors.errorWithJson))
+            }
+        }
     }
     
-    func getSpotsInLocation(in: ParkLocation) {
+    func getParkSpots(_ section: String, completion: @escaping(Result<Void, Error>) -> Void) {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["id":section]
         
+        Alamofire.Session.default.request("https://www.roadout.ro/Parking/GetSectionInf.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            print("TRYING")
+            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
+            guard response.value != nil else {
+                completion(.failure(EntityErrors.databaseFailure))
+                return
+            }
+            let data = ("[" + response.value!.dropLast() + "]").data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
+                    dbParkSpots = [ParkSpot]()
+                    for json in jsonArray {
+                        dbParkSpots.append(ParkSpot(state: Int(json["state"] as! String)!, number: Int(json["number"] as! String)!, rID: json["id"] as! String))
+                    }
+                    dbParkSpots.sort { $0.number < $1.number }
+                    completion(.success(()))
+                } else {
+                    print("unknown error")
+                    completion(.failure(EntityErrors.unknownError))
+                }
+            } catch let error as NSError {
+                print(error)
+
+                completion(.failure(EntityErrors.errorWithJson))
+            }
+        }
     }
     
-    func getSpots(in: ParkSection) {
-        
+    func getNumbers(_ strArray: String) -> [Int] {
+        let stringRecordedArr = strArray.components(separatedBy: ",")
+        return stringRecordedArr.map { Int($0)!}
     }
     
 }
