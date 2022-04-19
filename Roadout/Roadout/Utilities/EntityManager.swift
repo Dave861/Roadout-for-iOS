@@ -14,6 +14,8 @@ class EntityManager {
     
     static let sharedInstance = EntityManager()
     
+    let colours = ["Main Yellow", "Brownish", "Dark Orange", "Dark Yellow", "Greyish", "Icons", "Kinda Red", "Second Orange"]
+    
     enum EntityErrors: Error {
         case databaseFailure
         case errorWithJson
@@ -35,7 +37,7 @@ class EntityManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
                     dbParkLocations = [ParkLocation]()
                     for json in jsonArray {
-                        dbParkLocations.append(ParkLocation(name: json["name"] as! String, rID: json["id"] as! String, latitude: Double(json["lat"] as! String)!, longitude: Double(json["lng"] as! String)!, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: Int(json["freeParkingSpots"] as! String)!, sections: [ParkSection](), sectionImage: json["id"] as! String + ".Section"))
+                        dbParkLocations.append(ParkLocation(name: json["name"] as! String, rID: json["id"] as! String, latitude: Double(json["lat"] as! String)!, longitude: Double(json["lng"] as! String)!, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: Int(json["freeParkingSpots"] as! String)!, sections: [ParkSection](), sectionImage: json["id"] as! String + ".Section", accentColor: self.colours.randomElement()!))
                     }
                     completion(.success(()))
                 } else {

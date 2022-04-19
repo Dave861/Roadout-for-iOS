@@ -16,14 +16,17 @@ struct ParkLocation: Hashable, Codable {
     var freeSpots: Int
     var sections: [ParkSection]
     var sectionImage: String
+    var accentColor: String
 }
 
+let colours = ["Main Yellow", "Brownish", "Dark Orange", "Dark Yellow", "Greyish", "Icons", "Kinda Red", "Second Orange"]
+
 var parkLocations = [
-        ParkLocation(name: "Buna Ziua", rID: "Cluj.BunaZiua", latitude: 46.752207, longitude: 23.603324, totalSpots: 81, freeSpots: 42, sections: sections1, sectionImage: "Cluj.BunaZiua.Section"),
-        ParkLocation(name: "Airport", rID: "Cluj.Airport", latitude: 46.781864, longitude: 23.671744, totalSpots: 94, freeSpots: 51, sections: sections2, sectionImage: "Cluj.Airport.Section"),
-        ParkLocation(name: "Gheorgheni", rID: "Cluj.Gheorgheni", latitude: 46.767300, longitude: 23.622005, totalSpots: 49, freeSpots: 29, sections: sections8, sectionImage: "Cluj.Gheorgheni.Section"),
-        ParkLocation(name: "Manastur", rID: "Cluj.Manastur", latitude: 46.758061, longitude: 23.554228, totalSpots: 82, freeSpots: 39, sections: sections9, sectionImage: "Cluj.Manastur.Section"),
-        ParkLocation(name: "Andrei Muresanu", rID: "Cluj.AndreiMuresanu", latitude: 46.758449, longitude: 23.606643, totalSpots: 69, freeSpots: 40, sections: sections10, sectionImage: "Cluj.AndreiMuresanu.Section")
+    ParkLocation(name: "Buna Ziua", rID: "Cluj.BunaZiua", latitude: 46.752207, longitude: 23.603324, totalSpots: 81, freeSpots: 42, sections: sections1, sectionImage: "Cluj.BunaZiua.Section", accentColor: colours.randomElement()!),
+        ParkLocation(name: "Airport", rID: "Cluj.Airport", latitude: 46.781864, longitude: 23.671744, totalSpots: 94, freeSpots: 51, sections: sections2, sectionImage: "Cluj.Airport.Section", accentColor: colours.randomElement()!),
+        ParkLocation(name: "Gheorgheni", rID: "Cluj.Gheorgheni", latitude: 46.767300, longitude: 23.622005, totalSpots: 49, freeSpots: 29, sections: sections8, sectionImage: "Cluj.Gheorgheni.Section", accentColor: colours.randomElement()!),
+        ParkLocation(name: "Manastur", rID: "Cluj.Manastur", latitude: 46.758061, longitude: 23.554228, totalSpots: 82, freeSpots: 39, sections: sections9, sectionImage: "Cluj.Manastur.Section", accentColor: colours.randomElement()!),
+        ParkLocation(name: "Andrei Muresanu", rID: "Cluj.AndreiMuresanu", latitude: 46.758449, longitude: 23.606643, totalSpots: 69, freeSpots: 40, sections: sections10, sectionImage: "Cluj.AndreiMuresanu.Section", accentColor: colours.randomElement()!)
 ]
 
 var dbParkLocations = [ParkLocation]()
@@ -40,9 +43,9 @@ var dbParkLocations = [ParkLocation]()
                      ParkLocation(name: "Andrei Muresanu", rID: "Cluj.AndreiMuresanu", latitude: 46.758449, longitude: 23.606643, totalSpots: 69, freeSpots: 40, sections: sections10, sectionImage: "Cluj.AndreiMuresanu.Section")
 ]*/
 var testParkLocations = [
-        ParkLocation(name: "Buna Ziua", rID: "Cluj.BunaZiua", latitude: 46.752207, longitude: 23.603324, totalSpots: 81, freeSpots: 42, sections: sections1, sectionImage: "Cluj.BunaZiua.Section"),
-        ParkLocation(name: "Airport", rID: "Cluj.Airport", latitude: 46.781864, longitude: 23.671744, totalSpots: 94, freeSpots: 51, sections: sections2, sectionImage: "Cluj.Airport.Section"),
-        ParkLocation(name: "Gheorgheni", rID: "Cluj.Gheorgheni", latitude: 46.767300, longitude: 23.622005, totalSpots: 49, freeSpots: 29, sections: sections8, sectionImage: "Cluj.Gheorgheni.Section"),
-        ParkLocation(name: "Manastur", rID: "Cluj.Manastur", latitude: 46.758061, longitude: 23.554228, totalSpots: 82, freeSpots: 39, sections: sections9, sectionImage: "Cluj.Manastur.Section"),
-        ParkLocation(name: "Andrei Muresanu", rID: "Cluj.AndreiMuresanu", latitude: 46.758449, longitude: 23.606643, totalSpots: 69, freeSpots: 40, sections: sections10, sectionImage: "Cluj.AndreiMuresanu.Section")
+        ParkLocation(name: "Buna Ziua", rID: "Cluj.BunaZiua", latitude: 46.752207, longitude: 23.603324, totalSpots: 81, freeSpots: 42, sections: sections1, sectionImage: "Cluj.BunaZiua.Section", accentColor: colours.randomElement()!),
+        ParkLocation(name: "Airport", rID: "Cluj.Airport", latitude: 46.781864, longitude: 23.671744, totalSpots: 94, freeSpots: 51, sections: sections2, sectionImage: "Cluj.Airport.Section", accentColor: colours.randomElement()!),
+        ParkLocation(name: "Gheorgheni", rID: "Cluj.Gheorgheni", latitude: 46.767300, longitude: 23.622005, totalSpots: 49, freeSpots: 29, sections: sections8, sectionImage: "Cluj.Gheorgheni.Section", accentColor: colours.randomElement()!),
+        ParkLocation(name: "Manastur", rID: "Cluj.Manastur", latitude: 46.758061, longitude: 23.554228, totalSpots: 82, freeSpots: 39, sections: sections9, sectionImage: "Cluj.Manastur.Section", accentColor: colours.randomElement()!),
+        ParkLocation(name: "Andrei Muresanu", rID: "Cluj.AndreiMuresanu", latitude: 46.758449, longitude: 23.606643, totalSpots: 69, freeSpots: 40, sections: sections10, sectionImage: "Cluj.AndreiMuresanu.Section", accentColor: colours.randomElement()!)
 ]

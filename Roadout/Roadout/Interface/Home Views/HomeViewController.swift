@@ -238,9 +238,8 @@ class HomeViewController: UIViewController {
             marker.title = parkLocation.name
             marker.infoWindowAnchor = CGPoint()
             //Snippet used for marker color coordination
-            let randomNr = [1, 2, 3, 4].randomElement()!
-            marker.snippet = "\(randomNr)"
-            marker.icon = UIImage(named: "Marker\(randomNr)")?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
+            marker.snippet = parkLocation.accentColor
+            marker.icon = UIImage(named: "Marker_\(parkLocation.accentColor)")?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
             marker.map = mapView
             markers.append(marker)
             
@@ -538,7 +537,6 @@ class HomeViewController: UIViewController {
         var index = 0
         for location in parkLocations {
             if location.name == selectedLocationName {
-                //selectedParkLocation = location
                 selectedParkLocationIndex = index
                 break
             }
@@ -571,7 +569,7 @@ class HomeViewController: UIViewController {
                 self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
                 imageView.contentMode = .scaleAspectFit
-                imageView.image = UIImage(named: "Marker" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
+                imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
                 self.selectedMarker.iconView?.addSubview(imageView)
                 
             }
@@ -936,7 +934,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         marker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 90))
         let imageView = UIImageView(frame: CGRect(x: (marker.iconView?.frame.width)!/2 - 29.25, y: (marker.iconView?.frame.height)! - 75, width: 58.5, height: 75))
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "SelectedMarker" + marker.snippet!)
+        imageView.image = UIImage(named: "SelectedMarker_" + marker.snippet!)
         imageView.layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         imageView.layer.frame = CGRect(x: (marker.iconView?.frame.width)!/2 - 29.25, y: (marker.iconView?.frame.height)! - 75, width: 58.5, height: 75)
         
@@ -949,19 +947,8 @@ extension HomeViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedBar && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
             selectedLocationName = marker.title!
-            let colorSnipper = Int(marker.snippet!)
-            switch colorSnipper {
-                case 1:
-                    selectedLocationColor = UIColor(named: "Main Yellow")!
-                case 2:
-                    selectedLocationColor = UIColor(named: "Dark Yellow")!
-                case 3:
-                    selectedLocationColor = UIColor(named: "Dark Orange")!
-                case 4:
-                    selectedLocationColor = UIColor(named: "Icons")!
-                default:
-                    selectedLocationColor = UIColor(named: "Main Yellow")!
-            }
+            let colorSnippet = marker.snippet!
+            selectedLocationColor = UIColor(named: colorSnippet)!
             selectedLocationCoord = marker.position
             if self.view.subviews.last != searchBar && self.view.subviews.last != titleLbl && self.view.subviews.last != mapView {
                 self.view.subviews.last?.removeFromSuperview()
@@ -970,7 +957,7 @@ extension HomeViewController: GMSMapViewDelegate {
                 self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
                 imageView.contentMode = .scaleAspectFit
-                imageView.image = UIImage(named: "Marker" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
+                imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
                 self.selectedMarker.iconView?.addSubview(imageView)
             }
             self.selectedMarker = marker

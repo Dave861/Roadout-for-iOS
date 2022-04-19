@@ -11,7 +11,6 @@ import CoreLocation
 class SearchViewController: UIViewController {
     
     var results = parkLocations
-    let colors = ["Main Yellow", "Redish", "Dark Yellow", "Icons", "Greyish", "Second Orange", "Dark Orange"]
     
     @IBOutlet weak var card: UIView!
     
@@ -186,7 +185,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.distanceLbl.text = "- km"
         }
         cell.numberLbl.text = "\(results[indexPath.row].freeSpots)"
-        let color = UIColor(named: colors.randomElement() ?? "Main Yellow")
+        let color = UIColor(named: results[indexPath.row].accentColor)!
         cell.numberLbl.textColor = color
         cell.spotsLbl.textColor = color
         return cell
