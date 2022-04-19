@@ -59,8 +59,7 @@ extension UnlockView: SlideButtonDelegate {
         if status == "Unlocked" {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
-            NotificationHelper.sharedInstance.cancelReservationNotification()
-            NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+            ReservationManager.sharedInstance.unlockReservation()
         }
     }
 }

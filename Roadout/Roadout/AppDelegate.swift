@@ -18,17 +18,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyDsBR6LpKv1fNOCDM7BILZ7oj5JmYlYy64")
         ConnectionManager.sharedInstance.observeReachability()
         
-        print(ReservationManager.sharedInstance.getReservationDate())
-        
-        if ReservationManager.sharedInstance.checkActiveReservation() {
-            if ReservationManager.sharedInstance.reservationDate > Date() {
-                NotificationCenter.default.post(name: .showActiveBarID, object: nil)
-                ReservationManager.sharedInstance.saveActiveReservation(true)
-            } else {
-                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
-                ReservationManager.sharedInstance.saveActiveReservation(false)
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
+            guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return true }
+            ReservationManager.sharedInstance.checkForReservation(Date(), userID: id as! String) { result in
+                switch result {
+                    case .success():
+                        if ReservationManager.sharedInstance.isReservationActive == 0 {
+                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                        } else {
+                            if showUnlockedBar {
+                                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+                                showUnlockedBar = false
+                            }
+                        }
+                    case .failure(let err):
+                        print(err)
+                }
             }
-        } 
+        }
         
         return true
     }

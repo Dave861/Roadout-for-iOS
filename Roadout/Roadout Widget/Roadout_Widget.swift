@@ -35,14 +35,14 @@ struct Provider: IntentTimelineProvider {
 
 struct PlaceholderView: View {
     var body: some View {
-        RoadoutView(date: Date(), spots1: 10, spots2: 10, location1: "Location", location2: "Location")
+        RoadoutView(date: Date(), spots1: 10, spots2: 10, location1: "Location 1", location2: "Location 2")
     }
 }
 struct WidgetEntryView: View {
     var entry: Provider.Entry
     
     var body: some View {
-        RoadoutView(date: Date(), spots1: parkLocations[entry.configuration.location1.rawValue-1].freeSpots, spots2: parkLocations[entry.configuration.location2.rawValue-1].freeSpots, location1: parkLocations[entry.configuration.location1.rawValue-1].name, location2: parkLocations[entry.configuration.location2.rawValue-1].name)
+        RoadoutView(date: Date(), spots1: entry.configuration.location1?.freeSpots as? Int ?? 999, spots2: entry.configuration.location2?.freeSpots as? Int ?? 999, location1: entry.configuration.location1?.locationName ?? "Not Found", location2: entry.configuration.location2?.locationName ?? "Not Found")
     }
 }
 

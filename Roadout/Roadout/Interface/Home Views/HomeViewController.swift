@@ -16,6 +16,7 @@ var returnToFind = false
 class HomeViewController: UIViewController {
 
     var mapView: GMSMapView!
+    var centerMapCoordinate: CLLocationCoordinate2D!
     let locationManager = CLLocationManager()
     let screenSize: CGRect = UIScreen.main.bounds
     var selectedMarker: GMSMarker!
@@ -71,7 +72,6 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
-                print("YESS")
             }
             self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-195-dif, width: self.screenSize.width - 26, height: 195)
             self.view.addSubview(self.expressPickView)
@@ -93,7 +93,6 @@ class HomeViewController: UIViewController {
             DispatchQueue.main.async {
                 if (UIDevice.current.hasNotch) {
                     dif = 49.0
-                    print("YESS")
                 }
                 self.findView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
                 print(self.view.frame.height)
@@ -138,7 +137,7 @@ class HomeViewController: UIViewController {
                 if success {
                     self.showFindCard()
                 } else {
-                    let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
                     let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alert.addAction(action)
                     alert.view.tintColor = UIColor(named: "DevBrown")
@@ -241,7 +240,6 @@ class HomeViewController: UIViewController {
             //Snippet used for marker color coordination
             let randomNr = [1, 2, 3, 4].randomElement()!
             marker.snippet = "\(randomNr)"
-            print("Marker\(randomNr)")
             marker.icon = UIImage(named: "Marker\(randomNr)")?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
             marker.map = mapView
             markers.append(marker)
@@ -266,12 +264,10 @@ class HomeViewController: UIViewController {
                     return
                 }
                 FunctionsManager.sharedInstance.findSpot(coord) { success in
-                    print("Im here")
                     if success {
-                        print("Im also here")
                         self.showFindCard()
                     } else {
-                        let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
                         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                         alert.addAction(action)
                         alert.view.tintColor = UIColor(named: "DevBrown")
@@ -345,9 +341,7 @@ class HomeViewController: UIViewController {
         AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
             switch result {
             case .success():
-                print("Yay we got user")
                 print(id)
-                //self.manageGettingDataScreen()
             case .failure(let err):
                 print(err)
                 self.userNotFoundAbort()
@@ -364,7 +358,6 @@ class HomeViewController: UIViewController {
         AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
             switch result {
             case .success():
-                print("Yay we got user")
                 print(id)
             case .failure(let err):
                 print(err)
@@ -492,7 +485,7 @@ class HomeViewController: UIViewController {
     func manageGettingData() {
         let sb = UIStoryboard(name: "Home", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "GetDataVC") as! GetDataViewController
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: false, completion: nil)
     }
     
     func userNotFoundAbort() {
@@ -506,13 +499,31 @@ class HomeViewController: UIViewController {
     @objc func updateLocation() {
         if #available(iOS 14.0, *) {
             if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                mapView.isMyLocationEnabled = true
+                if centerMapCoordinate == nil  {
+                    locationManager.startUpdatingLocation()
+                    mapView.isMyLocationEnabled = true
+                } else {
+                    let centerLocation = CLLocation(latitude: centerMapCoordinate.latitude, longitude: centerMapCoordinate.longitude)
+                    let cityLocation = CLLocation(latitude: 46.775351, longitude: 23.608280)
+                    if centerLocation.distance(from: cityLocation) >= 7000 {
+                        locationManager.startUpdatingLocation()
+                        mapView.isMyLocationEnabled = true
+                    }
+                }
             }
         } else {
             if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                mapView.isMyLocationEnabled = true
+                if centerMapCoordinate == nil  {
+                    locationManager.startUpdatingLocation()
+                    mapView.isMyLocationEnabled = true
+                } else {
+                    let centerLocation = CLLocation(latitude: centerMapCoordinate.latitude, longitude: centerMapCoordinate.longitude)
+                    let cityLocation = CLLocation(latitude: 46.775351, longitude: 23.608280)
+                    if centerLocation.distance(from: cityLocation) >= 7000 {
+                        locationManager.startUpdatingLocation()
+                        mapView.isMyLocationEnabled = true
+                    }
+                }
             }
         }
     }
@@ -546,7 +557,6 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
-                print("YESS")
             }
             self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-115-dif, width: self.screenSize.width - 26, height: 115)
             self.view.addSubview(self.resultView)
@@ -588,7 +598,6 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
-                print("YESS")
             }
             self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-110-dif, width: self.screenSize.width - 26, height: 110)
             self.view.addSubview(self.resultView)
@@ -616,7 +625,6 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
-                print("YESS")
             }
             self.sectionView.frame = CGRect(x: 13, y: self.screenSize.height-331-dif, width: self.screenSize.width - 26, height: 331)
             self.view.addSubview(self.sectionView)
@@ -644,7 +652,6 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
-                print("YESS")
             }
             self.spotView.frame = CGRect(x: 13, y: self.screenSize.height-318-dif, width: self.screenSize.width - 26, height: 318)
             self.view.addSubview(self.spotView)
@@ -672,7 +679,6 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
-                print("YESS")
             }
             self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
             self.view.addSubview(self.reserveView)
@@ -700,7 +706,6 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
-                print("YESS")
             }
             self.activeBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
             self.view.addSubview(self.activeBar)
@@ -728,7 +733,6 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
-                print("YESS")
             }
             self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
             self.view.addSubview(self.reservationView)
@@ -756,7 +760,6 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
-                print("YESS")
             }
             self.delayView.frame = CGRect(x: 13, y: self.screenSize.height-205-dif, width: self.screenSize.width - 26, height: 205)
             self.view.addSubview(self.delayView)
@@ -784,7 +787,6 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
-                print("YESS")
             }
             self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
             self.view.addSubview(self.reservationView)
@@ -975,6 +977,12 @@ extension HomeViewController: GMSMapViewDelegate {
             addResultCard()
         }
         return true
+    }
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        let latitude = mapView.camera.target.latitude
+        let longitude = mapView.camera.target.longitude
+        centerMapCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
    
 }

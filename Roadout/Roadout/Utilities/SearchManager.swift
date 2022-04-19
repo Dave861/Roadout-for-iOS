@@ -35,7 +35,6 @@ class SearchManager {
                 print(result.attributedFullText)
             }
             guard let firstResult = results.first else {
-                print("Nothing found")
                 completion(.failure(PlacesErrors.failedToFind))
                 return
             }

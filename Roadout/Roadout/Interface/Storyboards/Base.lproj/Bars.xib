@@ -154,14 +154,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bK2-6A-7M9">
-                    <rect key="frame" x="310.33333333333331" y="9" width="103.66666666666669" height="34"/>
+                    <rect key="frame" x="328.66666666666669" y="9" width="85.333333333333314" height="34"/>
                     <color key="tintColor" name="Brownish"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Directions">
+                    <buttonConfiguration key="configuration" style="plain" title="Options">
                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                     </buttonConfiguration>
                     <connections>
-                        <action selector="directionsTapped:" destination="IDh-ZS-uvV" eventType="touchUpInside" id="wSb-vM-hu7"/>
+                        <action selector="optionsTapped:" destination="IDh-ZS-uvV" eventType="touchUpInside" id="p8E-lh-Ffx"/>
                     </connections>
                 </button>
             </subviews>
@@ -178,7 +178,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="directionsBtn" destination="bK2-6A-7M9" id="rIv-RM-6zu"/>
+                <outlet property="optionsBtn" destination="bK2-6A-7M9" id="1Xg-fv-123"/>
             </connections>
             <point key="canvasLocation" x="100.00000000000001" y="274.72826086956525"/>
         </view>

@@ -179,7 +179,7 @@ class FindView: UIView {
         let interaction = INInteraction(intent: intent, response: nil)
         interaction.donate { err in
             if err == nil {
-                print("Great Success")
+                print("Donated Succesfully")
             } else {
                 print(String(describing: err?.localizedDescription))
             }

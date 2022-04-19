@@ -157,7 +157,6 @@ class SignInViewController: UIViewController {
     }
     
     func manageScreens() {
-        print("HEREee")
         center.getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
                 if #available(iOS 14.0, *) {

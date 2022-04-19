@@ -19,11 +19,23 @@ class NotificationHelper {
     func manageNotifications() {
         center.getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
-                print("Gooood")
+                print("Good")
             } else {
                 self.askNotificationPermission(currentNotification: "")
             }
         }
+    }
+    
+    func checkNotificationStatus() -> Bool {
+        var result: Bool!
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .denied {
+                result = false
+            } else {
+                result = true
+            }
+        }
+        return result
     }
     
     func askNotificationPermission(currentNotification: String, reminder: Reminder? = nil) {
@@ -84,7 +96,6 @@ class NotificationHelper {
             content.interruptionLevel = .timeSensitive
         }
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(timerSeconds), repeats: false)
-        print(timerSeconds)
         let request = UNNotificationRequest(identifier: "ro.roadout.reservationDone", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {

@@ -10,6 +10,8 @@
 		9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0357162727CC61002A9ED9 /* HomeViewController.swift */; };
 		9A06212728096C0700D69F56 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC566E527BE354200955F7D /* EntityManager.swift */; };
 		9A06212828096C0700D69F56 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC566E527BE354200955F7D /* EntityManager.swift */; };
+		9A06212A28096DB200D69F56 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9A06212928096DB200D69F56 /* Alamofire */; };
+		9A06212C28096DB700D69F56 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9A06212B28096DB700D69F56 /* Alamofire */; };
 		9A0631272775A92700E3AB5F /* GroupSpotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0631262775A92700E3AB5F /* GroupSpotsView.swift */; };
 		9A089E45272A7D78005B3FFE /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A089E44272A7D78005B3FFE /* AddReminderViewController.swift */; };
 		9A0A23292733D2D6007C1B08 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
@@ -40,6 +42,18 @@
 		9A300CE42789970C0038A085 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A300CE32789970C0038A085 /* DeleteAccountViewController.swift */; };
 		9A310783272A707100B1F84A /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A310782272A707100B1F84A /* RemindersViewController.swift */; };
 		9A310785272A708300B1F84A /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A310784272A708300B1F84A /* ReminderCell.swift */; };
+		9A397D3B280D4970003458BD /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6E7E6927563F3200E09B75 /* Intents.framework */; };
+		9A397D3E280D4970003458BD /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A397D3D280D4970003458BD /* IntentHandler.swift */; };
+		9A397D42280D4970003458BD /* RoadoutWidgetIntentHandler.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A397D3A280D4970003458BD /* RoadoutWidgetIntentHandler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9A397D46280D49A2003458BD /* WidgetConfig.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9AED6DB627E723A400B5004F /* WidgetConfig.intentdefinition */; };
+		9A397D47280D49DE003458BD /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A397D3D280D4970003458BD /* IntentHandler.swift */; };
+		9A397D48280D523D003458BD /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC566E527BE354200955F7D /* EntityManager.swift */; };
+		9A397D49280D523E003458BD /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC566E527BE354200955F7D /* EntityManager.swift */; };
+		9A397D4B280D5262003458BD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9A397D4A280D5262003458BD /* Alamofire */; };
+		9A397D4D280D5268003458BD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9A397D4C280D5268003458BD /* Alamofire */; };
+		9A397D4E280D5339003458BD /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
+		9A397D4F280D533B003458BD /* ParkSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799321277A0E410088E3FD /* ParkSection.swift */; };
+		9A397D50280D533D003458BD /* ParkSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799323277A0E460088E3FD /* ParkSpot.swift */; };
 		9A39B0CC272847FC008E7FD0 /* UserSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0CB272847FC008E7FD0 /* UserSettingsCell.swift */; };
 		9A39B0CE27284803008E7FD0 /* SpacerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0CD27284803008E7FD0 /* SpacerCell.swift */; };
 		9A39B0D02728480E008E7FD0 /* UpCornerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0CF2728480E008E7FD0 /* UpCornerCell.swift */; };
@@ -139,7 +153,6 @@
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
 		9AAB6E5B2778A2AF003F9A6F /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
 		9AAB6E5C2778A2B0003F9A6F /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
-		9AAB6E5D2778A312003F9A6F /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */; };
 		9AAB6E5E2778A319003F9A6F /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
 		9AAB6E5F2778A321003F9A6F /* UserPrefsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91D2731436300967417 /* UserPrefsUtils.swift */; };
 		9AAB6E602778A324003F9A6F /* UserPrefsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91D2731436300967417 /* UserPrefsUtils.swift */; };
@@ -199,6 +212,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9A397D40280D4970003458BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AC926DF272697F00054E453 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A397D39280D4970003458BD;
+			remoteInfo = RoadoutWidgetIntentHandler;
+		};
 		9A59B7622764A6B500BC0497 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AC926DF272697F00054E453 /* Project object */;
@@ -254,6 +274,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				9A397D42280D4970003458BD /* RoadoutWidgetIntentHandler.appex in Embed App Extensions */,
 				9A6E7EAE2756528800E09B75 /* Quick Reserve.appex in Embed App Extensions */,
 				9A7C1A142776035F0088B54A /* Roadout WidgetExtension.appex in Embed App Extensions */,
 				9A6E7EAB2756528800E09B75 /* Quick ReserveUI.appex in Embed App Extensions */,
@@ -332,6 +353,9 @@
 		9A300CE32789970C0038A085 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		9A310782272A707100B1F84A /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		9A310784272A708300B1F84A /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
+		9A397D3A280D4970003458BD /* RoadoutWidgetIntentHandler.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RoadoutWidgetIntentHandler.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A397D3D280D4970003458BD /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		9A397D3F280D4970003458BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A39B0CB272847FC008E7FD0 /* UserSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsCell.swift; sourceTree = "<group>"; };
 		9A39B0CD27284803008E7FD0 /* SpacerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerCell.swift; sourceTree = "<group>"; };
 		9A39B0CF2728480E008E7FD0 /* UpCornerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpCornerCell.swift; sourceTree = "<group>"; };
@@ -457,6 +481,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9A397D37280D4970003458BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A397D3B280D4970003458BD /* Intents.framework in Frameworks */,
+				9A397D4B280D5262003458BD /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9A59B75D2764A6B500BC0497 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -469,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A6E7E972756528800E09B75 /* Intents.framework in Frameworks */,
+				9A06212A28096DB200D69F56 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A6E7EA12756528800E09B75 /* IntentsUI.framework in Frameworks */,
+				9A06212C28096DB700D69F56 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +519,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A397D4D280D5268003458BD /* Alamofire in Frameworks */,
 				9A7C1A0B2776035E0088B54A /* SwiftUI.framework in Frameworks */,
 				9A7C1A092776035E0088B54A /* WidgetKit.framework in Frameworks */,
 			);
@@ -601,6 +637,15 @@
 				9A2D4BD22757883E0007EE2E /* FindView.swift */,
 			);
 			path = "Find Spot";
+			sourceTree = "<group>";
+		};
+		9A397D3C280D4970003458BD /* RoadoutWidgetIntentHandler */ = {
+			isa = PBXGroup;
+			children = (
+				9A397D3D280D4970003458BD /* IntentHandler.swift */,
+				9A397D3F280D4970003458BD /* Info.plist */,
+			);
+			path = RoadoutWidgetIntentHandler;
 			sourceTree = "<group>";
 		};
 		9A39B0C9272847C8008E7FD0 /* Cells */ = {
@@ -826,6 +871,7 @@
 				9A59B7592764A6B400BC0497 /* Roadout Watch */,
 				9A59B7642764A6B500BC0497 /* Roadout Watch WatchKit Extension */,
 				9A7C1A0C2776035E0088B54A /* Roadout Widget */,
+				9A397D3C280D4970003458BD /* RoadoutWidgetIntentHandler */,
 				9AC926E8272697F00054E453 /* Products */,
 				9A150810272BFA49008C083B /* Frameworks */,
 			);
@@ -840,6 +886,7 @@
 				9A59B7582764A6B400BC0497 /* Roadout.app */,
 				9A59B7602764A6B500BC0497 /* Roadout Watch WatchKit Extension.appex */,
 				9A7C1A072776035E0088B54A /* Roadout WidgetExtension.appex */,
+				9A397D3A280D4970003458BD /* RoadoutWidgetIntentHandler.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -943,6 +990,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9A397D39280D4970003458BD /* RoadoutWidgetIntentHandler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A397D43280D4970003458BD /* Build configuration list for PBXNativeTarget "RoadoutWidgetIntentHandler" */;
+			buildPhases = (
+				9A397D36280D4970003458BD /* Sources */,
+				9A397D37280D4970003458BD /* Frameworks */,
+				9A397D38280D4970003458BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoadoutWidgetIntentHandler;
+			packageProductDependencies = (
+				9A397D4A280D5262003458BD /* Alamofire */,
+			);
+			productName = RoadoutWidgetIntentHandler;
+			productReference = 9A397D3A280D4970003458BD /* RoadoutWidgetIntentHandler.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		9A59B7572764A6B400BC0497 /* Roadout Watch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A59B77A2764A6B600BC0497 /* Build configuration list for PBXNativeTarget "Roadout Watch" */;
@@ -973,6 +1040,8 @@
 			dependencies = (
 			);
 			name = "Roadout Watch WatchKit Extension";
+			packageProductDependencies = (
+			);
 			productName = "Roadout Watch WatchKit Extension";
 			productReference = 9A59B7602764A6B500BC0497 /* Roadout Watch WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
@@ -990,6 +1059,9 @@
 			dependencies = (
 			);
 			name = "Quick Reserve";
+			packageProductDependencies = (
+				9A06212928096DB200D69F56 /* Alamofire */,
+			);
 			productName = "Quick Reserve";
 			productReference = 9A6E7E962756528800E09B75 /* Quick Reserve.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -1007,6 +1079,9 @@
 			dependencies = (
 			);
 			name = "Quick ReserveUI";
+			packageProductDependencies = (
+				9A06212B28096DB700D69F56 /* Alamofire */,
+			);
 			productName = "Quick ReserveUI";
 			productReference = 9A6E7EA02756528800E09B75 /* Quick ReserveUI.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -1024,6 +1099,9 @@
 			dependencies = (
 			);
 			name = "Roadout WidgetExtension";
+			packageProductDependencies = (
+				9A397D4C280D5268003458BD /* Alamofire */,
+			);
 			productName = "Roadout WidgetExtension";
 			productReference = 9A7C1A072776035E0088B54A /* Roadout WidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -1045,6 +1123,7 @@
 				9A6E7EAD2756528800E09B75 /* PBXTargetDependency */,
 				9A59B7722764A6B600BC0497 /* PBXTargetDependency */,
 				9A7C1A132776035F0088B54A /* PBXTargetDependency */,
+				9A397D41280D4970003458BD /* PBXTargetDependency */,
 			);
 			name = Roadout;
 			packageProductDependencies = (
@@ -1072,9 +1151,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					9A397D39280D4970003458BD = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					9A59B7572764A6B400BC0497 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -1125,11 +1207,19 @@
 				9A59B7572764A6B400BC0497 /* Roadout Watch */,
 				9A59B75F2764A6B500BC0497 /* Roadout Watch WatchKit Extension */,
 				9A7C1A062776035E0088B54A /* Roadout WidgetExtension */,
+				9A397D39280D4970003458BD /* RoadoutWidgetIntentHandler */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9A397D38280D4970003458BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9A59B7562764A6B400BC0497 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1201,13 +1291,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9A397D36280D4970003458BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A397D4E280D5339003458BD /* ParkLocation.swift in Sources */,
+				9A397D50280D533D003458BD /* ParkSpot.swift in Sources */,
+				9A397D46280D49A2003458BD /* WidgetConfig.intentdefinition in Sources */,
+				9A397D4F280D533B003458BD /* ParkSection.swift in Sources */,
+				9A397D3E280D4970003458BD /* IntentHandler.swift in Sources */,
+				9A397D48280D523D003458BD /* EntityManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9A59B75C2764A6B500BC0497 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9A59B7682764A6B500BC0497 /* RoadoutApp.swift in Sources */,
 				9A799328277A0E870088E3FD /* ParkSpot.swift in Sources */,
-				9AAB6E5D2778A312003F9A6F /* ReservationManager.swift in Sources */,
 				9AF4BA2427787A7200F3C3B4 /* ParkLocation.swift in Sources */,
 				9A65C5F527804E140060ABCA /* NotificationNameCenter.swift in Sources */,
 				9AAB6E5C2778A2B0003F9A6F /* Reminder.swift in Sources */,
@@ -1270,10 +1372,12 @@
 			files = (
 				9A65C5F627804E150060ABCA /* NotificationNameCenter.swift in Sources */,
 				9A0D58D627770CC80093B3D3 /* ParkLocation.swift in Sources */,
+				9A397D49280D523E003458BD /* EntityManager.swift in Sources */,
 				9AED6DB427E723A400B5004F /* WidgetConfig.intentdefinition in Sources */,
 				9A7C1A0E2776035E0088B54A /* Roadout_Widget.swift in Sources */,
 				9A79932A277A0E880088E3FD /* ParkSpot.swift in Sources */,
 				9A799329277A0E880088E3FD /* ParkSection.swift in Sources */,
+				9A397D47280D49DE003458BD /* IntentHandler.swift in Sources */,
 				9AED6DBF27E7263E00B5004F /* WidgetLocalization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1381,6 +1485,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9A397D41280D4970003458BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A397D39280D4970003458BD /* RoadoutWidgetIntentHandler */;
+			targetProxy = 9A397D40280D4970003458BD /* PBXContainerItemProxy */;
+		};
 		9A59B7632764A6B500BC0497 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9A59B75F2764A6B500BC0497 /* Roadout Watch WatchKit Extension */;
@@ -1545,6 +1654,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9A397D44280D4970003458BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T5769DN25J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RoadoutWidgetIntentHandler;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ro.roadout.Roadout.RoadoutWidgetIntentHandler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9A397D45280D4970003458BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T5769DN25J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RoadoutWidgetIntentHandler;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ro.roadout.Roadout.RoadoutWidgetIntentHandler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		9A59B7742764A6B600BC0497 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1554,7 +1715,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout Watch.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1581,7 +1742,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout WatchRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1605,7 +1766,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1637,7 +1798,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit ExtensionRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1668,7 +1829,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1697,7 +1858,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUIRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1726,7 +1887,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick Reserve.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1755,7 +1916,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick ReserveRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1787,7 +1948,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1818,7 +1979,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1969,7 +2130,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2009,7 +2170,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2044,6 +2205,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9A397D43280D4970003458BD /* Build configuration list for PBXNativeTarget "RoadoutWidgetIntentHandler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A397D44280D4970003458BD /* Debug */,
+				9A397D45280D4970003458BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9A59B7792764A6B600BC0497 /* Build configuration list for PBXNativeTarget "Roadout Watch WatchKit Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2177,10 +2347,30 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9A06212928096DB200D69F56 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		9A06212B28096DB700D69F56 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		9A0BDACC2792C90500EB9CF8 /* SPPerspective */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9A0BDACB2792C90500EB9CF8 /* XCRemoteSwiftPackageReference "SPPerspective" */;
 			productName = SPPerspective;
+		};
+		9A397D4A280D5262003458BD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		9A397D4C280D5268003458BD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		9A6E1C362731324B002E29F9 /* BarChartKit-static */ = {
 			isa = XCSwiftPackageProductDependency;

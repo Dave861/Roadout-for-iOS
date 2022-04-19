@@ -46,7 +46,6 @@ class PermissionsViewController: UIViewController {
     }
     
     @IBAction func skipTapped(_ sender: Any) {
-        print("Skipped")
         UserDefaultsSuite.set(false, forKey: "ro.roadout.reservationNotificationsEnabled")
         UserDefaultsSuite.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
         let generator = UIImpactFeedbackGenerator(style: .medium)
@@ -72,7 +71,6 @@ class PermissionsViewController: UIViewController {
     func manageNotifications() {
         center.getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
-                print("We good")
                 self.permissionCounter += 1
                 if self.permissionCounter >= 2 {
                     let sb = UIStoryboard(name: "Home", bundle: nil)
@@ -90,11 +88,9 @@ class PermissionsViewController: UIViewController {
         if #available(iOS 15.0, *) {
             center.requestAuthorization(options: [.alert, .sound, .timeSensitive]) { granted, error in
                 if granted {
-                    print("Granted")
                     self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reservationNotificationsEnabled")
                     self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reminderNotificationsEnabled")
                 } else {
-                    print("Bad Luck")
                     self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reservationNotificationsEnabled")
                     self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
                 }
@@ -102,11 +98,9 @@ class PermissionsViewController: UIViewController {
         } else {
             center.requestAuthorization(options: [.alert, .sound]) { granted, error in
                 if granted {
-                    print("Granted")
                     self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reservationNotificationsEnabled")
                     self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reminderNotificationsEnabled")
                 } else {
-                    print("Bad Luck")
                     self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reservationNotificationsEnabled")
                     self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
                 }
@@ -119,7 +113,6 @@ class PermissionsViewController: UIViewController {
             if locationManager!.authorizationStatus != .authorizedWhenInUse && locationManager!.authorizationStatus != .authorizedAlways {
                 locationManager?.requestWhenInUseAuthorization()
             } else {
-                print("Yesyees")
                 self.permissionCounter += 1
                 if self.permissionCounter >= 2 {
                     let sb = UIStoryboard(name: "Home", bundle: nil)
@@ -156,7 +149,7 @@ extension PermissionsViewController: CLLocationManagerDelegate {
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
                 if CLLocationManager.isRangingAvailable() {
-                    print("YESS")
+                    print("CLLocationManager ranging is available")
                 }
             }
         }

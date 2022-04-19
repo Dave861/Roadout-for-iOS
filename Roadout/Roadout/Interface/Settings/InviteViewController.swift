@@ -35,7 +35,7 @@ class InviteViewController: UIViewController {
         generator.impactOccurred()
         let textToShare = [linkLbl.text]
         let activityViewController = UIActivityViewController(activityItems: textToShare as [Any], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
     }
     

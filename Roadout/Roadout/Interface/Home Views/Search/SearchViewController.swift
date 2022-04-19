@@ -35,20 +35,6 @@ class SearchViewController: UIViewController {
     @IBAction func moreTapped(_ sender: Any) {
         let alert = UIAlertController(title: "", message: "What would you like to do?".localized(), preferredStyle: .actionSheet)
         
-        let findAction = UIAlertAction(title: "Find Spot".localized(), style: .default) { action in
-            /*guard currentLocationCoord != nil else { return }
-            FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
-                if success {
-                    self.dismiss(animated: false, completion: nil)
-                    NotificationCenter.default.post(name: .showFindCardID, object: nil)
-                } else {
-                    //MANAGE
-                }
-            }*/
-
-        }
-        findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
-        
         let expressAction = UIAlertAction(title: "Express Reserve".localized(), style: .default) { action in
             self.dismiss(animated: false, completion: nil)
             NotificationCenter.default.post(name: .addExpressPickViewID, object: nil)
@@ -58,7 +44,6 @@ class SearchViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
         cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
         
-        alert.addAction(findAction)
         alert.addAction(expressAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
@@ -66,18 +51,6 @@ class SearchViewController: UIViewController {
     
     var menuItems: [UIAction] {
         return [
-            UIAction(title: "Find Spot".localized(), image: UIImage(systemName: "loupe"), handler: { (_) in
-                
-               /* guard currentLocationCoord != nil else { return }
-                FunctionsManager.sharedInstance.findSpot(currentLocationCoord!) { success in
-                    if success {
-                        self.dismiss(animated: false, completion: nil)
-                        NotificationCenter.default.post(name: .showFindCardID, object: nil)
-                    } else {
-                        //MANAGE
-                    }
-                }*/
-            }),
             UIAction(title: "Express Reserve".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
                 self.dismiss(animated: false, completion: nil)
                 NotificationCenter.default.post(name: .addExpressPickViewID, object: nil)

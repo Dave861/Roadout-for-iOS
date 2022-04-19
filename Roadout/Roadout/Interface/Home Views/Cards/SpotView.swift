@@ -9,6 +9,8 @@ import UIKit
 import SPAlert
 import PusherSwift
 
+var selectedSpotID: String!
+
 class SpotView: UIView, PusherDelegate {
 
     var pusher: Pusher!
@@ -234,10 +236,13 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let cell = collectionView.cellForItem(at: indexPath) as! SpotCell
         
         let index = (indexPath[0])*collectionView.numberOfItems(inSection: 0) + indexPath[1]
         updateInfo(spotState: parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state)
+        
+        selectedSpotID = parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].rID
         
         switch parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state {
             case 0:

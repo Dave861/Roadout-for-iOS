@@ -84,8 +84,6 @@ class EntityManager {
         let params : Parameters = ["id":section]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Parking/GetSectionInf.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print("TRYING")
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 completion(.failure(EntityErrors.databaseFailure))
                 return

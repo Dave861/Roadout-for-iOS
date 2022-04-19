@@ -81,8 +81,6 @@ class ResultView: UIView {
                 }
             }
         }
-        //selectedParkLocation = parkLocations[selectedParkLocationIndex]
-        print("Made it here")
     }
 
 }

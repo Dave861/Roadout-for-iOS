@@ -33,7 +33,11 @@ class NotificationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         seeSettingsBtn.setTitle("", for: .normal)
-        seeSettingsLbl.text = "Notifications are enabled. See settings".localized()
+        if NotificationHelper.sharedInstance.checkNotificationStatus() {
+            seeSettingsLbl.text = "Notifications are enabled. See settings".localized()
+        } else {
+            seeSettingsLbl.text = "Notifications are disabled. See settings".localized()
+        }
         seeSettingsLbl.set(textColor: UIColor(named: "Redish")!, range: seeSettingsLbl.range(after: ". "))
         seeSettingsLbl.set(font: .systemFont(ofSize: 18.0, weight: .medium), range: seeSettingsLbl.range(after: ". "))
         

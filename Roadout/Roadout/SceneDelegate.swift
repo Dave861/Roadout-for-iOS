@@ -21,9 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               window?.rootViewController = vc
               window?.makeKeyAndVisible()
               let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-            UserManager.sharedInstance.getUserName(id) { result in
-                print(result)
-            }
+              UserManager.sharedInstance.getUserName(id) { result in
+                 print(result)
+              }
         }
         
         guard let _ = (scene as? UIWindowScene) else { return }
@@ -38,33 +38,48 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         NotificationCenter.default.post(name: .updateLocationID, object: nil)
-        print(ReservationManager.sharedInstance.getReservationDate())
-          
-          if ReservationManager.sharedInstance.checkActiveReservation() {
-              if ReservationManager.sharedInstance.reservationDate > Date() {
-                  NotificationCenter.default.post(name: .showActiveBarID, object: nil)
-                  ReservationManager.sharedInstance.saveActiveReservation(true)
-              } else {
-                  NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
-                  ReservationManager.sharedInstance.saveActiveReservation(false)
-              }
-          }
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
+            guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
+            ReservationManager.sharedInstance.checkForReservation(Date(), userID: id as! String) { result in
+                switch result {
+                    case .success():
+                        if ReservationManager.sharedInstance.isReservationActive == 0 {
+                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                        } else {
+                            if showUnlockedBar {
+                                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+                                showUnlockedBar = false
+                            }
+                        }
+                    case .failure(let err):
+                        print(err)
+                }
+            }
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-        print(ReservationManager.sharedInstance.getReservationDate())
-        ReservationManager.sharedInstance.saveReservationDate((ReservationManager.sharedInstance.reservationDate))
+
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        print(ReservationManager.sharedInstance.getReservationDate())
-        if ReservationManager.sharedInstance.checkActiveReservation() {
-            if ReservationManager.sharedInstance.reservationDate > Date() {
-                NotificationCenter.default.post(name: .showActiveBarID, object: nil)
-                ReservationManager.sharedInstance.saveActiveReservation(true)
-            } else {
-                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
-                ReservationManager.sharedInstance.saveActiveReservation(false)
+        NotificationCenter.default.post(name: .updateLocationID, object: nil)
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
+            guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
+            ReservationManager.sharedInstance.checkForReservation(Date(), userID: id as! String) { result in
+                switch result {
+                    case .success():
+                        if ReservationManager.sharedInstance.isReservationActive == 0 {
+                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                        } else {
+                            if showUnlockedBar {
+                                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+                                showUnlockedBar = false
+                            }
+                        }
+                    case .failure(let err):
+                        print(err)
+                }
             }
         }
     }

@@ -10,65 +10,73 @@ import Intents
 import CoreLocation
 
 public class QuickReserveIntentHandler: NSObject, QuickReserveIntentHandling {
-    
-    var intentHandled = false
-    
+        
     var locationManager: CLLocationManager?
 
     public func confirm(intent: QuickReserveIntent, completion: @escaping (QuickReserveIntentResponse) -> Void) {
-        
-        if parkLocations.count < 10 {
-            self.downloadCityData()
-        }
-        
-        if checkReservation() {
-            completion(QuickReserveIntentResponse(code: .reservationActive, userActivity: nil))
-        }
-        
-        DispatchQueue.main.async {
-            self.locationManager = CLLocationManager()
-            self.locationManager?.delegate = self
-            self.locationManager?.startUpdatingLocation()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                if self.locationManager?.location != nil {
-                    FunctionsManager.sharedInstance.findSpot(self.locationManager!.location!.coordinate) { success in
-                        if success {
-                            UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundLocation.name, forKey: "ro.roadout.Roadout.SiriName")
-                            UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundSection.name, forKey: "ro.roadout.Roadout.SiriSection")
-                            UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundSpot.number, forKey: "ro.roadout.Roadout.SiriSpot")
-                            completion(QuickReserveIntentResponse(code: .ready, userActivity: nil))
-                        } else {
-                            completion(QuickReserveIntentResponse(code: .noSpotFound, userActivity: nil))
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
+            if parkLocations.count < 10 {
+                self.downloadCityData()
+            }
+            
+            guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
+            ReservationManager.sharedInstance.checkForReservation(Date(), userID: id as! String) { result in
+                switch result {
+                    case .success():
+                        if ReservationManager.sharedInstance.isReservationActive == 0 {
+                            completion(QuickReserveIntentResponse(code: .reservationActive, userActivity: nil))
                         }
-                    }
-                } else {
-                    completion(QuickReserveIntentResponse(code: .locationDisabled, userActivity: nil))
+                    case .failure(let err):
+                        print(err)
+                        completion(QuickReserveIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil))
                 }
             }
+            
+            FunctionsManager.sharedInstance.foundSpot = nil
+            DispatchQueue.main.async {
+                self.locationManager = CLLocationManager()
+                self.locationManager?.delegate = self
+                self.locationManager?.startUpdatingLocation()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    if self.locationManager?.location != nil {
+                        FunctionsManager.sharedInstance.findSpot(self.locationManager!.location!.coordinate) { success in
+                            if success {
+                                UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundLocation.name, forKey: "ro.roadout.Roadout.SiriName")
+                                UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundSection.name, forKey: "ro.roadout.Roadout.SiriSection")
+                                UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundSpot.number, forKey: "ro.roadout.Roadout.SiriSpot")
+                                completion(QuickReserveIntentResponse(code: .ready, userActivity: nil))
+                            } else {
+                                completion(QuickReserveIntentResponse(code: .noSpotFound, userActivity: nil))
+                            }
+                        }
+                    } else {
+                        completion(QuickReserveIntentResponse(code: .locationDisabled, userActivity: nil))
+                    }
+                }
+            }
+        } else {
+            completion(QuickReserveIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil))
         }
     }
 
     public func handle(intent: QuickReserveIntent, completion: @escaping (QuickReserveIntentResponse) -> Void) {
-            reserveSpot()
             locationManager?.stopUpdatingLocation()
             timerSeconds = 15*60
-            if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
-                NotificationHelper.sharedInstance.scheduleReservationNotification()
+            let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+            ReservationManager.sharedInstance.makeReservation(Date(), time: 15, spotID: FunctionsManager.sharedInstance.foundSpot.rID, payment: 10, userID: id) { result in
+                switch result {
+                    case .success():
+                        print("WE RESERVED")
+                        completion(QuickReserveIntentResponse(code: .success, userActivity: nil))
+                    case .failure(let err):
+                        print("err is here: \(err)")
+                        completion(QuickReserveIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil))
+                }
             }
             UserDefaults.roadout?.removeObject(forKey: "ro.roadout.Roadout.SiriName")
             UserDefaults.roadout?.removeObject(forKey: "ro.roadout.Roadout.SiriSection")
             UserDefaults.roadout?.removeObject(forKey: "ro.roadout.Roadout.SiriSpot")
-            completion(QuickReserveIntentResponse(code: .success, userActivity: nil))
        }
-    
-    func checkReservation() -> Bool {
-        return ReservationManager.sharedInstance.checkActiveReservation()
-    }
-    
-    func reserveSpot() {
-        ReservationManager.sharedInstance.saveReservationDate(Date().addingTimeInterval(TimeInterval(900)))
-        ReservationManager.sharedInstance.saveActiveReservation(true)
-    }
     
     func downloadCityData() {
         parkLocations = testParkLocations //will empty here
@@ -79,7 +87,6 @@ public class QuickReserveIntentHandler: NSObject, QuickReserveIntentHandling {
                     EntityManager.sharedInstance.getParkSections(dbParkLocations[index].rID) { res in
                         switch res {
                             case .success():
-                                print("YAYAY")
                                 dbParkLocations[index].sections = dbParkSections
                                 parkLocations.append(dbParkLocations[index])
                             case .failure(let err):
@@ -105,7 +112,6 @@ extension QuickReserveIntentHandler: CLLocationManagerDelegate {
 
         if locations.last != nil {
             let location = locations.last
-            print("Here2")
             print("location:: \(location!.coordinate)")
         }
 

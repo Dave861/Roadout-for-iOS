@@ -18,6 +18,7 @@ class ActiveView: UIView {
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
+        self.addObs()
         self.layer.cornerRadius = 12.0
         moreBtn.setTitle("", for: .normal)
         
@@ -31,7 +32,18 @@ class ActiveView: UIView {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        self.timerLbl.text = dateFormatter.string(from: ReservationManager.sharedInstance.getReservationDate())
+        self.timerLbl.text = dateFormatter.string(from: ReservationManager.sharedInstance.reservationEndDate)
+    }
+    
+    func addObs() {
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTimeLbl), name: .updateReservationTimeLabelID, object: nil)
+    }
+    
+    @objc func updateTimeLbl() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        self.timerLbl.text = dateFormatter.string(from: ReservationManager.sharedInstance.reservationEndDate)
     }
     
     

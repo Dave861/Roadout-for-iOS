@@ -42,7 +42,6 @@ class UserManager {
         let params : Parameters = ["id":id,"name":name]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Authentification/UpdateName.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))
@@ -81,7 +80,6 @@ class UserManager {
         let params : Parameters = ["id":id,"oldPsw":hashedOldPswd,"newPsw":hashedNewPswd]
     
         Alamofire.Session.default.request("https://www.roadout.ro/Authentification/UpdatePassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))
@@ -119,7 +117,6 @@ class UserManager {
         let params : Parameters = ["email":email,"password":hashedPswd]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Authentification/DeleteAccount.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))
@@ -163,7 +160,6 @@ class UserManager {
         let params : Parameters = ["id":id]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Authentification/GetUserData.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))
@@ -204,7 +200,6 @@ class UserManager {
         let params : Parameters = ["email":email]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Authentification/ForgotPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))
@@ -245,7 +240,7 @@ class UserManager {
         
         var email = UserManager.sharedInstance.userEmail
         if email == "" {
-            email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail") ?? "WHAAAAAAAAAT"
+            email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail") ?? "Impossible."
         }
         print(email)
         print(password)
@@ -254,7 +249,6 @@ class UserManager {
         let params : Parameters = ["email":email,"psw":hashedPswd]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Authentification/ResetPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))

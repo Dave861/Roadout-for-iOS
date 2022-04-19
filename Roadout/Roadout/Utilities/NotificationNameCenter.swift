@@ -52,4 +52,5 @@ extension Notification.Name {
     static let reloadUserNameID = Notification.Name("ro.roadout.Roadout.reloadUserNameID")
     static let updateLocationID = Notification.Name("ro.roadout.Roadout.updateLocationID")
     static let addMarkersID = Notification.Name("ro.roadout.Roadout.addMarkersID")
+    static let updateReservationTimeLabelID = Notification.Name("ro.roadout.Roadout.updateReservationTimeLabelID")
 }

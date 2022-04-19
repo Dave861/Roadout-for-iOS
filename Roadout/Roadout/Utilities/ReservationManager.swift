@@ -6,72 +6,262 @@
 //
 
 import Foundation
+import Alamofire
 
-var timerSeconds = 0
+var timerSeconds = 0 //Used to help with notifications
+var showUnlockedBar = false
 
 class ReservationManager {
     
     static let sharedInstance = ReservationManager()
     
-    let showUnlockedBarID = "ro.roadout.Roadout.showUnlockedBarID"
-    let returnToSearchBarID = "ro.roadout.Roadout.returnToSearchBarID"
+    var reservationTimer: Timer!
     
-    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
+    enum ReservationErrors: Error {
+        case databaseFailure
+        case errorWithJson
+        case networkError
+        case unknownError
+        case spotAlreadyTaken
+    }
     
-    var reservationDate: Date!
+    var callResult: String!
+    var isReservationActive = 2 //2 for not assigned, 1 is false, 0 is true
+    var reservationEndDate = Date()
+    var delayWasMade = false
+  
     
-    func getReservationDate() -> Date {
-        reservationDate = UserDefaultsSuite.object(forKey: "ro.roadout.Roadout.reservationDate") as? Date ?? Date()
+    func makeReservation(_ date: Date, time: Int, spotID: String, payment: Int, userID: String, completion: @escaping(Result<Void, Error>) -> Void) {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let convertedDate = dateFormatter.string(from: date)
+        let params : Parameters = ["date": convertedDate, "time": "\(time)", "spotID": spotID, "payment": "\(payment)", "userID": userID]
         
-        if reservationDate < Date() {
-            saveActiveReservation(false)
-        }
-        
-        return reservationDate
-    }
-    
-    func saveReservationDate(_ date: Date) {
-        UserDefaultsSuite.set(date, forKey: "ro.roadout.Roadout.reservationDate")
-    }
-    
-    func checkActiveReservation() -> Bool {
-        return UserDefaultsSuite.bool(forKey: "ro.roadout.Roadout.reservationExists")
-    }
-    
-    func saveActiveReservation(_ value: Bool) {
-        UserDefaultsSuite.set(value, forKey: "ro.roadout.Roadout.reservationExists")
-        if value == true {
-            let timer = Timer(fireAt: getReservationDate(), interval: 0, target: self, selector: #selector(finishReservation), userInfo: nil, repeats: false)
-            DispatchQueue.main.async {
-                RunLoop.main.add(timer, forMode: .common)
+        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/InsertReservation.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            guard response.value != nil else {
+                completion(.failure(ReservationErrors.databaseFailure))
+                return
+            }
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
+                    self.callResult = (jsonArray["status"] as! String)
+                    if self.callResult == "Success" {
+                        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
+                            NotificationHelper.sharedInstance.scheduleReservationNotification()
+                        }
+                        self.reservationEndDate = date.addingTimeInterval(TimeInterval(time*60))
+                        NotificationCenter.default.post(name: .showPaidBarID, object: nil)
+                        self.reservationTimer = Timer(fireAt: date.addingTimeInterval(TimeInterval(time*60)), interval: 0, target: self, selector: #selector(self.endReservation), userInfo: nil, repeats: false)
+                        DispatchQueue.main.async {
+                            RunLoop.main.add(self.reservationTimer, forMode: .common)
+                        }
+                        completion(.success(()))
+                    } else {
+                        print(jsonArray["status"]!)
+                        completion(.failure(ReservationErrors.spotAlreadyTaken))
+                    }
+                }
+            } catch let error as NSError {
+                print(error)
+
+                completion(.failure(ReservationErrors.errorWithJson))
             }
         }
     }
     
-    @objc func finishReservation() {
-        if UserDefaultsSuite.bool(forKey: "ro.roadout.Roadout.reservationDelayed") == false {
-            if checkActiveReservation() {
-                saveActiveReservation(false)
-                saveReservationDate(Date())
-                prepareForReturn()
-                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+    func checkForReservation(_ date: Date, userID: String, completion: @escaping(Result<Void, Error>) -> Void) {
+        let _headers: HTTPHeaders = ["Content-Type":"application/json"]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let convertedDate = dateFormatter.string(from: date)
+        let params: Parameters = ["date": convertedDate, "userID": userID]
+        
+        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/CheckEndDate.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            guard response.value != nil else {
+                completion(.failure(ReservationErrors.databaseFailure))
+                self.isReservationActive = 2
+                return
             }
-        } else {
-            UserDefaultsSuite.set(false, forKey: "ro.roadout.Roadout.reservationDelayed")
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
+                    self.callResult = (jsonArray["status"] as! String)
+                    if self.callResult == "Success" {
+                        if jsonArray["message"] as! String == "active" {
+                            self.isReservationActive = 0
+                            if self.reservationTimer == nil || self.reservationTimer.isValid == false {
+                                let formattedEndDate = jsonArray["endDate"] as! String
+                                let convertedEndDate = dateFormatter.date(from: formattedEndDate)
+                                self.reservationEndDate = convertedEndDate!
+                                self.reservationTimer = Timer(fireAt: convertedEndDate!, interval: 0, target: self, selector: #selector(self.endReservation), userInfo: nil, repeats: false)
+                                DispatchQueue.main.async {
+                                    RunLoop.main.add(self.reservationTimer, forMode: .common)
+                                }
+                                NotificationCenter.default.post(name: .updateReservationTimeLabelID, object: nil)
+                            }
+                        } else if jsonArray["message"] as! String == "not active" {
+                            self.isReservationActive = 1
+                        } else if jsonArray["message"] as! String == "canceled" {
+                            self.isReservationActive = 1
+                        } else if jsonArray["message"] as! String == "unlocked" {
+                            self.isReservationActive = 1
+                        } else {
+                            self.isReservationActive = 2
+                        }
+                        completion(.success(()))
+                    } else {
+                        print(jsonArray["status"]!)
+                        completion(.failure(ReservationErrors.unknownError))
+                        self.isReservationActive = 2
+                    }
+                }
+            } catch let error as NSError {
+                print(error)
+                completion(.failure(ReservationErrors.errorWithJson))
+                self.isReservationActive = 2
+            }
         }
     }
     
-    func manageDelay() {
-        UserDefaultsSuite.set(true, forKey: "ro.roadout.Roadout.reservationDelayed")
+    func delayReservation(_ date: Date, minutes: Int, userID: String, completion: @escaping(Result<Void, Error>) -> Void) {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let convertedDate = dateFormatter.string(from: date)
+        let params : Parameters = ["date": convertedDate, "minutes":"\(minutes)", "userID": userID]
+        
+        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/DelayReservation.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            guard response.value != nil else {
+                completion(.failure(ReservationErrors.databaseFailure))
+                return
+            }
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
+                    self.callResult = (jsonArray["status"] as! String)
+                    if self.callResult == "Success" {
+                        if self.reservationTimer != nil {
+                            self.reservationTimer.invalidate()
+                        }
+                        let oldEndDate = jsonArray["endDate"] as! String
+                        let convertedOldEndDate = dateFormatter.date(from: oldEndDate)!
+                        let newEndDate = convertedOldEndDate.addingTimeInterval(TimeInterval(minutes*60))
+                        print(newEndDate)
+                        self.reservationEndDate = newEndDate
+                        self.reservationTimer = Timer(fireAt: newEndDate, interval: 0, target: self, selector: #selector(self.endReservation), userInfo: nil, repeats: false)
+                        DispatchQueue.main.async {
+                            RunLoop.main.add(self.reservationTimer, forMode: .common)
+                        }
+                        timerSeconds = Int(newEndDate.timeIntervalSinceNow)
+                        NotificationHelper.sharedInstance.cancelReservationNotification()
+                        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
+                            NotificationHelper.sharedInstance.scheduleReservationNotification()
+                        }
+                        NotificationCenter.default.post(name: .showPaidBarID, object: nil)
+                        NotificationCenter.default.post(name: .updateReservationTimeLabelID, object: nil)
+                        completion(.success(()))
+                    } else {
+                        print(jsonArray["status"]!)
+                        completion(.failure(ReservationErrors.unknownError))
+                    }
+                }
+            } catch let error as NSError {
+                print(error)
+                completion(.failure(ReservationErrors.errorWithJson))
+            }
+        }
+        
     }
     
-    func prepareForReturn() {
-        let timer = Timer(fireAt: Date().addingTimeInterval(TimeInterval(300)), interval: 0, target: self, selector: #selector(makeReturn), userInfo: nil, repeats: false)
-        RunLoop.main.add(timer, forMode: .common)
+    func unlockReservation() {
+        //Do this on success
+        if self.reservationTimer != nil {
+            self.reservationTimer.invalidate()
+        }
+        NotificationHelper.sharedInstance.cancelReservationNotification()
+        NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
     }
     
-    @objc func makeReturn() {
-        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+    func cancelReservation(_ userID: String, completion: @escaping(Result<Void, Error>) -> Void) {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["userID": userID]
+        
+        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/CancelReservation.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            guard response.value != nil else {
+                completion(.failure(ReservationErrors.databaseFailure))
+                return
+            }
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
+                    self.callResult = (jsonArray["status"] as! String)
+                    if self.callResult == "Success" {
+                        if self.reservationTimer != nil {
+                            self.reservationTimer.invalidate()
+                        }
+                        NotificationHelper.sharedInstance.cancelReservationNotification()
+                        NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
+                        completion(.success(()))
+                    } else {
+                        print(jsonArray["status"]!)
+                        completion(.failure(ReservationErrors.unknownError))
+                    }
+                }
+            } catch let error as NSError {
+                print(error)
+                completion(.failure(ReservationErrors.errorWithJson))
+            }
+        }
+        
+    }
+    
+    func checkReservationWasDelayed(_ userID: String, completion: @escaping(Result<Void, Error>) -> Void) {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["userID": userID]
+        
+        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/CheckDelay.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            guard response.value != nil else {
+                completion(.failure(ReservationErrors.databaseFailure))
+                return
+            }
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
+                    self.callResult = (jsonArray["status"] as! String)
+                    if self.callResult == "Success" {
+                        if jsonArray["message"] as! String == "Delay was not made" {
+                            self.delayWasMade = false
+                        } else {
+                            self.delayWasMade = true
+                        }
+                        completion(.success(()))
+                    } else {
+                        print(jsonArray["status"]!)
+                        completion(.failure(ReservationErrors.unknownError))
+                    }
+                }
+            } catch let error as NSError {
+                print(error)
+                completion(.failure(ReservationErrors.errorWithJson))
+            }
+        }
+    }
+    
+    @objc func endReservation() {
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        ReservationManager.sharedInstance.checkForReservation(Date(), userID: id) { result in
+            switch result {
+                case .success():
+                    if ReservationManager.sharedInstance.isReservationActive == 1 {
+                        NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+                        showUnlockedBar = true
+                    }
+                case .failure(let err):
+                    print(err)
+            }
+        }
     }
     
 }

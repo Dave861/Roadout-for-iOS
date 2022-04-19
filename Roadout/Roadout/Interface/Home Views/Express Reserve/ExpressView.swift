@@ -40,13 +40,18 @@ class ExpressView: UIView {
         generator.impactOccurred()
         
         timerSeconds = Int(slider.value*60)
-        ReservationManager.sharedInstance.saveReservationDate(Date().addingTimeInterval(TimeInterval(timerSeconds)))
-        ReservationManager.sharedInstance.saveActiveReservation(true)
         
-        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
-            NotificationHelper.sharedInstance.scheduleReservationNotification()
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        ReservationManager.sharedInstance.makeReservation(Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id) { result in
+            switch result {
+                case .success():
+                    print("WE RESERVEDDDDD")
+                    selectedSpotID = nil
+                case .failure(let err):
+                    print(err)
+                    self.manageServerSideErrors(error: err)
+            }
         }
-        NotificationCenter.default.post(name: .showPaidBarID, object: nil)
     }
     
     @IBAction func payMainCard(_ sender: Any) {
@@ -54,13 +59,18 @@ class ExpressView: UIView {
         generator.impactOccurred()
         
         timerSeconds = Int(slider.value*60)
-        ReservationManager.sharedInstance.saveReservationDate(Date().addingTimeInterval(TimeInterval(timerSeconds)))
-        ReservationManager.sharedInstance.saveActiveReservation(true)
         
-        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
-            NotificationHelper.sharedInstance.scheduleReservationNotification()
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        ReservationManager.sharedInstance.makeReservation(Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id) { result in
+            switch result {
+                case .success():
+                    print("WE RESERVEDDDDD")
+                    selectedSpotID = nil
+                case .failure(let err):
+                    print(err)
+                    self.manageServerSideErrors(error: err)
+            }
         }
-        NotificationCenter.default.post(name: .showPaidBarID, object: nil)
     }
     
     let applePayTitle = NSAttributedString(string: " Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
@@ -96,6 +106,47 @@ class ExpressView: UIView {
 
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Express", bundle: nil).instantiate(withOwner: nil, options: nil)[1] as! UIView
+    }
+    
+    func manageServerSideErrors(error: Error) {
+        switch error {
+        case ReservationManager.ReservationErrors.spotAlreadyTaken:
+                let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Sorry, the 60 seconds have passed and it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                self.parentViewController().present(alert, animated: true, completion: nil)
+            case ReservationManager.ReservationErrors.networkError:
+                let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                self.parentViewController().present(alert, animated: true, completion: nil)
+            case ReservationManager.ReservationErrors.databaseFailure:
+                let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                self.parentViewController().present(alert, animated: true, completion: nil)
+            case ReservationManager.ReservationErrors.unknownError:
+                let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                self.parentViewController().present(alert, animated: true, completion: nil)
+            case ReservationManager.ReservationErrors.errorWithJson:
+                let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                self.parentViewController().present(alert, animated: true, completion: nil)
+            default:
+                let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                self.parentViewController().present(alert, animated: true, completion: nil)
+        }
     }
 
 }

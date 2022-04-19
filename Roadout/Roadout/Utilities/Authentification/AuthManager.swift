@@ -35,7 +35,6 @@ class AuthManager {
         let params : Parameters = ["email":email]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Authentification/VerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(AuthErrors.databaseFailure))
@@ -92,7 +91,6 @@ class AuthManager {
         let params : Parameters = ["name":name,"email":email,"password":hashedPswd]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Authentification/userRegister.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(AuthErrors.databaseFailure))
@@ -130,7 +128,6 @@ class AuthManager {
         let params : Parameters = ["email":email,"password":hashedPswd]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Authentification/userLogin.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(AuthErrors.databaseFailure))
@@ -166,7 +163,6 @@ class AuthManager {
         let params : Parameters = ["id":id]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Authentification/IdExists.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
             guard response.value != nil else {
                 completion(.failure(AuthErrors.databaseFailure))
                 return

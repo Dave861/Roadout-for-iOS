@@ -10,9 +10,7 @@ import CoreLocation
 import UIKit
 
 var selectedLocationName = "Location"
-//var selectedParkLocation = parkLocations.first!
 var selectedParkLocationIndex = 0
-//var selectedSection = parkLocations.first!.sections.first!
 var selectedSectionIndex = 0
 var selectedLocationColor = UIColor(named: "Main Yellow")
 var selectedLocationCoord: CLLocationCoordinate2D!
@@ -32,19 +30,29 @@ class FunctionsManager {
     
     func findSpot(_ currentLocation: CLLocationCoordinate2D, completion: (_ success: Bool) -> Void) {
         self.sortLocations(currentLocation: currentLocation, completion: { success in
-            for location in sortedLocations {
-                print(location.name)
+            if success {
+                for location in sortedLocations {
+                    print(location.name)
+                }
+                var runs = 0
+                foundSpot = nil
+                while foundSpot == nil {
+                    //Will call server api here
+                    print("RUNS ARE HERE: " + "\(runs)")
+                    if runs >= sortedLocations.count {
+                        break
+                    }
+                    findInLocation(sortedLocations[runs])
+                    //Will crash for now because this function should call the server which has the data but client doesn't
+                    runs += 1
+                }
+                if foundSpot == nil {
+                    completion(false)
+                }
+                completion(true)
+            } else {
+                completion(false)
             }
-            var runs = 0
-            foundSpot = nil
-            while foundSpot == nil {
-                //Will call server api here
-                print("RUNS ARE HERE: " + "\(runs)")
-                findInLocation(sortedLocations[runs])
-                //will crash for now because this function should call the server which has the data but client doesn't
-                runs += 1
-            }
-            completion(true)
         })
     }
     
@@ -60,7 +68,7 @@ class FunctionsManager {
         dictArray = dictArray.sorted(by: {($0["distance"] as! CLLocationDistance) < ($1["distance"] as! CLLocationDistance)})
         
         var sortedArray = [ParkLocation]()
-        print("Running this shi... with coords \(currentLocation.latitude),  \(currentLocation.longitude)")
+       
         for i in dictArray {
             sortedArray.append(i["location"] as! ParkLocation)
         }
@@ -80,11 +88,6 @@ class FunctionsManager {
                     break outerLoop
                 }
             }
-        }
-        print(foundSection.name)
-        print(foundSpot.number)
-        if foundSpot == nil {
-            print("FUCK FUCK Handle this")
         }
     }
 
