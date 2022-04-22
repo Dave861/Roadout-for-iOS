@@ -57,7 +57,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.expressView.frame = CGRect(x: 13, y: self.screenSize.height-334-dif, width: self.screenSize.width - 26, height: 334)
+            self.expressView.frame = CGRect(x: 13, y: self.screenSize.height-280-dif, width: self.screenSize.width - 26, height: 280)
             self.view.addSubview(self.expressView)
         }
     }
@@ -641,7 +641,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
             self.view.addSubview(self.reserveView)
         }
     }
@@ -668,7 +668,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-237-dif, width: self.screenSize.width - 26, height: 237)
             self.view.addSubview(self.payView)
         }
     }
@@ -749,7 +749,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-237-dif, width: self.screenSize.width - 26, height: 237)
             self.view.addSubview(self.payView)
         }
     }
@@ -799,7 +799,7 @@ class HomeViewController: UIViewController {
             self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
             imageView.contentMode = .scaleAspectFit
-            imageView.image = UIImage(named: "Marker" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
+            imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
             self.selectedMarker.iconView?.addSubview(imageView)
         }
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {

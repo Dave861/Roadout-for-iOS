@@ -13,6 +13,7 @@ var selectedLocationName = "Location"
 var selectedParkLocationIndex = 0
 var selectedSectionIndex = 0
 var selectedLocationColor = UIColor(named: "Main Yellow")
+var selectedSpotID: String!
 var selectedLocationCoord: CLLocationCoordinate2D!
 var currentLocationCoord: CLLocationCoordinate2D?
 
@@ -84,6 +85,7 @@ class FunctionsManager {
                 if spot.state == 0 {
                     foundSection = section
                     foundSpot = spot
+                    selectedSpotID = spot.rID
                     selectedLocationCoord = CLLocationCoordinate2D(latitude: foundLocation.latitude, longitude: foundLocation.longitude)
                     break outerLoop
                 }

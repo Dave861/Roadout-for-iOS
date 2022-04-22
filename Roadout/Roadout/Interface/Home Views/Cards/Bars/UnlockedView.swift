@@ -24,7 +24,7 @@ class UnlockedView: UIView {
             
         }
         let doneAction = UIAlertAction(title: "Done".localized(), style: .default) { action in
-            
+            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)

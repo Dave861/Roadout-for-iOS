@@ -57,18 +57,18 @@ class ReservationView: UIView {
             switch result {
                 case .success():
                 if ReservationManager.sharedInstance.delayWasMade == false {
-                    let alert = UIAlertController(title: "Delay Error".localized(), message: "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured.".localized(), preferredStyle: .alert)
-                    alert.view.tintColor = UIColor(named: "Kinda Red")
-                    let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                    alert.addAction(cancelAction)
-                    self.parentViewController().present(alert, animated: true, completion: nil)
-                } else {
                     let alert = UIAlertController(title: "Delay Reservation".localized(), message: "You can only delay a reservation once. Use carefully.".localized(), preferredStyle: .alert)
                     alert.view.tintColor = UIColor(named: "Second Orange")
                     let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(cancelAction)
                     self.parentViewController().present(alert, animated: true, completion: nil)
                     NotificationCenter.default.post(name: .addDelayCardID, object: nil)
+                } else {
+                    let alert = UIAlertController(title: "Delay Error".localized(), message: "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured.".localized(), preferredStyle: .alert)
+                    alert.view.tintColor = UIColor(named: "Kinda Red")
+                    let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(cancelAction)
+                    self.parentViewController().present(alert, animated: true, completion: nil)
                 }
                 case .failure(let err):
                     print(err)

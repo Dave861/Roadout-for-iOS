@@ -9,8 +9,6 @@ import UIKit
 import SPAlert
 import PusherSwift
 
-var selectedSpotID: String!
-
 class SpotView: UIView, PusherDelegate {
 
     var pusher: Pusher!
@@ -21,8 +19,8 @@ class SpotView: UIView, PusherDelegate {
     @IBOutlet weak var infoIcon: UIImageView!
     @IBOutlet weak var infoText: UILabel!
     
-    
     @IBOutlet weak var continueBtn: UIButton!
+    
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()

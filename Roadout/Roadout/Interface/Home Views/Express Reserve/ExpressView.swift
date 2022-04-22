@@ -9,6 +9,10 @@ import UIKit
 
 class ExpressView: UIView {
     
+    var cardNumbers = [String]()
+    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
+    var selectedCard: String?
+    
     @IBOutlet weak var backBtn: UIButton!
     
     @IBOutlet weak var chargeLbl: UILabel!
@@ -32,65 +36,68 @@ class ExpressView: UIView {
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var spotSectionLbl: UILabel!
     
-    @IBOutlet weak var applePayBtn: UIButton!
-    @IBOutlet weak var mainCardBtn: UIButton!
-    
-    @IBAction func paidApplePay(_ sender: Any) {
+    @IBOutlet weak var payBtn: UIButton!
+    @IBOutlet weak var chooseMethodBtn: UIButton!
+        
+    @IBAction func payBtnTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         
         timerSeconds = Int(slider.value*60)
         
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        ReservationManager.sharedInstance.makeReservation(Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id) { result in
-            switch result {
-                case .success():
-                    print("WE RESERVEDDDDD")
-                    selectedSpotID = nil
-                case .failure(let err):
-                    print(err)
-                    self.manageServerSideErrors(error: err)
+        if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
+            self.parentViewController().present(self.makeCardsAlert(cards: cardNumbers), animated: true, completion: nil)
+        } else {
+            let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+            ReservationManager.sharedInstance.makeReservation(Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id) { result in
+                switch result {
+                    case .success():
+                        print("WE RESERVED")
+                    case .failure(let err):
+                        print(err)
+                        self.manageServerSideErrors(error: err)
+                }
             }
         }
     }
     
-    @IBAction func payMainCard(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-        
-        timerSeconds = Int(slider.value*60)
-        
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        ReservationManager.sharedInstance.makeReservation(Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id) { result in
-            switch result {
-                case .success():
-                    print("WE RESERVEDDDDD")
-                    selectedSpotID = nil
-                case .failure(let err):
-                    print(err)
-                    self.manageServerSideErrors(error: err)
-            }
-        }
+    @IBAction func chooseMethodTapped(_ sender: Any) {
+        self.parentViewController().present(self.makeCardsAlert(cards: cardNumbers), animated: true, completion: nil)
     }
     
-    let applePayTitle = NSAttributedString(string: " Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+    let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
     var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    
+    let choosePaymentTitle = NSAttributedString(string: "Choose Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 13.0
         backBtn.setTitle("", for: .normal)
         
-        applePayBtn.layer.cornerRadius = 12.0
-        applePayBtn.setAttributedTitle(applePayTitle, for: .normal)
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-        mainCardBtn.layer.cornerRadius = 12.0
-        mainCardBtn.setAttributedTitle(mainCardTitle, for: .normal)
+        
+        payBtn.layer.cornerRadius = 12.0
+        payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
+        
+        chooseMethodBtn.layer.cornerRadius = 12.0
+        chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        chooseMethodBtn.setTitle("", for: .normal)
         
         chargeLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: chargeLbl.range(after: " - "))
         chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
         
-        locationLbl.text = selectedLocationName
+        cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
+        selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
+                
+        if #available(iOS 14.0, *) {
+            chooseMethodBtn.menu = UIMenu(title: "Choose a payment method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+            chooseMethodBtn.showsMenuAsPrimaryAction = true
+            
+            payBtn.menu = UIMenu(title: "Choose a payment method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+            payBtn.showsMenuAsPrimaryAction = true
+        }
+        
+        locationLbl.text = parkLocations[selectedParkLocationIndex].name
         spotSectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
         
         
@@ -106,6 +113,76 @@ class ExpressView: UIView {
 
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Express", bundle: nil).instantiate(withOwner: nil, options: nil)[1] as! UIView
+    }
+    
+    func reloadMainCard() {
+        if #available(iOS 14.0, *) {
+            payBtn.showsMenuAsPrimaryAction = false
+            payBtn.menu = nil
+        }
+        mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+        payBtn.setAttributedTitle(mainCardTitle, for: .normal)
+        payBtn.backgroundColor = UIColor(named: "ExpressFocus")!
+    }
+    
+    func showApplePayBtn() {
+        if #available(iOS 14.0, *) {
+            payBtn.showsMenuAsPrimaryAction = false
+            payBtn.menu = nil
+        }
+        payBtn.setAttributedTitle(applePayTitle, for: .normal)
+        payBtn.backgroundColor = UIColor.label
+    }
+    
+    func makeMenuActions(cards: [String]) -> [UIAction] {
+        var menuItems = [UIAction]()
+        for card in cards {
+            let action = UIAction(title: card, image: nil, handler: { (_) in
+                self.UserDefaultsSuite.set(self.getIndexInArray(card, cards), forKey: "ro.roadout.defaultPaymentMethod")
+                self.reloadMainCard()
+            })
+            menuItems.append(action)
+        }
+        
+        let applePayAction = UIAction(title: "Apple Pay", image: UIImage(systemName: "applelogo")) { (_) in
+            self.showApplePayBtn()
+        }
+        
+        menuItems.append(applePayAction)
+        
+        return menuItems
+    }
+    
+    func makeCardsAlert(cards: [String]) -> UIAlertController {
+        let alert = UIAlertController(title: "Choose a payment method".localized(), message: "", preferredStyle: .actionSheet)
+        
+        for card in cards {
+            let action = UIAlertAction(title: card, style: .default) { _ in
+                self.UserDefaultsSuite.set(self.getIndexInArray(card, cards), forKey: "ro.roadout.defaultPaymentMethod")
+                self.reloadMainCard()
+            }
+            alert.addAction(action)
+        }
+        
+        let action = UIAlertAction(title: " Apple Pay", style: .default) { _ in
+            self.showApplePayBtn()
+        }
+        alert.addAction(action)
+        
+        alert.view.tintColor = UIColor(named: "ExpressFocus")!
+        return alert
+    }
+    
+    func getIndexInArray(_ element: String, _ array: [String]) -> Int {
+        var index = 0
+        for el in array {
+            if el == element {
+                break
+            }
+            index += 1
+        }
+        print(index)
+        return index
     }
     
     func manageServerSideErrors(error: Error) {

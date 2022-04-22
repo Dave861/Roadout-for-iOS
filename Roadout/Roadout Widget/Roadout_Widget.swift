@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import Alamofire
 
 struct RoadoutEntry: TimelineEntry {
     let date = Date()
@@ -27,6 +28,46 @@ struct Provider: IntentTimelineProvider {
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let entry = Entry(configuration: configuration)
+        
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params1 : Parameters = ["id":entry.configuration.location1?.rID ?? ""]
+        let params2 : Parameters = ["id":entry.configuration.location2?.rID ?? ""]
+        
+        Alamofire.Session.default.request("https://www.roadout.ro/Parking/GetFreeParkingSpots.php", method: .post, parameters: params1, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            guard response.value != nil else {
+                return
+            }
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
+                    if jsonArray["status"] as! String == "Success" {
+                        entry.configuration.location1?.freeSpots = Int(jsonArray["result"] as! String) as NSNumber?
+                    }
+                }
+            } catch let error as NSError {
+                print(error)
+
+            }
+        }
+        
+        Alamofire.Session.default.request("https://www.roadout.ro/Parking/GetFreeParkingSpots.php", method: .post, parameters: params2, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            guard response.value != nil else {
+                return
+            }
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
+                    if jsonArray["status"] as! String == "Success" {
+                        entry.configuration.location2?.freeSpots = Int(jsonArray["result"] as! String) as NSNumber?
+                    }
+                }
+            } catch let error as NSError {
+                print(error)
+
+            }
+        }
+        
+        
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
     }

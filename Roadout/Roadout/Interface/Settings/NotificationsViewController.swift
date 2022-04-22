@@ -33,13 +33,16 @@ class NotificationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         seeSettingsBtn.setTitle("", for: .normal)
-        if NotificationHelper.sharedInstance.checkNotificationStatus() {
-            seeSettingsLbl.text = "Notifications are enabled. See settings".localized()
+        
+        if NotificationHelper.sharedInstance.areNotificationsAllowed ?? true == false {
+            self.seeSettingsLbl.text = "Notifications are disabled. See settings".localized()
+            self.seeSettingsLbl.set(textColor: UIColor(named: "Redish")!, range: self.seeSettingsLbl.range(after: ". "))
+            self.seeSettingsLbl.set(font: .systemFont(ofSize: 18.0, weight: .medium), range: self.seeSettingsLbl.range(after: ". "))
         } else {
-            seeSettingsLbl.text = "Notifications are disabled. See settings".localized()
+            self.seeSettingsLbl.text = "Notifications are enabled. See settings".localized()
+            self.seeSettingsLbl.set(textColor: UIColor(named: "Redish")!, range: self.seeSettingsLbl.range(after: ". "))
+            self.seeSettingsLbl.set(font: .systemFont(ofSize: 18.0, weight: .medium), range: self.seeSettingsLbl.range(after: ". "))
         }
-        seeSettingsLbl.set(textColor: UIColor(named: "Redish")!, range: seeSettingsLbl.range(after: ". "))
-        seeSettingsLbl.set(font: .systemFont(ofSize: 18.0, weight: .medium), range: seeSettingsLbl.range(after: ". "))
         
         tableView.delegate = self
         tableView.dataSource = self

@@ -90,6 +90,7 @@ class ReservationManager {
                     self.callResult = (jsonArray["status"] as! String)
                     if self.callResult == "Success" {
                         if jsonArray["message"] as! String == "active" {
+                            selectedSpotID = jsonArray["spotID"] as? String
                             self.isReservationActive = 0
                             if self.reservationTimer == nil || self.reservationTimer.isValid == false {
                                 let formattedEndDate = jsonArray["endDate"] as! String
@@ -175,13 +176,36 @@ class ReservationManager {
         
     }
     
-    func unlockReservation() {
-        //Do this on success
-        if self.reservationTimer != nil {
-            self.reservationTimer.invalidate()
+    func unlockReservation(_ userID: String, completion: @escaping(Result<Void, Error>) -> Void) {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["userID": userID]
+        
+        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/UnlockReservation.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            guard response.value != nil else {
+                completion(.failure(ReservationErrors.databaseFailure))
+                return
+            }
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
+                    self.callResult = (jsonArray["status"] as! String)
+                    if self.callResult == "Success" {
+                        if self.reservationTimer != nil {
+                            self.reservationTimer.invalidate()
+                        }
+                        NotificationHelper.sharedInstance.cancelReservationNotification()
+                        NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+                        completion(.success(()))
+                    } else {
+                        print(jsonArray["status"]!)
+                        completion(.failure(ReservationErrors.unknownError))
+                    }
+                }
+            } catch let error as NSError {
+                print(error)
+                completion(.failure(ReservationErrors.errorWithJson))
+            }
         }
-        NotificationHelper.sharedInstance.cancelReservationNotification()
-        NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
     }
     
     func cancelReservation(_ userID: String, completion: @escaping(Result<Void, Error>) -> Void) {

@@ -87,7 +87,6 @@ extension ExpressPickView: iCarouselDataSource, iCarouselDelegate {
         //API call here
         FunctionsManager.sharedInstance.findInLocation(parkLocations[index])
         
-        selectedLocationName = parkLocations[index].name
         selectedParkLocationIndex = index
         selectedLocationColor = UIColor(named: "Dark Orange")!
         selectedLocationCoord = CLLocationCoordinate2DMake(parkLocations[index].latitude, parkLocations[index].longitude)

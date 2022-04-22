@@ -169,6 +169,8 @@
 		9AB12375276F1170003C5AE9 /* GroupReserveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12374276F1170003C5AE9 /* GroupReserveActivity.swift */; };
 		9AB12377276F1188003C5AE9 /* SharePlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12376276F1188003C5AE9 /* SharePlayButton.swift */; };
 		9AB12379276F11C3003C5AE9 /* GroupReserveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB12378276F11C3003C5AE9 /* GroupReserveViewController.swift */; };
+		9AB827F628128879007BC842 /* GDMStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB827F528128879007BC842 /* GDMStructs.swift */; };
+		9AB827F828128883007BC842 /* GDMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB827F728128883007BC842 /* GDMManager.swift */; };
 		9AB96428272EFCE0008462E7 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB96427272EFCE0008462E7 /* ActiveView.swift */; };
 		9ABA39B227C13382001660E7 /* GetDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA39B127C13382001660E7 /* GetDataViewController.swift */; };
 		9ABBF822275654B5005D2FFD /* QuickReserveIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7EB7275653A200E09B75 /* QuickReserveIntentHandler.swift */; };
@@ -443,6 +445,8 @@
 		9AB12374276F1170003C5AE9 /* GroupReserveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupReserveActivity.swift; sourceTree = "<group>"; };
 		9AB12376276F1188003C5AE9 /* SharePlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayButton.swift; sourceTree = "<group>"; };
 		9AB12378276F11C3003C5AE9 /* GroupReserveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupReserveViewController.swift; sourceTree = "<group>"; };
+		9AB827F528128879007BC842 /* GDMStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDMStructs.swift; sourceTree = "<group>"; };
+		9AB827F728128883007BC842 /* GDMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDMManager.swift; sourceTree = "<group>"; };
 		9AB96427272EFCE0008462E7 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
 		9ABA39B127C13382001660E7 /* GetDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataViewController.swift; sourceTree = "<group>"; };
 		9AC48D1D273FC11300DBCEF8 /* ExpressPickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressPickCell.swift; sourceTree = "<group>"; };
@@ -593,6 +597,7 @@
 				9A728C502732D849000F9DED /* NotificationHelper.swift */,
 				9AA0EFCC277B3DCF00B0F52A /* Authentification */,
 				9A799320277A0E2F0088E3FD /* Entities */,
+				9AB827F42812885B007BC842 /* GDMService */,
 				9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */,
 				9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */,
 				9A5FC6432787685200CDB49D /* UserDefSuite.swift */,
@@ -860,6 +865,16 @@
 				9A0631262775A92700E3AB5F /* GroupSpotsView.swift */,
 			);
 			path = "Group Reserve";
+			sourceTree = "<group>";
+		};
+		9AB827F42812885B007BC842 /* GDMService */ = {
+			isa = PBXGroup;
+			children = (
+				9AB827F528128879007BC842 /* GDMStructs.swift */,
+				9AB827F728128883007BC842 /* GDMManager.swift */,
+			);
+			name = GDMService;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		9AC926DE272697F00054E453 = {
@@ -1405,7 +1420,9 @@
 				9A0C7771272E7B1700ECBFB2 /* SpotView.swift in Sources */,
 				9AE2AFFD272BD25C0088A3ED /* EditPasswordViewController.swift in Sources */,
 				9AF798EE272C3B530096D4C3 /* InviteViewController.swift in Sources */,
+				9AB827F628128879007BC842 /* GDMStructs.swift in Sources */,
 				9AC926EF272697F00054E453 /* WelcomeViewController.swift in Sources */,
+				9AB827F828128883007BC842 /* GDMManager.swift in Sources */,
 				9A49BFAF272FF42B00234A9F /* NoWifiView.swift in Sources */,
 				9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */,
 				9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */,
@@ -1658,7 +1675,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1670,7 +1687,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.roadout.Roadout.RoadoutWidgetIntentHandler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1684,7 +1701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1696,7 +1713,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ro.roadout.Roadout.RoadoutWidgetIntentHandler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1715,7 +1732,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout Watch.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1742,7 +1759,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout WatchRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1766,7 +1783,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1798,7 +1815,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit ExtensionRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1829,7 +1846,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1858,7 +1875,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUIRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1887,7 +1904,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick Reserve.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1916,7 +1933,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick ReserveRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1948,7 +1965,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1979,7 +1996,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -2130,7 +2147,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2170,7 +2187,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

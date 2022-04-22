@@ -67,6 +67,8 @@ class SearchViewController: UIViewController {
         card.clipsToBounds = true
         card.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
+        reloadFreeSpots()
+        
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
         moreButton.setTitle("", for: .normal)
         
@@ -155,6 +157,19 @@ class SearchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         self.searchField.becomeFirstResponder()
+    }
+    
+    func reloadFreeSpots() {
+        for index in 0...parkLocations.count-1 {
+            EntityManager.sharedInstance.getFreeParkSpots(parkLocations[index].rID, index) { result in
+                switch result {
+                    case .success():
+                        print("Got it")
+                    case .failure(let err):
+                        print(err)
+                }
+            }
+        }
     }
 
     

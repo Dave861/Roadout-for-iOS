@@ -13,6 +13,7 @@ class NotificationHelper {
     static let sharedInstance = NotificationHelper()
     let center = UNUserNotificationCenter.current()
     let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
+    var areNotificationsAllowed: Bool?
     
   //MARK: - Authorization -
     
@@ -26,16 +27,14 @@ class NotificationHelper {
         }
     }
     
-    func checkNotificationStatus() -> Bool {
-        var result: Bool!
+    func checkNotificationStatus() {
         center.getNotificationSettings { settings in
             if settings.authorizationStatus == .denied {
-                result = false
+                self.areNotificationsAllowed = false
             } else {
-                result = true
+                self.areNotificationsAllowed = true
             }
         }
-        return result
     }
     
     func askNotificationPermission(currentNotification: String, reminder: Reminder? = nil) {

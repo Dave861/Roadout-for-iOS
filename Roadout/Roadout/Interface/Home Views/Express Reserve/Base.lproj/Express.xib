@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -75,7 +75,7 @@
             <point key="canvasLocation" x="1378.2608695652175" y="150.40760869565219"/>
         </view>
         <view contentMode="scaleToFill" id="gWk-Zf-jxN" customClass="ExpressView" customModule="Roadout" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="334"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="280"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Express Reserve" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPo-oY-LVm">
@@ -156,7 +156,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Minutes - 10 RON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC9-jQ-vk6">
-                    <rect key="frame" x="116.66666666666669" y="173" width="181" height="27"/>
+                    <rect key="frame" x="116.66666666666669" y="177" width="181" height="27"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="27" id="0fy-Qj-tHQ"/>
                     </constraints>
@@ -165,42 +165,42 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3h-1c-Urb">
-                    <rect key="frame" x="10" y="274" width="394" height="50"/>
+                    <rect key="frame" x="10" y="220" width="344" height="50"/>
                     <color key="backgroundColor" name="ExpressFocus"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="FSF-7g-K0c"/>
                     </constraints>
                     <color key="tintColor" name="Background"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Pay with **** **** **** 9000">
+                    <buttonConfiguration key="configuration" style="plain" title="Choose Payment Method">
                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                     </buttonConfiguration>
                     <connections>
-                        <action selector="payMainCard:" destination="gWk-Zf-jxN" eventType="touchUpInside" id="19U-Zm-Iwu"/>
+                        <action selector="payBtnTapped:" destination="gWk-Zf-jxN" eventType="touchUpInside" id="cZO-3q-tVD"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMU-OM-M1y">
-                    <rect key="frame" x="10" y="216" width="394" height="50"/>
-                    <color key="backgroundColor" systemColor="labelColor"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cs9-nH-WRp">
+                    <rect key="frame" x="354" y="220" width="50" height="50"/>
+                    <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="ndk-GI-sXJ"/>
+                        <constraint firstAttribute="height" constant="50" id="5Of-nv-bSy"/>
+                        <constraint firstAttribute="width" constant="50" id="oKC-sJ-lEA"/>
                     </constraints>
-                    <color key="tintColor" name="Background"/>
+                    <color key="tintColor" name="ExpressFocus"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="applelogo" catalog="system" title=" Apple Pay">
-                        <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
+                    <buttonConfiguration key="configuration" style="plain" image="creditcard" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
                     </buttonConfiguration>
                     <connections>
-                        <action selector="paidApplePay:" destination="gWk-Zf-jxN" eventType="touchUpInside" id="lDE-Mp-Mhp"/>
+                        <action selector="chooseMethodTapped:" destination="gWk-Zf-jxN" eventType="touchUpInside" id="B9z-rf-6SU"/>
                     </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="QKl-TO-hia"/>
             <color key="backgroundColor" name="Background"/>
             <constraints>
-                <constraint firstItem="nC9-jQ-vk6" firstAttribute="top" secondItem="6tr-IQ-CnZ" secondAttribute="bottom" constant="8" id="0VL-16-bGW"/>
+                <constraint firstItem="nC9-jQ-vk6" firstAttribute="top" secondItem="6tr-IQ-CnZ" secondAttribute="bottom" constant="12" id="0VL-16-bGW"/>
                 <constraint firstItem="CPo-oY-LVm" firstAttribute="leading" secondItem="4id-Yp-OLu" secondAttribute="trailing" constant="4" id="1GG-fr-Iph"/>
-                <constraint firstItem="QKl-TO-hia" firstAttribute="trailing" secondItem="mMU-OM-M1y" secondAttribute="trailing" constant="10" id="5Nj-Cd-wfj"/>
                 <constraint firstItem="5UL-v8-XU5" firstAttribute="leading" secondItem="QKl-TO-hia" secondAttribute="leading" id="689-ir-N4e"/>
                 <constraint firstItem="6tr-IQ-CnZ" firstAttribute="top" secondItem="9Gm-g7-Pbr" secondAttribute="bottom" constant="19" id="8UT-qx-wt4"/>
                 <constraint firstItem="9Gm-g7-Pbr" firstAttribute="leading" secondItem="QKl-TO-hia" secondAttribute="leading" constant="20" id="BOo-eQ-ihM"/>
@@ -210,17 +210,18 @@
                 <constraint firstItem="nC9-jQ-vk6" firstAttribute="centerX" secondItem="gWk-Zf-jxN" secondAttribute="centerX" id="Jck-sn-hIP"/>
                 <constraint firstItem="OfS-CS-dHn" firstAttribute="leading" secondItem="QKl-TO-hia" secondAttribute="leading" constant="20" id="OJV-r2-SkL"/>
                 <constraint firstItem="4id-Yp-OLu" firstAttribute="top" secondItem="QKl-TO-hia" secondAttribute="top" constant="12" id="QIj-K7-DxJ"/>
-                <constraint firstItem="mMU-OM-M1y" firstAttribute="leading" secondItem="QKl-TO-hia" secondAttribute="leading" constant="10" id="RK5-K7-G8z"/>
                 <constraint firstItem="QKl-TO-hia" firstAttribute="trailing" secondItem="17j-FG-cwV" secondAttribute="trailing" constant="16" id="Rfi-XE-SI5"/>
                 <constraint firstItem="JS1-9H-4b8" firstAttribute="leading" secondItem="QKl-TO-hia" secondAttribute="leading" constant="16" id="SHx-Cz-JRd"/>
                 <constraint firstItem="17j-FG-cwV" firstAttribute="top" secondItem="9Gm-g7-Pbr" secondAttribute="bottom" constant="12" id="TGj-aR-sSP"/>
                 <constraint firstItem="4id-Yp-OLu" firstAttribute="leading" secondItem="QKl-TO-hia" secondAttribute="leading" constant="10" id="URl-lJ-jNG"/>
+                <constraint firstItem="Cs9-nH-WRp" firstAttribute="leading" secondItem="B3h-1c-Urb" secondAttribute="trailing" id="Vl0-KF-4ng"/>
                 <constraint firstItem="CPo-oY-LVm" firstAttribute="top" secondItem="QKl-TO-hia" secondAttribute="top" constant="12" id="Yac-2i-Gcl"/>
-                <constraint firstItem="QKl-TO-hia" firstAttribute="trailing" secondItem="B3h-1c-Urb" secondAttribute="trailing" constant="10" id="b17-Sv-5gF"/>
+                <constraint firstItem="QKl-TO-hia" firstAttribute="trailing" secondItem="B3h-1c-Urb" secondAttribute="trailing" constant="60" id="b17-Sv-5gF"/>
                 <constraint firstItem="QKl-TO-hia" firstAttribute="trailing" secondItem="9Gm-g7-Pbr" secondAttribute="trailing" constant="15" id="bSx-eG-Nli"/>
                 <constraint firstItem="QKl-TO-hia" firstAttribute="bottom" secondItem="B3h-1c-Urb" secondAttribute="bottom" constant="10" id="bUP-NH-m6H"/>
                 <constraint firstItem="CPo-oY-LVm" firstAttribute="leading" secondItem="QKl-TO-hia" secondAttribute="leading" constant="28" id="cxy-ag-zy5"/>
-                <constraint firstItem="B3h-1c-Urb" firstAttribute="top" secondItem="mMU-OM-M1y" secondAttribute="bottom" constant="8" symbolic="YES" id="fBV-Be-qeJ"/>
+                <constraint firstItem="QKl-TO-hia" firstAttribute="trailing" secondItem="Cs9-nH-WRp" secondAttribute="trailing" constant="10" id="eia-sN-mid"/>
+                <constraint firstItem="QKl-TO-hia" firstAttribute="bottom" secondItem="Cs9-nH-WRp" secondAttribute="bottom" constant="10" id="f4P-l4-FIh"/>
                 <constraint firstItem="9Gm-g7-Pbr" firstAttribute="top" secondItem="OfS-CS-dHn" secondAttribute="bottom" id="ftz-Ub-n2i"/>
                 <constraint firstItem="6tr-IQ-CnZ" firstAttribute="leading" secondItem="JS1-9H-4b8" secondAttribute="trailing" constant="8" symbolic="YES" id="hUO-Vn-nBw"/>
                 <constraint firstItem="QKl-TO-hia" firstAttribute="trailing" secondItem="5UL-v8-XU5" secondAttribute="trailing" constant="10" id="hnZ-hS-8ls"/>
@@ -231,28 +232,31 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="applePayBtn" destination="mMU-OM-M1y" id="sO4-6W-OPZ"/>
                 <outlet property="backBtn" destination="5UL-v8-XU5" id="jy7-l6-Hek"/>
                 <outlet property="chargeLbl" destination="nC9-jQ-vk6" id="PQW-c5-xfn"/>
+                <outlet property="chooseMethodBtn" destination="Cs9-nH-WRp" id="Qu6-MF-9y0"/>
                 <outlet property="locationLbl" destination="OfS-CS-dHn" id="kLl-Kn-k32"/>
-                <outlet property="mainCardBtn" destination="B3h-1c-Urb" id="edC-Ei-DVC"/>
+                <outlet property="payBtn" destination="B3h-1c-Urb" id="93i-cZ-wDf"/>
                 <outlet property="slider" destination="6tr-IQ-CnZ" id="fDB-bb-UuC"/>
                 <outlet property="spotSectionLbl" destination="9Gm-g7-Pbr" id="7It-Yx-6Y2"/>
             </connections>
-            <point key="canvasLocation" x="2048" y="134"/>
+            <point key="canvasLocation" x="2044.9275362318842" y="150"/>
         </view>
     </objects>
     <resources>
-        <image name="applelogo" catalog="system" width="103" height="128"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="creditcard" catalog="system" width="128" height="88"/>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ExpressFocus">
-            <color red="0.40400001406669617" green="0.22699999809265137" blue="0.039000000804662704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5690000057220459" green="0.30199998617172241" blue="0.0070000002160668373" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
