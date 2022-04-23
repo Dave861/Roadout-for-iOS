@@ -1079,6 +1079,185 @@
             </objects>
             <point key="canvasLocation" x="1445" y="702"/>
         </scene>
+        <!--Danger View Controller-->
+        <scene sceneID="0fU-9O-D94">
+            <objects>
+                <viewController storyboardIdentifier="DangerVC" id="VSR-fD-ypW" customClass="DangerViewController" customModule="Roadout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bCp-xB-J0O">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Threat Detected" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBL-SK-kHI">
+                                <rect key="frame" x="119" y="108" width="216" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exclamationmark.octagon.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jqk-wS-Hbb">
+                                <rect key="frame" x="80" y="97" width="31" height="57"/>
+                                <color key="tintColor" name="Redish"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58.5" id="erc-9G-H0q"/>
+                                    <constraint firstAttribute="width" constant="31" id="hu4-oc-QIN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please STOP, Roadout has detected one of the following threats" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vap-ff-62c">
+                                <rect key="frame" x="20" y="171" width="374" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wrench.and.screwdriver.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pfX-PT-aeO">
+                                <rect key="frame" x="27" y="243" width="33" height="37"/>
+                                <color key="tintColor" name="Redish"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="33" id="9fe-of-sMv"/>
+                                    <constraint firstAttribute="height" constant="34.5" id="uLR-7i-p7U"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jailbreak" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xam-fw-dzf">
+                                <rect key="frame" x="72" y="233" width="69" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Nl8-cs-seJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your device may be jailbroken or has been tampered with." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSX-MU-5yK">
+                                <rect key="frame" x="72" y="253" width="322" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="a9i-IR-rBD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scroll.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ut3-O0-DDj">
+                                <rect key="frame" x="24" y="320" width="33" height="34.5"/>
+                                <color key="tintColor" name="Redish"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34.5" id="z1G-70-Zqj"/>
+                                    <constraint firstAttribute="width" constant="33" id="z6A-Wd-aBl"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reverse Engineering" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMf-4d-fCW">
+                                <rect key="frame" x="69" y="309" width="155" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="wPA-Zi-SLl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You may have tried to reverse engineer our app or see the source code." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VC-Hj-09Q">
+                                <rect key="frame" x="69" y="329" width="325" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="BrG-i4-KnV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="network" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hUo-dP-Q2I">
+                                <rect key="frame" x="24" y="396" width="33" height="33.5"/>
+                                <color key="tintColor" name="Redish"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34.5" id="DiT-xL-2Le"/>
+                                    <constraint firstAttribute="width" constant="33" id="miK-fs-22u"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Proxy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QU-vP-BOU">
+                                <rect key="frame" x="69" y="385" width="43" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="GQH-Iw-pt7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You or someone else on your network may have tried to proxy our API calls." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaY-Wx-iGN">
+                                <rect key="frame" x="69" y="405" width="325" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Q5e-iM-H50"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CP2-5W-C71">
+                                <rect key="frame" x="20" y="785" width="374" height="50"/>
+                                <color key="backgroundColor" name="Redish"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aYX-TA-fwa"/>
+                                </constraints>
+                                <color key="tintColor" name="Background"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="What can I do?">
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="questionTapped:" destination="VSR-fD-ypW" eventType="touchUpInside" id="lZi-f5-cBJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JI2-d4-h0u"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eSX-MU-5yK" firstAttribute="top" secondItem="xam-fw-dzf" secondAttribute="bottom" id="46k-aJ-Xzo"/>
+                            <constraint firstItem="xam-fw-dzf" firstAttribute="top" secondItem="vap-ff-62c" secondAttribute="bottom" constant="21" id="4ly-2M-DpH"/>
+                            <constraint firstItem="pfX-PT-aeO" firstAttribute="top" secondItem="vap-ff-62c" secondAttribute="bottom" constant="32" id="6lZ-0c-NL2"/>
+                            <constraint firstItem="CP2-5W-C71" firstAttribute="leading" secondItem="JI2-d4-h0u" secondAttribute="leading" constant="20" id="6zc-L8-g5T"/>
+                            <constraint firstItem="ut3-O0-DDj" firstAttribute="leading" secondItem="JI2-d4-h0u" secondAttribute="leading" constant="24" id="7GY-CH-m6o"/>
+                            <constraint firstItem="ut3-O0-DDj" firstAttribute="top" secondItem="pfX-PT-aeO" secondAttribute="bottom" constant="41.5" id="Dn2-yY-0gW"/>
+                            <constraint firstItem="4QU-vP-BOU" firstAttribute="leading" secondItem="hUo-dP-Q2I" secondAttribute="trailing" constant="12" id="Fpt-XP-JJA"/>
+                            <constraint firstItem="4QU-vP-BOU" firstAttribute="top" secondItem="9VC-Hj-09Q" secondAttribute="bottom" constant="8" symbolic="YES" id="KGL-3i-gd6"/>
+                            <constraint firstItem="vap-ff-62c" firstAttribute="top" secondItem="jqk-wS-Hbb" secondAttribute="bottom" constant="16" id="MwF-Hs-Vbe"/>
+                            <constraint firstItem="hUo-dP-Q2I" firstAttribute="leading" secondItem="JI2-d4-h0u" secondAttribute="leading" constant="24" id="O6w-3O-oSs"/>
+                            <constraint firstItem="JI2-d4-h0u" firstAttribute="trailing" secondItem="eSX-MU-5yK" secondAttribute="trailing" constant="20" id="QPs-fb-cbf"/>
+                            <constraint firstItem="eSX-MU-5yK" firstAttribute="leading" secondItem="pfX-PT-aeO" secondAttribute="trailing" constant="12" id="Skb-hQ-oAz"/>
+                            <constraint firstItem="TaY-Wx-iGN" firstAttribute="top" secondItem="4QU-vP-BOU" secondAttribute="bottom" id="Smx-6W-ooX"/>
+                            <constraint firstItem="wMf-4d-fCW" firstAttribute="top" secondItem="eSX-MU-5yK" secondAttribute="bottom" constant="8" symbolic="YES" id="THK-gE-jDQ"/>
+                            <constraint firstItem="jqk-wS-Hbb" firstAttribute="top" secondItem="JI2-d4-h0u" secondAttribute="top" constant="52.5" id="UCc-jR-UGS"/>
+                            <constraint firstItem="xam-fw-dzf" firstAttribute="leading" secondItem="pfX-PT-aeO" secondAttribute="trailing" constant="12" id="UIk-Vk-tQh"/>
+                            <constraint firstItem="hUo-dP-Q2I" firstAttribute="top" secondItem="ut3-O0-DDj" secondAttribute="bottom" constant="41" id="Wob-Jo-v7Y"/>
+                            <constraint firstItem="JI2-d4-h0u" firstAttribute="trailing" secondItem="TaY-Wx-iGN" secondAttribute="trailing" constant="20" id="ZQ5-i3-pcu"/>
+                            <constraint firstItem="wMf-4d-fCW" firstAttribute="leading" secondItem="ut3-O0-DDj" secondAttribute="trailing" constant="12" id="b7e-VZ-V02"/>
+                            <constraint firstItem="JI2-d4-h0u" firstAttribute="trailing" secondItem="vap-ff-62c" secondAttribute="trailing" constant="20" id="cuP-sg-s7r"/>
+                            <constraint firstItem="JI2-d4-h0u" firstAttribute="trailing" secondItem="9VC-Hj-09Q" secondAttribute="trailing" constant="20" id="cyg-P4-1QT"/>
+                            <constraint firstItem="vap-ff-62c" firstAttribute="leading" secondItem="JI2-d4-h0u" secondAttribute="leading" constant="20" id="guV-dA-xm3"/>
+                            <constraint firstItem="xam-fw-dzf" firstAttribute="leading" secondItem="pfX-PT-aeO" secondAttribute="trailing" constant="12" id="hoj-A9-NN8"/>
+                            <constraint firstItem="4QU-vP-BOU" firstAttribute="leading" secondItem="hUo-dP-Q2I" secondAttribute="trailing" constant="12" id="j3Z-CK-eDl"/>
+                            <constraint firstItem="pfX-PT-aeO" firstAttribute="leading" secondItem="JI2-d4-h0u" secondAttribute="leading" constant="27" id="l0Z-3v-JMX"/>
+                            <constraint firstItem="aBL-SK-kHI" firstAttribute="centerX" secondItem="bCp-xB-J0O" secondAttribute="centerX" constant="20" id="lPT-kj-kFj"/>
+                            <constraint firstItem="aBL-SK-kHI" firstAttribute="top" secondItem="JI2-d4-h0u" secondAttribute="top" constant="64" id="msh-fn-51g"/>
+                            <constraint firstItem="aBL-SK-kHI" firstAttribute="leading" secondItem="jqk-wS-Hbb" secondAttribute="trailing" constant="8" id="nAq-0x-A0c"/>
+                            <constraint firstItem="JI2-d4-h0u" firstAttribute="bottom" secondItem="CP2-5W-C71" secondAttribute="bottom" constant="27" id="nVt-i8-2U7"/>
+                            <constraint firstItem="JI2-d4-h0u" firstAttribute="trailing" secondItem="CP2-5W-C71" secondAttribute="trailing" constant="20" id="qG8-pH-NbD"/>
+                            <constraint firstItem="wMf-4d-fCW" firstAttribute="leading" secondItem="ut3-O0-DDj" secondAttribute="trailing" constant="12" id="qvT-b7-Sbo"/>
+                            <constraint firstItem="wMf-4d-fCW" firstAttribute="leading" secondItem="ut3-O0-DDj" secondAttribute="trailing" constant="12" id="rIk-CQ-4Ou"/>
+                            <constraint firstItem="TaY-Wx-iGN" firstAttribute="leading" secondItem="hUo-dP-Q2I" secondAttribute="trailing" constant="12" id="tmy-Nx-IGu"/>
+                            <constraint firstItem="9VC-Hj-09Q" firstAttribute="leading" secondItem="ut3-O0-DDj" secondAttribute="trailing" constant="12" id="vpF-ow-3dw"/>
+                            <constraint firstItem="9VC-Hj-09Q" firstAttribute="top" secondItem="wMf-4d-fCW" secondAttribute="bottom" id="wbx-7h-SLK"/>
+                            <constraint firstItem="4QU-vP-BOU" firstAttribute="leading" secondItem="hUo-dP-Q2I" secondAttribute="trailing" constant="12" id="xWF-sv-GVX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLbl" destination="vap-ff-62c" id="D3y-8p-JLm"/>
+                        <outlet property="jailbreakDescriptionLbl" destination="eSX-MU-5yK" id="Tkd-6y-wQS"/>
+                        <outlet property="jailbreakLbl" destination="xam-fw-dzf" id="31q-Ok-LUt"/>
+                        <outlet property="proxyDescriptionLbl" destination="TaY-Wx-iGN" id="ayT-un-0GT"/>
+                        <outlet property="proxyLbl" destination="4QU-vP-BOU" id="Wag-Xg-zhf"/>
+                        <outlet property="questionBtn" destination="CP2-5W-C71" id="G5h-2g-VAM"/>
+                        <outlet property="reverseEngDescriptionLbl" destination="9VC-Hj-09Q" id="0gJ-2e-ISe"/>
+                        <outlet property="reverseEngLbl" destination="wMf-4d-fCW" id="CAN-8m-eEQ"/>
+                        <outlet property="titleLbl" destination="aBL-SK-kHI" id="XiK-uo-B7h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="abr-fC-PZz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3271.0144927536235" y="369.64285714285711"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="Cef-mj-Vr0">
@@ -1095,13 +1274,17 @@
         <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="car.fill" catalog="system" width="128" height="93"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
+        <image name="exclamationmark.octagon.fill" catalog="system" width="128" height="112"/>
         <image name="hand.raised.fill" catalog="system" width="128" height="124"/>
         <image name="key.fill" catalog="system" width="83" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="network" catalog="system" width="128" height="121"/>
+        <image name="scroll.fill" catalog="system" width="128" height="116"/>
         <image name="text.book.closed.fill" catalog="system" width="115" height="128"/>
         <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="114"/>
+        <image name="wrench.and.screwdriver.fill" catalog="system" width="128" height="120"/>
         <namedColor name="AccentColor">
-            <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1126,6 +1309,9 @@
         </namedColor>
         <namedColor name="Main Yellow">
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Redish">
+            <color red="0.58399999141693115" green="0.18000000715255737" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Second Background">
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

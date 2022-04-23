@@ -583,27 +583,6 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDx-9p-GAo">
-                                                            <rect key="frame" x="14" y="12" width="21" height="21"/>
-                                                            <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yaY-zv-cT0">
-                                                                    <rect key="frame" x="3" y="3" width="15" height="15"/>
-                                                                    <color key="tintColor" systemColor="systemBackgroundColor"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="15" id="PGz-9z-AT1"/>
-                                                                        <constraint firstAttribute="width" constant="15" id="bfe-IQ-HFY"/>
-                                                                    </constraints>
-                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13"/>
-                                                                </imageView>
-                                                            </subviews>
-                                                            <color key="backgroundColor" systemColor="systemRedColor"/>
-                                                            <constraints>
-                                                                <constraint firstItem="yaY-zv-cT0" firstAttribute="centerX" secondItem="wDx-9p-GAo" secondAttribute="centerX" id="Ep1-8K-Qtd"/>
-                                                                <constraint firstItem="yaY-zv-cT0" firstAttribute="centerY" secondItem="wDx-9p-GAo" secondAttribute="centerY" id="Nrw-uN-g8z"/>
-                                                                <constraint firstAttribute="width" constant="21" id="s7J-vJ-dhT"/>
-                                                                <constraint firstAttribute="height" constant="21" id="yYV-zh-mmk"/>
-                                                            </constraints>
-                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kzr-uQ-8sK">
                                                             <rect key="frame" x="45" y="44" width="329" height="1"/>
                                                             <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -620,12 +599,33 @@
                                                             </constraints>
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
                                                         </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDx-9p-GAo">
+                                                            <rect key="frame" x="10" y="10" width="25" height="25"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yaY-zv-cT0">
+                                                                    <rect key="frame" x="3" y="3" width="19" height="19"/>
+                                                                    <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="19" id="PGz-9z-AT1"/>
+                                                                        <constraint firstAttribute="width" constant="19" id="bfe-IQ-HFY"/>
+                                                                    </constraints>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="yaY-zv-cT0" firstAttribute="centerX" secondItem="wDx-9p-GAo" secondAttribute="centerX" id="Ep1-8K-Qtd"/>
+                                                                <constraint firstItem="yaY-zv-cT0" firstAttribute="centerY" secondItem="wDx-9p-GAo" secondAttribute="centerY" id="Nrw-uN-g8z"/>
+                                                                <constraint firstAttribute="width" constant="25" id="s7J-vJ-dhT"/>
+                                                                <constraint firstAttribute="height" constant="25" id="yYV-zh-mmk"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" name="Secondary Detail"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="AkZ-gq-YWn"/>
                                                         <constraint firstAttribute="trailing" secondItem="qDM-zJ-9Ac" secondAttribute="trailing" id="C0r-XV-Mtb"/>
-                                                        <constraint firstItem="wDx-9p-GAo" firstAttribute="leading" secondItem="XZL-HK-vKn" secondAttribute="leading" constant="14" id="Ifk-Mb-dMk"/>
+                                                        <constraint firstItem="wDx-9p-GAo" firstAttribute="leading" secondItem="XZL-HK-vKn" secondAttribute="leading" constant="10" id="Ifk-Mb-dMk"/>
                                                         <constraint firstAttribute="trailing" secondItem="O1Z-sQ-Q7j" secondAttribute="trailing" constant="14" id="Npu-1n-ff3"/>
                                                         <constraint firstItem="O1Z-sQ-Q7j" firstAttribute="centerY" secondItem="XZL-HK-vKn" secondAttribute="centerY" id="S00-sp-IgU"/>
                                                         <constraint firstItem="wDx-9p-GAo" firstAttribute="centerY" secondItem="XZL-HK-vKn" secondAttribute="centerY" id="WIb-xs-mtI"/>
@@ -671,27 +671,6 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTe-WP-Tqf">
-                                                            <rect key="frame" x="14" y="12" width="21" height="21"/>
-                                                            <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7Wl-lX-BVC">
-                                                                    <rect key="frame" x="3" y="3" width="15" height="15"/>
-                                                                    <color key="tintColor" name="Background"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="15" id="DQy-Tf-0qu"/>
-                                                                        <constraint firstAttribute="height" constant="15" id="sfP-DB-e1z"/>
-                                                                    </constraints>
-                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13"/>
-                                                                </imageView>
-                                                            </subviews>
-                                                            <color key="backgroundColor" systemColor="systemRedColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="TmA-1I-N9f"/>
-                                                                <constraint firstItem="7Wl-lX-BVC" firstAttribute="centerY" secondItem="YTe-WP-Tqf" secondAttribute="centerY" id="Xsa-HB-7hJ"/>
-                                                                <constraint firstAttribute="width" constant="21" id="cH1-jG-I0o"/>
-                                                                <constraint firstItem="7Wl-lX-BVC" firstAttribute="centerX" secondItem="YTe-WP-Tqf" secondAttribute="centerX" id="fTB-cP-bvS"/>
-                                                            </constraints>
-                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LB1-Lb-v3d">
                                                             <rect key="frame" x="45" y="44" width="329" height="1"/>
                                                             <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -708,6 +687,27 @@
                                                             </constraints>
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
                                                         </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTe-WP-Tqf">
+                                                            <rect key="frame" x="10" y="10" width="25" height="25"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7Wl-lX-BVC">
+                                                                    <rect key="frame" x="3" y="3" width="19" height="19"/>
+                                                                    <color key="tintColor" name="Background"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="19" id="DQy-Tf-0qu"/>
+                                                                        <constraint firstAttribute="height" constant="19" id="sfP-DB-e1z"/>
+                                                                    </constraints>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="TmA-1I-N9f"/>
+                                                                <constraint firstItem="7Wl-lX-BVC" firstAttribute="centerY" secondItem="YTe-WP-Tqf" secondAttribute="centerY" id="Xsa-HB-7hJ"/>
+                                                                <constraint firstAttribute="width" constant="25" id="cH1-jG-I0o"/>
+                                                                <constraint firstItem="7Wl-lX-BVC" firstAttribute="centerX" secondItem="YTe-WP-Tqf" secondAttribute="centerX" id="fTB-cP-bvS"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" name="Secondary Detail"/>
                                                     <constraints>
@@ -718,7 +718,7 @@
                                                         <constraint firstItem="wr4-JD-Cwn" firstAttribute="centerY" secondItem="qpo-Gs-6o5" secondAttribute="centerY" id="cx2-Bc-vYo"/>
                                                         <constraint firstAttribute="trailing" secondItem="6fx-G1-P0A" secondAttribute="trailing" id="efT-yI-FJ3"/>
                                                         <constraint firstItem="LB1-Lb-v3d" firstAttribute="leading" secondItem="qpo-Gs-6o5" secondAttribute="leading" constant="45" id="gwp-Fm-4DL"/>
-                                                        <constraint firstItem="YTe-WP-Tqf" firstAttribute="leading" secondItem="qpo-Gs-6o5" secondAttribute="leading" constant="14" id="hDj-6e-Ma2"/>
+                                                        <constraint firstItem="YTe-WP-Tqf" firstAttribute="leading" secondItem="qpo-Gs-6o5" secondAttribute="leading" constant="10" id="hDj-6e-Ma2"/>
                                                         <constraint firstAttribute="trailing" secondItem="LB1-Lb-v3d" secondAttribute="trailing" id="q4K-0W-oSY"/>
                                                         <constraint firstItem="6fx-G1-P0A" firstAttribute="leading" secondItem="YTe-WP-Tqf" secondAttribute="trailing" constant="10" id="rXW-0w-rCx"/>
                                                         <constraint firstItem="YTe-WP-Tqf" firstAttribute="centerY" secondItem="qpo-Gs-6o5" secondAttribute="centerY" id="tMP-rY-Ew7"/>
@@ -758,27 +758,6 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXp-3Z-jXm">
-                                                            <rect key="frame" x="14" y="12" width="21" height="21"/>
-                                                            <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zM7-U1-akn">
-                                                                    <rect key="frame" x="3" y="3" width="15" height="15"/>
-                                                                    <color key="tintColor" name="Background"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="15" id="MxN-Hx-b8f"/>
-                                                                        <constraint firstAttribute="width" constant="15" id="Y3u-ge-uc3"/>
-                                                                    </constraints>
-                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13"/>
-                                                                </imageView>
-                                                            </subviews>
-                                                            <color key="backgroundColor" systemColor="systemRedColor"/>
-                                                            <constraints>
-                                                                <constraint firstItem="zM7-U1-akn" firstAttribute="centerY" secondItem="rXp-3Z-jXm" secondAttribute="centerY" id="1iH-xe-rvv"/>
-                                                                <constraint firstAttribute="width" constant="21" id="7dg-qH-eKg"/>
-                                                                <constraint firstItem="zM7-U1-akn" firstAttribute="centerX" secondItem="rXp-3Z-jXm" secondAttribute="centerX" id="CaF-Hw-8if"/>
-                                                                <constraint firstAttribute="height" constant="21" id="geG-jL-Tar"/>
-                                                            </constraints>
-                                                        </view>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Tj8-iz-djU">
                                                             <rect key="frame" x="345" y="16" width="15" height="13"/>
                                                             <color key="tintColor" systemColor="systemGray2Color"/>
@@ -788,12 +767,33 @@
                                                             </constraints>
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
                                                         </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXp-3Z-jXm">
+                                                            <rect key="frame" x="10" y="10" width="25" height="25"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zM7-U1-akn">
+                                                                    <rect key="frame" x="3" y="3" width="19" height="19"/>
+                                                                    <color key="tintColor" name="Background"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="19" id="MxN-Hx-b8f"/>
+                                                                        <constraint firstAttribute="width" constant="19" id="Y3u-ge-uc3"/>
+                                                                    </constraints>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="zM7-U1-akn" firstAttribute="centerY" secondItem="rXp-3Z-jXm" secondAttribute="centerY" id="1iH-xe-rvv"/>
+                                                                <constraint firstAttribute="width" constant="25" id="7dg-qH-eKg"/>
+                                                                <constraint firstItem="zM7-U1-akn" firstAttribute="centerX" secondItem="rXp-3Z-jXm" secondAttribute="centerX" id="CaF-Hw-8if"/>
+                                                                <constraint firstAttribute="height" constant="25" id="geG-jL-Tar"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" name="Secondary Detail"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="0G1-1m-wAd"/>
                                                         <constraint firstItem="CH7-Bi-2e1" firstAttribute="centerY" secondItem="MvJ-AG-fRP" secondAttribute="centerY" id="BRq-rh-UHF"/>
-                                                        <constraint firstItem="rXp-3Z-jXm" firstAttribute="leading" secondItem="MvJ-AG-fRP" secondAttribute="leading" constant="14" id="FCq-PF-B3R"/>
+                                                        <constraint firstItem="rXp-3Z-jXm" firstAttribute="leading" secondItem="MvJ-AG-fRP" secondAttribute="leading" constant="10" id="FCq-PF-B3R"/>
                                                         <constraint firstItem="rXp-3Z-jXm" firstAttribute="centerY" secondItem="MvJ-AG-fRP" secondAttribute="centerY" id="ISf-fw-6iY"/>
                                                         <constraint firstItem="CH7-Bi-2e1" firstAttribute="leading" secondItem="rXp-3Z-jXm" secondAttribute="trailing" constant="10" id="WP0-xQ-fKO"/>
                                                         <constraint firstAttribute="trailing" secondItem="CH7-Bi-2e1" secondAttribute="trailing" id="diP-C3-G7w"/>
@@ -829,7 +829,7 @@
                                                     <subviews>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6x-xa-g6c">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="42"/>
-                                                            <color key="tintColor" name="Redish"/>
+                                                            <color key="tintColor" name="Kinda Red"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" title="Sign Out">
                                                                 <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
@@ -1450,16 +1450,19 @@ Made in Cluj :)</string>
             <color red="0.56099998950958252" green="0.40000000596046448" blue="0.050999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Greyish">
-            <color red="0.53299999237060547" green="0.49399998784065247" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.50199997425079346" green="0.45100000500679016" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Icons">
             <color red="0.86299997568130493" green="0.66699999570846558" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Kinda Red">
+            <color red="0.7839999794960022" green="0.30199998617172241" blue="0.046999998390674591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Main Yellow">
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Redish">
-            <color red="0.58399999141693115" green="0.18000000715255737" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.61799997091293335" green="0.22400000691413879" blue="0.11599999666213989" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Second Background">
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

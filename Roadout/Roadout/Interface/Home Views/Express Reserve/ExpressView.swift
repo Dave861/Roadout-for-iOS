@@ -137,7 +137,7 @@ class ExpressView: UIView {
     func makeMenuActions(cards: [String]) -> [UIAction] {
         var menuItems = [UIAction]()
         for card in cards {
-            let action = UIAction(title: card, image: nil, handler: { (_) in
+            let action = UIAction(title: card, image: UIImage(systemName: "creditcard.fill"), handler: { (_) in
                 self.UserDefaultsSuite.set(self.getIndexInArray(card, cards), forKey: "ro.roadout.defaultPaymentMethod")
                 self.reloadMainCard()
             })

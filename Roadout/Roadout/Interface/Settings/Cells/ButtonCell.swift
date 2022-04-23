@@ -13,11 +13,11 @@ class ButtonCell: UITableViewCell {
     @IBOutlet weak var cellButton: UIButton!
     
     let buttonTitle = NSAttributedString(string: "Sign Out".localized(),
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Orange")])
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Kinda Red")])
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        card.layer.cornerRadius = 14.0
+        card.layer.cornerRadius = 13.0
         cellButton.setAttributedTitle(buttonTitle, for: .normal)
     }
 

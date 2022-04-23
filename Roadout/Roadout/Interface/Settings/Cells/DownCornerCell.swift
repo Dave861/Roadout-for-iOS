@@ -21,7 +21,7 @@ class DownCornerCell: UITableViewCell {
         super.awakeFromNib()
         icon.layer.cornerRadius = icon.frame.height/4
         card.clipsToBounds = true
-        card.layer.cornerRadius = 16
+        card.layer.cornerRadius = 12
         card.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
 

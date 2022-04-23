@@ -10,12 +10,12 @@ import MessageUI
 
 class SettingsViewController: UIViewController {
     
-    var cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
-    var cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
-    var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "signature" ,"globe"]
-    var cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Reminders".localized(), "Reservation History".localized(), "", "Invite Friends".localized(), "Prizes".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
+    var cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
+    var cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "Kinda Red", "ExpressFocus", "Main Yellow"]
+    var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "puzzlepiece.fill", "signature", "globe"]
+    var cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Reminders".localized(), "Reservation History".localized(), "", "Invite Friends".localized(), "Prizes".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "FAQ & Support".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
 
-    var cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
+    var cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "FAQVC", "AckVC", "AboutVC"]
     
     @IBAction func backTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -25,23 +25,7 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    func setDeveloperView(_ id: Int) {
-        if id == 16 {
-            cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
-            cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "ExpressFocus", "DevBrown", "Main Yellow"]
-            cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "signature", "screwdriver.fill" ,"globe"]
-            cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Reminders".localized(), "Reservation History".localized(), "", "Invite Friends".localized(), "Prizes".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "Developer".localized(), "About Roadout".localized()]
-
-            cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AckVC", "DeveloperVC", "AboutVC"]
-        } else {
-            cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
-            cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
-            cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "signature" ,"globe"]
-            cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Reminders".localized(), "Reservation History".localized(), "", "Invite Friends".localized(), "Prizes".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
-
-            cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
-        }
-    }
+    
     
     func addObs() {
         NotificationCenter.default.removeObserver(self)
@@ -54,7 +38,6 @@ class SettingsViewController: UIViewController {
         UserManager.sharedInstance.getUserName(id) { result in
             print(result)
         }
-        self.setDeveloperView(Int(id) ?? 0)
         tableView.delegate = self
         tableView.dataSource = self
         addObs()
@@ -160,10 +143,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         } else if cellTypes[indexPath.row] != "SpacerCell" &&  cellTypes[indexPath.row] != "TextCell" {
             if cellVCs[indexPath.row] == "ReportVC" {
                 sendEmail()
-            } else if cellVCs[indexPath.row] == "AboutVC" {
-                if let url = URL(string: "https://www.roadout.ro") {
-                    UIApplication.shared.open(url)
-                }
             } else {
                 let sb = UIStoryboard(name: "Settings", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: cellVCs[indexPath.row])

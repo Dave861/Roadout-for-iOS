@@ -678,7 +678,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-270-dif, width: self.screenSize.width - 26, height: 270)
+            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
             self.view.addSubview(self.reserveView)
             self.payView.removeFromSuperview()
         }

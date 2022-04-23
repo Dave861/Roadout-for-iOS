@@ -52,7 +52,7 @@ class RemindersViewController: UIViewController {
         addBtn.setAttributedTitle(buttonTitle, for: .normal)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.layer.cornerRadius = 15.0
+        tableView.layer.cornerRadius = 14.0
         addBtnOutline.layer.cornerRadius = 12.0
         
         getReminders()

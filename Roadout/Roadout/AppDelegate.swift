@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         NotificationHelper.sharedInstance.checkNotificationStatus()
+        
         return true
     }
 

@@ -61,6 +61,10 @@
 		9A39B0D427284825008E7FD0 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0D327284825008E7FD0 /* SettingCell.swift */; };
 		9A39B0D62728482C008E7FD0 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0D52728482C008E7FD0 /* ButtonCell.swift */; };
 		9A39B0D827284B38008E7FD0 /* SettingsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0D727284B38008E7FD0 /* SettingsTextCell.swift */; };
+		9A401EE12813D8E900739687 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A401EE02813D8E900739687 /* QuestionCell.swift */; };
+		9A401EE32813EFB800739687 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A401EE22813EFB800739687 /* AboutViewController.swift */; };
+		9A40C1DC281443FD00E44B23 /* IOSSecuritySuite in Frameworks */ = {isa = PBXBuildFile; productRef = 9A40C1DB281443FD00E44B23 /* IOSSecuritySuite */; };
+		9A40C1DE2814458D00E44B23 /* DangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A40C1DD2814458D00E44B23 /* DangerViewController.swift */; };
 		9A4131D627BFD8950012EADB /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4131D527BFD8950012EADB /* SearchManager.swift */; };
 		9A46BBA2272EE764002280DD /* ReserveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA1272EE764002280DD /* ReserveView.swift */; };
 		9A46BBA4272EF343002280DD /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA3272EF343002280DD /* PayView.swift */; };
@@ -140,7 +144,7 @@
 		9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9A8D8D3B27BADDAC0037DFE3 /* PusherSwift */; };
 		9A9208CF277EE14500E099C7 /* ComplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9208CE277EE14500E099C7 /* ComplicationManager.swift */; };
 		9A9239B22764E26100C40706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A59B75A2764A6B500BC0497 /* Assets.xcassets */; };
-		9A96248327C96E9E00A17087 /* DeveloperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96248227C96E9E00A17087 /* DeveloperViewController.swift */; };
+		9A96248327C96E9E00A17087 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96248227C96E9E00A17087 /* FAQViewController.swift */; };
 		9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F872272B09DF008B58FE /* AddCardViewController.swift */; };
 		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
 		9A96F877272B0A25008B58FE /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F876272B0A25008B58FE /* CardCell.swift */; };
@@ -365,6 +369,9 @@
 		9A39B0D327284825008E7FD0 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		9A39B0D52728482C008E7FD0 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		9A39B0D727284B38008E7FD0 /* SettingsTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextCell.swift; sourceTree = "<group>"; };
+		9A401EE02813D8E900739687 /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
+		9A401EE22813EFB800739687 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		9A40C1DD2814458D00E44B23 /* DangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerViewController.swift; sourceTree = "<group>"; };
 		9A4131D527BFD8950012EADB /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		9A46BBA1272EE764002280DD /* ReserveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReserveView.swift; sourceTree = "<group>"; };
 		9A46BBA3272EF343002280DD /* PayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayView.swift; sourceTree = "<group>"; };
@@ -429,7 +436,7 @@
 		9A81E5F827B8DED600F571C3 /* FunctionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsManager.swift; sourceTree = "<group>"; };
 		9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsAppViewController.swift; sourceTree = "<group>"; };
 		9A9208CE277EE14500E099C7 /* ComplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationManager.swift; sourceTree = "<group>"; };
-		9A96248227C96E9E00A17087 /* DeveloperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperViewController.swift; sourceTree = "<group>"; };
+		9A96248227C96E9E00A17087 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		9A96F872272B09DF008B58FE /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		9A96F874272B09F1008B58FE /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		9A96F876272B0A25008B58FE /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
@@ -543,6 +550,7 @@
 				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
 				9AAE2661280947E000BBBAC3 /* GooglePlaces in Frameworks */,
 				9AAE265D280947E000BBBAC3 /* GoogleMapsCore in Frameworks */,
+				9A40C1DC281443FD00E44B23 /* IOSSecuritySuite in Frameworks */,
 				9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */,
 				9AA01DDF2789D78E0004211A /* CHIOTPField in Frameworks */,
 			);
@@ -796,6 +804,7 @@
 				9AE2AFF8272BC0B80088A3ED /* HistoryCell.swift */,
 				9AF798F4272C4C060096D4C3 /* PrizesCell.swift */,
 				9AF7142F27AFC49200FEA4C4 /* AckCell.swift */,
+				9A401EE02813D8E900739687 /* QuestionCell.swift */,
 			);
 			path = "Setting Cells";
 			sourceTree = "<group>";
@@ -950,6 +959,7 @@
 				9A5381132789CA1600462D63 /* VerifyMailViewController.swift */,
 				9A5381152789CA2400462D63 /* ResetPasswordViewController.swift */,
 				9A0BDACE2792C91D00EB9CF8 /* TutorialViewController.swift */,
+				9A40C1DD2814458D00E44B23 /* DangerViewController.swift */,
 			);
 			path = "On-Boarding";
 			sourceTree = "<group>";
@@ -970,7 +980,8 @@
 				9AF798F2272C4BF70096D4C3 /* PrizesViewController.swift */,
 				9AF7142D27AFC41E00FEA4C4 /* AckViewController.swift */,
 				9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */,
-				9A96248227C96E9E00A17087 /* DeveloperViewController.swift */,
+				9A96248227C96E9E00A17087 /* FAQViewController.swift */,
+				9A401EE22813EFB800739687 /* AboutViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1154,6 +1165,7 @@
 				9AAE265C280947E000BBBAC3 /* GoogleMapsCore */,
 				9AAE265E280947E000BBBAC3 /* GoogleMapsM4B */,
 				9AAE2660280947E000BBBAC3 /* GooglePlaces */,
+				9A40C1DB281443FD00E44B23 /* IOSSecuritySuite */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1211,6 +1223,7 @@
 				9AF7142A27AFC0E000FEA4C4 /* XCRemoteSwiftPackageReference "SPAlert" */,
 				9A8D8D3A27BADDAC0037DFE3 /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */,
 				9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
+				9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -1458,7 +1471,7 @@
 				9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */,
 				9A0C7775272E831E00ECBFB2 /* SpotCell.swift in Sources */,
 				9A46BBA2272EE764002280DD /* ReserveView.swift in Sources */,
-				9A96248327C96E9E00A17087 /* DeveloperViewController.swift in Sources */,
+				9A96248327C96E9E00A17087 /* FAQViewController.swift in Sources */,
 				9A5A01832737CDD000BD7E70 /* ExpressView.swift in Sources */,
 				9A39B0D227284818008E7FD0 /* DownCornerCell.swift in Sources */,
 				9A0631272775A92700E3AB5F /* GroupSpotsView.swift in Sources */,
@@ -1470,6 +1483,7 @@
 				9AF798F5272C4C060096D4C3 /* PrizesCell.swift in Sources */,
 				9A310783272A707100B1F84A /* RemindersViewController.swift in Sources */,
 				9AF7143027AFC49200FEA4C4 /* AckCell.swift in Sources */,
+				9A401EE12813D8E900739687 /* QuestionCell.swift in Sources */,
 				9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */,
 				9AB12379276F11C3003C5AE9 /* GroupReserveViewController.swift in Sources */,
 				9A46BBA6272EF83D002280DD /* PaidView.swift in Sources */,
@@ -1485,6 +1499,8 @@
 				9A5FC6442787685200CDB49D /* UserDefSuite.swift in Sources */,
 				9AE2AFF9272BC0B80088A3ED /* HistoryCell.swift in Sources */,
 				9A39B0CC272847FC008E7FD0 /* UserSettingsCell.swift in Sources */,
+				9A40C1DE2814458D00E44B23 /* DangerViewController.swift in Sources */,
+				9A401EE32813EFB800739687 /* AboutViewController.swift in Sources */,
 				9AC48D1E273FC11300DBCEF8 /* ExpressPickCell.swift in Sources */,
 				9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */,
 				9ABA39B227C13382001660E7 /* GetDataViewController.swift in Sources */,
@@ -1675,7 +1691,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1701,7 +1717,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1732,7 +1748,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout Watch.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1759,7 +1775,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout WatchRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1783,7 +1799,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1815,7 +1831,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit ExtensionRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1846,7 +1862,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1875,7 +1891,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUIRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1904,7 +1920,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick Reserve.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1933,7 +1949,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick ReserveRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1965,7 +1981,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1996,7 +2012,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -2147,7 +2163,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2162,8 +2178,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait  ";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait ";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2187,7 +2203,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2202,8 +2218,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait  ";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait ";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2305,6 +2321,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/securing/IOSSecuritySuite.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marekpridal/BarChart";
@@ -2388,6 +2412,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		9A40C1DB281443FD00E44B23 /* IOSSecuritySuite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */;
+			productName = IOSSecuritySuite;
 		};
 		9A6E1C362731324B002E29F9 /* BarChartKit-static */ = {
 			isa = XCSwiftPackageProductDependency;

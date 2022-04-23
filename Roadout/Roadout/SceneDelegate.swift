@@ -8,6 +8,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import IOSSecuritySuite
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,14 +17,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
-              let sb = UIStoryboard(name: "Home", bundle: nil)
-              let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
-              window?.rootViewController = vc
+              let homeSb = UIStoryboard(name: "Home", bundle: nil)
+              let homeVC = homeSb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
+              window?.rootViewController = homeVC
               window?.makeKeyAndVisible()
               let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
               UserManager.sharedInstance.getUserName(id) { result in
                  print(result)
               }
+        }
+        
+        
+        if IOSSecuritySuite.amIJailbroken() || IOSSecuritySuite.amIReverseEngineered() || IOSSecuritySuite.amIProxied() {
+            let mainSb = UIStoryboard(name: "Main", bundle: nil)
+            let dangerVC = mainSb.instantiateViewController(withIdentifier: "DangerVC") as! DangerViewController
+            window?.rootViewController = dangerVC
+            window?.makeKeyAndVisible()
         }
         
         guard let _ = (scene as? UIWindowScene) else { return }

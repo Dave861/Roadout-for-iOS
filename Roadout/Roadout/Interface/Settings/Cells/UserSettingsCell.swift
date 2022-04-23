@@ -76,7 +76,7 @@ class UserSettingsCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        card.layer.cornerRadius = 16.0
+        card.layer.cornerRadius = 14.0
         editBtn.setTitle("", for: .normal)
         if #available(iOS 14.0, *) {
             editBtn.menu = actionsMenu
