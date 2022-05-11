@@ -77,7 +77,7 @@ class PaymentViewController: UIViewController {
                     cardNumbers.remove(at: indexPath.row)
                     if self.cardIndex == indexPath.row {
                         self.cardIndex = 0
-                        self.UserDefaultsSuite.set(indexPath.row, forKey: "ro.roadout.defaultPaymentMethod")
+                        self.UserDefaultsSuite.set(0, forKey: "ro.roadout.defaultPaymentMethod")
                     }
                     self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
                     self.tableView.reloadData()

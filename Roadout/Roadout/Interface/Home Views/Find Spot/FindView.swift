@@ -8,12 +8,10 @@
 import UIKit
 import IntentsUI
 import Intents
-import SPAlert
 
 class FindView: UIView {
     
     var minutesValue = 15
-    var alertView: SPAlertView!
     
     @IBOutlet weak var backBtn: UIButton!
     

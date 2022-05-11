@@ -433,11 +433,12 @@ class HomeViewController: UIViewController {
             settingsTapArea.menu = moreMenu
             settingsTapArea.showsMenuAsPrimaryAction = true
         }
-        
+        //RE-ADD THIS WHEN GROUP RESERVE IS DONE
+        /*
         if #available(iOS 15.0, *) {
             addSharePlayButtonView()
             SharePlayManager.sharedInstance.receiveSessions()
-        }
+        }*/
         manageTutorial()
         UserManager.sharedInstance.getUserName(id) { result in
             print(result)

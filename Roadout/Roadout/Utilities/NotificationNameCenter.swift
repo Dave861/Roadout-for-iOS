@@ -47,6 +47,7 @@ extension Notification.Name {
     //REMINDERS & CARDS
     static let refreshReminderID = Notification.Name("ro.roadout.Roadout.refreshReminder")
     static let refreshCardsID = Notification.Name("ro.roadout.Roadout.refreshCards")
+    static let refreshCardsMenuID = Notification.Name("ro.roadout.Roadout.refreshCardsMenu")
     
     //OTHERS
     static let reloadUserNameID = Notification.Name("ro.roadout.Roadout.reloadUserNameID")

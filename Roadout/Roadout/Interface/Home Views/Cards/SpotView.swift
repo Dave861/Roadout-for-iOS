@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SPAlert
+import SPIndicator
 import PusherSwift
 
 class SpotView: UIView, PusherDelegate {
@@ -24,21 +24,15 @@ class SpotView: UIView, PusherDelegate {
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        let alertView = SPAlertView(message: "Waiting for confirmation...".localized())
-        alertView.dismissInTime = false
-        alertView.dismissByTap = false
-        alertView.present()
-        //check if spot is really free
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            alertView.dismiss()
-            let alert2 = SPAlertView(message: "Confirmed.".localized())
-            alert2.duration = 0.5
-            alert2.present()
-            //make selected spot pending
+        continueBtn.isUserInteractionEnabled = false
+        let clockImage = UIImage.init(systemName: "clock")!.withTintColor(UIColor(named: "Dark Orange")!, renderingMode: .alwaysOriginal)
+        let checkImage = UIImage.init(systemName: "checkmark")!.withTintColor(UIColor(named: "Dark Yellow")!, renderingMode: .alwaysOriginal)
+        let checkingIndicatorView = SPIndicatorView(title: "Confirming", message: "Checking...", preset: .custom(clockImage))
+        let confirmedIndicatorView = SPIndicatorView(title: "Confirmed", message: "Done", preset: .custom(checkImage))
+        checkingIndicatorView.present(duration: 0.7, haptic: .none) {
             self.disconnectPusher()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                NotificationCenter.default.post(name: .addReserveCardID, object: nil)
-            }
+            NotificationCenter.default.post(name: .addReserveCardID, object: nil)
+            confirmedIndicatorView.present(duration: 0.7, haptic: .success)
         }
     }
     @IBAction func backTapped(_ sender: Any) {
@@ -65,6 +59,7 @@ class SpotView: UIView, PusherDelegate {
         
         self.layer.cornerRadius = 13.0
         continueBtn.layer.cornerRadius = 12.0
+        continueBtn.isUserInteractionEnabled = true
         backBtn.setTitle("", for: .normal)
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         continueBtn.isEnabled = false

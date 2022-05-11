@@ -19,6 +19,8 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var easterEggLbl: UILabel!
     
+    @IBOutlet weak var logoImage: UIImageView!
+    
     @IBOutlet weak var websiteCard: UIView!
     @IBOutlet weak var appCard: UIView!
     @IBOutlet weak var otherCard: UIView!
@@ -37,6 +39,8 @@ class AboutViewController: UIViewController {
         websiteCard.layer.cornerRadius = 12.0
         appCard.layer.cornerRadius = 12.0
         otherCard.layer.cornerRadius = 12.0
+        
+        logoImage.layer.cornerRadius = logoImage.frame.height * 10/57
         
         devLbl.set(textColor: UIColor(named: "Main Yellow")!, range: devLbl.range(after: " - "))
         devLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: devLbl.range(after: " - "))

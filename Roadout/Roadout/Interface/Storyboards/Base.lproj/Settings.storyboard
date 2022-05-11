@@ -2038,8 +2038,8 @@ Made in Cluj :)</string>
                                                             <rect key="frame" x="0.0" y="59" width="374" height="140"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-Jy-B8C">
-                                                                    <rect key="frame" x="24" y="0.0" width="350" height="1"/>
-                                                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                                    <rect key="frame" x="8" y="0.0" width="358" height="1"/>
+                                                                    <color key="backgroundColor" systemColor="systemGray4Color"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="1" id="eDA-0s-i1h"/>
                                                                     </constraints>
@@ -2048,20 +2048,20 @@ Made in Cluj :)</string>
                                                                     <rect key="frame" x="8" y="8" width="358" height="124"/>
                                                                     <color key="backgroundColor" name="Secondary Detail"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="130" id="4nF-nE-xvF"/>
+                                                                        <constraint firstAttribute="height" constant="150" id="4nF-nE-xvF"/>
                                                                     </constraints>
                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate Duis aute irure dolor in reprehenderit in voluptate Duis aute irure dolor in reprehenderit in voluptate </string>
                                                                     <color key="textColor" systemColor="labelColor"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 </textView>
                                                             </subviews>
                                                             <color key="backgroundColor" name="Secondary Detail"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="sRh-4w-O9y" secondAttribute="bottom" constant="8" id="0lz-OJ-oXq"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Cyv-Jy-B8C" secondAttribute="trailing" id="RFT-bN-sJM"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Cyv-Jy-B8C" secondAttribute="trailing" constant="8" id="RFT-bN-sJM"/>
                                                                 <constraint firstItem="Cyv-Jy-B8C" firstAttribute="top" secondItem="o2l-P6-p3z" secondAttribute="top" id="TUP-il-Fga"/>
-                                                                <constraint firstItem="Cyv-Jy-B8C" firstAttribute="leading" secondItem="o2l-P6-p3z" secondAttribute="leading" constant="24" id="o8e-Yq-nCW"/>
+                                                                <constraint firstItem="Cyv-Jy-B8C" firstAttribute="leading" secondItem="o2l-P6-p3z" secondAttribute="leading" constant="8" id="o8e-Yq-nCW"/>
                                                                 <constraint firstAttribute="trailing" secondItem="sRh-4w-O9y" secondAttribute="trailing" constant="8" id="tUD-cT-xle"/>
                                                                 <constraint firstItem="sRh-4w-O9y" firstAttribute="leading" secondItem="o2l-P6-p3z" secondAttribute="leading" constant="8" id="zap-AF-SRe"/>
                                                                 <constraint firstItem="sRh-4w-O9y" firstAttribute="top" secondItem="Cyv-Jy-B8C" secondAttribute="bottom" constant="7" id="zmJ-ww-3ir"/>
@@ -2141,7 +2141,7 @@ Made in Cluj :)</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3I-ED-Y9C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5954" y="76"/>
+            <point key="canvasLocation" x="5953.6231884057979" y="75.669642857142847"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="RJr-Hf-Dg1">
@@ -2243,11 +2243,11 @@ Made in Cluj :)</string>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="ad6-ze-Q1B">
-                                        <rect key="frame" x="75.5" y="13" width="46" height="44"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ad6-ze-Q1B">
+                                        <rect key="frame" x="75.5" y="13" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="6ev-eB-ozB"/>
-                                            <constraint firstAttribute="width" constant="46" id="oHe-xv-zec"/>
+                                            <constraint firstAttribute="width" constant="44" id="oHe-xv-zec"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lead Developer - David Retegan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3L-Rm-PHg">
@@ -2275,7 +2275,7 @@ Made in Cluj :)</string>
                                     <constraint firstItem="Q3L-Rm-PHg" firstAttribute="top" secondItem="ad6-ze-Q1B" secondAttribute="bottom" constant="17" id="Ee7-zx-jt1"/>
                                     <constraint firstItem="Q3L-Rm-PHg" firstAttribute="leading" secondItem="iyY-1E-mfX" secondAttribute="leading" constant="12" id="FDc-9P-H7M"/>
                                     <constraint firstItem="vQ5-7w-8DN" firstAttribute="centerX" secondItem="iyY-1E-mfX" secondAttribute="centerX" constant="27" id="Qn3-ot-5WN"/>
-                                    <constraint firstItem="vQ5-7w-8DN" firstAttribute="leading" secondItem="ad6-ze-Q1B" secondAttribute="trailing" constant="9" id="UaG-J7-xhv"/>
+                                    <constraint firstItem="vQ5-7w-8DN" firstAttribute="leading" secondItem="ad6-ze-Q1B" secondAttribute="trailing" constant="11" id="UaG-J7-xhv"/>
                                     <constraint firstItem="ad6-ze-Q1B" firstAttribute="top" secondItem="iyY-1E-mfX" secondAttribute="top" constant="13" id="e08-de-eV2"/>
                                     <constraint firstAttribute="height" constant="157" id="m90-g6-hv5"/>
                                     <constraint firstItem="vQ5-7w-8DN" firstAttribute="top" secondItem="iyY-1E-mfX" secondAttribute="top" constant="30" id="tde-bF-5WN"/>
@@ -2294,7 +2294,7 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkL-tJ-fZS">
                                 <rect key="frame" x="20" y="462" width="374" height="110"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Roadout_Watch" translatesAutoresizingMaskIntoConstraints="NO" id="9xA-KT-hRq">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Roadout_wOS" translatesAutoresizingMaskIntoConstraints="NO" id="9xA-KT-hRq">
                                         <rect key="frame" x="159.5" y="8" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="Z6D-bR-dcD"/>
@@ -2396,6 +2396,7 @@ Made in Cluj :)</string>
                         <outlet property="designerLbl" destination="2Cv-O3-ES3" id="rT7-JQ-ZpK"/>
                         <outlet property="devLbl" destination="Q3L-Rm-PHg" id="Dwk-G3-yYt"/>
                         <outlet property="easterEggLbl" destination="4ae-xV-gdN" id="dty-Ac-7Da"/>
+                        <outlet property="logoImage" destination="ad6-ze-Q1B" id="g37-vf-MWh"/>
                         <outlet property="otherCard" destination="MkL-tJ-fZS" id="ukl-LI-dse"/>
                         <outlet property="titleLbl" destination="ZYA-Q8-Kqn" id="Bnb-Xc-XKe"/>
                         <outlet property="websiteCard" destination="6rt-F8-aW3" id="eAg-Wr-ZHp"/>
@@ -2411,10 +2412,10 @@ Made in Cluj :)</string>
         <image name="Card1" width="690" height="380"/>
         <image name="Diploma" width="320" height="320"/>
         <image name="Google Maps" width="144" height="144"/>
-        <image name="Logo" width="2094" height="2094"/>
-        <image name="Roadout_Siri" width="553" height="553"/>
-        <image name="Roadout_Watch" width="553" height="553"/>
-        <image name="Roadout_Widget" width="553" height="553"/>
+        <image name="LogoIcon" width="1396" height="1396"/>
+        <image name="Roadout_Siri" width="955" height="955"/>
+        <image name="Roadout_Widget" width="955" height="955"/>
+        <image name="Roadout_wOS" width="955" height="955"/>
         <image name="Waze" width="144" height="144"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
@@ -2440,10 +2441,10 @@ Made in Cluj :)</string>
             <color red="0.56099998950958252" green="0.40000000596046448" blue="0.050999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ExpressFocus">
-            <color red="0.4830000102519989" green="0.30099999904632568" blue="0.11599999666213989" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.48199999332427979" green="0.30199998617172241" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Greyish">
-            <color red="0.50199997425079346" green="0.45100000500679016" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.53299999237060547" green="0.49399998784065247" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Icons">
             <color red="0.86299997568130493" green="0.66699999570846558" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2458,7 +2459,7 @@ Made in Cluj :)</string>
             <color red="0.61799997091293335" green="0.22400000691413879" blue="0.11599999666213989" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Second Background">
-            <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94509803921568625" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Second Orange">
             <color red="1" green="0.62000000476837158" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2472,8 +2473,8 @@ Made in Cluj :)</string>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

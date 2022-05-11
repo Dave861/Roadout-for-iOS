@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A00053F281C334D001F1FB7 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 9A00053E281C334D001F1FB7 /* SPIndicator */; };
 		9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0357162727CC61002A9ED9 /* HomeViewController.swift */; };
 		9A06212728096C0700D69F56 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC566E527BE354200955F7D /* EntityManager.swift */; };
 		9A06212828096C0700D69F56 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC566E527BE354200955F7D /* EntityManager.swift */; };
@@ -209,7 +210,6 @@
 		9AEF29F2272D71A600FEE390 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEF29F1272D71A600FEE390 /* ResultView.swift */; };
 		9AF4BA2427787A7200F3C3B4 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
 		9AF4BA252778A0B400F3C3B4 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
-		9AF7142C27AFC0E000FEA4C4 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 9AF7142B27AFC0E000FEA4C4 /* SPAlert */; };
 		9AF7142E27AFC41E00FEA4C4 /* AckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7142D27AFC41E00FEA4C4 /* AckViewController.swift */; };
 		9AF7143027AFC49200FEA4C4 /* AckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7142F27AFC49200FEA4C4 /* AckCell.swift */; };
 		9AF798EE272C3B530096D4C3 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF798ED272C3B530096D4C3 /* InviteViewController.swift */; };
@@ -540,7 +540,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AF7142C27AFC0E000FEA4C4 /* SPAlert in Frameworks */,
 				9AC48D1C273FBDE200DBCEF8 /* iCarousel in Frameworks */,
 				9A0BDACD2792C90500EB9CF8 /* SPPerspective in Frameworks */,
 				9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */,
@@ -549,6 +548,7 @@
 				9AAE2659280947E000BBBAC3 /* GoogleMaps in Frameworks */,
 				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
 				9AAE2661280947E000BBBAC3 /* GooglePlaces in Frameworks */,
+				9A00053F281C334D001F1FB7 /* SPIndicator in Frameworks */,
 				9AAE265D280947E000BBBAC3 /* GoogleMapsCore in Frameworks */,
 				9A40C1DC281443FD00E44B23 /* IOSSecuritySuite in Frameworks */,
 				9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */,
@@ -1158,7 +1158,6 @@
 				9AA0EFD1277B5D5800B0F52A /* Alamofire */,
 				9AA01DDE2789D78E0004211A /* CHIOTPField */,
 				9A0BDACC2792C90500EB9CF8 /* SPPerspective */,
-				9AF7142B27AFC0E000FEA4C4 /* SPAlert */,
 				9A8D8D3B27BADDAC0037DFE3 /* PusherSwift */,
 				9AAE2658280947E000BBBAC3 /* GoogleMaps */,
 				9AAE265A280947E000BBBAC3 /* GoogleMapsBase */,
@@ -1166,6 +1165,7 @@
 				9AAE265E280947E000BBBAC3 /* GoogleMapsM4B */,
 				9AAE2660280947E000BBBAC3 /* GooglePlaces */,
 				9A40C1DB281443FD00E44B23 /* IOSSecuritySuite */,
+				9A00053E281C334D001F1FB7 /* SPIndicator */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1220,10 +1220,10 @@
 				9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9AA01DDD2789D78E0004211A /* XCRemoteSwiftPackageReference "CHIOTPField" */,
 				9A0BDACB2792C90500EB9CF8 /* XCRemoteSwiftPackageReference "SPPerspective" */,
-				9AF7142A27AFC0E000FEA4C4 /* XCRemoteSwiftPackageReference "SPAlert" */,
 				9A8D8D3A27BADDAC0037DFE3 /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */,
 				9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 				9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */,
+				9A00053D281C334D001F1FB7 /* XCRemoteSwiftPackageReference "SPIndicator" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -1691,7 +1691,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1709,7 +1709,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1717,7 +1717,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1735,7 +1735,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1748,7 +1748,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout Watch.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1775,7 +1775,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch/Roadout WatchRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_Watch_WatchKit_Extension;
@@ -1799,7 +1799,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1831,7 +1831,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Roadout Watch WatchKit Extension/Roadout Watch WatchKit ExtensionRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Roadout Watch WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = T5769DN25J;
 				ENABLE_PREVIEWS = YES;
@@ -1862,7 +1862,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1891,7 +1891,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUIRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1920,7 +1920,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick Reserve.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1949,7 +1949,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick ReserveRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1981,7 +1981,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -2012,7 +2012,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -2163,7 +2163,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2203,7 +2203,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2313,6 +2313,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9A00053D281C334D001F1FB7 /* XCRemoteSwiftPackageReference "SPIndicator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPIndicator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		9A0BDACB2792C90500EB9CF8 /* XCRemoteSwiftPackageReference "SPPerspective" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ivanvorobei/SPPerspective.git";
@@ -2377,17 +2385,14 @@
 				revision = d4b4db80df0aa7744d5bc0dced74474540a114ce;
 			};
 		};
-		9AF7142A27AFC0E000FEA4C4 /* XCRemoteSwiftPackageReference "SPAlert" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ivanvorobei/SPAlert";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9A00053E281C334D001F1FB7 /* SPIndicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A00053D281C334D001F1FB7 /* XCRemoteSwiftPackageReference "SPIndicator" */;
+			productName = SPIndicator;
+		};
 		9A06212928096DB200D69F56 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;
@@ -2467,11 +2472,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */;
 			productName = iCarousel;
-		};
-		9AF7142B27AFC0E000FEA4C4 /* SPAlert */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9AF7142A27AFC0E000FEA4C4 /* XCRemoteSwiftPackageReference "SPAlert" */;
-			productName = SPAlert;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

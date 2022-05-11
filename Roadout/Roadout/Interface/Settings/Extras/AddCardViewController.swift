@@ -21,6 +21,7 @@ class AddCardViewController: UIViewController {
             let blurredNr = "**** **** **** \(numberField.text!.suffix(4))"
             cardNumbers.append(blurredNr)
             NotificationCenter.default.post(name: .refreshCardsID, object: nil)
+            NotificationCenter.default.post(name: .refreshCardsMenuID, object: nil)
             UIView.animate(withDuration: 0.1) {
                 self.blurButton.alpha = 0
             } completion: { done in

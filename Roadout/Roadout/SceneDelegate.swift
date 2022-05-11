@@ -92,6 +92,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }
             }
         }
+        if IOSSecuritySuite.amIJailbroken() || IOSSecuritySuite.amIReverseEngineered() || IOSSecuritySuite.amIProxied() {
+            let mainSb = UIStoryboard(name: "Main", bundle: nil)
+            let dangerVC = mainSb.instantiateViewController(withIdentifier: "DangerVC") as! DangerViewController
+            window?.rootViewController = dangerVC
+            window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {

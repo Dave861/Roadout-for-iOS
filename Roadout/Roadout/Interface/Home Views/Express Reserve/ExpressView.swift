@@ -69,8 +69,28 @@ class ExpressView: UIView {
     var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let choosePaymentTitle = NSAttributedString(string: "Choose Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
+    func manageObs() {
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshCardsMenu), name: .refreshCardsMenuID, object: nil)
+    }
+    
+    @objc func refreshCardsMenu() {
+        self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+        cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
+        if #available(iOS 14.0, *) {
+            chooseMethodBtn.menu = UIMenu(title: "Choose a Payment method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+            chooseMethodBtn.showsMenuAsPrimaryAction = true
+            
+            if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
+                payBtn.menu = UIMenu(title: "Choose a Payment method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+                payBtn.showsMenuAsPrimaryAction = true
+            }
+        }
+    }
+    
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 13.0
+        manageObs()
         backBtn.setTitle("", for: .normal)
         
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
@@ -136,6 +156,14 @@ class ExpressView: UIView {
     
     func makeMenuActions(cards: [String]) -> [UIAction] {
         var menuItems = [UIAction]()
+        
+        let addAction = UIAction(title: "Add Card", image: UIImage(systemName: "plus")) { (_) in
+            let sb = UIStoryboard(name: "Settings", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "AddCardVC") as! AddCardViewController
+            self.parentViewController().present(vc, animated: true, completion: nil)
+        }
+        menuItems.append(addAction)
+        
         for card in cards {
             let action = UIAction(title: card, image: UIImage(systemName: "creditcard.fill"), handler: { (_) in
                 self.UserDefaultsSuite.set(self.getIndexInArray(card, cards), forKey: "ro.roadout.defaultPaymentMethod")
@@ -147,14 +175,13 @@ class ExpressView: UIView {
         let applePayAction = UIAction(title: "Apple Pay", image: UIImage(systemName: "applelogo")) { (_) in
             self.showApplePayBtn()
         }
-        
         menuItems.append(applePayAction)
         
         return menuItems
     }
     
     func makeCardsAlert(cards: [String]) -> UIAlertController {
-        let alert = UIAlertController(title: "Choose a payment method".localized(), message: "", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Choose a Payment method".localized(), message: "", preferredStyle: .actionSheet)
         
         for card in cards {
             let action = UIAlertAction(title: card, style: .default) { _ in
@@ -169,7 +196,14 @@ class ExpressView: UIView {
         }
         alert.addAction(action)
         
-        alert.view.tintColor = UIColor(named: "ExpressFocus")!
+        let addAction = UIAlertAction(title: "Add Card", style: .default) { _ in
+            let sb = UIStoryboard(name: "Settings", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "AddCardVC") as! AddCardViewController
+            self.parentViewController().present(vc, animated: true, completion: nil)
+        }
+        alert.addAction(addAction)
+        
+        alert.view.tintColor = UIColor(named: "Dark Orange")!
         return alert
     }
     

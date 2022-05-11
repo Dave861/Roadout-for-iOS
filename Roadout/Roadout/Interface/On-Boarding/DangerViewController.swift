@@ -35,6 +35,9 @@ class DangerViewController: UIViewController {
         if IOSSecuritySuite.amIProxied() {
             self.showAlert(title: "Proxy".localized(), message: "Try changing Wi-Fi networks or look into the router settings to see what is tampering with the app, then restart.".localized())
         }
+        if !IOSSecuritySuite.amIJailbroken() && !IOSSecuritySuite.amIReverseEngineered() && !IOSSecuritySuite.amIProxied() {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     let questionTitle = NSAttributedString(string: "What can I do?".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])

@@ -66,7 +66,22 @@ class EntityManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
                     dbParkSections = [ParkSection]()
                     for json in jsonArray {
-                        dbParkSections.append(ParkSection(name: json["name"] as! String, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: 0, rows: self.getNumbers(json["nrRows"] as! String), spots: [ParkSpot](), rID: json["sectionID"] as! String))
+                        var imagePoint: ParkSectionImagePoint!
+                        switch location {
+                        case "Cluj.Eroilor":
+                            imagePoint = eroilorPoints[json["name"] as! String]
+                        case "Cluj.21Decembrie":
+                            imagePoint = decembriePoints[json["name"] as! String]
+                        case "Cluj.OldTown":
+                            imagePoint = oldTownPoints[json["name"] as! String]
+                        case "Cluj.Marasti":
+                            imagePoint = marastiPoints[json["name"] as! String]
+                        case "Cluj.MihaiViteazu":
+                            imagePoint = mihaiViteazuPoints[json["name"] as! String]
+                        default:
+                            break
+                        }
+                        dbParkSections.append(ParkSection(name: json["name"] as! String, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: 0, rows: self.getNumbers(json["nrRows"] as! String), spots: [ParkSpot](), imagePoint: imagePoint, rID: json["sectionID"] as! String))
                     }
                     completion(.success(()))
                 } else {

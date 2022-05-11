@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SPIndicator
 
 class SectionView: UIView {
     
@@ -19,6 +20,7 @@ class SectionView: UIView {
     @IBOutlet weak var sectionImage: UIImageView!
     
     @IBOutlet weak var sectionBtn: UIButton!
+    
     
     @IBOutlet weak var continueBtn: UIButton!
     @IBAction func continueTapped(_ sender: Any) {
@@ -53,6 +55,14 @@ class SectionView: UIView {
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         
         sectionImage.image = UIImage(named: parkLocations[selectedParkLocationIndex].sectionImage)
+        sectionImage.isUserInteractionEnabled = true
+        
+        if newSuperview != nil {
+            addPointsToImage(sections: parkLocations[selectedParkLocationIndex].sections)
+        } else {
+            sectionImage.subviews.forEach({ $0.removeFromSuperview() })
+        }
+        
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1
@@ -82,6 +92,57 @@ class SectionView: UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[1] as! UIView
     }
     
+    func addPointsToImage(sections: [ParkSection]) {
+        let sectionWidth = UIScreen.main.bounds.width - 46
+        
+        for index in 0...sections.count-1 {
+        
+            var newX = sections[index].imagePoint.x
+            if sectionWidth > 365 {
+                newX += 3
+            } else if sectionWidth < 330 {
+                newX -= 3
+            }
+            let z1 = CGFloat(newX) * sectionWidth / 100
+            let z2 = CGFloat(sections[index].imagePoint.y) * self.sectionImage.frame.size.height / 100
+            
+            let letterBtn = UIButton(frame: CGRect(x: z1 - 30, y: z2 - 15, width: 30, height: 30))
+            letterBtn.layer.cornerRadius = 6
+            letterBtn.backgroundColor = UIColor(named: "Icons")!.withAlphaComponent(0.2)
+            letterBtn.setTitle(sections[index].name, for: .normal)
+            letterBtn.setTitleColor(UIColor(named: "Icons")!, for: .normal)
+            
+            letterBtn.addAction(for: .touchUpInside) {
+                self.letter = sections[index].name
+                self.letterTitle = NSAttributedString(string: self.letter,
+                                                 attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+                self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
+                selectedSectionIndex = index
+                self.showSelectedIndicator(letter: sections[index].name)
+                self.decolorButtonsInSectionImage()
+                letterBtn.setTitleColor(UIColor(named: "Background")!, for: .normal)
+                letterBtn.backgroundColor = UIColor(named: "Icons")!
+            }
+            
+            self.sectionImage.addSubview(letterBtn)
+        }
+    }
+    
+    func decolorButtonsInSectionImage() {
+        for subview in sectionImage.subviews {
+            guard let btn = subview as? UIButton else { return }
+            btn.setTitleColor(UIColor(named: "Icons")!, for: .normal)
+            btn.backgroundColor = UIColor(named: "Icons")!.withAlphaComponent(0.2)
+        }
+    }
+    
+    func showSelectedIndicator(letter: String) {
+        let image = UIImage.init(systemName: "\(letter.lowercased()).circle.fill")!.withTintColor(UIColor(named: "Icons")!, renderingMode: .alwaysOriginal)
+        let indicatorView = SPIndicatorView(title: "Section \(letter)", message: "Selected", preset: .custom(image))
+        indicatorView.present(duration: 0.7, haptic: .none, completion: nil)
+    }
+    
+        
     func showLoadingAlert() {
         let alert = UIAlertController(title: "Loading...".localized(), message: "The spots are still downloading, this should not happen normally and might be caused by poor network connection. Please wait and try again.".localized(), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)

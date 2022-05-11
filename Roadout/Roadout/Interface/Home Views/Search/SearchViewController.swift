@@ -11,6 +11,7 @@ import CoreLocation
 class SearchViewController: UIViewController {
     
     var results = parkLocations
+    var smartApplied = true
     
     @IBOutlet weak var card: UIView!
     
@@ -29,36 +30,52 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var modesButton: UIButton!
     
-    @IBAction func moreTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "What would you like to do?".localized(), preferredStyle: .actionSheet)
+    @IBAction func modesTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "", message: "Search Settings".localized(), preferredStyle: .actionSheet)
         
-        let expressAction = UIAlertAction(title: "Express Reserve".localized(), style: .default) { action in
-            self.dismiss(animated: false, completion: nil)
-            NotificationCenter.default.post(name: .addExpressPickViewID, object: nil)
+        let smartAction = UIAlertAction(title: "Smart Search".localized(), style: .default) { action in
+            self.smartApplied = true
+            self.tableView.reloadData()
         }
-        expressAction.setValue(UIColor(named: "Dark Orange")!, forKey: "titleTextColor")
+        smartAction.setValue(UIColor(named: "Main Yellow")!, forKey: "titleTextColor")
+        
+        let classicAction = UIAlertAction(title: "Classic Search".localized(), style: .default) { action in
+            self.smartApplied = false
+            self.tableView.reloadData()
+        }
+        classicAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
         
         let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
         cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
         
-        alert.addAction(expressAction)
+        alert.addAction(smartAction)
+        alert.addAction(classicAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
     
-    var menuItems: [UIAction] {
-        return [
-            UIAction(title: "Express Reserve".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
-                self.dismiss(animated: false, completion: nil)
-                NotificationCenter.default.post(name: .addExpressPickViewID, object: nil)
-            }),
-        ]
+    func makeModesMenu() -> UIMenu {
+        let smartAction = UIAction(title: "Smart Search".localized(), image: nil, state: smartApplied ? .on : .off, handler: { (_) in
+            self.smartApplied = true
+            if #available(iOS 14.0, *) {
+                self.modesButton.menu = self.makeModesMenu()
+                self.modesButton.showsMenuAsPrimaryAction = true
+            }
+            self.tableView.reloadData()
+        })
+        let classicAction = UIAction(title: "Classic Search".localized(), image: nil, state: smartApplied ? .off : .on, handler: { (_) in
+            self.smartApplied = false
+            if #available(iOS 14.0, *) {
+                self.modesButton.menu = self.makeModesMenu()
+                self.modesButton.showsMenuAsPrimaryAction = true
+            }
+            self.tableView.reloadData()
+        })
+        return UIMenu(title: "Search Settings".localized(), image: nil, identifier: nil, options: [], children: [classicAction, smartAction])
     }
-    var moreMenu: UIMenu {
-        return UIMenu(title: "What would you like to do?".localized(), image: nil, identifier: nil, options: [], children: menuItems)
-    }
+    
     
     
     override func viewDidLoad() {
@@ -70,11 +87,11 @@ class SearchViewController: UIViewController {
         reloadFreeSpots()
         
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
-        moreButton.setTitle("", for: .normal)
+        modesButton.setTitle("", for: .normal)
         
         if #available(iOS 14.0, *) {
-            moreButton.menu = moreMenu
-            moreButton.showsMenuAsPrimaryAction = true
+            modesButton.menu = makeModesMenu()
+            modesButton.showsMenuAsPrimaryAction = true
         }
         
         searchBar.layer.cornerRadius = 13.0
@@ -95,35 +112,42 @@ class SearchViewController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        guard let query = searchField.text,
-          !query.trimmingCharacters(in: .whitespaces).isEmpty else {
-              self.bruteFind() { success in
-                  if success {
-                      self.tableView.reloadData()
+        if smartApplied {
+            guard let query = searchField.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+                  self.bruteFind() { success in
+                      if success {
+                          self.tableView.reloadData()
+                      }
                   }
-              }
-              return
-        }
-        let adjustedQuery = "Cluj-Napoca, " + query
-        SearchManager.sharedInstance.startSearching(query: adjustedQuery) { result in
-            switch result {
-                case .success(let searchCoordinates):
-                    print("\(searchCoordinates.latitude), \(searchCoordinates.longitude)")
-                self.findByCoordinate(coords: searchCoordinates) { success in
-                    if success {
-                        self.tableView.reloadData()
-                    }
-                }
-                case .failure(let err):
-                    print(err.localizedDescription)
-                    self.bruteFind() { success in
+                  return
+            }
+            let adjustedQuery = "Cluj-Napoca, " + query
+            SearchManager.sharedInstance.startSearching(query: adjustedQuery) { result in
+                switch result {
+                    case .success(let searchCoordinates):
+                        print("\(searchCoordinates.latitude), \(searchCoordinates.longitude)")
+                    self.findByCoordinate(coords: searchCoordinates) { success in
                         if success {
                             self.tableView.reloadData()
                         }
                     }
+                    case .failure(let err):
+                        print(err.localizedDescription)
+                        self.bruteFind() { success in
+                            if success {
+                                self.tableView.reloadData()
+                            }
+                        }
+                }
+            }
+        } else {
+            self.bruteFind() { success in
+                if success {
+                    self.tableView.reloadData()
+                }
             }
         }
-        
     }
     
     func bruteFind(completion: (_ success: Bool) -> Void) {
