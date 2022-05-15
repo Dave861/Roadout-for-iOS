@@ -21,7 +21,48 @@ class ReservationView: UIView {
     @IBOutlet weak var unlockBtn: UIButton!
     @IBOutlet weak var directionsBtn: UIButton!
     @IBOutlet weak var delayBtn: UIButton!
-    @IBOutlet weak var cancelBrn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var arBtn: UIButton!
+    @IBOutlet weak var helpBtn: UIButton!
+    
+    @IBOutlet weak var unlockView: UIView!
+    @IBOutlet weak var directionsView: UIView!
+    @IBOutlet weak var delayView: UIView!
+    @IBOutlet weak var cancelView: UIView!
+    @IBOutlet weak var arView: UIView!
+    @IBOutlet weak var helpView: UIView!
+    
+    @IBOutlet weak var unlockLbl: UILabel!
+    @IBOutlet weak var directionsLbl: UILabel!
+    @IBOutlet weak var delayLbl: UILabel!
+    @IBOutlet weak var cancelLbl: UILabel!
+    @IBOutlet weak var arLbl: UILabel!
+    @IBOutlet weak var helpLbl: UILabel!
+    
+    
+    func styleActionButtons() {
+        unlockBtn.setTitle("", for: .normal)
+        directionsBtn.setTitle("", for: .normal)
+        delayBtn.setTitle("", for: .normal)
+        arBtn.setTitle("", for: .normal)
+        helpBtn.setTitle("", for: .normal)
+        cancelBtn.setTitle("", for: .normal)
+        
+        unlockView.layer.cornerRadius = 9
+        directionsView.layer.cornerRadius = 9
+        delayView.layer.cornerRadius = 9
+        cancelView.layer.cornerRadius = 9
+        arView.layer.cornerRadius = 9
+        helpView.layer.cornerRadius = 9
+        
+        unlockLbl.text = "Unlock".localized()
+        directionsLbl.text = "Directions".localized()
+        delayLbl.text = "Delay".localized()
+        arLbl.text = "Open in AR".localized()
+        cancelLbl.text = "Cancel".localized()
+        helpLbl.text = "Help".localized()
+    }
+    
     
     @IBAction func unlockTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -30,23 +71,7 @@ class ReservationView: UIView {
     }
     
     @IBAction func directionsTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "Directions".localized(), preferredStyle: .actionSheet)
-        
-        let directionsAction = UIAlertAction(title: "Get Directions".localized(), style: .default) { action in
-            self.openDirectionsToCoords(lat: 46.565645, long: 32.65565)
-        }
-        let ARAction = UIAlertAction(title: "Open in AR (BETA)".localized(), style: .default) { action in
-            
-        }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
-        cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
-        
-        alert.addAction(directionsAction)
-        alert.addAction(ARAction)
-        alert.addAction(cancelAction)
-        
-        alert.view.tintColor = UIColor(named: "Brownish")!
-        self.parentViewController().present(alert, animated: true, completion: nil)
+        self.openDirectionsToCoords(lat: 46.565645, long: 32.65565)
     }
     
     @IBAction func delayTapped(_ sender: Any) {
@@ -102,20 +127,22 @@ class ReservationView: UIView {
         self.parentViewController().present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func arTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction func helpTapped(_ sender: Any) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "HelpVC") as! HelpViewController
+        self.parentViewController().present(vc, animated: true, completion: nil)
+    }
+    
     override func willMove(toSuperview newSuperview: UIView?) {
         self.addObs()
         self.layer.cornerRadius = 13.0
         backBtn.setTitle("", for: .normal)
         
-        unlockBtn.setTitle("", for: .normal)
-        directionsBtn.setTitle("", for: .normal)
-        delayBtn.setTitle("", for: .normal)
-        cancelBrn.setTitle("", for: .normal)
-        
-        if #available(iOS 14.0, *) {
-            directionsBtn.menu = directionsMenu
-            directionsBtn.showsMenuAsPrimaryAction = true
-        }
+        styleActionButtons()
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1
@@ -130,6 +157,7 @@ class ReservationView: UIView {
         let formattedDate = dateFormatter.string(from: ReservationManager.sharedInstance.reservationEndDate)
         self.timerLbl.text = "Reserved for ".localized() + formattedDate
         self.timerLbl.set(textColor: UIColor.label, range: timerLbl.range(before: formattedDate))
+        self.timerLbl.set(font: UIFont.systemFont(ofSize: 21, weight: .medium), range: timerLbl.range(after: "Reserved for ".localized()))
     }
     
     func addObs() {
@@ -143,21 +171,9 @@ class ReservationView: UIView {
         let formattedDate = dateFormatter.string(from: ReservationManager.sharedInstance.reservationEndDate)
         self.timerLbl.text = "Reserved for ".localized() + formattedDate
         self.timerLbl.set(textColor: UIColor.label, range: timerLbl.range(before: formattedDate))
+        self.timerLbl.set(font: UIFont.systemFont(ofSize: 21, weight: .medium), range: timerLbl.range(after: "Reserved for ".localized()))
     }
     
-    var menuItems: [UIAction] {
-        return [
-            UIAction(title: "Get Directions".localized(), image: UIImage(systemName: "arrow.triangle.branch"), handler: { (_) in
-                self.openDirectionsToCoords(lat: 46.565645, long: 32.65565)
-            }),
-            UIAction(title: "Open in AR (BETA)".localized(), image: UIImage(systemName: "rotate.3d"), handler: { (_) in
-                
-            })
-        ]
-    }
-    var directionsMenu: UIMenu {
-        return UIMenu(title: "Directions".localized(), image: nil, identifier: nil, options: [], children: menuItems)
-    }
     
     func openDirectionsToCoords(lat: Double, long: Double) {
         var link: String

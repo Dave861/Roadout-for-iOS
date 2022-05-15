@@ -696,7 +696,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
+            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-209-dif, width: self.screenSize.width - 26, height: 209)
             self.view.addSubview(self.reservationView)
         }
     }
@@ -733,7 +733,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
+            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-209-dif, width: self.screenSize.width - 26, height: 209)
             self.view.addSubview(self.reservationView)
             self.delayView.removeFromSuperview()
         }
@@ -787,7 +787,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-190-dif, width: self.screenSize.width - 26, height: 190)
+            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-209-dif, width: self.screenSize.width - 26, height: 209)
             self.view.addSubview(self.reservationView)
             self.unlockView.removeFromSuperview()
         }

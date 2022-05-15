@@ -143,8 +143,12 @@
 		9A8D8D3827BAD76F0037DFE3 /* ParkSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799321277A0E410088E3FD /* ParkSection.swift */; };
 		9A8D8D3927BAD7710037DFE3 /* ParkSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799323277A0E460088E3FD /* ParkSpot.swift */; };
 		9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9A8D8D3B27BADDAC0037DFE3 /* PusherSwift */; };
+		9A8DC951282FF88D008F92B6 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8DC950282FF88D008F92B6 /* HelpViewController.swift */; };
+		9A8DC953282FF89F008F92B6 /* HelpDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8DC952282FF89F008F92B6 /* HelpDetailViewController.swift */; };
+		9A8DC958282FF993008F92B6 /* HelpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8DC957282FF993008F92B6 /* HelpCell.swift */; };
 		9A9208CF277EE14500E099C7 /* ComplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9208CE277EE14500E099C7 /* ComplicationManager.swift */; };
 		9A9239B22764E26100C40706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A59B75A2764A6B500BC0497 /* Assets.xcassets */; };
+		9A92CF2228312A57003F2080 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92CF2128312A57003F2080 /* GradientView.swift */; };
 		9A96248327C96E9E00A17087 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96248227C96E9E00A17087 /* FAQViewController.swift */; };
 		9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F872272B09DF008B58FE /* AddCardViewController.swift */; };
 		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
@@ -435,7 +439,11 @@
 		9A7C1A112776035F0088B54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A81E5F827B8DED600F571C3 /* FunctionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsManager.swift; sourceTree = "<group>"; };
 		9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsAppViewController.swift; sourceTree = "<group>"; };
+		9A8DC950282FF88D008F92B6 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		9A8DC952282FF89F008F92B6 /* HelpDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpDetailViewController.swift; sourceTree = "<group>"; };
+		9A8DC957282FF993008F92B6 /* HelpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCell.swift; sourceTree = "<group>"; };
 		9A9208CE277EE14500E099C7 /* ComplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationManager.swift; sourceTree = "<group>"; };
+		9A92CF2128312A57003F2080 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		9A96248227C96E9E00A17087 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		9A96F872272B09DF008B58FE /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		9A96F874272B09F1008B58FE /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
@@ -842,6 +850,16 @@
 			path = "Roadout Widget";
 			sourceTree = "<group>";
 		};
+		9A8DC956282FF983008F92B6 /* Help Center */ = {
+			isa = PBXGroup;
+			children = (
+				9A8DC950282FF88D008F92B6 /* HelpViewController.swift */,
+				9A8DC952282FF89F008F92B6 /* HelpDetailViewController.swift */,
+				9A8DC957282FF993008F92B6 /* HelpCell.swift */,
+			);
+			path = "Help Center";
+			sourceTree = "<group>";
+		};
 		9AA0EFCC277B3DCF00B0F52A /* Authentification */ = {
 			isa = PBXGroup;
 			children = (
@@ -860,6 +878,7 @@
 				9A14B9192731430400967417 /* MonthPickerView.swift */,
 				9A14B91B2731431B00967417 /* PaddedTextField.swift */,
 				9AED6DAF27E7152A00B5004F /* SlidingButton.swift */,
+				9A92CF2128312A57003F2080 /* GradientView.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -960,6 +979,7 @@
 				9A5381152789CA2400462D63 /* ResetPasswordViewController.swift */,
 				9A0BDACE2792C91D00EB9CF8 /* TutorialViewController.swift */,
 				9A40C1DD2814458D00E44B23 /* DangerViewController.swift */,
+				9A8DC956282FF983008F92B6 /* Help Center */,
 			);
 			path = "On-Boarding";
 			sourceTree = "<group>";
@@ -1436,6 +1456,7 @@
 				9AB827F628128879007BC842 /* GDMStructs.swift in Sources */,
 				9AC926EF272697F00054E453 /* WelcomeViewController.swift in Sources */,
 				9AB827F828128883007BC842 /* GDMManager.swift in Sources */,
+				9A8DC951282FF88D008F92B6 /* HelpViewController.swift in Sources */,
 				9A49BFAF272FF42B00234A9F /* NoWifiView.swift in Sources */,
 				9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */,
 				9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */,
@@ -1460,6 +1481,7 @@
 				9A65C5F227804B140060ABCA /* NotificationNameCenter.swift in Sources */,
 				9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */,
 				9A14B914273142A400967417 /* CustomTableView.swift in Sources */,
+				9A8DC958282FF993008F92B6 /* HelpCell.swift in Sources */,
 				9AB12375276F1170003C5AE9 /* GroupReserveActivity.swift in Sources */,
 				9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */,
 				9A14B91A2731430400967417 /* MonthPickerView.swift in Sources */,
@@ -1468,6 +1490,7 @@
 				9A300CE42789970C0038A085 /* DeleteAccountViewController.swift in Sources */,
 				9A5381162789CA2400462D63 /* ResetPasswordViewController.swift in Sources */,
 				9A39B0D427284825008E7FD0 /* SettingCell.swift in Sources */,
+				9A92CF2228312A57003F2080 /* GradientView.swift in Sources */,
 				9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */,
 				9A0C7775272E831E00ECBFB2 /* SpotCell.swift in Sources */,
 				9A46BBA2272EE764002280DD /* ReserveView.swift in Sources */,
@@ -1477,6 +1500,7 @@
 				9A0631272775A92700E3AB5F /* GroupSpotsView.swift in Sources */,
 				9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */,
 				9A7332032728798300ACE30A /* NotificationCell.swift in Sources */,
+				9A8DC953282FF89F008F92B6 /* HelpDetailViewController.swift in Sources */,
 				9AED6DB327E723A400B5004F /* WidgetConfig.intentdefinition in Sources */,
 				9AED6DB227E7156D00B5004F /* UnlockView.swift in Sources */,
 				9A0D58D9277721DA0093B3D3 /* ReservationManager.swift in Sources */,

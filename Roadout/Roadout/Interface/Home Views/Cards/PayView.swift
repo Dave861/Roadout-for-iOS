@@ -114,6 +114,7 @@ class PayView: UIView {
         payBtn.layer.cornerRadius = 12.0
         payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
+        payBtn.backgroundColor = UIColor(named: "Dark Orange")!
         
         chooseMethodBtn.layer.cornerRadius = 12.0
         chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
