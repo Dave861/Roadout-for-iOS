@@ -26,7 +26,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     
-    
     func addObs() {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadName), name: .reloadUserNameID, object: nil)
@@ -43,6 +42,11 @@ class SettingsViewController: UIViewController {
         addObs()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.managePreferencesTutorial()
+    }
+    
     @objc func reloadName() {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         UserManager.sharedInstance.getUserName(id) { result in
@@ -54,6 +58,20 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+    func managePreferencesTutorial() {
+        if UserDefaults.roadout?.bool(forKey: "ro.roadout.Roadout.seenPreferencesTutorial") == false {
+        
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "TutorialVC") as! TutorialViewController
+            vc.tutorialSet = vc.preferencesTutorialSet
+            
+            self.present(vc, animated: true) {
+                UserDefaults.roadout?.set(true, forKey: "ro.roadout.Roadout.seenPreferencesTutorial")
+            }
+        }
+    }
+    
 
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
@@ -120,9 +138,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
-    
-    
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if cellTypes[indexPath.row] == "UserSettingCell" {
             print("cool")
@@ -147,6 +163,42 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 let sb = UIStoryboard(name: "Settings", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: cellVCs[indexPath.row])
                 self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        if cellTypes[indexPath.row] == "UpCell" || cellTypes[indexPath.row] == "SettingCell" || cellTypes[indexPath.row] == "DownCell" {
+            switch cellTypes[indexPath.row] {
+                case "UpCell":
+                    let cell = tableView.cellForRow(at: indexPath) as! UpCornerCell
+                    cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
+                case "SettingCell":
+                    let cell = tableView.cellForRow(at: indexPath) as! SettingCell
+                    cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
+                case "DownCell":
+                    let cell = tableView.cellForRow(at: indexPath) as! DownCornerCell
+                    cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
+                default:
+                    break
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        if cellTypes[indexPath.row] == "UpCell" || cellTypes[indexPath.row] == "SettingCell" || cellTypes[indexPath.row] == "DownCell" {
+            switch cellTypes[indexPath.row] {
+                case "UpCell":
+                    let cell = tableView.cellForRow(at: indexPath) as! UpCornerCell
+                    cell.card.backgroundColor = UIColor(named: "Secondary Detail")
+                case "SettingCell":
+                    let cell = tableView.cellForRow(at: indexPath) as! SettingCell
+                    cell.card.backgroundColor = UIColor(named: "Secondary Detail")
+                case "DownCell":
+                    let cell = tableView.cellForRow(at: indexPath) as! DownCornerCell
+                    cell.card.backgroundColor = UIColor(named: "Secondary Detail")
+                default:
+                    break
             }
         }
     }

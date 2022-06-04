@@ -6,139 +6,82 @@
 //
 
 import UIKit
-import SPPerspective
+
+struct TutorialItem {
+    var title: String
+    var description: String
+    var icon: UIImage
+}
 
 class TutorialViewController: UIViewController {
-
-    var tCounter = 1
     
-    var tutorialTitles = ["Search Bar".localized(), "More Button".localized(), "Express Reserve".localized(), "Find Spot".localized(), "Preferences".localized(), "Markers".localized()]
-    var tutorialTexts = ["Use the search bar to find specific parking locations in your city and easily reserve the perfect spot for you.".localized(), "Use the more button to access more powerful options of the app. Tap it for more info.".localized(), "This is a quick and easy way to reserve a spot in a desired location.".localized(), "The fastest way to find a parking spot near you, great for you just need to park quickly.".localized(), "The place to see stats, add cards, reminders and manage permissions.".localized(), "Markers are easily glanceable indicators of where parking locations are relative to your location".localized()]
+    var tutorialSet = [TutorialItem]()
     
-    @IBOutlet weak var t1: UIView!
+    let homeTutorialSet = [TutorialItem(title: "Search Bar", description: "Use the search bar to find park locations near streets or places you need to get to.", icon: UIImage(systemName: "magnifyingglass")!),
+                           TutorialItem(title: "Markers", description: "Parking locations are highlighted on the map using markers, you can zoom in and select them.", icon: UIImage(systemName: "mappin.and.ellipse")!),
+                           TutorialItem(title: "Menu", description: "The menu has other methods of finding a parking spot, you can try them right now!", icon: UIImage(systemName: "ellipsis.circle")!)]
     
-    @IBOutlet weak var t2: UIView!
-    @IBOutlet weak var t2Btn: UIButton!
-    @IBAction func t2Tapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "What would you like to do?".localized(), preferredStyle: .actionSheet)
-        let settingsAction = UIAlertAction(title: "Preferences".localized(), style: .default) { action in
-            self.tutorialTitle.text = self.tutorialTitles[4]
-            self.tutorialText.text = self.tutorialTexts[4]
+    let preferencesTutorialSet = [TutorialItem(title: "User Control", description: "Here you edit your account and see all your data.", icon: UIImage(systemName: "person.fill")!),
+                                  TutorialItem(title: "App Options and Features", description: "You can customize Roadout and use Reminders to keep you from forgetting to make a reservation", icon:UIImage(systemName: "arrow.up.forward.app")!),
+                                  TutorialItem(title: "About and Help", description: "Have any questions? Reach out via FAQ & Support", icon: UIImage(systemName: "questionmark.circle")!)]
+    
+    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var blurButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
+    
+    @IBAction func closeTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.1) {
+            self.blurButton.alpha = 0
+        } completion: { done in
+            self.dismiss(animated: true, completion: nil)
         }
-        settingsAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
-        
-        let findAction = UIAlertAction(title: "Find Spot".localized(), style: .default) { action in
-            self.tutorialTitle.text = self.tutorialTitles[3]
-            self.tutorialText.text = self.tutorialTexts[3]
-        }
-        findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
-        
-        let expressAction = UIAlertAction(title: "Express Reserve".localized(), style: .default) { action in
-            self.tutorialTitle.text = self.tutorialTitles[2]
-            self.tutorialText.text = self.tutorialTexts[2]
-        }
-        expressAction.setValue(UIColor(named: "Dark Orange")!, forKey: "titleTextColor")
-        
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
-        cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
-        
-        alert.addAction(settingsAction)
-        alert.addAction(findAction)
-        alert.addAction(expressAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
     }
-    
-    @IBOutlet weak var t3: UIImageView!
-    
-    @IBOutlet weak var continueBtn: UIButton!
-    @IBAction func continueTapped(_ sender: Any) {
-        tCounter += 1
-        if tCounter == 2 {
-            t2.isHidden = false
-            let animationConfig = SPPerspectiveAnimationConfig(duration: 15.0, distortion: 500, angle: 18, vectorStep: 3.14, shadow: nil)
-            t2.roundCorners(corners: [.topRight, .bottomRight], radius: 13.0)
-            t2.applyPerspective(animationConfig)
-            tutorialTitle.text = tutorialTitles[1]
-            tutorialText.text = tutorialTexts[1]
-            
-            t1.isHidden = true
-        } else if tCounter == 3 {
-            t3.isHidden = false
-            let animationConfig = SPPerspectiveAnimationConfig(duration: 15.0, distortion: 500, angle: 18, vectorStep: 3.14, shadow: nil)
-            t3.roundCorners(corners: [.topRight, .bottomRight], radius: 13.0)
-            t3.applyPerspective(animationConfig)
-            tutorialTitle.text = tutorialTitles[5]
-            tutorialText.text = tutorialTexts[5]
-            
-            t1.isHidden = true
-            t2.isHidden = true
-            continueBtn.setAttributedTitle(doneTitle, for: .normal)
-        } else {
+    @IBAction func dismissTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.1) {
+            self.blurButton.alpha = 0
+        } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
     }
     
-    @IBOutlet weak var skipBtn: UIButton!
-    @IBAction func skipTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    @IBOutlet weak var icon1: UIImageView!
+    @IBOutlet weak var icon2: UIImageView!
+    @IBOutlet weak var icon3: UIImageView!
     
-    @IBOutlet weak var tutorialTitle: UILabel!
-    @IBOutlet weak var tutorialText: UITextView!
+    @IBOutlet weak var titleLbl1: UILabel!
+    @IBOutlet weak var titleLbl2: UILabel!
+    @IBOutlet weak var titleLbl3: UILabel!
+    
+    @IBOutlet weak var descriptionText1: UILabel!
+    @IBOutlet weak var descriptionText2: UILabel!
+    @IBOutlet weak var descriptionText3: UILabel!
 
-    
-    var menuItems: [UIAction] {
-        return [
-            UIAction(title: "Preferences".localized(), image: UIImage(systemName: "gearshape.2"), handler: { (_) in
-                self.tutorialTitle.text = self.tutorialTitles[4]
-                self.tutorialText.text = self.tutorialTexts[4]
-            }),
-            UIAction(title: "Find Spot".localized(), image: UIImage(systemName: "loupe"), handler: { (_) in
-                self.tutorialTitle.text = self.tutorialTitles[3]
-                self.tutorialText.text = self.tutorialTexts[3]
-            }),
-            UIAction(title: "Express Reserve".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
-                self.tutorialTitle.text = self.tutorialTitles[2]
-                self.tutorialText.text = self.tutorialTexts[2]
-            }),
-        ]
+    func setTutorial() {
+        icon1.image = tutorialSet[0].icon
+        titleLbl1.text = tutorialSet[0].title
+        descriptionText1.text = tutorialSet[0].description
+        
+        icon2.image = tutorialSet[1].icon
+        titleLbl2.text = tutorialSet[1].title
+        descriptionText2.text = tutorialSet[1].description
+        
+        icon3.image = tutorialSet[2].icon
+        titleLbl3.text = tutorialSet[2].title
+        descriptionText3.text = tutorialSet[2].description
     }
-    var moreMenu: UIMenu {
-        return UIMenu(title: "What would you like to do?".localized(), image: nil, identifier: nil, options: [], children: menuItems)
-    }
-    
-    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let skipTitle = NSAttributedString(
-        string: "Skip Tutorial".localized(),
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
-    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        t1.isHidden = false
-        let animationConfig = SPPerspectiveAnimationConfig(duration: 15.0, distortion: 500, angle: 18, vectorStep: 3.14, shadow: nil)
-        t1.roundCorners(corners: [.topLeft, .bottomLeft], radius: 13.0)
-        t1.applyPerspective(animationConfig)
-        tutorialTitle.text = tutorialTitles[0]
-        tutorialText.text = tutorialTexts[0]
-        
-        t2.isHidden = true
-        t3.isHidden = true
-        tCounter = 1
-        
-        t2Btn.setTitle("", for: .normal)
-        
-        continueBtn.layer.cornerRadius = continueBtn.frame.height/4
-        continueBtn.setAttributedTitle(continueTitle, for: .normal)
-        
-        skipBtn.setAttributedTitle(skipTitle, for: .normal)
-        
-        if #available(iOS 14.0, *) {
-            t2Btn.menu = moreMenu
-            t2Btn.showsMenuAsPrimaryAction = true
+        cardView.layer.cornerRadius = 16.0
+        setTutorial()
+        closeButton.setTitle("", for: .normal)
+        closeButton.layer.cornerRadius = closeButton.frame.height/2
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        UIView.animate(withDuration: 0.5) {
+            self.blurButton.alpha = 1
         }
     }
    

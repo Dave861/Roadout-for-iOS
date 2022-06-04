@@ -21,12 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               let homeVC = homeSb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
               window?.rootViewController = homeVC
               window?.makeKeyAndVisible()
+            
               let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
               UserManager.sharedInstance.getUserName(id) { result in
-                 print(result)
+                 //Nothing to do
               }
         }
-        
         
         if IOSSecuritySuite.amIJailbroken() || IOSSecuritySuite.amIReverseEngineered() || IOSSecuritySuite.amIProxied() {
             let mainSb = UIStoryboard(name: "Main", bundle: nil)
@@ -54,12 +54,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 switch result {
                     case .success():
                         if ReservationManager.sharedInstance.isReservationActive == 0 {
+                            //active
+                            print("active")
                             NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                        } else if ReservationManager.sharedInstance.isReservationActive == 1 {
+                            //unlocked
+                            print("unlocked")
+                            NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+                        } else if ReservationManager.sharedInstance.isReservationActive == 2 {
+                            //cancelled
+                            print("cancelled")
+                            NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
                         } else {
-                            if showUnlockedBar {
-                                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
-                                showUnlockedBar = false
-                            }
+                            //error or not active
+                            print("error or not active")
+                            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
                         }
                     case .failure(let err):
                         print(err)
@@ -73,25 +82,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        NotificationCenter.default.post(name: .updateLocationID, object: nil)
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
-            guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
-            ReservationManager.sharedInstance.checkForReservation(Date(), userID: id as! String) { result in
-                switch result {
-                    case .success():
-                        if ReservationManager.sharedInstance.isReservationActive == 0 {
-                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
-                        } else {
-                            if showUnlockedBar {
-                                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
-                                showUnlockedBar = false
-                            }
-                        }
-                    case .failure(let err):
-                        print(err)
-                }
-            }
-        }
         if IOSSecuritySuite.amIJailbroken() || IOSSecuritySuite.amIReverseEngineered() || IOSSecuritySuite.amIProxied() {
             let mainSb = UIStoryboard(name: "Main", bundle: nil)
             let dangerVC = mainSb.instantiateViewController(withIdentifier: "DangerVC") as! DangerViewController

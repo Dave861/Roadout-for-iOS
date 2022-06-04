@@ -38,11 +38,11 @@ class FunctionsManager {
                 var runs = 0
                 foundSpot = nil
                 while foundSpot == nil {
-                    //Will call server api here
-                    print("RUNS ARE HERE: " + "\(runs)")
+                    print("Been through " + "\(runs)" + "locations")
                     if runs >= sortedLocations.count {
                         break
                     }
+                    //Will call server api here
                     findInLocation(sortedLocations[runs])
                     //Will crash for now because this function should call the server which has the data but client doesn't
                     runs += 1

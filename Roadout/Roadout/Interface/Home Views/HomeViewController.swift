@@ -10,6 +10,7 @@ import GoogleMaps
 import CoreLocation
 import SwiftUI
 
+//Decides if Pay Card returns to Delay Card, Find Card or Select Card
 var returnToDelay = false
 var returnToFind = false
 
@@ -164,6 +165,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBOutlet weak var searchTapArea: UIButton!
+    
     @IBOutlet weak var settingsTapArea: UIButton!
     
     @IBOutlet weak var titleLbl: UILabel!
@@ -222,10 +224,13 @@ class HomeViewController: UIViewController {
             NotificationCenter.default.addObserver(self, selector: #selector(showGroupReserveVC), name: .groupSessionStartedID, object: nil)
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(showRateReservation), name: .showRateReservationID, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(updateLocation), name: .updateLocationID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(addMarkers), name: .addMarkersID, object: nil)
     }
+    
    //MARK: -Markers-
     
     @objc func addMarkers() {
@@ -312,35 +317,43 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func manageTutorial() {
-        if UserDefaults.roadout?.bool(forKey: "ro.roadout.Roadout.launchedBefore") == false {
+    func manageHomeScreenTutorial() {
+        if UserDefaults.roadout?.bool(forKey: "ro.roadout.Roadout.seenHomeScreenTutorial") == false {
         
-            let alert = UIAlertController(title: "Tutorial".localized(), message: "Would you like a quick tutorial of the app?".localized(), preferredStyle: .alert)
-            let yesAction = UIAlertAction(title: "Yes".localized(), style: .default) { action in
-                let sb = UIStoryboard(name: "Main", bundle: nil)
-                let vc = sb.instantiateViewController(withIdentifier: "TutorialVC") as! TutorialViewController
-                self.present(vc, animated: true, completion: nil)
-            }
-            let noAction = UIAlertAction(title: "No".localized(), style: .cancel, handler: nil)
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "TutorialVC") as! TutorialViewController
+            vc.tutorialSet = vc.homeTutorialSet
             
-            alert.addAction(yesAction)
-            alert.addAction(noAction)
-            alert.view.tintColor = UIColor(named: "Greyish")
-            self.present(alert, animated: true) {
-                UserDefaults.roadout?.set(true, forKey: "ro.roadout.Roadout.launchedBefore")
+            self.present(vc, animated: true) {
+                UserDefaults.roadout?.set(true, forKey: "ro.roadout.Roadout.seenHomeScreenTutorial")
             }
         }
     }
     
-    //MARK: -ViewDidLoad-
+    //MARK: -View Configuration-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        if self.view.subviews.last == payView {
+            let payV = payView as! PayView
+            payV.reloadMainCard()
+        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+
+        if parkLocations.count < 10 {
+            self.manageGettingData()
+        } else if parkLocations.count == 10 {
+            self.addMarkers()
+        }
+        
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
             switch result {
             case .success():
-                print(id)
+                self.manageHomeScreenTutorial()
             case .failure(let err):
                 print(err)
                 self.userNotFoundAbort()
@@ -351,19 +364,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         manageObs()
-        
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
-            switch result {
-            case .success():
-                print(id)
-            case .failure(let err):
-                print(err)
-                self.userNotFoundAbort()
-            }
-        }
-        
+            
+        //UI configuration
         searchTapArea.setTitle("", for: .normal)
         settingsTapArea.setTitle("", for: .normal)
         
@@ -377,6 +381,11 @@ class HomeViewController: UIViewController {
         searchBar.layer.shouldRasterize = true
         searchBar.layer.rasterizationScale = UIScreen.main.scale
         
+        if #available(iOS 14.0, *) {
+            settingsTapArea.menu = moreMenu
+            settingsTapArea.showsMenuAsPrimaryAction = true
+        }
+        
         let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
         mapView.delegate = self
@@ -384,38 +393,15 @@ class HomeViewController: UIViewController {
         let mapInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 65.0, right: 0.0)
         mapView.padding = mapInsets
         
-        if parkLocations.count < 10 {
-            self.manageGettingData()
-        } else if parkLocations.count == 10 {
-            self.addMarkers()
-        }
-        
         switch traitCollection.userInterfaceStyle {
-                case .light, .unspecified:
-                    do {
-                      if let styleURL = Bundle.main.url(forResource: "lightStyle", withExtension: "json") {
-                        mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-                      } else {
-                        print("Unable to find style.json")
-                      }
-                    } catch {
-                        print("One or more of the map styles failed to load. \(error)")
-                    }
-                case .dark:
-                    do {
-                      if let styleURL = Bundle.main.url(forResource: "darkStyle", withExtension: "json") {
-                        mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-                      } else {
-                        print("Unable to find style.json")
-                      }
-                    } catch {
-                        print("One or more of the map styles failed to load. \(error)")
-                    }
-        @unknown default:
-            break
+            case .light, .unspecified:
+                self.applyStyleToMap(style: "lightStyle")
+            case .dark:
+                self.applyStyleToMap(style: "darkStyle")
+            @unknown default:
+                break
         }
         
-        locationManager.distanceFilter = 100
         locationManager.delegate = self
         if #available(iOS 14.0, *) {
             if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
@@ -429,58 +415,38 @@ class HomeViewController: UIViewController {
             }
         }
         
-        if #available(iOS 14.0, *) {
-            settingsTapArea.menu = moreMenu
-            settingsTapArea.showsMenuAsPrimaryAction = true
-        }
         //RE-ADD THIS WHEN GROUP RESERVE IS DONE
         /*
-        if #available(iOS 15.0, *) {
-            addSharePlayButtonView()
-            SharePlayManager.sharedInstance.receiveSessions()
-        }*/
-        manageTutorial()
-        UserManager.sharedInstance.getUserName(id) { result in
-            print(result)
-        }
+         setUpSharePlay()
+         */
     }
-    
+        
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         switch traitCollection.userInterfaceStyle {
                 case .light, .unspecified:
-                    do {
-                      if let styleURL = Bundle.main.url(forResource: "lightStyle", withExtension: "json") {
-                        mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-                      } else {
-                        print("Unable to find lightStyle.json")
-                      }
-                    } catch {
-                        print("One or more of the map styles failed to load. \(error)")
-                    }
+                    self.applyStyleToMap(style: "lightStyle")
                 case .dark:
-                    do {
-                      if let styleURL = Bundle.main.url(forResource: "darkStyle", withExtension: "json") {
-                        mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-                      } else {
-                        print("Unable to find darkStyle.json")
-                      }
-                    } catch {
-                        print("One or more of the map styles failed to load. \(error)")
-                    }
+                    self.applyStyleToMap(style: "darkStyle")
         @unknown default:
             break
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        if self.view.subviews.last == payView {
-            let payV = payView as! PayView
-            payV.reloadMainCard()
+    func applyStyleToMap(style: String) {
+        do {
+          if let styleURL = Bundle.main.url(forResource: style, withExtension: "json") {
+            mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+          } else {
+            print("Unable to find style.json")
+          }
+        } catch {
+            print("One or more of the map styles failed to load. \(error)")
         }
     }
+    
+    //MARK: -Data & Map Configuration-
     
     func manageGettingData() {
         let sb = UIStoryboard(name: "Home", bundle: nil)
@@ -527,7 +493,99 @@ class HomeViewController: UIViewController {
             }
         }
     }
+    
+    @objc func showRateReservation() {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "RateVC") as! RateViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+  
+    func setUpSharePlay() {
+        if #available(iOS 15.0, *) {
+            addSharePlayButtonView()
+            SharePlayManager.sharedInstance.receiveSessions()
+        }
+    }
+    
+}
+extension HomeViewController: CLLocationManagerDelegate {
 
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        if #available(iOS 14.0, *) {
+            if manager.authorizationStatus == .authorizedAlways || manager.authorizationStatus == .authorizedWhenInUse {
+                locationManager.startUpdatingLocation()
+                mapView.isMyLocationEnabled = true
+            }
+        } else {
+            if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+                locationManager.startUpdatingLocation()
+                mapView.isMyLocationEnabled = true
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        currentLocationCoord = location?.coordinate
+        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17.0)
+        self.mapView?.animate(to: camera)
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func shakeMarkerView(marker: GMSMarker) {
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "transform.rotation.z"
+        animation.values = [ 0, -30 * .pi / 180.0, 30 * .pi / 180.0 , 0]
+        animation.keyTimes = [0, 0.33 , 0.66 , 1]
+        animation.duration = 1;
+        animation.isAdditive = false;
+        animation.isRemovedOnCompletion = true
+        animation.repeatCount = 1
+        
+        marker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 90))
+        let imageView = UIImageView(frame: CGRect(x: (marker.iconView?.frame.width)!/2 - 29.25, y: (marker.iconView?.frame.height)! - 75, width: 58.5, height: 75))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "SelectedMarker_" + marker.snippet!)
+        imageView.layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
+        imageView.layer.frame = CGRect(x: (marker.iconView?.frame.width)!/2 - 29.25, y: (marker.iconView?.frame.height)! - 75, width: 58.5, height: 75)
+        
+        marker.iconView?.addSubview(imageView)
+        marker.iconView!.subviews[0].layer.add(animation, forKey: "shakeAnimation")
+    }
+}
+
+extension HomeViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedBar && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
+            selectedLocationName = marker.title!
+            let colorSnippet = marker.snippet!
+            selectedLocationColor = UIColor(named: colorSnippet)!
+            selectedLocationCoord = marker.position
+            if self.view.subviews.last != searchBar && self.view.subviews.last != titleLbl && self.view.subviews.last != mapView {
+                self.view.subviews.last?.removeFromSuperview()
+            }
+            if self.selectedMarker != nil {
+                self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                imageView.contentMode = .scaleAspectFit
+                imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
+                self.selectedMarker.iconView?.addSubview(imageView)
+            }
+            self.selectedMarker = marker
+            addResultCard()
+        }
+        return true
+    }
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        let latitude = mapView.camera.target.latitude
+        let longitude = mapView.camera.target.longitude
+        centerMapCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+   
+}
+
+extension HomeViewController {
     
     //MARK: - Card Functions-
     //Result Card
@@ -897,80 +955,4 @@ class HomeViewController: UIViewController {
         }
     }
     
-}
-extension HomeViewController: CLLocationManagerDelegate {
-
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        if #available(iOS 14.0, *) {
-            if manager.authorizationStatus == .authorizedAlways || manager.authorizationStatus == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                mapView.isMyLocationEnabled = true
-            }
-        } else {
-            if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                mapView.isMyLocationEnabled = true
-            }
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        currentLocationCoord = location?.coordinate
-        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17.0)
-        self.mapView?.animate(to: camera)
-        self.locationManager.stopUpdatingLocation()
-    }
-    
-    func shakeMarkerView(marker: GMSMarker) {
-        let animation = CAKeyframeAnimation()
-        animation.keyPath = "transform.rotation.z"
-        animation.values = [ 0, -30 * .pi / 180.0, 30 * .pi / 180.0 , 0]
-        animation.keyTimes = [0, 0.33 , 0.66 , 1]
-        animation.duration = 1;
-        animation.isAdditive = false;
-        animation.isRemovedOnCompletion = true
-        animation.repeatCount = 1
-        
-        marker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 90))
-        let imageView = UIImageView(frame: CGRect(x: (marker.iconView?.frame.width)!/2 - 29.25, y: (marker.iconView?.frame.height)! - 75, width: 58.5, height: 75))
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "SelectedMarker_" + marker.snippet!)
-        imageView.layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
-        imageView.layer.frame = CGRect(x: (marker.iconView?.frame.width)!/2 - 29.25, y: (marker.iconView?.frame.height)! - 75, width: 58.5, height: 75)
-        
-        marker.iconView?.addSubview(imageView)
-        marker.iconView!.subviews[0].layer.add(animation, forKey: "shakeAnimation")
-    }
-}
-
-extension HomeViewController: GMSMapViewDelegate {
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedBar && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
-            selectedLocationName = marker.title!
-            let colorSnippet = marker.snippet!
-            selectedLocationColor = UIColor(named: colorSnippet)!
-            selectedLocationCoord = marker.position
-            if self.view.subviews.last != searchBar && self.view.subviews.last != titleLbl && self.view.subviews.last != mapView {
-                self.view.subviews.last?.removeFromSuperview()
-            }
-            if self.selectedMarker != nil {
-                self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-                imageView.contentMode = .scaleAspectFit
-                imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
-                self.selectedMarker.iconView?.addSubview(imageView)
-            }
-            self.selectedMarker = marker
-            addResultCard()
-        }
-        return true
-    }
-    
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        let latitude = mapView.camera.target.latitude
-        let longitude = mapView.camera.target.longitude
-        centerMapCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-    }
-   
 }

@@ -8,8 +8,8 @@
 import Foundation
 import Alamofire
 
-var timerSeconds = 0 //Used to help with notifications
-var showUnlockedBar = false
+//Used to help with notification management
+var timerSeconds = 0
 
 class ReservationManager {
     
@@ -26,7 +26,10 @@ class ReservationManager {
     }
     
     var callResult: String!
-    var isReservationActive = 2 //2 for not assigned, 1 is false, 0 is true
+    
+    //-1 for not assigned, 0 is active, 1 is unlocked, 2 is cancelled, 3 is not active
+    var isReservationActive = -1
+    
     var reservationEndDate = Date()
     var delayWasMade = false
   
@@ -48,15 +51,18 @@ class ReservationManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
                     self.callResult = (jsonArray["status"] as! String)
                     if self.callResult == "Success" {
+                        //Inserted reservation successfully
                         if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
                             NotificationHelper.sharedInstance.scheduleReservationNotification()
                         }
                         self.reservationEndDate = date.addingTimeInterval(TimeInterval(time*60))
                         NotificationCenter.default.post(name: .showPaidBarID, object: nil)
+                        
                         self.reservationTimer = Timer(fireAt: date.addingTimeInterval(TimeInterval(time*60)), interval: 0, target: self, selector: #selector(self.endReservation), userInfo: nil, repeats: false)
                         DispatchQueue.main.async {
                             RunLoop.main.add(self.reservationTimer, forMode: .common)
                         }
+                        
                         completion(.success(()))
                     } else {
                         print(jsonArray["status"]!)
@@ -89,39 +95,78 @@ class ReservationManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
                     self.callResult = (jsonArray["status"] as! String)
                     if self.callResult == "Success" {
+                        //Could get to server successfully
                         if jsonArray["message"] as! String == "active" {
+                            //There is an active reservation
                             selectedSpotID = jsonArray["spotID"] as? String
-                            self.isReservationActive = 0
+                            
+                            let formattedEndDate = jsonArray["endDate"] as! String
+                            let convertedEndDate = dateFormatter.date(from: formattedEndDate)
+                            
                             if self.reservationTimer == nil || self.reservationTimer.isValid == false {
-                                let formattedEndDate = jsonArray["endDate"] as! String
-                                let convertedEndDate = dateFormatter.date(from: formattedEndDate)
+                                //The reservation timer wasn't set
                                 self.reservationEndDate = convertedEndDate!
                                 self.reservationTimer = Timer(fireAt: convertedEndDate!, interval: 0, target: self, selector: #selector(self.endReservation), userInfo: nil, repeats: false)
+                                
                                 DispatchQueue.main.async {
                                     RunLoop.main.add(self.reservationTimer, forMode: .common)
                                 }
+                                
                                 NotificationCenter.default.post(name: .updateReservationTimeLabelID, object: nil)
+                            } else if self.reservationTimer.fireDate != convertedEndDate {
+                                //The reservation timer was set but is out of sync
+                                self.reservationTimer.invalidate()
+                                
+                                self.reservationEndDate = convertedEndDate!
+                                self.reservationTimer = Timer(fireAt: convertedEndDate!, interval: 0, target: self, selector: #selector(self.endReservation), userInfo: nil, repeats: false)
+                                
+                                DispatchQueue.main.async {
+                                    RunLoop.main.add(self.reservationTimer, forMode: .common)
+                                }
+                                
+                                NotificationCenter.default.post(name: .updateReservationTimeLabelID, object: nil)
+                                
+                                //Manage notifications
+                                guard convertedEndDate != nil else { return }
+                                timerSeconds = Int(convertedEndDate!.timeIntervalSinceNow)
+                                NotificationHelper.sharedInstance.cancelReservationNotification()
+                                if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
+                                    NotificationHelper.sharedInstance.scheduleReservationNotification()
+                                }
                             }
+                            self.isReservationActive = 0
                         } else if jsonArray["message"] as! String == "not active" {
-                            self.isReservationActive = 1
-                        } else if jsonArray["message"] as! String == "canceled" {
-                            self.isReservationActive = 1
+                            //There isn't an active reservation
+                            self.isReservationActive = 3
+                        } else if jsonArray["message"] as! String == "cancelled" {
+                            //Most recent reservation was cancelled
+                            if self.reservationTimer != nil {
+                                self.reservationTimer.invalidate()
+                            }
+                            NotificationHelper.sharedInstance.cancelReservationNotification()
+                            self.isReservationActive = 2
                         } else if jsonArray["message"] as! String == "unlocked" {
+                            //Most recent reservation was unlocked
+                            if self.reservationTimer != nil {
+                                self.reservationTimer.invalidate()
+                            }
+                            NotificationHelper.sharedInstance.cancelReservationNotification()
                             self.isReservationActive = 1
                         } else {
-                            self.isReservationActive = 2
+                            //Error retrieving
+                            self.isReservationActive = -1
                         }
                         completion(.success(()))
                     } else {
                         print(jsonArray["status"]!)
                         completion(.failure(ReservationErrors.unknownError))
-                        self.isReservationActive = 2
+                        self.isReservationActive = -1
                     }
                 }
             } catch let error as NSError {
                 print(error)
                 completion(.failure(ReservationErrors.errorWithJson))
-                self.isReservationActive = 2
+                self.isReservationActive = -1
             }
         }
     }
@@ -143,6 +188,7 @@ class ReservationManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
                     self.callResult = (jsonArray["status"] as! String)
                     if self.callResult == "Success" {
+                        //Update timer and notifications
                         if self.reservationTimer != nil {
                             self.reservationTimer.invalidate()
                         }
@@ -278,9 +324,18 @@ class ReservationManager {
         ReservationManager.sharedInstance.checkForReservation(Date(), userID: id) { result in
             switch result {
                 case .success():
-                    if ReservationManager.sharedInstance.isReservationActive == 1 {
+                    if ReservationManager.sharedInstance.isReservationActive == 0 {
+                        //active
+                        NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                    } else if ReservationManager.sharedInstance.isReservationActive == 1 {
+                        //unlocked
                         NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
-                        showUnlockedBar = true
+                    } else if ReservationManager.sharedInstance.isReservationActive == 2 {
+                        //cancelled
+                        NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
+                    } else {
+                        //error or not active
+                        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
                     }
                 case .failure(let err):
                     print(err)

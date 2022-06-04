@@ -8,11 +8,15 @@
 import UIKit
 
 class SettingCell: UITableViewCell {
+    
+    @IBOutlet weak var card: UIView!
 
     @IBOutlet weak var icon: UIView!
-    @IBOutlet weak var settingLbl: UILabel!
-    @IBOutlet weak var iconImage: UIImageView!
     
+    @IBOutlet weak var settingLbl: UILabel!
+    
+    @IBOutlet weak var iconImage: UIImageView!
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         icon.layer.cornerRadius = icon.frame.height/4

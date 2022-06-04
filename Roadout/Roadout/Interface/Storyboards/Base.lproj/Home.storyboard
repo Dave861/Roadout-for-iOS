@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Reserve" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKv-rm-Z7q">
-                                <rect key="frame" x="20" y="95" width="233" height="38"/>
+                                <rect key="frame" x="20" y="95" width="233.5" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="sWi-J5-7qY"/>
                                 </constraints>
@@ -158,12 +158,11 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for a place..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKi-si-XRH">
-                                        <rect key="frame" x="45" y="8" width="149" height="36"/>
+                                        <rect key="frame" x="45" y="8" width="151.5" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="149" id="IHa-Kn-V88"/>
                                             <constraint firstAttribute="height" constant="36" id="uIT-IA-mea"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGray2Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -285,7 +284,7 @@
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for a place..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVZ-tU-Jwm">
                                                 <rect key="frame" x="45" y="9" width="292" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lF5-6D-IHH">
@@ -733,6 +732,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="Second Background"/>
                                         <connections>
+                                            <outlet property="card" destination="qpo-Gs-6o5" id="Elw-EZ-brR"/>
                                             <outlet property="icon" destination="YTe-WP-Tqf" id="kyM-yA-5RZ"/>
                                             <outlet property="iconImage" destination="7Wl-lX-BVC" id="x7Q-yw-Kx0"/>
                                             <outlet property="settingLbl" destination="6fx-G1-P0A" id="Mbq-xq-WZi"/>
@@ -947,10 +947,10 @@ Made in Cluj :)</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDj-5P-Kug">
-                                <rect key="frame" x="0.0" y="628" width="414" height="234"/>
+                                <rect key="frame" x="3" y="628" width="408" height="234"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agB-Hm-7h3">
-                                        <rect key="frame" x="338.5" y="18" width="72.5" height="17"/>
+                                        <rect key="frame" x="332.5" y="18" width="72.5" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="pd6-Rg-h1J"/>
                                         </constraints>
@@ -965,7 +965,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL5-oT-4XE">
-                                        <rect key="frame" x="15" y="169" width="384" height="50"/>
+                                        <rect key="frame" x="15" y="169" width="378" height="50"/>
                                         <color key="backgroundColor" name="Main Yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="uj7-Zg-cSw"/>
@@ -999,7 +999,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A7q-sC-Frp" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="111" width="384" height="40"/>
+                                        <rect key="frame" x="15" y="111" width="378" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.75700002909999997" blue="0.09799999744" alpha="0.22" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="AccentColor"/>
                                         <constraints>
@@ -1044,9 +1044,9 @@ Made in Cluj :)</string>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cLi-nR-ewK" firstAttribute="bottom" secondItem="dDj-5P-Kug" secondAttribute="bottom" id="42q-Wa-Lij" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
-                            <constraint firstItem="dDj-5P-Kug" firstAttribute="leading" secondItem="cLi-nR-ewK" secondAttribute="leading" id="HvR-lj-fyQ"/>
+                            <constraint firstItem="dDj-5P-Kug" firstAttribute="leading" secondItem="cLi-nR-ewK" secondAttribute="leading" constant="3" id="HvR-lj-fyQ"/>
                             <constraint firstItem="n4x-6q-fk2" firstAttribute="leading" secondItem="cLi-nR-ewK" secondAttribute="leading" id="d0r-72-Owo"/>
-                            <constraint firstItem="dDj-5P-Kug" firstAttribute="trailing" secondItem="cLi-nR-ewK" secondAttribute="trailing" id="kRy-ns-ST4"/>
+                            <constraint firstItem="dDj-5P-Kug" firstAttribute="trailing" secondItem="cLi-nR-ewK" secondAttribute="trailing" constant="-3" id="kRy-ns-ST4"/>
                             <constraint firstItem="n4x-6q-fk2" firstAttribute="trailing" secondItem="cLi-nR-ewK" secondAttribute="trailing" id="qjS-3w-Vro"/>
                             <constraint firstAttribute="bottom" secondItem="n4x-6q-fk2" secondAttribute="bottom" id="wnO-kS-Vfi"/>
                             <constraint firstItem="n4x-6q-fk2" firstAttribute="top" secondItem="NoP-h0-DV6" secondAttribute="top" id="z63-Ib-AwR"/>
@@ -1083,7 +1083,7 @@ Made in Cluj :)</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRd-jR-7A9">
-                                <rect key="frame" x="0.0" y="573" width="414" height="289"/>
+                                <rect key="frame" x="3" y="573" width="408" height="289"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDS-7y-vs7">
                                         <rect key="frame" x="15" y="15" width="141" height="27"/>
@@ -1092,7 +1092,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EP3-IM-wPs">
-                                        <rect key="frame" x="338.5" y="20" width="72.5" height="17"/>
+                                        <rect key="frame" x="332.5" y="20" width="72.5" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="kGR-xI-Wuq"/>
                                         </constraints>
@@ -1107,7 +1107,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmF-hw-K8Y">
-                                        <rect key="frame" x="15" y="224" width="384" height="50"/>
+                                        <rect key="frame" x="15" y="224" width="378" height="50"/>
                                         <color key="backgroundColor" name="Dark Yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="1Xl-kb-snB"/>
@@ -1122,7 +1122,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RPo-3n-Poc" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="166" width="384" height="40"/>
+                                        <rect key="frame" x="15" y="166" width="378" height="40"/>
                                         <color key="backgroundColor" red="0.56099998949999996" green="0.40000000600000002" blue="0.050999999050000001" alpha="0.26849489799999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Dark Yellow"/>
                                         <constraints>
@@ -1132,7 +1132,7 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b7Y-Jp-TRF" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="70" width="384" height="40"/>
+                                        <rect key="frame" x="15" y="70" width="378" height="40"/>
                                         <color key="backgroundColor" red="0.53299999239999996" green="0.49399998779999998" blue="0.45100000499999998" alpha="0.28555484689999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Greyish"/>
                                         <constraints>
@@ -1142,7 +1142,7 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4P2-9j-3vk" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="118" width="384" height="40"/>
+                                        <rect key="frame" x="15" y="118" width="378" height="40"/>
                                         <color key="backgroundColor" red="0.40400001410000003" green="0.28200000520000001" blue="0.019999999550000001" alpha="0.37016369049999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Brownish"/>
                                         <constraints>
@@ -1152,7 +1152,7 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HiJ-zc-MNf">
-                                        <rect key="frame" x="261" y="9" width="150" height="38"/>
+                                        <rect key="frame" x="255" y="9" width="150" height="38"/>
                                         <color key="backgroundColor" name="Background"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="97h-lu-Nem"/>
@@ -1198,10 +1198,10 @@ Made in Cluj :)</string>
                             <constraint firstItem="dPU-v4-K95" firstAttribute="top" secondItem="X9T-ID-b0C" secondAttribute="top" id="SZn-0G-KHF"/>
                             <constraint firstItem="dPU-v4-K95" firstAttribute="trailing" secondItem="l09-24-xUV" secondAttribute="trailing" id="SvV-p4-cVE"/>
                             <constraint firstItem="l09-24-xUV" firstAttribute="bottom" secondItem="JRd-jR-7A9" secondAttribute="bottom" id="fxK-qV-w4F" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
-                            <constraint firstItem="l09-24-xUV" firstAttribute="trailing" secondItem="JRd-jR-7A9" secondAttribute="trailing" id="iQA-fA-nhh"/>
+                            <constraint firstItem="l09-24-xUV" firstAttribute="trailing" secondItem="JRd-jR-7A9" secondAttribute="trailing" constant="3" id="iQA-fA-nhh"/>
                             <constraint firstItem="dPU-v4-K95" firstAttribute="leading" secondItem="l09-24-xUV" secondAttribute="leading" id="j08-gg-UKc"/>
                             <constraint firstAttribute="bottom" secondItem="dPU-v4-K95" secondAttribute="bottom" id="pv7-dg-R0A"/>
-                            <constraint firstItem="JRd-jR-7A9" firstAttribute="leading" secondItem="l09-24-xUV" secondAttribute="leading" id="ss5-S1-No8"/>
+                            <constraint firstItem="JRd-jR-7A9" firstAttribute="leading" secondItem="l09-24-xUV" secondAttribute="leading" constant="3" id="ss5-S1-No8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1237,7 +1237,7 @@ Made in Cluj :)</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HrQ-rH-hc2">
-                                <rect key="frame" x="0.0" y="621" width="414" height="241"/>
+                                <rect key="frame" x="3" y="621" width="408" height="241"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VB-xF-Dw3">
                                         <rect key="frame" x="15" y="15" width="153.5" height="27"/>
@@ -1249,7 +1249,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAB-dt-hJ1">
-                                        <rect key="frame" x="338.5" y="20" width="72.5" height="17"/>
+                                        <rect key="frame" x="332.5" y="20" width="72.5" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="XNW-K1-Dma"/>
                                         </constraints>
@@ -1263,7 +1263,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rau-wM-akd" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="70" width="384" height="40"/>
+                                        <rect key="frame" x="15" y="70" width="378" height="40"/>
                                         <color key="backgroundColor" red="0.78431372549019607" green="0.30196078431372547" blue="0.047058823529411764" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="tintColor" red="0.78431372549019607" green="0.30196078431372547" blue="0.047058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -1273,7 +1273,7 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ga7-69-Uaf" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="118" width="384" height="40"/>
+                                        <rect key="frame" x="15" y="118" width="378" height="40"/>
                                         <color key="backgroundColor" red="0.58399999141693115" green="0.18000000715255737" blue="0.0" alpha="0.51598716887417218" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Redish"/>
                                         <constraints>
@@ -1283,7 +1283,7 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pq-HO-snU">
-                                        <rect key="frame" x="15" y="176" width="384" height="50"/>
+                                        <rect key="frame" x="15" y="176" width="378" height="50"/>
                                         <color key="backgroundColor" name="Redish"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="FKv-cz-kK8"/>
@@ -1298,7 +1298,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-mz-cFR">
-                                        <rect key="frame" x="261" y="9" width="150" height="38"/>
+                                        <rect key="frame" x="255" y="9" width="150" height="38"/>
                                         <color key="backgroundColor" name="Background"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="nYH-sw-f3J"/>
@@ -1338,13 +1338,13 @@ Made in Cluj :)</string>
                         <viewLayoutGuide key="safeArea" id="IKs-RH-zse"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HrQ-rH-hc2" firstAttribute="leading" secondItem="IKs-RH-zse" secondAttribute="leading" id="2NQ-B2-qn2"/>
+                            <constraint firstItem="HrQ-rH-hc2" firstAttribute="leading" secondItem="IKs-RH-zse" secondAttribute="leading" constant="3" id="2NQ-B2-qn2"/>
                             <constraint firstItem="Mxu-FS-aGY" firstAttribute="leading" secondItem="IKs-RH-zse" secondAttribute="leading" id="5kS-uR-fQZ"/>
                             <constraint firstAttribute="bottom" secondItem="Mxu-FS-aGY" secondAttribute="bottom" id="BTB-HI-erA"/>
                             <constraint firstItem="IKs-RH-zse" firstAttribute="bottom" secondItem="HrQ-rH-hc2" secondAttribute="bottom" id="KgQ-mP-DsO" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
                             <constraint firstItem="Mxu-FS-aGY" firstAttribute="trailing" secondItem="IKs-RH-zse" secondAttribute="trailing" id="eeP-rr-Nq6"/>
                             <constraint firstItem="Mxu-FS-aGY" firstAttribute="top" secondItem="7DQ-Ow-m3J" secondAttribute="top" id="lv5-Fg-6U6"/>
-                            <constraint firstItem="HrQ-rH-hc2" firstAttribute="trailing" secondItem="IKs-RH-zse" secondAttribute="trailing" id="ngm-ez-wBa"/>
+                            <constraint firstItem="HrQ-rH-hc2" firstAttribute="trailing" secondItem="IKs-RH-zse" secondAttribute="trailing" constant="-3" id="ngm-ez-wBa"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1358,7 +1358,7 @@ Made in Cluj :)</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ftt-vy-UP6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2074" y="56"/>
+            <point key="canvasLocation" x="2028" y="-230"/>
         </scene>
         <!--Get Data View Controller-->
         <scene sceneID="tuk-GT-myy">
@@ -1424,8 +1424,134 @@ Made in Cluj :)</string>
             </objects>
             <point key="canvasLocation" x="-323.1884057971015" y="747.99107142857144"/>
         </scene>
+        <!--Link Watch View Controller-->
+        <scene sceneID="lp4-90-qQk">
+            <objects>
+                <viewController storyboardIdentifier="LinkWatchVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yQB-bM-Xhz" customClass="LinkWatchViewController" customModule="Roadout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ld0-n5-0KY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLB-sh-Tfz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" name="Blur"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=""/>
+                                <connections>
+                                    <action selector="dismissTapped:" destination="yQB-bM-Xhz" eventType="touchUpInside" id="foy-BL-XfE"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ph0-E8-9S6">
+                                <rect key="frame" x="3" y="593" width="408" height="269"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link Apple Watch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPh-lw-oju">
+                                        <rect key="frame" x="15" y="15" width="174" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xad-DN-x7h">
+                                        <rect key="frame" x="332.5" y="20" width="72.5" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="Pbc-Ae-f7X"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Greyish"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cancelTapped:" destination="yQB-bM-Xhz" eventType="touchUpInside" id="Dga-u8-bLA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATy-Kv-MSj">
+                                        <rect key="frame" x="15" y="204" width="378" height="50"/>
+                                        <color key="backgroundColor" name="Greyish"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="G1G-dk-9pL"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Background"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Connect">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="connectTapped:" destination="yQB-bM-Xhz" eventType="touchUpInside" id="jBM-s7-TG3"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applewatch.watchface" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kYW-Wp-K1q">
+                                        <rect key="frame" x="174" y="70" width="60" height="73"/>
+                                        <color key="tintColor" name="Greyish"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="73" id="Xtr-CA-tXo"/>
+                                            <constraint firstAttribute="width" constant="60" id="xVP-LK-3XT"/>
+                                        </constraints>
+                                    </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Q3N-c7-rg7">
+                                        <rect key="frame" x="138" y="160" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="4c6-wi-o2b"/>
+                                            <constraint firstAttribute="height" constant="20" id="hSc-lt-Esa"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DsM-N8-SZh">
+                                        <rect key="frame" x="168" y="159" width="102" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="PdU-Zy-6CW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Background"/>
+                                <constraints>
+                                    <constraint firstItem="ATy-Kv-MSj" firstAttribute="top" secondItem="Q3N-c7-rg7" secondAttribute="bottom" constant="24" id="0bX-2U-v9b"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xad-DN-x7h" secondAttribute="trailing" constant="3" id="1y7-qK-6uq"/>
+                                    <constraint firstItem="IPh-lw-oju" firstAttribute="top" secondItem="Ph0-E8-9S6" secondAttribute="top" constant="15" id="79P-QG-r8I"/>
+                                    <constraint firstItem="DsM-N8-SZh" firstAttribute="centerX" secondItem="Ph0-E8-9S6" secondAttribute="centerX" constant="15" id="8eM-G4-vj0"/>
+                                    <constraint firstItem="DsM-N8-SZh" firstAttribute="leading" secondItem="Q3N-c7-rg7" secondAttribute="trailing" constant="10" id="BCM-pR-RSv"/>
+                                    <constraint firstItem="DsM-N8-SZh" firstAttribute="top" secondItem="kYW-Wp-K1q" secondAttribute="bottom" constant="16" id="IRs-dG-COv"/>
+                                    <constraint firstItem="Xad-DN-x7h" firstAttribute="top" secondItem="Ph0-E8-9S6" secondAttribute="top" constant="20" symbolic="YES" id="LSa-TP-KZU"/>
+                                    <constraint firstAttribute="trailing" secondItem="ATy-Kv-MSj" secondAttribute="trailing" constant="15" id="Lnq-EG-lHu"/>
+                                    <constraint firstItem="ATy-Kv-MSj" firstAttribute="leading" secondItem="Ph0-E8-9S6" secondAttribute="leading" constant="15" id="O4h-lI-KME"/>
+                                    <constraint firstAttribute="height" constant="269" id="ZJI-34-vnV"/>
+                                    <constraint firstItem="Q3N-c7-rg7" firstAttribute="top" secondItem="IPh-lw-oju" secondAttribute="bottom" constant="118" id="aXY-S3-K7z"/>
+                                    <constraint firstItem="kYW-Wp-K1q" firstAttribute="top" secondItem="IPh-lw-oju" secondAttribute="bottom" constant="28" id="ggh-kw-hjm"/>
+                                    <constraint firstItem="IPh-lw-oju" firstAttribute="leading" secondItem="Ph0-E8-9S6" secondAttribute="leading" constant="15" id="ioK-24-sPw"/>
+                                    <constraint firstItem="kYW-Wp-K1q" firstAttribute="centerX" secondItem="Ph0-E8-9S6" secondAttribute="centerX" id="mvN-sG-AbY"/>
+                                    <constraint firstItem="ATy-Kv-MSj" firstAttribute="top" secondItem="DsM-N8-SZh" secondAttribute="bottom" constant="24" id="pnj-MX-fAb"/>
+                                    <constraint firstAttribute="bottom" secondItem="ATy-Kv-MSj" secondAttribute="bottom" constant="15" id="s9a-5U-b3U"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jo1-Aq-LBt"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FLB-sh-Tfz" firstAttribute="top" secondItem="ld0-n5-0KY" secondAttribute="top" id="6Nn-LX-fEt"/>
+                            <constraint firstItem="jo1-Aq-LBt" firstAttribute="trailing" secondItem="Ph0-E8-9S6" secondAttribute="trailing" constant="3" id="GZO-xz-fAy"/>
+                            <constraint firstAttribute="bottom" secondItem="FLB-sh-Tfz" secondAttribute="bottom" id="KFO-B8-Ra5"/>
+                            <constraint firstItem="jo1-Aq-LBt" firstAttribute="bottom" secondItem="Ph0-E8-9S6" secondAttribute="bottom" id="MiA-Zv-24Z" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstItem="Ph0-E8-9S6" firstAttribute="leading" secondItem="jo1-Aq-LBt" secondAttribute="leading" constant="3" id="Nij-4O-Ccq"/>
+                            <constraint firstItem="FLB-sh-Tfz" firstAttribute="leading" secondItem="jo1-Aq-LBt" secondAttribute="leading" id="Rnc-Xa-4hU"/>
+                            <constraint firstItem="FLB-sh-Tfz" firstAttribute="trailing" secondItem="jo1-Aq-LBt" secondAttribute="trailing" id="gZZ-ru-neJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Q3N-c7-rg7" id="LKz-cZ-X1G"/>
+                        <outlet property="blurButton" destination="FLB-sh-Tfz" id="0W5-1z-Byh"/>
+                        <outlet property="cardView" destination="Ph0-E8-9S6" id="XUD-Tw-Ce0"/>
+                        <outlet property="connectBtn" destination="ATy-Kv-MSj" id="2nL-fJ-xFb"/>
+                        <outlet property="statusLbl" destination="DsM-N8-SZh" id="y7S-DQ-peu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DVp-RU-GmZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2027.5362318840582" y="426.5625"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="applewatch.watchface" catalog="system" width="112" height="128"/>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="building.2" catalog="system" width="128" height="106"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
@@ -1450,7 +1576,7 @@ Made in Cluj :)</string>
             <color red="0.56099998950958252" green="0.40000000596046448" blue="0.050999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Greyish">
-            <color red="0.50199997425079346" green="0.45100000500679016" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.53299999237060547" green="0.49399998784065247" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Icons">
             <color red="0.86299997568130493" green="0.66699999570846558" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1462,7 +1588,7 @@ Made in Cluj :)</string>
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Redish">
-            <color red="0.58399999141693115" green="0.18000000715255737" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.61799997091293335" green="0.22400000691413879" blue="0.11599999666213989" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Second Background">
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

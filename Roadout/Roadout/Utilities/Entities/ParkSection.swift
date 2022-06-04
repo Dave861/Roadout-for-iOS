@@ -22,12 +22,6 @@ struct ParkSectionImagePoint: Hashable, Codable {
     var y: Int
 }
 
-let eroilorPoints = ["A" : ParkSectionImagePoint(x: 41, y: 39), "B" : ParkSectionImagePoint(x: 71, y: 39), "C" : ParkSectionImagePoint(x: 58, y: 64)]
-let decembriePoints = ["A" : ParkSectionImagePoint(x: 35, y: 38), "B" : ParkSectionImagePoint(x: 40, y: 78), "C" : ParkSectionImagePoint(x: 60, y: 62)]
-let marastiPoints = ["A" : ParkSectionImagePoint(x: 15, y: 32), "B" : ParkSectionImagePoint(x: 30, y: 32), "C" : ParkSectionImagePoint(x: 45, y: 32), "D" : ParkSectionImagePoint(x: 88, y: 32), "E" : ParkSectionImagePoint(x: 15, y: 73), "F" : ParkSectionImagePoint(x: 30, y: 68), "G" : ParkSectionImagePoint(x: 45, y: 63)]
-let mihaiViteazuPoints = ["A" : ParkSectionImagePoint(x: 52, y: 30), "B" : ParkSectionImagePoint(x: 36, y: 71)]
-let oldTownPoints = ["A" : ParkSectionImagePoint(x: 32, y: 46), "B" : ParkSectionImagePoint(x: 47, y: 31), "C" : ParkSectionImagePoint(x: 62, y: 18), "D" : ParkSectionImagePoint(x: 54, y: 66)]
-
 let sections1 = [
     ParkSection(name: "A", totalSpots: 15, freeSpots: 8, rows: [7, 8], spots: spots1, imagePoint: ParkSectionImagePoint(x: 29, y: 27), rID: ""),
     ParkSection(name: "B", totalSpots: 11, freeSpots: 6, rows: [6, 5], spots: spots2, imagePoint: ParkSectionImagePoint(x: 51, y: 30), rID: ""),

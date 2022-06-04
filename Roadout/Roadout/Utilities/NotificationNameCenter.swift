@@ -54,4 +54,10 @@ extension Notification.Name {
     static let updateLocationID = Notification.Name("ro.roadout.Roadout.updateLocationID")
     static let addMarkersID = Notification.Name("ro.roadout.Roadout.addMarkersID")
     static let updateReservationTimeLabelID = Notification.Name("ro.roadout.Roadout.updateReservationTimeLabelID")
+    static let showRateReservationID = Notification.Name("ro.roadout.Roadout.showRateReservationAlertID")
+    
+    //APPLE WATCH
+    static let reloadServerDataAWID = Notification.Name("ro.roadout.RoadoutWatch.reloadServerDataAWID")
+    static let dismissWatchConnectCardID = Notification.Name("ro.roadout.RoadoutWatch.dismissWatchConnectCardID")
+    static let receivedUserOnWatchID = Notification.Name("ro.roadout.RoadoutWatch.receivedUserOnWatchID")
 }

@@ -8,32 +8,15 @@
 import UIKit
 import MessageUI
 
-struct Problem {
-    var title: String
-    var solution: String
-    var image: String
-    var tag: String
-    var cardType: ProblemCardTypes
-}
-
-enum ProblemCardTypes {
-    case fullColor
-    case noColor
-    case colorUp
-    case colorDown
-}
-
 class HelpViewController: UIViewController {
     
-    let problems = [
-        Problem(title: "Someone or something is blocking my spot", solution: "", image: "ProblemImage1", tag: "PROBLEM", cardType: .colorUp),
-        Problem(title: "Time isn’t over but someone occupied my spot", solution: "", image: "ProblemImage2", tag: "PROBLEM", cardType: .noColor),
-        Problem(title: "I can’t find my spot", solution: "", image: "ProblemImage3", tag: "HELP", cardType: .fullColor),
-        Problem(title: "Barrier was down but I didn’t unlock it", solution: "", image: "ProblemImage4", tag: "SUPPORT", cardType: .colorDown)
-    ]
-    
     var centerCell: HelpCell!
-
+    
+    let problems = [ProblemManager.sharedInstance.problem1,
+                    ProblemManager.sharedInstance.problem2,
+                    ProblemManager.sharedInstance.problem3,
+                    ProblemManager.sharedInstance.problem4]
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var doneBtn: UIButton!
@@ -87,6 +70,7 @@ class HelpViewController: UIViewController {
     }
 
 }
+
 extension HelpViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
@@ -111,7 +95,7 @@ extension HelpViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 cell.bottomCard.backgroundColor = UIColor.clear
                 cell.titleLbl.textColor = UIColor(named: "Secondary Detail")!
                 cell.tagLbl.textColor = UIColor(named: "Secondary Detail")!
-                cell.fullProblemImage.image = UIImage(named: problems[indexPath.row].image)
+            cell.fullProblemImage.image = UIImage(named: problems[indexPath.row].image)
                 cell.fullGradientView.alpha = 1
                 cell.gradientView.alpha = 0
                 cell.problemImage.alpha = 0

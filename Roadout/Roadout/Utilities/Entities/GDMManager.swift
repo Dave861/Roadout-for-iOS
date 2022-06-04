@@ -32,9 +32,14 @@ class DistanceManager {
             let data = response.value!.data(using: .utf8)!
             do {
                 let resp = try JSONDecoder().decode(GDMResponse.self, from: data)
-                print(resp.rows[0].elements[0].duration_in_traffic.text)
-                print(resp.rows[0].elements[0].distance.text)
-                completion(.success(resp.rows[0].elements[0].duration_in_traffic.text))
+                print(resp)
+                if (resp.status == "OK") {
+                    print(resp.rows[0].elements[0].duration_in_traffic.text)
+                    print(resp.rows[0].elements[0].distance.text)
+                    completion(.success(resp.rows[0].elements[0].duration_in_traffic.text))
+                } else {
+                    completion(.failure(DistanceErrors.unknownError))
+                }
             } catch let err {
                 print(err)
                 completion(.failure(DistanceErrors.jsonError))

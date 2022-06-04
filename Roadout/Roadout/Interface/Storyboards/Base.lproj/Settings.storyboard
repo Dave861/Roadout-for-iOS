@@ -594,7 +594,7 @@ Made in Cluj :)</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D18-ei-0Sf">
-                                <rect key="frame" x="0.0" y="624" width="414" height="238"/>
+                                <rect key="frame" x="3" y="624" width="408" height="238"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdQ-n6-6OI">
                                         <rect key="frame" x="15" y="15" width="142" height="27"/>
@@ -603,7 +603,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8SC-bh-460">
-                                        <rect key="frame" x="338.5" y="20" width="72.5" height="17"/>
+                                        <rect key="frame" x="332.5" y="20" width="72.5" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="c9I-Rc-QWp"/>
                                         </constraints>
@@ -617,7 +617,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9i-wE-D9F">
-                                        <rect key="frame" x="15" y="173" width="384" height="50"/>
+                                        <rect key="frame" x="15" y="173" width="378" height="50"/>
                                         <color key="backgroundColor" name="Icons"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="3BW-qQ-b4H"/>
@@ -638,7 +638,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXx-BF-yVa">
-                                        <rect key="frame" x="64" y="125" width="335" height="31"/>
+                                        <rect key="frame" x="64" y="125" width="329" height="31"/>
                                         <color key="backgroundColor" name="Background"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="3bP-qP-MBW"/>
@@ -653,14 +653,14 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="DOc-o9-Faw">
-                                        <rect key="frame" x="64" y="125" width="335" height="31"/>
+                                        <rect key="frame" x="64" y="125" width="329" height="31"/>
                                         <color key="tintColor" name="Icons"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="Bib-MZ-zba"/>
                                         </constraints>
                                     </datePicker>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YWP-RV-7mB" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="70" width="384" height="40"/>
+                                        <rect key="frame" x="15" y="70" width="378" height="40"/>
                                         <color key="backgroundColor" red="0.53299999237060547" green="0.49399998784065247" blue="0.45100000500679016" alpha="0.33168579931972791" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Greyish"/>
                                         <constraints>
@@ -702,11 +702,11 @@ Made in Cluj :)</string>
                         <constraints>
                             <constraint firstItem="5ej-iT-qZc" firstAttribute="bottom" secondItem="D18-ei-0Sf" secondAttribute="bottom" id="UGf-ve-KjU" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
                             <constraint firstAttribute="bottom" secondItem="oaj-9I-cw7" secondAttribute="bottom" id="dJH-QG-3a1"/>
-                            <constraint firstItem="D18-ei-0Sf" firstAttribute="leading" secondItem="5ej-iT-qZc" secondAttribute="leading" id="dK5-EV-EXb"/>
+                            <constraint firstItem="D18-ei-0Sf" firstAttribute="leading" secondItem="5ej-iT-qZc" secondAttribute="leading" constant="3" id="dK5-EV-EXb"/>
                             <constraint firstItem="oaj-9I-cw7" firstAttribute="top" secondItem="S2y-by-bJf" secondAttribute="top" id="hp4-D8-Blf"/>
                             <constraint firstItem="oaj-9I-cw7" firstAttribute="leading" secondItem="5ej-iT-qZc" secondAttribute="leading" id="kk7-5w-dLP"/>
                             <constraint firstItem="oaj-9I-cw7" firstAttribute="trailing" secondItem="5ej-iT-qZc" secondAttribute="trailing" id="oqv-Wz-hxz"/>
-                            <constraint firstItem="D18-ei-0Sf" firstAttribute="trailing" secondItem="5ej-iT-qZc" secondAttribute="trailing" id="wZi-GZ-vzo"/>
+                            <constraint firstItem="D18-ei-0Sf" firstAttribute="trailing" secondItem="5ej-iT-qZc" secondAttribute="trailing" constant="-3" id="wZi-GZ-vzo"/>
                         </constraints>
                     </view>
                     <connections>
@@ -909,7 +909,7 @@ Made in Cluj :)</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFT-mT-duQ">
-                                <rect key="frame" x="0.0" y="569" width="414" height="293"/>
+                                <rect key="frame" x="3" y="569" width="408" height="293"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFs-pT-Xe2">
                                         <rect key="frame" x="15" y="15" width="94" height="27"/>
@@ -921,7 +921,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkA-RX-1jg">
-                                        <rect key="frame" x="338.5" y="20" width="72.5" height="17"/>
+                                        <rect key="frame" x="332.5" y="20" width="72.5" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="bBo-K5-WHb"/>
                                         </constraints>
@@ -935,7 +935,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Cq-hK-sHD" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="120" width="384" height="40"/>
+                                        <rect key="frame" x="15" y="120" width="378" height="40"/>
                                         <color key="backgroundColor" red="0.83899998664855957" green="0.42699998617172241" blue="0.0" alpha="0.45429421768707484" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Dark Orange"/>
                                         <constraints>
@@ -945,7 +945,7 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p7A-Rt-qou" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="70" width="188" height="40"/>
+                                        <rect key="frame" x="15" y="70" width="185" height="40"/>
                                         <color key="backgroundColor" red="0.40400001406669617" green="0.28200000524520874" blue="0.019999999552965164" alpha="0.35642538265306123" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Brownish"/>
                                         <constraints>
@@ -960,7 +960,7 @@ Made in Cluj :)</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VEK-59-OhE" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="170" width="384" height="40"/>
+                                        <rect key="frame" x="15" y="170" width="378" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.62000000476837158" blue="0.097999997437000275" alpha="0.42437287414965985" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Second Orange"/>
                                         <constraints>
@@ -975,7 +975,7 @@ Made in Cluj :)</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVW-aD-tDu">
-                                        <rect key="frame" x="15" y="228" width="384" height="50"/>
+                                        <rect key="frame" x="15" y="228" width="378" height="50"/>
                                         <color key="backgroundColor" name="Dark Orange"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="lpL-Iv-B9s"/>
@@ -990,7 +990,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gav-gf-MKP" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="211" y="70" width="188" height="40"/>
+                                        <rect key="frame" x="208" y="70" width="185" height="40"/>
                                         <color key="backgroundColor" red="0.53299999237060547" green="0.49399998784065247" blue="0.45100000500679016" alpha="0.38919005102040816" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" name="Greyish"/>
                                         <constraints>
@@ -1028,9 +1028,9 @@ Made in Cluj :)</string>
                         <viewLayoutGuide key="safeArea" id="5MG-Ka-QmK"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zFT-mT-duQ" firstAttribute="leading" secondItem="5MG-Ka-QmK" secondAttribute="leading" id="5nT-kB-FL2"/>
+                            <constraint firstItem="zFT-mT-duQ" firstAttribute="leading" secondItem="5MG-Ka-QmK" secondAttribute="leading" constant="3" id="5nT-kB-FL2"/>
                             <constraint firstItem="Sz8-zm-DR6" firstAttribute="trailing" secondItem="5MG-Ka-QmK" secondAttribute="trailing" id="77N-gw-csB"/>
-                            <constraint firstItem="zFT-mT-duQ" firstAttribute="trailing" secondItem="5MG-Ka-QmK" secondAttribute="trailing" id="MfH-0j-pCU"/>
+                            <constraint firstItem="zFT-mT-duQ" firstAttribute="trailing" secondItem="5MG-Ka-QmK" secondAttribute="trailing" constant="-3" id="MfH-0j-pCU"/>
                             <constraint firstItem="Sz8-zm-DR6" firstAttribute="top" secondItem="dZF-3q-Wnp" secondAttribute="top" id="NgA-hw-U4y"/>
                             <constraint firstAttribute="bottom" secondItem="Sz8-zm-DR6" secondAttribute="bottom" id="OBJ-9B-lBt"/>
                             <constraint firstItem="5MG-Ka-QmK" firstAttribute="bottom" secondItem="zFT-mT-duQ" secondAttribute="bottom" id="PpW-jd-wrO" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
@@ -2414,8 +2414,8 @@ Made in Cluj :)</string>
         <image name="Google Maps" width="144" height="144"/>
         <image name="LogoIcon" width="1396" height="1396"/>
         <image name="Roadout_Siri" width="955" height="955"/>
-        <image name="Roadout_Widget" width="955" height="955"/>
-        <image name="Roadout_wOS" width="955" height="955"/>
+        <image name="Roadout_Widget" width="1432.5" height="1432.5"/>
+        <image name="Roadout_wOS" width="1432.5" height="1432.5"/>
         <image name="Waze" width="144" height="144"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
@@ -2444,7 +2444,7 @@ Made in Cluj :)</string>
             <color red="0.48199999332427979" green="0.30199998617172241" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Greyish">
-            <color red="0.53299999237060547" green="0.49399998784065247" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.50199997425079346" green="0.45100000500679016" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Icons">
             <color red="0.86299997568130493" green="0.66699999570846558" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2456,10 +2456,10 @@ Made in Cluj :)</string>
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Redish">
-            <color red="0.61799997091293335" green="0.22400000691413879" blue="0.11599999666213989" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.58399999141693115" green="0.18000000715255737" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Second Background">
-            <color red="0.94901960784313721" green="0.94509803921568625" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Second Orange">
             <color red="1" green="0.62000000476837158" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

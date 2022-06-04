@@ -128,7 +128,13 @@ class ReservationView: UIView {
     }
     
     @IBAction func arTapped(_ sender: Any) {
-        
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        let alert = UIAlertController(title: "AR Directions".localized(), message: "Coming soon...".localized(), preferredStyle: .alert)
+        alert.view.tintColor = UIColor(named: "Kinda Red")
+        let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        self.parentViewController().present(alert, animated: true, completion: nil)
     }
     
     @IBAction func helpTapped(_ sender: Any) {

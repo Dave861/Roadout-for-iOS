@@ -38,9 +38,9 @@ class SearchManager {
                 completion(.failure(PlacesErrors.failedToFind))
                 return
             }
-            self.client.lookUpPlaceID(firstResult.placeID) { place, errr in
-                if let errr = errr {
-                    print("lookup place id query error: \(errr.localizedDescription)")
+            self.client.lookUpPlaceID(firstResult.placeID) { place, err in
+                if let err = err {
+                    print("Look up place id query error: \(err.localizedDescription)")
                     completion(.failure(PlacesErrors.errorLookingUp))
                     return
                 }
@@ -54,5 +54,6 @@ class SearchManager {
             }
         }
     }
+    
     
 }

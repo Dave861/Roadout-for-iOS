@@ -8,6 +8,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import WatchConnectivity
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,12 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 switch result {
                     case .success():
                         if ReservationManager.sharedInstance.isReservationActive == 0 {
+                            //active
                             NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                        } else if ReservationManager.sharedInstance.isReservationActive == 1 {
+                            //unlocked
+                            NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+                        } else if ReservationManager.sharedInstance.isReservationActive == 2 {
+                            //cancelled
+                            NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
                         } else {
-                            if showUnlockedBar {
-                                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
-                                showUnlockedBar = false
-                            }
+                            //error or not active
+                            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
                         }
                     case .failure(let err):
                         print(err)
@@ -37,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         NotificationHelper.sharedInstance.checkNotificationStatus()
+        self.setUpWCSession()
         
         return true
     }
@@ -56,5 +63,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+extension AppDelegate: WCSessionDelegate {
+    
+    //Setting app the session when app launches
+    func setUpWCSession() {
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print(activationState)
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        //Manage when/if needed
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        //Manage when/if needed
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        if message["action"] as? String == "Refresh Reservation" {
+            guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
+            DispatchQueue.main.async {
+                ReservationManager.sharedInstance.checkForReservation(Date(), userID: id as! String) { result in
+                    switch result {
+                        case .success():
+                            if ReservationManager.sharedInstance.isReservationActive == 0 {
+                                //active
+                                NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                            } else if ReservationManager.sharedInstance.isReservationActive == 1 {
+                                //unlocked
+                                NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+                            } else if ReservationManager.sharedInstance.isReservationActive == 2 {
+                                //cancelled
+                                NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
+                            } else {
+                                //error or not active
+                                NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+                            }
+                        case .failure(let err):
+                            print(err)
+                    }
+                }
+            }
+        } else if message["action"] as? String == "Connected User" {
+            NotificationCenter.default.post(name: .dismissWatchConnectCardID, object: nil)
+        }
+    }
+    
 }
 
