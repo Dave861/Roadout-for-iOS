@@ -74,9 +74,12 @@ class ReservationManager {
         }
     }
     
-    func unlockReservation(_ userID: String, completion: @escaping(Result<Void, Error>) -> Void) {
+    func unlockReservation(_ userID: String, date: Date, completion: @escaping(Result<Void, Error>) -> Void) {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
-        let params : Parameters = ["userID": userID]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let convertedDate = dateFormatter.string(from: date)
+        let params : Parameters = ["userID": userID, "date": convertedDate]
         
         Alamofire.Session.default.request("https://www.roadout.ro/Authentification/UnlockReservation.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {

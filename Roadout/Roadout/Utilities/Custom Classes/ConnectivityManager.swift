@@ -35,7 +35,7 @@ func observeReachability(){
         NotificationCenter.default.post(name: .removeNoWifiBarID, object: nil)
         break
     case .unavailable:
-        print("Network available via WiFi.")
+        print("Network unavailable.")
         NotificationCenter.default.post(name: .showNoWifiBarID, object: nil)
         break
     }

@@ -61,7 +61,7 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
                     delay: 0,
                     options: options,
                     animations: {
-                        UIApplication.shared.keyWindow?.layoutIfNeeded()
+                        UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.layoutIfNeeded()
                         return
                     }, completion: { finished in
                 })
@@ -90,7 +90,7 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
                     delay: 0,
                     options: options,
                     animations: {
-                        UIApplication.shared.keyWindow?.layoutIfNeeded()
+                        UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.layoutIfNeeded()
                         return
                     }, completion: { finished in
                 })
@@ -145,7 +145,7 @@ public class SafeAreaLayoutConstraint: NSLayoutConstraint {
                     delay: 0,
                     options: options,
                     animations: {
-                        UIApplication.shared.keyWindow?.layoutIfNeeded()
+                        UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.layoutIfNeeded()
                         return
                     }, completion: { finished in
                 })
@@ -174,7 +174,7 @@ public class SafeAreaLayoutConstraint: NSLayoutConstraint {
                     delay: 0,
                     options: options,
                     animations: {
-                        UIApplication.shared.keyWindow?.layoutIfNeeded()
+                        UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.layoutIfNeeded()
                         return
                     }, completion: { finished in
                 })

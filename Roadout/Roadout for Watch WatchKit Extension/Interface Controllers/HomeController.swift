@@ -13,7 +13,7 @@ class HomeController: WKInterfaceController {
     @IBOutlet weak var unlockBtnGroup: WKInterfaceGroup!
     @IBAction func unlockTapped() {
         let unlockAction = WKAlertAction(title: "Unlock", style: .default) {
-            ReservationManager.sharedInstance.unlockReservation(UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID")!) { result in
+            ReservationManager.sharedInstance.unlockReservation(UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID")!, date: Date()) { result in
                 switch result {
                 case .success():
                     self.presentController(withName: "UnlockedWKI", context: nil)

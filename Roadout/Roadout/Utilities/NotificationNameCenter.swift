@@ -55,6 +55,7 @@ extension Notification.Name {
     static let addMarkersID = Notification.Name("ro.roadout.Roadout.addMarkersID")
     static let updateReservationTimeLabelID = Notification.Name("ro.roadout.Roadout.updateReservationTimeLabelID")
     static let showRateReservationID = Notification.Name("ro.roadout.Roadout.showRateReservationAlertID")
+    static let showNoFreeSpotInLocationID = Notification.Name("ro.roadout.Roadout.showNoFreeSpotInLocationID")
     
     //APPLE WATCH
     static let reloadServerDataAWID = Notification.Name("ro.roadout.RoadoutWatch.reloadServerDataAWID")

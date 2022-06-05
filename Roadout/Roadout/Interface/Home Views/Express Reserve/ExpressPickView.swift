@@ -22,7 +22,15 @@ class ExpressPickView: UIView {
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
+    func manageObs() {
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(showNoFreeSpotAlert), name: .showNoFreeSpotInLocationID, object: nil)
+    }
+    
     override func willMove(toSuperview newSuperview: UIView?) {
+        
+        manageObs()
+        
         self.layer.cornerRadius = 13.0
         
         backBtn.setTitle("", for: .normal)
@@ -51,6 +59,12 @@ class ExpressPickView: UIView {
         return UINib(nibName: "Express", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
     
+    @objc func showNoFreeSpotAlert() {
+        let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free places in this location at the moment", preferredStyle: .alert)
+        alert.view.tintColor = UIColor(named: "ExpressFocus")!
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
+        self.parentViewController().present(alert, animated: true, completion: nil)
+    }
     
 }
 extension ExpressPickView: iCarouselDataSource, iCarouselDelegate {
@@ -84,13 +98,9 @@ extension ExpressPickView: iCarouselDataSource, iCarouselDelegate {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         
-        //API call here
-        FunctionsManager.sharedInstance.findInLocation(parkLocations[index])
-        
         selectedParkLocationIndex = index
-        selectedLocationColor = UIColor(named: "Dark Orange")!
-        selectedLocationCoord = CLLocationCoordinate2DMake(parkLocations[index].latitude, parkLocations[index].longitude)
-        NotificationCenter.default.post(name: .addExpressViewID, object: nil)
+        FunctionsManager.sharedInstance.foundSpot = nil
+        FunctionsManager.sharedInstance.expressReserveInLocation(sectionIndex: 0, location: parkLocations[index])
         
     }
     

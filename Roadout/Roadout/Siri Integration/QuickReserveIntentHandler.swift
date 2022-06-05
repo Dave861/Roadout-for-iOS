@@ -39,12 +39,18 @@ public class QuickReserveIntentHandler: NSObject, QuickReserveIntentHandling {
                 self.locationManager?.startUpdatingLocation()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     if self.locationManager?.location != nil {
-                        FunctionsManager.sharedInstance.findSpot(self.locationManager!.location!.coordinate) { success in
+                        FunctionsManager.sharedInstance.sortLocations(currentLocation: (self.locationManager?.location!.coordinate)!) { success in
                             if success {
-                                UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundLocation.name, forKey: "ro.roadout.Roadout.SiriName")
-                                UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundSection.name, forKey: "ro.roadout.Roadout.SiriSection")
-                                UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundSpot.number, forKey: "ro.roadout.Roadout.SiriSpot")
-                                completion(QuickReserveIntentResponse(code: .ready, userActivity: nil))
+                                FunctionsManager.sharedInstance.findSpot { success in
+                                    if success {
+                                        UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundLocation.name, forKey: "ro.roadout.Roadout.SiriName")
+                                        UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundSection.name, forKey: "ro.roadout.Roadout.SiriSection")
+                                        UserDefaults.roadout?.set(FunctionsManager.sharedInstance.foundSpot.number, forKey: "ro.roadout.Roadout.SiriSpot")
+                                        completion(QuickReserveIntentResponse(code: .ready, userActivity: nil))
+                                    } else {
+                                        completion(QuickReserveIntentResponse(code: .noSpotFound, userActivity: nil))
+                                    }
+                                }
                             } else {
                                 completion(QuickReserveIntentResponse(code: .noSpotFound, userActivity: nil))
                             }

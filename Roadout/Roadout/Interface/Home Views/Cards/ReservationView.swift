@@ -112,7 +112,7 @@ class ReservationView: UIView {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-            ReservationManager.sharedInstance.cancelReservation(id) { result in
+            ReservationManager.sharedInstance.cancelReservation(id, date: Date()) { result in
                 switch result {
                     case .success():
                         print("CANCELLED")

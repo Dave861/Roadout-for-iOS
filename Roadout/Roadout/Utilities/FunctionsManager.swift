@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import Alamofire
 import UIKit
 
 var selectedLocationName = "Location"
@@ -21,6 +22,14 @@ class FunctionsManager {
     
     static let sharedInstance = FunctionsManager()
     
+    enum FunctionsErrors: Error {
+        case databaseFailure
+        case errorWithJson
+        case networkError
+        case unknownError
+        case notFound
+    }
+    
     //MARK: -Find Spot-
         
     var foundLocation: ParkLocation!
@@ -28,35 +37,7 @@ class FunctionsManager {
     var foundSpot: ParkSpot!
     
     var sortedLocations = [ParkLocation]()
-    
-    func findSpot(_ currentLocation: CLLocationCoordinate2D, completion: (_ success: Bool) -> Void) {
-        self.sortLocations(currentLocation: currentLocation, completion: { success in
-            if success {
-                for location in sortedLocations {
-                    print(location.name)
-                }
-                var runs = 0
-                foundSpot = nil
-                while foundSpot == nil {
-                    print("Been through " + "\(runs)" + "locations")
-                    if runs >= sortedLocations.count {
-                        break
-                    }
-                    //Will call server api here
-                    findInLocation(sortedLocations[runs])
-                    //Will crash for now because this function should call the server which has the data but client doesn't
-                    runs += 1
-                }
-                if foundSpot == nil {
-                    completion(false)
-                }
-                completion(true)
-            } else {
-                completion(false)
-            }
-        })
-    }
-    
+
     func sortLocations(currentLocation: CLLocationCoordinate2D, completion: (_ success: Bool) -> Void) {
         let current = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
         var dictArray = [[String: Any]]()
@@ -77,20 +58,103 @@ class FunctionsManager {
         sortedLocations = sortedArray
         completion(true)
     }
+
     
-    func findInLocation(_ location: ParkLocation) {
+    func expressReserveInLocation(sectionIndex: Int, location: ParkLocation) {
         foundLocation = location
-        outerLoop: for section in location.sections {
-            for spot in section.spots {
-                if spot.state == 0 {
-                    foundSection = section
-                    foundSpot = spot
-                    selectedSpotID = spot.rID
-                    selectedLocationCoord = CLLocationCoordinate2D(latitude: foundLocation.latitude, longitude: foundLocation.longitude)
-                    break outerLoop
+        if sectionIndex < location.sections.count-1 && foundSpot == nil {
+            self.findInSection(location.sections[sectionIndex].rID) { result in
+                  switch result {
+                      case .success(let didFindSpot):
+                          if didFindSpot {
+                              self.foundSection = location.sections[sectionIndex]
+                              selectedSpotID = self.foundSpot.rID
+                              selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
+                              selectedLocationColor = UIColor(named: "Dark Orange")!
+                              NotificationCenter.default.post(name: .addExpressViewID, object: nil)
+                          } else {
+                              self.expressReserveInLocation(sectionIndex: sectionIndex+1, location: location)
+                          }
+                      case .failure(let err):
+                            print(err)
                 }
+            }
+        } else {
+            if foundSpot == nil {
+                NotificationCenter.default.post(name: .showNoFreeSpotInLocationID, object: nil)
             }
         }
     }
-
+    
+    func findInSection(_ sectionId: String, completion: @escaping(Result<Bool, Error>) -> Void) {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["id": sectionId]
+        
+        Alamofire.Session.default.request("https://www.roadout.ro/Parking/FirstSpot.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+            guard response.value != nil else {
+                completion(.failure(FunctionsErrors.databaseFailure))
+                return
+            }
+            let data = response.value!.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String: Any] {
+                    if jsonArray["status"] as! String == "Success" {
+                        if (jsonArray["id"] as! String).lowercased() != "null" {
+                            let spotID = jsonArray["id"] as! String
+                            self.foundSpot = ParkSpot(state: 0, number: Int(EntityManager.sharedInstance.decodeSpotID(spotID)[2])!, rID: spotID)
+                            completion(.success(true))
+                        } else {
+                            completion(.success(false))
+                        }
+                    } else {
+                        print(jsonArray["status"]!)
+                        completion(.failure(FunctionsErrors.unknownError))
+                    }
+                }
+            } catch let error as NSError {
+                print(error)
+                completion(.failure(FunctionsErrors.errorWithJson))
+            }
+        }
+    }
+   
+    
+    func findSpot(completion: @escaping(_ success: Bool) -> Void) {
+        
+        let dispatchSemaphore = DispatchSemaphore(value: 0)
+        DispatchQueue.global().async {
+            for location in self.sortedLocations {
+                if self.foundSpot != nil {
+                    break
+                }
+                self.foundLocation = location
+                for section in location.sections {
+                    if self.foundSpot != nil {
+                        break
+                    }
+                    self.findInSection(section.rID) { result in
+                        switch result {
+                            case .success(let didFind):
+                                if didFind {
+                                    self.foundSection = section
+                                    selectedSpotID = self.foundSpot.rID
+                                    selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
+                                }
+                            case .failure(let err):
+                                print(err)
+                        }
+                        dispatchSemaphore.signal()
+                    }
+                    dispatchSemaphore.wait()
+                }
+            }
+            if self.foundSpot == nil {
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+        
+    }
+    
 }

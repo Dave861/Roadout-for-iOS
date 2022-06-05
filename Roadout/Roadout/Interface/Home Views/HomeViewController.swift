@@ -81,9 +81,7 @@ class HomeViewController: UIViewController {
     
     //MARK: -Find me a spot-
     let findView = FindView.instanceFromNib()
-    
-    var findRequested = false
-    
+        
     @objc func showFindCard() {
             if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
                 self.view.subviews.last!.removeFromSuperview()
@@ -126,26 +124,36 @@ class HomeViewController: UIViewController {
         settingsAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
         
         let findAction = UIAlertAction(title: "Find Spot".localized(), style: .default) { action in
+            FunctionsManager.sharedInstance.foundSpot = nil
             guard let coord = self.mapView.myLocation?.coordinate else {
-                let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(action)
-                alert.view.tintColor = UIColor(named: "DevBrown")
-                self.present(alert, animated: true, completion: nil)
+                self.showFindLocationAlert()
                 return
             }
-            FunctionsManager.sharedInstance.findSpot(coord) { success in
+            FunctionsManager.sharedInstance.sortLocations(currentLocation: coord) { success in
                 if success {
-                    self.showFindCard()
+                    FunctionsManager.sharedInstance.findSpot { success in
+                        if success {
+                            if FunctionsManager.sharedInstance.foundSpot != nil {
+                                DispatchQueue.main.async {
+                                    self.showFindCard()
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    self.showFindLocationAlert()
+                                }
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                self.showFindLocationAlert()
+                            }
+                        }
+                    }
                 } else {
-                    let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alert.addAction(action)
-                    alert.view.tintColor = UIColor(named: "DevBrown")
-                    self.present(alert, animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        self.showFindLocationAlert()
+                    }
                 }
             }
-
         }
         findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
         
@@ -259,23 +267,34 @@ class HomeViewController: UIViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }),
             UIAction(title: "Find Spot".localized(), image: UIImage(systemName: "loupe"), handler: { (_) in
+                FunctionsManager.sharedInstance.foundSpot = nil
                 guard let coord = self.mapView.myLocation?.coordinate else {
-                    let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                    alert.addAction(action)
-                    alert.view.tintColor = UIColor(named: "DevBrown")
-                    self.present(alert, animated: true, completion: nil)
+                    self.showFindLocationAlert()
                     return
                 }
-                FunctionsManager.sharedInstance.findSpot(coord) { success in
+                FunctionsManager.sharedInstance.sortLocations(currentLocation: coord) { success in
                     if success {
-                        self.showFindCard()
+                        FunctionsManager.sharedInstance.findSpot { success in
+                            if success {
+                                if FunctionsManager.sharedInstance.foundSpot != nil {
+                                    DispatchQueue.main.async {
+                                        self.showFindCard()
+                                    }
+                                } else {
+                                    DispatchQueue.main.async {
+                                        self.showFindLocationAlert()
+                                    }
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    self.showFindLocationAlert()
+                                }
+                            }
+                        }
                     } else {
-                        let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
-                        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        alert.addAction(action)
-                        alert.view.tintColor = UIColor(named: "DevBrown")
-                        self.present(alert, animated: true, completion: nil)
+                        DispatchQueue.main.async {
+                            self.showFindLocationAlert()
+                        }
                     }
                 }
             }),
@@ -287,6 +306,15 @@ class HomeViewController: UIViewController {
     var moreMenu: UIMenu {
         return UIMenu(title: "What would you like to do?".localized(), image: nil, identifier: nil, options: [], children: menuItems)
     }
+    
+    func showFindLocationAlert() {
+        let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        alert.view.tintColor = UIColor(named: "DevBrown")
+        self.present(alert, animated: true, completion: nil)
+    }
+    
   //SharePlay
     func addSharePlayButtonView() {
         if #available(iOS 15.0, *) {
