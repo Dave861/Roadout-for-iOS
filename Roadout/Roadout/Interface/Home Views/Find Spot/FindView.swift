@@ -16,7 +16,7 @@ class FindView: UIView {
     @IBOutlet weak var backBtn: UIButton!
     
     @IBAction func backTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
+        let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
@@ -89,9 +89,10 @@ class FindView: UIView {
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
    
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 13.0
+        self.layer.cornerRadius = 19.0
         
         backBtn.setTitle("", for: .normal)
+        backBtn.layer.cornerRadius = 15.0
         
         continueBtn.layer.cornerRadius = 12.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)

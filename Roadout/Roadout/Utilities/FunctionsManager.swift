@@ -76,7 +76,8 @@ class FunctionsManager {
                               self.expressReserveInLocation(sectionIndex: sectionIndex+1, location: location)
                           }
                       case .failure(let err):
-                            print(err)
+                        NotificationCenter.default.post(name: .showNoFreeSpotInLocationID, object: nil)
+                        print(err)
                 }
             }
         } else {

@@ -36,6 +36,7 @@ class SettingsViewController: UIViewController {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         UserManager.sharedInstance.getUserName(id) { result in
             print(result)
+            self.tableView.reloadData()
         }
         tableView.delegate = self
         tableView.dataSource = self
@@ -44,7 +45,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.managePreferencesTutorial()
+        self.manageSettingsTutorial()
     }
     
     @objc func reloadName() {
@@ -59,15 +60,15 @@ class SettingsViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    func managePreferencesTutorial() {
-        if UserDefaults.roadout?.bool(forKey: "ro.roadout.Roadout.seenPreferencesTutorial") == false {
+    func manageSettingsTutorial() {
+        if UserDefaults.roadout?.bool(forKey: "ro.roadout.Roadout.seenSettingsTutorial") == false {
         
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "TutorialVC") as! TutorialViewController
-            vc.tutorialSet = vc.preferencesTutorialSet
+            vc.tutorialSet = vc.settingsTutorialSet
             
             self.present(vc, animated: true) {
-                UserDefaults.roadout?.set(true, forKey: "ro.roadout.Roadout.seenPreferencesTutorial")
+                UserDefaults.roadout?.set(true, forKey: "ro.roadout.Roadout.seenSettingsTutorial")
             }
         }
     }

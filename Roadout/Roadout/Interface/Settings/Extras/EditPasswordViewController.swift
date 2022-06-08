@@ -14,33 +14,28 @@ class EditPasswordViewController: UIViewController {
     
     
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var blurButton: UIButton!
-    
+    @IBOutlet weak var blurEffect: UIVisualEffectView!
     
     @IBOutlet weak var save: UIButton!
     @IBOutlet weak var oldPswField: PaddedTextField!
     @IBOutlet weak var newPswField: PaddedTextField!
     @IBOutlet weak var confPswField: PaddedTextField!
     
-    @IBAction func dismissTapped(_ sender: Any) {
+    @objc func blurTapped() {
         UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
+            self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
     }
     
+   
+    
     @IBAction func cancelTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
-          self.blurButton.alpha = 0
+          self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
-        }
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        UIView.animate(withDuration: 0.5) {
-            self.blurButton.alpha = 1
         }
     }
     
@@ -53,7 +48,7 @@ class EditPasswordViewController: UIViewController {
                     let alert = UIAlertController(title: "Success".localized(), message: "Your password was successfully changed!".localized(), preferredStyle: UIAlertController.Style.alert)
                     let alertAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                             UIView.animate(withDuration: 0.1) {
-                                self.blurButton.alpha = 0
+                                self.blurEffect.alpha = 0
                             } completion: { done in
                                 self.dismiss(animated: true, completion: nil)
                             }
@@ -192,7 +187,7 @@ class EditPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()        
-        cardView.layer.cornerRadius = 16.0
+        cardView.layer.cornerRadius = 19.0
         
         save.layer.cornerRadius = 12
         save.setAttributedTitle(savedTitle, for: .normal)
@@ -202,25 +197,36 @@ class EditPasswordViewController: UIViewController {
          NSAttributedString(
             string: "Old Password".localized(),
          attributes:
-            [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
          )
         newPswField.layer.cornerRadius = 12.0
         newPswField.attributedPlaceholder =
          NSAttributedString(
             string: "New Password".localized(),
          attributes:
-            [NSAttributedString.Key.foregroundColor: UIColor(named: "Brownish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            [NSAttributedString.Key.foregroundColor: UIColor(named: "Brownish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
          )
         confPswField.layer.cornerRadius = 12.0
         confPswField.attributedPlaceholder =
          NSAttributedString(
             string: "Confirm Password".localized(),
          attributes:
-            [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
          )
         
         manageForgotView(false)
         
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
+        blurEffect.addGestureRecognizer(tapRecognizer)
+        
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        UIView.animate(withDuration: 0.3) {
+            self.blurEffect.alpha = 1
+        }
     }
     
     func manageForgotServerSideErrors() {

@@ -56,7 +56,7 @@ class UnlockedView: UIView {
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 12.0
+        self.layer.cornerRadius = 17.0
         optionsBtn.setAttributedTitle(buttonTitle, for: .normal)
         
         if #available(iOS 14.0, *) {

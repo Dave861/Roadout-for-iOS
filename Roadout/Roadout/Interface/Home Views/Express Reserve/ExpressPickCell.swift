@@ -7,16 +7,20 @@
 
 import UIKit
 
-class ExpressPickCell: UIView {
+class ExpressPickCell: UICollectionViewCell {
 
     @IBOutlet weak var nameLbl: UILabel!
     
-    @IBOutlet weak var freeSpotsLbl: UILabel!
+    @IBOutlet weak var occupancyLbl: UILabel!
     
-    @IBOutlet weak var freeLbl: UILabel!
+    @IBOutlet weak var distanceLbl: UILabel!
+    
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 16.0
+    }
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 18.0
+        self.layer.cornerRadius = 16.0
     }
     
     class func instanceFromNib() -> UIView {

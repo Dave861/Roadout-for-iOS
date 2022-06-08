@@ -18,7 +18,7 @@ class ExpressView: UIView {
     @IBOutlet weak var chargeLbl: UILabel!
     
     @IBAction func backTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
+        let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
         NotificationCenter.default.post(name: .addExpressPickViewID, object: nil)
     }
@@ -89,9 +89,10 @@ class ExpressView: UIView {
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 13.0
+        self.layer.cornerRadius = 19.0
         manageObs()
         backBtn.setTitle("", for: .normal)
+        backBtn.layer.cornerRadius = 15.0
         
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         

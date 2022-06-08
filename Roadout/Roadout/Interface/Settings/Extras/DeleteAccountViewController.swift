@@ -15,7 +15,7 @@ class DeleteAccountViewController: UIViewController {
     //MARK: -IB Connections-
     
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var blurButton: UIButton!
+    @IBOutlet weak var blurEffect: UIVisualEffectView!
     
     @IBOutlet weak var deleteBtn: UIButton!
     
@@ -56,20 +56,22 @@ class DeleteAccountViewController: UIViewController {
         }
     }
     
+    @objc func blurTapped() {
+        UIView.animate(withDuration: 0.1) {
+            self.blurEffect.alpha = 0
+        } completion: { done in
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func cancelTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
+            self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
     }
-    @IBAction func dismissTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
-        } completion: { done in
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
+   
     
     //MARK: -Forgot password-
         
@@ -115,7 +117,7 @@ class DeleteAccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 16.0
+        cardView.layer.cornerRadius = 19.0
         deleteBtn.layer.cornerRadius = 13.0
         deleteBtn.setAttributedTitle(deleteTitle, for: .normal)
         
@@ -124,22 +126,26 @@ class DeleteAccountViewController: UIViewController {
         
         emailField.attributedPlaceholder = NSAttributedString(
             string: "Email".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Kinda Red")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Kinda Red")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         passwordField.attributedPlaceholder = NSAttributedString(
             string: "Password".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Redish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Redish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         manageForgotView(false)
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
+        blurEffect.addGestureRecognizer(tapRecognizer)
+        
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        UIView.animate(withDuration: 0.5) {
-            self.blurButton.alpha = 1
+        UIView.animate(withDuration: 0.3) {
+            self.blurEffect.alpha = 1
         }
     }
-    
     
     
     func isValidEmail(_ email: String) -> Bool {

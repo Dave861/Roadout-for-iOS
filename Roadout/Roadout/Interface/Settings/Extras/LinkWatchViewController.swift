@@ -13,19 +13,21 @@ class LinkWatchViewController: UIViewController {
     let connectTitle = NSAttributedString(string: "Connect".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var blurButton: UIButton!
+    @IBOutlet weak var blurEffect: UIVisualEffectView!
     
-    @IBAction func dismissTapped(_ sender: Any) {
+    @objc func blurTapped() {
         UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
+            self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
     }
     
+
+    
     @IBAction func cancelTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
-          self.blurButton.alpha = 0
+          self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
@@ -37,7 +39,6 @@ class LinkWatchViewController: UIViewController {
         if WCSession.default.isReachable {
             activityIndicator.isHidden = false
             activityIndicator.startAnimating()
-            statusLbl.isHidden = false
             statusLbl.text = "Connecting..."
             
             let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
@@ -61,20 +62,23 @@ class LinkWatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 16.0
+        cardView.layer.cornerRadius = 19.0
         connectBtn.layer.cornerRadius = 12
         connectBtn.setAttributedTitle(connectTitle, for: .normal)
         activityIndicator.isHidden = true
-        statusLbl.isHidden = true
         
         checkWatchSession()
         manageObs()
+    
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
+        blurEffect.addGestureRecognizer(tapRecognizer)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        UIView.animate(withDuration: 0.5) {
-            self.blurButton.alpha = 1
+        UIView.animate(withDuration: 0.3) {
+            self.blurEffect.alpha = 1
         }
     }
     
@@ -83,7 +87,6 @@ class LinkWatchViewController: UIViewController {
             self.connectBtn.alpha = 0.75
             self.connectBtn.isEnabled = false
             self.activityIndicator.isHidden = false
-            self.statusLbl.isHidden = false
             self.statusLbl.text = "No Apple Watch found"
         }
     }
@@ -95,7 +98,7 @@ class LinkWatchViewController: UIViewController {
             self.activityIndicator.stopAnimating()
             self.statusLbl.text = "Success"
             UIView.animate(withDuration: 0.1) {
-              self.blurButton.alpha = 0
+              self.blurEffect.alpha = 0
             } completion: { done in
                 self.dismiss(animated: true, completion: nil)
             }

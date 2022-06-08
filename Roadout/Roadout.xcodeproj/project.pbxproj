@@ -190,7 +190,6 @@
 		9ABBF825275654BB005D2FFD /* IntentDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7E8D275645A300E09B75 /* IntentDataExtension.swift */; };
 		9ABBF827275655D4005D2FFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC926F3272697F20054E453 /* Assets.xcassets */; };
 		9ABBF828275655D4005D2FFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC926F3272697F20054E453 /* Assets.xcassets */; };
-		9AC48D1C273FBDE200DBCEF8 /* iCarousel in Frameworks */ = {isa = PBXBuildFile; productRef = 9AC48D1B273FBDE200DBCEF8 /* iCarousel */; };
 		9AC48D1E273FC11300DBCEF8 /* ExpressPickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC48D1D273FC11300DBCEF8 /* ExpressPickCell.swift */; };
 		9AC566E627BE354200955F7D /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC566E527BE354200955F7D /* EntityManager.swift */; };
 		9AC6D9D92727DE0D004E838C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC6D9D82727DE0D004E838C /* SettingsViewController.swift */; };
@@ -202,6 +201,7 @@
 		9AC926F7272697F20054E453 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC926F5272697F20054E453 /* LaunchScreen.storyboard */; };
 		9ACBFF54272704F90011B58F /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBFF53272704F90011B58F /* PermissionsViewController.swift */; };
 		9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBFF55272705060011B58F /* PermissionTableViewCell.swift */; };
+		9ADEB748284FD3AD00AB6F23 /* SearchPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEB747284FD3AD00AB6F23 /* SearchPreviewController.swift */; };
 		9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFF6272BBFD70088A3ED /* HistoryViewController.swift */; };
 		9AE2AFF9272BC0B80088A3ED /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFF8272BC0B80088A3ED /* HistoryCell.swift */; };
 		9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */; };
@@ -480,6 +480,7 @@
 		9AC926F8272697F20054E453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ACBFF53272704F90011B58F /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		9ACBFF55272705060011B58F /* PermissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionTableViewCell.swift; sourceTree = "<group>"; };
+		9ADEB747284FD3AD00AB6F23 /* SearchPreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPreviewController.swift; sourceTree = "<group>"; };
 		9AE2AFF6272BBFD70088A3ED /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		9AE2AFF8272BC0B80088A3ED /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryCell.swift; path = Roadout/Interface/Settings/HistoryCell.swift; sourceTree = SOURCE_ROOT; };
 		9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
@@ -549,7 +550,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC48D1C273FBDE200DBCEF8 /* iCarousel in Frameworks */,
 				9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */,
 				9AAE265B280947E000BBBAC3 /* GoogleMapsBase in Frameworks */,
 				9AAE265F280947E000BBBAC3 /* GoogleMapsM4B in Frameworks */,
@@ -719,6 +719,7 @@
 			isa = PBXGroup;
 			children = (
 				9A6A4A2E27293171008F69B3 /* SearchViewController.swift */,
+				9ADEB747284FD3AD00AB6F23 /* SearchPreviewController.swift */,
 				9A6A4A3027293184008F69B3 /* SearchCell.swift */,
 			);
 			path = Search;
@@ -728,9 +729,9 @@
 			isa = PBXGroup;
 			children = (
 				9A24ADBF27DCF30700BE8E1A /* Express.xib */,
+				9A24ADC427DD096500BE8E1A /* ExpressPickCell.xib */,
 				9A6727BD2737C5CE0078479D /* ExpressPickView.swift */,
 				9AC48D1D273FC11300DBCEF8 /* ExpressPickCell.swift */,
-				9A24ADC427DD096500BE8E1A /* ExpressPickCell.xib */,
 				9A5A01822737CDD000BD7E70 /* ExpressView.swift */,
 			);
 			path = "Express Reserve";
@@ -1176,7 +1177,6 @@
 			name = Roadout;
 			packageProductDependencies = (
 				9A6E1C362731324B002E29F9 /* BarChartKit-static */,
-				9AC48D1B273FBDE200DBCEF8 /* iCarousel */,
 				9AA0EFD1277B5D5800B0F52A /* Alamofire */,
 				9AA01DDE2789D78E0004211A /* CHIOTPField */,
 				9A8D8D3B27BADDAC0037DFE3 /* PusherSwift */,
@@ -1237,7 +1237,6 @@
 			mainGroup = 9AC926DE272697F00054E453;
 			packageReferences = (
 				9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */,
-				9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */,
 				9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9AA01DDD2789D78E0004211A /* XCRemoteSwiftPackageReference "CHIOTPField" */,
 				9A8D8D3A27BADDAC0037DFE3 /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */,
@@ -1528,6 +1527,7 @@
 				9AC48D1E273FC11300DBCEF8 /* ExpressPickCell.swift in Sources */,
 				9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */,
 				9ABA39B227C13382001660E7 /* GetDataViewController.swift in Sources */,
+				9ADEB748284FD3AD00AB6F23 /* SearchPreviewController.swift in Sources */,
 				9AED6DB027E7152A00B5004F /* SlidingButton.swift in Sources */,
 				9AF7142E27AFC41E00FEA4C4 /* AckViewController.swift in Sources */,
 				9AC6D9D92727DE0D004E838C /* SettingsViewController.swift in Sources */,
@@ -1714,7 +1714,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1740,7 +1740,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1767,7 +1767,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1796,7 +1796,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUIRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1825,7 +1825,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick Reserve.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1854,7 +1854,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick ReserveRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1886,7 +1886,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1917,7 +1917,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1945,7 +1945,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout for Watch WatchKit Extension/Info.plist";
@@ -1975,7 +1975,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout for Watch WatchKit Extension/Info.plist";
@@ -2007,7 +2007,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_for_Watch_WatchKit_Extension;
@@ -2032,7 +2032,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_for_Watch_WatchKit_Extension;
@@ -2178,7 +2178,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2218,7 +2218,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2384,14 +2384,6 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nicklockwood/iCarousel";
-			requirement = {
-				kind = revision;
-				revision = d4b4db80df0aa7744d5bc0dced74474540a114ce;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2474,11 +2466,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
 			productName = GooglePlaces;
-		};
-		9AC48D1B273FBDE200DBCEF8 /* iCarousel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9AC48D1A273FBDE200DBCEF8 /* XCRemoteSwiftPackageReference "iCarousel" */;
-			productName = iCarousel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

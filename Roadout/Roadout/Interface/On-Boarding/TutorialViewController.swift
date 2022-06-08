@@ -21,28 +21,32 @@ class TutorialViewController: UIViewController {
                            TutorialItem(title: "Markers", description: "Parking locations are highlighted on the map using markers, you can zoom in and select them.", icon: UIImage(systemName: "mappin.and.ellipse")!),
                            TutorialItem(title: "Menu", description: "The menu has other methods of finding a parking spot, you can try them right now!", icon: UIImage(systemName: "ellipsis.circle")!)]
     
-    let preferencesTutorialSet = [TutorialItem(title: "User Control", description: "Here you edit your account and see all your data.", icon: UIImage(systemName: "person.fill")!),
+    let settingsTutorialSet = [TutorialItem(title: "User Control", description: "Here you edit your account and see all your data.", icon: UIImage(systemName: "person.fill")!),
                                   TutorialItem(title: "App Options and Features", description: "You can customize Roadout and use Reminders to keep you from forgetting to make a reservation", icon:UIImage(systemName: "arrow.up.forward.app")!),
                                   TutorialItem(title: "About and Help", description: "Have any questions? Reach out via FAQ & Support", icon: UIImage(systemName: "questionmark.circle")!)]
     
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var blurButton: UIButton!
+    
+    @IBOutlet weak var blurEffect: UIVisualEffectView!
+    
+    @objc func blurTapped() {
+        UIView.animate(withDuration: 0.1) {
+            self.blurEffect.alpha = 0
+        } completion: { done in
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @IBOutlet weak var closeButton: UIButton!
     
     @IBAction func closeTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
+            self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
     }
-    @IBAction func dismissTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
-        } completion: { done in
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
+    
     
     @IBOutlet weak var icon1: UIImageView!
     @IBOutlet weak var icon2: UIImageView!
@@ -72,16 +76,19 @@ class TutorialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 16.0
+        cardView.layer.cornerRadius = 19.0
         setTutorial()
         closeButton.setTitle("", for: .normal)
         closeButton.layer.cornerRadius = closeButton.frame.height/2
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
+        blurEffect.addGestureRecognizer(tapRecognizer)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 0.5) {
-            self.blurButton.alpha = 1
+            self.blurEffect.alpha = 1
         }
     }
    

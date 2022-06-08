@@ -33,7 +33,7 @@ class SectionView: UIView {
         }
     }
     @IBAction func backTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
+        let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
         letter = "A"
         selectedSectionIndex = 0
@@ -49,9 +49,10 @@ class SectionView: UIView {
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 13.0
+        self.layer.cornerRadius = 19.0
         continueBtn.layer.cornerRadius = 12.0
         backBtn.setTitle("", for: .normal)
+        backBtn.layer.cornerRadius = 15.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         
         sectionImage.image = UIImage(named: parkLocations[selectedParkLocationIndex].sectionImage)

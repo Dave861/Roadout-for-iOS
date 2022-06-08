@@ -10,7 +10,7 @@ import UIKit
 class UnlockView: UIView {
 
     @IBAction func backTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
+        let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
         NotificationCenter.default.post(name: .removeUnlockCardID, object: nil)
     }
@@ -21,7 +21,10 @@ class UnlockView: UIView {
     @IBOutlet weak var titleLbl: UILabel!
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 13.0
+        self.layer.cornerRadius = 19.0
+        
+        backBtn.setTitle("", for: .normal)
+        backBtn.layer.cornerRadius = 15.0
         
         slidingBtn.reset()
         slidingBtn.delegate = self

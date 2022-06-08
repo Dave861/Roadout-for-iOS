@@ -28,14 +28,14 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
     func configureView(for parameters: Set<INParameter>, of interaction: INInteraction, interactiveBehavior: INUIInteractiveBehavior, context: INUIHostedViewContext, completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void) {
         
         if interaction.intentHandlingStatus == .success {
-            self.updateViews(color: UIColor(named: "Icons")!, status: "Success", explanation: "Please open the app to see your reservation", iconImage: UIImage(systemName: "checkmark.seal")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
+            self.updateViews(color: UIColor(named: "Icons")!, status: "Success", explanation: "Please open the app to see your reservation", iconImage: UIImage(systemName: "checkmark")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
         } else if interaction.intentHandlingStatus == .failure || interaction.intentHandlingStatus == .unspecified {
-            self.updateViews(color: UIColor(named: "Redish")!, status: "Failure", explanation: "There was an error. Please send a bug report", iconImage: UIImage(systemName: "xmark.app")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
+            self.updateViews(color: UIColor(named: "Redish")!, status: "Failure", explanation: "There was an error. Please send a bug report", iconImage: UIImage(systemName: "xmark")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
         } else if interaction.intentHandlingStatus == .inProgress || interaction.intentHandlingStatus == .userConfirmationRequired || interaction.intentHandlingStatus == .ready {
             let location = SiriDataManager.sharedInstance.parkName
             let section = "Section " + SiriDataManager.sharedInstance.parkSection
             let spot = "Spot " + "\(SiriDataManager.sharedInstance.parkSpot)"
-            self.updateViews(color: UIColor(named: "Greyish")!, status: "Confirm", explanation: "\(location) - \(section) - \(spot)", iconImage: UIImage(systemName: "loupe")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
+            self.updateViews(color: UIColor(named: "Brownish")!, status: "Confirm", explanation: "\(location) - \(section) - \(spot)", iconImage: UIImage(systemName: "car.fill")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
             
         }
         

@@ -10,16 +10,16 @@ import UIKit
 class EditNameViewController: UIViewController {
 
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var blurButton: UIButton!
+    @IBOutlet weak var blurEffect: UIVisualEffectView!
     
     @IBOutlet weak var saved: UIButton!
     @IBOutlet weak var userNamelField: PaddedTextField!
     
     @IBOutlet weak var nameLbl: UILabel!
     
-    @IBAction func dismissTapped(_ sender: Any) {
+    @objc func blurTapped() {
         UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
+            self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
@@ -27,7 +27,7 @@ class EditNameViewController: UIViewController {
     
     @IBAction func tapped(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
-          self.blurButton.alpha = 0
+          self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
@@ -48,7 +48,7 @@ class EditNameViewController: UIViewController {
                 let alert = UIAlertController(title: "Success".localized(), message: "Your name was successfully changed!".localized(), preferredStyle: UIAlertController.Style.alert)
                 let alertAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                     UIView.animate(withDuration: 0.1) {
-                        self.blurButton.alpha = 0
+                        self.blurEffect.alpha = 0
                     } completion: { done in
                         self.dismiss(animated: true, completion: nil)
                     }
@@ -105,7 +105,7 @@ class EditNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 16.0
+        cardView.layer.cornerRadius = 19.0
         
         saved.layer.cornerRadius = 12
         saved.setAttributedTitle(savedTitle, for: .normal)
@@ -113,7 +113,7 @@ class EditNameViewController: UIViewController {
         userNamelField.layer.cornerRadius = 12.0
         userNamelField.attributedPlaceholder = NSAttributedString(
             string: "New Name".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
@@ -122,13 +122,17 @@ class EditNameViewController: UIViewController {
             //manage errors
         }
         nameLbl.text = UserManager.sharedInstance.userName
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
+        blurEffect.addGestureRecognizer(tapRecognizer)
+        
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        UIView.animate(withDuration: 0.5) {
-            self.blurButton.alpha = 1
+        UIView.animate(withDuration: 0.3) {
+            self.blurEffect.alpha = 1
         }
     }
 

@@ -584,15 +584,14 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaj-9I-cw7">
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQg-Oi-YYF">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" name="Blur"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title=""/>
-                                <connections>
-                                    <action selector="dismissTapped:" destination="MeD-bb-lBO" eventType="touchUpInside" id="2CI-FR-Al9"/>
-                                </connections>
-                            </button>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mIc-8H-UAP">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="systemUltraThinMaterial"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D18-ei-0Sf">
                                 <rect key="frame" x="3" y="624" width="408" height="238"/>
                                 <subviews>
@@ -700,17 +699,17 @@ Made in Cluj :)</string>
                         <viewLayoutGuide key="safeArea" id="5ej-iT-qZc"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="WQg-Oi-YYF" firstAttribute="leading" secondItem="S2y-by-bJf" secondAttribute="leading" id="JVa-8Y-fEa"/>
+                            <constraint firstItem="5ej-iT-qZc" firstAttribute="trailing" secondItem="WQg-Oi-YYF" secondAttribute="trailing" id="Q0e-97-7A3"/>
                             <constraint firstItem="5ej-iT-qZc" firstAttribute="bottom" secondItem="D18-ei-0Sf" secondAttribute="bottom" id="UGf-ve-KjU" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
-                            <constraint firstAttribute="bottom" secondItem="oaj-9I-cw7" secondAttribute="bottom" id="dJH-QG-3a1"/>
                             <constraint firstItem="D18-ei-0Sf" firstAttribute="leading" secondItem="5ej-iT-qZc" secondAttribute="leading" constant="3" id="dK5-EV-EXb"/>
-                            <constraint firstItem="oaj-9I-cw7" firstAttribute="top" secondItem="S2y-by-bJf" secondAttribute="top" id="hp4-D8-Blf"/>
-                            <constraint firstItem="oaj-9I-cw7" firstAttribute="leading" secondItem="5ej-iT-qZc" secondAttribute="leading" id="kk7-5w-dLP"/>
-                            <constraint firstItem="oaj-9I-cw7" firstAttribute="trailing" secondItem="5ej-iT-qZc" secondAttribute="trailing" id="oqv-Wz-hxz"/>
+                            <constraint firstItem="WQg-Oi-YYF" firstAttribute="top" secondItem="S2y-by-bJf" secondAttribute="top" id="qhY-l6-g35"/>
+                            <constraint firstAttribute="bottom" secondItem="WQg-Oi-YYF" secondAttribute="bottom" id="uuB-bW-PjZ"/>
                             <constraint firstItem="D18-ei-0Sf" firstAttribute="trailing" secondItem="5ej-iT-qZc" secondAttribute="trailing" constant="-3" id="wZi-GZ-vzo"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="blurButton" destination="oaj-9I-cw7" id="IVA-cV-31L"/>
+                        <outlet property="blurEffect" destination="WQg-Oi-YYF" id="5c5-Xa-boe"/>
                         <outlet property="cancelBtn" destination="8SC-bh-460" id="BRg-jE-7de"/>
                         <outlet property="cardView" destination="D18-ei-0Sf" id="GgX-4j-6Wz"/>
                         <outlet property="datePicker" destination="DOc-o9-Faw" id="23J-MN-EaU"/>
@@ -899,15 +898,14 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sz8-zm-DR6">
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhP-GM-VqZ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" name="Blur"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title=""/>
-                                <connections>
-                                    <action selector="dismissTapped:" destination="Ed8-W4-qWu" eventType="touchUpInside" id="rql-dc-FfA"/>
-                                </connections>
-                            </button>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GyJ-Hl-OEn">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="systemUltraThinMaterial"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFT-mT-duQ">
                                 <rect key="frame" x="3" y="569" width="408" height="293"/>
                                 <subviews>
@@ -1029,17 +1027,17 @@ Made in Cluj :)</string>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zFT-mT-duQ" firstAttribute="leading" secondItem="5MG-Ka-QmK" secondAttribute="leading" constant="3" id="5nT-kB-FL2"/>
-                            <constraint firstItem="Sz8-zm-DR6" firstAttribute="trailing" secondItem="5MG-Ka-QmK" secondAttribute="trailing" id="77N-gw-csB"/>
+                            <constraint firstAttribute="bottom" secondItem="zhP-GM-VqZ" secondAttribute="bottom" id="B4X-Jk-aOX"/>
                             <constraint firstItem="zFT-mT-duQ" firstAttribute="trailing" secondItem="5MG-Ka-QmK" secondAttribute="trailing" constant="-3" id="MfH-0j-pCU"/>
-                            <constraint firstItem="Sz8-zm-DR6" firstAttribute="top" secondItem="dZF-3q-Wnp" secondAttribute="top" id="NgA-hw-U4y"/>
-                            <constraint firstAttribute="bottom" secondItem="Sz8-zm-DR6" secondAttribute="bottom" id="OBJ-9B-lBt"/>
                             <constraint firstItem="5MG-Ka-QmK" firstAttribute="bottom" secondItem="zFT-mT-duQ" secondAttribute="bottom" id="PpW-jd-wrO" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
-                            <constraint firstItem="Sz8-zm-DR6" firstAttribute="leading" secondItem="5MG-Ka-QmK" secondAttribute="leading" id="YhB-wx-l9L"/>
+                            <constraint firstItem="zhP-GM-VqZ" firstAttribute="top" secondItem="dZF-3q-Wnp" secondAttribute="top" id="WdH-1m-lSk"/>
+                            <constraint firstAttribute="trailing" secondItem="zhP-GM-VqZ" secondAttribute="trailing" id="ks1-PJ-nRI"/>
+                            <constraint firstItem="zhP-GM-VqZ" firstAttribute="leading" secondItem="5MG-Ka-QmK" secondAttribute="leading" id="sI0-y3-AfB"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addBtn" destination="cVW-aD-tDu" id="0sI-zM-C3a"/>
-                        <outlet property="blurButton" destination="Sz8-zm-DR6" id="Rlj-9n-bMe"/>
+                        <outlet property="blurEffect" destination="zhP-GM-VqZ" id="ynn-V9-OX6"/>
                         <outlet property="cancelBtn" destination="IkA-RX-1jg" id="iSF-iF-NI3"/>
                         <outlet property="cardView" destination="zFT-mT-duQ" id="qPH-eU-UUg"/>
                         <outlet property="cvvField" destination="p7A-Rt-qou" id="KDk-L2-hZ5"/>
@@ -2425,9 +2423,6 @@ Made in Cluj :)</string>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Blur">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.39599999785423279" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="Brownish">
             <color red="0.40400001406669617" green="0.28200000524520874" blue="0.019999999552965164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -2456,7 +2451,7 @@ Made in Cluj :)</string>
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Redish">
-            <color red="0.58399999141693115" green="0.18000000715255737" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.61799997091293335" green="0.22400000691413879" blue="0.11599999666213989" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Second Background">
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

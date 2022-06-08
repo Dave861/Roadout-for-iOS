@@ -94,7 +94,7 @@ class SearchViewController: UIViewController {
             modesButton.showsMenuAsPrimaryAction = true
         }
         
-        searchBar.layer.cornerRadius = 13.0
+        searchBar.layer.cornerRadius = 17.0
         
         searchBar.layer.shadowColor = UIColor.black.cgColor
         searchBar.layer.shadowOpacity = 0.1
@@ -105,6 +105,8 @@ class SearchViewController: UIViewController {
         searchBar.layer.rasterizationScale = UIScreen.main.scale
         
         searchField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(_:)), for: .editingChanged)
+        searchField.attributedPlaceholder = NSAttributedString(string: "Search for a place...",
+                                                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -195,6 +197,15 @@ class SearchViewController: UIViewController {
             }
         }
     }
+    
+    func getPercentageFrom(totalSpots: Int, freeSpots: Int) -> Int {
+        return 100-Int(Float(freeSpots)/Float(totalSpots) * 100)
+    }
+    
+    func dismissScreen() {
+        self.view.endEditing(true)
+        self.dismiss(animated: false, completion: nil)
+    }
 
     
 }
@@ -204,7 +215,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 65
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -223,10 +234,29 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.distanceLbl.text = "- km"
         }
-        cell.numberLbl.text = "\(results[indexPath.row].freeSpots)"
         let color = UIColor(named: results[indexPath.row].accentColor)!
-        cell.numberLbl.textColor = color
-        cell.spotsLbl.textColor = color
+        cell.gaugeIcon.tintColor = color
+        cell.gaugeCircle.tintColor = color
+        
+        let occupancyPercent = self.getPercentageFrom(totalSpots: results[indexPath.row].totalSpots, freeSpots: results[indexPath.row].freeSpots)
+        
+        if 85 < occupancyPercent && occupancyPercent < 100 {
+            cell.gaugeIcon.transform = .identity
+            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: 0.785)
+        } else if 60 < occupancyPercent && occupancyPercent < 85 {
+            cell.gaugeIcon.transform = .identity
+            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: 0)
+        } else if 40 < occupancyPercent && occupancyPercent < 60 {
+            cell.gaugeIcon.transform = .identity
+            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: -0.785)
+        } else if 20 < occupancyPercent && occupancyPercent < 40 {
+            cell.gaugeIcon.transform = .identity
+            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: -1.570)
+        } else {
+            cell.gaugeIcon.transform = .identity
+            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: -2.356)
+        }
+
         return cell
     }
     
@@ -236,9 +266,49 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         selectedLocationName = results[indexPath.row].name
         selectedLocationCoord = CLLocationCoordinate2D(latitude: results[indexPath.row].latitude, longitude: results[indexPath.row].longitude)
         let cell = tableView.cellForRow(at: indexPath) as! SearchCell
-        selectedLocationColor = cell.numberLbl.textColor
+        selectedLocationColor = cell.gaugeIcon.tintColor
         NotificationCenter.default.post(name: .addResultCardID, object: nil)
         self.view.endEditing(true)
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! SearchCell
+        cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! SearchCell
+        cell.card.backgroundColor = UIColor(named: "Secondary Detail")
+    }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! SearchCell
+        
+        let config = UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchPreviewVC") as! SearchPreviewController
+            vc.preferredContentSize = CGSize(width: cell.frame.width, height: 100)
+            vc.previewLocationName = self.results[indexPath.row].name
+            vc.previewLocationDistance = cell.distanceLbl.text ?? "- km"
+            vc.previewLocationFreeSpots = self.results[indexPath.row].freeSpots
+            vc.previewLocationColor = cell.gaugeIcon.tintColor
+            return vc
+        }, actionProvider: nil)
+        
+        
+        return config
+    }
+    
+    func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        let indexPath = configuration.identifier as! IndexPath
+        selectedLocationName = results[indexPath.row].name
+        selectedLocationCoord = CLLocationCoordinate2D(latitude: results[indexPath.row].latitude, longitude: results[indexPath.row].longitude)
+        let cell = tableView.cellForRow(at: indexPath) as! SearchCell
+        selectedLocationColor = cell.gaugeIcon.tintColor
+        NotificationCenter.default.post(name: .addResultCardID, object: nil)
+        self.dismiss(animated: false) {
+            self.dismissScreen()
+        }
     }
 }

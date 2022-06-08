@@ -43,9 +43,10 @@ class DelayView: UIView {
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 13.0
+        self.layer.cornerRadius = 19.0
         continueBtn.layer.cornerRadius = 12.0
         backBtn.setTitle("", for: .normal)
+        backBtn.layer.cornerRadius = 15.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         
         priceLbl.set(textColor: UIColor(named: "Second Orange")!, range: priceLbl.range(after: " - "))

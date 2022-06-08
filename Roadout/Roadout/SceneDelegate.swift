@@ -55,20 +55,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     case .success():
                         if ReservationManager.sharedInstance.isReservationActive == 0 {
                             //active
-                            print("active")
                             NotificationCenter.default.post(name: .showActiveBarID, object: nil)
                         } else if ReservationManager.sharedInstance.isReservationActive == 1 {
                             //unlocked
-                            print("unlocked")
                             NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
                         } else if ReservationManager.sharedInstance.isReservationActive == 2 {
                             //cancelled
-                            print("cancelled")
                             NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
                         } else {
                             //error or not active
-                            print("error or not active")
-                            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+                            //Do nothing, keep state
                         }
                     case .failure(let err):
                         print(err)

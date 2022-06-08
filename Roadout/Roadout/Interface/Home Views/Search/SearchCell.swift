@@ -11,14 +11,17 @@ class SearchCell: UITableViewCell {
 
     @IBOutlet weak var card: UIView!
     
-    @IBOutlet weak var numberLbl: UILabel!
-    @IBOutlet weak var spotsLbl: UILabel!
+    //@IBOutlet weak var numberLbl: UILabel!
+    //@IBOutlet weak var spotsLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
     
+    @IBOutlet weak var gaugeIcon: UIImageView!
+    @IBOutlet weak var gaugeCircle: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        card.layer.cornerRadius = 10.0
+        card.layer.cornerRadius = 12.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

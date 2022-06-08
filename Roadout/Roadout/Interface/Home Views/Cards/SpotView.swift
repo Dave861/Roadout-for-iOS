@@ -36,7 +36,7 @@ class SpotView: UIView, PusherDelegate {
         }
     }
     @IBAction func backTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
+        let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
         self.disconnectPusher()
         guard let selectedItems = collectionView.indexPathsForSelectedItems else {
@@ -57,10 +57,11 @@ class SpotView: UIView, PusherDelegate {
         
         setUpPusher()
         
-        self.layer.cornerRadius = 13.0
+        self.layer.cornerRadius = 19.0
         continueBtn.layer.cornerRadius = 12.0
         continueBtn.isUserInteractionEnabled = true
         backBtn.setTitle("", for: .normal)
+        backBtn.layer.cornerRadius = 15.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         continueBtn.isEnabled = false
         continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)

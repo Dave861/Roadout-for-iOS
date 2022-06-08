@@ -317,24 +317,23 @@ Roadout</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWp-vt-nPg">
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhM-k8-Tjg">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" name="Blur"/>
-                                <state key="normal" title=""/>
-                                <buttonConfiguration key="configuration" style="plain" title=""/>
-                                <connections>
-                                    <action selector="dismissTapped:" destination="XIK-wc-AE1" eventType="touchUpInside" id="DL5-bU-YbJ"/>
-                                </connections>
-                            </button>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ixQ-cU-UId">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="systemUltraThinMaterial"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbj-pr-CIG">
                                 <rect key="frame" x="3" y="621" width="408" height="241"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4j-wh-Xta">
-                                        <rect key="frame" x="15" y="15" width="68" height="27"/>
+                                        <rect key="frame" x="15" y="15" width="70" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="nMN-gj-a95"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -430,16 +429,16 @@ Roadout</string>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cbj-pr-CIG" firstAttribute="leading" secondItem="Nd1-KB-Bpy" secondAttribute="leading" constant="3" id="23m-5E-VLv"/>
-                            <constraint firstItem="LWp-vt-nPg" firstAttribute="trailing" secondItem="Nd1-KB-Bpy" secondAttribute="trailing" id="2bx-yz-uCe"/>
-                            <constraint firstItem="LWp-vt-nPg" firstAttribute="leading" secondItem="Nd1-KB-Bpy" secondAttribute="leading" id="7Un-IW-itH"/>
+                            <constraint firstItem="IhM-k8-Tjg" firstAttribute="top" secondItem="U2M-Bi-poD" secondAttribute="top" id="511-Nu-rld"/>
+                            <constraint firstAttribute="trailing" secondItem="IhM-k8-Tjg" secondAttribute="trailing" id="Mtz-Wr-WJK"/>
                             <constraint firstItem="Nd1-KB-Bpy" firstAttribute="bottom" secondItem="cbj-pr-CIG" secondAttribute="bottom" id="ONj-v5-MF7" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
-                            <constraint firstItem="LWp-vt-nPg" firstAttribute="top" secondItem="U2M-Bi-poD" secondAttribute="top" id="gEk-DZ-6vw"/>
-                            <constraint firstAttribute="bottom" secondItem="LWp-vt-nPg" secondAttribute="bottom" id="kAT-an-9FE"/>
+                            <constraint firstAttribute="bottom" secondItem="IhM-k8-Tjg" secondAttribute="bottom" id="kvU-BK-QPS"/>
+                            <constraint firstItem="IhM-k8-Tjg" firstAttribute="leading" secondItem="Nd1-KB-Bpy" secondAttribute="leading" id="l8u-Tg-5bX"/>
                             <constraint firstItem="cbj-pr-CIG" firstAttribute="trailing" secondItem="Nd1-KB-Bpy" secondAttribute="trailing" constant="-3" id="moH-fG-Jd6"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="blurButton" destination="LWp-vt-nPg" id="45w-si-Sc2"/>
+                        <outlet property="blurEffect" destination="IhM-k8-Tjg" id="2sY-Wq-qiP"/>
                         <outlet property="cardView" destination="cbj-pr-CIG" id="s2H-Ll-wvh"/>
                         <outlet property="emailField" destination="wts-Pb-jG5" id="2vI-Mi-tZi"/>
                         <outlet property="forgotBtn" destination="Egx-Av-q3k" id="s2x-ZV-fHt"/>
@@ -459,16 +458,14 @@ Roadout</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWt-G4-Dk5">
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1x-ue-DuL">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" name="Blur"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title=""/>
-                                <connections>
-                                    <action selector="dismissTapped:" destination="1Yv-iM-H3t" eventType="touchUpInside" id="IpZ-oZ-MDd"/>
-                                    <action selector="dismissTapped:" destination="XIK-wc-AE1" eventType="touchUpInside" id="gSe-G0-IX7"/>
-                                </connections>
-                            </button>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CHY-Xw-tEg">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="systemUltraThinMaterial"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wX1-WT-bHE">
                                 <rect key="frame" x="3" y="525" width="408" height="337"/>
                                 <subviews>
@@ -545,11 +542,11 @@ Roadout</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kkn-40-F63">
-                                        <rect key="frame" x="15" y="15" width="78.5" height="27"/>
+                                        <rect key="frame" x="15" y="15" width="80" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="OTd-kM-okA"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -583,16 +580,16 @@ Roadout</string>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wX1-WT-bHE" firstAttribute="trailing" secondItem="p6G-Qb-mic" secondAttribute="trailing" constant="-3" id="00X-i4-Ls2"/>
-                            <constraint firstItem="PWt-G4-Dk5" firstAttribute="leading" secondItem="p6G-Qb-mic" secondAttribute="leading" id="0ts-oX-cU6"/>
+                            <constraint firstAttribute="bottom" secondItem="d1x-ue-DuL" secondAttribute="bottom" id="9Yy-Ee-keA"/>
+                            <constraint firstItem="d1x-ue-DuL" firstAttribute="top" secondItem="Ovc-Or-kbN" secondAttribute="top" id="I45-oh-41J"/>
                             <constraint firstItem="p6G-Qb-mic" firstAttribute="bottom" secondItem="wX1-WT-bHE" secondAttribute="bottom" id="JBm-FY-ESv" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstItem="d1x-ue-DuL" firstAttribute="leading" secondItem="p6G-Qb-mic" secondAttribute="leading" id="NOv-XI-LJw"/>
                             <constraint firstItem="wX1-WT-bHE" firstAttribute="leading" secondItem="p6G-Qb-mic" secondAttribute="leading" constant="3" id="OZ4-9q-h1i"/>
-                            <constraint firstItem="PWt-G4-Dk5" firstAttribute="trailing" secondItem="p6G-Qb-mic" secondAttribute="trailing" id="mUZ-ID-Kcq"/>
-                            <constraint firstItem="PWt-G4-Dk5" firstAttribute="top" secondItem="Ovc-Or-kbN" secondAttribute="top" id="qRj-KS-qGM"/>
-                            <constraint firstAttribute="bottom" secondItem="PWt-G4-Dk5" secondAttribute="bottom" id="uQ0-NQ-cPM"/>
+                            <constraint firstItem="d1x-ue-DuL" firstAttribute="trailing" secondItem="p6G-Qb-mic" secondAttribute="trailing" id="eli-dZ-VP4"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="blurButton" destination="PWt-G4-Dk5" id="02B-Iz-ngW"/>
+                        <outlet property="blurEffect" destination="d1x-ue-DuL" id="VZ9-hh-6Ew"/>
                         <outlet property="cardView" destination="wX1-WT-bHE" id="JfN-ze-l5I"/>
                         <outlet property="confirmPasswordField" destination="9cY-c0-3uw" id="KgF-wO-dr6"/>
                         <outlet property="emailField" destination="Xwr-WU-cja" id="JSK-0K-Txr"/>
@@ -901,26 +898,23 @@ Roadout</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUs-LP-Ytb">
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2e-O1-e9k">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" name="Blur"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title=""/>
-                                <connections>
-                                    <action selector="dismissTapped:" destination="d1k-3u-vdU" eventType="touchUpInside" id="IHU-Mi-2lO"/>
-                                    <action selector="dismissTapped:" destination="XIK-wc-AE1" eventType="touchUpInside" id="K17-7D-HOJ"/>
-                                    <action selector="dismissTapped:" destination="1Yv-iM-H3t" eventType="touchUpInside" id="hMQ-5p-KeD"/>
-                                </connections>
-                            </button>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RKY-YX-iJV">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="systemUltraThinMaterial"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exQ-sJ-qWe">
                                 <rect key="frame" x="3" y="539" width="408" height="323"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutorial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWm-xB-GCl">
-                                        <rect key="frame" x="15" y="15" width="75" height="27"/>
+                                        <rect key="frame" x="15" y="15" width="78" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="Q5X-aU-5jd"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1046,17 +1040,17 @@ Roadout</string>
                         <viewLayoutGuide key="safeArea" id="lA7-Bi-vJl"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jUs-LP-Ytb" firstAttribute="leading" secondItem="lA7-Bi-vJl" secondAttribute="leading" id="1Au-do-be4"/>
-                            <constraint firstItem="jUs-LP-Ytb" firstAttribute="top" secondItem="SDk-xD-ZZF" secondAttribute="top" id="PDz-Na-fBm"/>
-                            <constraint firstItem="jUs-LP-Ytb" firstAttribute="trailing" secondItem="lA7-Bi-vJl" secondAttribute="trailing" id="Vx8-fh-YFY"/>
+                            <constraint firstItem="c2e-O1-e9k" firstAttribute="leading" secondItem="lA7-Bi-vJl" secondAttribute="leading" id="Pv9-CN-evd"/>
                             <constraint firstItem="exQ-sJ-qWe" firstAttribute="bottom" secondItem="lA7-Bi-vJl" secondAttribute="bottom" id="hFg-CI-573"/>
+                            <constraint firstItem="c2e-O1-e9k" firstAttribute="trailing" secondItem="lA7-Bi-vJl" secondAttribute="trailing" id="kEB-rG-JJ9"/>
+                            <constraint firstItem="c2e-O1-e9k" firstAttribute="top" secondItem="SDk-xD-ZZF" secondAttribute="top" id="oxm-AT-BBv"/>
                             <constraint firstItem="exQ-sJ-qWe" firstAttribute="trailing" secondItem="lA7-Bi-vJl" secondAttribute="trailing" constant="-3" id="tHt-8v-6du"/>
-                            <constraint firstAttribute="bottom" secondItem="jUs-LP-Ytb" secondAttribute="bottom" id="uHH-ac-WsN"/>
+                            <constraint firstAttribute="bottom" secondItem="c2e-O1-e9k" secondAttribute="bottom" id="ugC-zK-4xP"/>
                             <constraint firstItem="exQ-sJ-qWe" firstAttribute="leading" secondItem="lA7-Bi-vJl" secondAttribute="leading" constant="3" id="x09-VY-B7e"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="blurButton" destination="jUs-LP-Ytb" id="P5a-ud-dRD"/>
+                        <outlet property="blurEffect" destination="c2e-O1-e9k" id="hht-2N-QY7"/>
                         <outlet property="cardView" destination="exQ-sJ-qWe" id="gRC-ga-Ioc"/>
                         <outlet property="closeButton" destination="zom-5w-qua" id="50L-IT-aqt"/>
                         <outlet property="descriptionText1" destination="WIn-fE-JUr" id="ICm-d7-N2h"/>
@@ -1955,9 +1949,6 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
         </namedColor>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Blur">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.39599999785423279" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Brownish">
             <color red="0.40400001406669617" green="0.28200000524520874" blue="0.019999999552965164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

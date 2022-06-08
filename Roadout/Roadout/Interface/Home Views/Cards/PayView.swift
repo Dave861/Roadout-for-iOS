@@ -15,7 +15,7 @@ class PayView: UIView {
 
     
     @IBAction func backTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
+        let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
         if returnToDelay {
             returnToDelay = false
@@ -106,9 +106,10 @@ class PayView: UIView {
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 13.0
+        self.layer.cornerRadius = 19.0
         manageObs()
         backBtn.setTitle("", for: .normal)
+        backBtn.layer.cornerRadius = 15.0
         
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         payBtn.layer.cornerRadius = 12.0

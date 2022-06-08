@@ -10,7 +10,7 @@ import UIKit
 class ReservationView: UIView {
     
     @IBAction func backTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
+        let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
         NotificationCenter.default.post(name: .removeReservationCardID, object: nil)
     }
@@ -145,8 +145,9 @@ class ReservationView: UIView {
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.addObs()
-        self.layer.cornerRadius = 13.0
+        self.layer.cornerRadius = 19.0
         backBtn.setTitle("", for: .normal)
+        backBtn.layer.cornerRadius = 15.0
         
         styleActionButtons()
         

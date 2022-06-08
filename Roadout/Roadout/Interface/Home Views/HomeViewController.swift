@@ -112,12 +112,14 @@ class HomeViewController: UIViewController {
     @IBAction func searchTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        guard let coord = self.mapView.myLocation?.coordinate else { return }
+        currentLocationCoord = coord
         let vc = storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchViewController
         self.present(vc, animated: false, completion: nil)
     }
     @IBAction func settingsTapped(_ sender: Any) {
         let alert = UIAlertController(title: "", message: "What would you like to do?".localized(), preferredStyle: .actionSheet)
-        let settingsAction = UIAlertAction(title: "Preferences".localized(), style: .default) { action in
+        let settingsAction = UIAlertAction(title: "Settings".localized(), style: .default) { action in
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -262,11 +264,11 @@ class HomeViewController: UIViewController {
     //Menu
     var menuItems: [UIAction] {
         return [
-            UIAction(title: "Preferences".localized(), image: UIImage(systemName: "gearshape.2"), handler: { (_) in
+            UIAction(title: "Settings".localized(), image: UIImage(systemName: "gearshape.2"), handler: { (_) in
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
                 self.navigationController?.pushViewController(vc, animated: true)
             }),
-            UIAction(title: "Find Spot".localized(), image: UIImage(systemName: "loupe"), handler: { (_) in
+            UIAction(title: "Find Spot".localized(), image: UIImage(systemName: "binoculars"), handler: { (_) in
                 FunctionsManager.sharedInstance.foundSpot = nil
                 guard let coord = self.mapView.myLocation?.coordinate else {
                     self.showFindLocationAlert()
@@ -399,7 +401,7 @@ class HomeViewController: UIViewController {
         searchTapArea.setTitle("", for: .normal)
         settingsTapArea.setTitle("", for: .normal)
         
-        searchBar.layer.cornerRadius = 13.0
+        searchBar.layer.cornerRadius = 17.0
         
         searchBar.layer.shadowColor = UIColor.black.cgColor
         searchBar.layer.shadowOpacity = 0.1
@@ -563,22 +565,28 @@ extension HomeViewController: CLLocationManagerDelegate {
     func shakeMarkerView(marker: GMSMarker) {
         let animation = CAKeyframeAnimation()
         animation.keyPath = "transform.rotation.z"
-        animation.values = [ 0, -30 * .pi / 180.0, 30 * .pi / 180.0 , 0]
+        animation.values = [ 0, -15 * .pi / 180.0, 15 * .pi / 180.0 , 0]
         animation.keyTimes = [0, 0.33 , 0.66 , 1]
-        animation.duration = 1;
-        animation.isAdditive = false;
+        animation.duration = 0.6
+        animation.isAdditive = false
         animation.isRemovedOnCompletion = true
         animation.repeatCount = 1
         
-        marker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 90))
-        let imageView = UIImageView(frame: CGRect(x: (marker.iconView?.frame.width)!/2 - 29.25, y: (marker.iconView?.frame.height)! - 75, width: 58.5, height: 75))
+        marker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 45))
+        //100, 90
+        let imageView = UIImageView(frame: CGRect(x: (marker.iconView?.frame.width)!/2 - 14.625, y: (marker.iconView?.frame.height)! - 37.5, width: 29.52, height: 37.5))
+        //29.25 75 58.5 75
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "SelectedMarker_" + marker.snippet!)
         imageView.layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
-        imageView.layer.frame = CGRect(x: (marker.iconView?.frame.width)!/2 - 29.25, y: (marker.iconView?.frame.height)! - 75, width: 58.5, height: 75)
+        imageView.layer.frame = CGRect(x: (marker.iconView?.frame.width)!/2 - 14.625, y: (marker.iconView?.frame.height)! - 37.5, width: 29.52, height: 37.5)
         
         marker.iconView?.addSubview(imageView)
         marker.iconView!.subviews[0].layer.add(animation, forKey: "shakeAnimation")
+        UIView.animate(withDuration: 0.3) {
+            marker.iconView?.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+        }
+        
     }
 }
 
@@ -643,7 +651,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-115-dif, width: self.screenSize.width - 26, height: 115)
+            self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-142-dif, width: self.screenSize.width - 26, height: 142)
             self.view.addSubview(self.resultView)
         }
     }
@@ -684,7 +692,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-110-dif, width: self.screenSize.width - 26, height: 110)
+            self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-142-dif, width: self.screenSize.width - 26, height: 142)
             self.view.addSubview(self.resultView)
             self.sectionView.removeFromSuperview()
         }

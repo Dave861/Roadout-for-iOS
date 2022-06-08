@@ -16,8 +16,16 @@ class AddReminderViewController: UIViewController {
     var oldSelectedDate = Date().addingTimeInterval(900)
 
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var blurButton: UIButton!
+    @IBOutlet weak var blurEffect: UIVisualEffectView!
     @IBOutlet weak var cancelBtn: UIButton!
+    
+    @objc func blurTapped() {
+        UIView.animate(withDuration: 0.1) {
+            self.blurEffect.alpha = 0
+        } completion: { done in
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     @IBOutlet weak var pickBtn: UIButton!
     @IBAction func pickTapped(_ sender: Any) {
@@ -66,7 +74,7 @@ class AddReminderViewController: UIViewController {
                 }
                 NotificationCenter.default.post(name: .refreshReminderID, object: nil)
                 UIView.animate(withDuration: 0.1) {
-                    self.blurButton.alpha = 0
+                    self.blurEffect.alpha = 0
                 } completion: { done in
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -107,22 +115,16 @@ class AddReminderViewController: UIViewController {
     
     @IBAction func cancelTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
-        } completion: { done in
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    @IBAction func dismissTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
+            self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 16.0
+        cardView.layer.cornerRadius = 19.0
         setBtn.layer.cornerRadius = 13.0
         setBtn.setAttributedTitle(setTitle, for: .normal)
         
@@ -131,7 +133,7 @@ class AddReminderViewController: UIViewController {
         labelField.layer.cornerRadius = 12.0
         labelField.attributedPlaceholder = NSAttributedString(
             string: "Notification Label".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         if #available(iOS 14.0, *) {
             self.pickBtn.isEnabled = false
@@ -144,12 +146,16 @@ class AddReminderViewController: UIViewController {
             self.datePicker.isEnabled = false
             self.datePicker.isHidden = true
         }
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
+        blurEffect.addGestureRecognizer(tapRecognizer)
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        UIView.animate(withDuration: 0.5) {
-            self.blurButton.alpha = 1
+        UIView.animate(withDuration: 0.3) {
+            self.blurEffect.alpha = 1.0
         }
     }
 

@@ -19,7 +19,7 @@ class NoWifiView: UIView {
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 12.0
+        self.layer.cornerRadius = 17.0
         settingsBtn.setAttributedTitle(buttonTitle, for: .normal)
         
         self.layer.shadowColor = UIColor.black.cgColor

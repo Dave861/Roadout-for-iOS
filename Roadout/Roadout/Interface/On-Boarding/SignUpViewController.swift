@@ -6,13 +6,25 @@
 //
 
 import UIKit
+import SPIndicator
 
 class SignUpViewController: UIViewController {
 
     let signUpTitle = NSAttributedString(string: "Sign Up".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
+    let indicatorImage = UIImage.init(systemName: "lines.measurement.horizontal")!.withTintColor(UIColor(named: "Dark Yellow")!, renderingMode: .alwaysOriginal)
+    var indicatorView: SPIndicatorView!
+    
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var blurButton: UIButton!
+    @IBOutlet weak var blurEffect: UIVisualEffectView!
+    
+    @objc func blurTapped() {
+        UIView.animate(withDuration: 0.1) {
+            self.blurEffect.alpha = 0
+        } completion: { done in
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     @IBOutlet weak var signUpBtn: UIButton!
     
@@ -50,6 +62,7 @@ class SignUpViewController: UIViewController {
             alert.view.tintColor = UIColor(named: "Icons")
             self.present(alert, animated: true, completion: nil)
         } else {
+            self.indicatorView.present(haptic: .none, completion: nil)
             UserManager.sharedInstance.userEmail = self.emailField.text!
             UserDefaults.roadout!.set(self.nameField.text!, forKey: "ro.roadout.Roadout.UserName")
             UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
@@ -63,28 +76,23 @@ class SignUpViewController: UIViewController {
                         print(err)
                         self.manageServerSideError()
                 }
+                self.indicatorView.dismiss()
             }
         }
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
+            self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
     }
-    @IBAction func dismissTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
-        } completion: { done in
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 16.0
+        cardView.layer.cornerRadius = 19.0
         signUpBtn.layer.cornerRadius = 13.0
         signUpBtn.setAttributedTitle(signUpTitle, for: .normal)
         
@@ -95,21 +103,26 @@ class SignUpViewController: UIViewController {
         
         nameField.attributedPlaceholder = NSAttributedString(
             string: "Name".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         emailField.attributedPlaceholder = NSAttributedString(
             string: "Email".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Brownish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Brownish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         passwordField.attributedPlaceholder = NSAttributedString(
             string: "Password".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         confirmPasswordField.attributedPlaceholder = NSAttributedString(
             string: "Confirm Password".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
+        blurEffect.addGestureRecognizer(tapRecognizer)
+        
+        indicatorView = SPIndicatorView(title: "Loading...", message: "Please wait", preset: .custom(indicatorImage))
+        indicatorView.dismissByDrag = false
     }
     
     
@@ -117,7 +130,7 @@ class SignUpViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 0.5) {
-            self.blurButton.alpha = 1
+            self.blurEffect.alpha = 1
         }
     }
     

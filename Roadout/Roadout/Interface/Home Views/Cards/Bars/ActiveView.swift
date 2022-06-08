@@ -19,7 +19,7 @@ class ActiveView: UIView {
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.addObs()
-        self.layer.cornerRadius = 12.0
+        self.layer.cornerRadius = 17.0
         moreBtn.setTitle("", for: .normal)
         
         self.layer.shadowColor = UIColor.black.cgColor

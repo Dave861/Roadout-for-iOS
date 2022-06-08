@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import UserNotifications
+import SPIndicator
 
 class SignInViewController: UIViewController {
     
@@ -17,10 +18,21 @@ class SignInViewController: UIViewController {
     let center = UNUserNotificationCenter.current()
     var locationManager: CLLocationManager?
     
+    let indicatorImage = UIImage.init(systemName: "lines.measurement.horizontal")!.withTintColor(UIColor(named: "Main Yellow")!, renderingMode: .alwaysOriginal)
+    var indicatorView: SPIndicatorView!
+    
     //MARK: -IB Connections-
     
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var blurButton: UIButton!
+    @IBOutlet weak var blurEffect: UIVisualEffectView!
+    
+    @objc func blurTapped() {
+        UIView.animate(withDuration: 0.1) {
+            self.blurEffect.alpha = 0
+        } completion: { done in
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     @IBOutlet weak var signInBtn: UIButton!
     
@@ -32,6 +44,7 @@ class SignInViewController: UIViewController {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         if isValidEmail(emailField.text ?? "") && passwordField.text != "" {
+            self.indicatorView.present(haptic: .none, completion: nil)
             UserManager.sharedInstance.userEmail = self.emailField.text!
             UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
             AuthManager.sharedInstance.sendSignInData(emailField.text!, passwordField.text!) { result in
@@ -52,6 +65,7 @@ class SignInViewController: UIViewController {
                     print(err)
                     self.manageServerSideErrors()
                 }
+                self.indicatorView.dismiss()
             }
         } else {
             let alert = UIAlertController(title: "Error".localized(), message: "Please enter a valid email address".localized(), preferredStyle: .alert)
@@ -64,18 +78,12 @@ class SignInViewController: UIViewController {
     
     @IBAction func cancelTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
+            self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
     }
-    @IBAction func dismissTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.1) {
-            self.blurButton.alpha = 0
-        } completion: { done in
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
+    
     
     //MARK: -Forgot password-
         
@@ -130,7 +138,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cardView.layer.cornerRadius = 16.0
+        cardView.layer.cornerRadius = 19.0
         signInBtn.layer.cornerRadius = 13.0
         signInBtn.setAttributedTitle(signInTitle, for: .normal)
         
@@ -139,20 +147,26 @@ class SignInViewController: UIViewController {
         
         emailField.attributedPlaceholder = NSAttributedString(
             string: "Email".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         passwordField.attributedPlaceholder = NSAttributedString(
             string: "Password".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Second Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Second Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         locationManager = CLLocationManager()
         manageForgotView(false)
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
+        blurEffect.addGestureRecognizer(tapRecognizer)
+        
+        indicatorView = SPIndicatorView(title: "Loading...", message: "Please wait", preset: .custom(indicatorImage))
+        indicatorView.dismissByDrag = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 0.5) {
-            self.blurButton.alpha = 1
+            self.blurEffect.alpha = 1
         }
     }
     

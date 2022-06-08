@@ -12,6 +12,12 @@ class ResultView: UIView {
     
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
+    @IBOutlet weak var sectionsLbl: UILabel!
+    @IBOutlet weak var freeSpotsLbl: UILabel!
+    
+    @IBOutlet weak var distanceIcon: UIImageView!
+    @IBOutlet weak var sectionsIcon: UIImageView!
+    @IBOutlet weak var spotsIcon: UIImageView!
     
     @IBOutlet weak var pickBtn: UIButton!
     @IBAction func pickTapped(_ sender: Any) {
@@ -21,7 +27,7 @@ class ResultView: UIView {
         NotificationCenter.default.post(name: .addSectionCardID, object: nil)
     }
     @IBAction func backTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
+        let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
         NotificationCenter.default.post(name: .removeResultCardID, object: nil)
     }
@@ -31,11 +37,12 @@ class ResultView: UIView {
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 13.0
+        self.layer.cornerRadius = 19.0
         
         locationLbl.text = parkLocations[selectedParkLocationIndex].name
         pickBtn.layer.cornerRadius = 12.0
         backBtn.setTitle("", for: .normal)
+        backBtn.layer.cornerRadius = 15.0
         pickBtn.setAttributedTitle(pickTitle, for: .normal)
         pickBtn.backgroundColor = selectedLocationColor
         
@@ -59,6 +66,13 @@ class ResultView: UIView {
         } else {
             distanceLbl.text = "- km"
         }
+        
+        sectionsLbl.text = "\(parkLocations[selectedParkLocationIndex].sections.count) sections"
+        freeSpotsLbl.text = "\(parkLocations[selectedParkLocationIndex].freeSpots) free spots"
+        
+        distanceIcon.tintColor = selectedLocationColor
+        sectionsIcon.tintColor = selectedLocationColor
+        spotsIcon.tintColor = selectedLocationColor
     }
     
     class func instanceFromNib() -> UIView {

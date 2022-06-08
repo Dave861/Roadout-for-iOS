@@ -19,7 +19,7 @@ class CancelledView: UIView {
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.layer.cornerRadius = 12.0
+        self.layer.cornerRadius = 17.0
         doneBtn.setAttributedTitle(buttonTitle, for: .normal)
         timerSeconds = 0
         

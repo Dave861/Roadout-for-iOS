@@ -59,7 +59,7 @@ class GetDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 12.0
+        cardView.layer.cornerRadius = 17.0
         activityIndicator.startAnimating()
         self.downloadCityData()
     }
