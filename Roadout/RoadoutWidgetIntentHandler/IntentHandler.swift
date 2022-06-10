@@ -19,6 +19,8 @@ class IntentHandler: INExtension, ConfigurationIntentHandling {
                         widgetParkLocation.freeSpots = parkLocation.freeSpots as NSNumber
                         widgetParkLocation.rID = parkLocation.rID
                         widgetParkLocation.locationName = parkLocation.name
+                        widgetParkLocation.totalSpots = parkLocation.totalSpots as NSNumber
+                        widgetParkLocation.sections = parkLocation.sections.count as NSNumber
                         return widgetParkLocation
                     }
                     let collection = INObjectCollection(items: widgetParkLocations)
@@ -40,6 +42,8 @@ class IntentHandler: INExtension, ConfigurationIntentHandling {
                         widgetParkLocation.freeSpots = parkLocation.freeSpots as NSNumber
                         widgetParkLocation.rID = parkLocation.rID
                         widgetParkLocation.locationName = parkLocation.name
+                        widgetParkLocation.totalSpots = parkLocation.totalSpots as NSNumber
+                        widgetParkLocation.sections = parkLocation.sections.count as NSNumber
                         return widgetParkLocation
                     }
                     let collection = INObjectCollection(items: widgetParkLocations)

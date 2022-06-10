@@ -76,14 +76,22 @@ struct Provider: IntentTimelineProvider {
 
 struct PlaceholderView: View {
     var body: some View {
-        RoadoutView(date: Date(), spots1: 10, spots2: 10, location1: "Location 1", location2: "Location 2")
+        RoadoutView(date: Date(), spots1: 10, spots2: 10, freeSpots1: 5, freeSpots2: 5, sections1: 2, sections2: 2, location1: "Location 1", location2: "Location 2")
     }
 }
 struct WidgetEntryView: View {
     var entry: Provider.Entry
     
     var body: some View {
-        RoadoutView(date: Date(), spots1: entry.configuration.location1?.freeSpots as? Int ?? 999, spots2: entry.configuration.location2?.freeSpots as? Int ?? 999, location1: entry.configuration.location1?.locationName ?? "Not Found", location2: entry.configuration.location2?.locationName ?? "Not Found")
+        RoadoutView(date: Date(),
+                    spots1: entry.configuration.location1?.totalSpots as? Int ?? 0,
+                    spots2: entry.configuration.location2?.totalSpots as? Int ?? 0,
+                    freeSpots1: entry.configuration.location1?.freeSpots as? Int ?? 0,
+                    freeSpots2: entry.configuration.location2?.freeSpots as? Int ?? 0,
+                    sections1: entry.configuration.location1?.sections as? Int ?? 0,
+                    sections2: entry.configuration.location2?.sections as? Int ?? 0,
+                    location1: entry.configuration.location1?.locationName ?? "No Location",
+                    location2: entry.configuration.location2?.locationName ?? "No Location")
     }
 }
 
@@ -92,6 +100,10 @@ struct RoadoutView: View {
     let date: Date
     var spots1: Int
     var spots2: Int
+    var freeSpots1: Int
+    var freeSpots2: Int
+    var sections1: Int
+    var sections2: Int
     var location1: String
     var location2: String
 
@@ -102,100 +114,154 @@ struct RoadoutView: View {
         switch family {
         case .systemSmall:
             HStack {
-                VStack(alignment: .leading) {
-                    Text("\(spots1)")
-                        .fontWeight(.medium)
-                        .font(.system(size: 33))
-                        .foregroundColor(Color("AccentColor"))
-                        .multilineTextAlignment(.leading)
-                        .padding(.top, 14.0)
-                        .padding(.leading, 10.0)
-                    Text("Free Spots".widgetLocalize())
-                        .fontWeight(.medium)
-                        .font(.system(size: 15))
-                        .foregroundColor(Color("AccentColor"))
-                        .padding(.leading, 12.0)
+                Text(" ")
+                VStack(alignment: .leading, spacing: 7) {
+                    Image(uiImage: UIImage(named: "YellowThing")!)
+                        .resizable()
+                        .frame(width: 24.57, height: 21, alignment: .topTrailing)
                     Text(location1)
-                        .fontWeight(.semibold)
-                        .font(.system(size: 16))
-                        .padding(EdgeInsets(top: -4.0, leading: 12.0, bottom: 0.0, trailing: 0.0))
-                    Spacer()
-                    ZStack(alignment: .bottomTrailing) {
-                        HStack() {
-                            Spacer()
-                            Image("YellowThing")
-                                .resizable()
-                                .frame(width: 36.0, height: 30.0)
+                        .font(.system(size: 18, weight: .bold))
+                    HStack(alignment: .center, spacing: 6) {
+                        Image(systemName: "barometer")
+                            .resizable()
+                            .frame(width: 17, height: 17, alignment: .center)
+                            .foregroundColor(Color("AccentColor"))
+                        HStack(alignment: .center, spacing: 4) {
+                            Text("\(freeSpots1)")
+                                .font(.system(size: 16, weight: .medium))
+                            Text("free spots")
+                                .font(.system(size: 16, weight: .regular))
                         }
                     }
-                    .padding([.leading, .bottom], 10.0)
+                    HStack(alignment: .center, spacing: 6) {
+                        Image(systemName: "grid")
+                            .resizable()
+                            .frame(width: 17, height: 17, alignment: .center)
+                            .foregroundColor(Color("AccentColor"))
+                        HStack(alignment: .center, spacing: 4) {
+                            Text("\(sections1)")
+                                .font(.system(size: 16, weight: .medium))
+                            Text("sections")
+                                .font(.system(size: 16, weight: .regular))
+                        }
+                        Spacer()
+                    }
+                    HStack(alignment: .center, spacing: 8) {
+                        Image(systemName: "rectangle.portrait")
+                            .resizable()
+                            .frame(width: 15, height: 18, alignment: .center)
+                            .foregroundColor(Color("AccentColor"))
+                        HStack(alignment: .center, spacing: 4) {
+                            Text("\(spots1)")
+                                .font(.system(size: 16, weight: .medium))
+                            Text("spots")
+                                .font(.system(size: 16, weight: .regular))
+                        }
+                    }
+                    
                 }
-                Spacer()
             }
              
         case .systemMedium:
             HStack() {
                 HStack {
-                    VStack(alignment: .leading) {
-                        Text("\(spots1)")
-                            .fontWeight(.medium)
-                            .font(.system(size: 35))
-                            .foregroundColor(Color("AccentColor"))
-                            .multilineTextAlignment(.leading)
-                            .padding(.top, 14.0)
-                            .padding(.leading, 10.0)
-                        Text("Free Spots".widgetLocalize())
-                            .fontWeight(.medium)
-                            .font(.system(size: 15))
-                            .foregroundColor(Color("AccentColor"))
-                            .padding(.leading, 12.0)
-                        Text(location1)
-                            .fontWeight(.semibold)
-                            .font(.system(size: 16))
-                            .padding(EdgeInsets(top: -4.0, leading: 12.0, bottom: 0.0, trailing: 0.0))
+                    Text(" ")
+                    VStack(alignment: .leading, spacing: 7) {
                         Spacer()
-                        ZStack(alignment: .bottomTrailing) {
-                            HStack() {
-                                Spacer()
-                                Image("YellowThing")
-                                    .resizable()
-                                    .frame(width: 36.0, height: 30.0)
+                        Image(uiImage: UIImage(named: "YellowThing")!)
+                            .resizable()
+                            .frame(width: 24.57, height: 21, alignment: .topTrailing)
+                        Text(location1)
+                            .font(.system(size: 18, weight: .bold))
+                        HStack(alignment: .center, spacing: 6) {
+                            Image(systemName: "barometer")
+                                .resizable()
+                                .frame(width: 17, height: 17, alignment: .center)
+                                .foregroundColor(Color("AccentColor"))
+                            HStack(alignment: .center, spacing: 4) {
+                                Text("\(freeSpots1)")
+                                    .font(.system(size: 16, weight: .medium))
+                                Text("free spots")
+                                    .font(.system(size: 16, weight: .regular))
                             }
                         }
-                        .padding([.leading, .bottom], 10.0)
+                        HStack(alignment: .center, spacing: 6) {
+                            Image(systemName: "grid")
+                                .resizable()
+                                .frame(width: 17, height: 17, alignment: .center)
+                                .foregroundColor(Color("AccentColor"))
+                            HStack(alignment: .center, spacing: 4) {
+                                Text("\(sections1)")
+                                    .font(.system(size: 16, weight: .medium))
+                                Text("sections")
+                                    .font(.system(size: 16, weight: .regular))
+                            }
+                            Spacer()
+                        }
+                        HStack(alignment: .center, spacing: 8) {
+                            Image(systemName: "rectangle.portrait")
+                                .resizable()
+                                .frame(width: 15, height: 18, alignment: .center)
+                                .foregroundColor(Color("AccentColor"))
+                            HStack(alignment: .center, spacing: 4) {
+                                Text("\(spots1)")
+                                    .font(.system(size: 16, weight: .medium))
+                                Text("spots")
+                                    .font(.system(size: 16, weight: .regular))
+                            }
+                        }
+                        Spacer()
                     }
-                    Spacer()
                 }
                 .background(Color("WidgetBackground"))
                 HStack {
-                    VStack(alignment: .leading) {
-                        Text("\(spots2)")
-                            .fontWeight(.medium)
-                            .font(.system(size: 35))
-                            .foregroundColor(Color("Dark Orange"))
-                            .multilineTextAlignment(.leading)
-                            .padding(EdgeInsets(top: 16.0, leading: 8.0, bottom: 0.0, trailing: 0.0))
-                        Text("Free Spots".widgetLocalize())
-                            .fontWeight(.medium)
-                            .font(.system(size: 15))
-                            .foregroundColor(Color("Dark Orange"))
-                            .padding(.leading, 10.0)
-                        Text(location2)
-                            .fontWeight(.semibold)
-                            .font(.system(size: 16))
-                            .padding(EdgeInsets(top: -4.0, leading: 10.0, bottom: 0.0, trailing: 0.0))
+                    Text(" ")
+                    VStack(alignment: .leading, spacing: 7) {
                         Spacer()
-                        ZStack(alignment: .bottomTrailing) {
-                            HStack() {
-                                Spacer()
-                                Image("OrangeThing")
-                                    .resizable()
-                                    .frame(width: 36.0, height: 30.0)
+                        Image(uiImage: UIImage(named: "OrangeThing")!)
+                            .resizable()
+                            .frame(width: 24.57, height: 21, alignment: .topTrailing)
+                        Text(location2)
+                            .font(.system(size: 18, weight: .bold))
+                        HStack(alignment: .center, spacing: 6) {
+                            Image(systemName: "barometer")
+                                .resizable()
+                                .frame(width: 17, height: 17, alignment: .center)
+                                .foregroundColor(Color("Dark Orange"))
+                            HStack(alignment: .center, spacing: 4) {
+                                Text("\(freeSpots2)")
+                                    .font(.system(size: 16, weight: .medium))
+                                Text("free spots")
+                                    .font(.system(size: 16, weight: .regular))
                             }
                         }
-                        .padding([.leading, .bottom], 12.0)
+                        HStack(alignment: .center, spacing: 6) {
+                            Image(systemName: "grid")
+                                .resizable()
+                                .frame(width: 17, height: 17, alignment: .center)
+                                .foregroundColor(Color("Dark Orange"))
+                            HStack(alignment: .center, spacing: 4) {
+                                Text("\(sections2)")
+                                    .font(.system(size: 16, weight: .medium))
+                                Text("sections")
+                                    .font(.system(size: 16, weight: .regular))
+                            }
+                            Spacer()
+                        }
+                        HStack(alignment: .center, spacing: 8) {
+                            Image(systemName: "rectangle.portrait")
+                                .resizable()
+                                .frame(width: 15, height: 18, alignment: .center)
+                                .foregroundColor(Color("Dark Orange"))
+                            HStack(alignment: .center, spacing: 4) {
+                                Text("\(spots2)")
+                                    .font(.system(size: 16, weight: .medium))
+                                Text("spots")
+                                    .font(.system(size: 16, weight: .regular))
+                            }
+                        }
+                        Spacer()
                     }
-                    Spacer()
                 }
                 .background(Color("Secondary Detail"))
             }
