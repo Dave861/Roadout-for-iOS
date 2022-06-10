@@ -61,22 +61,22 @@ class AddCardViewController: UIViewController {
         cvvField.layer.cornerRadius = 12.0
         cvvField.attributedPlaceholder = NSAttributedString(
             string: "CVV".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Brownish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         expiryField.layer.cornerRadius = 12.0
         expiryField.attributedPlaceholder = NSAttributedString(
             string: "Expiry Date".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         holderField.layer.cornerRadius = 12.0
         holderField.attributedPlaceholder = NSAttributedString(
             string: "Card Holder".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         numberField.layer.cornerRadius = 12.0
         numberField.attributedPlaceholder = NSAttributedString(
             string: "Card Number".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Second Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         
         self.expiryField.setInputViewDatePicker(target: self, selector: #selector(tapDone))

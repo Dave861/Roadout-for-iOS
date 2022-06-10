@@ -197,21 +197,21 @@ class EditPasswordViewController: UIViewController {
          NSAttributedString(
             string: "Old Password".localized(),
          attributes:
-            [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+            [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
          )
         newPswField.layer.cornerRadius = 12.0
         newPswField.attributedPlaceholder =
          NSAttributedString(
             string: "New Password".localized(),
          attributes:
-            [NSAttributedString.Key.foregroundColor: UIColor(named: "Brownish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+            [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
          )
         confPswField.layer.cornerRadius = 12.0
         confPswField.attributedPlaceholder =
          NSAttributedString(
             string: "Confirm Password".localized(),
          attributes:
-            [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+            [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
          )
         
         manageForgotView(false)

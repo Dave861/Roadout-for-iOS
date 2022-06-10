@@ -60,7 +60,7 @@ class ExpressPickView: UIView {
         
     func layoutCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 247, height: 70)
+        layout.itemSize = CGSize(width: 255, height: 70)
         layout.minimumInteritemSpacing = 8
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
@@ -88,8 +88,23 @@ extension ExpressPickView: UICollectionViewDelegate, UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExpressPickCell", for: indexPath) as! ExpressPickCell
         cell.nameLbl.text = parkLocations[indexPath.row].name
+        
         let occupancyPercent = 100 -  Int(Float(parkLocations[indexPath.row].freeSpots)/Float(parkLocations[indexPath.row].totalSpots)*100)
         cell.occupancyLbl.text = "\(occupancyPercent)% occupied"
+        
+        if currentLocationCoord != nil {
+            let c1 = CLLocation(latitude: parkLocations[indexPath.row].latitude, longitude: parkLocations[indexPath.row].longitude)
+            let c2 = CLLocation(latitude: currentLocationCoord!.latitude, longitude: currentLocationCoord!.longitude)
+            
+            let distance = c1.distance(from: c2)
+            let distanceKM = Double(distance)/1000.0
+            let roundedDist = Double(round(100*distanceKM)/100)
+            
+            cell.distanceLbl.text = "\(roundedDist) km"
+        } else {
+            cell.distanceLbl.text = "- km"
+        }
+        
         return cell
     }
     

@@ -126,11 +126,11 @@ class DeleteAccountViewController: UIViewController {
         
         emailField.attributedPlaceholder = NSAttributedString(
             string: "Email".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Kinda Red")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         passwordField.attributedPlaceholder = NSAttributedString(
             string: "Password".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Redish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         manageForgotView(false)
         

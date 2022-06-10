@@ -91,11 +91,11 @@ class ResetPasswordViewController: UIViewController {
         
         passwordField.attributedPlaceholder = NSAttributedString(
             string: "Password".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
         confirmPasswordField.attributedPlaceholder = NSAttributedString(
             string: "Confirm Password".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)]
         )
         resetBtn.isEnabled = false
         resetBtn.alpha = 0

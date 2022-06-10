@@ -9,6 +9,7 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 import SwiftUI
+import SPIndicator
 
 //Decides if Pay Card returns to Delay Card, Find Card or Select Card
 var returnToDelay = false
@@ -112,7 +113,11 @@ class HomeViewController: UIViewController {
     @IBAction func searchTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        guard let coord = self.mapView.myLocation?.coordinate else { return }
+        guard let coord = self.mapView.myLocation?.coordinate else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchViewController
+            self.present(vc, animated: false, completion: nil)
+            return
+        }
         currentLocationCoord = coord
         let vc = storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchViewController
         self.present(vc, animated: false, completion: nil)
@@ -126,6 +131,12 @@ class HomeViewController: UIViewController {
         settingsAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
         
         let findAction = UIAlertAction(title: "Find Spot".localized(), style: .default) { action in
+            DispatchQueue.main.async {
+                let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
+                let indicatorView = SPIndicatorView(title: "Finding...", message: "Please wait", preset: .custom(indicatorIcon))
+                indicatorView.dismissByDrag = false
+                indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
+            }
             FunctionsManager.sharedInstance.foundSpot = nil
             guard let coord = self.mapView.myLocation?.coordinate else {
                 self.showFindLocationAlert()
@@ -160,6 +171,11 @@ class HomeViewController: UIViewController {
         findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
         
         let expressAction = UIAlertAction(title: "Express Reserve".localized(), style: .default) { action in
+            guard let coord = self.mapView.myLocation?.coordinate else {
+                self.addExpressPickView()
+                return
+            }
+            currentLocationCoord = coord
             self.addExpressPickView()
         }
         expressAction.setValue(UIColor(named: "Dark Orange")!, forKey: "titleTextColor")
@@ -269,6 +285,12 @@ class HomeViewController: UIViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }),
             UIAction(title: "Find Spot".localized(), image: UIImage(systemName: "binoculars"), handler: { (_) in
+                DispatchQueue.main.async {
+                    let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
+                    let indicatorView = SPIndicatorView(title: "Finding...", message: "Please wait", preset: .custom(indicatorIcon))
+                    indicatorView.dismissByDrag = false
+                    indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
+                }
                 FunctionsManager.sharedInstance.foundSpot = nil
                 guard let coord = self.mapView.myLocation?.coordinate else {
                     self.showFindLocationAlert()
@@ -301,6 +323,11 @@ class HomeViewController: UIViewController {
                 }
             }),
             UIAction(title: "Express Reserve".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
+                guard let coord = self.mapView.myLocation?.coordinate else {
+                    self.addExpressPickView()
+                    return
+                }
+                currentLocationCoord = coord
                 self.addExpressPickView()
             }),
         ]

@@ -113,7 +113,7 @@ class EditNameViewController: UIViewController {
         userNamelField.layer.cornerRadius = 12.0
         userNamelField.attributedPlaceholder = NSAttributedString(
             string: "New Name".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String

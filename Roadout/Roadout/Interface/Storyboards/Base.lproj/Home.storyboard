@@ -1097,7 +1097,7 @@ Made in Cluj :)</string>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A7q-sC-Frp" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="97" width="378" height="40"/>
-                                        <color key="backgroundColor" red="1" green="0.75700002909999997" blue="0.09799999744" alpha="0.22" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="AccentColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Xx3-nc-Dvh"/>
@@ -1178,7 +1178,7 @@ Made in Cluj :)</string>
                                 <blurEffect style="systemUltraThinMaterial"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRd-jR-7A9">
-                                <rect key="frame" x="3" y="573" width="408" height="289"/>
+                                <rect key="frame" x="3" y="578" width="408" height="284"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDS-7y-vs7">
                                         <rect key="frame" x="15" y="15" width="145" height="27"/>
@@ -1202,7 +1202,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmF-hw-K8Y">
-                                        <rect key="frame" x="15" y="224" width="378" height="50"/>
+                                        <rect key="frame" x="15" y="219" width="378" height="50"/>
                                         <color key="backgroundColor" name="Dark Yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="1Xl-kb-snB"/>
@@ -1217,8 +1217,8 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RPo-3n-Poc" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="166" width="378" height="40"/>
-                                        <color key="backgroundColor" red="0.56099998949999996" green="0.40000000600000002" blue="0.050999999050000001" alpha="0.26849489799999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="15" y="161" width="378" height="40"/>
+                                        <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Dark Yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="XdN-yE-qDq"/>
@@ -1227,8 +1227,8 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b7Y-Jp-TRF" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="70" width="378" height="40"/>
-                                        <color key="backgroundColor" red="0.53299999239999996" green="0.49399998779999998" blue="0.45100000499999998" alpha="0.28555484689999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="15" y="65" width="378" height="40"/>
+                                        <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Greyish"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="4VO-n9-Swe"/>
@@ -1237,8 +1237,8 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4P2-9j-3vk" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="118" width="378" height="40"/>
-                                        <color key="backgroundColor" red="0.40400001410000003" green="0.28200000520000001" blue="0.019999999550000001" alpha="0.37016369049999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="15" y="113" width="378" height="40"/>
+                                        <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Brownish"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="hGj-Ai-klP"/>
@@ -1265,7 +1265,7 @@ Made in Cluj :)</string>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
                                     <constraint firstItem="4P2-9j-3vk" firstAttribute="top" secondItem="b7Y-Jp-TRF" secondAttribute="bottom" constant="8" id="14d-Ec-FTn"/>
-                                    <constraint firstAttribute="height" constant="289" id="1uO-84-xQ9"/>
+                                    <constraint firstAttribute="height" constant="284" id="1uO-84-xQ9"/>
                                     <constraint firstAttribute="trailing" secondItem="LmF-hw-K8Y" secondAttribute="trailing" constant="15" id="7v2-kr-khd"/>
                                     <constraint firstAttribute="bottom" secondItem="LmF-hw-K8Y" secondAttribute="bottom" constant="15" id="9zF-TT-vwn"/>
                                     <constraint firstItem="HiJ-zc-MNf" firstAttribute="top" secondItem="JRd-jR-7A9" secondAttribute="top" constant="9" id="BNu-4w-wGl"/>
@@ -1280,10 +1280,10 @@ Made in Cluj :)</string>
                                     <constraint firstAttribute="trailing" secondItem="RPo-3n-Poc" secondAttribute="trailing" constant="15" id="egQ-uG-WRt"/>
                                     <constraint firstAttribute="trailing" secondItem="EP3-IM-wPs" secondAttribute="trailing" constant="3" id="fbD-ex-vr8"/>
                                     <constraint firstItem="4P2-9j-3vk" firstAttribute="leading" secondItem="JRd-jR-7A9" secondAttribute="leading" constant="15" id="hGX-JI-khg"/>
-                                    <constraint firstItem="b7Y-Jp-TRF" firstAttribute="top" secondItem="EP3-IM-wPs" secondAttribute="bottom" constant="33" id="k1d-KY-bKg"/>
+                                    <constraint firstItem="b7Y-Jp-TRF" firstAttribute="top" secondItem="EP3-IM-wPs" secondAttribute="bottom" constant="28" id="k1d-KY-bKg"/>
                                     <constraint firstAttribute="trailing" secondItem="4P2-9j-3vk" secondAttribute="trailing" constant="15" id="mGU-u9-6qN"/>
                                     <constraint firstItem="b7Y-Jp-TRF" firstAttribute="leading" secondItem="JRd-jR-7A9" secondAttribute="leading" constant="15" id="wPU-e0-Mpo"/>
-                                    <constraint firstItem="b7Y-Jp-TRF" firstAttribute="top" secondItem="BDS-7y-vs7" secondAttribute="bottom" constant="28" id="xHM-uK-dkx"/>
+                                    <constraint firstItem="b7Y-Jp-TRF" firstAttribute="top" secondItem="BDS-7y-vs7" secondAttribute="bottom" constant="23" id="xHM-uK-dkx"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1331,7 +1331,7 @@ Made in Cluj :)</string>
                                 <blurEffect style="systemUltraThinMaterial"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HrQ-rH-hc2">
-                                <rect key="frame" x="3" y="621" width="408" height="241"/>
+                                <rect key="frame" x="3" y="626" width="408" height="236"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VB-xF-Dw3">
                                         <rect key="frame" x="15" y="15" width="157.5" height="27"/>
@@ -1357,8 +1357,8 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rau-wM-akd" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="70" width="378" height="40"/>
-                                        <color key="backgroundColor" red="0.78431372549019607" green="0.19235387778559179" blue="0.0" alpha="0.26709954470198677" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="15" y="65" width="378" height="40"/>
+                                        <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" red="0.72752726078033447" green="0.18497524538190785" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="MPi-Ec-ZKs"/>
@@ -1367,8 +1367,8 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ga7-69-Uaf" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="118" width="378" height="40"/>
-                                        <color key="backgroundColor" red="0.58399999141693115" green="0.18000000715255737" blue="0.0" alpha="0.51598716887417218" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="15" y="113" width="378" height="40"/>
+                                        <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Redish"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="eDg-iE-KRL"/>
@@ -1377,7 +1377,7 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pq-HO-snU">
-                                        <rect key="frame" x="15" y="176" width="378" height="50"/>
+                                        <rect key="frame" x="15" y="171" width="378" height="50"/>
                                         <color key="backgroundColor" name="Redish"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="FKv-cz-kK8"/>
@@ -1409,17 +1409,17 @@ Made in Cluj :)</string>
                                 </subviews>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="241" id="0wv-eI-8dG"/>
+                                    <constraint firstAttribute="height" constant="236" id="0wv-eI-8dG"/>
                                     <constraint firstItem="3pq-HO-snU" firstAttribute="top" secondItem="ga7-69-Uaf" secondAttribute="bottom" constant="18" id="5SC-UD-GRS"/>
                                     <constraint firstItem="3VB-xF-Dw3" firstAttribute="top" secondItem="HrQ-rH-hc2" secondAttribute="top" constant="15" id="B0s-nc-SFk"/>
                                     <constraint firstItem="ga7-69-Uaf" firstAttribute="leading" secondItem="HrQ-rH-hc2" secondAttribute="leading" constant="15" id="BOt-sQ-19p"/>
                                     <constraint firstAttribute="trailing" secondItem="ga7-69-Uaf" secondAttribute="trailing" constant="15" id="Dam-uI-fIZ"/>
-                                    <constraint firstItem="Rau-wM-akd" firstAttribute="top" secondItem="3VB-xF-Dw3" secondAttribute="bottom" constant="28" id="Dxd-0e-uaG"/>
+                                    <constraint firstItem="Rau-wM-akd" firstAttribute="top" secondItem="3VB-xF-Dw3" secondAttribute="bottom" constant="23" id="Dxd-0e-uaG"/>
                                     <constraint firstAttribute="trailing" secondItem="Rau-wM-akd" secondAttribute="trailing" constant="15" id="EbV-ob-dg8"/>
                                     <constraint firstItem="3pq-HO-snU" firstAttribute="leading" secondItem="HrQ-rH-hc2" secondAttribute="leading" constant="15" id="L5M-2M-KZ0"/>
                                     <constraint firstAttribute="bottom" secondItem="3pq-HO-snU" secondAttribute="bottom" constant="15" id="OrX-18-jip"/>
                                     <constraint firstItem="SPg-mz-cFR" firstAttribute="top" secondItem="HrQ-rH-hc2" secondAttribute="top" constant="9" id="Pc5-ky-CeZ"/>
-                                    <constraint firstItem="Rau-wM-akd" firstAttribute="top" secondItem="XAB-dt-hJ1" secondAttribute="bottom" constant="33" id="VLP-Tn-iUC"/>
+                                    <constraint firstItem="Rau-wM-akd" firstAttribute="top" secondItem="XAB-dt-hJ1" secondAttribute="bottom" constant="28" id="VLP-Tn-iUC"/>
                                     <constraint firstItem="3VB-xF-Dw3" firstAttribute="leading" secondItem="HrQ-rH-hc2" secondAttribute="leading" constant="15" id="Vig-y7-8TU"/>
                                     <constraint firstAttribute="trailing" secondItem="XAB-dt-hJ1" secondAttribute="trailing" constant="3" id="ZGa-t3-h3f"/>
                                     <constraint firstAttribute="trailing" secondItem="SPg-mz-cFR" secondAttribute="trailing" constant="3" id="ffG-Ib-lhK"/>
@@ -1653,6 +1653,9 @@ Made in Cluj :)</string>
         </namedColor>
         <namedColor name="Brownish">
             <color red="0.40400001406669617" green="0.28200000524520874" blue="0.019999999552965164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Card Background">
+            <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Dark Yellow">
             <color red="0.56099998950958252" green="0.40000000596046448" blue="0.050999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

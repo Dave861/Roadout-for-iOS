@@ -133,7 +133,7 @@ class AddReminderViewController: UIViewController {
         labelField.layer.cornerRadius = 12.0
         labelField.attributedPlaceholder = NSAttributedString(
             string: "Notification Label".localized(),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         if #available(iOS 14.0, *) {
             self.pickBtn.isEnabled = false

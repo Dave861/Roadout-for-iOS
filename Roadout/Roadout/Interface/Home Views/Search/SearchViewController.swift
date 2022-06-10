@@ -240,7 +240,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         let occupancyPercent = self.getPercentageFrom(totalSpots: results[indexPath.row].totalSpots, freeSpots: results[indexPath.row].freeSpots)
         
-        if 85 < occupancyPercent && occupancyPercent < 100 {
+        if occupancyPercent == 100 {
+            cell.gaugeIcon.transform = .identity
+            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: 2.356)
+        } else if 85 < occupancyPercent && occupancyPercent < 100 {
             cell.gaugeIcon.transform = .identity
             cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: 0.785)
         } else if 60 < occupancyPercent && occupancyPercent < 85 {
