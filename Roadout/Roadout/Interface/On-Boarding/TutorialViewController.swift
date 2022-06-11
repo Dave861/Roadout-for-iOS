@@ -17,13 +17,13 @@ class TutorialViewController: UIViewController {
     
     var tutorialSet = [TutorialItem]()
     
-    let homeTutorialSet = [TutorialItem(title: "Search Bar", description: "Use the search bar to find park locations near streets or places you need to get to.", icon: UIImage(systemName: "magnifyingglass")!),
-                           TutorialItem(title: "Markers", description: "Parking locations are highlighted on the map using markers, you can zoom in and select them.", icon: UIImage(systemName: "mappin.and.ellipse")!),
-                           TutorialItem(title: "Menu", description: "The menu has other methods of finding a parking spot, you can try them right now!", icon: UIImage(systemName: "ellipsis.circle")!)]
+    let homeTutorialSet = [TutorialItem(title: "Search Bar".localized(), description: "Use the search bar to find park locations near streets or places you need to get to.".localized(), icon: UIImage(systemName: "magnifyingglass")!),
+                           TutorialItem(title: "Markers".localized(), description: "Parking locations are highlighted on the map using markers, you can zoom in and select them.".localized(), icon: UIImage(systemName: "mappin.and.ellipse")!),
+                           TutorialItem(title: "Menu".localized(), description: "The menu has other methods of finding a parking spot, you can try them right now!".localized(), icon: UIImage(systemName: "ellipsis.circle")!)]
     
-    let settingsTutorialSet = [TutorialItem(title: "User Control", description: "Here you edit your account and see all your data.", icon: UIImage(systemName: "person.fill")!),
-                                  TutorialItem(title: "App Options and Features", description: "You can customize Roadout and use Reminders to keep you from forgetting to make a reservation", icon:UIImage(systemName: "arrow.up.forward.app")!),
-                                  TutorialItem(title: "About and Help", description: "Have any questions? Reach out via FAQ & Support", icon: UIImage(systemName: "questionmark.circle")!)]
+    let settingsTutorialSet = [TutorialItem(title: "User Control".localized(), description: "Here you edit your account and see all your data.".localized(), icon: UIImage(systemName: "person.fill")!),
+                               TutorialItem(title: "App Options and Features".localized(), description: "You can customize Roadout and use Reminders to keep you from forgetting to make a reservation".localized(), icon:UIImage(systemName: "arrow.up.forward.app")!),
+                               TutorialItem(title: "About and Help", description: "Have any questions? Reach out via FAQ & Support".localized(), icon: UIImage(systemName: "questionmark.circle")!)]
     
     @IBOutlet weak var cardView: UIView!
     
@@ -47,6 +47,7 @@ class TutorialViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var icon1: UIImageView!
     @IBOutlet weak var icon2: UIImageView!
@@ -83,6 +84,8 @@ class TutorialViewController: UIViewController {
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
+        
+        titleLbl.text = "Tutorial".localized()
     }
     
     override func viewDidAppear(_ animated: Bool) {

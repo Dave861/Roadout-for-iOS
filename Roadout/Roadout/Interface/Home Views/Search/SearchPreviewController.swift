@@ -14,6 +14,7 @@ class SearchPreviewController: UIViewController {
     var previewLocationName = ""
     var previewLocationDistance = ""
     var previewLocationFreeSpots = 0
+    var previewLocationSections = 0
     var previewLocationColor = UIColor.label
     
     @IBOutlet weak var locationNameLbl: UILabel!
@@ -25,15 +26,17 @@ class SearchPreviewController: UIViewController {
     @IBOutlet weak var distanceIcon: UIImageView!
     @IBOutlet weak var gridIcon: UIImageView!
     @IBOutlet weak var spotIcon: UIImageView!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         locationNameLbl.text = previewLocationName
         distanceLbl.text = previewLocationDistance
-        spotsLbl.text = "\(previewLocationFreeSpots) free spots"
+        spotsLbl.text = "\(previewLocationFreeSpots) " + "free spots".localized()
+        sectionsLbl.text = "\(previewLocationSections) " + "sections".localized()
         
         distanceIcon.tintColor = previewLocationColor
         gridIcon.tintColor = previewLocationColor
         spotIcon.tintColor = previewLocationColor
+        
     }
 }

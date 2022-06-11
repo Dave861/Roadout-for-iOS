@@ -59,23 +59,6 @@
 //MARK: -ResetPasswordViewController-
 "Reset" = "Reset";
 
-//MARK: -TutorialViewController-
-"Search Bar" = "Search Bar";
-"More Button" = "More Button";
-"Express Reserve" = "Express Reserve";
-"Find Spot" = "Find Spot";
-"Preferences" = "Preferences";
-"Markers" = "Markers";
-"Use the search bar to find specific parking locations in your city and easily reserve the perfect spot for you." = "Use the search bar to find specific parking locations in your city and easily reserve the perfect spot for you.";
-"Use the more button to access more powerful options of the app. Tap it for more info." = "Use the more button to access more powerful options of the app. Tap it for more info.";
-"This is a quick and easy way to reserve a spot in a desired location." = "This is a quick and easy way to reserve a spot in a desired location.";
-"The fastest way to find a parking spot near you, great for you just need to park quickly." = "The fastest way to find a parking spot near you, great for when you just need to park quickly.";
-"The place to see stats, add cards, reminders and manage permissions." = "The place to see stats, add cards, reminders and manage permissions.";
-"Markers are easily glanceable indicators of where parking locations are relative to your location" = "Markers are easily glanceable indicators of where parking locations are relative to your location";
-"What would you like to do?" = "What would you like to do?";
-"Done" = "Done";
-"Skip Tutorial" = "Skip Tutorial";
-
 //MARK: -HomeViewController-
 "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot" = "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot";
 "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Spot" = "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Spot";
@@ -83,6 +66,9 @@
 "Would you like a quick tutorial of the app?" = "Would you like a quick tutorial of the app?";
 "Yes" = "Yes";
 "No" = "No";
+"Express Reserve" = "Express Reserve";
+"Settings" = "Settings";
+"Find Spot" = "Find Spot";
 
 //MARK: -ExpressView-
 " Minutes " = " Minutes ";
@@ -149,6 +135,10 @@
 "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured." = "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured.";
 "Delay Reservation" = "Delay Reservation";
 "You can only delay a reservation once. Use carefully." = "You can only delay a reservation once. Use carefully.";
+"Delay" = "Delay";
+"Directions" = "Directions";
+"Open in AR" = "Open in AR";
+"Help" = "Help";
 
 //MARK: -FindView-
 "Choose duration" = "Choose duration";
@@ -280,13 +270,18 @@
 "Download Error" = "Download Error";
 "There was an error. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report. Error Code: " = "There was an error. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report. Error Code: ";
 "Try Again" = "Try Again";
+"Loading City Data" = "Loading City Data";
 
 //MARK: -Other-
 " mins" = " mins";
 "hours" = "hours";
+"sections" = "sections";
+"free spots" = "free spots";
+"occupied" = "occupied";
 "en" = "en";
 "Roadout\nMade in Cluj :)" = "Roadout\nMade in Cluj :)";
 "Back" = "Back";
+"Done" = "Done";
 
 //MARK: -DangerViewController-
 "Threat Detected" = "Threat Detected";
@@ -301,3 +296,84 @@
 "If your device is jailbroken you can look online for guides on how to remove the jailbreak or unwanted device tweaks. Reopen the app after that." = "If your device is jailbroken you can look online for guides on how to remove the jailbreak or unwanted device tweaks. Reopen the app after that.";
 "Stop trying to reverse engineer the app, force quit and reopen." = "Stop trying to reverse engineer the app, force quit and reopen.";
 "Try changing Wi-Fi networks or look into the router settings to see what is tampering with the app, then restart." = "Try changing Wi-Fi networks or look into the router settings to see what is tampering with the app, then restart.";
+
+//MARK: -Notifications-
+
+"Reservation Done" = "Reservation Done";
+"1 Minute Left" = "1 Minute Left";
+"5 Minutes Left" = "5 Minutes Left";
+"Thank you for using Roadout! We hope you enjoyed the experience!" = "Thank you for using Roadout! We hope you enjoyed the experience!";
+"There is a minute left from your reservation." = "There is a minute left from your reservation.";
+"There are 5 minutes left from your reservation." = "There are 5 minutes left from your reservation.";
+
+//MARK: -LinkWatchController-
+
+"Link Apple Watch" = "Link Apple Watch";
+"Connect" = "Connect";
+"Tap to connect" = "Tap to connect";
+"Connecting..." = "Connecting...";
+"No Apple Watch found" = "No Apple Watch found";
+
+//MARK: -ExpressPickView-
+
+"Tap a location to find a free spot there" = "Tap a location to find a free spot there";
+"It seems there are no free places in this location at the moment" = "It seems there are no free places in this location at the moment";
+
+//MARK: -SPIndicators-
+
+"Finding..." = "Finding...";
+"Please wait" = "Please wait";
+"Selected" = "Selected";
+"Confirming" = "Confirming";
+"Checking..." = "Checking...";
+"Confirmed" = "Confirmed";
+
+//MARK: -TutorialViewController-
+
+"Search Bar" = "Search Bar";
+"Use the search bar to find park locations near streets or places you need to get to." = "Use the search bar to find park locations near streets or places you need to get to.";
+"Markers" = "Markers";
+"Parking locations are highlighted on the map using markers, you can zoom in and select them." = "Parking locations are highlighted on the map using markers, you can zoom in and select them.";
+"Menu" = "Menu";
+"The menu has other methods of finding a parking spot, you can try them right now!" = "The menu has other methods of finding a parking spot, you can try them right now!";
+"User Control" = "User Control";
+"Here you edit your account and see all your data." = "Here you edit your account and see all your data.";
+"App Options and Features" = "App Options and Features";
+"You can customize Roadout and use Reminders to keep you from forgetting to make a reservation" = "You can customize Roadout and use Reminders to keep you from forgetting to make a reservation";
+"About and Help" = "About and Help";
+"Have any questions? Reach out via FAQ & Support" = "Have any questions? Reach out via FAQ & Support";
+"Tutorial" = "Tutorial";
+ 
+//MARK: -RateViewController-
+
+"Rate" = "Rate";
+"Would you like to rate your experience?" = "Would you like to rate your experience?";
+"Submit" = "Submit";
+"Good" = "Good";
+"Bad" = "Bad";
+"Reasons" = "Reasons";
+"Tell us why" = "Tell us why";
+"reason/s" = "reason/s";
+"Easy to use" = "Easy to use";
+"Fast & Reliable" = "Fast & Reliable";
+"Intuitive" = "Intuitive";
+"Stable" = "Stable";
+"Buggy" = "Buggy";
+"Hard to understand" = "Hard to understand";
+"Easy to find" = "Easy to find";
+"Fast" = "Fast";
+"Close to destination" = "Close to destination";
+"Slow & Unreliable" = "Slow & Unreliable";
+"Not Selected" = "Not Selected";
+"Hard to move around" = "Hard to move around";
+"Rate Reservation" = "Rate Reservation";
+"Reserving Experience" = "Reserving Experience";
+"Parking Experience" = "Parking Experience";
+"Overall" = "Overall";
+"Score" = "Score";
+"Link to rating to my account" = "Link to rating to my account";
+
+//MARK: -Features-
+
+"Find Way" = "Find Way";
+"Express Lane" = "Express Lane";

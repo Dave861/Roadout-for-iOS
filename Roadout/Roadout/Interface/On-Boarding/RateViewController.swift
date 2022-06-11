@@ -14,21 +14,28 @@ struct Reason {
 
 class RateViewController: UIViewController {
     
-    var reservingReasons = [Reason(description: "Easy to use", isSelected: false),
-                            Reason(description: "Fast & Reliable", isSelected: false),
-                            Reason(description: "Intuitive", isSelected: false),
-                            Reason(description: "Stable", isSelected: false),
-                            Reason(description: "Buggy", isSelected: false),
-                            Reason(description: "Hard to understand", isSelected: false),]
+    var reservingReasons = [Reason(description: "Easy to use".localized(), isSelected: false),
+                            Reason(description: "Fast & Reliable".localized(), isSelected: false),
+                            Reason(description: "Intuitive".localized(), isSelected: false),
+                            Reason(description: "Stable".localized(), isSelected: false),
+                            Reason(description: "Buggy".localized(), isSelected: false),
+                            Reason(description: "Hard to understand".localized(), isSelected: false),]
     
-    var parkingReasons = [Reason(description: "Easy to find", isSelected: false),
-                          Reason(description: "Fast", isSelected: false),
-                          Reason(description: "Close to destination", isSelected: false),
-                          Reason(description: "Slow & Unreliable", isSelected: false),
-                          Reason(description: "Hard to move around", isSelected: false)]
+    var parkingReasons = [Reason(description: "Easy to find".localized(), isSelected: false),
+                          Reason(description: "Fast".localized(), isSelected: false),
+                          Reason(description: "Close to destination".localized(), isSelected: false),
+                          Reason(description: "Slow & Unreliable".localized(), isSelected: false),
+                          Reason(description: "Hard to move around".localized(), isSelected: false)]
     
     var reservingScore = -1
     var parkingScore = -1
+    
+    @IBOutlet weak var bigTitleLbl: UILabel!
+    @IBOutlet weak var reservingExperienceLbl: UILabel!
+    @IBOutlet weak var parkingExperienceLbl: UILabel!
+    @IBOutlet weak var overallLbl: UILabel!
+    @IBOutlet weak var scoreTextLbl: UILabel!
+    @IBOutlet weak var linkRatingTextLbl: UILabel!
     
     @IBOutlet weak var card1: UIView!
     @IBOutlet weak var card2: UIView!
@@ -118,6 +125,10 @@ class RateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLocalization()
+        reservingImpressionLbl.text = "Not Selected".localized()
+        parkingImpressionLbl.text = "Not Selected".localized()
+        
         card1.layer.cornerRadius = 16.0
         card2.layer.cornerRadius = 16.0
         card3.layer.cornerRadius = 16.0
@@ -151,6 +162,17 @@ class RateViewController: UIViewController {
             reasonBtn1.menu = makeReservingReasonsMenu()
             reasonBtn2.menu = makeParkingReasonsMenu()
         }
+    }
+    
+    func setLocalization() {
+        self.bigTitleLbl.text = "Rate Reservation".localized()
+        self.reservingExperienceLbl.text = "Reserving Experience".localized()
+        self.parkingExperienceLbl.text = "Parking Experience".localized()
+        self.overallLbl.text = "Overall".localized()
+        self.scoreTextLbl.text = "Score".localized()
+        self.linkRatingTextLbl.text = "Link to rating to my account".localized()
+        self.reservingReasonLbl.text = "Tell us why".localized()
+        self.parkingReasonLbl.text = "Tell us why".localized()
     }
     
     func updateReservingCardInfo(impression: String, icon: String, sender: UIButton) {
@@ -239,9 +261,9 @@ class RateViewController: UIViewController {
             }
         }
         if reasonsCount == 0 {
-            self.reservingReasonLbl.text = "Tell us why"
+            self.reservingReasonLbl.text = "Tell us why".localized()
         } else {
-            self.reservingReasonLbl.text = "\(reasonsCount) reasons"
+            self.reservingReasonLbl.text = "\(reasonsCount) " + "reason/s".localized()
         }
     }
     
@@ -253,9 +275,9 @@ class RateViewController: UIViewController {
             }
         }
         if reasonsCount == 0 {
-            self.parkingReasonLbl.text = "Tell us why"
+            self.parkingReasonLbl.text = "Tell us why".localized()
         } else {
-            self.parkingReasonLbl.text = "\(reasonsCount) reasons"
+            self.parkingReasonLbl.text = "\(reasonsCount) " + "reason/s".localized()
         }
     }
     

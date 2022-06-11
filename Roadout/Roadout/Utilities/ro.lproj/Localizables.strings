@@ -18,7 +18,7 @@
 "We will send an email with a verification code to " = "Vom trimite un e-mail cu un cod de verificare către ";
 "Forgot Password" = "Ați uitat parola?";
 "Proceed" = "Continuă";
-"Cancel" = "Anulare";
+"Cancel" = "Anulați";
 "Email" = "E-mail";
 "Password" = "Parolă";
 "Sign In Error" = "Eroare de Conectare";
@@ -59,30 +59,15 @@
 //MARK: -ResetPasswordViewController-
 "Reset" = "Resetați";
 
-//MARK: -TutorialViewController-
-"Search Bar" = "Bara de Căutare";
-"More Button" = "Butonul Meniu";
-"Express Reserve" = "Rezervare Express";
-"Find Spot" = "Găsire Loc";
-"Preferences" = "Preferințe";
-"Markers" = "Markere";
-"Use the search bar to find specific parking locations in your city and easily reserve the perfect spot for you." = "Utilizați bara de căutare pentru a găsi anumite locuri de parcare în orașul dvs. și pentru a rezerva cu ușurință locul perfect pentru dvs.";
-"Use the more button to access more powerful options of the app. Tap it for more info." = "Utilizați butonul meniu pentru a accesa opțiuni mai puternice ale aplicației. Atingeți-l pentru mai multe informații.";
-"This is a quick and easy way to reserve a spot in a desired location." = "Aceasta este o modalitate rapidă și ușoară de a rezerva un loc într-o locație dorită.";
-"The fastest way to find a parking spot near you, great for you just need to park quickly." = "Cel mai rapid mod de a găsi un loc de parcare în apropierea ta, excelent pentru când trebuie doar să parchezi rapid.";
-"The place to see stats, add cards, reminders and manage permissions." = "Locul pentru a vedea statistici, a adăuga carduri, mementouri și a gestiona permisiunile.";
-"Markers are easily glanceable indicators of where parking locations are relative to your location" = "Marcatoarele sunt indicatori ușor de observat cu privire la locurile de parcare în raport cu locația dvs";
-"What would you like to do?" = "Ce ați vrea să faceți?";
-"Done" = "Gata";
-"Skip Tutorial" = "Omite Tutorialul";
-
 //MARK: -HomeViewController-
 "There was an error, location may not be enabled for Roadout. Please enable it in Settings if you want to use Find Spot" = "A apărut o eroare, este posibil ca locația să nu fie activată pentru Roadout. Vă rugăm să o activați în Setări dacă doriți să utilizați Găsire Loc";
 "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Spot" = "A apărut o eroare, este posibil ca locația să nu fie activată pentru Roadout sau să nu existe niciun loc disponibil. Vă rugăm să o activați în Setări dacă doriți să utilizați Găsire Loc";
-"Tutorial" = "Tutorial";
-"Would you like a quick tutorial of the app?" = "Doriți un tutorial rapid al aplicației?";
+"Would you like a quick tutorial of the app?" = "Doriți o introducere rapidă al aplicației?";
 "Yes" = "Da";
 "No" = "Nu";
+"Express Reserve" = "Rezervare Expres";
+"Settings" = "Setări";
+"Find Spot" = "Găsire Loc";
 
 //MARK: -ExpressView-
 " Minutes " = " Minute ";
@@ -126,8 +111,8 @@
 "Delay for " = "Prelungește cu ";
 "Reserve for " = "Rezervă pt. ";
 " - Section " = " - Secțiune ";
-" - Spot " = " - Loc ";"
-Pay Delay" = "Plătește Prelungire";
+" - Spot " = " - Loc ";
+"Pay Delay" = "Plătiți Prelungire";
 "Pay Spot" = "Plătește Loc";
 "Couldn't reserve" = "Nu s-a putut rezerva";
 "Sorry, the 60 seconds have passed and it seems like someone already took the spot, hence we are not able to reserve it. We are sorry." = "Ne pare rău, cele 60 de secunde au trecut și se pare că cineva a ocupat deja locul, deci nu putem să-l rezervăm. Ne cerem scuze.";
@@ -140,7 +125,7 @@ Pay Delay" = "Plătește Prelungire";
 "We recommend time based on your current location and estimated time to commute to the selected parking spot, if the time exceeds 20 minutes, we do not recommend reserving just yet." = "Recomandăm timpul bazându-ne pe locația dvs. actuală și a timpului estimat pentru a ajunge la locul de parcare selectat, dacă timpul depășește 20 de minute, nu vă recomandăm să faceți rezervarea încă.";
 
 //MARK: -ReservationView-
-"Unlock" = "Deblochează";
+"Unlock" = "Deblocați";
 "This cannot be undone, you are about to unlock the spot and end the reservation. Are you sure?" = "Acest lucru nu poate fi anulat, sunteți pe cale să deblocați locul și să încheiați rezervarea. Continuati?";
 "Are you sure you want to cancel your reservation? You will only get money back for the unused minutes." = "Sigur doriți să anulați rezervarea? Veți primi banii înapoi doar pentru minutele nefolosite.";
 "Reserved for " = "Rezervat pentru ";
@@ -149,6 +134,10 @@ Pay Delay" = "Plătește Prelungire";
 "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured." = "Ați prelungit deja această rezervare. Acest lucru se poate face o singură dată pe rezervare, vă rugăm să vă grăbiți, odată ce timpul afișat trece, locul nu va fi asigurat.";
 "Delay Reservation" = "Prelungire Rezervare";
 "You can only delay a reservation once. Use carefully." = "Puteți prelungi o rezervare o singură dată. Utilizați cu atenție.";
+"Delay" = "Prelungiți";
+"Directions" = "Navigați";
+"Open in AR" = "Vedeți AR";
+"Help" = "Ajutor";
 
 //MARK: -FindView-
 "Choose duration" = "Alege durată";
@@ -280,13 +269,18 @@ Pay Delay" = "Plătește Prelungire";
 "Download Error" = "Eroare de Descărcare";
 "There was an error. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report. Error Code: " = "A apărut o eroare. Încercați din nou sau închideți forțat aplicația și redeschideți. Dacă problema persistă, faceți o captură de ecran și trimiteți un raport de eroare. Cod de eroare:";
 "Try Again" = "Reîncercați";
+"Loading City Data" = "Încărcare Date Oraș";
 
 //MARK: -Other-
 " mins" = " min";
 "hours" = "ore";
+"sections" = "secțiuni";
+"free spots" = "locuri libere";
+"occupied" = "ocupat";
 "en" = "ro";
 "Roadout\nMade in Cluj :)" = "Roadout\nFondat in Cluj :)";
 "Back" = "Înapoi";
+"Done" = "Gata";
 
 //MARK: -DangerViewController-
 "Threat Detected" = "Pericol Detectat";
@@ -301,3 +295,84 @@ Pay Delay" = "Plătește Prelungire";
 "If your device is jailbroken you can look online for guides on how to remove the jailbreak or unwanted device tweaks. Reopen the app after that." = "Dacă dispozitivul dvs. este jailbroken, puteți căuta online ghiduri despre cum să eliminați jailbreak-ul sau modificările nedorite ale dispozitivului. Redeschideți aplicația după aceea.";
 "Stop trying to reverse engineer the app, force quit and reopen." = "Nu mai încercați să faceți inginerie inversă a aplicației, închideți forțat și redeschideți.";
 "Try changing Wi-Fi networks or look into the router settings to see what is tampering with the app, then restart." = "Încercați să schimbați rețeaua Wi-Fi sau căutați în setările routerului pentru a vedea ce modifică aplicația, apoi reporniți.";
+
+//MARK: -Notifications-
+
+"Reservation Done" = "Rezervare Încheiată";
+"1 Minute Left" = "1 Minut Rămas";
+"5 Minutes Left" = "5 Minute Rămase";
+"Thank you for using Roadout! We hope you enjoyed the experience!" = "Vă mulțumim că ați folosit Roadout! Sperăm că v-a plăcut experiența!";
+"There is a minute left from your reservation." = "Rezervarea mai are un minut.";
+"There are 5 minutes left from your reservation." = "Rezervarea mai are 5 minute.";
+
+//MARK: -LinkWatchController-
+
+"Link Apple Watch" = "Conectați Apple Watch";
+"Connect" = "Conectați";
+"Tap to connect" = "Atingeți pt. a conecta";
+"Connecting..." = "Conectare...";
+"No Apple Watch found" = "Niciun Apple Watch găsit";
+
+//MARK: -ExpressPickView-
+
+"Tap a location to find a free spot there" = "Atingeți o locație pentru a găsi un loc liber acolo";
+"It seems there are no free places in this location at the moment" = "Momentan, nu pare că exista locuri libere în această locație";
+
+//MARK: -SPIndicators-
+
+"Finding..." = "Căutare...";
+"Please wait" = "Așteptați";
+"Selected" = "Selectat";
+"Confirming" = "Confirmăm";
+"Checking..." = "Verificare...";
+"Confirmed" = "Confirmat";
+
+//MARK: -TutorialViewController-
+
+"Search Bar" = "Bara de căutare";
+"Use the search bar to find park locations near streets or places you need to get to." = "Utilizați bara de căutare pentru a găsi parcări în apropierea străzilor sau a destinațiilor la care trebuie să ajungeți.";
+"Markers" = "Marcatori";
+"Parking locations are highlighted on the map using markers, you can zoom in and select them." = "Parcările sunt evidențiate pe hartă folosind marcatori, le puteți mări și le selecta.";
+"Menu" = "Meniu";
+"The menu has other methods of finding a parking spot, you can try them right now!" = "Meniul are alte metode de a găsi un loc de parcare, le puteți încerca chiar acum!";
+"User Control" = "Control Utilizator";
+"Here you edit your account and see all your data." = "Aici vă puteți edita contul și vedea toate datele.";
+"App Options and Features" = "Opțiuni și Caracteristici Aplicație";
+"You can customize Roadout and use Reminders to keep you from forgetting to make a reservation" = "Puteți personaliza Roadout și utiliza Mementouri pentru a nu uita să faceți o rezervare";
+"About and Help" = "Informații și Ajutor";
+"Have any questions? Reach out via FAQ & Support" = "Aveți întrebări? Contactați-ne prin Întrebări Frecvente și Ajutor";
+"Tutorial" = "Introducere";
+
+//MARK: -RateViewController-
+
+"Rate" = "Evaluare";
+"Would you like to rate your experience?" = "Ați dori să vă evaluați experiența?";
+"Submit" = "Trimite";
+"Good" = "Bun";
+"Bad" = "Rău";
+"Reasons" = "Motive";
+"Tell us why" = "Explicație";
+"reason/s" = "motiv/e";
+"Easy to use" = "Ușor de folosit";
+"Fast & Reliable" = "Rapid și de încredere";
+"Intuitive" = "Intuitiv";
+"Stable" = "Stabil";
+"Buggy" = "Instabil";
+"Hard to understand" = "Greu de înțeles";
+"Easy to find" = "Ușor de găsit";
+"Fast" = "Rapid";
+"Close to destination" = "Aproape de destinație";
+"Slow & Unreliable" = "Lent și nesigur";
+"Not Selected" = "Neselectat";
+"Hard to move around" = "Greu de mișcat în jur";
+"Rate Reservation" = "Evaluează Rezervare";
+"Reserving Experience" = "Experiență Rezervare";
+"Parking Experience" = "Experiență Parcare";
+"Overall" = "Per total";
+"Score" = "Scor";
+"Link to rating to my account" = "Asociază evaluarea contului meu";
+
+//MARK: -Features-
+
+"Find Way" = "Găsire Cale";
+"Express Lane" = "Bandă Expres";

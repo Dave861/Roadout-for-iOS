@@ -27,8 +27,8 @@ class SpotView: UIView, PusherDelegate {
         continueBtn.isUserInteractionEnabled = false
         let clockImage = UIImage.init(systemName: "clock")!.withTintColor(UIColor(named: "Dark Orange")!, renderingMode: .alwaysOriginal)
         let checkImage = UIImage.init(systemName: "checkmark")!.withTintColor(UIColor(named: "Dark Yellow")!, renderingMode: .alwaysOriginal)
-        let checkingIndicatorView = SPIndicatorView(title: "Confirming", message: "Checking...", preset: .custom(clockImage))
-        let confirmedIndicatorView = SPIndicatorView(title: "Confirmed", message: "Done", preset: .custom(checkImage))
+        let checkingIndicatorView = SPIndicatorView(title: "Confirming".localized(), message: "Checking...".localized(), preset: .custom(clockImage))
+        let confirmedIndicatorView = SPIndicatorView(title: "Confirmed".localized(), message: "Done".localized(), preset: .custom(checkImage))
         checkingIndicatorView.present(duration: 0.7, haptic: .none) {
             self.disconnectPusher()
             NotificationCenter.default.post(name: .addReserveCardID, object: nil)

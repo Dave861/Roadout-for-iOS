@@ -60,6 +60,7 @@ class GetDataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cardView.layer.cornerRadius = 17.0
+        titleLbl.text = "Loading City Data".localized()
         activityIndicator.startAnimating()
         self.downloadCityData()
     }

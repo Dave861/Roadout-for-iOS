@@ -67,8 +67,8 @@ class ResultView: UIView {
             distanceLbl.text = "- km"
         }
         
-        sectionsLbl.text = "\(parkLocations[selectedParkLocationIndex].sections.count) sections"
-        freeSpotsLbl.text = "\(parkLocations[selectedParkLocationIndex].freeSpots) free spots"
+        sectionsLbl.text = "\(parkLocations[selectedParkLocationIndex].sections.count) " + "sections".localized()
+        freeSpotsLbl.text = "\(parkLocations[selectedParkLocationIndex].freeSpots) " + "free spots".localized()
         
         distanceIcon.tintColor = selectedLocationColor
         sectionsIcon.tintColor = selectedLocationColor

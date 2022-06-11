@@ -84,7 +84,7 @@ class UnlockedView: UIView {
             UIAction(title: "Get Directions".localized(), image: UIImage(systemName: "arrow.triangle.branch"), handler: { (_) in
                 self.openDirectionsToCoords(lat: 46.565645, long: 32.65565)
             }),
-            UIAction(title: "Open in AR (BETA)".localized(), image: UIImage(systemName: "rotate.3d"), handler: { (_) in
+            UIAction(title: "Open in AR (BETA)".localized(), image: UIImage(systemName: "arkit"), handler: { (_) in
                 let alert = UIAlertController(title: "AR Directions".localized(), message: "Coming soon...".localized(), preferredStyle: .alert)
                 alert.view.tintColor = UIColor(named: "Kinda Red")
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)

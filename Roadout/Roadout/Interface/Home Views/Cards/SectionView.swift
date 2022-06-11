@@ -109,7 +109,7 @@ class SectionView: UIView {
             
             let letterBtn = UIButton(frame: CGRect(x: z1 - 30, y: z2 - 15, width: 30, height: 30))
             letterBtn.layer.cornerRadius = 6
-            letterBtn.backgroundColor = UIColor(named: "Icons")!.withAlphaComponent(0.2)
+            letterBtn.backgroundColor = UIColor(named: "IconsTransparent")!
             letterBtn.setTitle(sections[index].name, for: .normal)
             letterBtn.setTitleColor(UIColor(named: "Icons")!, for: .normal)
             
@@ -133,13 +133,13 @@ class SectionView: UIView {
         for subview in sectionImage.subviews {
             guard let btn = subview as? UIButton else { return }
             btn.setTitleColor(UIColor(named: "Icons")!, for: .normal)
-            btn.backgroundColor = UIColor(named: "Icons")!.withAlphaComponent(0.2)
+            btn.backgroundColor = UIColor(named: "IconsTransparent")!
         }
     }
     
     func showSelectedIndicator(letter: String) {
         let image = UIImage.init(systemName: "\(letter.lowercased()).circle.fill")!.withTintColor(UIColor(named: "Icons")!, renderingMode: .alwaysOriginal)
-        let indicatorView = SPIndicatorView(title: "Section \(letter)", message: "Selected", preset: .custom(image))
+        let indicatorView = SPIndicatorView(title: "Section ".localized() + "\(letter)", message: "Selected".localized(), preset: .custom(image))
         indicatorView.present(duration: 0.7, haptic: .none, completion: nil)
     }
     

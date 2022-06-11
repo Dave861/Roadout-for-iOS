@@ -130,10 +130,10 @@ class HomeViewController: UIViewController {
         }
         settingsAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
         
-        let findAction = UIAlertAction(title: "Find Spot".localized(), style: .default) { action in
+        let findAction = UIAlertAction(title: "Find Way".localized(), style: .default) { action in
             DispatchQueue.main.async {
                 let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
-                let indicatorView = SPIndicatorView(title: "Finding...", message: "Please wait", preset: .custom(indicatorIcon))
+                let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
                 indicatorView.dismissByDrag = false
                 indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
             }
@@ -170,7 +170,7 @@ class HomeViewController: UIViewController {
         }
         findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
         
-        let expressAction = UIAlertAction(title: "Express Reserve".localized(), style: .default) { action in
+        let expressAction = UIAlertAction(title: "Express Lane".localized(), style: .default) { action in
             guard let coord = self.mapView.myLocation?.coordinate else {
                 self.addExpressPickView()
                 return
@@ -184,8 +184,8 @@ class HomeViewController: UIViewController {
         cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
         
         alert.addAction(settingsAction)
-        alert.addAction(findAction)
         alert.addAction(expressAction)
+        alert.addAction(findAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
@@ -284,10 +284,18 @@ class HomeViewController: UIViewController {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
                 self.navigationController?.pushViewController(vc, animated: true)
             }),
-            UIAction(title: "Find Spot".localized(), image: UIImage(systemName: "binoculars"), handler: { (_) in
+            UIAction(title: "Express Lane".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
+                guard let coord = self.mapView.myLocation?.coordinate else {
+                    self.addExpressPickView()
+                    return
+                }
+                currentLocationCoord = coord
+                self.addExpressPickView()
+            }),
+            UIAction(title: "Find Way".localized(), image: UIImage(systemName: "binoculars"), handler: { (_) in
                 DispatchQueue.main.async {
                     let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
-                    let indicatorView = SPIndicatorView(title: "Finding...", message: "Please wait", preset: .custom(indicatorIcon))
+                    let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
                     indicatorView.dismissByDrag = false
                     indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
                 }
@@ -321,15 +329,7 @@ class HomeViewController: UIViewController {
                         }
                     }
                 }
-            }),
-            UIAction(title: "Express Reserve".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
-                guard let coord = self.mapView.myLocation?.coordinate else {
-                    self.addExpressPickView()
-                    return
-                }
-                currentLocationCoord = coord
-                self.addExpressPickView()
-            }),
+            })
         ]
     }
     var moreMenu: UIMenu {
@@ -409,11 +409,11 @@ class HomeViewController: UIViewController {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
             switch result {
-            case .success():
-                self.manageHomeScreenTutorial()
-            case .failure(let err):
-                print(err)
-                self.userNotFoundAbort()
+                case .success():
+                    self.manageHomeScreenTutorial()
+                case .failure(let err):
+                    print(err)
+                    self.userNotFoundAbort()
             }
         }
     }

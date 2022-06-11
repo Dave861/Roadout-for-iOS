@@ -122,7 +122,7 @@ Roadout</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLO-wU-a6V">
-                                <rect key="frame" x="103" y="835" width="228" height="20"/>
+                                <rect key="frame" x="104" y="835" width="228" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ecw-Da-bVc"/>
                                 </constraints>
@@ -136,7 +136,7 @@ Roadout</string>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="9Yz-ch-mrs">
-                                <rect key="frame" x="83" y="826" width="27" height="29"/>
+                                <rect key="frame" x="82" y="826" width="27" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="27" id="LUd-Bx-zbM"/>
                                     <constraint firstAttribute="height" constant="29" id="jWV-nv-hB4"/>
@@ -152,10 +152,10 @@ Roadout</string>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IlP-X7-EFR" secondAttribute="trailing" constant="20" id="A33-e8-huD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KLO-wU-a6V" secondAttribute="bottom" constant="7" id="GjD-Tv-4PV"/>
                             <constraint firstItem="NsK-uO-oiw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LuG-3b-2y6"/>
+                            <constraint firstItem="KLO-wU-a6V" firstAttribute="leading" secondItem="9Yz-ch-mrs" secondAttribute="trailing" constant="-5" id="M0i-gf-fWi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n2K-vz-CNh" secondAttribute="trailing" constant="20" id="RGq-Lk-rP8"/>
-                            <constraint firstItem="KLO-wU-a6V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="10" id="WQI-6D-nqU"/>
+                            <constraint firstItem="KLO-wU-a6V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="11" id="WQI-6D-nqU"/>
                             <constraint firstItem="IlP-X7-EFR" firstAttribute="top" secondItem="n2K-vz-CNh" secondAttribute="bottom" constant="17" id="Y7q-gP-vvs"/>
-                            <constraint firstItem="9Yz-ch-mrs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-110.5" id="asw-qk-9gp"/>
                             <constraint firstItem="n2K-vz-CNh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="f6h-XH-YTN"/>
                             <constraint firstItem="qkX-ad-waa" firstAttribute="top" secondItem="IlP-X7-EFR" secondAttribute="bottom" constant="8" symbolic="YES" id="fW3-Bs-Zmp"/>
                             <constraint firstItem="qkX-ad-waa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="h9o-eu-U49"/>
@@ -1072,6 +1072,7 @@ Roadout</string>
                         <outlet property="icon1" destination="Nr1-7K-05A" id="dxF-Rs-e6K"/>
                         <outlet property="icon2" destination="7fe-Zj-90a" id="rVn-DT-wwg"/>
                         <outlet property="icon3" destination="Bqw-3W-Rt7" id="wfv-dI-2t3"/>
+                        <outlet property="titleLbl" destination="cWm-xB-GCl" id="4lF-2z-E72"/>
                         <outlet property="titleLbl1" destination="4A2-Xd-OOU" id="70H-1o-dbs"/>
                         <outlet property="titleLbl2" destination="h9J-oS-Hbw" id="3ne-7S-4gV"/>
                         <outlet property="titleLbl3" destination="xPe-AS-BJl" id="iPz-NF-eZN"/>
@@ -1844,9 +1845,8 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Link to rating to my account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxy-uA-cQn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link to rating to my account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxy-uA-cQn">
                                         <rect key="frame" x="8" y="51" width="212" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1857,9 +1857,8 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                                         <color key="textColor" name="Main Yellow"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9uP-NR-KSp">
-                                        <rect key="frame" x="316" y="46" width="49" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9uP-NR-KSp">
+                                        <rect key="frame" x="314" y="46" width="51" height="31"/>
                                         <color key="tintColor" name="Main Yellow"/>
                                         <color key="onTintColor" name="Main Yellow"/>
                                     </switch>
@@ -1867,10 +1866,14 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                                 <color key="backgroundColor" name="Secondary Detail"/>
                                 <constraints>
                                     <constraint firstItem="l5U-3I-1xv" firstAttribute="leading" secondItem="qDi-YY-wAg" secondAttribute="leading" constant="8" id="DOi-id-Bqh"/>
+                                    <constraint firstAttribute="trailing" secondItem="9uP-NR-KSp" secondAttribute="trailing" constant="11" id="KTp-T7-Lzj"/>
                                     <constraint firstItem="l5U-3I-1xv" firstAttribute="top" secondItem="qDi-YY-wAg" secondAttribute="top" constant="13" id="XRs-Ia-jqq"/>
                                     <constraint firstItem="AbW-J7-OFs" firstAttribute="top" secondItem="qDi-YY-wAg" secondAttribute="top" constant="11" id="ajL-WT-kTr"/>
                                     <constraint firstAttribute="height" constant="86" id="iTi-Pr-8TU"/>
+                                    <constraint firstAttribute="bottom" secondItem="mxy-uA-cQn" secondAttribute="bottom" constant="14" id="kBA-JR-EwZ"/>
                                     <constraint firstAttribute="trailing" secondItem="AbW-J7-OFs" secondAttribute="trailing" constant="11" id="m8h-sr-9oa"/>
+                                    <constraint firstItem="mxy-uA-cQn" firstAttribute="leading" secondItem="qDi-YY-wAg" secondAttribute="leading" constant="8" id="nSW-Xb-8jb"/>
+                                    <constraint firstAttribute="bottom" secondItem="9uP-NR-KSp" secondAttribute="bottom" constant="9" id="tq0-W0-454"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1904,13 +1907,17 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bigTitleLbl" destination="XdA-Zi-yaX" id="WgB-5b-gmb"/>
                         <outlet property="cancelBtn" destination="kZY-mP-UfQ" id="r2d-LO-mDU"/>
                         <outlet property="card1" destination="LSj-tt-4w6" id="RDv-9J-ege"/>
                         <outlet property="card2" destination="Nfj-Lo-Wtr" id="bWD-me-LXk"/>
                         <outlet property="card3" destination="qDi-YY-wAg" id="3Ty-6J-0mc"/>
+                        <outlet property="linkRatingTextLbl" destination="mxy-uA-cQn" id="x62-QF-A4k"/>
                         <outlet property="linkSwitch" destination="9uP-NR-KSp" id="8ty-Nc-nog"/>
                         <outlet property="overallImpressionLbl" destination="AbW-J7-OFs" id="iEh-JB-2SE"/>
+                        <outlet property="overallLbl" destination="0YL-94-B3X" id="0n7-gi-wtz"/>
                         <outlet property="parkingBadBtn" destination="i3d-6S-h0h" id="poA-Jb-3f4"/>
+                        <outlet property="parkingExperienceLbl" destination="q7d-Ov-lIY" id="5Oj-Jb-uiY"/>
                         <outlet property="parkingGoodBtn" destination="hnF-Kq-2R6" id="lJb-Dv-Lb2"/>
                         <outlet property="parkingImpressionLbl" destination="o0D-7W-BTW" id="Kty-81-5Oq"/>
                         <outlet property="parkingOkBtn" destination="zjo-6Z-PzN" id="Cmq-He-0c7"/>
@@ -1918,10 +1925,12 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                         <outlet property="reasonBtn1" destination="ogM-Li-uUG" id="rw9-vL-uTj"/>
                         <outlet property="reasonBtn2" destination="k88-FX-pdP" id="v0t-Ar-Gur"/>
                         <outlet property="reservingBadBtn" destination="qdR-Cm-WGb" id="6FQ-b3-0yQ"/>
+                        <outlet property="reservingExperienceLbl" destination="2dS-ZU-gLt" id="aWI-8h-7ff"/>
                         <outlet property="reservingGoodBtn" destination="E9Z-YY-PUq" id="9Lr-MD-czK"/>
                         <outlet property="reservingImpressionLbl" destination="QWa-QI-vyJ" id="EQm-qi-47v"/>
                         <outlet property="reservingOkBtn" destination="hXv-L5-kgw" id="cKe-gT-eCP"/>
                         <outlet property="reservingReasonLbl" destination="OEX-IP-aOc" id="sWE-8w-dwz"/>
+                        <outlet property="scoreTextLbl" destination="l5U-3I-1xv" id="ISG-bw-kHV"/>
                         <outlet property="submitBtn" destination="wWE-C0-nqI" id="g03-mf-BAd"/>
                     </connections>
                 </viewController>

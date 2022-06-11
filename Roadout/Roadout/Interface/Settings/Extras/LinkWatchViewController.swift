@@ -13,6 +13,10 @@ class LinkWatchViewController: UIViewController {
     let connectTitle = NSAttributedString(string: "Connect".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
     @IBOutlet weak var cardView: UIView!
+    
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var cancelBtn: UIButton!
+    
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
     @objc func blurTapped() {
@@ -39,7 +43,7 @@ class LinkWatchViewController: UIViewController {
         if WCSession.default.isReachable {
             activityIndicator.isHidden = false
             activityIndicator.startAnimating()
-            statusLbl.text = "Connecting..."
+            statusLbl.text = "Connecting...".localized()
             
             let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
             let userName = UserManager.sharedInstance.userName
@@ -73,6 +77,10 @@ class LinkWatchViewController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
         
+        statusLbl.text = "Tap to connect".localized()
+        titleLbl.text = "Link Apple Watch".localized()
+        cancelBtn.setTitle("Cancel".localized(), for: .normal)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,7 +95,7 @@ class LinkWatchViewController: UIViewController {
             self.connectBtn.alpha = 0.75
             self.connectBtn.isEnabled = false
             self.activityIndicator.isHidden = false
-            self.statusLbl.text = "No Apple Watch found"
+            self.statusLbl.text = "No Apple Watch found".localized()
         }
     }
     
@@ -96,7 +104,7 @@ class LinkWatchViewController: UIViewController {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             self.activityIndicator.stopAnimating()
-            self.statusLbl.text = "Success"
+            self.statusLbl.text = "Success".localized()
             UIView.animate(withDuration: 0.1) {
               self.blurEffect.alpha = 0
             } completion: { done in

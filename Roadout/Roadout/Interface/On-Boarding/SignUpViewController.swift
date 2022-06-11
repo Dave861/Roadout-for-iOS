@@ -121,7 +121,7 @@ class SignUpViewController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
         
-        indicatorView = SPIndicatorView(title: "Loading...", message: "Please wait", preset: .custom(indicatorImage))
+        indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorImage))
         indicatorView.dismissByDrag = false
     }
     

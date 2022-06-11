@@ -295,6 +295,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             vc.previewLocationName = self.results[indexPath.row].name
             vc.previewLocationDistance = cell.distanceLbl.text ?? "- km"
             vc.previewLocationFreeSpots = self.results[indexPath.row].freeSpots
+            vc.previewLocationSections = self.results[indexPath.row].sections.count
             vc.previewLocationColor = cell.gaugeIcon.tintColor
             return vc
         }, actionProvider: nil)

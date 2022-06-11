@@ -46,7 +46,7 @@ class ExpressPickView: UIView {
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
         
-        self.statusLbl.text = "Tap a location to find a free spot there"
+        self.statusLbl.text = "Tap a location to find a free spot there".localized()
         
         collectionView.register(UINib(nibName: "ExpressPickCell", bundle: nil), forCellWithReuseIdentifier: "ExpressPickCell")
         collectionView.delegate = self
@@ -70,8 +70,8 @@ class ExpressPickView: UIView {
     
     @objc func showNoFreeSpotAlert() {
         DispatchQueue.main.async {
-            self.statusLbl.text = "Tap a location to find a free spot there"
-            let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free places in this location at the moment", preferredStyle: .alert)
+            self.statusLbl.text = "Tap a location to find a free spot there".localized()
+            let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free places in this location at the moment".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "ExpressFocus")!
             alert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
             self.parentViewController().present(alert, animated: true, completion: nil)
@@ -90,7 +90,7 @@ extension ExpressPickView: UICollectionViewDelegate, UICollectionViewDataSource 
         cell.nameLbl.text = parkLocations[indexPath.row].name
         
         let occupancyPercent = 100 -  Int(Float(parkLocations[indexPath.row].freeSpots)/Float(parkLocations[indexPath.row].totalSpots)*100)
-        cell.occupancyLbl.text = "\(occupancyPercent)% occupied"
+        cell.occupancyLbl.text = "\(occupancyPercent)% " + "occupied".localized()
         
         if currentLocationCoord != nil {
             let c1 = CLLocation(latitude: parkLocations[indexPath.row].latitude, longitude: parkLocations[indexPath.row].longitude)
@@ -111,7 +111,7 @@ extension ExpressPickView: UICollectionViewDelegate, UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        self.statusLbl.text = "Loading..."
+        self.statusLbl.text = "Loading...".localized()
         selectedParkLocationIndex = indexPath.row
         FunctionsManager.sharedInstance.foundSpot = nil
         FunctionsManager.sharedInstance.expressReserveInLocation(sectionIndex: 0, location: parkLocations[indexPath.row])

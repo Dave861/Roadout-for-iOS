@@ -81,6 +81,7 @@ class ReservationManager {
         let _headers: HTTPHeaders = ["Content-Type":"application/json"]
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         let convertedDate = dateFormatter.string(from: date)
         let params: Parameters = ["date": convertedDate, "userID": userID]
         
