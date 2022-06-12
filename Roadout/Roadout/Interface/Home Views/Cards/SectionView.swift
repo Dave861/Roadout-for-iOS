@@ -140,6 +140,7 @@ class SectionView: UIView {
     func showSelectedIndicator(letter: String) {
         let image = UIImage.init(systemName: "\(letter.lowercased()).circle.fill")!.withTintColor(UIColor(named: "Icons")!, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Section ".localized() + "\(letter)", message: "Selected".localized(), preset: .custom(image))
+        indicatorView.backgroundColor = UIColor(named: "Background")!
         indicatorView.present(duration: 0.7, haptic: .none, completion: nil)
     }
     

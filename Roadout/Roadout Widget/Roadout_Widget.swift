@@ -76,7 +76,7 @@ struct Provider: IntentTimelineProvider {
 
 struct PlaceholderView: View {
     var body: some View {
-        RoadoutView(date: Date(), spots1: 10, spots2: 10, freeSpots1: 5, freeSpots2: 5, sections1: 2, sections2: 2, location1: "Location 1", location2: "Location 2")
+        RoadoutView(date: Date(), spots1: 10, spots2: 10, freeSpots1: 5, freeSpots2: 5, coords1: "-, -", coords2: "-, -", location1: "Location 1", location2: "Location 2")
     }
 }
 struct WidgetEntryView: View {
@@ -88,8 +88,8 @@ struct WidgetEntryView: View {
                     spots2: entry.configuration.location2?.totalSpots as? Int ?? 0,
                     freeSpots1: entry.configuration.location1?.freeSpots as? Int ?? 0,
                     freeSpots2: entry.configuration.location2?.freeSpots as? Int ?? 0,
-                    sections1: entry.configuration.location1?.sections as? Int ?? 0,
-                    sections2: entry.configuration.location2?.sections as? Int ?? 0,
+                    coords1: entry.configuration.location1?.coords ?? "-, -",
+                    coords2: entry.configuration.location2?.coords ?? "-, -",
                     location1: entry.configuration.location1?.locationName ?? "No Location",
                     location2: entry.configuration.location2?.locationName ?? "No Location")
     }
@@ -102,8 +102,8 @@ struct RoadoutView: View {
     var spots2: Int
     var freeSpots1: Int
     var freeSpots2: Int
-    var sections1: Int
-    var sections2: Int
+    var coords1: String
+    var coords2: String
     var location1: String
     var location2: String
 
@@ -133,15 +133,14 @@ struct RoadoutView: View {
                                 .font(.system(size: 16, weight: .regular))
                         }
                     }
-                    HStack(alignment: .center, spacing: 6) {
-                        Image(systemName: "grid")
+                    HStack(alignment: .center, spacing: 3) {
+                        Text("")
+                        Image(systemName: "mappin")
                             .resizable()
-                            .frame(width: 17, height: 17, alignment: .center)
+                            .frame(width: 9, height: 22, alignment: .center)
                             .foregroundColor(Color("AccentColor"))
                         HStack(alignment: .center, spacing: 4) {
-                            Text("\(sections1)")
-                                .font(.system(size: 16, weight: .medium))
-                            Text("sections")
+                            Text(" " + coords1)
                                 .font(.system(size: 16, weight: .regular))
                         }
                         Spacer()
@@ -185,15 +184,14 @@ struct RoadoutView: View {
                                     .font(.system(size: 16, weight: .regular))
                             }
                         }
-                        HStack(alignment: .center, spacing: 6) {
-                            Image(systemName: "grid")
+                        HStack(alignment: .center, spacing: 3) {
+                            Text("")
+                            Image(systemName: "mappin")
                                 .resizable()
-                                .frame(width: 17, height: 17, alignment: .center)
+                                .frame(width: 9, height: 22, alignment: .center)
                                 .foregroundColor(Color("AccentColor"))
                             HStack(alignment: .center, spacing: 4) {
-                                Text("\(sections1)")
-                                    .font(.system(size: 16, weight: .medium))
-                                Text("sections")
+                                Text(" " + coords1)
                                     .font(.system(size: 16, weight: .regular))
                             }
                             Spacer()
@@ -235,15 +233,14 @@ struct RoadoutView: View {
                                     .font(.system(size: 16, weight: .regular))
                             }
                         }
-                        HStack(alignment: .center, spacing: 6) {
-                            Image(systemName: "grid")
+                        HStack(alignment: .center, spacing: 3) {
+                            Text("")
+                            Image(systemName: "mappin")
                                 .resizable()
-                                .frame(width: 17, height: 17, alignment: .center)
+                                .frame(width: 9, height: 22, alignment: .center)
                                 .foregroundColor(Color("Dark Orange"))
                             HStack(alignment: .center, spacing: 4) {
-                                Text("\(sections2)")
-                                    .font(.system(size: 16, weight: .medium))
-                                Text("sections")
+                                Text(" " + coords2)
                                     .font(.system(size: 16, weight: .regular))
                             }
                             Spacer()

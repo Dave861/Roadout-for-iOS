@@ -15,7 +15,11 @@ class CancelledView: UIView {
     @IBOutlet weak var doneBtn: UIButton!
     
     @IBAction func doneTapped(_ sender: Any) {
-        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        ReservationManager.sharedInstance.checkForReservation(Date(), userID: id) { _ in
+            //API call for continuity when app is opened again (to prevent showing unlock bar)
+            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+        }
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {

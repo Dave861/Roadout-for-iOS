@@ -135,6 +135,7 @@ class HomeViewController: UIViewController {
                 let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
                 let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
                 indicatorView.dismissByDrag = false
+                indicatorView.backgroundColor = UIColor(named: "Background")!
                 indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
             }
             FunctionsManager.sharedInstance.foundSpot = nil
@@ -297,6 +298,7 @@ class HomeViewController: UIViewController {
                     let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
                     let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
                     indicatorView.dismissByDrag = false
+                    indicatorView.backgroundColor = UIColor(named: "Background")!
                     indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
                 }
                 FunctionsManager.sharedInstance.foundSpot = nil
@@ -374,19 +376,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func manageHomeScreenTutorial() {
-        if UserDefaults.roadout?.bool(forKey: "ro.roadout.Roadout.seenHomeScreenTutorial") == false {
-        
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "TutorialVC") as! TutorialViewController
-            vc.tutorialSet = vc.homeTutorialSet
-            
-            self.present(vc, animated: true) {
-                UserDefaults.roadout?.set(true, forKey: "ro.roadout.Roadout.seenHomeScreenTutorial")
-            }
-        }
-    }
-    
     //MARK: -View Configuration-
     
     override func viewWillAppear(_ animated: Bool) {
@@ -410,7 +399,7 @@ class HomeViewController: UIViewController {
         AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
             switch result {
                 case .success():
-                    self.manageHomeScreenTutorial()
+                    print("User exists.")
                 case .failure(let err):
                     print(err)
                     self.userNotFoundAbort()

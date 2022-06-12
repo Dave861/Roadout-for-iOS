@@ -17,6 +17,8 @@ class HelpViewController: UIViewController {
                     ProblemManager.sharedInstance.problem3,
                     ProblemManager.sharedInstance.problem4]
     
+    @IBOutlet weak var titleLbl: UILabel!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var doneBtn: UIButton!
@@ -61,6 +63,8 @@ class HelpViewController: UIViewController {
         doneBtn.layer.cornerRadius = 13.0
         doneBtn.setAttributedTitle(doneTitle, for: .normal)
         moreBtn.setAttributedTitle(helpTitle, for: .normal)
+        
+        titleLbl.text = "Help Center".localized()
         
         collectionView.delegate = self
         collectionView.dataSource = self

@@ -11,89 +11,75 @@ struct TutorialItem {
     var title: String
     var description: String
     var icon: UIImage
+    var tintColor: UIColor
 }
 
 class TutorialViewController: UIViewController {
+        
+    let tutorialSet = [
+        TutorialItem(title: "Search Bar".localized(), description: "Use the Search Bar to find park locations near streets or places you need to get to.".localized(), icon: UIImage(systemName: "magnifyingglass")!, tintColor: UIColor(named: "Main Yellow")!),
+        TutorialItem(title: "Markers".localized(), description: "Parking lots are highlighted on the map using markers, you can zoom in and select them to easily get more info.".localized(), icon: UIImage(systemName: "mappin.and.ellipse")!, tintColor: UIColor(named: "Second Orange")!),
+        TutorialItem(title: "Find Way".localized(), description: "Find Way is the fastest way to find a free parking spot near you. Just tap find way and Roadout will go through all parking lots near you and search for a free spot to reserve.".localized(), icon: UIImage(systemName: "binoculars")!, tintColor: UIColor(named: "Greyish")!),
+        TutorialItem(title: "Express Lane".localized(), description: "With Express Lane you can quickly find a free parking spot in a location you pick. Just tap a location in the Express Lane section and the first free spot will be presented to you.".localized(), icon: UIImage(systemName: "flag.2.crossed")!, tintColor: UIColor(named: "ExpressFocus")!),
+        TutorialItem(title: "Settings".localized(), description: "In Settings you can customize Roadout and use Reminders to keep you from forgetting to make a reservation. You also have user control options here.".localized(), icon:UIImage(systemName: "gearshape.2")!, tintColor: UIColor(named: "Dark Yellow")!),
+        TutorialItem(title: "About and Help", description: "Have any questions? Check out the FAQ & Support section. Additionally during an active reservation there also is the Help Center to assist you with any problems.".localized(), icon: UIImage(systemName: "questionmark.circle")!, tintColor: UIColor(named: "Icons")!)]
     
-    var tutorialSet = [TutorialItem]()
-    
-    let homeTutorialSet = [TutorialItem(title: "Search Bar".localized(), description: "Use the search bar to find park locations near streets or places you need to get to.".localized(), icon: UIImage(systemName: "magnifyingglass")!),
-                           TutorialItem(title: "Markers".localized(), description: "Parking locations are highlighted on the map using markers, you can zoom in and select them.".localized(), icon: UIImage(systemName: "mappin.and.ellipse")!),
-                           TutorialItem(title: "Menu".localized(), description: "The menu has other methods of finding a parking spot, you can try them right now!".localized(), icon: UIImage(systemName: "ellipsis.circle")!)]
-    
-    let settingsTutorialSet = [TutorialItem(title: "User Control".localized(), description: "Here you edit your account and see all your data.".localized(), icon: UIImage(systemName: "person.fill")!),
-                               TutorialItem(title: "App Options and Features".localized(), description: "You can customize Roadout and use Reminders to keep you from forgetting to make a reservation".localized(), icon:UIImage(systemName: "arrow.up.forward.app")!),
-                               TutorialItem(title: "About and Help", description: "Have any questions? Reach out via FAQ & Support".localized(), icon: UIImage(systemName: "questionmark.circle")!)]
-    
-    @IBOutlet weak var cardView: UIView!
-    
-    @IBOutlet weak var blurEffect: UIVisualEffectView!
-    
-    @objc func blurTapped() {
-        UIView.animate(withDuration: 0.1) {
-            self.blurEffect.alpha = 0
-        } completion: { done in
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    @IBOutlet weak var closeButton: UIButton!
-    
-    @IBAction func closeTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.1) {
-            self.blurEffect.alpha = 0
-        } completion: { done in
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
+    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let skipTitle = NSAttributedString(
+        string: "Skip".localized(),
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Greyish")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
+    )
     
     @IBOutlet weak var titleLbl: UILabel!
     
-    @IBOutlet weak var icon1: UIImageView!
-    @IBOutlet weak var icon2: UIImageView!
-    @IBOutlet weak var icon3: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var titleLbl1: UILabel!
-    @IBOutlet weak var titleLbl2: UILabel!
-    @IBOutlet weak var titleLbl3: UILabel!
+    @IBOutlet weak var continueBtn: UIButton!
+    @IBOutlet weak var skipBtn: UIButton!
     
-    @IBOutlet weak var descriptionText1: UILabel!
-    @IBOutlet weak var descriptionText2: UILabel!
-    @IBOutlet weak var descriptionText3: UILabel!
-
-    func setTutorial() {
-        icon1.image = tutorialSet[0].icon
-        titleLbl1.text = tutorialSet[0].title
-        descriptionText1.text = tutorialSet[0].description
-        
-        icon2.image = tutorialSet[1].icon
-        titleLbl2.text = tutorialSet[1].title
-        descriptionText2.text = tutorialSet[1].description
-        
-        icon3.image = tutorialSet[2].icon
-        titleLbl3.text = tutorialSet[2].title
-        descriptionText3.text = tutorialSet[2].description
+    @IBAction func continueTapped(_ sender: Any) {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+        let sb = UIStoryboard(name: "Home", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
+        self.view.window?.rootViewController = vc
+        self.view.window?.makeKeyAndVisible()
+    }
+    
+    @IBAction func skipTapped(_ sender: Any) {
+        let sb = UIStoryboard(name: "Home", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
+        self.view.window?.rootViewController = vc
+        self.view.window?.makeKeyAndVisible()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 19.0
-        setTutorial()
-        closeButton.setTitle("", for: .normal)
-        closeButton.layer.cornerRadius = closeButton.frame.height/2
-        
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
-        blurEffect.addGestureRecognizer(tapRecognizer)
-        
         titleLbl.text = "Tutorial".localized()
+        continueBtn.layer.cornerRadius = 13.0
+        continueBtn.setAttributedTitle(continueTitle, for: .normal)
+        skipBtn.setAttributedTitle(skipTitle, for: .normal)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        UIView.animate(withDuration: 0.5) {
-            self.blurEffect.alpha = 1
-        }
-    }
+  
    
 }
+extension TutorialViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tutorialSet.count
+    }
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TutorialCell") as! TutorialCell
+        cell.titleLabel.text = tutorialSet[indexPath.row].title
+        cell.infoLabel.text = tutorialSet[indexPath.row].description
+        cell.iconImage.image = tutorialSet[indexPath.row].icon
+        cell.iconImage.tintColor = tutorialSet[indexPath.row].tintColor
+        
+        return cell
+    }
+    
+}

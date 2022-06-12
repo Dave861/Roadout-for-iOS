@@ -92,19 +92,23 @@ class UnlockedView: UIView {
                 self.parentViewController().present(alert, animated: true, completion: nil)
             }),
             UIAction(title: "Done".localized(), image: UIImage(systemName: "xmark"), handler: { (_) in
-                let rateAlert = UIAlertController(title: "Rate".localized(), message: "Would you like to rate your experience?".localized(), preferredStyle: .alert)
-                let yesAction = UIAlertAction(title: "Yes".localized(), style: .cancel) { _ in
-                    NotificationCenter.default.post(name: .showRateReservationID, object: nil)
-                 }
-                let noAction = UIAlertAction(title: "No".localized(), style: .default) { _ in
-                    rateAlert.dismiss(animated: true, completion: nil)
-                 }
-                rateAlert.addAction(noAction)
-                rateAlert.addAction(yesAction)
-                rateAlert.view.tintColor = UIColor(named: "Main Yellow")
-                 
-                self.parentViewController().present(rateAlert, animated: true, completion: nil)
-                NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+                let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+                ReservationManager.sharedInstance.checkForReservation(Date(), userID: id) { _ in
+                    //API call for continuity when app is opened again (to prevent showing unlock bar)
+                    let rateAlert = UIAlertController(title: "Rate".localized(), message: "Would you like to rate your experience?".localized(), preferredStyle: .alert)
+                    let yesAction = UIAlertAction(title: "Yes".localized(), style: .cancel) { _ in
+                        NotificationCenter.default.post(name: .showRateReservationID, object: nil)
+                     }
+                    let noAction = UIAlertAction(title: "No".localized(), style: .default) { _ in
+                        rateAlert.dismiss(animated: true, completion: nil)
+                     }
+                    rateAlert.addAction(noAction)
+                    rateAlert.addAction(yesAction)
+                    rateAlert.view.tintColor = UIColor(named: "Main Yellow")
+                     
+                    self.parentViewController().present(rateAlert, animated: true, completion: nil)
+                    NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+                }
             })
         ]
     }

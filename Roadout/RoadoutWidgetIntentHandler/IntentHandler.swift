@@ -20,7 +20,7 @@ class IntentHandler: INExtension, ConfigurationIntentHandling {
                         widgetParkLocation.rID = parkLocation.rID
                         widgetParkLocation.locationName = parkLocation.name
                         widgetParkLocation.totalSpots = parkLocation.totalSpots as NSNumber
-                        widgetParkLocation.sections = parkLocation.sections.count as NSNumber
+                        widgetParkLocation.coords = "\(Double(round(1000 * parkLocation.latitude) / 1000)), \(Double(round(1000 * parkLocation.longitude) / 1000))"
                         return widgetParkLocation
                     }
                     let collection = INObjectCollection(items: widgetParkLocations)
@@ -43,7 +43,7 @@ class IntentHandler: INExtension, ConfigurationIntentHandling {
                         widgetParkLocation.rID = parkLocation.rID
                         widgetParkLocation.locationName = parkLocation.name
                         widgetParkLocation.totalSpots = parkLocation.totalSpots as NSNumber
-                        widgetParkLocation.sections = parkLocation.sections.count as NSNumber
+                        widgetParkLocation.coords = "\(Double(round(1000 * parkLocation.latitude) / 1000)), \(Double(round(1000 * parkLocation.longitude) / 1000))"
                         return widgetParkLocation
                     }
                     let collection = INObjectCollection(items: widgetParkLocations)

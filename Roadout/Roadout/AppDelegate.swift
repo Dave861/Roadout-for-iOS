@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ConnectionManager.sharedInstance.observeReachability()
         
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
+            //self.addShortcutActionsTo(application)
             guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return true }
             ReservationManager.sharedInstance.checkForReservation(Date(), userID: id as! String) { result in
                 switch result {
@@ -62,6 +63,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    /*func addShortcutActionsTo(_ application: UIApplication) {
+        let findShortcut = UIMutableApplicationShortcutItem(type: "FindWay",
+                                                         localizedTitle: "Find Way".localized(),
+                                                         localizedSubtitle: "",
+                                                         icon: UIApplicationShortcutIcon(systemImageName: "binoculars"),
+                                                         userInfo: nil)
+
+        let expressShortcut = UIMutableApplicationShortcutItem(type: "ExpressLane",
+                                                         localizedTitle: "Express Lane".localized(),
+                                                         localizedSubtitle: "",
+                                                         icon: UIApplicationShortcutIcon(systemImageName: "flag.2.crossed"),
+                                                         userInfo: nil)
+
+        application.shortcutItems = [expressShortcut, findShortcut]
+    }*/
 
 }
 extension AppDelegate: WCSessionDelegate {
