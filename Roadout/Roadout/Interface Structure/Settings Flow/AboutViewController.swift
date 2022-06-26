@@ -40,9 +40,9 @@ class AboutViewController: UIViewController {
         appCard.layer.cornerRadius = 12.0
         otherCard.layer.cornerRadius = 12.0
         
-        logoImage.layer.cornerRadius = logoImage.frame.height * 10/57
-        findWayIcon.layer.cornerRadius = logoImage.frame.height * 10/57
-        expressLaneIcon.layer.cornerRadius = logoImage.frame.height * 10/57
+        logoImage.layer.cornerRadius = logoImage.frame.height * 10/53
+        findWayIcon.layer.cornerRadius = logoImage.frame.height * 10/53
+        expressLaneIcon.layer.cornerRadius = logoImage.frame.height * 10/53
         
         localizeLabels()
     }
