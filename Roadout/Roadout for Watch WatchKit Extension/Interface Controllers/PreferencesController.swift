@@ -12,14 +12,16 @@ class PreferencesController: WKInterfaceController {
 
     @IBOutlet weak var nameLbl: WKInterfaceLabel!
     @IBOutlet weak var signOutGroup: WKInterfaceGroup!
+    @IBOutlet weak var userGroup: WKInterfaceGroup!
     
     @IBAction func signOutTapped() {
         UserDefaults.roadout!.set(nil, forKey: "ro.roadout.RoadoutWatch.UserID")
-        presentController(withName: "LinkRoadoutWKI", context: nil)
+        WKInterfaceController.reloadRootPageControllers(withNames: ["LinkRoadoutWKI"], contexts: nil, orientation: .vertical, pageIndex: 0)
     }
     
     override func awake(withContext context: Any?) {
-        signOutGroup.setCornerRadius(20)
+        self.signOutGroup.setCornerRadius(20)
+        self.userGroup.setCornerRadius(15.8)
         guard let id = UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID") else {
             self.nameLbl.setText("Loading Name")
             return

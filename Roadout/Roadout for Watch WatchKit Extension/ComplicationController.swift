@@ -14,7 +14,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
 
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
         let descriptors = [
-            CLKComplicationDescriptor(identifier: "complication", displayName: "Roadout", supportedFamilies: CLKComplicationFamily.allCases)
+            CLKComplicationDescriptor(identifier: "complication", displayName: "Roadout", supportedFamilies: [.graphicCorner, .graphicCircular, .graphicExtraLarge, .graphicBezel, .utilitarianLarge])
             // Multiple complication support can be added here with more descriptors
         ]
         
@@ -41,8 +41,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Timeline Population
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
-        // Call the handler with the current timeline entry
-        handler(nil)
+        let template = self.makeTemplate(complication: complication)!
+        let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
+        handler(entry)
     }
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {

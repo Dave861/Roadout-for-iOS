@@ -29,13 +29,16 @@ class HomeController: WKInterfaceController {
     @IBOutlet weak var timeLbl: WKInterfaceLabel!
     @IBOutlet weak var topTextLbl: WKInterfaceLabel!
     @IBOutlet weak var spacer2: WKInterfaceLabel!
-    @IBOutlet weak var spacer1: WKInterfaceLabel!
+    @IBOutlet weak var spacer1: WKInterfaceGroup!
     @IBOutlet weak var lockIcon: WKInterfaceImage!
     
     
     @IBOutlet weak var placeholderIcon: WKInterfaceImage!
     @IBOutlet weak var placeholderTopText: WKInterfaceLabel!
     @IBOutlet weak var placeholderBottomText: WKInterfaceLabel!
+    
+    @IBOutlet weak var activeReservationGroup: WKInterfaceGroup!
+    @IBOutlet weak var notActiveReservationGroup: WKInterfaceGroup!
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
@@ -44,10 +47,12 @@ class HomeController: WKInterfaceController {
     
     
     override func awake(withContext context: Any?) {
-        unlockBtnGroup.setCornerRadius(20)
         self.manageObs()
+        self.unlockBtnGroup.setCornerRadius(20)
+        self.activeReservationGroup.setCornerRadius(15.8)
+        self.notActiveReservationGroup.setCornerRadius(15.8)
         if UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID") == nil {
-            presentController(withName: "LinkRoadoutWKI", context: nil)
+            WKInterfaceController.reloadRootPageControllers(withNames: ["LinkRoadoutWKI"], contexts: nil, orientation: .vertical, pageIndex: 0)
         } else {
             self.reloadServerData()
         }
@@ -82,7 +87,7 @@ class HomeController: WKInterfaceController {
     
     override func willActivate() {
         if UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID") == nil {
-            presentController(withName: "LinkRoadoutWKI", context: nil)
+            WKInterfaceController.reloadRootPageControllers(withNames: ["LinkRoadoutWKI"], contexts: nil, orientation: .vertical, pageIndex: 0)
         }
     }
     
@@ -91,14 +96,16 @@ class HomeController: WKInterfaceController {
         lockIcon.setHidden(!visibility)
         topTextLbl.setHidden(!visibility)
         timeLbl.setHidden(!visibility)
-        spacer2.setHidden(!visibility)
         unlockBtnGroup.setHidden(!visibility)
+        activeReservationGroup.setHidden(!visibility)
     }
     
     func makePlaceholderViewVisible(visibility: Bool) {
         placeholderIcon.setHidden(!visibility)
         placeholderTopText.setHidden(!visibility)
         placeholderBottomText.setHidden(!visibility)
+        notActiveReservationGroup.setHidden(!visibility)
+        spacer2.setHidden(!visibility)
     }
 
 }
