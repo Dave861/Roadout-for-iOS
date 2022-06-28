@@ -15,6 +15,8 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var card: UIView!
     
+    @IBOutlet weak var searchTitle: UILabel!
+    
     @IBOutlet weak var searchField: UITextField!
     
     @IBOutlet weak var searchBar: UIView!
@@ -80,6 +82,8 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTitle.text = "Search".localized()
+        
         card.layer.cornerRadius = 12.0
         card.clipsToBounds = true
         card.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -291,12 +295,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         let config = UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchPreviewVC") as! SearchPreviewController
-            vc.preferredContentSize = CGSize(width: cell.frame.width, height: 100)
+            vc.preferredContentSize = CGSize(width: cell.frame.width, height: 250)
+            
             vc.previewLocationName = self.results[indexPath.row].name
             vc.previewLocationDistance = cell.distanceLbl.text ?? "- km"
             vc.previewLocationFreeSpots = self.results[indexPath.row].freeSpots
             vc.previewLocationSections = self.results[indexPath.row].sections.count
+            vc.previewLocationCoords = CLLocationCoordinate2D(latitude: self.results[indexPath.row].latitude, longitude: self.results[indexPath.row].longitude)
+            vc.previewLocationColorName = self.results[indexPath.row].accentColor
             vc.previewLocationColor = cell.gaugeIcon.tintColor
+            
+            
             return vc
         }, actionProvider: nil)
         

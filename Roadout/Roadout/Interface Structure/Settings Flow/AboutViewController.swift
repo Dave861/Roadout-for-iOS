@@ -40,16 +40,16 @@ class AboutViewController: UIViewController {
         appCard.layer.cornerRadius = 12.0
         otherCard.layer.cornerRadius = 12.0
         
-        logoImage.layer.cornerRadius = logoImage.frame.height * 10/53
-        findWayIcon.layer.cornerRadius = logoImage.frame.height * 10/53
-        expressLaneIcon.layer.cornerRadius = logoImage.frame.height * 10/53
+        logoImage.layer.cornerRadius = logoImage.frame.height * 10/45
+        findWayIcon.layer.cornerRadius = logoImage.frame.height * 10/45
+        expressLaneIcon.layer.cornerRadius = logoImage.frame.height * 10/45
         
         localizeLabels()
     }
     
     func localizeLabels() {
         self.titleLbl.text = "About".localized()
-        self.easterEggLbl.text = "Roadout\nMade in Cluj".localized()
+        self.easterEggLbl.text = "Roadout\nMade in Cluj :)".localized()
         self.backButton.setTitle("Back".localized(), for: .normal)
     }
 

@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
         let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
         self.mapView?.animate(to: camera)
         
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func addExpressPickView() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -84,7 +84,7 @@ class HomeViewController: UIViewController {
     let findView = FindView.instanceFromNib()
         
     @objc func showFindCard() {
-            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
                 self.view.subviews.last!.removeFromSuperview()
             } else {
                 self.searchBar.layer.shadowOpacity = 0.0
@@ -184,9 +184,9 @@ class HomeViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
         cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
         
-        alert.addAction(settingsAction)
-        alert.addAction(expressAction)
         alert.addAction(findAction)
+        alert.addAction(expressAction)
+        alert.addAction(settingsAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
@@ -194,9 +194,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchTapArea: UIButton!
     
     @IBOutlet weak var settingsTapArea: UIButton!
-    
-    @IBOutlet weak var titleLbl: UILabel!
-    
+        
     @IBOutlet weak var shareplayView: UIView!
     
     //MARK: -OBSERVERS-
@@ -378,15 +376,25 @@ class HomeViewController: UIViewController {
     
     //MARK: -View Configuration-
     
+    var navBarTapGestureRecognizer: UITapGestureRecognizer!
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: animated)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+        
+        self.navigationController?.navigationBar.addGestureRecognizer(navBarTapGestureRecognizer)
+        navBarTapGestureRecognizer.cancelsTouchesInView = false
+        
         if self.view.subviews.last == payView {
             let payV = payView as! PayView
             payV.reloadMainCard()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.removeGestureRecognizer(navBarTapGestureRecognizer)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -464,10 +472,24 @@ class HomeViewController: UIViewController {
             }
         }
         
+        navBarTapGestureRecognizer = UITapGestureRecognizer(target:self, action: #selector(self.titleTapped(_:)))
         //RE-ADD THIS WHEN GROUP RESERVE IS DONE
         /*
          setUpSharePlay()
          */
+    }
+    
+    @objc func titleTapped(_ sender: UITapGestureRecognizer) {
+
+        let location = sender.location(in: self.navigationController?.navigationBar)
+        let hitView = self.navigationController?.navigationBar.hitTest(location, with: nil)
+
+        guard !(hitView is UIControl) else { return }
+        //Made sure the user didn't tap on other controls
+        
+        guard let coord = self.mapView.myLocation?.coordinate else { return }
+        let camera = GMSCameraPosition.camera(withLatitude: coord.latitude, longitude: coord.longitude, zoom: 15.0)
+        mapView.animate(to: camera)
     }
         
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -616,7 +638,7 @@ extension HomeViewController: GMSMapViewDelegate {
             let colorSnippet = marker.snippet!
             selectedLocationColor = UIColor(named: colorSnippet)!
             selectedLocationCoord = marker.position
-            if self.view.subviews.last != searchBar && self.view.subviews.last != titleLbl && self.view.subviews.last != mapView {
+            if self.view.subviews.last != searchBar && self.view.subviews.last != mapView {
                 self.view.subviews.last?.removeFromSuperview()
             }
             if self.selectedMarker != nil {
@@ -705,7 +727,7 @@ extension HomeViewController {
     }
     //Section Card
     @objc func addSectionCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -732,7 +754,7 @@ extension HomeViewController {
     }
     //Spot Card
     @objc func addSpotCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -759,7 +781,7 @@ extension HomeViewController {
     }
     //Reserve Card
     @objc func addReserveCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -786,7 +808,7 @@ extension HomeViewController {
     }
     //Pay Card
     @objc func addPayCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -813,7 +835,7 @@ extension HomeViewController {
     }
     //Reservation Card
     @objc func addReservationCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -840,7 +862,7 @@ extension HomeViewController {
     }
     //Delay Card
     @objc func addDelayCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -867,7 +889,7 @@ extension HomeViewController {
     }
     //Pay Delay Card
     @objc func addPayDelayCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -894,7 +916,7 @@ extension HomeViewController {
     }
     //Unlock Card
     @objc func addUnlockCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -930,7 +952,7 @@ extension HomeViewController {
             imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
             self.selectedMarker.iconView?.addSubview(imageView)
         }
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -946,7 +968,7 @@ extension HomeViewController {
     }
     
     @objc func showActiveBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -962,7 +984,7 @@ extension HomeViewController {
     }
     
     @objc func showUnlockedBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -978,7 +1000,7 @@ extension HomeViewController {
     }
     
     @objc func showCancelledBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -994,7 +1016,7 @@ extension HomeViewController {
     }
     
     @objc func showNoWifiBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
@@ -1011,7 +1033,7 @@ extension HomeViewController {
     
     //MARK: -Return to Search Bar-
     @objc func returnToSearchBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.titleLbl && self.view.subviews.last != self.mapView {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         }
         self.searchBar.layer.shadowOpacity = 0.1

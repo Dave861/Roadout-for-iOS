@@ -15,7 +15,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.tintColor = UIColor(named: "Main Yellow")
     }
     
     func updateViews(color: UIColor, status: String, explanation: String, iconImage: UIImage) {
@@ -35,7 +35,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
             let location = SiriDataManager.sharedInstance.parkName
             let section = "Section " + SiriDataManager.sharedInstance.parkSection
             let spot = "Spot " + "\(SiriDataManager.sharedInstance.parkSpot)"
-            self.updateViews(color: UIColor(named: "Brownish")!, status: "Confirm", explanation: "\(location) - \(section) - \(spot)", iconImage: UIImage(systemName: "car.fill")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
+            self.updateViews(color: UIColor(named: "Brownish")!, status: "Confirm", explanation: "\(location) - \(section) - \(spot)", iconImage: UIImage(systemName: "binoculars")!.withConfiguration(UIImage.SymbolConfiguration(pointSize: 15, weight: .medium)))
             
         }
         

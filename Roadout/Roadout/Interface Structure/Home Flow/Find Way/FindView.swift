@@ -174,7 +174,7 @@ class FindView: UIView {
         
     func donateInteration() {
         let intent = QuickReserveIntent()
-        intent.suggestedInvocationPhrase = "Find me a parking spot"
+        intent.suggestedInvocationPhrase = "Find me a Parking Spot"
         let interaction = INInteraction(intent: intent, response: nil)
         interaction.donate { err in
             if err == nil {

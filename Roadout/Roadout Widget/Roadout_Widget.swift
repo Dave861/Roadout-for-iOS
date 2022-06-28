@@ -129,8 +129,10 @@ struct RoadoutView: View {
                         HStack(alignment: .center, spacing: 4) {
                             Text("\(freeSpots1)")
                                 .font(.system(size: 16, weight: .medium))
+                                .foregroundColor(.gray)
                             Text("free spots")
                                 .font(.system(size: 16, weight: .regular))
+                                .foregroundColor(.gray)
                         }
                     }
                     HStack(alignment: .center, spacing: 3) {
@@ -142,6 +144,7 @@ struct RoadoutView: View {
                         HStack(alignment: .center, spacing: 4) {
                             Text(" " + coords1)
                                 .font(.system(size: 16, weight: .regular))
+                                .foregroundColor(.gray)
                         }
                         Spacer()
                     }
@@ -153,14 +156,16 @@ struct RoadoutView: View {
                         HStack(alignment: .center, spacing: 4) {
                             Text("\(spots1)")
                                 .font(.system(size: 16, weight: .medium))
+                                .foregroundColor(.gray)
                             Text("spots")
                                 .font(.system(size: 16, weight: .regular))
+                                .foregroundColor(.gray)
                         }
                     }
                     
                 }
             }
-             
+            
         case .systemMedium:
             HStack() {
                 HStack {
@@ -180,8 +185,10 @@ struct RoadoutView: View {
                             HStack(alignment: .center, spacing: 4) {
                                 Text("\(freeSpots1)")
                                     .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(.gray)
                                 Text("free spots")
                                     .font(.system(size: 16, weight: .regular))
+                                    .foregroundColor(.gray)
                             }
                         }
                         HStack(alignment: .center, spacing: 3) {
@@ -193,6 +200,7 @@ struct RoadoutView: View {
                             HStack(alignment: .center, spacing: 4) {
                                 Text(" " + coords1)
                                     .font(.system(size: 16, weight: .regular))
+                                    .foregroundColor(.gray)
                             }
                             Spacer()
                         }
@@ -204,8 +212,10 @@ struct RoadoutView: View {
                             HStack(alignment: .center, spacing: 4) {
                                 Text("\(spots1)")
                                     .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(.gray)
                                 Text("spots")
                                     .font(.system(size: 16, weight: .regular))
+                                    .foregroundColor(.gray)
                             }
                         }
                         Spacer()
@@ -229,8 +239,10 @@ struct RoadoutView: View {
                             HStack(alignment: .center, spacing: 4) {
                                 Text("\(freeSpots2)")
                                     .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(.gray)
                                 Text("free spots")
                                     .font(.system(size: 16, weight: .regular))
+                                    .foregroundColor(.gray)
                             }
                         }
                         HStack(alignment: .center, spacing: 3) {
@@ -242,6 +254,7 @@ struct RoadoutView: View {
                             HStack(alignment: .center, spacing: 4) {
                                 Text(" " + coords2)
                                     .font(.system(size: 16, weight: .regular))
+                                    .foregroundColor(.gray)
                             }
                             Spacer()
                         }
@@ -253,8 +266,10 @@ struct RoadoutView: View {
                             HStack(alignment: .center, spacing: 4) {
                                 Text("\(spots2)")
                                     .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(.gray)
                                 Text("spots")
                                     .font(.system(size: 16, weight: .regular))
+                                    .foregroundColor(.gray)
                             }
                         }
                         Spacer()
@@ -263,10 +278,21 @@ struct RoadoutView: View {
                 .background(Color("Secondary Detail"))
             }
         default:
-            VStack(alignment: .leading, spacing: 30) {
-    
+            if #available(iOS 16, *) {
+                if family == .accessoryCircular {
+                    ZStack {
+                      Image("ThreeThing")
+                            .resizable()
+                        
+                    }
+                    .background(Color(uiColor: UIColor(named: "AccentColor")!.withAlphaComponent(0.4)))
+                }
+            } else {
+                VStack(alignment: .leading, spacing: 30) {
+                    
+                }
+                .frame(width: 200, alignment: .leading)
             }
-            .frame(width: 200, alignment: .leading)
         }
     }
     
@@ -276,11 +302,20 @@ struct RoadoutWidget: Widget {
     private let kind = "Roadout_Widget"
     
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            WidgetEntryView(entry: entry)
+        if #available(iOSApplicationExtension 16.0, *) {
+            return IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+                WidgetEntryView(entry: entry)
+            }
+            .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular])
+            .configurationDisplayName("Roadout")
+            .description("Have Roadout at a glance".widgetLocalize())
+        } else {
+            return IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+                WidgetEntryView(entry: entry)
+            }
+            .supportedFamilies([.systemSmall, .systemMedium])
+            .configurationDisplayName("Roadout")
+            .description("Have Roadout at a glance".widgetLocalize())
         }
-        .supportedFamilies([.systemSmall, .systemMedium])
-        .configurationDisplayName("Roadout")
-        .description("See in real-time free spots at certain locations right on your homescreen".widgetLocalize())
     }
 }
