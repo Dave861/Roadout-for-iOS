@@ -194,7 +194,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchTapArea: UIButton!
     
     @IBOutlet weak var settingsTapArea: UIButton!
-        
+    
     @IBOutlet weak var shareplayView: UIView!
     
     //MARK: -OBSERVERS-
@@ -416,6 +416,20 @@ class HomeViewController: UIViewController {
                     self.userNotFoundAbort()
             }
         }
+        
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip1") == false {
+            settingsTapArea.tooltip(TutorialView1.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+                
+                configuration.backgroundColor = UIColor(named: "Card Background")!
+                configuration.shadowConfiguration.shadowOpacity = 0.1
+                configuration.shadowConfiguration.shadowColor = UIColor.black.cgColor
+                configuration.shadowConfiguration.shadowOffset = .zero
+                
+                return configuration
+            })
+            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip1")
+        }
+        
     }
     
     

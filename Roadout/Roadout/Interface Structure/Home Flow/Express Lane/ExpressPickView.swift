@@ -11,6 +11,8 @@ import CoreLocation
 class ExpressPickView: UIView {
     
     var focusedLocationIndex = 0
+    
+    @IBOutlet weak var tipSourceView: UIView!
         
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -27,6 +29,22 @@ class ExpressPickView: UIView {
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(showNoFreeSpotAlert), name: .showNoFreeSpotInLocationID, object: nil)
+    }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip3") == false {
+            tipSourceView.tooltip(TutorialView3.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+                
+                configuration.backgroundColor = UIColor(named: "Card Background")!
+                configuration.shadowConfiguration.shadowOpacity = 0.1
+                configuration.shadowConfiguration.shadowColor = UIColor.black.cgColor
+                configuration.shadowConfiguration.shadowOffset = .zero
+                
+                return configuration
+            })
+            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip3")
+        }
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {

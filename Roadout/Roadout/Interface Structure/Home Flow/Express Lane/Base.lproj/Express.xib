@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -75,6 +75,14 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gu-K7-5JI">
+                    <rect key="frame" x="43" y="0.0" width="27" height="45"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="7ZD-Mp-mbU"/>
+                        <constraint firstAttribute="width" constant="27" id="P5R-jn-uQu"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="2jk-LC-OM6"/>
             <color key="backgroundColor" name="Background"/>
@@ -86,17 +94,20 @@
                 <constraint firstItem="JYg-U5-60E" firstAttribute="leading" secondItem="2jk-LC-OM6" secondAttribute="leading" constant="12" id="Oa6-2e-gM3"/>
                 <constraint firstItem="Qnz-cx-NYz" firstAttribute="leading" secondItem="2jk-LC-OM6" secondAttribute="leading" constant="12" id="QGe-2O-YbL"/>
                 <constraint firstItem="Qnz-cx-NYz" firstAttribute="top" secondItem="2jk-LC-OM6" secondAttribute="top" constant="12" id="TTf-wZ-egW"/>
+                <constraint firstItem="0gu-K7-5JI" firstAttribute="leading" secondItem="Qnz-cx-NYz" secondAttribute="trailing" constant="1" id="ZTB-FT-ZsW"/>
                 <constraint firstItem="2jk-LC-OM6" firstAttribute="bottom" secondItem="kmd-x2-4rR" secondAttribute="bottom" constant="12" id="jDW-he-Wgb"/>
                 <constraint firstItem="kmd-x2-4rR" firstAttribute="leading" secondItem="2jk-LC-OM6" secondAttribute="leading" constant="12" id="pSs-9F-2Zr"/>
                 <constraint firstItem="BOD-BD-qpU" firstAttribute="top" secondItem="2jk-LC-OM6" secondAttribute="top" constant="12" id="pc4-oO-qxi"/>
                 <constraint firstItem="JYg-U5-60E" firstAttribute="top" secondItem="BOD-BD-qpU" secondAttribute="bottom" constant="12" id="q4H-Ds-tmp"/>
                 <constraint firstItem="2jk-LC-OM6" firstAttribute="trailing" secondItem="BOD-BD-qpU" secondAttribute="trailing" constant="71" id="yKV-1J-wC2"/>
+                <constraint firstItem="0gu-K7-5JI" firstAttribute="top" secondItem="2jk-LC-OM6" secondAttribute="top" id="zZl-n5-oFX"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backBtn" destination="Qnz-cx-NYz" id="7q8-i5-B2K"/>
                 <outlet property="collectionView" destination="JYg-U5-60E" id="TOG-gG-0sm"/>
                 <outlet property="statusLbl" destination="GXL-IW-mAM" id="Xj2-NB-qCc"/>
+                <outlet property="tipSourceView" destination="0gu-K7-5JI" id="Zwp-Tv-bW3"/>
             </connections>
             <point key="canvasLocation" x="1378.2608695652175" y="150.40760869565219"/>
         </view>

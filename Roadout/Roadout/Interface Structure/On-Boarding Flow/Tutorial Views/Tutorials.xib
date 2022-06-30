@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="oy2-Cq-Kve">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pij-T0-PhM">
+                    <rect key="frame" x="46" y="0.0" width="301" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="301" id="kh6-lH-ZHh"/>
+                        <constraint firstAttribute="height" constant="26" id="yi7-CE-4Lc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ellipsis.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="z3j-rj-1nk">
+                    <rect key="frame" x="0.0" y="16" width="38" height="38"/>
+                    <color key="tintColor" systemColor="systemGrayColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="6yF-FF-Jp0"/>
+                        <constraint firstAttribute="width" constant="38" id="cal-3b-oI5"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap here to see other ways to reserve a spot and settings" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRG-Ks-5yJ">
+                    <rect key="frame" x="46" y="27" width="301" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="301" id="bXS-pK-eyR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="TQG-8u-Hd2"/>
+            <color key="backgroundColor" name="Card Background"/>
+            <constraints>
+                <constraint firstItem="oRG-Ks-5yJ" firstAttribute="top" secondItem="Pij-T0-PhM" secondAttribute="bottom" constant="1" id="0rg-Li-ULQ"/>
+                <constraint firstItem="z3j-rj-1nk" firstAttribute="centerY" secondItem="oy2-Cq-Kve" secondAttribute="centerY" id="53e-J7-bqL"/>
+                <constraint firstAttribute="bottom" secondItem="oRG-Ks-5yJ" secondAttribute="bottom" id="IwK-uT-Bq2"/>
+                <constraint firstItem="oRG-Ks-5yJ" firstAttribute="trailing" secondItem="TQG-8u-Hd2" secondAttribute="trailing" id="aao-8f-FHZ"/>
+                <constraint firstItem="z3j-rj-1nk" firstAttribute="leading" secondItem="TQG-8u-Hd2" secondAttribute="leading" id="al0-Cl-Ljm"/>
+                <constraint firstAttribute="trailing" secondItem="Pij-T0-PhM" secondAttribute="trailing" id="dud-A4-sxH"/>
+                <constraint firstItem="Pij-T0-PhM" firstAttribute="top" secondItem="oy2-Cq-Kve" secondAttribute="top" id="lgG-9D-CAv"/>
+                <constraint firstItem="oRG-Ks-5yJ" firstAttribute="leading" secondItem="z3j-rj-1nk" secondAttribute="trailing" constant="8" symbolic="YES" id="sW2-68-64a"/>
+                <constraint firstItem="Pij-T0-PhM" firstAttribute="leading" secondItem="z3j-rj-1nk" secondAttribute="trailing" constant="8" symbolic="YES" id="tOp-3m-DWh"/>
+            </constraints>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="709.4202898550725" y="-754.01785714285711"/>
+        </view>
+        <view contentMode="scaleToFill" id="Y0z-xx-g5X">
+            <rect key="frame" x="0.0" y="0.0" width="314" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Way" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSW-dj-e52">
+                    <rect key="frame" x="46" y="0.0" width="268" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="xqB-sC-mUc"/>
+                        <constraint firstAttribute="width" constant="268" id="yOo-vi-ptQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="binoculars" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aFV-GF-i5m">
+                    <rect key="frame" x="0.0" y="17" width="38" height="37"/>
+                    <color key="tintColor" systemColor="systemGrayColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="IOd-xL-3X6"/>
+                        <constraint firstAttribute="width" constant="38" id="L79-Vm-156"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The easiest way to find the nearest free spot to reserve" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mc9-c1-JDu">
+                    <rect key="frame" x="46" y="27" width="268" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="268" id="ii9-6o-vkt"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="8L1-vm-KGz"/>
+            <color key="backgroundColor" name="Card Background"/>
+            <constraints>
+                <constraint firstItem="aFV-GF-i5m" firstAttribute="leading" secondItem="8L1-vm-KGz" secondAttribute="leading" id="9Uj-5x-TXK"/>
+                <constraint firstAttribute="trailing" secondItem="mSW-dj-e52" secondAttribute="trailing" id="Bbt-am-IRd"/>
+                <constraint firstAttribute="bottom" secondItem="mc9-c1-JDu" secondAttribute="bottom" id="GDN-2m-sxb"/>
+                <constraint firstItem="mSW-dj-e52" firstAttribute="top" secondItem="Y0z-xx-g5X" secondAttribute="top" id="W43-3S-rXL"/>
+                <constraint firstItem="aFV-GF-i5m" firstAttribute="centerY" secondItem="Y0z-xx-g5X" secondAttribute="centerY" id="grA-Ub-nVT"/>
+                <constraint firstItem="mc9-c1-JDu" firstAttribute="top" secondItem="mSW-dj-e52" secondAttribute="bottom" constant="1" id="nka-xw-hox"/>
+                <constraint firstItem="mc9-c1-JDu" firstAttribute="leading" secondItem="aFV-GF-i5m" secondAttribute="trailing" constant="8" symbolic="YES" id="tDM-EO-JbA"/>
+                <constraint firstItem="mSW-dj-e52" firstAttribute="leading" secondItem="aFV-GF-i5m" secondAttribute="trailing" constant="8" symbolic="YES" id="upP-VR-DPH"/>
+                <constraint firstItem="mc9-c1-JDu" firstAttribute="trailing" secondItem="8L1-vm-KGz" secondAttribute="trailing" id="xB2-Ld-bdf"/>
+            </constraints>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="1288.4057971014495" y="-754.01785714285711"/>
+        </view>
+        <view contentMode="scaleToFill" id="ZCM-la-D05">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Express Lane" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ew-53-URq">
+                    <rect key="frame" x="46" y="0.0" width="274" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="274" id="Ika-Er-hJA"/>
+                        <constraint firstAttribute="height" constant="26" id="hae-QE-N7m"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag.2.crossed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xph-hm-U47">
+                    <rect key="frame" x="0.0" y="15.5" width="41" height="38.5"/>
+                    <color key="tintColor" systemColor="systemGrayColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="QC7-Fl-pe6"/>
+                        <constraint firstAttribute="width" constant="41" id="bQe-96-fvE"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quickly find a free parking spot in a location you pick." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQa-0u-LmE">
+                    <rect key="frame" x="46" y="27" width="274" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="274" id="zGS-pi-nCK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="sif-uu-G0O"/>
+            <color key="backgroundColor" name="Card Background"/>
+            <constraints>
+                <constraint firstItem="xph-hm-U47" firstAttribute="centerY" secondItem="ZCM-la-D05" secondAttribute="centerY" id="3QJ-1o-6AZ"/>
+                <constraint firstItem="eQa-0u-LmE" firstAttribute="leading" secondItem="xph-hm-U47" secondAttribute="trailing" constant="5" id="N6U-o1-Mx9"/>
+                <constraint firstAttribute="trailing" secondItem="9ew-53-URq" secondAttribute="trailing" id="OXG-i2-8RP"/>
+                <constraint firstItem="9ew-53-URq" firstAttribute="top" secondItem="ZCM-la-D05" secondAttribute="top" id="Oc6-6C-ORK"/>
+                <constraint firstItem="9ew-53-URq" firstAttribute="leading" secondItem="xph-hm-U47" secondAttribute="trailing" constant="5" id="Uxw-gU-9xV"/>
+                <constraint firstAttribute="bottom" secondItem="eQa-0u-LmE" secondAttribute="bottom" id="X6n-Oz-AZt"/>
+                <constraint firstItem="eQa-0u-LmE" firstAttribute="top" secondItem="9ew-53-URq" secondAttribute="bottom" constant="1" id="Zzl-oy-EIa"/>
+                <constraint firstItem="xph-hm-U47" firstAttribute="leading" secondItem="sif-uu-G0O" secondAttribute="leading" id="dKB-CV-dZD"/>
+                <constraint firstItem="eQa-0u-LmE" firstAttribute="trailing" secondItem="sif-uu-G0O" secondAttribute="trailing" id="hcr-1f-Eh7"/>
+            </constraints>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="1850.7246376811595" y="-754.01785714285711"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="binoculars" catalog="system" width="128" height="90"/>
+        <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
+        <image name="flag.2.crossed" catalog="system" width="128" height="73"/>
+        <namedColor name="Card Background">
+            <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

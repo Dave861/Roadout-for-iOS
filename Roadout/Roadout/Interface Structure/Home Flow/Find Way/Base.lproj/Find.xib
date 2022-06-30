@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -230,6 +230,14 @@
                         <constraint firstAttribute="height" constant="55" id="xRY-Bs-R3Y"/>
                     </constraints>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JUT-QC-vpM">
+                    <rect key="frame" x="43" y="0.0" width="27" height="45"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="OYr-8N-bpp"/>
+                        <constraint firstAttribute="width" constant="27" id="lL6-Ej-ZPJ"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="KBx-iq-SKJ"/>
             <color key="backgroundColor" name="Background"/>
@@ -243,6 +251,7 @@
                 <constraint firstItem="AD3-2H-Kza" firstAttribute="top" secondItem="GDG-ex-dZ6" secondAttribute="top" constant="12" id="amY-UX-0qX"/>
                 <constraint firstItem="lty-uS-wg4" firstAttribute="leading" secondItem="GDG-ex-dZ6" secondAttribute="leading" constant="12" id="bKx-MH-Csa"/>
                 <constraint firstAttribute="trailing" secondItem="AD3-2H-Kza" secondAttribute="trailing" constant="20" id="bgO-wA-EQH"/>
+                <constraint firstItem="JUT-QC-vpM" firstAttribute="top" secondItem="GDG-ex-dZ6" secondAttribute="top" id="ccM-Q3-45n"/>
                 <constraint firstItem="i1M-aW-ZXD" firstAttribute="leading" secondItem="KBx-iq-SKJ" secondAttribute="leading" constant="10" id="dR1-21-dOd"/>
                 <constraint firstItem="ooh-7h-zIY" firstAttribute="leading" secondItem="KBx-iq-SKJ" secondAttribute="leading" constant="15" id="hGy-NK-ASD"/>
                 <constraint firstItem="KBx-iq-SKJ" firstAttribute="trailing" secondItem="ooh-7h-zIY" secondAttribute="trailing" constant="15" id="o4s-Tn-EWY"/>
@@ -250,6 +259,7 @@
                 <constraint firstItem="lty-uS-wg4" firstAttribute="top" secondItem="GDG-ex-dZ6" secondAttribute="top" constant="12" id="rAf-il-8A7"/>
                 <constraint firstItem="i1M-aW-ZXD" firstAttribute="top" secondItem="Qft-iO-bWU" secondAttribute="bottom" constant="10" id="rgy-c5-CKl"/>
                 <constraint firstItem="ooh-7h-zIY" firstAttribute="top" secondItem="r1r-1h-Ear" secondAttribute="bottom" constant="10" id="uen-Mz-muy"/>
+                <constraint firstItem="JUT-QC-vpM" firstAttribute="leading" secondItem="lty-uS-wg4" secondAttribute="trailing" constant="1" id="xC6-Ey-Vxv"/>
                 <constraint firstItem="Qft-iO-bWU" firstAttribute="leading" secondItem="KBx-iq-SKJ" secondAttribute="leading" constant="10" id="zQz-6m-uHm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -269,6 +279,7 @@
                 <outlet property="timeBtn" destination="kcr-aI-xZC" id="EfN-Bo-WAX"/>
                 <outlet property="timeCard" destination="SH6-9D-s9w" id="0i3-1e-KM3"/>
                 <outlet property="timeLbl" destination="6As-Ei-GjG" id="VUx-y3-HzB"/>
+                <outlet property="tipSourceView" destination="JUT-QC-vpM" id="b7L-jI-YcD"/>
             </connections>
             <point key="canvasLocation" x="1378.2608695652175" y="191.85267857142856"/>
         </view>

@@ -36,14 +36,12 @@ class PermissionsViewController: UIViewController {
     @IBAction func nextTapped(_ sender: Any) {
         manageNotifications()
         manageLocation()
-        let vc = storyboard?.instantiateViewController(withIdentifier: "TutorialVC") as! TutorialViewController
-        self.present(vc, animated: false, completion: nil)
-        /*let generator = UIImpactFeedbackGenerator(style: .medium)
+        let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
         let sb = UIStoryboard(name: "Home", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
         self.view.window?.rootViewController = vc
-        self.view.window?.makeKeyAndVisible()*/
+        self.view.window?.makeKeyAndVisible()
     }
     
     @IBAction func skipTapped(_ sender: Any) {

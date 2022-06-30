@@ -13,6 +13,8 @@ class FindView: UIView {
     
     var minutesValue = 15
     
+    @IBOutlet weak var tipSourceView: UIView!
+    
     @IBOutlet weak var backBtn: UIButton!
     
     @IBAction func backTapped(_ sender: Any) {
@@ -44,8 +46,6 @@ class FindView: UIView {
     
     @IBOutlet weak var siriBtnView: UIView!
     
-    
-
     @IBOutlet weak var locationBtn: UIButton!
     
     @IBOutlet weak var sectionBtn: UIButton!
@@ -87,6 +87,22 @@ class FindView: UIView {
     
         
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip2") == false {
+            tipSourceView.tooltip(TutorialView2.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+                
+                configuration.backgroundColor = UIColor(named: "Card Background")!
+                configuration.shadowConfiguration.shadowOpacity = 0.1
+                configuration.shadowConfiguration.shadowColor = UIColor.black.cgColor
+                configuration.shadowConfiguration.shadowOffset = .zero
+                
+                return configuration
+            })
+            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip2")
+        }
+    }
    
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
