@@ -129,6 +129,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
             let signOutAction = UIAlertAction(title: "Sign Out".localized(), style: .destructive) { action in
                 UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
+                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip1")
+                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip2")
+                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip3")
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
                 self.view.window?.rootViewController = vc
