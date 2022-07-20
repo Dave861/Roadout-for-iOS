@@ -7,8 +7,6 @@
 
 import UIKit
 
-var reminders = [Reminder]()
-
 class RemindersViewController: UIViewController {
     
     let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!

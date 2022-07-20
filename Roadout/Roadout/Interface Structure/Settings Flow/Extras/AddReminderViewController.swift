@@ -27,27 +27,6 @@ class AddReminderViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var pickBtn: UIButton!
-    @IBAction func pickTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertController.Style.alert)
-        let alertDatePicker: UIDatePicker = UIDatePicker()
-        alertDatePicker.frame = CGRect(x: 0, y: 15, width: alertController.view.frame.width, height: 200)
-        alertDatePicker.minimumDate = Date().addingTimeInterval(900)
-        if #available(iOS 14.0, *) {
-            alertDatePicker.preferredDatePickerStyle = .wheels
-        }
-        alertDatePicker.minuteInterval = 15
-        alertController.view.addSubview(alertDatePicker)
-        let okAction = UIAlertAction(title: "OK".localized(), style: .default) { _ in
-            self.oldSelectedDate = alertDatePicker.date
-        }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        alertController.view.tintColor = UIColor(named: "Icons")
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
     
     @IBOutlet weak var setBtn: UIButton!
     @IBAction func setTapped(_ sender: Any) {
@@ -59,19 +38,13 @@ class AddReminderViewController: UIViewController {
         }
         if ok == true {
             if labelField.text != "" {
-                if #available(iOS 14.0, *) {
-                    let reminder = Reminder(label: labelField.text!, date: datePicker.date, identifier: "ro.roadout.reminder.\(labelField.text!.replacingOccurrences(of: " ", with: ""))")
-                    if UserPrefsUtils.sharedInstance.reminderNotificationsEnabled() {
-                        NotificationHelper.sharedInstance.scheduleReminder(reminder: reminder)
-                    }
-                    saveReminder(reminder: reminder)
-                } else {
-                    let reminder = Reminder(label: labelField.text!, date: oldSelectedDate, identifier: "ro.roadout.reminder.\(labelField.text!.replacingOccurrences(of: " ", with: ""))")
-                    if UserPrefsUtils.sharedInstance.reminderNotificationsEnabled() {
-                        NotificationHelper.sharedInstance.scheduleReminder(reminder: reminder)
-                    }
-                    saveReminder(reminder: reminder)
+
+                let reminder = Reminder(label: labelField.text!, date: datePicker.date, identifier: "ro.roadout.reminder.\(labelField.text!.replacingOccurrences(of: " ", with: ""))")
+                if UserPrefsUtils.sharedInstance.reminderNotificationsEnabled() {
+                    NotificationHelper.sharedInstance.scheduleReminder(reminder: reminder)
                 }
+                saveReminder(reminder: reminder)
+                
                 NotificationCenter.default.post(name: .refreshReminderID, object: nil)
                 UIView.animate(withDuration: 0.1) {
                     self.blurEffect.alpha = 0
@@ -121,10 +94,25 @@ class AddReminderViewController: UIViewController {
         }
     }
     
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    
+    func addShadowToCardView() {
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 20.0
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 19.0
+        cardView.layer.cornerRadius = 20.0
+        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        addShadowToCardView()
+
         setBtn.layer.cornerRadius = 13.0
         setBtn.setAttributedTitle(setTitle, for: .normal)
         
@@ -135,27 +123,18 @@ class AddReminderViewController: UIViewController {
             string: "Notification Label".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
-        if #available(iOS 14.0, *) {
-            self.pickBtn.isEnabled = false
-            self.pickBtn.isHidden = true
-            self.datePicker.isEnabled = true
-            self.datePicker.isHidden = false
-        } else {
-            self.pickBtn.isEnabled = true
-            self.pickBtn.isHidden = false
-            self.datePicker.isEnabled = false
-            self.datePicker.isHidden = true
-        }
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
+        
+        cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 0.3) {
-            self.blurEffect.alpha = 1.0
+            self.blurEffect.alpha = 0.7
         } completion: { _ in
             self.labelField.becomeFirstResponder()
         }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="u59-Pg-inq">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="u59-Pg-inq">
                     <rect key="frame" x="9" y="11" width="32" height="30"/>
                     <color key="tintColor" name="Dark Orange"/>
                     <constraints>
@@ -70,7 +70,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rK4-OK-cVF">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rK4-OK-cVF">
                     <rect key="frame" x="9" y="12.666666666666666" width="32" height="26.666666666666671"/>
                     <color key="tintColor" name="Icons"/>
                     <constraints>
@@ -135,53 +135,6 @@
             </connections>
             <point key="canvasLocation" x="100.00000000000001" y="195.6521739130435"/>
         </view>
-        <view contentMode="scaleToFill" id="IDh-ZS-uvV" customClass="UnlockedView" customModule="Roadout" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.open" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="e0l-cK-Ie7">
-                    <rect key="frame" x="9" y="12.666666666666666" width="32" height="26.666666666666671"/>
-                    <color key="tintColor" name="Brownish"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="32" id="U5j-UM-yKp"/>
-                        <constraint firstAttribute="height" constant="28.670000000000002" id="g3J-hP-bpp"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlocked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zb-P8-mXM">
-                    <rect key="frame" x="49" y="4" width="78" height="44"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bK2-6A-7M9">
-                    <rect key="frame" x="328.66666666666669" y="9" width="85.333333333333314" height="34"/>
-                    <color key="tintColor" name="Brownish"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Options">
-                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="optionsTapped:" destination="IDh-ZS-uvV" eventType="touchUpInside" id="p8E-lh-Ffx"/>
-                    </connections>
-                </button>
-            </subviews>
-            <viewLayoutGuide key="safeArea" id="UNX-48-sEG"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="9zb-P8-mXM" firstAttribute="top" secondItem="UNX-48-sEG" secondAttribute="top" constant="4" id="2z9-bA-mug"/>
-                <constraint firstItem="UNX-48-sEG" firstAttribute="bottom" secondItem="9zb-P8-mXM" secondAttribute="bottom" constant="4" id="Q8d-Wd-lyf"/>
-                <constraint firstAttribute="trailing" secondItem="bK2-6A-7M9" secondAttribute="trailing" id="jHY-Hx-htU"/>
-                <constraint firstItem="9zb-P8-mXM" firstAttribute="leading" secondItem="e0l-cK-Ie7" secondAttribute="trailing" constant="8" symbolic="YES" id="mVz-fD-CJk"/>
-                <constraint firstItem="e0l-cK-Ie7" firstAttribute="centerY" secondItem="IDh-ZS-uvV" secondAttribute="centerY" id="nuZ-ZK-84x"/>
-                <constraint firstItem="bK2-6A-7M9" firstAttribute="top" secondItem="UNX-48-sEG" secondAttribute="top" constant="9" id="vaY-Vt-ZRP"/>
-                <constraint firstItem="e0l-cK-Ie7" firstAttribute="leading" secondItem="UNX-48-sEG" secondAttribute="leading" constant="9" id="y0F-ps-Bnb"/>
-            </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="optionsBtn" destination="bK2-6A-7M9" id="1Xg-fv-123"/>
-            </connections>
-            <point key="canvasLocation" x="100.00000000000001" y="274.72826086956525"/>
-        </view>
         <view contentMode="scaleToFill" id="idu-jF-tvt" customClass="CancelledView" customModule="Roadout" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -206,12 +159,12 @@
                         <action selector="doneTapped:" destination="idu-jF-tvt" eventType="touchUpInside" id="CIA-pg-HDz"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark_app" translatesAutoresizingMaskIntoConstraints="NO" id="GEq-FV-baD">
-                    <rect key="frame" x="15" y="14.666666666666664" width="20" height="23"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.app.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GEq-FV-baD">
+                    <rect key="frame" x="14" y="16.333333333333329" width="22" height="20"/>
                     <color key="tintColor" name="Redish"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="WZ6-yw-TGZ"/>
-                        <constraint firstAttribute="width" constant="20" id="svZ-Xf-7gj"/>
+                        <constraint firstAttribute="width" constant="22" id="svZ-Xf-7gj"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -220,8 +173,8 @@
             <constraints>
                 <constraint firstItem="S1G-EX-uCN" firstAttribute="bottom" secondItem="V6o-gR-yBH" secondAttribute="bottom" constant="4" id="43U-ei-rbz"/>
                 <constraint firstItem="V6o-gR-yBH" firstAttribute="top" secondItem="S1G-EX-uCN" secondAttribute="top" constant="4" id="IXq-qz-Fpj"/>
-                <constraint firstItem="GEq-FV-baD" firstAttribute="leading" secondItem="S1G-EX-uCN" secondAttribute="leading" constant="15" id="JoY-M4-XcC"/>
-                <constraint firstItem="V6o-gR-yBH" firstAttribute="leading" secondItem="GEq-FV-baD" secondAttribute="trailing" constant="14" id="NCv-JS-2t2"/>
+                <constraint firstItem="GEq-FV-baD" firstAttribute="leading" secondItem="S1G-EX-uCN" secondAttribute="leading" constant="14" id="JoY-M4-XcC"/>
+                <constraint firstItem="V6o-gR-yBH" firstAttribute="leading" secondItem="GEq-FV-baD" secondAttribute="trailing" constant="13" id="NCv-JS-2t2"/>
                 <constraint firstAttribute="trailing" secondItem="fBn-92-2WR" secondAttribute="trailing" constant="3" id="PeC-Fc-as8"/>
                 <constraint firstItem="fBn-92-2WR" firstAttribute="top" secondItem="S1G-EX-uCN" secondAttribute="top" constant="9" id="fe9-Lw-YDm"/>
                 <constraint firstItem="GEq-FV-baD" firstAttribute="centerY" secondItem="idu-jF-tvt" secondAttribute="centerY" id="hq6-47-t4g"/>
@@ -230,7 +183,7 @@
             <connections>
                 <outlet property="doneBtn" destination="fBn-92-2WR" id="H73-Eg-4sL"/>
             </connections>
-            <point key="canvasLocation" x="100.00000000000001" y="354.61956521739131"/>
+            <point key="canvasLocation" x="100.00000000000001" y="276.35869565217394"/>
         </view>
         <view contentMode="scaleToFill" id="Rli-7c-2Qo" customClass="NoWifiView" customModule="Roadout" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
@@ -280,24 +233,20 @@
             <connections>
                 <outlet property="settingsBtn" destination="cRs-aV-nQd" id="R6I-qi-Mve"/>
             </connections>
-            <point key="canvasLocation" x="100.00000000000001" y="436.95652173913049"/>
+            <point key="canvasLocation" x="100" y="360"/>
         </view>
     </objects>
     <resources>
-        <image name="checkmark.seal" catalog="system" width="128" height="128"/>
+        <image name="checkmark.seal.fill" catalog="system" width="128" height="128"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
-        <image name="lock" catalog="system" width="128" height="128"/>
-        <image name="lock.open" catalog="system" width="128" height="110"/>
+        <image name="lock.fill" catalog="system" width="128" height="128"/>
         <image name="wifi.slash" catalog="system" width="128" height="102"/>
-        <image name="xmark_app" width="12" height="12"/>
-        <namedColor name="Brownish">
-            <color red="0.40400001406669617" green="0.28200000524520874" blue="0.019999999552965164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="xmark.app.fill" catalog="system" width="128" height="114"/>
         <namedColor name="Dark Orange">
             <color red="0.83899998664855957" green="0.42699998617172241" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Greyish">
-            <color red="0.53299999237060547" green="0.49399998784065247" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.50199997425079346" green="0.45100000500679016" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Icons">
             <color red="0.86299997568130493" green="0.66699999570846558" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

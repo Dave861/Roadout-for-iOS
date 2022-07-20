@@ -10,14 +10,6 @@ import CoreLocation
 import Alamofire
 import UIKit
 
-var selectedLocationName = "Location"
-var selectedParkLocationIndex = 0
-var selectedSectionIndex = 0
-var selectedLocationColor = UIColor(named: "Main Yellow")
-var selectedSpotID: String!
-var selectedLocationCoord: CLLocationCoordinate2D!
-var currentLocationCoord: CLLocationCoordinate2D?
-
 class FunctionsManager {
     
     static let sharedInstance = FunctionsManager()
@@ -72,6 +64,7 @@ class FunctionsManager {
                               selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
                               selectedLocationColor = UIColor(named: "Dark Orange")!
                               NotificationCenter.default.post(name: .addExpressViewID, object: nil)
+                              NotificationCenter.default.post(name: .showExpressLaneFreeSpotID, object: nil)
                           } else {
                               self.expressReserveInLocation(sectionIndex: sectionIndex+1, location: location)
                           }

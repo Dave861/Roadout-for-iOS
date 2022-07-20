@@ -7,8 +7,6 @@
 
 import UIKit
 
-var cardNumbers = ["**** **** **** 9000", "**** **** **** 7250", "**** **** **** 7784", "**** **** **** 9432"]
-
 class PaymentViewController: UIViewController {
     
     var cardIndex = 0

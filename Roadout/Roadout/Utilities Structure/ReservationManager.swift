@@ -8,9 +8,6 @@
 import Foundation
 import Alamofire
 
-//Used to help with notification management
-var timerSeconds = 0
-
 class ReservationManager {
     
     static let sharedInstance = ReservationManager()
@@ -244,7 +241,7 @@ class ReservationManager {
                             self.reservationTimer.invalidate()
                         }
                         NotificationHelper.sharedInstance.cancelReservationNotification()
-                        NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+                        NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
                         completion(.success(()))
                     } else {
                         print(jsonArray["status"]!)
@@ -336,7 +333,7 @@ class ReservationManager {
                         NotificationCenter.default.post(name: .showActiveBarID, object: nil)
                     } else if ReservationManager.sharedInstance.isReservationActive == 1 {
                         //unlocked
-                        NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+                        NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
                     } else if ReservationManager.sharedInstance.isReservationActive == 2 {
                         //cancelled
                         NotificationCenter.default.post(name: .showCancelledBarID, object: nil)

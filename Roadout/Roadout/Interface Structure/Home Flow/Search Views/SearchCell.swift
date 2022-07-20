@@ -11,8 +11,6 @@ class SearchCell: UITableViewCell {
 
     @IBOutlet weak var card: UIView!
     
-    //@IBOutlet weak var numberLbl: UILabel!
-    //@IBOutlet weak var spotsLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
     

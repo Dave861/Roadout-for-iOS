@@ -11,10 +11,6 @@ import CoreLocation
 import SwiftUI
 import SPIndicator
 
-//Decides if Pay Card returns to Delay Card, Find Card or Select Card
-var returnToDelay = false
-var returnToFind = false
-
 class HomeViewController: UIViewController {
 
     var mapView: GMSMapView!
@@ -33,15 +29,18 @@ class HomeViewController: UIViewController {
     let reservationView = ReservationView.instanceFromNib()
     let delayView = DelayView.instanceFromNib()
     let unlockView = UnlockView.instanceFromNib()
+    let unlockedView = UnlockedView.instanceFromNib()
+    let payDurationView = DurationView.instanceFromNib()
+    let payParkingView = PayParkingView.instanceFromNib()
     
     let paidBar = PaidView.instanceFromNib()
     let activeBar = ActiveView.instanceFromNib()
-    let unlockedBar = UnlockedView.instanceFromNib()
     let cancelledBar = CancelledView.instanceFromNib()
     let noWifiBar = NoWifiView.instanceFromNib()
+    let paidParkingBar = PaidParkingBar.instanceFromNib()
     
     //MARK: -Express Reserve-
-    let expressPickView = ExpressPickView.instanceFromNib()
+    //let expressPickView = ExpressPickView.instanceFromNib()
     let expressView = ExpressView.instanceFromNib()
     
     @objc func addExpressView() {
@@ -64,7 +63,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func addExpressPickView() {
+    /*@objc func addExpressPickView() {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
@@ -78,7 +77,7 @@ class HomeViewController: UIViewController {
             self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-195-dif, width: self.screenSize.width - 26, height: 195)
             self.view.addSubview(self.expressPickView)
         }
-    }
+    }*/
     
     //MARK: -Find me a spot-
     let findView = FindView.instanceFromNib()
@@ -123,72 +122,7 @@ class HomeViewController: UIViewController {
         self.present(vc, animated: false, completion: nil)
     }
     @IBAction func settingsTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "What would you like to do?".localized(), preferredStyle: .actionSheet)
-        let settingsAction = UIAlertAction(title: "Settings".localized(), style: .default) { action in
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        settingsAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
-        
-        let findAction = UIAlertAction(title: "Find Way".localized(), style: .default) { action in
-            DispatchQueue.main.async {
-                let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
-                let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
-                indicatorView.dismissByDrag = false
-                indicatorView.backgroundColor = UIColor(named: "Background")!
-                indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
-            }
-            FunctionsManager.sharedInstance.foundSpot = nil
-            guard let coord = self.mapView.myLocation?.coordinate else {
-                self.showFindLocationAlert()
-                return
-            }
-            FunctionsManager.sharedInstance.sortLocations(currentLocation: coord) { success in
-                if success {
-                    FunctionsManager.sharedInstance.findSpot { success in
-                        if success {
-                            if FunctionsManager.sharedInstance.foundSpot != nil {
-                                DispatchQueue.main.async {
-                                    self.showFindCard()
-                                }
-                            } else {
-                                DispatchQueue.main.async {
-                                    self.showFindLocationAlert()
-                                }
-                            }
-                        } else {
-                            DispatchQueue.main.async {
-                                self.showFindLocationAlert()
-                            }
-                        }
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        self.showFindLocationAlert()
-                    }
-                }
-            }
-        }
-        findAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
-        
-        let expressAction = UIAlertAction(title: "Express Lane".localized(), style: .default) { action in
-            guard let coord = self.mapView.myLocation?.coordinate else {
-                self.addExpressPickView()
-                return
-            }
-            currentLocationCoord = coord
-            self.addExpressPickView()
-        }
-        expressAction.setValue(UIColor(named: "Dark Orange")!, forKey: "titleTextColor")
-        
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
-        cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
-        
-        alert.addAction(findAction)
-        alert.addAction(expressAction)
-        alert.addAction(settingsAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        //Handled by menu
     }
     
     @IBOutlet weak var searchTapArea: UIButton!
@@ -229,16 +163,23 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(addPayDelayCard), name: .addPayDelayCardID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removePayDelayCard), name: .removePayDelayCardID, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(addPayDurationCard), name: .addPayDurationCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removePayDurationCard), name: .removePayDurationCardID, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addPayParkingCard), name: .addPayParkingCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removePayParkingCard), name: .removePayParkingCardID, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(addExpressView), name: .addExpressViewID, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(addExpressPickView), name: .addExpressPickViewID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showPaidBar), name: .showPaidBarID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showActiveBar), name: .showActiveBarID, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showUnlockedBar), name: .showUnlockedBarID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showUnlockedView), name: .showUnlockedViewID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showCancelledBar), name: .showCancelledBarID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showNoWifiBar), name: .showNoWifiBarID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeNoWifiBar), name: .removeNoWifiBarID, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showPaidParkingBar), name: .showPaidParkingBarID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: .returnToSearchBarID, object: nil)
         
@@ -283,13 +224,31 @@ class HomeViewController: UIViewController {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
                 self.navigationController?.pushViewController(vc, animated: true)
             }),
-            UIAction(title: "Express Lane".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
+            UIAction(title: "Pay Parking".localized(), image: UIImage(systemName: "dollarsign.circle"), handler: { (_) in
                 guard let coord = self.mapView.myLocation?.coordinate else {
-                    self.addExpressPickView()
+                    
+                    let alert = UIAlertController(title: "Error", message: "Roadout can't access your location to show nearby spots, please enable it in Settings.", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+                    alert.addAction(cancelAction)
+                    alert.view.tintColor = UIColor(named: "Cash Yellow")!
+                    
+                    self.present(alert, animated: true, completion: nil)
+                    
                     return
                 }
                 currentLocationCoord = coord
-                self.addExpressPickView()
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectPayVC") as! SelectPayViewController
+                self.present(vc, animated: true, completion: nil)
+            }),
+            UIAction(title: "Express Lane".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
+                guard let coord = self.mapView.myLocation?.coordinate else {
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpressPickVC") as! ExpressPickViewController
+                    self.present(vc, animated: true, completion: nil)
+                    return
+                }
+                currentLocationCoord = coord
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpressPickVC") as! ExpressPickViewController
+                self.present(vc, animated: true, completion: nil)
             }),
             UIAction(title: "Find Way".localized(), image: UIImage(systemName: "binoculars"), handler: { (_) in
                 DispatchQueue.main.async {
@@ -447,15 +406,13 @@ class HomeViewController: UIViewController {
         searchBar.layer.shadowColor = UIColor.black.cgColor
         searchBar.layer.shadowOpacity = 0.1
         searchBar.layer.shadowOffset = .zero
-        searchBar.layer.shadowRadius = 10
+        searchBar.layer.shadowRadius = 17
         searchBar.layer.shadowPath = UIBezierPath(rect: searchBar.bounds).cgPath
         searchBar.layer.shouldRasterize = true
         searchBar.layer.rasterizationScale = UIScreen.main.scale
         
-        if #available(iOS 14.0, *) {
-            settingsTapArea.menu = moreMenu
-            settingsTapArea.showsMenuAsPrimaryAction = true
-        }
+        settingsTapArea.menu = moreMenu
+        settingsTapArea.showsMenuAsPrimaryAction = true
         
         let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
@@ -474,16 +431,9 @@ class HomeViewController: UIViewController {
         }
         
         locationManager.delegate = self
-        if #available(iOS 14.0, *) {
-            if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                mapView.isMyLocationEnabled = true
-            }
-        } else {
-            if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                mapView.isMyLocationEnabled = true
-            }
+        if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+            mapView.isMyLocationEnabled = true
         }
         
         navBarTapGestureRecognizer = UITapGestureRecognizer(target:self, action: #selector(self.titleTapped(_:)))
@@ -548,32 +498,16 @@ class HomeViewController: UIViewController {
     }
     
     @objc func updateLocation() {
-        if #available(iOS 14.0, *) {
-            if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
-                if centerMapCoordinate == nil  {
+        if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
+            if centerMapCoordinate == nil  {
+                locationManager.startUpdatingLocation()
+                mapView.isMyLocationEnabled = true
+            } else {
+                let centerLocation = CLLocation(latitude: centerMapCoordinate.latitude, longitude: centerMapCoordinate.longitude)
+                let cityLocation = CLLocation(latitude: 46.775351, longitude: 23.608280)
+                if centerLocation.distance(from: cityLocation) >= 7000 {
                     locationManager.startUpdatingLocation()
                     mapView.isMyLocationEnabled = true
-                } else {
-                    let centerLocation = CLLocation(latitude: centerMapCoordinate.latitude, longitude: centerMapCoordinate.longitude)
-                    let cityLocation = CLLocation(latitude: 46.775351, longitude: 23.608280)
-                    if centerLocation.distance(from: cityLocation) >= 7000 {
-                        locationManager.startUpdatingLocation()
-                        mapView.isMyLocationEnabled = true
-                    }
-                }
-            }
-        } else {
-            if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                if centerMapCoordinate == nil  {
-                    locationManager.startUpdatingLocation()
-                    mapView.isMyLocationEnabled = true
-                } else {
-                    let centerLocation = CLLocation(latitude: centerMapCoordinate.latitude, longitude: centerMapCoordinate.longitude)
-                    let cityLocation = CLLocation(latitude: 46.775351, longitude: 23.608280)
-                    if centerLocation.distance(from: cityLocation) >= 7000 {
-                        locationManager.startUpdatingLocation()
-                        mapView.isMyLocationEnabled = true
-                    }
                 }
             }
         }
@@ -596,16 +530,9 @@ class HomeViewController: UIViewController {
 extension HomeViewController: CLLocationManagerDelegate {
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        if #available(iOS 14.0, *) {
-            if manager.authorizationStatus == .authorizedAlways || manager.authorizationStatus == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                mapView.isMyLocationEnabled = true
-            }
-        } else {
-            if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                locationManager.startUpdatingLocation()
-                mapView.isMyLocationEnabled = true
-            }
+        if manager.authorizationStatus == .authorizedAlways || manager.authorizationStatus == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+            mapView.isMyLocationEnabled = true
         }
     }
     
@@ -647,7 +574,7 @@ extension HomeViewController: CLLocationManagerDelegate {
 
 extension HomeViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedBar && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
+        if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedView && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
             selectedLocationName = marker.title!
             let colorSnippet = marker.snippet!
             selectedLocationColor = UIColor(named: colorSnippet)!
@@ -956,6 +883,76 @@ extension HomeViewController {
         }
     }
     
+    @objc func showUnlockedView() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.unlockedView.frame = CGRect(x: 13, y: self.screenSize.height-155-dif, width: self.screenSize.width - 26, height: 155)
+            self.view.addSubview(self.unlockedView)
+        }
+    }
+    
+    @objc func addPayDurationCard() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.payDurationView.frame = CGRect(x: 13, y: self.screenSize.height-206-dif, width: self.screenSize.width - 26, height: 206)
+            self.view.addSubview(self.payDurationView)
+        }
+    }
+    @objc func removePayDurationCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.unlockedView.frame = CGRect(x: 13, y: self.screenSize.height-155-dif, width: self.screenSize.width - 26, height: 155)
+            self.view.addSubview(self.unlockedView)
+            self.payDurationView.removeFromSuperview()
+        }
+    }
+    
+    @objc func addPayParkingCard() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.payParkingView.frame = CGRect(x: 13, y: self.screenSize.height-271-dif, width: self.screenSize.width - 26, height: 271)
+            self.view.addSubview(self.payParkingView)
+        }
+    }
+    @objc func removePayParkingCard() {
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.payDurationView.frame = CGRect(x: 13, y: self.screenSize.height-206-dif, width: self.screenSize.width - 26, height: 206)
+            self.view.addSubview(self.payDurationView)
+            self.payParkingView.removeFromSuperview()
+        }
+    }
+    
     //MARK: -Bar functions-
     
     @objc func showPaidBar() {
@@ -997,22 +994,6 @@ extension HomeViewController {
         }
     }
     
-    @objc func showUnlockedBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.layer.shadowOpacity = 0.0
-        }
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.unlockedBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
-            self.view.addSubview(self.unlockedBar)
-        }
-    }
-    
     @objc func showCancelledBar() {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
@@ -1042,6 +1023,22 @@ extension HomeViewController {
             }
             self.noWifiBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
             self.view.addSubview(self.noWifiBar)
+        }
+    }
+    
+    @objc func showPaidParkingBar() {
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.paidParkingBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.view.addSubview(self.paidParkingBar)
         }
     }
     

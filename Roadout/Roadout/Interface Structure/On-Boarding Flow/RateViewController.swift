@@ -54,9 +54,11 @@ class RateViewController: UIViewController {
     @IBOutlet weak var parkingReasonLbl: UILabel!
     
     @IBAction func reservingReasonTapped(_ sender: Any) {
+        //Handled by menu
     }
     
     @IBAction func parkingReasonTapped(_ sender: Any) {
+        //Handled by menu
     }
     
     @IBOutlet weak var reservingGoodBtn: UIButton!
@@ -156,12 +158,11 @@ class RateViewController: UIViewController {
         
         updateOverallImpressionLbl()
         
-        if #available(iOS 14.0, *) {
-            reasonBtn1.showsMenuAsPrimaryAction = true
-            reasonBtn2.showsMenuAsPrimaryAction = true
-            reasonBtn1.menu = makeReservingReasonsMenu()
-            reasonBtn2.menu = makeParkingReasonsMenu()
-        }
+        
+        reasonBtn1.showsMenuAsPrimaryAction = true
+        reasonBtn2.showsMenuAsPrimaryAction = true
+        reasonBtn1.menu = makeReservingReasonsMenu()
+        reasonBtn2.menu = makeParkingReasonsMenu()
     }
     
     func setLocalization() {
@@ -219,7 +220,6 @@ class RateViewController: UIViewController {
         sender.setImage(UIImage(systemName: icon), for: .normal)
     }
     
-    @available(iOS 14.0, *)
     func makeReservingReasonsMenu() -> UIMenu {
         
         var menuItems = [UIAction]()
@@ -236,7 +236,6 @@ class RateViewController: UIViewController {
         return UIMenu(title: "Reasons".localized(), image: nil, identifier: nil, options: [], children: menuItems)
     }
     
-    @available(iOS 14.0, *)
     func makeParkingReasonsMenu()  -> UIMenu {
         
         var menuItems = [UIAction]()

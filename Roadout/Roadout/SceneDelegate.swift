@@ -58,7 +58,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                             NotificationCenter.default.post(name: .showActiveBarID, object: nil)
                         } else if ReservationManager.sharedInstance.isReservationActive == 1 {
                             //unlocked
-                            NotificationCenter.default.post(name: .showUnlockedBarID, object: nil)
+                            NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
                         } else if ReservationManager.sharedInstance.isReservationActive == 2 {
                             //cancelled
                             NotificationCenter.default.post(name: .showCancelledBarID, object: nil)

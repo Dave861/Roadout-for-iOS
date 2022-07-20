@@ -328,7 +328,7 @@ Roadout</string>
                                 <blurEffect style="systemUltraThinMaterial"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbj-pr-CIG">
-                                <rect key="frame" x="3" y="621" width="408" height="241"/>
+                                <rect key="frame" x="0.0" y="635" width="414" height="261"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4j-wh-Xta">
                                         <rect key="frame" x="15" y="15" width="70" height="27"/>
@@ -340,7 +340,7 @@ Roadout</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pcs-Bm-mXn">
-                                        <rect key="frame" x="320" y="20" width="85" height="17"/>
+                                        <rect key="frame" x="326" y="20" width="85" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="8ou-c5-e8n"/>
                                             <constraint firstAttribute="width" constant="85" id="nv1-kJ-1E4"/>
@@ -355,7 +355,7 @@ Roadout</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wts-Pb-jG5" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="70" width="378" height="40"/>
+                                        <rect key="frame" x="15" y="70" width="384" height="40"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="AccentColor"/>
                                         <constraints>
@@ -365,7 +365,7 @@ Roadout</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6S7-lK-rg2" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="118" width="378" height="40"/>
+                                        <rect key="frame" x="15" y="118" width="384" height="40"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Second Orange"/>
                                         <constraints>
@@ -375,7 +375,7 @@ Roadout</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isH-Fy-rAU">
-                                        <rect key="frame" x="15" y="176" width="378" height="50"/>
+                                        <rect key="frame" x="15" y="176" width="384" height="50"/>
                                         <color key="backgroundColor" name="Main Yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="rG9-dS-oqu"/>
@@ -390,7 +390,7 @@ Roadout</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egx-Av-q3k">
-                                        <rect key="frame" x="255" y="9" width="150" height="38"/>
+                                        <rect key="frame" x="261" y="9" width="150" height="38"/>
                                         <color key="backgroundColor" name="Background"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="Nco-DM-82k"/>
@@ -415,12 +415,12 @@ Roadout</string>
                                     <constraint firstItem="Egx-Av-q3k" firstAttribute="top" secondItem="cbj-pr-CIG" secondAttribute="top" constant="9" id="V54-sf-s3n"/>
                                     <constraint firstItem="wts-Pb-jG5" firstAttribute="top" secondItem="a4j-wh-Xta" secondAttribute="bottom" constant="28" id="VZD-0v-BJn"/>
                                     <constraint firstAttribute="trailing" secondItem="isH-Fy-rAU" secondAttribute="trailing" constant="15" id="XTP-Ha-dkP"/>
-                                    <constraint firstAttribute="height" constant="241" id="Yvu-CV-V45"/>
+                                    <constraint firstAttribute="height" constant="261" id="Yvu-CV-V45"/>
                                     <constraint firstItem="a4j-wh-Xta" firstAttribute="top" secondItem="cbj-pr-CIG" secondAttribute="top" constant="15" id="aqQ-cY-uvu"/>
                                     <constraint firstItem="6S7-lK-rg2" firstAttribute="top" secondItem="wts-Pb-jG5" secondAttribute="bottom" constant="8" id="bYX-JC-i9b"/>
                                     <constraint firstAttribute="trailing" secondItem="Pcs-Bm-mXn" secondAttribute="trailing" constant="3" id="gjA-3h-G2g"/>
                                     <constraint firstAttribute="trailing" secondItem="wts-Pb-jG5" secondAttribute="trailing" constant="15" id="hm2-2G-mXY"/>
-                                    <constraint firstAttribute="bottom" secondItem="isH-Fy-rAU" secondAttribute="bottom" constant="15" id="jV3-4t-syP"/>
+                                    <constraint firstAttribute="bottom" secondItem="isH-Fy-rAU" secondAttribute="bottom" constant="35" id="jV3-4t-syP"/>
                                     <constraint firstItem="wts-Pb-jG5" firstAttribute="leading" secondItem="cbj-pr-CIG" secondAttribute="leading" constant="15" id="kB5-KD-69j"/>
                                     <constraint firstItem="wts-Pb-jG5" firstAttribute="top" secondItem="Pcs-Bm-mXn" secondAttribute="bottom" constant="33" id="suO-CN-6Gh"/>
                                     <constraint firstItem="a4j-wh-Xta" firstAttribute="leading" secondItem="cbj-pr-CIG" secondAttribute="leading" constant="15" id="xPu-JZ-36L"/>
@@ -430,17 +430,18 @@ Roadout</string>
                         <viewLayoutGuide key="safeArea" id="Nd1-KB-Bpy"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cbj-pr-CIG" firstAttribute="leading" secondItem="Nd1-KB-Bpy" secondAttribute="leading" constant="3" id="23m-5E-VLv"/>
+                            <constraint firstItem="cbj-pr-CIG" firstAttribute="leading" secondItem="Nd1-KB-Bpy" secondAttribute="leading" id="23m-5E-VLv"/>
                             <constraint firstItem="IhM-k8-Tjg" firstAttribute="top" secondItem="U2M-Bi-poD" secondAttribute="top" id="511-Nu-rld"/>
                             <constraint firstAttribute="trailing" secondItem="IhM-k8-Tjg" secondAttribute="trailing" id="Mtz-Wr-WJK"/>
-                            <constraint firstItem="Nd1-KB-Bpy" firstAttribute="bottom" secondItem="cbj-pr-CIG" secondAttribute="bottom" id="ONj-v5-MF7" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstAttribute="bottom" secondItem="cbj-pr-CIG" secondAttribute="bottom" id="ONj-v5-MF7" customClass="KeyboardLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
                             <constraint firstAttribute="bottom" secondItem="IhM-k8-Tjg" secondAttribute="bottom" id="kvU-BK-QPS"/>
                             <constraint firstItem="IhM-k8-Tjg" firstAttribute="leading" secondItem="Nd1-KB-Bpy" secondAttribute="leading" id="l8u-Tg-5bX"/>
-                            <constraint firstItem="cbj-pr-CIG" firstAttribute="trailing" secondItem="Nd1-KB-Bpy" secondAttribute="trailing" constant="-3" id="moH-fG-Jd6"/>
+                            <constraint firstItem="cbj-pr-CIG" firstAttribute="trailing" secondItem="Nd1-KB-Bpy" secondAttribute="trailing" id="moH-fG-Jd6"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="blurEffect" destination="IhM-k8-Tjg" id="2sY-Wq-qiP"/>
+                        <outlet property="cancelBtn" destination="Pcs-Bm-mXn" id="DZk-AG-2sJ"/>
                         <outlet property="cardView" destination="cbj-pr-CIG" id="s2H-Ll-wvh"/>
                         <outlet property="emailField" destination="wts-Pb-jG5" id="2vI-Mi-tZi"/>
                         <outlet property="forgotBtn" destination="Egx-Av-q3k" id="s2x-ZV-fHt"/>
@@ -469,10 +470,10 @@ Roadout</string>
                                 <blurEffect style="systemUltraThinMaterial"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wX1-WT-bHE">
-                                <rect key="frame" x="3" y="525" width="408" height="337"/>
+                                <rect key="frame" x="0.0" y="539" width="414" height="357"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o9d-o4-CGf" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="70" width="378" height="40"/>
+                                        <rect key="frame" x="15" y="70" width="384" height="40"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Greyish"/>
                                         <constraints>
@@ -482,7 +483,7 @@ Roadout</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xwr-WU-cja" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="118" width="378" height="40"/>
+                                        <rect key="frame" x="15" y="118" width="384" height="40"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Brownish"/>
                                         <constraints>
@@ -492,7 +493,7 @@ Roadout</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDT-Gy-iu0">
-                                        <rect key="frame" x="15" y="272" width="378" height="50"/>
+                                        <rect key="frame" x="15" y="272" width="384" height="50"/>
                                         <color key="backgroundColor" name="Dark Yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="zpK-79-kbl"/>
@@ -508,7 +509,7 @@ Roadout</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZuI-pt-i6i" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="166" width="378" height="40"/>
+                                        <rect key="frame" x="15" y="166" width="384" height="40"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Dark Yellow"/>
                                         <constraints>
@@ -518,7 +519,7 @@ Roadout</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9cY-c0-3uw" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="214" width="378" height="40"/>
+                                        <rect key="frame" x="15" y="214" width="384" height="40"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Dark Orange"/>
                                         <constraints>
@@ -528,7 +529,7 @@ Roadout</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqg-Qq-IVr">
-                                        <rect key="frame" x="320" y="20" width="85" height="17"/>
+                                        <rect key="frame" x="326" y="20" width="85" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="85" id="K98-Y6-tPx"/>
                                             <constraint firstAttribute="height" constant="17" id="UdU-rw-0cK"/>
@@ -539,7 +540,6 @@ Roadout</string>
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="cancelTapped:" destination="XIK-wc-AE1" eventType="touchUpInside" id="5St-ww-z82"/>
                                             <action selector="cancelTapped:" destination="1Yv-iM-H3t" eventType="touchUpInside" id="hWE-Ik-xl7"/>
                                         </connections>
                                     </button>
@@ -556,7 +556,7 @@ Roadout</string>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
                                     <constraint firstItem="o9d-o4-CGf" firstAttribute="top" secondItem="sqg-Qq-IVr" secondAttribute="bottom" constant="33" id="0hJ-jk-Srg"/>
-                                    <constraint firstAttribute="bottom" secondItem="BDT-Gy-iu0" secondAttribute="bottom" constant="15" id="5jZ-Ol-7hZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="BDT-Gy-iu0" secondAttribute="bottom" constant="35" id="5jZ-Ol-7hZ"/>
                                     <constraint firstItem="Kkn-40-F63" firstAttribute="leading" secondItem="wX1-WT-bHE" secondAttribute="leading" constant="15" id="6us-AZ-Jeq"/>
                                     <constraint firstItem="BDT-Gy-iu0" firstAttribute="leading" secondItem="wX1-WT-bHE" secondAttribute="leading" constant="15" id="E9O-by-ZyA"/>
                                     <constraint firstItem="Xwr-WU-cja" firstAttribute="leading" secondItem="wX1-WT-bHE" secondAttribute="leading" constant="15" id="Ib5-GH-TjR"/>
@@ -570,7 +570,7 @@ Roadout</string>
                                     <constraint firstAttribute="trailing" secondItem="Xwr-WU-cja" secondAttribute="trailing" constant="15" id="bUD-eS-x7x"/>
                                     <constraint firstAttribute="trailing" secondItem="sqg-Qq-IVr" secondAttribute="trailing" constant="3" id="eyc-Tj-J4w"/>
                                     <constraint firstItem="9cY-c0-3uw" firstAttribute="top" secondItem="ZuI-pt-i6i" secondAttribute="bottom" constant="8" symbolic="YES" id="gAe-Zt-kQ4"/>
-                                    <constraint firstAttribute="height" constant="337" id="kAH-m9-deB"/>
+                                    <constraint firstAttribute="height" constant="357" id="kAH-m9-deB"/>
                                     <constraint firstItem="o9d-o4-CGf" firstAttribute="leading" secondItem="wX1-WT-bHE" secondAttribute="leading" constant="15" id="lOf-uc-Fjk"/>
                                     <constraint firstItem="Xwr-WU-cja" firstAttribute="top" secondItem="o9d-o4-CGf" secondAttribute="bottom" constant="8" symbolic="YES" id="lPw-nz-QIV"/>
                                     <constraint firstItem="9cY-c0-3uw" firstAttribute="leading" secondItem="wX1-WT-bHE" secondAttribute="leading" constant="15" id="wfD-9I-Q5K"/>
@@ -581,17 +581,18 @@ Roadout</string>
                         <viewLayoutGuide key="safeArea" id="p6G-Qb-mic"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wX1-WT-bHE" firstAttribute="trailing" secondItem="p6G-Qb-mic" secondAttribute="trailing" constant="-3" id="00X-i4-Ls2"/>
+                            <constraint firstItem="wX1-WT-bHE" firstAttribute="trailing" secondItem="p6G-Qb-mic" secondAttribute="trailing" id="00X-i4-Ls2"/>
                             <constraint firstAttribute="bottom" secondItem="d1x-ue-DuL" secondAttribute="bottom" id="9Yy-Ee-keA"/>
                             <constraint firstItem="d1x-ue-DuL" firstAttribute="top" secondItem="Ovc-Or-kbN" secondAttribute="top" id="I45-oh-41J"/>
-                            <constraint firstItem="p6G-Qb-mic" firstAttribute="bottom" secondItem="wX1-WT-bHE" secondAttribute="bottom" id="JBm-FY-ESv" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstAttribute="bottom" secondItem="wX1-WT-bHE" secondAttribute="bottom" id="JBm-FY-ESv" customClass="KeyboardLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
                             <constraint firstItem="d1x-ue-DuL" firstAttribute="leading" secondItem="p6G-Qb-mic" secondAttribute="leading" id="NOv-XI-LJw"/>
-                            <constraint firstItem="wX1-WT-bHE" firstAttribute="leading" secondItem="p6G-Qb-mic" secondAttribute="leading" constant="3" id="OZ4-9q-h1i"/>
+                            <constraint firstItem="wX1-WT-bHE" firstAttribute="leading" secondItem="p6G-Qb-mic" secondAttribute="leading" id="OZ4-9q-h1i"/>
                             <constraint firstItem="d1x-ue-DuL" firstAttribute="trailing" secondItem="p6G-Qb-mic" secondAttribute="trailing" id="eli-dZ-VP4"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="blurEffect" destination="d1x-ue-DuL" id="VZ9-hh-6Ew"/>
+                        <outlet property="cancelBtn" destination="sqg-Qq-IVr" id="svk-Wb-jgP"/>
                         <outlet property="cardView" destination="wX1-WT-bHE" id="JfN-ze-l5I"/>
                         <outlet property="confirmPasswordField" destination="9cY-c0-3uw" id="KgF-wO-dr6"/>
                         <outlet property="emailField" destination="Xwr-WU-cja" id="JSK-0K-Txr"/>

@@ -7,8 +7,6 @@
 
 import UIKit
 
-var delaySeconds = 300
-
 class DelayView: UIView {
 
     @IBAction func backTapped(_ sender: Any) {

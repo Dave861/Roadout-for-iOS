@@ -584,16 +584,16 @@ Made in Cluj :)</string>
                                 <blurEffect style="systemUltraThinMaterial"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D18-ei-0Sf">
-                                <rect key="frame" x="3" y="629" width="408" height="233"/>
+                                <rect key="frame" x="0.0" y="643" width="414" height="253"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdQ-n6-6OI">
-                                        <rect key="frame" x="15" y="15" width="142" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <rect key="frame" x="15" y="15" width="145.5" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8SC-bh-460">
-                                        <rect key="frame" x="332.5" y="20" width="72.5" height="17"/>
+                                        <rect key="frame" x="338.5" y="20" width="72.5" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="c9I-Rc-QWp"/>
                                         </constraints>
@@ -607,7 +607,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9i-wE-D9F">
-                                        <rect key="frame" x="15" y="168" width="378" height="50"/>
+                                        <rect key="frame" x="15" y="168" width="384" height="50"/>
                                         <color key="backgroundColor" name="Icons"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="3BW-qQ-b4H"/>
@@ -627,27 +627,15 @@ Made in Cluj :)</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXx-BF-yVa">
-                                        <rect key="frame" x="64" y="120" width="329" height="31"/>
-                                        <color key="backgroundColor" name="Background"/>
-                                        <color key="tintColor" name="Icons"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Pick">
-                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="pickTapped:" destination="MeD-bb-lBO" eventType="touchUpInside" id="pwv-1u-nR4"/>
-                                        </connections>
-                                    </button>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="DOc-o9-Faw">
-                                        <rect key="frame" x="64" y="120" width="329" height="31"/>
+                                        <rect key="frame" x="64" y="120" width="335" height="31"/>
                                         <color key="tintColor" name="Icons"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="Bib-MZ-zba"/>
                                         </constraints>
                                     </datePicker>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YWP-RV-7mB" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="65" width="378" height="40"/>
+                                        <rect key="frame" x="15" y="65" width="384" height="40"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Greyish"/>
                                         <constraints>
@@ -663,16 +651,12 @@ Made in Cluj :)</string>
                                     <constraint firstItem="rdQ-n6-6OI" firstAttribute="top" secondItem="D18-ei-0Sf" secondAttribute="top" constant="15" id="A21-kp-iea"/>
                                     <constraint firstItem="JNE-Mp-MPO" firstAttribute="top" secondItem="YWP-RV-7mB" secondAttribute="bottom" constant="15" id="BoB-FM-Tws"/>
                                     <constraint firstItem="JNE-Mp-MPO" firstAttribute="leading" secondItem="D18-ei-0Sf" secondAttribute="leading" constant="15" id="Gar-Th-r6B"/>
-                                    <constraint firstAttribute="bottom" secondItem="u9i-wE-D9F" secondAttribute="bottom" constant="15" id="HUe-sO-duK"/>
-                                    <constraint firstAttribute="height" constant="233" id="Jlw-0j-HfE"/>
+                                    <constraint firstAttribute="bottom" secondItem="u9i-wE-D9F" secondAttribute="bottom" constant="35" id="HUe-sO-duK"/>
+                                    <constraint firstAttribute="height" constant="253" id="Jlw-0j-HfE"/>
                                     <constraint firstItem="JNE-Mp-MPO" firstAttribute="height" secondItem="DOc-o9-Faw" secondAttribute="height" multiplier="0.967742" id="MOd-sH-FVu"/>
                                     <constraint firstItem="rdQ-n6-6OI" firstAttribute="leading" secondItem="D18-ei-0Sf" secondAttribute="leading" constant="15" id="Q4j-BJ-egp"/>
-                                    <constraint firstItem="u9i-wE-D9F" firstAttribute="top" secondItem="MXx-BF-yVa" secondAttribute="bottom" constant="17" id="TKc-TE-jTs"/>
                                     <constraint firstItem="u9i-wE-D9F" firstAttribute="top" secondItem="JNE-Mp-MPO" secondAttribute="bottom" constant="18" id="UAy-zm-2dh"/>
-                                    <constraint firstItem="MXx-BF-yVa" firstAttribute="leading" secondItem="JNE-Mp-MPO" secondAttribute="trailing" constant="10" id="VdK-rp-6TZ"/>
-                                    <constraint firstItem="MXx-BF-yVa" firstAttribute="top" secondItem="YWP-RV-7mB" secondAttribute="bottom" constant="15" id="b8Y-GM-77f"/>
                                     <constraint firstItem="YWP-RV-7mB" firstAttribute="top" secondItem="rdQ-n6-6OI" secondAttribute="bottom" constant="23" id="buK-Mn-ipG"/>
-                                    <constraint firstAttribute="trailing" secondItem="MXx-BF-yVa" secondAttribute="trailing" constant="15" id="dS8-L9-orf"/>
                                     <constraint firstItem="u9i-wE-D9F" firstAttribute="top" secondItem="DOc-o9-Faw" secondAttribute="bottom" constant="17" id="dXt-uN-JDh"/>
                                     <constraint firstAttribute="trailing" secondItem="YWP-RV-7mB" secondAttribute="trailing" constant="15" id="ex2-mA-yAB"/>
                                     <constraint firstAttribute="trailing" secondItem="8SC-bh-460" secondAttribute="trailing" constant="3" id="iqs-JA-UKn"/>
@@ -689,11 +673,11 @@ Made in Cluj :)</string>
                         <constraints>
                             <constraint firstItem="WQg-Oi-YYF" firstAttribute="leading" secondItem="S2y-by-bJf" secondAttribute="leading" id="JVa-8Y-fEa"/>
                             <constraint firstItem="5ej-iT-qZc" firstAttribute="trailing" secondItem="WQg-Oi-YYF" secondAttribute="trailing" id="Q0e-97-7A3"/>
-                            <constraint firstItem="5ej-iT-qZc" firstAttribute="bottom" secondItem="D18-ei-0Sf" secondAttribute="bottom" id="UGf-ve-KjU" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
-                            <constraint firstItem="D18-ei-0Sf" firstAttribute="leading" secondItem="5ej-iT-qZc" secondAttribute="leading" constant="3" id="dK5-EV-EXb"/>
+                            <constraint firstAttribute="bottom" secondItem="D18-ei-0Sf" secondAttribute="bottom" id="UGf-ve-KjU" customClass="KeyboardLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstItem="D18-ei-0Sf" firstAttribute="leading" secondItem="5ej-iT-qZc" secondAttribute="leading" id="dK5-EV-EXb"/>
                             <constraint firstItem="WQg-Oi-YYF" firstAttribute="top" secondItem="S2y-by-bJf" secondAttribute="top" id="qhY-l6-g35"/>
                             <constraint firstAttribute="bottom" secondItem="WQg-Oi-YYF" secondAttribute="bottom" id="uuB-bW-PjZ"/>
-                            <constraint firstItem="D18-ei-0Sf" firstAttribute="trailing" secondItem="5ej-iT-qZc" secondAttribute="trailing" constant="-3" id="wZi-GZ-vzo"/>
+                            <constraint firstItem="D18-ei-0Sf" firstAttribute="trailing" secondItem="5ej-iT-qZc" secondAttribute="trailing" id="wZi-GZ-vzo"/>
                         </constraints>
                     </view>
                     <connections>
@@ -702,7 +686,6 @@ Made in Cluj :)</string>
                         <outlet property="cardView" destination="D18-ei-0Sf" id="GgX-4j-6Wz"/>
                         <outlet property="datePicker" destination="DOc-o9-Faw" id="23J-MN-EaU"/>
                         <outlet property="labelField" destination="YWP-RV-7mB" id="SaK-Hg-pKz"/>
-                        <outlet property="pickBtn" destination="MXx-BF-yVa" id="gIN-Sb-JUX"/>
                         <outlet property="setBtn" destination="u9i-wE-D9F" id="8UP-nc-B4K"/>
                     </connections>
                 </viewController>
@@ -892,16 +875,16 @@ Made in Cluj :)</string>
                                 <blurEffect style="systemUltraThinMaterial"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFT-mT-duQ">
-                                <rect key="frame" x="3" y="579" width="408" height="283"/>
+                                <rect key="frame" x="0.0" y="593" width="414" height="303"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFs-pT-Xe2">
-                                        <rect key="frame" x="15" y="15" width="94" height="22"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <rect key="frame" x="15" y="15" width="96" height="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkA-RX-1jg">
-                                        <rect key="frame" x="332.5" y="15" width="72.5" height="17"/>
+                                        <rect key="frame" x="338.5" y="15" width="72.5" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="bBo-K5-WHb"/>
                                         </constraints>
@@ -915,7 +898,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Cq-hK-sHD" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="110" width="378" height="40"/>
+                                        <rect key="frame" x="15" y="110" width="384" height="40"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Dark Orange"/>
                                         <constraints>
@@ -925,7 +908,7 @@ Made in Cluj :)</string>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p7A-Rt-qou" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="60" width="185" height="40"/>
+                                        <rect key="frame" x="15" y="60" width="188" height="40"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Brownish"/>
                                         <constraints>
@@ -940,7 +923,7 @@ Made in Cluj :)</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VEK-59-OhE" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="160" width="378" height="40"/>
+                                        <rect key="frame" x="15" y="160" width="384" height="40"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Second Orange"/>
                                         <constraints>
@@ -955,7 +938,7 @@ Made in Cluj :)</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVW-aD-tDu">
-                                        <rect key="frame" x="15" y="218" width="378" height="50"/>
+                                        <rect key="frame" x="15" y="218" width="384" height="50"/>
                                         <color key="backgroundColor" name="Dark Orange"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="lpL-Iv-B9s"/>
@@ -970,7 +953,7 @@ Made in Cluj :)</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gav-gf-MKP" customClass="PaddedTextField" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="208" y="60" width="185" height="40"/>
+                                        <rect key="frame" x="211" y="60" width="188" height="40"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Greyish"/>
                                         <constraints>
@@ -986,7 +969,7 @@ Made in Cluj :)</string>
                                     <constraint firstItem="p7A-Rt-qou" firstAttribute="leading" secondItem="zFT-mT-duQ" secondAttribute="leading" constant="15" id="4ib-mw-hEf"/>
                                     <constraint firstItem="9Cq-hK-sHD" firstAttribute="top" secondItem="gav-gf-MKP" secondAttribute="bottom" constant="10" id="5bt-2A-Qgh"/>
                                     <constraint firstItem="tFs-pT-Xe2" firstAttribute="top" secondItem="zFT-mT-duQ" secondAttribute="top" constant="15" id="6ie-02-xS3"/>
-                                    <constraint firstAttribute="height" constant="283" id="86Y-BU-2uL"/>
+                                    <constraint firstAttribute="height" constant="303" id="86Y-BU-2uL"/>
                                     <constraint firstAttribute="trailing" secondItem="9Cq-hK-sHD" secondAttribute="trailing" constant="15" id="9qw-Nx-4L8"/>
                                     <constraint firstAttribute="trailing" secondItem="VEK-59-OhE" secondAttribute="trailing" constant="15" id="G3C-jT-RbZ"/>
                                     <constraint firstItem="VEK-59-OhE" firstAttribute="leading" secondItem="zFT-mT-duQ" secondAttribute="leading" constant="15" id="KFw-ds-gMe"/>
@@ -998,7 +981,7 @@ Made in Cluj :)</string>
                                     <constraint firstItem="VEK-59-OhE" firstAttribute="top" secondItem="9Cq-hK-sHD" secondAttribute="bottom" constant="10" id="auJ-xn-za8"/>
                                     <constraint firstItem="gav-gf-MKP" firstAttribute="top" secondItem="IkA-RX-1jg" secondAttribute="bottom" constant="28" id="dFX-TX-EGA"/>
                                     <constraint firstItem="p7A-Rt-qou" firstAttribute="top" secondItem="tFs-pT-Xe2" secondAttribute="bottom" constant="23" id="iVJ-9h-d0O"/>
-                                    <constraint firstAttribute="bottom" secondItem="cVW-aD-tDu" secondAttribute="bottom" constant="15" id="m1k-oi-quv"/>
+                                    <constraint firstAttribute="bottom" secondItem="cVW-aD-tDu" secondAttribute="bottom" constant="35" id="m1k-oi-quv"/>
                                     <constraint firstItem="cVW-aD-tDu" firstAttribute="top" secondItem="VEK-59-OhE" secondAttribute="bottom" constant="18" id="qwc-bi-hUv"/>
                                     <constraint firstItem="gav-gf-MKP" firstAttribute="leading" secondItem="p7A-Rt-qou" secondAttribute="trailing" constant="8" symbolic="YES" id="sP3-AI-P1S"/>
                                     <constraint firstItem="9Cq-hK-sHD" firstAttribute="top" secondItem="p7A-Rt-qou" secondAttribute="bottom" constant="10" id="uAV-tJ-MTG"/>
@@ -1009,10 +992,10 @@ Made in Cluj :)</string>
                         <viewLayoutGuide key="safeArea" id="5MG-Ka-QmK"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zFT-mT-duQ" firstAttribute="leading" secondItem="5MG-Ka-QmK" secondAttribute="leading" constant="3" id="5nT-kB-FL2"/>
+                            <constraint firstItem="zFT-mT-duQ" firstAttribute="leading" secondItem="5MG-Ka-QmK" secondAttribute="leading" id="5nT-kB-FL2"/>
                             <constraint firstAttribute="bottom" secondItem="zhP-GM-VqZ" secondAttribute="bottom" id="B4X-Jk-aOX"/>
-                            <constraint firstItem="zFT-mT-duQ" firstAttribute="trailing" secondItem="5MG-Ka-QmK" secondAttribute="trailing" constant="-3" id="MfH-0j-pCU"/>
-                            <constraint firstItem="5MG-Ka-QmK" firstAttribute="bottom" secondItem="zFT-mT-duQ" secondAttribute="bottom" id="PpW-jd-wrO" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstItem="zFT-mT-duQ" firstAttribute="trailing" secondItem="5MG-Ka-QmK" secondAttribute="trailing" id="MfH-0j-pCU"/>
+                            <constraint firstAttribute="bottom" secondItem="zFT-mT-duQ" secondAttribute="bottom" id="PpW-jd-wrO" customClass="KeyboardLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
                             <constraint firstItem="zhP-GM-VqZ" firstAttribute="top" secondItem="dZF-3q-Wnp" secondAttribute="top" id="WdH-1m-lSk"/>
                             <constraint firstAttribute="trailing" secondItem="zhP-GM-VqZ" secondAttribute="trailing" id="ks1-PJ-nRI"/>
                             <constraint firstItem="zhP-GM-VqZ" firstAttribute="leading" secondItem="5MG-Ka-QmK" secondAttribute="leading" id="sI0-y3-AfB"/>

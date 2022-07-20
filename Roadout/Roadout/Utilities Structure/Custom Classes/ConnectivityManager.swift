@@ -24,7 +24,7 @@ func observeReachability(){
 }
 
 @objc func reachabilityChanged(note: Notification) {
-    let reachability = note.object as! Reachability
+    guard let reachability = note.object as? Reachability else { return } 
     switch reachability.connection {
     case .cellular:
         print("Network available via Cellular Data.")

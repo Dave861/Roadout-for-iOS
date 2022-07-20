@@ -35,44 +35,20 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var modesButton: UIButton!
     
     @IBAction func modesTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "Search Settings".localized(), preferredStyle: .actionSheet)
-        
-        let smartAction = UIAlertAction(title: "Smart Search".localized(), style: .default) { action in
-            self.smartApplied = true
-            self.tableView.reloadData()
-        }
-        smartAction.setValue(UIColor(named: "Main Yellow")!, forKey: "titleTextColor")
-        
-        let classicAction = UIAlertAction(title: "Classic Search".localized(), style: .default) { action in
-            self.smartApplied = false
-            self.tableView.reloadData()
-        }
-        classicAction.setValue(UIColor(named: "Icons")!, forKey: "titleTextColor")
-        
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
-        cancelAction.setValue(UIColor(named: "Greyish")!, forKey: "titleTextColor")
-        
-        alert.addAction(smartAction)
-        alert.addAction(classicAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        //Handled by menu
     }
     
     func makeModesMenu() -> UIMenu {
         let smartAction = UIAction(title: "Smart Search".localized(), image: nil, state: smartApplied ? .on : .off, handler: { (_) in
             self.smartApplied = true
-            if #available(iOS 14.0, *) {
-                self.modesButton.menu = self.makeModesMenu()
-                self.modesButton.showsMenuAsPrimaryAction = true
-            }
+            self.modesButton.menu = self.makeModesMenu()
+            self.modesButton.showsMenuAsPrimaryAction = true
             self.tableView.reloadData()
         })
         let classicAction = UIAction(title: "Classic Search".localized(), image: nil, state: smartApplied ? .off : .on, handler: { (_) in
             self.smartApplied = false
-            if #available(iOS 14.0, *) {
-                self.modesButton.menu = self.makeModesMenu()
-                self.modesButton.showsMenuAsPrimaryAction = true
-            }
+            self.modesButton.menu = self.makeModesMenu()
+            self.modesButton.showsMenuAsPrimaryAction = true
             self.tableView.reloadData()
         })
         return UIMenu(title: "Search Settings".localized(), image: nil, identifier: nil, options: [], children: [classicAction, smartAction])
@@ -93,10 +69,8 @@ class SearchViewController: UIViewController {
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
         modesButton.setTitle("", for: .normal)
         
-        if #available(iOS 14.0, *) {
-            modesButton.menu = makeModesMenu()
-            modesButton.showsMenuAsPrimaryAction = true
-        }
+        modesButton.menu = makeModesMenu()
+        modesButton.showsMenuAsPrimaryAction = true
         
         searchBar.layer.cornerRadius = 17.0
         

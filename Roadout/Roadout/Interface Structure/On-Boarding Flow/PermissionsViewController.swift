@@ -108,20 +108,16 @@ class PermissionsViewController: UIViewController {
     }
     
     func manageLocation() {
-        if #available(iOS 14.0, *) {
-            if locationManager!.authorizationStatus != .authorizedWhenInUse && locationManager!.authorizationStatus != .authorizedAlways {
+        if locationManager!.authorizationStatus != .authorizedWhenInUse && locationManager!.authorizationStatus != .authorizedAlways {
                 locationManager?.requestWhenInUseAuthorization()
-            } else {
-                self.permissionCounter += 1
-                if self.permissionCounter >= 2 {
-                    let sb = UIStoryboard(name: "Home", bundle: nil)
-                    let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
-                    self.view.window?.rootViewController = vc
-                    self.view.window?.makeKeyAndVisible()
-                }
-            }
         } else {
-            locationManager?.requestWhenInUseAuthorization()
+            self.permissionCounter += 1
+            if self.permissionCounter >= 2 {
+                let sb = UIStoryboard(name: "Home", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
+                self.view.window?.rootViewController = vc
+                self.view.window?.makeKeyAndVisible()
+            }
         }
     }
 

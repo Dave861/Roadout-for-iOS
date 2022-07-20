@@ -37,7 +37,7 @@ class CancelledView: UIView {
     }
     
     class func instanceFromNib() -> UIView {
-        return UINib(nibName: "Bars", bundle: nil).instantiate(withOwner: nil, options: nil)[3] as! UIView
+        return UINib(nibName: "Bars", bundle: nil).instantiate(withOwner: nil, options: nil)[2] as! UIView
     }
 
 }

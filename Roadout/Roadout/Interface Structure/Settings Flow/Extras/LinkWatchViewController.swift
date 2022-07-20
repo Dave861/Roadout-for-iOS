@@ -64,9 +64,25 @@ class LinkWatchViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(dismissAfterSuccess), name: .dismissWatchConnectCardID, object: nil)
     }
     
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    
+    func addShadowToCardView() {
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 20.0
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 19.0
+        cardView.layer.cornerRadius = 20.0
+        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        addShadowToCardView()
+
         connectBtn.layer.cornerRadius = 12
         connectBtn.setAttributedTitle(connectTitle, for: .normal)
         activityIndicator.isHidden = true
@@ -79,14 +95,14 @@ class LinkWatchViewController: UIViewController {
         
         statusLbl.text = "Tap to connect".localized()
         titleLbl.text = "Link Apple Watch".localized()
-        cancelBtn.setTitle("Cancel".localized(), for: .normal)
+        cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 0.3) {
-            self.blurEffect.alpha = 1
+            self.blurEffect.alpha = 0.7
         }
     }
     

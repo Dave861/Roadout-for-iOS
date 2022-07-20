@@ -14,6 +14,8 @@ class DeleteAccountViewController: UIViewController {
     
     //MARK: -IB Connections-
     
+    @IBOutlet weak var cancelBtn: UIButton!
+    
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
@@ -115,9 +117,26 @@ class DeleteAccountViewController: UIViewController {
     
     //MARK: -View Configuration-
     
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    let forgotTitle = NSAttributedString(string: "Forgot Password?".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    
+    func addShadowToCardView() {
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 20.0
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 19.0
+        cardView.layer.cornerRadius = 20.0
+        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        addShadowToCardView()
+
         deleteBtn.layer.cornerRadius = 13.0
         deleteBtn.setAttributedTitle(deleteTitle, for: .normal)
         
@@ -137,13 +156,15 @@ class DeleteAccountViewController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
         
+        forgotBtn.setAttributedTitle(forgotTitle, for: .normal)
+        cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 0.3) {
-            self.blurEffect.alpha = 1
+            self.blurEffect.alpha = 0.7
         } completion: { _ in
             self.emailField.becomeFirstResponder()
         }

@@ -34,6 +34,8 @@ class SignInViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var cancelBtn: UIButton!
+    
     @IBOutlet weak var signInBtn: UIButton!
     
     @IBOutlet weak var emailField: PaddedTextField!
@@ -132,13 +134,28 @@ class SignInViewController: UIViewController {
         }
     }
     
-    
     //MARK: -View Configuration-
+    
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    let forgotTitle = NSAttributedString(string: "Forgot Password?".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    
+    func addShadowToCardView() {
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 20.0
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cardView.layer.cornerRadius = 20.0
+        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
-        cardView.layer.cornerRadius = 19.0
+        addShadowToCardView()
+        
         signInBtn.layer.cornerRadius = 13.0
         signInBtn.setAttributedTitle(signInTitle, for: .normal)
         
@@ -162,12 +179,15 @@ class SignInViewController: UIViewController {
         indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorImage))
         indicatorView.backgroundColor = UIColor(named: "Background")!
         indicatorView.dismissByDrag = false
+        
+        cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
+        forgotBtn.setAttributedTitle(forgotTitle, for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 0.5) {
-            self.blurEffect.alpha = 1
+            self.blurEffect.alpha = 0.7
         } completion: { _ in
             self.emailField.becomeFirstResponder()
         }
@@ -176,19 +196,12 @@ class SignInViewController: UIViewController {
     func manageScreens() {
         center.getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
-                if #available(iOS 14.0, *) {
-                    if self.locationManager!.authorizationStatus == .authorizedWhenInUse || self.locationManager!.authorizationStatus == .authorizedAlways {
-                        DispatchQueue.main.async {
-                            let sb = UIStoryboard(name: "Home", bundle: nil)
-                            let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
-                            self.view.window?.rootViewController = vc
-                            self.view.window?.makeKeyAndVisible()
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "PermissionsVC") as! PermissionsViewController
-                            self.present(vc, animated: false, completion: nil)
-                        }
+                if self.locationManager!.authorizationStatus == .authorizedWhenInUse || self.locationManager!.authorizationStatus == .authorizedAlways {
+                    DispatchQueue.main.async {
+                        let sb = UIStoryboard(name: "Home", bundle: nil)
+                        let vc = sb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
+                        self.view.window?.rootViewController = vc
+                        self.view.window?.makeKeyAndVisible()
                     }
                 } else {
                     DispatchQueue.main.async {

@@ -26,6 +26,8 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var cancelBtn: UIButton!
+    
     @IBOutlet weak var signUpBtn: UIButton!
     
     @IBOutlet weak var nameField: PaddedTextField!
@@ -89,10 +91,25 @@ class SignUpViewController: UIViewController {
         }
     }
    
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    
+    func addShadowToCardView() {
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 20.0
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardView.layer.cornerRadius = 19.0
+        cardView.layer.cornerRadius = 20.0
+        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        addShadowToCardView()
+
         signUpBtn.layer.cornerRadius = 13.0
         signUpBtn.setAttributedTitle(signUpTitle, for: .normal)
         
@@ -124,6 +141,8 @@ class SignUpViewController: UIViewController {
         indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorImage))
         indicatorView.backgroundColor = UIColor(named: "Background")!
         indicatorView.dismissByDrag = false
+        
+        cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
     }
     
     
@@ -131,7 +150,7 @@ class SignUpViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 0.5) {
-            self.blurEffect.alpha = 1
+            self.blurEffect.alpha = 0.7
         } completion: { _ in
             self.nameField.becomeFirstResponder()
         }

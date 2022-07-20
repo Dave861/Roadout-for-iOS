@@ -32,7 +32,7 @@ class NoWifiView: UIView {
     }
     
     class func instanceFromNib() -> UIView {
-        return UINib(nibName: "Bars", bundle: nil).instantiate(withOwner: nil, options: nil)[4] as! UIView
+        return UINib(nibName: "Bars", bundle: nil).instantiate(withOwner: nil, options: nil)[3] as! UIView
     }
 
 }

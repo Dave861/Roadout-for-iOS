@@ -54,33 +54,7 @@ class FindView: UIView {
     
     
     @IBAction func timeTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "Choose duration".localized(), preferredStyle: .actionSheet)
-        alert.view.tintColor = UIColor(named: "Greyish")
-        let action1 = UIAlertAction(title: "5" + " Minutes".localized(), style: .default) { action in
-            self.timeLbl.text = "5" + " Minutes".localized()
-            self.minutesValue = 5
-        }
-        let action2 = UIAlertAction(title: "10" + " Minutes".localized(), style: .default) { action in
-            self.timeLbl.text = "10" + " Minutes".localized()
-            self.minutesValue = 10
-        }
-        let action3 = UIAlertAction(title: "15" + " Minutes".localized(), style: .default) { action in
-            self.timeLbl.text = "15" + " Minutes".localized()
-            self.minutesValue = 15
-        }
-        let action4 = UIAlertAction(title: "20" + " Minutes".localized(), style: .default) { action in
-            self.timeLbl.text = "20" + " Minutes".localized()
-            self.minutesValue = 20
-        }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
-        cancelAction.setValue(UIColor(named: "Brownish")!, forKey: "titleTextColor")
-        
-        alert.addAction(action1)
-        alert.addAction(action2)
-        alert.addAction(action3)
-        alert.addAction(action4)
-
-        self.parentViewController().present(alert, animated: true, completion: nil)
+        //Handled by menu
     }
     @IBOutlet weak var timeBtn: UIButton!
     
@@ -126,11 +100,8 @@ class FindView: UIView {
         spotBtn.setTitle("", for: .normal)
         timeBtn.setTitle("", for: .normal)
     
-        
-        if #available(iOS 14.0, *) {
-            timeBtn.menu = durationMenu
-            timeBtn.showsMenuAsPrimaryAction = true
-        }
+        timeBtn.menu = durationMenu
+        timeBtn.showsMenuAsPrimaryAction = true
 
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1

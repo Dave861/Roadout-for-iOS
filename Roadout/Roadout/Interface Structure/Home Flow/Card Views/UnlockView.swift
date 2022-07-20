@@ -31,16 +31,6 @@ class UnlockView: UIView {
         
         explainerLbl.text = "Unlocking the spot cannot be undone. Once unlocked anyone can park on the spot, make sure you are at the spot before unlocking it.".localized()
         titleLbl.text = "Unlock Spot".localized()
-        
-        explainerLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: explainerLbl.range(string: "Unlocking ".localized()))
-        explainerLbl.set(font: .systemFont(ofSize: 16.0, weight: .medium), range: explainerLbl.range(string: "Unlocking ".localized()))
-        explainerLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: explainerLbl.range(string: " cannot".localized()))
-        explainerLbl.set(font: .systemFont(ofSize: 16.0, weight: .medium), range: explainerLbl.range(string: " cannot".localized()))
-        explainerLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: explainerLbl.range(string: " anyone".localized()))
-        explainerLbl.set(font: .systemFont(ofSize: 16.0, weight: .medium), range: explainerLbl.range(string: " anyone".localized()))
-        explainerLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: explainerLbl.range(string: "before ".localized()))
-        explainerLbl.set(font: .systemFont(ofSize: 16.0, weight: .medium), range: explainerLbl.range(string: "before ".localized()))
-        
        
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.1
