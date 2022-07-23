@@ -26,7 +26,7 @@ class GetDataViewController: UIViewController {
                             case .success():
                                 dbParkLocations[index].sections = dbParkSections
                                 parkLocations.append(dbParkLocations[index])
-                                if parkLocations.count >= 5 + dbParkLocations.count {
+                                if parkLocations.count >= cityParkLocationsCount {
                                      self.activityIndicator.stopAnimating()
                                      self.dismiss(animated: false) {
                                          NotificationCenter.default.post(name: .addMarkersID, object: nil)

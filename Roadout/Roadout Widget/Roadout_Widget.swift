@@ -306,6 +306,7 @@ struct RoadoutWidget: Widget {
             return IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
                 WidgetEntryView(entry: entry)
             }
+            //.supportedFamilies([.systemSmall, .systemMedium])
             .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular])
             .configurationDisplayName("Roadout")
             .description("Have Roadout at a glance".widgetLocalize())

@@ -184,6 +184,32 @@ class SearchViewController: UIViewController {
         self.view.endEditing(true)
         self.dismiss(animated: false, completion: nil)
     }
+    
+    func getRotationFor(_ percent: Int) -> CGFloat {
+        if percent == 100 {
+            return 1.7453
+        } else if percent >= 90 {
+            return 1.2566
+        } else if percent >= 80 {
+            return 0.7155
+        } else if percent >= 70 {
+            return 0.1745
+        } else if percent >= 60 {
+            return -0.2617
+        } else if percent >= 50 {
+            return -0.7853
+        } else if percent >= 40 {
+            return -1.3264
+        } else if percent >= 30 {
+            return -1.7802
+        } else if percent >= 20 {
+            return -2.3387
+        } else if percent >= 10 {
+            return -2.8448
+        } else {
+            return 3.0194
+        }
+    }
 
     
 }
@@ -218,25 +244,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         let occupancyPercent = self.getPercentageFrom(totalSpots: results[indexPath.row].totalSpots, freeSpots: results[indexPath.row].freeSpots)
         
-        if occupancyPercent == 100 {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: 2.356)
-        } else if 85 < occupancyPercent && occupancyPercent < 100 {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: 0.785)
-        } else if 60 < occupancyPercent && occupancyPercent < 85 {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: 0)
-        } else if 40 < occupancyPercent && occupancyPercent < 60 {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: -0.785)
-        } else if 20 < occupancyPercent && occupancyPercent < 40 {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: -1.570)
-        } else {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: -2.356)
-        }
+        cell.gaugeIcon.transform = .identity
+        cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: self.getRotationFor(occupancyPercent))
 
         return cell
     }

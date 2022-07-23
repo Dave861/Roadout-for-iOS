@@ -13,9 +13,7 @@ import Alamofire
 class EntityManager {
     
     static let sharedInstance = EntityManager()
-    
-    let colours = ["Main Yellow", "Brownish", "Dark Orange", "Dark Yellow", "Greyish", "Icons", "Kinda Red", "Second Orange"]
-    
+        
     enum EntityErrors: Error {
         case databaseFailure
         case errorWithJson
@@ -37,7 +35,7 @@ class EntityManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
                     dbParkLocations = [ParkLocation]()
                     for json in jsonArray {
-                        dbParkLocations.append(ParkLocation(name: json["name"] as! String, rID: json["id"] as! String, latitude: Double(json["lat"] as! String)!, longitude: Double(json["lng"] as! String)!, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: Int(json["freeParkingSpots"] as! String)!, sections: [ParkSection](), sectionImage: json["id"] as! String + ".Section", accentColor: self.colours.randomElement()!))
+                        dbParkLocations.append(ParkLocation(name: json["name"] as! String, rID: json["id"] as! String, latitude: Double(json["lat"] as! String)!, longitude: Double(json["lng"] as! String)!, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: Int(json["freeParkingSpots"] as! String)!, sections: [ParkSection](), sectionImage: json["id"] as! String + ".Section", accentColor: colours.randomElement()!))
                     }
                     completion(.success(()))
                 } else {
@@ -96,7 +94,7 @@ class EntityManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
                     dbParkSpots = [ParkSpot]()
                     for json in jsonArray {
-                        dbParkSpots.append(ParkSpot(state: Int(json["state"] as! String)!, number: Int(json["number"] as! String)!, rID: json["id"] as! String))
+                        dbParkSpots.append(ParkSpot(state: Int(json["state"] as! String)!, number: Int(json["number"] as! String)!, latitude: 46.764539, longitude: 23.596642, rID: json["id"] as! String))
                     }
                     dbParkSpots.sort { $0.number < $1.number }
                     completion(.success(()))

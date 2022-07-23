@@ -11,9 +11,9 @@ import CoreLocation
 class SelectPayViewController: UIViewController {
     
     let recentSpots = [
-        ParkIndividualSpot(streetName: "Republicii", number: 18, latitude: 46.765461, longitude: 23.587458, rID: "Cluj.StrRepublicii.18")
+        ParkSpot(state: 0, number: 18, latitude: 46.765461, longitude: 23.587458, rID: "Cluj.StrRepublicii.A.18")
     ]
-    let nearbySpots = individualSpots
+    var nearbySpots = [ParkSpot]()
     
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -31,6 +31,15 @@ class SelectPayViewController: UIViewController {
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if parkLocations.last!.sections[0].spots.count >= 4 {
+            nearbySpots = Array(parkLocations.last!.sections[0].spots[0...6])
+        } else {
+            nearbySpots = parkLocations.last!.sections[0].spots
+        }
+        tableView.reloadData()
     }
 
 }
@@ -60,9 +69,9 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.spotNumber.text = "\(recentSpots[indexPath.row-1].number)"
             
-            cell.spotLbl.text = "Spot \(recentSpots[indexPath.row-1].number) - Str. \(recentSpots[indexPath.row-1].streetName)"
-            
-            cell.spotLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: cell.spotLbl.range(after: " - "))
+            cell.spotLbl.text = "\(EntityManager.sharedInstance.decodeSpotID(recentSpots[indexPath.row-1].rID)[0]) - Section \(EntityManager.sharedInstance.decodeSpotID(recentSpots[indexPath.row-1].rID)[1]) - Spot \(EntityManager.sharedInstance.decodeSpotID(recentSpots[indexPath.row-1].rID)[2])"
+            cell.spotLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: cell.spotLbl.range(after: "- Section", before:  "- Spot"))
+            cell.spotLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: cell.spotLbl.range(after: "- Spot"))
             
             let coord = CLLocationCoordinate2D(latitude: recentSpots[indexPath.row-1].latitude, longitude: recentSpots[indexPath.row-1].longitude)
             if currentLocationCoord != nil {
@@ -88,9 +97,9 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.spotNumber.text = "\(nearbySpots[indexPath.row-2-recentSpots.count].number)"
             
-            cell.spotLbl.text = "Spot \(nearbySpots[indexPath.row-2-recentSpots.count].number) - Str. \(nearbySpots[indexPath.row-2-recentSpots.count].streetName)"
-            
-            cell.spotLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: cell.spotLbl.range(after: " - "))
+            cell.spotLbl.text = "\(EntityManager.sharedInstance.decodeSpotID(nearbySpots[indexPath.row-2-recentSpots.count].rID)[0]) - Section \(EntityManager.sharedInstance.decodeSpotID(nearbySpots[indexPath.row-2-recentSpots.count].rID)[1]) - Spot \(EntityManager.sharedInstance.decodeSpotID(nearbySpots[indexPath.row-2-recentSpots.count].rID)[2])"
+            cell.spotLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: cell.spotLbl.range(after: "- Section", before:  "- Spot"))
+            cell.spotLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: cell.spotLbl.range(after: "- Spot"))
             
             let coord = CLLocationCoordinate2D(latitude: nearbySpots[indexPath.row-2-recentSpots.count].latitude, longitude: nearbySpots[indexPath.row-2-recentSpots.count].longitude)
             if currentLocationCoord != nil {
@@ -111,9 +120,20 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row != 0 || indexPath.row != recentSpots.count + 1 {
+        if indexPath.row > 0 && indexPath.row <= recentSpots.count {
             let generator = UIImpactFeedbackGenerator(style: .light)
             generator.impactOccurred()
+            selectedSpotID = recentSpots[indexPath.row-1].rID
+            isPayFlow = true
+            NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
+            self.dismiss(animated: true)
+        } else if indexPath.row > recentSpots.count + 1 {
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+            selectedSpotID = nearbySpots[indexPath.row-2-recentSpots.count].rID
+            isPayFlow = true
+            NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
+            self.dismiss(animated: true)
         }
     }
     

@@ -15,7 +15,7 @@ public class QuickReserveIntentHandler: NSObject, QuickReserveIntentHandling {
 
     public func confirm(intent: QuickReserveIntent, completion: @escaping (QuickReserveIntentResponse) -> Void) {
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
-            if parkLocations.count < 10 {
+            if parkLocations.count < 11 {
                 self.downloadCityData()
             }
             

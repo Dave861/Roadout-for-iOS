@@ -7,8 +7,13 @@
 
 import UIKit
 import CoreLocation
+import SPIndicator
 
 class ExpressPickViewController: UIViewController {
+    
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    
+    let addLocationTitle = NSAttributedString(string: " Add Location".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "DevBrown")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -17,22 +22,43 @@ class ExpressPickViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var placeholderView: UIView!
+    @IBOutlet weak var placeholderAddBtn: UIButton!
+    
+    @IBAction func placeholderAddTapped(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AddExpressVC") as! AddExpressViewController
+        self.present(vc, animated: true)
+    }
+    
+    @IBOutlet weak var addLocationBtn: UIButton!
+    
+    @IBAction func addLocationTapped(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AddExpressVC") as! AddExpressViewController
+        self.present(vc, animated: true)
+    }
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(showNoFreeSpotAlert), name: .showNoFreeSpotInLocationID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showFreeSpot), name: .showExpressLaneFreeSpotID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getFavouriteLocations), name: .reloadExpressLocationsID, object: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         manageObs()
+        
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
+        addLocationBtn.setAttributedTitle(addLocationTitle, for: .normal)
+        
+        getFavouriteLocations()
+        
         tableView.delegate = self
         tableView.dataSource = self
+        
+        reloadScreen()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,6 +76,30 @@ class ExpressPickViewController: UIViewController {
          }
     }
     
+    @objc func getFavouriteLocations() {
+        favouriteLocationIDs = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.Roadout.favouriteLocationIDs") ?? [String]()
+        favouriteLocations = [ParkLocation]()
+        for location in parkLocations {
+            if favouriteLocationIDs.contains(location.rID) {
+                favouriteLocations.append(location)
+            }
+        }
+        self.reloadScreen()
+    }
+    
+    func reloadScreen() {
+        if favouriteLocations.count == 0 {
+            placeholderView.isHidden = false
+            tableView.isHidden = true
+            addLocationBtn.isHidden = true
+        } else {
+            placeholderView.isHidden = true
+            tableView.isHidden = false
+            addLocationBtn.isHidden = false
+            tableView.reloadData()
+        }
+    }
+    
     @objc func showNoFreeSpotAlert() {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free places in this location at the moment".localized(), preferredStyle: .alert)
@@ -65,15 +115,58 @@ class ExpressPickViewController: UIViewController {
         }
     }
     
+    func getRotationFor(_ percent: Int) -> CGFloat {
+        if percent == 100 {
+            return 1.7453
+        } else if percent >= 90 {
+            return 1.2566
+        } else if percent >= 80 {
+            return 0.7155
+        } else if percent >= 70 {
+            return 0.1745
+        } else if percent >= 60 {
+            return -0.2617
+        } else if percent >= 50 {
+            return -0.7853
+        } else if percent >= 40 {
+            return -1.3264
+        } else if percent >= 30 {
+            return -1.7802
+        } else if percent >= 20 {
+            return -2.3387
+        } else if percent >= 10 {
+            return -2.8448
+        } else {
+            return 3.0194
+        }
+    }
+    
     func getPercentageFrom(totalSpots: Int, freeSpots: Int) -> Int {
         return 100-Int(Float(freeSpots)/Float(totalSpots) * 100)
+    }
+    
+    func showLoadingIndicator() {
+        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
+        let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
+        indicatorView.dismissByDrag = false
+        indicatorView.backgroundColor = UIColor(named: "Background")!
+        indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
+    }
+    
+    func findFavouriteIndexInParkLocations(_ favouriteID: String) -> Int {
+        for ind in 0...parkLocations.count-1 {
+            if parkLocations[ind].rID == favouriteID {
+                return ind
+            }
+        }
+        return 0
     }
 
 }
 extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return parkLocations.count
+        return favouriteLocations.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -82,8 +175,8 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpressPickCell") as! ExpressPickCell
-        cell.nameLbl.text = parkLocations[indexPath.row].name
-        let coord = CLLocationCoordinate2D(latitude: parkLocations[indexPath.row].latitude, longitude: parkLocations[indexPath.row].longitude)
+        cell.nameLbl.text = favouriteLocations[indexPath.row].name
+        let coord = CLLocationCoordinate2D(latitude: favouriteLocations[indexPath.row].latitude, longitude: favouriteLocations[indexPath.row].longitude)
         if currentLocationCoord != nil {
             let c1 = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
             let c2 = CLLocation(latitude: currentLocationCoord!.latitude, longitude: currentLocationCoord!.longitude)
@@ -97,27 +190,10 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
             cell.distanceLbl.text = "- km"
         }
 
-        let occupancyPercent = self.getPercentageFrom(totalSpots: parkLocations[indexPath.row].totalSpots, freeSpots: parkLocations[indexPath.row].freeSpots)
+        let occupancyPercent = self.getPercentageFrom(totalSpots: favouriteLocations[indexPath.row].totalSpots, freeSpots: favouriteLocations[indexPath.row].freeSpots)
         
-        if occupancyPercent == 100 {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: 2.356)
-        } else if 85 < occupancyPercent && occupancyPercent < 100 {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: 0.785)
-        } else if 60 < occupancyPercent && occupancyPercent < 85 {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: 0)
-        } else if 40 < occupancyPercent && occupancyPercent < 60 {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: -0.785)
-        } else if 20 < occupancyPercent && occupancyPercent < 40 {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: -1.570)
-        } else {
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: -2.356)
-        }
+        cell.gaugeIcon.transform = .identity
+        cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: self.getRotationFor(occupancyPercent))
 
         return cell
         
@@ -126,9 +202,10 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        selectedParkLocationIndex = indexPath.row
+        self.showLoadingIndicator()
+        selectedParkLocationIndex = findFavouriteIndexInParkLocations(favouriteLocations[indexPath.row].rID)
         FunctionsManager.sharedInstance.foundSpot = nil
-        FunctionsManager.sharedInstance.expressReserveInLocation(sectionIndex: 0, location: parkLocations[indexPath.row])
+        FunctionsManager.sharedInstance.expressReserveInLocation(sectionIndex: 0, location: favouriteLocations[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
@@ -149,11 +226,11 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchPreviewVC") as! SearchPreviewController
             vc.preferredContentSize = CGSize(width: cell.frame.width, height: 250)
             
-            vc.previewLocationName = parkLocations[indexPath.row].name
+            vc.previewLocationName = favouriteLocations[indexPath.row].name
             vc.previewLocationDistance = cell.distanceLbl.text ?? "- km"
-            vc.previewLocationFreeSpots = parkLocations[indexPath.row].freeSpots
-            vc.previewLocationSections = parkLocations[indexPath.row].sections.count
-            vc.previewLocationCoords = CLLocationCoordinate2D(latitude: parkLocations[indexPath.row].latitude, longitude: parkLocations[indexPath.row].longitude)
+            vc.previewLocationFreeSpots = favouriteLocations[indexPath.row].freeSpots
+            vc.previewLocationSections = favouriteLocations[indexPath.row].sections.count
+            vc.previewLocationCoords = CLLocationCoordinate2D(latitude: favouriteLocations[indexPath.row].latitude, longitude: favouriteLocations[indexPath.row].longitude)
             vc.previewLocationColorName = "ExpressFocus"
             vc.previewLocationColor = UIColor(named: "ExpressFocus")!
             
@@ -167,8 +244,20 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         let indexPath = configuration.identifier as! IndexPath
-        selectedParkLocationIndex = indexPath.row
+        self.showLoadingIndicator()
+        selectedParkLocationIndex = findFavouriteIndexInParkLocations(favouriteLocations[indexPath.row].rID)
         FunctionsManager.sharedInstance.foundSpot = nil
-        FunctionsManager.sharedInstance.expressReserveInLocation(sectionIndex: 0, location: parkLocations[indexPath.row])
+        FunctionsManager.sharedInstance.expressReserveInLocation(sectionIndex: 0, location: favouriteLocations[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "") { _, _, _ in
+            favouriteLocationIDs.remove(at: indexPath.row)
+            UserDefaults.roadout!.set(favouriteLocationIDs, forKey: "ro.roadout.Roadout.favouriteLocationIDs")
+            self.getFavouriteLocations()
+        }
+        deleteAction.image = UIImage(systemName: "trash.fill")?.withTintColor(UIColor(named: "DevBrown")!, renderingMode: .alwaysOriginal)
+        deleteAction.backgroundColor = UIColor(named: "Second Background")!
+        return  UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }

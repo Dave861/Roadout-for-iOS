@@ -40,6 +40,7 @@ class PayParkingView: UIView {
             ReservationManager.sharedInstance.checkForReservation(Date(), userID: id) { _ in
                 //API call for continuity when app is opened again (to prevent showing unlocked view) and end reservation, begin paid stay
             }
+            isPayFlow = false
             NotificationCenter.default.post(name: .showPaidParkingBarID, object: nil)
         }
     }
@@ -123,6 +124,18 @@ class PayParkingView: UIView {
         let parkSpotNr = EntityManager.sharedInstance.decodeSpotID(spotID)[2]
         
         self.detailsLbl.text = parkLocationName + " - Section ".localized() + parkSectionName + " - Spot ".localized() + parkSpotNr
+        
+        self.detailsLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.detailsLbl.range(after: " - Section ".localized(), before: " - Spot ".localized()))
+        self.detailsLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.detailsLbl.range(after: " - Spot ".localized()))
+        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - Section ".localized(), before: " - Spot ".localized()))
+        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - Spot ".localized()))
+        
+        self.timeLbl.text = "Pay for ".localized() + "\(paidHours)" + " hours".localized()
+        self.timeLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.timeLbl.range(after: "Pay for ".localized()))
+        self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Pay for ".localized()))
+    }
+    
+    func fillMockReservationData() {
         
         self.detailsLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.detailsLbl.range(after: " - Section ".localized(), before: " - Spot ".localized()))
         self.detailsLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.detailsLbl.range(after: " - Spot ".localized()))

@@ -12,7 +12,11 @@ class DurationView: UIView {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
-        NotificationCenter.default.post(name: .removePayDurationCardID, object: nil)
+        if isPayFlow {
+            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+        } else {
+            NotificationCenter.default.post(name: .removePayDurationCardID, object: nil)
+        }
     }
     @IBOutlet weak var backBtn: UIButton!
     
