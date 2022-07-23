@@ -2183,8 +2183,8 @@ Made in Cluj :)</string>
                     </view>
                     <navigationItem key="navigationItem" id="a4N-GK-YXb"/>
                     <connections>
-                        <outlet property="addLocationBtn" destination="KHo-1L-gXC" id="GIV-QQ-Ezm"/>
                         <outlet property="cancelButton" destination="H3f-vj-5kV" id="5L8-C1-XJL"/>
+                        <outlet property="editLocationBtn" destination="KHo-1L-gXC" id="cvg-LX-Tzf"/>
                         <outlet property="placeholderAddBtn" destination="XBD-av-s0i" id="MSC-xl-kB6"/>
                         <outlet property="placeholderView" destination="TjE-hQ-5zu" id="t5n-T9-b77"/>
                         <outlet property="tableView" destination="BkK-7e-KVD" id="8lb-gp-kUx"/>
@@ -2227,11 +2227,11 @@ Made in Cluj :)</string>
                                         </constraints>
                                         <color key="tintColor" name="Background"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Add">
+                                        <buttonConfiguration key="configuration" style="plain" title="Done">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="addTapped:" destination="CDD-9s-vZS" eventType="touchUpInside" id="JHN-p5-ejf"/>
+                                            <action selector="doneTapped:" destination="CDD-9s-vZS" eventType="touchUpInside" id="MsR-g4-2T0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5N-J9-JpD">
@@ -2295,38 +2295,6 @@ Made in Cluj :)</string>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWJ-Tw-doJ">
-                                        <rect key="frame" x="87" y="122.5" width="240" height="120"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No more locations to add" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT2-Jk-XKO">
-                                                <rect key="frame" x="0.0" y="78" width="240" height="42"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="42" id="Lu4-5e-5rz"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="textColor" systemColor="systemGrayColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-RW-vQS">
-                                                <rect key="frame" x="62.5" y="15.5" width="115" height="53"/>
-                                                <color key="tintColor" systemColor="systemGrayColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="115" id="bwB-r3-Rgh"/>
-                                                    <constraint firstAttribute="height" constant="54.5" id="dfs-mI-nAV"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" name="Background"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="FT2-Jk-XKO" secondAttribute="trailing" id="FB5-vq-l5X"/>
-                                            <constraint firstAttribute="height" constant="120" id="LQO-mt-U4m"/>
-                                            <constraint firstItem="FT2-Jk-XKO" firstAttribute="leading" secondItem="JWJ-Tw-doJ" secondAttribute="leading" id="PNB-g1-4EM"/>
-                                            <constraint firstItem="bqN-RW-vQS" firstAttribute="centerX" secondItem="JWJ-Tw-doJ" secondAttribute="centerX" id="TXu-Qa-lG8"/>
-                                            <constraint firstItem="FT2-Jk-XKO" firstAttribute="top" secondItem="bqN-RW-vQS" secondAttribute="bottom" constant="8.5" id="amr-rT-CQ2"/>
-                                            <constraint firstAttribute="bottom" secondItem="FT2-Jk-XKO" secondAttribute="bottom" id="eQ3-hj-4ld"/>
-                                            <constraint firstAttribute="width" constant="240" id="mB9-7i-AZy"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
@@ -2336,9 +2304,7 @@ Made in Cluj :)</string>
                                     <constraint firstItem="2aJ-0I-0s9" firstAttribute="top" secondItem="l8F-Bw-0OC" secondAttribute="bottom" constant="8" symbolic="YES" id="Fxx-J2-kCh"/>
                                     <constraint firstItem="2aJ-0I-0s9" firstAttribute="leading" secondItem="2ya-4k-68H" secondAttribute="leading" constant="15" id="I3i-yl-A1s"/>
                                     <constraint firstAttribute="height" constant="435" id="IrA-TX-vJh"/>
-                                    <constraint firstItem="JWJ-Tw-doJ" firstAttribute="centerX" secondItem="2ya-4k-68H" secondAttribute="centerX" id="JnN-1b-9zQ"/>
                                     <constraint firstItem="Wdv-ap-q4I" firstAttribute="leading" secondItem="2ya-4k-68H" secondAttribute="leading" constant="15" id="Ubq-Pu-Htq"/>
-                                    <constraint firstItem="JWJ-Tw-doJ" firstAttribute="centerY" secondItem="2ya-4k-68H" secondAttribute="centerY" constant="-35" id="VoD-4s-GxC"/>
                                     <constraint firstItem="l8F-Bw-0OC" firstAttribute="top" secondItem="Wdv-ap-q4I" secondAttribute="bottom" constant="11" id="aCU-X9-wif"/>
                                     <constraint firstAttribute="trailing" secondItem="l8F-Bw-0OC" secondAttribute="trailing" constant="16" id="gGI-Zu-gkY"/>
                                     <constraint firstItem="W5N-J9-JpD" firstAttribute="top" secondItem="2ya-4k-68H" secondAttribute="top" constant="20" id="kZH-LA-PxA"/>
@@ -2360,11 +2326,10 @@ Made in Cluj :)</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addBtn" destination="2aJ-0I-0s9" id="1pS-Ts-aI8"/>
                         <outlet property="blurEffect" destination="HJs-Ta-Hp4" id="1Ia-V4-cWu"/>
                         <outlet property="cancelBtn" destination="W5N-J9-JpD" id="xeb-Sz-SiL"/>
                         <outlet property="cardView" destination="2ya-4k-68H" id="hGe-BV-XeU"/>
-                        <outlet property="placeholderView" destination="JWJ-Tw-doJ" id="2EK-69-XLj"/>
+                        <outlet property="doneBtn" destination="2aJ-0I-0s9" id="GV3-Xu-idQ"/>
                         <outlet property="tableView" destination="l8F-Bw-0OC" id="eD4-My-dEm"/>
                         <outlet property="titleLbl" destination="Wdv-ap-q4I" id="VuO-0P-NTc"/>
                     </connections>

@@ -9,10 +9,8 @@ import UIKit
 
 class AddExpressViewController: UIViewController {
 
-    let addTitle = NSAttributedString(string: "Add".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
-    var selectableLocations = parkLocations.filter { !favouriteLocations.contains($0) }
-
     @IBOutlet weak var cardView: UIView!
     
     @IBOutlet weak var titleLbl: UILabel!
@@ -36,14 +34,9 @@ class AddExpressViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var doneBtn: UIButton!
     
-    @IBAction func addTapped(_ sender: Any) {
-        favouriteLocationIDs = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.Roadout.favouriteLocationIDs") ?? [String]()
-        for i in 0...tableView.indexPathsForSelectedRows!.count-1 {
-            let ind = tableView.indexPathsForSelectedRows![i]
-            favouriteLocationIDs.append(selectableLocations[ind.row].rID)
-         }
+    @IBAction func doneTapped(_ sender: Any) {
         UserDefaults.roadout!.set(favouriteLocationIDs, forKey: "ro.roadout.Roadout.favouriteLocationIDs")
         NotificationCenter.default.post(name: .reloadExpressLocationsID, object: nil)
         UIView.animate(withDuration: 0.1) {
@@ -54,9 +47,7 @@ class AddExpressViewController: UIViewController {
     }
     
     @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var placeholderView: UIView!
-    
+        
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     func addShadowToCardView() {
@@ -76,8 +67,8 @@ class AddExpressViewController: UIViewController {
         
         addShadowToCardView()
 
-        addBtn.layer.cornerRadius = 12
-        addBtn.setAttributedTitle(addTitle, for: .normal)
+        doneBtn.layer.cornerRadius = 12
+        doneBtn.setAttributedTitle(doneTitle, for: .normal)
        
     
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
@@ -88,8 +79,6 @@ class AddExpressViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        managePlaceholder()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -98,29 +87,38 @@ class AddExpressViewController: UIViewController {
             self.blurEffect.alpha = 0.7
         }
     }
-    
-    func managePlaceholder() {
-        if selectableLocations.count == 0 {
-            placeholderView.isHidden = false
-        } else {
-            placeholderView.isHidden = true
-        }
-    }
+   
     
 }
 extension AddExpressViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectableLocations.count
+        return parkLocations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddExpressCell") as! AddExpressCell
-        cell.locationNameLbl.text = selectableLocations[indexPath.row].name
+        cell.locationNameLbl.text = parkLocations[indexPath.row].name
+        if favouriteLocationIDs.contains(parkLocations[indexPath.row].rID) {
+            cell.check.alpha = 1
+        } else {
+            cell.check.alpha = 0
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 45
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! AddExpressCell
+        if cell.check.alpha == 0 {
+            cell.check.alpha = 1
+            favouriteLocationIDs.append(parkLocations[indexPath.row].rID)
+        } else {
+            cell.check.alpha = 0
+            favouriteLocationIDs = favouriteLocationIDs.remove(parkLocations[indexPath.row].rID)
+        }
     }
 }

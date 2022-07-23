@@ -17,13 +17,4 @@ class AddExpressCell: UITableViewCell {
         check.alpha = 0
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        if selected {
-            check.alpha = 1
-        } else {
-            check.alpha = 0
-        }
-    }
-
 }

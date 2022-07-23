@@ -13,7 +13,7 @@ class ExpressPickViewController: UIViewController {
     
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
-    let addLocationTitle = NSAttributedString(string: " Add Location".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "DevBrown")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    let editLocationTitle = NSAttributedString(string: " Edit Locations".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "DevBrown")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -32,7 +32,7 @@ class ExpressPickViewController: UIViewController {
         self.present(vc, animated: true)
     }
     
-    @IBOutlet weak var addLocationBtn: UIButton!
+    @IBOutlet weak var editLocationBtn: UIButton!
     
     @IBAction func addLocationTapped(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "AddExpressVC") as! AddExpressViewController
@@ -51,7 +51,7 @@ class ExpressPickViewController: UIViewController {
         manageObs()
         
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
-        addLocationBtn.setAttributedTitle(addLocationTitle, for: .normal)
+        editLocationBtn.setAttributedTitle(editLocationTitle, for: .normal)
         
         getFavouriteLocations()
         
@@ -91,11 +91,11 @@ class ExpressPickViewController: UIViewController {
         if favouriteLocations.count == 0 {
             placeholderView.isHidden = false
             tableView.isHidden = true
-            addLocationBtn.isHidden = true
+            editLocationBtn.isHidden = true
         } else {
             placeholderView.isHidden = true
             tableView.isHidden = false
-            addLocationBtn.isHidden = false
+            editLocationBtn.isHidden = false
             tableView.reloadData()
         }
     }
@@ -250,14 +250,4 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
         FunctionsManager.sharedInstance.expressReserveInLocation(sectionIndex: 0, location: favouriteLocations[indexPath.row])
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title: "") { _, _, _ in
-            favouriteLocationIDs.remove(at: indexPath.row)
-            UserDefaults.roadout!.set(favouriteLocationIDs, forKey: "ro.roadout.Roadout.favouriteLocationIDs")
-            self.getFavouriteLocations()
-        }
-        deleteAction.image = UIImage(systemName: "trash.fill")?.withTintColor(UIColor(named: "DevBrown")!, renderingMode: .alwaysOriginal)
-        deleteAction.backgroundColor = UIColor(named: "Second Background")!
-        return  UISwipeActionsConfiguration(actions: [deleteAction])
-    }
 }
