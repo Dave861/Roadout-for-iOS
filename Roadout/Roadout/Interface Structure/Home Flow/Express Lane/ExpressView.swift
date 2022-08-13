@@ -19,6 +19,7 @@ class ExpressView: UIView {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
+        NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
@@ -119,6 +120,12 @@ class ExpressView: UIView {
                 
         locationLbl.text = parkLocations[selectedParkLocationIndex].name
         spotSectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
+        
+        spotSectionLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: spotSectionLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
+        spotSectionLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: spotSectionLbl.range(after: " - Spot ".localized()))
+        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
+        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: " - Spot ".localized()))
+        
         
         
         self.layer.shadowColor = UIColor.black.cgColor

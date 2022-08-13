@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MarqueeLabel
 
 class PayView: UIView {
     
@@ -30,8 +31,8 @@ class PayView: UIView {
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     
-    @IBOutlet weak var detailsLbl: UILabel!
-    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var detailsLbl: MarqueeLabel!
+    @IBOutlet weak var timeLbl: MarqueeLabel!
     
     @IBOutlet weak var payBtn: UIButton!
     @IBOutlet weak var chooseMethodBtn: UIButton!
@@ -39,6 +40,8 @@ class PayView: UIView {
     @IBAction func payTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        
+        NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         
         if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
             //Handled by menu

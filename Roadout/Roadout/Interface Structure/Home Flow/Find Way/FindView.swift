@@ -8,6 +8,7 @@
 import UIKit
 import IntentsUI
 import Intents
+import MarqueeLabel
 
 class FindView: UIView {
     
@@ -20,13 +21,14 @@ class FindView: UIView {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
+        NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
-    @IBOutlet weak var locationLbl: UILabel!
-    @IBOutlet weak var sectionLbl: UILabel!
-    @IBOutlet weak var spotLbl: UILabel!
-    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var locationLbl: MarqueeLabel!
+    @IBOutlet weak var sectionLbl: MarqueeLabel!
+    @IBOutlet weak var spotLbl: MarqueeLabel!
+    @IBOutlet weak var timeLbl: MarqueeLabel!
     
     @IBOutlet weak var locationCard: UIView!
     @IBOutlet weak var sectionCard: UIView!

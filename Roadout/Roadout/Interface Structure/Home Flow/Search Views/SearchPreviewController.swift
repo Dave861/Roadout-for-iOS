@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import CoreLocation
 import GoogleMaps
+import MarqueeLabel
 
 class SearchPreviewController: UIViewController {
     
@@ -26,9 +27,9 @@ class SearchPreviewController: UIViewController {
     
     @IBOutlet weak var locationNameLbl: UILabel!
     
-    @IBOutlet weak var distanceLbl: UILabel!
-    @IBOutlet weak var sectionsLbl: UILabel!
-    @IBOutlet weak var spotsLbl: UILabel!
+    @IBOutlet weak var distanceLbl: MarqueeLabel!
+    @IBOutlet weak var sectionsLbl: MarqueeLabel!
+    @IBOutlet weak var spotsLbl: MarqueeLabel!
     
     @IBOutlet weak var distanceIcon: UIImageView!
     @IBOutlet weak var gridIcon: UIImageView!

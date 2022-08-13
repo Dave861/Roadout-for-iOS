@@ -278,7 +278,7 @@ struct RoadoutView: View {
                 .background(Color("Secondary Detail"))
             }
         default:
-            if #available(iOS 16, *) {
+           if #available(iOS 16, *) {
                 if family == .accessoryCircular {
                     ZStack {
                       Image("ThreeThing")

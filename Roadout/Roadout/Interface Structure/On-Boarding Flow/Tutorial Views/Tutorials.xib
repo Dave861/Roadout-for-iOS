@@ -159,9 +159,59 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="1850.7246376811595" y="-754.01785714285711"/>
         </view>
+        <view contentMode="scaleToFill" id="lcq-cU-NBA">
+            <rect key="frame" x="0.0" y="0.0" width="296" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay Parking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pk-CQ-wZV">
+                    <rect key="frame" x="46" y="0.0" width="250" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="AWq-Hq-kzp"/>
+                        <constraint firstAttribute="height" constant="26" id="QD2-rl-9dj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dollarsign.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GEh-25-zi1">
+                    <rect key="frame" x="0.0" y="16" width="41" height="38"/>
+                    <color key="tintColor" systemColor="systemGrayColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="cDC-fx-gfF"/>
+                        <constraint firstAttribute="width" constant="41" id="lrq-bh-Ooy"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easily pay for parking right here, just pick the location you are at" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3l-zs-M9k">
+                    <rect key="frame" x="46" y="27" width="250" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="otF-iB-JOJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="ObG-Pr-Lcv"/>
+            <color key="backgroundColor" name="Card Background"/>
+            <constraints>
+                <constraint firstItem="GEh-25-zi1" firstAttribute="leading" secondItem="ObG-Pr-Lcv" secondAttribute="leading" id="3P3-aN-9RR"/>
+                <constraint firstItem="z3l-zs-M9k" firstAttribute="trailing" secondItem="ObG-Pr-Lcv" secondAttribute="trailing" id="FaH-OO-v9w"/>
+                <constraint firstItem="7Pk-CQ-wZV" firstAttribute="leading" secondItem="GEh-25-zi1" secondAttribute="trailing" constant="5" id="GuP-M4-Qga"/>
+                <constraint firstItem="z3l-zs-M9k" firstAttribute="leading" secondItem="GEh-25-zi1" secondAttribute="trailing" constant="5" id="Ho4-ZN-vgU"/>
+                <constraint firstItem="GEh-25-zi1" firstAttribute="centerY" secondItem="lcq-cU-NBA" secondAttribute="centerY" id="J0Y-RJ-PYz"/>
+                <constraint firstAttribute="bottom" secondItem="z3l-zs-M9k" secondAttribute="bottom" id="UjO-3h-AWx"/>
+                <constraint firstItem="z3l-zs-M9k" firstAttribute="top" secondItem="7Pk-CQ-wZV" secondAttribute="bottom" constant="1" id="acb-23-RbW"/>
+                <constraint firstAttribute="trailing" secondItem="7Pk-CQ-wZV" secondAttribute="trailing" id="oxD-D6-VLE"/>
+                <constraint firstItem="7Pk-CQ-wZV" firstAttribute="top" secondItem="lcq-cU-NBA" secondAttribute="top" id="wIK-1Z-XKf"/>
+            </constraints>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="2399.275362318841" y="-754.01785714285711"/>
+        </view>
     </objects>
     <resources>
         <image name="binoculars" catalog="system" width="128" height="90"/>
+        <image name="dollarsign.circle" catalog="system" width="128" height="123"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
         <image name="flag.2.crossed" catalog="system" width="128" height="72"/>
         <namedColor name="Card Background">

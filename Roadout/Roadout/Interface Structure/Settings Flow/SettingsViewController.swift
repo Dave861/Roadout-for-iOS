@@ -132,6 +132,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip1")
                 UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip2")
                 UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip3")
+                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip4")
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
                 self.view.window?.rootViewController = vc

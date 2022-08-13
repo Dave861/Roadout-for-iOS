@@ -31,8 +31,34 @@ class AboutViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var findWayIcon: UIImageView!
-    @IBOutlet weak var expressLaneIcon: UIImageView!
+    @IBAction func facebookTapped(_ sender: Any) {
+        if let url = URL(string: "https://www.facebook.com/roadout.ro") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func instagramTapped(_ sender: Any) {
+        if let url = URL(string: "https://www.instagram.com/roadout.ro/") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func twitterTapped(_ sender: Any) {
+        if let url = URL(string: "https://twitter.com/roadout_ro") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func youtubeTapped(_ sender: Any) {
+        if let url = URL(string: "https://www.youtube.com/channel/UCGzqZVCYwuotgIolW6ip-Ug/featured") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBOutlet weak var facebookBtn: UIButton!
+    @IBOutlet weak var instagramBtn: UIButton!
+    @IBOutlet weak var twitterBtn: UIButton!
+    @IBOutlet weak var youtubeBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +67,13 @@ class AboutViewController: UIViewController {
         otherCard.layer.cornerRadius = 12.0
         
         logoImage.layer.cornerRadius = logoImage.frame.height * 10/45
-        findWayIcon.layer.cornerRadius = logoImage.frame.height * 10/45
-        expressLaneIcon.layer.cornerRadius = logoImage.frame.height * 10/45
         
         localizeLabels()
+        
+        facebookBtn.setTitle("", for: .normal)
+        instagramBtn.setTitle("", for: .normal)
+        twitterBtn.setTitle("", for: .normal)
+        youtubeBtn.setTitle("", for: .normal)
     }
     
     func localizeLabels() {

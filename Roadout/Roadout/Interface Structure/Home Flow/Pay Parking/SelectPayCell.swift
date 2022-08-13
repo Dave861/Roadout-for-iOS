@@ -11,13 +11,11 @@ class SelectPayCell: UITableViewCell {
 
     @IBOutlet weak var card: UIView!
     
-    @IBOutlet weak var spotLbl: UILabel!
+    @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
     
-    @IBOutlet weak var spotNumber: UILabel!
-    
-    @IBOutlet weak var spotBorder: UIImageView!
-    @IBOutlet weak var spotBackground: UIImageView!
+    @IBOutlet weak var gaugeIcon: UIImageView!
+    @IBOutlet weak var gaugeCircle: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

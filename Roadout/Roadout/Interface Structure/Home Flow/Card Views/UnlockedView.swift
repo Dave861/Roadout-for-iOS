@@ -22,6 +22,8 @@ class UnlockedView: UIView {
     @IBAction func payTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        isPayFlow = false
+        selectedPayLocation = getLocationWith(name: EntityManager.sharedInstance.decodeSpotID(selectedSpotID)[0])
         NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
     }
     
@@ -59,7 +61,7 @@ class UnlockedView: UIView {
         directionsView.layer.cornerRadius = 9
         
         payLbl.text = "Pay Parking".localized()
-        directionsLbl.text = "Directions".localized()
+        directionsLbl.text = "Find".localized()
     }
     
     
@@ -97,11 +99,17 @@ class UnlockedView: UIView {
                 let sb = UIStoryboard(name: "Home", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: "ARVC") as! ARViewController
                 self.parentViewController().present(vc, animated: true, completion: nil)
+            }),
+            UIAction(title: "World View".localized(), image: UIImage(named: "globe_desk"), handler: { (_) in
+                //Make sure selected spot hash is ok
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "WorldVC") as! WorldViewController
+                self.parentViewController().present(vc, animated: true, completion: nil)
             })
         ]
     }
     var directionsMenu: UIMenu {
-        return UIMenu(title: "Directions".localized(), image: nil, identifier: nil, options: [], children: menuItems)
+        return UIMenu(title: "Find".localized(), image: nil, identifier: nil, options: [], children: menuItems)
     }
     
     func openDirectionsToCoords(lat: Double, long: Double) {
@@ -116,6 +124,19 @@ class UnlockedView: UIView {
         }
         guard UIApplication.shared.canOpenURL(URL(string: link)!) else { return }
         UIApplication.shared.open(URL(string: link)!)
+    }
+    
+    func getLocationWith(name: String) -> ParkLocation {
+        var location: ParkLocation!
+        
+        for parkLocation in parkLocations {
+            if parkLocation.name == name {
+                location = parkLocation
+                break
+            }
+        }
+        
+        return location
     }
 
 }

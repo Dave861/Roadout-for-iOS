@@ -7,13 +7,14 @@
 
 import UIKit
 import CoreLocation
+import MarqueeLabel
 
 class ResultView: UIView {
     
     @IBOutlet weak var locationLbl: UILabel!
-    @IBOutlet weak var distanceLbl: UILabel!
-    @IBOutlet weak var sectionsLbl: UILabel!
-    @IBOutlet weak var freeSpotsLbl: UILabel!
+    @IBOutlet weak var distanceLbl: MarqueeLabel!
+    @IBOutlet weak var sectionsLbl: MarqueeLabel!
+    @IBOutlet weak var freeSpotsLbl: MarqueeLabel!
     
     @IBOutlet weak var distanceIcon: UIImageView!
     @IBOutlet weak var sectionsIcon: UIImageView!

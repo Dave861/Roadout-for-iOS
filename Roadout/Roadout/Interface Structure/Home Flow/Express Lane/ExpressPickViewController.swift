@@ -13,7 +13,9 @@ class ExpressPickViewController: UIViewController {
     
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
-    let editLocationTitle = NSAttributedString(string: " Edit Locations".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "DevBrown")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    let editLocationTitle = NSAttributedString(string: " Edit Locations".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "DevBrown")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    
+    @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -63,7 +65,7 @@ class ExpressPickViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
          if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip3") == false {
-             tableView.tooltip(TutorialView3.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+             titleLbl.tooltip(TutorialView3.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                  
                  configuration.backgroundColor = UIColor(named: "Card Background")!
                  configuration.shadowConfiguration.shadowOpacity = 0.1

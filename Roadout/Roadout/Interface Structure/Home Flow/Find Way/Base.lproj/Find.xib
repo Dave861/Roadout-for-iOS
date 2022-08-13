@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21219" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21200"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -69,32 +69,37 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFu-YF-6sa">
                             <rect key="frame" x="0.0" y="0.0" width="187" height="55"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kRV-aF-3Oh">
-                                    <rect key="frame" x="8" y="7.5" width="23" height="39"/>
-                                    <color key="tintColor" name="Background"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="39" id="JLu-fl-8sP"/>
-                                        <constraint firstAttribute="width" constant="23" id="WFd-fP-UQW"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old Town" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LF-Ql-wm5">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old Town" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LF-Ql-wm5" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                     <rect key="frame" x="35" y="4" width="148" height="47"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                    <color key="textColor" name="Background"/>
+                                    <color key="textColor" systemColor="secondaryLabelColor"/>
                                     <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOW-xW-LdG">
                                     <rect key="frame" x="0.0" y="0.0" width="187" height="55"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain"/>
                                 </button>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kRV-aF-3Oh">
+                                    <rect key="frame" x="6" y="8.5" width="24" height="37.5"/>
+                                    <color key="tintColor" name="Greyish"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="39" id="JLu-fl-8sP"/>
+                                        <constraint firstAttribute="width" constant="24" id="WFd-fP-UQW"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
-                            <color key="backgroundColor" name="NeutralBrown"/>
+                            <color key="backgroundColor" name="Card Background"/>
                             <constraints>
-                                <constraint firstItem="0LF-Ql-wm5" firstAttribute="leading" secondItem="kRV-aF-3Oh" secondAttribute="trailing" constant="4" id="0cb-Vn-VNC"/>
+                                <constraint firstItem="0LF-Ql-wm5" firstAttribute="leading" secondItem="kRV-aF-3Oh" secondAttribute="trailing" constant="5" id="0cb-Vn-VNC"/>
                                 <constraint firstItem="kRV-aF-3Oh" firstAttribute="top" secondItem="OFu-YF-6sa" secondAttribute="top" constant="8" id="3Gz-mE-cBV"/>
                                 <constraint firstAttribute="bottom" secondItem="kRV-aF-3Oh" secondAttribute="bottom" constant="8" id="Aln-Le-gNS"/>
-                                <constraint firstItem="kRV-aF-3Oh" firstAttribute="leading" secondItem="OFu-YF-6sa" secondAttribute="leading" constant="8" id="CQH-xZ-U6l"/>
+                                <constraint firstItem="kRV-aF-3Oh" firstAttribute="leading" secondItem="OFu-YF-6sa" secondAttribute="leading" constant="6" id="CQH-xZ-U6l"/>
                                 <constraint firstAttribute="bottom" secondItem="0LF-Ql-wm5" secondAttribute="bottom" constant="4" id="D09-nU-ZMx"/>
                                 <constraint firstAttribute="trailing" secondItem="oOW-xW-LdG" secondAttribute="trailing" id="EbU-pP-Y98"/>
                                 <constraint firstItem="0LF-Ql-wm5" firstAttribute="top" secondItem="OFu-YF-6sa" secondAttribute="top" constant="4" id="KPg-jQ-saJ"/>
@@ -109,17 +114,22 @@
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grid" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7Ya-Xz-u5j">
                                     <rect key="frame" x="8" y="12.5" width="27" height="30"/>
-                                    <color key="tintColor" name="Background"/>
+                                    <color key="tintColor" name="Greyish"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="27" id="UNL-FC-5Oi"/>
                                         <constraint firstAttribute="height" constant="32" id="n0P-Gy-Su9"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dx-EN-Nch">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dx-EN-Nch" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                     <rect key="frame" x="41" y="4" width="142" height="47"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                    <color key="textColor" name="Background"/>
+                                    <color key="textColor" systemColor="secondaryLabelColor"/>
                                     <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3K-K1-Mje">
                                     <rect key="frame" x="0.0" y="0.0" width="187" height="55"/>
@@ -127,7 +137,7 @@
                                     <buttonConfiguration key="configuration" style="plain"/>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" name="Brownish"/>
+                            <color key="backgroundColor" name="Card Background"/>
                             <constraints>
                                 <constraint firstItem="7Ya-Xz-u5j" firstAttribute="centerY" secondItem="FfM-Cx-BnE" secondAttribute="centerY" id="Ad2-mf-vlV"/>
                                 <constraint firstItem="7Ya-Xz-u5j" firstAttribute="leading" secondItem="FfM-Cx-BnE" secondAttribute="leading" constant="8" id="KLm-Qd-dbT"/>
@@ -154,16 +164,22 @@
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.portrait" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="urL-kp-w2c">
                                     <rect key="frame" x="8" y="14.5" width="21" height="26.5"/>
-                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <color key="tintColor" name="Greyish"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="26.5" id="Pcf-x2-Ziv"/>
                                         <constraint firstAttribute="width" constant="21" id="WWA-87-K0b"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spot 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-Gr-ygb">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spot 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-Gr-ygb" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                     <rect key="frame" x="37" y="4" width="146" height="47"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                    <color key="textColor" systemColor="secondaryLabelColor"/>
                                     <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ht-qO-zJT">
                                     <rect key="frame" x="0.0" y="0.0" width="187" height="55"/>
@@ -171,7 +187,7 @@
                                     <buttonConfiguration key="configuration" style="plain"/>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemGray2Color"/>
+                            <color key="backgroundColor" name="Card Background"/>
                             <constraints>
                                 <constraint firstItem="urL-kp-w2c" firstAttribute="centerY" secondItem="mtA-Xn-X42" secondAttribute="centerY" id="0LL-vv-C72"/>
                                 <constraint firstItem="urL-kp-w2c" firstAttribute="leading" secondItem="mtA-Xn-X42" secondAttribute="leading" constant="8" id="D4o-aj-Lr2"/>
@@ -188,15 +204,20 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SH6-9D-s9w">
                             <rect key="frame" x="197" y="0.0" width="187" height="55"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6As-Ei-GjG">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6As-Ei-GjG" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                     <rect key="frame" x="35" y="4" width="148" height="47"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                    <color key="textColor" name="Dark Yellow"/>
+                                    <color key="textColor" systemColor="secondaryLabelColor"/>
                                     <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hourglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Y7Y-Sl-FJD">
                                     <rect key="frame" x="8" y="15.5" width="21" height="24"/>
-                                    <color key="tintColor" name="Dark Yellow"/>
+                                    <color key="tintColor" name="Greyish"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="21" id="10V-uw-n2H"/>
                                         <constraint firstAttribute="height" constant="26.5" id="wAN-U4-82F"/>
@@ -284,35 +305,37 @@
             <point key="canvasLocation" x="1378.2608695652175" y="191.85267857142856"/>
         </view>
     </objects>
+    <designables>
+        <designable name="0LF-Ql-wm5">
+            <size key="intrinsicContentSize" width="77" height="21.5"/>
+        </designable>
+        <designable name="6As-Ei-GjG">
+            <size key="intrinsicContentSize" width="89.5" height="21.5"/>
+        </designable>
+        <designable name="8dx-EN-Nch">
+            <size key="intrinsicContentSize" width="79" height="21.5"/>
+        </designable>
+        <designable name="eP9-Gr-ygb">
+            <size key="intrinsicContentSize" width="62" height="21.5"/>
+        </designable>
+    </designables>
     <resources>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
-        <image name="grid" catalog="system" width="128" height="112"/>
-        <image name="hourglass" catalog="system" width="102" height="128"/>
-        <image name="mappin" catalog="system" width="105" height="128"/>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="grid" catalog="system" width="128" height="113"/>
+        <image name="hourglass" catalog="system" width="103" height="128"/>
+        <image name="map" catalog="system" width="128" height="112"/>
         <image name="rectangle.portrait" catalog="system" width="115" height="128"/>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Brownish">
-            <color red="0.40400001406669617" green="0.28200000524520874" blue="0.019999999552965164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Card Background">
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Dark Yellow">
-            <color red="0.56099998950958252" green="0.40000000596046448" blue="0.050999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Greyish">
-            <color red="0.50199997425079346" green="0.45100000500679016" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.5" green="0.42285548089550973" blue="0.31842722823218" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="NeutralBrown">
-            <color red="0.65499997138977051" green="0.61900001764297485" blue="0.57999998331069946" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

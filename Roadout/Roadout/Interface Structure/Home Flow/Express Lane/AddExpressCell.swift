@@ -11,10 +11,12 @@ class AddExpressCell: UITableViewCell {
 
     @IBOutlet weak var locationNameLbl: UILabel!
     @IBOutlet weak var check: UIImageView!
+    @IBOutlet weak var card: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         check.alpha = 0
+        card.layer.cornerRadius = 10.0
     }
 
 }

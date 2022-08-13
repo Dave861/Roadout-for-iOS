@@ -61,8 +61,10 @@ class FunctionsManager {
                           if didFindSpot {
                               self.foundSection = location.sections[sectionIndex]
                               selectedSpotID = self.foundSpot.rID
+                              selectedSpotHash = self.foundSpot.rHash
                               selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
-                              selectedLocationColor = UIColor(named: "Dark Orange")!
+                              selectedSpotColor = location.accentColor
+                              NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
                               NotificationCenter.default.post(name: .addExpressViewID, object: nil)
                               NotificationCenter.default.post(name: .showExpressLaneFreeSpotID, object: nil)
                           } else {
@@ -95,7 +97,7 @@ class FunctionsManager {
                     if jsonArray["status"] as! String == "Success" {
                         if (jsonArray["id"] as! String).lowercased() != "null" {
                             let spotID = jsonArray["id"] as! String
-                            self.foundSpot = ParkSpot(state: 0, number: Int(EntityManager.sharedInstance.decodeSpotID(spotID)[2])!, latitude: 46.764539, longitude: 23.596642, rID: spotID)
+                            self.foundSpot = ParkSpot(state: 0, number: Int(EntityManager.sharedInstance.decodeSpotID(spotID)[2])!, rHash: "u82f0bc6m303-f80-h70-p0", rID: spotID)
                             completion(.success(true))
                         } else {
                             completion(.success(false))
@@ -132,7 +134,11 @@ class FunctionsManager {
                                 if didFind {
                                     self.foundSection = section
                                     selectedSpotID = self.foundSpot.rID
+                                    selectedSpotHash = self.foundSpot.rHash
                                     selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
+                                    
+                                    selectedSpotColor = self.foundLocation.accentColor
+                                    NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
                                 }
                             case .failure(let err):
                                 print(err)

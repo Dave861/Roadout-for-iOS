@@ -62,6 +62,8 @@ extension Notification.Name {
     static let showNoFreeSpotInLocationID = Notification.Name("ro.roadout.Roadout.showNoFreeSpotInLocationID")
     static let showExpressLaneFreeSpotID = Notification.Name("ro.roadout.Roadout.showExpressLaneFreeSpotID")
     static let reloadExpressLocationsID = Notification.Name("ro.roadout.Roadout.reloadExpressLocationsID")
+    static let addSpotMarkerID = Notification.Name("ro.roadout.Roadout.addSpotMarkerID")
+    static let removeSpotMarkerID = Notification.Name("ro.roadout.Roadout.removeSpotMarkerID")
     
     //APPLE WATCH
     static let reloadServerDataAWID = Notification.Name("ro.roadout.RoadoutWatch.reloadServerDataAWID")

@@ -91,7 +91,7 @@ class PayParkingView: UIView {
         cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
         selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
         
-        fillReservationData(for: selectedSpotID)
+        fillPayData()
         
         chooseMethodBtn.menu = UIMenu(title: "Choose a Payment method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true
@@ -117,30 +117,8 @@ class PayParkingView: UIView {
         return UINib(nibName: "Pay", bundle: nil).instantiate(withOwner: nil, options: nil)[1] as! UIView
     }
     
-    func fillReservationData(for spotID: String) {
-        
-        let parkLocationName = EntityManager.sharedInstance.decodeSpotID(spotID)[0]
-        let parkSectionName = EntityManager.sharedInstance.decodeSpotID(spotID)[1]
-        let parkSpotNr = EntityManager.sharedInstance.decodeSpotID(spotID)[2]
-        
-        self.detailsLbl.text = parkLocationName + " - Section ".localized() + parkSectionName + " - Spot ".localized() + parkSpotNr
-        
-        self.detailsLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.detailsLbl.range(after: " - Section ".localized(), before: " - Spot ".localized()))
-        self.detailsLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.detailsLbl.range(after: " - Spot ".localized()))
-        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - Section ".localized(), before: " - Spot ".localized()))
-        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - Spot ".localized()))
-        
-        self.timeLbl.text = "Pay for ".localized() + "\(paidHours)" + " hours".localized()
-        self.timeLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.timeLbl.range(after: "Pay for ".localized()))
-        self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Pay for ".localized()))
-    }
-    
-    func fillMockReservationData() {
-        
-        self.detailsLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.detailsLbl.range(after: " - Section ".localized(), before: " - Spot ".localized()))
-        self.detailsLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.detailsLbl.range(after: " - Spot ".localized()))
-        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - Section ".localized(), before: " - Spot ".localized()))
-        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - Spot ".localized()))
+    func fillPayData() {
+        self.detailsLbl.text = selectedPayLocation.name
         
         self.timeLbl.text = "Pay for ".localized() + "\(paidHours)" + " hours".localized()
         self.timeLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.timeLbl.range(after: "Pay for ".localized()))

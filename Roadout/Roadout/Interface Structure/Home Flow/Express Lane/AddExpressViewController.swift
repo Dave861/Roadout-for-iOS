@@ -108,7 +108,7 @@ extension AddExpressViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 45
+        return 53
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

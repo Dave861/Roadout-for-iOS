@@ -23,6 +23,7 @@ class ReservationView: UIView {
     @IBOutlet weak var delayBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var arBtn: UIButton!
+    @IBOutlet weak var worldBtn: UIButton!
     @IBOutlet weak var helpBtn: UIButton!
     
     @IBOutlet weak var unlockView: UIView!
@@ -30,6 +31,7 @@ class ReservationView: UIView {
     @IBOutlet weak var delayView: UIView!
     @IBOutlet weak var cancelView: UIView!
     @IBOutlet weak var arView: UIView!
+    @IBOutlet weak var worldView: UIView!
     @IBOutlet weak var helpView: UIView!
     
     @IBOutlet weak var unlockLbl: UILabel!
@@ -37,6 +39,7 @@ class ReservationView: UIView {
     @IBOutlet weak var delayLbl: UILabel!
     @IBOutlet weak var cancelLbl: UILabel!
     @IBOutlet weak var arLbl: UILabel!
+    @IBOutlet weak var worldLbl: UILabel!
     @IBOutlet weak var helpLbl: UILabel!
     
     
@@ -47,6 +50,7 @@ class ReservationView: UIView {
         arBtn.setTitle("", for: .normal)
         helpBtn.setTitle("", for: .normal)
         cancelBtn.setTitle("", for: .normal)
+        worldBtn.setTitle("", for: .normal)
         
         unlockView.layer.cornerRadius = 9
         directionsView.layer.cornerRadius = 9
@@ -54,13 +58,15 @@ class ReservationView: UIView {
         cancelView.layer.cornerRadius = 9
         arView.layer.cornerRadius = 9
         helpView.layer.cornerRadius = 9
+        worldView.layer.cornerRadius = 9
         
         unlockLbl.text = "Unlock".localized()
-        directionsLbl.text = "Directions".localized()
+        directionsLbl.text = "Navigate".localized()
         delayLbl.text = "Delay".localized()
-        arLbl.text = "Open in AR".localized()
+        arLbl.text = "AR Directions".localized()
         cancelLbl.text = "Cancel".localized()
-        helpLbl.text = "Help".localized()
+        worldLbl.text = "World View".localized()
+        helpLbl.text = "Help & Support".localized()
     }
     
     
@@ -138,6 +144,13 @@ class ReservationView: UIView {
         self.parentViewController().present(vc, animated: true, completion: nil)
     }
     
+    @IBAction func worldTapped(_ sender: Any) {
+        //Make sure selected spot hash is ok
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "WorldVC") as! WorldViewController
+        self.parentViewController().present(vc, animated: true, completion: nil)
+    }
+    
     @IBAction func helpTapped(_ sender: Any) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "HelpVC") as! HelpViewController
@@ -163,11 +176,7 @@ class ReservationView: UIView {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let formattedDate = dateFormatter.string(from: ReservationManager.sharedInstance.reservationEndDate)
-        self.timerLbl.text = "Reserved for ".localized() + formattedDate
-        self.timerLbl.set(textColor: UIColor.label, range: timerLbl.range(before: formattedDate))
-        self.timerLbl.set(font: UIFont.systemFont(ofSize: 21, weight: .medium), range: timerLbl.range(after: "Reserved for ".localized()))
-        
-        
+        self.timerLbl.text = formattedDate
     }
     
     func addObs() {
@@ -179,9 +188,7 @@ class ReservationView: UIView {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let formattedDate = dateFormatter.string(from: ReservationManager.sharedInstance.reservationEndDate)
-        self.timerLbl.text = "Reserved for ".localized() + formattedDate
-        self.timerLbl.set(textColor: UIColor.label, range: timerLbl.range(before: formattedDate))
-        self.timerLbl.set(font: UIFont.systemFont(ofSize: 21, weight: .medium), range: timerLbl.range(after: "Reserved for ".localized()))
+        self.timerLbl.text = formattedDate
     }
     
     

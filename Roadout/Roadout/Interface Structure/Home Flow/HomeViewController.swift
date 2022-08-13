@@ -10,6 +10,7 @@ import GoogleMaps
 import CoreLocation
 import SwiftUI
 import SPIndicator
+import GeohashKit
 
 class HomeViewController: UIViewController {
 
@@ -19,6 +20,7 @@ class HomeViewController: UIViewController {
     let screenSize: CGRect = UIScreen.main.bounds
     var selectedMarker: GMSMarker!
     var markers = [GMSMarker]()
+    var spotMarker: GMSMarker!
     
     //Card Views
     let resultView = ResultView.instanceFromNib()
@@ -40,7 +42,6 @@ class HomeViewController: UIViewController {
     let paidParkingBar = PaidParkingBar.instanceFromNib()
     
     //MARK: -Express Reserve-
-    //let expressPickView = ExpressPickView.instanceFromNib()
     let expressView = ExpressView.instanceFromNib()
     
     @objc func addExpressView() {
@@ -63,21 +64,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    /*@objc func addExpressPickView() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.layer.shadowOpacity = 0.0
-        }
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.expressPickView.frame = CGRect(x: 13, y: self.screenSize.height-195-dif, width: self.screenSize.width - 26, height: 195)
-            self.view.addSubview(self.expressPickView)
-        }
-    }*/
     
     //MARK: -Find me a spot-
     let findView = FindView.instanceFromNib()
@@ -106,6 +92,7 @@ class HomeViewController: UIViewController {
     
     
     //MARK: -IBOutlets-
+    @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var searchBar: UIView!
     
@@ -130,6 +117,47 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var settingsTapArea: UIButton!
     
     @IBOutlet weak var shareplayView: UIView!
+    
+    
+    @IBOutlet weak var mapControlsView: UIView!
+    
+    @IBOutlet weak var mapTypeButton: UIButton!
+    
+    @IBOutlet weak var userLocationButton: UIButton!
+    
+    @IBAction func mapTypeTapped(_ sender: Any) {
+        if selectedMapType == MapType.roadout {
+            mapTypeButton.setImage(UIImage(systemName: "globe.europe.africa.fill"), for: .normal)
+            mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14), forImageIn: .normal)
+            
+            satelliteFilter.alpha = 1.0
+            mapView.mapType = .satellite
+            self.addShadowToTitle()
+            titleLbl.textColor = .white
+            
+            selectedMapType = .satellite
+        } else {
+            mapTypeButton.setImage(UIImage(systemName: "map.fill"), for: .normal)
+            mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 13), forImageIn: .normal)
+            
+            satelliteFilter.alpha = 0
+            mapView.mapType = .normal
+            self.removeShadowFromTitle()
+            titleLbl.textColor = .label
+            
+            selectedMapType = .roadout
+        }
+    }
+    
+    @IBAction func userLocationTapped(_ sender: Any) {
+        guard let coord = self.mapView.myLocation?.coordinate else { return }
+        let camera = GMSCameraPosition.camera(withLatitude: coord.latitude, longitude: coord.longitude, zoom: 15.0)
+        mapView.animate(to: camera)
+        
+        userLocationButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
+    }
+    
+    @IBOutlet weak var satelliteFilter: UIView!
     
     //MARK: -OBSERVERS-
     
@@ -195,6 +223,8 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateLocation), name: .updateLocationID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(addMarkers), name: .addMarkersID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addSpotMarker), name: .addSpotMarkerID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeSpotMarker), name: .removeSpotMarkerID, object: nil)
     }
     
    //MARK: -Markers-
@@ -213,7 +243,27 @@ class HomeViewController: UIViewController {
             marker.icon = UIImage(named: "Marker_\(parkLocation.accentColor)")?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
             marker.map = mapView
             markers.append(marker)
-            
+        }
+    }
+    
+    @objc func addSpotMarker() {
+        if spotMarker != nil {
+            spotMarker.map = nil
+        }
+        let hashComponents = selectedSpotHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
+        let markerPosition = CLLocationCoordinate2D(latitude: Geohash(geohash: hashComponents[0])!.coordinates.latitude, longitude: Geohash(geohash: hashComponents[0])!.coordinates.longitude)
+        //"SpotMarker_" + parkLocations[selectedParkLocationIndex].accentColor
+        spotMarker = GMSMarker(position: markerPosition)
+        spotMarker.title = "Selected Spot Marker"
+        spotMarker.infoWindowAnchor = CGPoint()
+        
+        spotMarker.icon = UIImage(named: "SpotMarker_" + selectedSpotColor)?.withResize(scaledToSize: CGSize(width: 35.0, height: 45.15))
+        spotMarker.map = mapView
+    }
+    
+    @objc func removeSpotMarker() {
+        if spotMarker != nil {
+            spotMarker.map = nil
         }
     }
     
@@ -334,27 +384,16 @@ class HomeViewController: UIViewController {
     }
     
     //MARK: -View Configuration-
-    
-    var navBarTapGestureRecognizer: UITapGestureRecognizer!
-    
+        
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        
-        self.navigationController?.navigationBar.addGestureRecognizer(navBarTapGestureRecognizer)
-        navBarTapGestureRecognizer.cancelsTouchesInView = false
-        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    
         if self.view.subviews.last == payView {
             let payV = payView as! PayView
             payV.reloadMainCard()
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.removeGestureRecognizer(navBarTapGestureRecognizer)
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -397,7 +436,7 @@ class HomeViewController: UIViewController {
         
         manageObs()
             
-        //UI configuration
+        //Search Bar
         searchTapArea.setTitle("", for: .normal)
         settingsTapArea.setTitle("", for: .normal)
         
@@ -413,6 +452,20 @@ class HomeViewController: UIViewController {
         
         settingsTapArea.menu = moreMenu
         settingsTapArea.showsMenuAsPrimaryAction = true
+        
+        //Map Controls
+        mapControlsView.layer.cornerRadius = 9.0
+        
+        mapControlsView.layer.shadowColor = UIColor.black.cgColor
+        mapControlsView.layer.shadowOpacity = 0.1
+        mapControlsView.layer.shadowOffset = .zero
+        mapControlsView.layer.shadowRadius = 9.0
+        mapControlsView.layer.shadowPath = UIBezierPath(rect: mapControlsView.bounds).cgPath
+        mapControlsView.layer.shouldRasterize = true
+        mapControlsView.layer.rasterizationScale = UIScreen.main.scale
+        
+        mapTypeButton.setTitle("", for: .normal)
+        userLocationButton.setTitle("", for: .normal)
         
         let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
@@ -436,24 +489,10 @@ class HomeViewController: UIViewController {
             mapView.isMyLocationEnabled = true
         }
         
-        navBarTapGestureRecognizer = UITapGestureRecognizer(target:self, action: #selector(self.titleTapped(_:)))
         //RE-ADD THIS WHEN GROUP RESERVE IS DONE
         /*
          setUpSharePlay()
          */
-    }
-    
-    @objc func titleTapped(_ sender: UITapGestureRecognizer) {
-
-        let location = sender.location(in: self.navigationController?.navigationBar)
-        let hitView = self.navigationController?.navigationBar.hitTest(location, with: nil)
-
-        guard !(hitView is UIControl) else { return }
-        //Made sure the user didn't tap on other controls
-        
-        guard let coord = self.mapView.myLocation?.coordinate else { return }
-        let camera = GMSCameraPosition.camera(withLatitude: coord.latitude, longitude: coord.longitude, zoom: 15.0)
-        mapView.animate(to: camera)
     }
         
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -479,6 +518,19 @@ class HomeViewController: UIViewController {
         } catch {
             print("One or more of the map styles failed to load. \(error)")
         }
+    }
+    
+    func addShadowToTitle() {
+        titleLbl.layer.shadowColor = UIColor.black.cgColor
+        titleLbl.layer.shadowOpacity = 0.1
+        titleLbl.layer.shadowOffset = .zero
+        titleLbl.layer.shadowPath = UIBezierPath(rect: titleLbl.bounds).cgPath
+        titleLbl.layer.shouldRasterize = true
+        titleLbl.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    func removeShadowFromTitle() {
+        titleLbl.layer.shadowOpacity = 0
     }
     
     //MARK: -Data & Map Configuration-
@@ -570,6 +622,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         }
         
     }
+    
 }
 
 extension HomeViewController: GMSMapViewDelegate {
@@ -599,8 +652,17 @@ extension HomeViewController: GMSMapViewDelegate {
         let latitude = mapView.camera.target.latitude
         let longitude = mapView.camera.target.longitude
         centerMapCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        if mapView.isMyLocationEnabled {
+            if centerMapCoordinate.latitude.rounded(toPlaces: 4) != mapView.myLocation?.coordinate.latitude.rounded(toPlaces: 4) || centerMapCoordinate.longitude.rounded(toPlaces: 4) != mapView.myLocation?.coordinate.longitude.rounded(toPlaces: 4) {
+                
+                userLocationButton.setImage(UIImage(systemName: "location"), for: .normal)
+            } else {
+                userLocationButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
+            }
+        }
     }
-   
+    
 }
 
 extension HomeViewController {
@@ -786,7 +848,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-209-dif, width: self.screenSize.width - 26, height: 209)
+            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-292-dif, width: self.screenSize.width - 26, height: 292)
             self.view.addSubview(self.reservationView)
         }
     }
@@ -823,7 +885,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-209-dif, width: self.screenSize.width - 26, height: 209)
+            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-292-dif, width: self.screenSize.width - 26, height: 292)
             self.view.addSubview(self.reservationView)
             self.delayView.removeFromSuperview()
         }
@@ -877,7 +939,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-209-dif, width: self.screenSize.width - 26, height: 209)
+            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-292-dif, width: self.screenSize.width - 26, height: 292)
             self.view.addSubview(self.reservationView)
             self.unlockView.removeFromSuperview()
         }

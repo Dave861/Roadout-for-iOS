@@ -8,6 +8,7 @@
 import UIKit
 import SPIndicator
 import PusherSwift
+import MarqueeLabel
 
 class SpotView: UIView, PusherDelegate {
 
@@ -17,7 +18,7 @@ class SpotView: UIView, PusherDelegate {
     
     @IBOutlet weak var infoCard: UIView!
     @IBOutlet weak var infoIcon: UIImageView!
-    @IBOutlet weak var infoText: UILabel!
+    @IBOutlet weak var infoText: MarqueeLabel!
     
     @IBOutlet weak var continueBtn: UIButton!
     
@@ -25,6 +26,7 @@ class SpotView: UIView, PusherDelegate {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         continueBtn.isUserInteractionEnabled = false
+                
         let clockImage = UIImage.init(systemName: "clock")!.withTintColor(UIColor(named: "Dark Orange")!, renderingMode: .alwaysOriginal)
         let checkImage = UIImage.init(systemName: "checkmark")!.withTintColor(UIColor(named: "Dark Yellow")!, renderingMode: .alwaysOriginal)
         let checkingIndicatorView = SPIndicatorView(title: "Confirming".localized(), message: "Checking...".localized(), preset: .custom(clockImage))
@@ -40,6 +42,9 @@ class SpotView: UIView, PusherDelegate {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
+        
+        NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
+        
         self.disconnectPusher()
         guard let selectedItems = collectionView.indexPathsForSelectedItems else {
             NotificationCenter.default.post(name: .removeSpotCardID, object: nil)
@@ -239,6 +244,7 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
         updateInfo(spotState: parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state)
         
         selectedSpotID = parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].rID
+        selectedSpotHash = parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].rHash
         
         switch parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state {
             case 0:
@@ -254,6 +260,9 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
                 cell.mainBtn.backgroundColor = UIColor(named: "Dark Yellow")
                 cell.mainBtn.tintColor = UIColor(named: "Background")
         }
+
+        selectedSpotColor = parkLocations[selectedParkLocationIndex].accentColor
+        NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! SpotCell

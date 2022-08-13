@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 import CoreLocation
 
+enum MapType {
+    case roadout
+    case satellite
+}
+
+var selectedMapType = MapType.roadout
+
 //Used to help with notification management
 var timerSeconds = 0
 var delaySeconds = 300
@@ -19,7 +26,9 @@ var selectedParkLocationIndex = 0
 var selectedSectionIndex = 0
 var selectedLocationColor = UIColor(named: "Main Yellow")
 var selectedSpotID: String!
+var selectedSpotHash = "u82f0bc6m303-f80-h70-p0" //Manage once in database
 var selectedLocationCoord: CLLocationCoordinate2D!
+var selectedSpotColor = "Main Yellow"
 
 var currentLocationCoord: CLLocationCoordinate2D?
 
@@ -31,10 +40,12 @@ var reminders = [Reminder]()
 
 var cardNumbers = ["**** **** **** 9000", "**** **** **** 7250", "**** **** **** 7784", "**** **** **** 9432"]
 
-let colours = ["Main Yellow", "Brownish", "Dark Orange", "Dark Yellow", "Icons", "Kinda Red", "Second Orange", "Limey"]
+let colours = ["Main Yellow", "Dark Orange", "Icons", "Kinda Red", "Second Orange"]
 
 //Decides if Duration Card return to Unlocked Card or Search Bar
 var isPayFlow = false
+
+var selectedPayLocation: ParkLocation!
 
 //Express Lane IDs
 var favouriteLocationIDs = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.Roadout.favouriteLocationIDs") ?? [String]()
@@ -42,3 +53,4 @@ var favouriteLocations = [ParkLocation]()
 
 //Will use API to get this
 var cityParkLocationsCount = 11
+

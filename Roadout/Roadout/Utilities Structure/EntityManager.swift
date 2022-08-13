@@ -94,7 +94,7 @@ class EntityManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
                     dbParkSpots = [ParkSpot]()
                     for json in jsonArray {
-                        dbParkSpots.append(ParkSpot(state: Int(json["state"] as! String)!, number: Int(json["number"] as! String)!, latitude: 46.764539, longitude: 23.596642, rID: json["id"] as! String))
+                        dbParkSpots.append(ParkSpot(state: Int(json["state"] as! String)!, number: Int(json["number"] as! String)!, rHash: "u82f0bc6m303-f80-h70-p0", rID: json["id"] as! String))
                     }
                     dbParkSpots.sort { $0.number < $1.number }
                     completion(.success(()))

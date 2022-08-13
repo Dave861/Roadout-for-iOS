@@ -1,0 +1,80 @@
+//
+//  WorldViewController.swift
+//  Roadout
+//
+//  Created by David Retegan on 31.07.2022.
+//
+
+import UIKit
+import GeohashKit
+import Alamofire
+
+struct WorldLocation {
+    var latitude: Double
+    var longitude: Double
+    var fov: Int
+    var heading: Int
+    var pitch: Int
+}
+
+class WorldViewController: UIViewController {
+    
+    @IBOutlet weak var worldImage: UIImageView!
+    
+    @IBOutlet weak var doneBtn: UIButton!
+    
+    @IBAction func doneTapped(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+
+    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.cachedWorldHash") ?? "" == selectedSpotHash &&
+            UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.cachedWorldImage") != nil {
+            guard let data = UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.cachedWorldImage") else { return }
+            self.worldImage.image = UIImage(data: data as Data)
+        }
+        
+        doneBtn.layer.cornerRadius = 13.0
+        doneBtn.setAttributedTitle(doneTitle, for: .normal)
+        worldImage.layer.cornerRadius = 23.0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.cachedWorldHash") ?? "" != selectedSpotHash ||
+            UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.cachedWorldImage") == nil {
+            decodeGeohash()
+        }
+    }
+    
+    func decodeGeohash() {
+        UserDefaults.roadout!.setValue(selectedSpotHash, forKey: "ro.roadout.Roadout.cachedWorldHash")
+        
+        let hashComponents = selectedSpotHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
+        let fov = String(hashComponents[1].dropFirst())
+        let heading = String(hashComponents[2].dropFirst())
+        let pitch = String(hashComponents[3].dropFirst())
+        
+        let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
+        
+        let worldLocation = WorldLocation(latitude: lat, longitude: Geohash(geohash: hashComponents[0])!.coordinates.longitude, fov: Int(fov)!, heading: Int(heading)!, pitch: Int(pitch)!)
+                
+        getWorldImage(for: worldLocation)
+    }
+    
+    func getWorldImage(for worldLocation: WorldLocation) {
+        let urlString = "https://maps.googleapis.com/maps/api/streetview?location=\(worldLocation.latitude),\(worldLocation.longitude)&size=900x900&fov=80&heading=70&pitch=0&key=AIzaSyBCwiN3sMkKBigQhrsFfmAENeGEyJjbgcI&signature=nZk52ru4h0fswKqRx5G-hRX8dlQ="
+        
+        AF.request(urlString).responseData { response in
+            if response.error == nil {
+                if let data = response.data {
+                    self.worldImage.image = UIImage(data: data)
+                    UserDefaults.roadout!.setValue(data, forKey: "ro.roadout.Roadout.cachedWorldImage")
+                }
+            }
+        }
+    }
+    
+}

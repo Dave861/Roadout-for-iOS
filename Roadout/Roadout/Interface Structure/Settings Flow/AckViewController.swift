@@ -9,9 +9,35 @@ import UIKit
 
 class AckViewController: UIViewController {
 
-    let acknowledgementsTitles = ["Alamofire", "BarChartKit", "CHIOTPField", "Google Maps SDK", "SPIndicator"]
-    let acknowledgementsCopyrights = ["Copyright (c) 2014-2022 Alamofire Software Foundation", "Copyright (c) 2020 Marek Přidal", "Copyright (c) 2020 Chili", "Copyright (c) 2012-2022 Google Inc.", "Copyright (C) 2011 Charcoal Design", "Copyright © 2021 Ivan Vorobei", "Copyright © 2021 Ivan Vorobei"]
-    let acknowledgementsLinks = ["https://github.com/Alamofire/Alamofire", "https://github.com/marekpridal/BarChart", "https://github.com/ChiliLabs/CHIOTPField", "https://github.com/YAtechnologies/GoogleMaps-SP", "https://github.com/ivanvorobei/SPIndicator"]
+    let acknowledgementsTitles = ["Alamofire",
+                                  "BarChartKit",
+                                  "CHIOTPField",
+                                  "GeohashKit",
+                                  "Google Maps SDK",
+                                  "IOSSecuritySuite",
+                                  "MarqueeLabel",
+                                  "PusherSwift",
+                                  "SPIndicator"]
+    
+    let acknowledgementsCopyrights = ["Copyright (c) 2014-2022 Alamofire Software Foundation",
+                                      "Copyright (c) 2020 Marek Přidal",
+                                      "Copyright (c) 2020 Chili",
+                                      "Copyright (c) 2020 Alan Chu",
+                                      "Copyright (c) 2012-2022 Google Inc.",
+                                      "Copyright (c) 2019, SecuRing spółka z ograniczoną odpowiedzialnością spółka jawna",
+                                      "Copyright (c) 2011-2017 Charles Powell",
+                                      "Copyright (c) 2015 Pusher Ltd.",
+                                      "Copyright (c) 2021 Ivan Vorobei"]
+    
+    let acknowledgementsLinks = ["https://github.com/Alamofire/Alamofire",
+                                 "https://github.com/marekpridal/BarChart",
+                                 "https://github.com/ChiliLabs/CHIOTPField",
+                                 "https://github.com/ualch9/GeohashKit",
+                                 "https://github.com/YAtechnologies/GoogleMaps-SP",
+                                 "https://github.com/securing/IOSSecuritySuite",
+                                 "https://github.com/cbpowell/MarqueeLabel",
+                                 "https://github.com/pusher/pusher-websocket-swift",
+                                 "https://github.com/ivanvorobei/SPIndicator"]
 
     @IBOutlet weak var backButton: UIButton!
     

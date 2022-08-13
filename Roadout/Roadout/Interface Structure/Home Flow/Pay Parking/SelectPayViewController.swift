@@ -10,10 +10,10 @@ import CoreLocation
 
 class SelectPayViewController: UIViewController {
     
-    let recentSpots = [
-        ParkSpot(state: 0, number: 18, latitude: 46.765461, longitude: 23.587458, rID: "Cluj.StrRepublicii.A.18")
-    ]
-    var nearbySpots = [ParkSpot]()
+    let recentParkLocations = [testParkLocations.first!]
+    var nearbyParkLocations = [ParkLocation]()
+    
+    @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -31,25 +31,88 @@ class SelectPayViewController: UIViewController {
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        if currentLocationCoord != nil {
+            nearbyParkLocations = sortLocations(currentLocation: currentLocationCoord!).filter { !recentParkLocations.contains($0) }
+        } else {
+            nearbyParkLocations = parkLocations.filter { !recentParkLocations.contains($0) }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if parkLocations.last!.sections[0].spots.count >= 4 {
-            nearbySpots = Array(parkLocations.last!.sections[0].spots[0...6])
-        } else {
-            nearbySpots = parkLocations.last!.sections[0].spots
-        }
-        tableView.reloadData()
+         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip4") == false {
+             titleLbl.tooltip(TutorialView4.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+                 
+                 configuration.backgroundColor = UIColor(named: "Card Background")!
+                 configuration.shadowConfiguration.shadowOpacity = 0.1
+                 configuration.shadowConfiguration.shadowColor = UIColor.black.cgColor
+                 configuration.shadowConfiguration.shadowOffset = .zero
+                 
+                 return configuration
+             })
+             UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip4")
+         }
     }
+    
+    func sortLocations(currentLocation: CLLocationCoordinate2D) -> [ParkLocation] {
+        let current = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+        var dictArray = [[String: Any]]()
+        for i in 0 ..< parkLocations.count {
+            let loc = CLLocation(latitude: parkLocations[i].latitude, longitude: parkLocations[i].longitude)
+            let distanceInMeters = current.distance(from: loc)
+            let a:[String: Any] = ["distance": distanceInMeters, "location": parkLocations[i]]
+            dictArray.append(a)
+        }
+        dictArray = dictArray.sorted(by: {($0["distance"] as! CLLocationDistance) < ($1["distance"] as! CLLocationDistance)})
+        
+        var sortedArray = [ParkLocation]()
+       
+        for i in dictArray {
+            sortedArray.append(i["location"] as! ParkLocation)
+        }
+        
+        return sortedArray
+    }
+    
+    func getRotationFor(_ percent: Int) -> CGFloat {
+        if percent == 100 {
+            return 1.7453
+        } else if percent >= 90 {
+            return 1.2566
+        } else if percent >= 80 {
+            return 0.7155
+        } else if percent >= 70 {
+            return 0.1745
+        } else if percent >= 60 {
+            return -0.2617
+        } else if percent >= 50 {
+            return -0.7853
+        } else if percent >= 40 {
+            return -1.3264
+        } else if percent >= 30 {
+            return -1.7802
+        } else if percent >= 20 {
+            return -2.3387
+        } else if percent >= 10 {
+            return -2.8448
+        } else {
+            return 3.0194
+        }
+    }
+    
+    func getPercentageFrom(totalSpots: Int, freeSpots: Int) -> Int {
+        return 100-Int(Float(freeSpots)/Float(totalSpots) * 100)
+    }
+    
 
 }
 extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recentSpots.count + nearbySpots.count + 2
+        return recentParkLocations.count + nearbyParkLocations.count + 2
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 || indexPath.row == recentSpots.count + 1 {
+        if indexPath.row == 0 || indexPath.row == recentParkLocations.count + 1 {
             return 35
         } else {
             return 65
@@ -60,20 +123,16 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayHeaderCell") as! SelectPayHeaderCell
             cell.headerLbl.text = "Recent"
-            if recentSpots.count == 0 {
+            if recentParkLocations.count == 0 {
                 cell.headerLbl.text = "No Recents"
             }
+            
             return cell
-        } else if indexPath.row > 0 && indexPath.row <= recentSpots.count {
+        } else if indexPath.row > 0 && indexPath.row <= recentParkLocations.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayCell") as! SelectPayCell
+            cell.nameLbl.text = recentParkLocations[indexPath.row-1].name
             
-            cell.spotNumber.text = "\(recentSpots[indexPath.row-1].number)"
-            
-            cell.spotLbl.text = "\(EntityManager.sharedInstance.decodeSpotID(recentSpots[indexPath.row-1].rID)[0]) - Section \(EntityManager.sharedInstance.decodeSpotID(recentSpots[indexPath.row-1].rID)[1]) - Spot \(EntityManager.sharedInstance.decodeSpotID(recentSpots[indexPath.row-1].rID)[2])"
-            cell.spotLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: cell.spotLbl.range(after: "- Section", before:  "- Spot"))
-            cell.spotLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: cell.spotLbl.range(after: "- Spot"))
-            
-            let coord = CLLocationCoordinate2D(latitude: recentSpots[indexPath.row-1].latitude, longitude: recentSpots[indexPath.row-1].longitude)
+            let coord = CLLocationCoordinate2D(latitude: recentParkLocations[indexPath.row-1].latitude, longitude: recentParkLocations[indexPath.row-1].longitude)
             if currentLocationCoord != nil {
                 let c1 = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
                 let c2 = CLLocation(latitude: currentLocationCoord!.latitude, longitude: currentLocationCoord!.longitude)
@@ -87,21 +146,22 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.distanceLbl.text = "- km"
             }
             
+            let occupancyPercent = self.getPercentageFrom(totalSpots: recentParkLocations[indexPath.row-1].totalSpots, freeSpots: recentParkLocations[indexPath.row-1].freeSpots)
+            
+            cell.gaugeIcon.transform = .identity
+            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: self.getRotationFor(occupancyPercent))
+            
             return cell
-        } else if indexPath.row == recentSpots.count + 1 {
+        } else if indexPath.row == recentParkLocations.count + 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayHeaderCell") as! SelectPayHeaderCell
             cell.headerLbl.text = "Nearby"
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayCell") as! SelectPayCell
+            cell.nameLbl.text = nearbyParkLocations[indexPath.row-2-recentParkLocations.count].name
             
-            cell.spotNumber.text = "\(nearbySpots[indexPath.row-2-recentSpots.count].number)"
-            
-            cell.spotLbl.text = "\(EntityManager.sharedInstance.decodeSpotID(nearbySpots[indexPath.row-2-recentSpots.count].rID)[0]) - Section \(EntityManager.sharedInstance.decodeSpotID(nearbySpots[indexPath.row-2-recentSpots.count].rID)[1]) - Spot \(EntityManager.sharedInstance.decodeSpotID(nearbySpots[indexPath.row-2-recentSpots.count].rID)[2])"
-            cell.spotLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: cell.spotLbl.range(after: "- Section", before:  "- Spot"))
-            cell.spotLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: cell.spotLbl.range(after: "- Spot"))
-            
-            let coord = CLLocationCoordinate2D(latitude: nearbySpots[indexPath.row-2-recentSpots.count].latitude, longitude: nearbySpots[indexPath.row-2-recentSpots.count].longitude)
+            let coord = CLLocationCoordinate2D(latitude: nearbyParkLocations[indexPath.row-2-recentParkLocations.count].latitude, longitude: nearbyParkLocations[indexPath.row-2-recentParkLocations.count].longitude)
             if currentLocationCoord != nil {
                 let c1 = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
                 let c2 = CLLocation(latitude: currentLocationCoord!.latitude, longitude: currentLocationCoord!.longitude)
@@ -114,23 +174,28 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 cell.distanceLbl.text = "- km"
             }
+            
+            let occupancyPercent = self.getPercentageFrom(totalSpots: nearbyParkLocations[indexPath.row-2-recentParkLocations.count].totalSpots, freeSpots: nearbyParkLocations[indexPath.row-2-recentParkLocations.count].freeSpots)
+            
+            cell.gaugeIcon.transform = .identity
+            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: self.getRotationFor(occupancyPercent))
             
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row > 0 && indexPath.row <= recentSpots.count {
+        if indexPath.row > 0 && indexPath.row <= recentParkLocations.count {
             let generator = UIImpactFeedbackGenerator(style: .light)
             generator.impactOccurred()
-            selectedSpotID = recentSpots[indexPath.row-1].rID
+            selectedPayLocation = recentParkLocations[indexPath.row-1]
             isPayFlow = true
             NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
             self.dismiss(animated: true)
-        } else if indexPath.row > recentSpots.count + 1 {
+        } else if indexPath.row > recentParkLocations.count + 1 {
             let generator = UIImpactFeedbackGenerator(style: .light)
             generator.impactOccurred()
-            selectedSpotID = nearbySpots[indexPath.row-2-recentSpots.count].rID
+            selectedPayLocation = nearbyParkLocations[indexPath.row-2-recentParkLocations.count]
             isPayFlow = true
             NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
             self.dismiss(animated: true)
@@ -138,14 +203,14 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        if indexPath.row != 0 || indexPath.row != recentSpots.count + 1 {
+        if indexPath.row != 0 && indexPath.row != recentParkLocations.count + 1 {
             let cell = tableView.cellForRow(at: indexPath) as! SelectPayCell
             cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
         }
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        if indexPath.row != 0 || indexPath.row != recentSpots.count + 1 {
+        if indexPath.row != 0 && indexPath.row != recentParkLocations.count + 1 {
             let cell = tableView.cellForRow(at: indexPath) as! SelectPayCell
             cell.card.backgroundColor = UIColor(named: "Secondary Detail")
         }

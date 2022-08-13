@@ -49,3 +49,17 @@ class TutorialView3: UIView {
         return UINib(nibName: "Tutorials", bundle: nil).instantiate(withOwner: nil, options: nil)[2] as! UIView
     }
 }
+
+class TutorialView4: UIView {
+    
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        
+        self.layer.cornerRadius = 12.0
+        
+    }
+    
+    class func instanceFromNib() -> UIView {
+        return UINib(nibName: "Tutorials", bundle: nil).instantiate(withOwner: nil, options: nil)[3] as! UIView
+    }
+}
