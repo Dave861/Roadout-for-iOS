@@ -274,7 +274,7 @@ class HomeViewController: UIViewController {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
                 self.navigationController?.pushViewController(vc, animated: true)
             }),
-            UIAction(title: "Pay Parking".localized(), image: UIImage(systemName: "dollarsign.circle"), handler: { (_) in
+            UIAction(title: "Pay Parking".localized(), image: UIImage(systemName: "banknote"), handler: { (_) in
                 guard let coord = self.mapView.myLocation?.coordinate else {
                     
                     let alert = UIAlertController(title: "Error", message: "Roadout can't access your location to show nearby spots, please enable it in Settings.", preferredStyle: .alert)
@@ -962,6 +962,9 @@ extension HomeViewController {
     }
     
     @objc func addPayDurationCard() {
+        let camera = GMSCameraPosition.camera(withLatitude: (selectedPayLocation!.latitude), longitude: (selectedPayLocation!.longitude), zoom: 17.0)
+        self.mapView?.animate(to: camera)
+        
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
