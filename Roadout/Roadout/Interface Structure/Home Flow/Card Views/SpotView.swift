@@ -30,9 +30,9 @@ class SpotView: UIView, PusherDelegate {
         let clockImage = UIImage.init(systemName: "clock")!.withTintColor(UIColor(named: "Dark Orange")!, renderingMode: .alwaysOriginal)
         let checkImage = UIImage.init(systemName: "checkmark")!.withTintColor(UIColor(named: "Dark Yellow")!, renderingMode: .alwaysOriginal)
         let checkingIndicatorView = SPIndicatorView(title: "Confirming".localized(), message: "Checking...".localized(), preset: .custom(clockImage))
-        checkingIndicatorView.backgroundColor = UIColor(named: "Background")!
+        checkingIndicatorView.backgroundColor = UIColor(named: "FloatingBG")!
         let confirmedIndicatorView = SPIndicatorView(title: "Confirmed".localized(), message: "Done".localized(), preset: .custom(checkImage))
-        confirmedIndicatorView.backgroundColor = UIColor(named: "Background")!
+        confirmedIndicatorView.backgroundColor = UIColor(named: "FloatingBG")!
         checkingIndicatorView.present(duration: 0.7, haptic: .none) {
             self.disconnectPusher()
             NotificationCenter.default.post(name: .addReserveCardID, object: nil)
@@ -217,22 +217,22 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
                 cell.outlineView.backgroundColor = UIColor(named: "Main Yellow")
                 cell.mainBtn.setImage(UIImage(systemName: "checkmark"), for: .normal)
                 cell.mainBtn.tintColor = UIColor(named: "Main Yellow")
-                cell.mainBtn.backgroundColor = UIColor(named: "Background")
+                cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
             case 1:
                 cell.outlineView.backgroundColor = UIColor(named: "Redish")
                 cell.mainBtn.setImage(UIImage(systemName: "xmark"), for: .normal)
                 cell.mainBtn.tintColor = UIColor(named: "Redish")
-                cell.mainBtn.backgroundColor = UIColor(named: "Background")
+                cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
             case 2:
                 cell.outlineView.backgroundColor = UIColor(named: "Dark Orange")
                 cell.mainBtn.setImage(UIImage(systemName: "clock"), for: .normal)
                 cell.mainBtn.tintColor = UIColor(named: "Dark Orange")
-                cell.mainBtn.backgroundColor = UIColor(named: "Background")
+                cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
             default:
                 cell.outlineView.backgroundColor = UIColor(named: "Dark Yellow")
                 cell.mainBtn.setImage(UIImage(systemName: "hammer"), for: .normal)
                 cell.mainBtn.tintColor = UIColor(named: "Dark Yellow")
-                cell.mainBtn.backgroundColor = UIColor(named: "Background")
+                cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
         }
         return cell
     }
@@ -249,16 +249,16 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
         switch parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state {
             case 0:
                 cell.mainBtn.backgroundColor = UIColor(named: "Main Yellow")
-                cell.mainBtn.tintColor = UIColor(named: "Background")
+                cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
             case 1:
                 cell.mainBtn.backgroundColor = UIColor(named: "Redish")
-                cell.mainBtn.tintColor = UIColor(named: "Background")
+                cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
             case 2:
                 cell.mainBtn.backgroundColor = UIColor(named: "Dark Orange")
-                cell.mainBtn.tintColor = UIColor(named: "Background")
+                cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
             default:
                 cell.mainBtn.backgroundColor = UIColor(named: "Dark Yellow")
-                cell.mainBtn.tintColor = UIColor(named: "Background")
+                cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
         }
 
         selectedSpotColor = parkLocations[selectedParkLocationIndex].accentColor
@@ -271,16 +271,16 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
         
         switch parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state {
             case 0:
-                cell.mainBtn.backgroundColor = UIColor(named: "Background")
+                cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
                 cell.mainBtn.tintColor = UIColor(named: "Main Yellow")
             case 1:
-                cell.mainBtn.backgroundColor = UIColor(named: "Background")
+                cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
                 cell.mainBtn.tintColor = UIColor(named: "Redish")
             case 2:
-                cell.mainBtn.backgroundColor = UIColor(named: "Background")
+                cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
                 cell.mainBtn.tintColor = UIColor(named: "Dark Orange")
             default:
-                cell.mainBtn.backgroundColor = UIColor(named: "Background")
+                cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
                 cell.mainBtn.tintColor = UIColor(named: "Dark Yellow")
         }
     }

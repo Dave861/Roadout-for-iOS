@@ -168,7 +168,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ddG-ko-68Z">
-                                        <rect key="frame" x="15" y="56.5" width="26" height="23"/>
+                                        <rect key="frame" x="15" y="57" width="26" height="22.833333333333329"/>
                                         <color key="tintColor" name="Kinda Red"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24.5" id="19i-jX-Ghm"/>
@@ -176,7 +176,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UpP-wt-S4Z">
-                                        <rect key="frame" x="13" y="93" width="30" height="21"/>
+                                        <rect key="frame" x="13" y="93.333333333333329" width="30" height="20.833333333333329"/>
                                         <color key="tintColor" name="Kinda Red"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="SYf-JR-r3d"/>
@@ -194,7 +194,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Rg-LH-8Om">
-                                        <rect key="frame" x="313" y="52" width="57" height="55"/>
+                                        <rect key="frame" x="313" y="52.333333333333329" width="57" height="54.666666666666671"/>
                                         <color key="tintColor" name="Kinda Red"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="gtC-yc-IFI"/>
@@ -233,7 +233,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wand.and.stars" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OZu-cD-Jvz">
-                                <rect key="frame" x="182.5" y="384.5" width="49" height="48"/>
+                                <rect key="frame" x="182.5" y="384.66666666666669" width="49" height="47.666666666666657"/>
                                 <color key="tintColor" name="Kinda Red"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="49" id="4Ek-M2-a49"/>
@@ -295,16 +295,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ak5-FS-dZO">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" name="MapFilter"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zia-25-Prg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <color key="backgroundColor" name="MapBG"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uy4-V1-t9k">
-                                <rect key="frame" x="20" y="195" width="138" height="42"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4a-E4-NWU">
                                 <rect key="frame" x="356" y="153" width="45" height="85"/>
                                 <subviews>
@@ -345,7 +339,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="Background"/>
+                                <color key="backgroundColor" name="FloatingBG"/>
                                 <constraints>
                                     <constraint firstItem="IZY-Eh-gXi" firstAttribute="centerY" secondItem="H4a-E4-NWU" secondAttribute="centerY" id="Gmt-uC-XWj"/>
                                     <constraint firstAttribute="trailing" secondItem="9HT-ap-i19" secondAttribute="trailing" id="OMZ-3J-mfN"/>
@@ -360,11 +354,32 @@
                                     <constraint firstAttribute="width" constant="45" id="th5-DH-bVe"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHz-hX-hQD">
+                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
+                                <color key="backgroundColor" name="Background"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyE-Ut-PCE">
+                                <rect key="frame" x="0.0" y="725" width="414" height="137"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uy4-V1-t9k">
+                                        <rect key="frame" x="13" y="15" width="118.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Background"/>
+                                <constraints>
+                                    <constraint firstItem="Uy4-V1-t9k" firstAttribute="leading" secondItem="HyE-Ut-PCE" secondAttribute="leading" constant="13" id="7cF-zA-jiL"/>
+                                    <constraint firstItem="Uy4-V1-t9k" firstAttribute="top" secondItem="HyE-Ut-PCE" secondAttribute="top" constant="15" id="7oM-NT-Of4"/>
+                                    <constraint firstAttribute="height" constant="137" id="Mcc-e2-amS"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oc8-he-wio">
                                 <rect key="frame" x="13" y="795" width="388" height="52"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HiE-I6-vfT">
-                                        <rect key="frame" x="12" y="13" width="23" height="26"/>
+                                        <rect key="frame" x="12" y="13.499999999999998" width="23" height="25.833333333333329"/>
                                         <color key="tintColor" systemColor="systemGrayColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="23" id="Q04-7J-II0"/>
@@ -381,7 +396,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ellipsis.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="siF-SU-yBE">
-                                        <rect key="frame" x="347" y="11" width="30" height="30"/>
+                                        <rect key="frame" x="347" y="11.499999999999998" width="30" height="29.666666666666671"/>
                                         <color key="tintColor" name="Main Yellow"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="LrJ-F8-bjq"/>
@@ -409,7 +424,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="Background"/>
+                                <color key="backgroundColor" name="FloatingBG"/>
                                 <constraints>
                                     <constraint firstItem="siF-SU-yBE" firstAttribute="leading" secondItem="qsP-mi-FaF" secondAttribute="trailing" constant="61" id="0j2-ps-uUw"/>
                                     <constraint firstAttribute="bottom" secondItem="cth-mL-cnL" secondAttribute="bottom" id="10y-w0-OYr"/>
@@ -437,24 +452,30 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
+                            <constraint firstItem="Zia-25-Prg" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="0Lh-51-9GS"/>
+                            <constraint firstItem="Zia-25-Prg" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="1v7-8M-UaA"/>
+                            <constraint firstAttribute="trailing" secondItem="iHz-hX-hQD" secondAttribute="trailing" id="3XT-hW-MAf"/>
+                            <constraint firstItem="HyE-Ut-PCE" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="3Z9-CS-SGD"/>
                             <constraint firstItem="H4a-E4-NWU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="9" id="3gE-gu-dYs"/>
-                            <constraint firstItem="Ak5-FS-dZO" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="48K-DZ-7p8"/>
                             <constraint firstItem="Oc8-he-wio" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="13" id="5NV-DK-n5m"/>
-                            <constraint firstItem="Uy4-V1-t9k" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="AmQ-Yf-CA0"/>
-                            <constraint firstItem="Uy4-V1-t9k" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="51" id="K2y-1I-DIe"/>
+                            <constraint firstItem="Zia-25-Prg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Loi-E6-q82"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="H4a-E4-NWU" secondAttribute="trailing" constant="13" id="MZk-b1-ZuG"/>
-                            <constraint firstItem="Ak5-FS-dZO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MmC-Ju-RZy"/>
+                            <constraint firstItem="iHz-hX-hQD" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="bKW-MH-A48"/>
+                            <constraint firstItem="HyE-Ut-PCE" firstAttribute="top" secondItem="Zia-25-Prg" secondAttribute="bottom" id="bYp-Vm-uO1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Oc8-he-wio" secondAttribute="trailing" constant="13" id="cHo-0A-V3J"/>
-                            <constraint firstItem="Ak5-FS-dZO" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="idm-04-vNZ"/>
+                            <constraint firstItem="HyE-Ut-PCE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="k2N-gf-AlX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Oc8-he-wio" secondAttribute="bottom" constant="15" id="lB6-NC-i4D"/>
-                            <constraint firstAttribute="bottom" secondItem="Ak5-FS-dZO" secondAttribute="bottom" id="nRe-hF-DU6"/>
+                            <constraint firstAttribute="bottom" secondItem="iHz-hX-hQD" secondAttribute="bottom" id="mb0-XZ-wJ1"/>
+                            <constraint firstItem="HyE-Ut-PCE" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="rLI-eP-ypc"/>
+                            <constraint firstItem="iHz-hX-hQD" firstAttribute="top" secondItem="HyE-Ut-PCE" secondAttribute="bottom" id="yiZ-UX-jqf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Xmo-Qu-kgW"/>
                     <connections>
+                        <outlet property="backgroundView" destination="HyE-Ut-PCE" id="BLY-fH-IcQ"/>
                         <outlet property="mapControlsView" destination="H4a-E4-NWU" id="m9O-fU-tBb"/>
+                        <outlet property="mapHostingView" destination="Zia-25-Prg" id="BMf-1U-ReB"/>
                         <outlet property="mapTypeButton" destination="9HT-ap-i19" id="4su-lb-koW"/>
-                        <outlet property="satelliteFilter" destination="Ak5-FS-dZO" id="ezR-i3-i4Q"/>
                         <outlet property="searchBar" destination="Oc8-he-wio" id="uer-jr-Pur"/>
                         <outlet property="searchTapArea" destination="qsP-mi-FaF" id="dvD-3k-vjL"/>
                         <outlet property="settingsTapArea" destination="ObE-Ow-nJ0" id="92w-Ud-wPu"/>
@@ -482,7 +503,7 @@
                                         <rect key="frame" x="13" y="13" width="388" height="52"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8Br-Xh-C7T">
-                                                <rect key="frame" x="12" y="13" width="23" height="26"/>
+                                                <rect key="frame" x="12" y="13.499999999999998" width="23" height="25.833333333333329"/>
                                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="23" id="59V-Ki-JND"/>
@@ -490,7 +511,7 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line.3.horizontal.decrease.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZCS-J3-Ric">
-                                                <rect key="frame" x="347" y="11" width="30" height="30"/>
+                                                <rect key="frame" x="347" y="11.499999999999998" width="30" height="29.666666666666671"/>
                                                 <color key="tintColor" name="Main Yellow"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="Gn3-g1-2ec"/>
@@ -584,7 +605,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Gh8-Fd-PFZ">
-                                                            <rect key="frame" x="11" y="12.5" width="30" height="29"/>
+                                                            <rect key="frame" x="11" y="12.666666666666668" width="30" height="28.666666666666689"/>
                                                             <color key="tintColor" name="AccentColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="eLA-7D-RiI"/>
@@ -602,7 +623,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barometer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4kV-yh-wKb">
-                                                            <rect key="frame" x="11" y="12.5" width="30" height="29"/>
+                                                            <rect key="frame" x="11" y="12.666666666666668" width="30" height="28.666666666666689"/>
                                                             <color key="tintColor" name="AccentColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="Opm-bd-2uc"/>
@@ -674,7 +695,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hB-Ln-Tv7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12" y="749"/>
+            <point key="canvasLocation" x="11.594202898550726" y="748.66071428571422"/>
         </scene>
         <!--Search Preview Controller-->
         <scene sceneID="KYw-Ps-dkJ">
@@ -791,7 +812,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="w7s-cZ-8Gl"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="FloatingBG"/>
                         <constraints>
                             <constraint firstItem="HbG-j5-0aX" firstAttribute="top" secondItem="G6c-wE-ZDs" secondAttribute="top" id="2rl-kk-d5C"/>
                             <constraint firstItem="HbG-j5-0aX" firstAttribute="leading" secondItem="w7s-cZ-8Gl" secondAttribute="leading" id="76a-AC-0wc"/>
@@ -952,7 +973,7 @@
                                                             </constraints>
                                                         </view>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="O1Z-sQ-Q7j">
-                                                            <rect key="frame" x="345" y="16" width="15" height="13"/>
+                                                            <rect key="frame" x="345" y="16.666666666666664" width="15" height="12.333333333333336"/>
                                                             <color key="tintColor" systemColor="systemGray2Color"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="15" id="dxG-VH-qn4"/>
@@ -964,7 +985,7 @@
                                                             <rect key="frame" x="10" y="10" width="25" height="25"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yaY-zv-cT0">
-                                                                    <rect key="frame" x="3" y="3" width="19" height="19"/>
+                                                                    <rect key="frame" x="3" y="2.6666666666666679" width="19" height="19.333333333333346"/>
                                                                     <color key="tintColor" systemColor="systemBackgroundColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="19" id="PGz-9z-AT1"/>
@@ -1040,7 +1061,7 @@
                                                             </constraints>
                                                         </view>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wr4-JD-Cwn">
-                                                            <rect key="frame" x="345" y="16" width="15" height="13"/>
+                                                            <rect key="frame" x="345" y="16.666666666666664" width="15" height="12.333333333333336"/>
                                                             <color key="tintColor" systemColor="systemGray2Color"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="15" id="Pe4-5s-bhY"/>
@@ -1052,7 +1073,7 @@
                                                             <rect key="frame" x="10" y="10" width="25" height="25"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7Wl-lX-BVC">
-                                                                    <rect key="frame" x="3" y="3" width="19" height="19"/>
+                                                                    <rect key="frame" x="3" y="2.6666666666666679" width="19" height="19.333333333333346"/>
                                                                     <color key="tintColor" name="Background"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="19" id="DQy-Tf-0qu"/>
@@ -1121,7 +1142,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Tj8-iz-djU">
-                                                            <rect key="frame" x="345" y="16" width="15" height="13"/>
+                                                            <rect key="frame" x="345" y="16.666666666666664" width="15" height="12.333333333333336"/>
                                                             <color key="tintColor" systemColor="systemGray2Color"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="15" id="B2i-kE-TbT"/>
@@ -1133,7 +1154,7 @@
                                                             <rect key="frame" x="10" y="10" width="25" height="25"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zM7-U1-akn">
-                                                                    <rect key="frame" x="3" y="3" width="19" height="19"/>
+                                                                    <rect key="frame" x="3" y="2.6666666666666679" width="19" height="19.333333333333346"/>
                                                                     <color key="tintColor" name="Background"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="19" id="MxN-Hx-b8f"/>
@@ -1736,7 +1757,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="building.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Dp6-oO-asO">
-                                        <rect key="frame" x="8" y="11" width="29" height="30"/>
+                                        <rect key="frame" x="8" y="11.5" width="29" height="29.333333333333329"/>
                                         <color key="tintColor" name="Icons"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="29" id="oGQ-dm-ACD"/>
@@ -1752,7 +1773,7 @@ Made in Cluj :)</string>
                                         </constraints>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" name="Background"/>
+                                <color key="backgroundColor" name="FloatingBG"/>
                                 <constraints>
                                     <constraint firstItem="Dp6-oO-asO" firstAttribute="leading" secondItem="CoV-8M-q4W" secondAttribute="leading" constant="8" id="3O2-0J-jgc"/>
                                     <constraint firstAttribute="height" constant="52" id="60X-FH-E7q"/>
@@ -1985,7 +2006,7 @@ Made in Cluj :)</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ILU-pb-e3c">
-                                                            <rect key="frame" x="11" y="12.5" width="30" height="29"/>
+                                                            <rect key="frame" x="11" y="12.666666666666668" width="30" height="28.666666666666689"/>
                                                             <color key="tintColor" name="Cash Yellow"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="5t4-7P-1JH"/>
@@ -1994,7 +2015,7 @@ Made in Cluj :)</string>
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="16" scale="medium" weight="regular"/>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barometer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Nio-gi-fU8">
-                                                            <rect key="frame" x="11" y="12.5" width="30" height="29"/>
+                                                            <rect key="frame" x="11" y="12.666666666666668" width="30" height="28.666666666666689"/>
                                                             <color key="tintColor" name="Cash Yellow"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="8xL-vF-mHU"/>
@@ -2116,7 +2137,7 @@ Made in Cluj :)</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ip3-8P-BDI">
-                                                            <rect key="frame" x="11" y="12.5" width="30" height="29"/>
+                                                            <rect key="frame" x="11" y="12.666666666666668" width="30" height="28.666666666666689"/>
                                                             <color key="tintColor" name="ExpressFocus"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="eEq-9E-8pJ"/>
@@ -2134,7 +2155,7 @@ Made in Cluj :)</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barometer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dJo-SE-hlr">
-                                                            <rect key="frame" x="11" y="12.5" width="30" height="29"/>
+                                                            <rect key="frame" x="11" y="12.666666666666668" width="30" height="28.666666666666689"/>
                                                             <color key="tintColor" name="ExpressFocus"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="3ZO-OK-V4o"/>
@@ -2180,7 +2201,7 @@ Made in Cluj :)</string>
                                 <rect key="frame" x="16" y="343.5" width="382" height="209"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag.2.crossed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DYH-h2-5fN">
-                                        <rect key="frame" x="133.5" y="18" width="115" height="64"/>
+                                        <rect key="frame" x="133.5" y="18.666666666666664" width="115" height="63.500000000000021"/>
                                         <color key="tintColor" systemColor="systemGrayColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64.5" id="OKk-vE-Zv0"/>
@@ -2353,7 +2374,7 @@ Made in Cluj :)</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B6a-Mm-wjL">
-                                                                    <rect key="frame" x="346" y="9" width="28" height="28"/>
+                                                                    <rect key="frame" x="346" y="8.8333333333333339" width="28" height="27.999999999999993"/>
                                                                     <color key="tintColor" name="DevBrown"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="34" id="2e6-df-PUf"/>
@@ -2495,6 +2516,9 @@ Made in Cluj :)</string>
         <namedColor name="ExpressFocus">
             <color red="0.48199999332427979" green="0.30199998617172241" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <namedColor name="FloatingBG">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Greyish">
             <color red="0.5" green="0.42300000786781311" blue="0.31799998879432678" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
@@ -2510,8 +2534,8 @@ Made in Cluj :)</string>
         <namedColor name="Main Yellow">
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="MapFilter">
-            <color red="0.7839999794960022" green="0.67500001192092896" blue="0.42699998617172241" alpha="0.25" colorSpace="custom" customColorSpace="displayP3"/>
+        <namedColor name="MapBG">
+            <color red="0.96899998188018799" green="0.95300000905990601" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Redish">
             <color red="0.61799997091293335" green="0.22400000691413879" blue="0.11599999666213989" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

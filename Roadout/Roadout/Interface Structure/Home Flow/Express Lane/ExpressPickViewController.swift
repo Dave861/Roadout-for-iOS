@@ -151,7 +151,7 @@ class ExpressPickViewController: UIViewController {
         let indicatorIcon = UIImage.init(systemName: "flag.2.crossed")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
         indicatorView.dismissByDrag = false
-        indicatorView.backgroundColor = UIColor(named: "Background")!
+        indicatorView.backgroundColor = UIColor(named: "FloatingBG")!
         indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
     }
     

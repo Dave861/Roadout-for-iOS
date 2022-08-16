@@ -176,7 +176,7 @@ class FindView: UIView {
     
     func addToSiriBtn() {
         let button = INUIAddVoiceShortcutButton(style: .automaticOutline)
-                
+        button.backgroundColor = .clear
         button.frame = CGRect(x: 0, y: 0, width: self.frame.width-20, height: 50)
         button.delegate = self
         let intent = QuickReserveIntent()

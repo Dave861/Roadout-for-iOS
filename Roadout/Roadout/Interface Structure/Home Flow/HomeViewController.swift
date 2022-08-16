@@ -53,7 +53,7 @@ class HomeViewController: UIViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
-        
+        self.updateBackgroundViewHeight(with: 280)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -74,6 +74,7 @@ class HomeViewController: UIViewController {
             } else {
                 self.searchBar.layer.shadowOpacity = 0.0
             }
+            self.updateBackgroundViewHeight(with: 310)
             var dif = 15.0
             DispatchQueue.main.async {
                 if (UIDevice.current.hasNotch) {
@@ -119,6 +120,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var shareplayView: UIView!
     
     
+    @IBOutlet weak var backgroundView: UIView!
+    
+    func updateBackgroundViewHeight(with cardHeight: CGFloat) {
+        backgroundView.setHeight(cardHeight+85, animateTime: 0.1)
+        let mapInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: cardHeight-52, right: 0.0)
+        mapView.padding = mapInsets
+    }
+    
+    @IBOutlet weak var mapHostingView: UIView!
+    
+    
     @IBOutlet weak var mapControlsView: UIView!
     
     @IBOutlet weak var mapTypeButton: UIButton!
@@ -130,20 +142,14 @@ class HomeViewController: UIViewController {
             mapTypeButton.setImage(UIImage(systemName: "globe.europe.africa.fill"), for: .normal)
             mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14), forImageIn: .normal)
             
-            satelliteFilter.alpha = 1.0
             mapView.mapType = .satellite
-            self.addShadowToTitle()
-            titleLbl.textColor = .white
             
             selectedMapType = .satellite
         } else {
             mapTypeButton.setImage(UIImage(systemName: "map.fill"), for: .normal)
             mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 13), forImageIn: .normal)
             
-            satelliteFilter.alpha = 0
             mapView.mapType = .normal
-            self.removeShadowFromTitle()
-            titleLbl.textColor = .label
             
             selectedMapType = .roadout
         }
@@ -156,9 +162,7 @@ class HomeViewController: UIViewController {
         
         userLocationButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
     }
-    
-    @IBOutlet weak var satelliteFilter: UIView!
-    
+        
     //MARK: -OBSERVERS-
     
     func manageObs() {
@@ -305,7 +309,7 @@ class HomeViewController: UIViewController {
                     let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
                     let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
                     indicatorView.dismissByDrag = false
-                    indicatorView.backgroundColor = UIColor(named: "Background")!
+                    indicatorView.backgroundColor = UIColor(named: "FloatingBG")!
                     indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
                 }
                 FunctionsManager.sharedInstance.foundSpot = nil
@@ -466,13 +470,15 @@ class HomeViewController: UIViewController {
         
         mapTypeButton.setTitle("", for: .normal)
         userLocationButton.setTitle("", for: .normal)
-        
+                
         let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 15.0)
-        mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
+        if UIDevice.current.hasNotch {
+            mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-171), camera: camera)
+        } else {
+            mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-137), camera: camera)
+        }
         mapView.delegate = self
-        self.view.insertSubview(mapView, at: 0)
-        let mapInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 65.0, right: 0.0)
-        mapView.padding = mapInsets
+        self.mapHostingView.insertSubview(mapView, at: 0)
         
         switch traitCollection.userInterfaceStyle {
             case .light, .unspecified:
@@ -520,18 +526,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func addShadowToTitle() {
-        titleLbl.layer.shadowColor = UIColor.black.cgColor
-        titleLbl.layer.shadowOpacity = 0.1
-        titleLbl.layer.shadowOffset = .zero
-        titleLbl.layer.shadowPath = UIBezierPath(rect: titleLbl.bounds).cgPath
-        titleLbl.layer.shouldRasterize = true
-        titleLbl.layer.rasterizationScale = UIScreen.main.scale
-    }
-    
-    func removeShadowFromTitle() {
-        titleLbl.layer.shadowOpacity = 0
-    }
     
     //MARK: -Data & Map Configuration-
     
@@ -704,6 +698,7 @@ extension HomeViewController {
         }
         currentLocationCoord = coord
         
+        self.updateBackgroundViewHeight(with: 142)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -712,8 +707,10 @@ extension HomeViewController {
             self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-142-dif, width: self.screenSize.width - 26, height: 142)
             self.view.addSubview(self.resultView)
         }
+        
     }
     @objc func removeResultCard() {
+        self.updateBackgroundViewHeight(with: 52)
         DispatchQueue.main.async {
             self.searchBar.layer.shadowOpacity = 0.1
             self.resultView.removeFromSuperview()
@@ -735,6 +732,8 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        
+        self.updateBackgroundViewHeight(with: 331)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -745,6 +744,7 @@ extension HomeViewController {
         }
     }
     @objc func removeSectionCard() {
+        self.updateBackgroundViewHeight(with: 142)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -762,6 +762,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 318)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -772,6 +773,7 @@ extension HomeViewController {
         }
     }
     @objc func removeSpotCard() {
+        self.updateBackgroundViewHeight(with: 331)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -789,6 +791,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 310)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -799,6 +802,7 @@ extension HomeViewController {
         }
     }
     @objc func removeReserveCard() {
+        self.updateBackgroundViewHeight(with: 318)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -816,6 +820,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 237)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -826,6 +831,7 @@ extension HomeViewController {
         }
     }
     @objc func removePayCard() {
+        self.updateBackgroundViewHeight(with: 310)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -843,6 +849,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 292)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -853,6 +860,7 @@ extension HomeViewController {
         }
     }
     @objc func removeReservationCard() {
+        self.updateBackgroundViewHeight(with: 52)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -870,6 +878,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 205)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -880,6 +889,7 @@ extension HomeViewController {
         }
     }
     @objc func removeDelayCard() {
+        self.updateBackgroundViewHeight(with: 292)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -897,6 +907,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 237)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -907,6 +918,7 @@ extension HomeViewController {
         }
     }
     @objc func removePayDelayCard() {
+        self.updateBackgroundViewHeight(with: 205)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -924,6 +936,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 221)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -934,6 +947,7 @@ extension HomeViewController {
         }
     }
     @objc func removeUnlockCard() {
+        self.updateBackgroundViewHeight(with: 292)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -951,6 +965,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 155)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -970,6 +985,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 206)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -980,6 +996,7 @@ extension HomeViewController {
         }
     }
     @objc func removePayDurationCard() {
+        self.updateBackgroundViewHeight(with: 155)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -997,6 +1014,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 271)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -1007,6 +1025,7 @@ extension HomeViewController {
         }
     }
     @objc func removePayParkingCard() {
+        self.updateBackgroundViewHeight(with: 206)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -1033,6 +1052,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 52)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -1049,6 +1069,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 52)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -1065,6 +1086,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 52)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -1081,6 +1103,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 52)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -1097,6 +1120,7 @@ extension HomeViewController {
         } else {
             self.searchBar.layer.shadowOpacity = 0.0
         }
+        self.updateBackgroundViewHeight(with: 52)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -1112,6 +1136,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         }
+        self.updateBackgroundViewHeight(with: 52)
         self.searchBar.layer.shadowOpacity = 0.1
     }
     

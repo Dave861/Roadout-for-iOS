@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21219" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21200"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -49,7 +48,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Stf-Ye-wID"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="FloatingBG"/>
             <constraints>
                 <constraint firstItem="veL-ns-eN4" firstAttribute="leading" secondItem="u59-Pg-inq" secondAttribute="trailing" constant="8" symbolic="YES" id="1VZ-Qp-Sgf"/>
                 <constraint firstItem="tc1-lO-XUV" firstAttribute="top" secondItem="Stf-Ye-wID" secondAttribute="top" constant="9" id="3U9-fA-XP4"/>
@@ -112,7 +111,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="AYZ-M4-UUf"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="FloatingBG"/>
             <constraints>
                 <constraint firstItem="aIU-C6-ZRB" firstAttribute="leading" secondItem="Ws3-qE-Hcb" secondAttribute="trailing" constant="6" id="4EE-cb-T4A"/>
                 <constraint firstItem="AYZ-M4-UUf" firstAttribute="bottom" secondItem="dx9-2g-UwI" secondAttribute="bottom" constant="9" id="BQT-mF-DdD"/>
@@ -169,7 +168,7 @@
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="S1G-EX-uCN"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="FloatingBG"/>
             <constraints>
                 <constraint firstItem="S1G-EX-uCN" firstAttribute="bottom" secondItem="V6o-gR-yBH" secondAttribute="bottom" constant="4" id="43U-ei-rbz"/>
                 <constraint firstItem="V6o-gR-yBH" firstAttribute="top" secondItem="S1G-EX-uCN" secondAttribute="top" constant="4" id="IXq-qz-Fpj"/>
@@ -219,7 +218,7 @@
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="mVW-qb-Vg4"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="FloatingBG"/>
             <constraints>
                 <constraint firstItem="Lch-cb-uQy" firstAttribute="leading" secondItem="rag-Oh-Ii9" secondAttribute="trailing" constant="12" id="Dj8-bW-cln"/>
                 <constraint firstItem="rag-Oh-Ii9" firstAttribute="centerY" secondItem="Rli-7c-2Qo" secondAttribute="centerY" id="TUS-SG-Jvf"/>
@@ -237,16 +236,19 @@
         </view>
     </objects>
     <resources>
-        <image name="checkmark.seal.fill" catalog="system" width="128" height="128"/>
-        <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
-        <image name="lock.fill" catalog="system" width="128" height="128"/>
-        <image name="wifi.slash" catalog="system" width="128" height="102"/>
+        <image name="checkmark.seal.fill" catalog="system" width="128" height="124"/>
+        <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
+        <image name="lock.fill" catalog="system" width="125" height="128"/>
+        <image name="wifi.slash" catalog="system" width="128" height="101"/>
         <image name="xmark.app.fill" catalog="system" width="128" height="114"/>
         <namedColor name="Dark Orange">
             <color red="0.83899998664855957" green="0.42699998617172241" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="FloatingBG">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Greyish">
-            <color red="0.50199997425079346" green="0.45100000500679016" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.5" green="0.42300000786781311" blue="0.31799998879432678" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Icons">
             <color red="0.86299997568130493" green="0.66699999570846558" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -254,8 +256,5 @@
         <namedColor name="Redish">
             <color red="0.61799997091293335" green="0.22400000691413879" blue="0.11599999666213989" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
