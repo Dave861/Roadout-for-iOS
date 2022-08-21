@@ -48,6 +48,8 @@ class ExpressView: UIView {
         if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
             //Handled by menu
         } else {
+            NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
+            
             let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
             ReservationManager.sharedInstance.makeReservation(Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id) { result in
                 switch result {

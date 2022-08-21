@@ -54,6 +54,10 @@ class HomeViewController: UIViewController {
             self.searchBar.layer.shadowOpacity = 0.0
         }
         self.updateBackgroundViewHeight(with: 280)
+        //Clear saved car park
+        UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
+        carParkHash = "roadout_carpark_clear"
+        NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -69,20 +73,23 @@ class HomeViewController: UIViewController {
     let findView = FindView.instanceFromNib()
         
     @objc func showFindCard() {
-            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-                self.view.subviews.last!.removeFromSuperview()
-            } else {
-                self.searchBar.layer.shadowOpacity = 0.0
+        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+            self.view.subviews.last!.removeFromSuperview()
+        } else {
+            self.searchBar.layer.shadowOpacity = 0.0
+        }
+        self.updateBackgroundViewHeight(with: 310)
+        //Clear saved car park
+        UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
+        carParkHash = "roadout_carpark_clear"
+        NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
+        var dif = 15.0
+        DispatchQueue.main.async {
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
             }
-            self.updateBackgroundViewHeight(with: 310)
-            var dif = 15.0
-            DispatchQueue.main.async {
-                if (UIDevice.current.hasNotch) {
-                    dif = 49.0
-                }
-                self.findView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
-                print(self.view.frame.height)
-                self.view.addSubview(self.findView)
+            self.findView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
+            self.view.addSubview(self.findView)
         }
     }
     
@@ -162,6 +169,11 @@ class HomeViewController: UIViewController {
         
         userLocationButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
     }
+    
+    @IBOutlet weak var markedSpotView: UIView!
+    
+    @IBOutlet weak var markedSpotButton: UIButton!
+    
         
     //MARK: -OBSERVERS-
     
@@ -217,10 +229,6 @@ class HomeViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(showFindCard), name: .showFindCardID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(animateCameraToFoundLocation), name: .animateCameraToFoundID, object: nil)
-                
-        if #available(iOS 15.0, *) {
-            NotificationCenter.default.addObserver(self, selector: #selector(showGroupReserveVC), name: .groupSessionStartedID, object: nil)
-        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(showRateReservation), name: .showRateReservationID, object: nil)
         
@@ -229,6 +237,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(addMarkers), name: .addMarkersID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(addSpotMarker), name: .addSpotMarkerID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeSpotMarker), name: .removeSpotMarkerID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshMarkedSpot), name: .refreshMarkedSpotID, object: nil)
     }
     
    //MARK: -Markers-
@@ -271,6 +280,14 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc func refreshMarkedSpot() {
+        if carParkHash == "roadout_carpark_clear" {
+            self.markedSpotView.isHidden = true
+        } else {
+            self.markedSpotView.isHidden = false
+        }
+    }
+    
     //Menu
     var menuItems: [UIAction] {
         return [
@@ -309,7 +326,7 @@ class HomeViewController: UIViewController {
                     let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
                     let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
                     indicatorView.dismissByDrag = false
-                    indicatorView.backgroundColor = UIColor(named: "FloatingBG")!
+                    indicatorView.backgroundColor = UIColor(named: "Background")!
                     indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
                 }
                 FunctionsManager.sharedInstance.foundSpot = nil
@@ -357,36 +374,6 @@ class HomeViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-  //SharePlay
-    func addSharePlayButtonView() {
-        if #available(iOS 15.0, *) {
-            let host = UIHostingController(rootView: SharePlayButton())
-            guard let hostView = host.view else { return }
-            hostView.translatesAutoresizingMaskIntoConstraints = false
-            self.shareplayView.addSubview(hostView)
-            NSLayoutConstraint.activate([
-                hostView.centerXAnchor.constraint(equalTo: self.shareplayView.centerXAnchor),
-                hostView.centerYAnchor.constraint(equalTo: self.shareplayView.centerYAnchor),
-                
-                hostView.widthAnchor.constraint(equalTo: self.shareplayView.widthAnchor),
-                hostView.heightAnchor.constraint(equalTo: self.shareplayView.heightAnchor),
-                
-                hostView.bottomAnchor.constraint(equalTo: self.shareplayView.bottomAnchor),
-                hostView.topAnchor.constraint(equalTo: self.shareplayView.topAnchor),
-                hostView.leftAnchor.constraint(equalTo: self.shareplayView.leftAnchor),
-                hostView.rightAnchor.constraint(equalTo: self.shareplayView.rightAnchor)
-            ])
-        }
-    }
-    
-    @available(iOS 15.0, *)
-    @objc func showGroupReserveVC() {
-        DispatchQueue.main.async {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "GroupReserveVC") as! GroupReserveViewController
-            self.present(vc, animated: true, completion: nil)
-        }
-    }
-    
     //MARK: -View Configuration-
         
     override func viewWillAppear(_ animated: Bool) {
@@ -401,10 +388,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-
-        if parkLocations.count < 10 {
+        
+        if parkLocations.count < cityParkLocationsCount {
             self.manageGettingData()
-        } else if parkLocations.count == 10 {
+        } else {
             self.addMarkers()
         }
         
@@ -470,7 +457,25 @@ class HomeViewController: UIViewController {
         
         mapTypeButton.setTitle("", for: .normal)
         userLocationButton.setTitle("", for: .normal)
-                
+        
+        //Marked Spot
+        markedSpotView.layer.cornerRadius = 9.0
+        
+        markedSpotView.layer.shadowColor = UIColor.black.cgColor
+        markedSpotView.layer.shadowOpacity = 0.1
+        markedSpotView.layer.shadowOffset = .zero
+        markedSpotView.layer.shadowRadius = 9.0
+        markedSpotView.layer.shadowPath = UIBezierPath(rect: markedSpotView.bounds).cgPath
+        markedSpotView.layer.shouldRasterize = true
+        markedSpotView.layer.rasterizationScale = UIScreen.main.scale
+        
+        markedSpotButton.setTitle("", for: .normal)
+        markedSpotButton.menu = markedMenu
+        markedSpotButton.showsMenuAsPrimaryAction = true
+        
+        refreshMarkedSpot()
+        
+        //Map Setup
         let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 15.0)
         if UIDevice.current.hasNotch {
             mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-171), camera: camera)
@@ -565,12 +570,40 @@ class HomeViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
   
-    func setUpSharePlay() {
-        if #available(iOS 15.0, *) {
-            addSharePlayButtonView()
-            SharePlayManager.sharedInstance.receiveSessions()
-        }
-    }
+    
+    var markedMenuItems: [UIAction] {
+          return [
+              UIAction(title: "Get Directions".localized(), image: UIImage(systemName: "arrow.triangle.branch"), handler: { (_) in
+                  let hashComponents = carParkHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
+                  let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
+                  let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
+                  
+                  self.openDirectionsToCoords(lat: lat, long: long)
+              }),
+              UIAction(title: "Clear".localized(), image: UIImage(systemName: "arrow.triangle.2.circlepath"), handler: { (_) in
+                  UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
+                  carParkHash = "roadout_carpark_clear"
+                  NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
+              }),
+          ]
+      }
+      var markedMenu: UIMenu {
+          return UIMenu(title: "Marked Spot".localized(), image: nil, identifier: nil, options: [], children: markedMenuItems)
+      }
+      
+      func openDirectionsToCoords(lat: Double, long: Double) {
+          var link: String
+          switch UserPrefsUtils.sharedInstance.returnPrefferedMapsApp() {
+          case "Google Maps":
+              link = "https://www.google.com/maps/search/?api=1&query=\(lat),\(long)"
+          case "Waze":
+              link = "https://www.waze.com/ul?ll=\(lat)%2C-\(long)&navigate=yes&zoom=15"
+          default:
+              link = "http://maps.apple.com/?ll=\(lat),\(long)&q=Parking%20Location"
+          }
+          guard UIApplication.shared.canOpenURL(URL(string: link)!) else { return }
+          UIApplication.shared.open(URL(string: link)!)
+      }
     
 }
 extension HomeViewController: CLLocationManagerDelegate {

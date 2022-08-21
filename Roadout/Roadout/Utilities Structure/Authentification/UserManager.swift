@@ -24,7 +24,7 @@ class UserManager {
     var userEmail = ""
     
     //MARK: -User Data-
-    var userName = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserName") ?? "User Name"
+    var userName = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserName") ?? "roadout_user_name"
     
     enum UserDBErrors: Error {
         case databaseFailure
@@ -240,7 +240,7 @@ class UserManager {
         
         var email = UserManager.sharedInstance.userEmail
         if email == "" {
-            email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail") ?? "Impossible."
+            email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail") ?? "roadout_impossible."
         }
         print(email)
         print(password)

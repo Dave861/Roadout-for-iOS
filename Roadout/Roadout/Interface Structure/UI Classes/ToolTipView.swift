@@ -189,12 +189,6 @@ open class Tooltip: UIView {
             globlSafeAreasInsets = .zero
         }
         
-        print(rect.width)
-        print(screenBounds.width)
-        print("WIDTH ^; HEIGHT|")
-        print(rect.height)
-        print(screenBounds.height)
-        
         precondition(rect.width <= screenBounds.width - margin*2, warningMsg())
         precondition(rect.height <= screenBounds.height - margin*2 - globlSafeAreasInsets.top - globlSafeAreasInsets.bottom, warningMsg())
         

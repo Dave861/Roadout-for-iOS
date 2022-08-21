@@ -66,7 +66,6 @@ extension ExtensionDelegate: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let userID = message["userID"] as? String {
-            print(userID)
             let userName = message["userName"] as! String
             UserDefaults.roadout!.set(userID, forKey: "ro.roadout.RoadoutWatch.UserID")
             UserDefaults.roadout!.set(userName, forKey: "ro.roadout.RoadoutWatch.UserName")

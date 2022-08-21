@@ -58,8 +58,9 @@ class WorldViewController: UIViewController {
         let pitch = String(hashComponents[3].dropFirst())
         
         let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
+        let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
         
-        let worldLocation = WorldLocation(latitude: lat, longitude: Geohash(geohash: hashComponents[0])!.coordinates.longitude, fov: Int(fov)!, heading: Int(heading)!, pitch: Int(pitch)!)
+        let worldLocation = WorldLocation(latitude: lat, longitude: long, fov: Int(fov)!, heading: Int(heading)!, pitch: Int(pitch)!)
                 
         getWorldImage(for: worldLocation)
     }

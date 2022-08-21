@@ -25,6 +25,10 @@ class ResultView: UIView {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         self.downloadSpots()
+        //Clear saved car park
+        UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
+        carParkHash = "roadout_carpark_clear"
+        NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
         NotificationCenter.default.post(name: .addSectionCardID, object: nil)
     }
     @IBAction func backTapped(_ sender: Any) {

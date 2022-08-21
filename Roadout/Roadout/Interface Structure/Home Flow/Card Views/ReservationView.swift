@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GeohashKit
 
 class ReservationView: UIView {
     
@@ -77,7 +78,11 @@ class ReservationView: UIView {
     }
     
     @IBAction func directionsTapped(_ sender: Any) {
-        self.openDirectionsToCoords(lat: 46.565645, long: 32.65565)
+        let hashComponents = selectedSpotHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
+        let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
+        let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
+        
+        self.openDirectionsToCoords(lat: lat, long: long)
     }
     
     @IBAction func delayTapped(_ sender: Any) {
@@ -114,7 +119,7 @@ class ReservationView: UIView {
     @IBAction func cancelTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        let alert = UIAlertController(title: "Cancel".localized(), message: "Are you sure you want to cancel your reservation? You will only get money back for the unused minutes.".localized(), preferredStyle: .alert)
+        let alert = UIAlertController(title: "Cancel".localized(), message: "Are you sure you want to cancel your reservation? You will only get half the money back and only if the reservation is less than half consumed.".localized(), preferredStyle: .alert)
         alert.view.tintColor = UIColor(named: "Redish")
         let cancelAction = UIAlertAction(title: "No".localized(), style: .cancel, handler: nil)
         let proceedAction = UIAlertAction(title: "Yes".localized(), style: .destructive) { action in

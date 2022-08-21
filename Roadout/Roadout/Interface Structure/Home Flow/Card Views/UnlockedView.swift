@@ -15,9 +15,9 @@ class UnlockedView: UIView {
     @IBOutlet weak var payView: UIView!
     @IBOutlet weak var payLbl: UILabel!
     
-    @IBOutlet weak var directionsLbl: UILabel!
-    @IBOutlet weak var directionsView: UIView!
-    @IBOutlet weak var directionsBtn: UIButton!
+    @IBOutlet weak var markLbl: UILabel!
+    @IBOutlet weak var markView: UIView!
+    @IBOutlet weak var markBtn: UIButton!
     
     @IBAction func payTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -27,8 +27,19 @@ class UnlockedView: UIView {
         NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
     }
     
-    @IBAction func directionsTapped(_ sender: Any) {
-        //Handled by menu
+    @IBAction func markTapped(_ sender: Any) {
+        //Make sure spot hash is ok
+        UserDefaults.roadout!.setValue(selectedSpotHash, forKey: "ro.roadout.Roadout.carParkHash")
+        carParkHash = selectedSpotHash
+        NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
+        
+        markLbl.text = "Marked".localized()
+        markBtn.isEnabled = false
+        let alert = UIAlertController(title: "Spot Marked".localized(), message: "Your car location has been marked, you can return later and find it in Roadout".localized(), preferredStyle: .alert)
+        alert.view.tintColor = UIColor(named: "DevBrown")!
+        let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
+        alert.addAction(okAction)
+        self.parentViewController().present(alert, animated: true)
     }
     
     @IBAction func doneTapped(_ sender: Any) {
@@ -36,7 +47,7 @@ class UnlockedView: UIView {
         generator.impactOccurred()
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         ReservationManager.sharedInstance.checkForReservation(Date(), userID: id) { _ in
-            //API call for continuity when app is opened again (to prevent showing unlocked view)
+            //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done)
             let rateAlert = UIAlertController(title: "Rate".localized(), message: "Would you like to rate your experience?".localized(), preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "Yes".localized(), style: .cancel) { _ in
                 NotificationCenter.default.post(name: .showRateReservationID, object: nil)
@@ -55,23 +66,24 @@ class UnlockedView: UIView {
     
     func styleActionButtons() {
         payBtn.setTitle("", for: .normal)
-        directionsBtn.setTitle("", for: .normal)
+        markBtn.setTitle("", for: .normal)
         
         payView.layer.cornerRadius = 9
-        directionsView.layer.cornerRadius = 9
+        markView.layer.cornerRadius = 9
         
         payLbl.text = "Pay Parking".localized()
-        directionsLbl.text = "Find".localized()
+        if carParkHash == "roadout_carpark_clear" {
+            markLbl.text = "Mark Spot".localized()
+        } else {
+            markLbl.text = "Marked".localized()
+        }
     }
     
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
-        
-        directionsBtn.menu = directionsMenu
-        directionsBtn.showsMenuAsPrimaryAction = true
-        
+                
         timerSeconds = 0
         
         styleActionButtons()
@@ -90,41 +102,6 @@ class UnlockedView: UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[8] as! UIView
     }
     
-    var menuItems: [UIAction] {
-        return [
-            UIAction(title: "Get Directions".localized(), image: UIImage(systemName: "arrow.triangle.branch"), handler: { (_) in
-                self.openDirectionsToCoords(lat: 46.565645, long: 32.65565)
-            }),
-            UIAction(title: "Open in AR (BETA)".localized(), image: UIImage(systemName: "arkit"), handler: { (_) in
-                let sb = UIStoryboard(name: "Home", bundle: nil)
-                let vc = sb.instantiateViewController(withIdentifier: "ARVC") as! ARViewController
-                self.parentViewController().present(vc, animated: true, completion: nil)
-            }),
-            UIAction(title: "World View".localized(), image: UIImage(named: "globe_desk"), handler: { (_) in
-                //Make sure selected spot hash is ok
-                let sb = UIStoryboard(name: "Main", bundle: nil)
-                let vc = sb.instantiateViewController(withIdentifier: "WorldVC") as! WorldViewController
-                self.parentViewController().present(vc, animated: true, completion: nil)
-            })
-        ]
-    }
-    var directionsMenu: UIMenu {
-        return UIMenu(title: "Find".localized(), image: nil, identifier: nil, options: [], children: menuItems)
-    }
-    
-    func openDirectionsToCoords(lat: Double, long: Double) {
-        var link: String
-        switch UserPrefsUtils.sharedInstance.returnPrefferedMapsApp() {
-        case "Google Maps":
-            link = "https://www.google.com/maps/search/?api=1&query=\(lat),\(long)"
-        case "Waze":
-            link = "https://www.waze.com/ul?ll=\(lat)%2C-\(long)&navigate=yes&zoom=15"
-        default:
-            link = "http://maps.apple.com/?ll=\(lat),\(long)&q=Parking%20Location"
-        }
-        guard UIApplication.shared.canOpenURL(URL(string: link)!) else { return }
-        UIApplication.shared.open(URL(string: link)!)
-    }
     
     func getLocationWith(name: String) -> ParkLocation {
         var location: ParkLocation!

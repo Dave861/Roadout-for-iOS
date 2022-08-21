@@ -20,7 +20,7 @@ class NotificationHelper {
     func manageNotifications() {
         center.getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
-                print("Good")
+                print("Notifications are authorized")
             } else {
                 self.askNotificationPermission(currentNotification: "")
             }
@@ -47,7 +47,7 @@ class NotificationHelper {
                         self.scheduleReminder(reminder: reminder!)
                     }
                 } else {
-                    print("Bad Luck")
+                    print("Notifications are denied")
                 }
             }
         } else {
@@ -59,7 +59,7 @@ class NotificationHelper {
                         self.scheduleReminder(reminder: reminder!)
                     }
                 } else {
-                    print("Bad Luck")
+                    print("Notifications are denied")
                 }
             }
         }
@@ -98,7 +98,7 @@ class NotificationHelper {
         let request = UNNotificationRequest(identifier: "ro.roadout.reservationDone", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {
-                print("Done")
+                print("Scheduled End Notification")
                 self.UserDefaultsSuite.set(true, forKey: "ro.roadout.setDoneReservation")
             }
         }
@@ -170,7 +170,7 @@ class NotificationHelper {
                 let request = UNNotificationRequest(identifier: reminder.identifier, content: content, trigger: trigger)
                 self.center.add(request) { err in
                     if err == nil {
-                        print("Did it")
+                        print("Scheduled Reminder")
                     }
                 }
             } else {

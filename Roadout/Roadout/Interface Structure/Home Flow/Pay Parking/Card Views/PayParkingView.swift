@@ -38,7 +38,7 @@ class PayParkingView: UIView {
         } else {
             let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
             ReservationManager.sharedInstance.checkForReservation(Date(), userID: id) { _ in
-                //API call for continuity when app is opened again (to prevent showing unlocked view) and end reservation, begin paid stay
+                //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done)
             }
             isPayFlow = false
             NotificationCenter.default.post(name: .showPaidParkingBarID, object: nil)

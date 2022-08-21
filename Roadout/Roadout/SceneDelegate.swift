@@ -64,7 +64,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                             NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
                         } else {
                             //error or not active
-                            //Do nothing, keep state
+                            //do nothing, keep current state
                         }
                     case .failure(let err):
                         print(err)

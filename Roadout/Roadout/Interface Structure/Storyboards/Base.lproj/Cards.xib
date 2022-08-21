@@ -817,12 +817,12 @@
                                         <constraint firstAttribute="height" constant="21" id="Viz-4w-8LD"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                    <color key="textColor" name="Brownish"/>
+                                    <color key="textColor" name="Dark Yellow"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hay-1l-TtU">
                                     <rect key="frame" x="26" y="10.666666666666657" width="20" height="24"/>
-                                    <color key="tintColor" name="Brownish"/>
+                                    <color key="tintColor" name="Dark Yellow"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="Pkq-hE-PNF"/>
                                         <constraint firstAttribute="height" constant="26" id="agy-Lp-FKv"/>
@@ -1441,7 +1441,7 @@
                         <action selector="doneTapped:" destination="feY-Id-uPD" eventType="touchUpInside" id="hZO-Qs-jJ1"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your spot is now unlocked, you can pay parking right from here or get directions later to return." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Tlp-1f-91q">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your spot is now unlocked, pay parking right from here or mark the spot to find your car later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Tlp-1f-91q">
                     <rect key="frame" x="10" y="48" width="394" height="38.333333333333343"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" systemColor="systemGrayColor"/>
@@ -1499,12 +1499,11 @@
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain"/>
                             <connections>
-                                <action selector="arTapped:" destination="eO2-BE-dRG" eventType="touchUpInside" id="kBJ-xA-cAk"/>
-                                <action selector="directionsTapped:" destination="feY-Id-uPD" eventType="touchUpInside" id="SOY-lX-RhS"/>
+                                <action selector="markTapped:" destination="feY-Id-uPD" eventType="touchUpInside" id="Awr-gF-ZIn"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="qYe-bK-BPN">
-                            <rect key="frame" x="68.666666666666686" y="12" width="33.666666666666657" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="qYe-bK-BPN">
+                            <rect key="frame" x="45.333333333333307" y="12" width="80.333333333333314" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="6MG-tT-6fZ"/>
                             </constraints>
@@ -1513,7 +1512,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zQ9-K2-uuY">
-                            <rect key="frame" x="47.666666666666686" y="12.333333333333332" width="16" height="20.333333333333339"/>
+                            <rect key="frame" x="24.333333333333314" y="12.333333333333332" width="16" height="20.333333333333339"/>
                             <color key="tintColor" name="DevBrown"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="16" id="GjG-bH-KKK"/>
@@ -1557,10 +1556,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="directionsBtn" destination="BjB-jn-Vr8" id="L0h-oc-wZb"/>
-                <outlet property="directionsLbl" destination="qYe-bK-BPN" id="7jF-NK-L4d"/>
-                <outlet property="directionsView" destination="mxG-TM-r2H" id="M9y-qD-IRa"/>
                 <outlet property="doneBtn" destination="ZNE-8W-5N1" id="lKc-8L-AXy"/>
+                <outlet property="markBtn" destination="BjB-jn-Vr8" id="Ayh-sh-sEJ"/>
+                <outlet property="markLbl" destination="qYe-bK-BPN" id="KfD-Bx-xNu"/>
+                <outlet property="markView" destination="mxG-TM-r2H" id="m2E-Cb-Zpq"/>
                 <outlet property="payBtn" destination="EJu-np-XeS" id="oNL-tj-5me"/>
                 <outlet property="payLbl" destination="FnZ-hj-TP7" id="zAW-mE-UWm"/>
                 <outlet property="payView" destination="5Jk-tT-o98" id="5VU-BM-t5G"/>
@@ -1614,9 +1613,6 @@
         </namedColor>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Brownish">
-            <color red="0.40400001406669617" green="0.28200000524520874" blue="0.019999999552965164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Cash Yellow">
             <color red="0.80800002813339233" green="0.72500002384185791" blue="0.16500000655651093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

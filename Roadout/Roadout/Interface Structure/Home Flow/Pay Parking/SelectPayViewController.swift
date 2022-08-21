@@ -190,6 +190,10 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
             generator.impactOccurred()
             selectedPayLocation = recentParkLocations[indexPath.row-1]
             isPayFlow = true
+            //Clear saved car park
+            UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
+            carParkHash = "roadout_carpark_clear"
+            NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
             NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
             self.dismiss(animated: true)
         } else if indexPath.row > recentParkLocations.count + 1 {
@@ -197,6 +201,10 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
             generator.impactOccurred()
             selectedPayLocation = nearbyParkLocations[indexPath.row-2-recentParkLocations.count]
             isPayFlow = true
+            //Clear saved car park
+            UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
+            carParkHash = "roadout_carpark_clear"
+            NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
             NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
             self.dismiss(animated: true)
         }

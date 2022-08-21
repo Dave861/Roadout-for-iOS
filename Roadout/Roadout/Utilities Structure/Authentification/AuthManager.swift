@@ -61,7 +61,6 @@ class AuthManager {
                         completion(.failure(AuthErrors.userExistsFailure))
                     }
                 } else {
-                    print("unknown error")
                     self.callResult = "unknown error"
                     completion(.failure(AuthErrors.unknownError))
                 }

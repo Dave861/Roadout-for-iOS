@@ -54,3 +54,5 @@ var favouriteLocations = [ParkLocation]()
 //Will use API to get this
 var cityParkLocationsCount = 11
 
+//Remember car location
+var carParkHash = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.carParkHash") ?? "roadout_carpark_clear"

@@ -28,6 +28,15 @@ class ARViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         card.layer.cornerRadius = 19.0
+        
+        card.layer.shadowColor = UIColor.black.cgColor
+        card.layer.shadowOpacity = 0.1
+        card.layer.shadowOffset = .zero
+        card.layer.shadowRadius = 17
+        card.layer.shadowPath = UIBezierPath(rect: card.bounds).cgPath
+        card.layer.shouldRasterize = true
+        card.layer.rasterizationScale = UIScreen.main.scale
+        
         closeButton.setTitle("", for: .normal)
         closeButton.layer.cornerRadius = closeButton.frame.height/2
         titleLbl.text = "AR Directions".localized()
