@@ -19,6 +19,7 @@ class AddExpressViewController: UIViewController {
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
     @objc func blurTapped() {
+        self.reloadCheckedItems()
         UIView.animate(withDuration: 0.1) {
             self.blurEffect.alpha = 0
         } completion: { done in
@@ -27,6 +28,7 @@ class AddExpressViewController: UIViewController {
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
+        self.reloadCheckedItems()
         UIView.animate(withDuration: 0.1) {
           self.blurEffect.alpha = 0
         } completion: { done in
@@ -74,7 +76,7 @@ class AddExpressViewController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
         
-        titleLbl.text = "Add Location".localized()
+        titleLbl.text = "Edit Locations".localized()
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
         
         tableView.delegate = self
@@ -86,6 +88,11 @@ class AddExpressViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.blurEffect.alpha = 0.7
         }
+    }
+    
+    func reloadCheckedItems() {
+        favouriteLocationIDs = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.Roadout.favouriteLocationIDs") ?? [String]()
+        tableView.reloadData()
     }
    
     
@@ -99,9 +106,9 @@ extension AddExpressViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddExpressCell") as! AddExpressCell
         cell.locationNameLbl.text = parkLocations[indexPath.row].name
         if favouriteLocationIDs.contains(parkLocations[indexPath.row].rID) {
-            cell.check.alpha = 1
+            cell.check.image = UIImage(systemName: "checkmark.circle.fill")
         } else {
-            cell.check.alpha = 0
+            cell.check.image = UIImage(systemName: "circle")
         }
         return cell
     }
@@ -113,11 +120,11 @@ extension AddExpressViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! AddExpressCell
-        if cell.check.alpha == 0 {
-            cell.check.alpha = 1
+        if cell.check.image == UIImage(systemName: "circle") {
+            cell.check.image = UIImage(systemName: "checkmark.circle.fill")
             favouriteLocationIDs.append(parkLocations[indexPath.row].rID)
         } else {
-            cell.check.alpha = 0
+            cell.check.image = UIImage(systemName: "circle")
             favouriteLocationIDs = favouriteLocationIDs.remove(parkLocations[indexPath.row].rID)
         }
     }

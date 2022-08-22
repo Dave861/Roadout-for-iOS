@@ -10,7 +10,7 @@ import Foundation
 class ConnectionManager {
     
 static let sharedInstance = ConnectionManager()
-private var reachability : Reachability!
+var reachability : Reachability!
 
 func observeReachability(){
     self.reachability = try! Reachability()

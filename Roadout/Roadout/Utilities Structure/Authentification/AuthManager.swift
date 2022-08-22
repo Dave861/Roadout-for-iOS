@@ -151,7 +151,6 @@ class AuthManager {
                 }
             } catch let error as NSError {
                 print(error)
-                print(response.value)
                 self.callResult = "error with json"
                 completion(.failure(AuthErrors.errorWithJson))
             }
@@ -182,7 +181,6 @@ class AuthManager {
                 }
             } catch let error as NSError {
                 print(error.debugDescription)
-                print(response.value)
                 completion(.failure(AuthErrors.errorWithJson))
             }
         }

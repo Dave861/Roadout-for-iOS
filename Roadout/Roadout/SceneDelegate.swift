@@ -28,13 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               }
         }
         
-        if IOSSecuritySuite.amIJailbroken() || IOSSecuritySuite.amIReverseEngineered() || IOSSecuritySuite.amIProxied() {
-            let mainSb = UIStoryboard(name: "Main", bundle: nil)
-            let dangerVC = mainSb.instantiateViewController(withIdentifier: "DangerVC") as! DangerViewController
-            window?.rootViewController = dangerVC
-            window?.makeKeyAndVisible()
-        }
-        
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
@@ -68,6 +61,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         }
                     case .failure(let err):
                         print(err)
+                        if let convertedError = err as? ReservationManager.ReservationErrors {
+                            if convertedError == .databaseFailure && ConnectionManager.sharedInstance.reachability.connection != .unavailable {
+                                let mainSb = UIStoryboard(name: "Main", bundle: nil)
+                                let maintenanceVC = mainSb.instantiateViewController(withIdentifier: "MaintenanceVC") as! MaintenanceViewController
+                                self.window?.rootViewController = maintenanceVC
+                                self.window?.makeKeyAndVisible()
+                            }
+                        }
                 }
             }
         }

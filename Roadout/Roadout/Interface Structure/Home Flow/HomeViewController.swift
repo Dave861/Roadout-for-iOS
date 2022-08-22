@@ -288,7 +288,8 @@ class HomeViewController: UIViewController {
         }
     }
     
-    //Menu
+    //MARK: -Menu-
+    
     var menuItems: [UIAction] {
         return [
             UIAction(title: "Settings".localized(), image: UIImage(systemName: "gearshape.2"), handler: { (_) in
@@ -383,28 +384,15 @@ class HomeViewController: UIViewController {
             let payV = payView as! PayView
             payV.reloadMainCard()
         }
+        
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        if parkLocations.count < cityParkLocationsCount {
-            self.manageGettingData()
-        } else {
-            self.addMarkers()
-        }
-        
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
-            switch result {
-                case .success():
-                    print("User exists.")
-                case .failure(let err):
-                    print(err)
-                    self.userNotFoundAbort()
-            }
-        }
+        self.manageCityData()
+        self.checkUserIsValid()
         
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip1") == false {
             settingsTapArea.tooltip(TutorialView1.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
@@ -534,18 +522,42 @@ class HomeViewController: UIViewController {
     
     //MARK: -Data & Map Configuration-
     
-    func manageGettingData() {
-        let sb = UIStoryboard(name: "Home", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "GetDataVC") as! GetDataViewController
-        self.present(vc, animated: false, completion: nil)
+    func checkUserIsValid() {
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
+            switch result {
+                case .success():
+                    print("User exists.")
+                case .failure(let err):
+                    print(err)
+                    if let convertedError = err as? ReservationManager.ReservationErrors {
+                        if convertedError == .databaseFailure && ConnectionManager.sharedInstance.reachability.connection != .unavailable {
+                            print("Server Error.")
+                        } else {
+                            self.userNotFoundAbort()
+                        }
+                    }
+            }
+        }
     }
     
     func userNotFoundAbort() {
         UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
+        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.userID")
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
         self.view.window?.rootViewController = vc
         self.view.window?.makeKeyAndVisible()
+    }
+    
+    func manageCityData() {
+        if parkLocations.count < cityParkLocationsCount {
+            let sb = UIStoryboard(name: "Home", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "GetDataVC") as! GetDataViewController
+            self.present(vc, animated: false, completion: nil)
+        } else {
+            self.addMarkers()
+        }
     }
     
     @objc func updateLocation() {
@@ -570,6 +582,7 @@ class HomeViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
   
+ //MARK: -Marked Spot Menu-
     
     var markedMenuItems: [UIAction] {
           return [
@@ -599,13 +612,15 @@ class HomeViewController: UIViewController {
           case "Waze":
               link = "https://www.waze.com/ul?ll=\(lat)%2C-\(long)&navigate=yes&zoom=15"
           default:
-              link = "http://maps.apple.com/?ll=\(lat),\(long)&q=Parking%20Location"
+              link = "http://maps.apple.com/?ll=\(lat),\(long)&q=Roadout%20Location"
           }
           guard UIApplication.shared.canOpenURL(URL(string: link)!) else { return }
           UIApplication.shared.open(URL(string: link)!)
       }
     
 }
+
+//MARK: -Google Maps & Location Extensions-
 extension HomeViewController: CLLocationManagerDelegate {
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -692,9 +707,8 @@ extension HomeViewController: GMSMapViewDelegate {
     
 }
 
+//MARK: -Card Functions-
 extension HomeViewController {
-    
-    //MARK: - Card Functions-
     //Result Card
     @objc func addResultCard() {
         let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)

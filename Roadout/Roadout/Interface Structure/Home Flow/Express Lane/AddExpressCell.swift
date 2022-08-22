@@ -15,7 +15,6 @@ class AddExpressCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        check.alpha = 0
         card.layer.cornerRadius = 10.0
     }
 

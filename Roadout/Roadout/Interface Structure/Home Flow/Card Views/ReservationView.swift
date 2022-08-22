@@ -205,7 +205,7 @@ class ReservationView: UIView {
         case "Waze":
             link = "https://www.waze.com/ul?ll=\(lat)%2C-\(long)&navigate=yes&zoom=15"
         default:
-            link = "http://maps.apple.com/?ll=\(lat),\(long)&q=Parking%20Location"
+            link = "http://maps.apple.com/?ll=\(lat),\(long)&q=Roadout%20Location"
         }
         guard UIApplication.shared.canOpenURL(URL(string: link)!) else { return }
         UIApplication.shared.open(URL(string: link)!)

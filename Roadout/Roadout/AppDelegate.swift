@@ -19,29 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyDsBR6LpKv1fNOCDM7BILZ7oj5JmYlYy64")
         ConnectionManager.sharedInstance.observeReachability()
         
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
-            guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return true }
-            ReservationManager.sharedInstance.checkForReservation(Date(), userID: id as! String) { result in
-                switch result {
-                    case .success():
-                        if ReservationManager.sharedInstance.isReservationActive == 0 {
-                            //active
-                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
-                        } else if ReservationManager.sharedInstance.isReservationActive == 1 {
-                            //unlocked
-                            //not resuming state here, user willingly killed app
-                        } else if ReservationManager.sharedInstance.isReservationActive == 2 {
-                            //cancelled
-                            NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
-                        } else {
-                            //error or not active
-                            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
-                        }
-                    case .failure(let err):
-                        print(err)
-                }
-            }
-        }
         NotificationHelper.sharedInstance.checkNotificationStatus()
         self.setUpWCSession()
         
