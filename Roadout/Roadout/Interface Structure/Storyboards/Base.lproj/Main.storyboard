@@ -708,7 +708,7 @@ Roadout</string>
                             <constraint firstItem="Dvt-9v-JYO" firstAttribute="centerX" secondItem="qbE-8u-jeu" secondAttribute="centerX" id="Knx-dZ-JnS"/>
                             <constraint firstItem="k5P-AP-Lrp" firstAttribute="top" secondItem="5z5-XI-DRb" secondAttribute="bottom" constant="8" id="Nqa-Hy-zLz"/>
                             <constraint firstItem="a5I-Ob-nmX" firstAttribute="top" secondItem="yka-sj-OzJ" secondAttribute="top" constant="28" id="Ur9-I4-B9f"/>
-                            <constraint firstItem="yka-sj-OzJ" firstAttribute="bottom" secondItem="k5P-AP-Lrp" secondAttribute="bottom" constant="5" id="YWb-uZ-nqz" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstItem="yka-sj-OzJ" firstAttribute="bottom" secondItem="k5P-AP-Lrp" secondAttribute="bottom" constant="5" id="YWb-uZ-nqz" customClass="KeyboardLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
                             <constraint firstItem="hbL-fr-1zh" firstAttribute="top" secondItem="Dvt-9v-JYO" secondAttribute="bottom" constant="5" id="a8T-2X-N2T"/>
                             <constraint firstItem="k5P-AP-Lrp" firstAttribute="centerX" secondItem="qbE-8u-jeu" secondAttribute="centerX" id="bJP-M8-qBz"/>
                             <constraint firstItem="5z5-XI-DRb" firstAttribute="leading" secondItem="yka-sj-OzJ" secondAttribute="leading" constant="20" id="clA-zv-UNk"/>
@@ -861,7 +861,7 @@ Roadout</string>
                             <constraint firstItem="QLQ-KU-HMn" firstAttribute="centerX" secondItem="cIg-Vs-b0Y" secondAttribute="centerX" id="0Ah-Dg-PfJ"/>
                             <constraint firstItem="ake-J6-Ux8" firstAttribute="trailing" secondItem="Mn3-En-Mai" secondAttribute="trailing" constant="32.5" id="262-xt-Te0"/>
                             <constraint firstItem="nXX-ND-CA6" firstAttribute="centerX" secondItem="cIg-Vs-b0Y" secondAttribute="centerX" id="2Ni-HW-yqj"/>
-                            <constraint firstItem="ake-J6-Ux8" firstAttribute="bottom" secondItem="QLQ-KU-HMn" secondAttribute="bottom" constant="5" id="3GP-bI-sGf" customClass="SafeAreaLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstItem="ake-J6-Ux8" firstAttribute="bottom" secondItem="QLQ-KU-HMn" secondAttribute="bottom" constant="5" id="3GP-bI-sGf" customClass="KeyboardLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
                             <constraint firstItem="fe3-w3-sWR" firstAttribute="top" secondItem="I3S-0q-Tqy" secondAttribute="bottom" constant="17" id="4bi-O4-15c"/>
                             <constraint firstItem="I3S-0q-Tqy" firstAttribute="centerX" secondItem="cIg-Vs-b0Y" secondAttribute="centerX" id="6Qi-Fz-TUf"/>
                             <constraint firstItem="I3S-0q-Tqy" firstAttribute="top" secondItem="GJm-Z0-R2x" secondAttribute="bottom" constant="8" id="7xf-iv-42x"/>
@@ -1778,7 +1778,9 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="descriptionLbl" destination="ydA-y4-A6m" id="nYW-O6-pNk"/>
                         <outlet property="doneBtn" destination="Aub-bK-Zfk" id="qTf-Mc-gBr"/>
+                        <outlet property="titleLbl" destination="cdV-vo-wsu" id="5kA-DL-rgW"/>
                         <outlet property="worldImage" destination="XGw-rP-ZAs" id="FGg-je-973"/>
                     </connections>
                 </viewController>

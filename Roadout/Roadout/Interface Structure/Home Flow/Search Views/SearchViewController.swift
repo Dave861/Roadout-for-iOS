@@ -83,7 +83,7 @@ class SearchViewController: UIViewController {
         searchBar.layer.rasterizationScale = UIScreen.main.scale
         
         searchField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(_:)), for: .editingChanged)
-        searchField.attributedPlaceholder = NSAttributedString(string: "Search for a place...",
+        searchField.attributedPlaceholder = NSAttributedString(string: "Search for a place...".localized(),
                                                                attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         
         tableView.delegate = self

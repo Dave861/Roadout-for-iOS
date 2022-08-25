@@ -122,9 +122,9 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayHeaderCell") as! SelectPayHeaderCell
-            cell.headerLbl.text = "Recent"
+            cell.headerLbl.text = "Recent".localized()
             if recentParkLocations.count == 0 {
-                cell.headerLbl.text = "No Recents"
+                cell.headerLbl.text = "No Recents".localized()
             }
             
             return cell
@@ -154,7 +154,7 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.row == recentParkLocations.count + 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayHeaderCell") as! SelectPayHeaderCell
-            cell.headerLbl.text = "Nearby"
+            cell.headerLbl.text = "Nearby".localized()
             
             return cell
         } else {

@@ -9,6 +9,9 @@ import UIKit
 
 class UnlockedView: UIView {
     
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var descriptionLbl: UILabel!
+    
     @IBOutlet weak var doneBtn: UIButton!
     
     @IBOutlet weak var payBtn: UIButton!
@@ -83,6 +86,9 @@ class UnlockedView: UIView {
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
+        
+        titleLbl.text = "Unlocked".localized()
+        descriptionLbl.text = "Your spot is now unlocked, pay parking right from here or mark the spot to find your car later.".localized()
                 
         timerSeconds = 0
         

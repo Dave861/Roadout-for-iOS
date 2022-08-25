@@ -19,7 +19,7 @@ class HomeController: WKInterfaceController {
                     self.presentController(withName: "UnlockedWKI", context: nil)
                 case .failure(let err):
                     let okAction = WKAlertAction(title: "OK", style: .cancel) {}
-                    self.presentAlert(withTitle: "Reservation Error", message: "Failed to unlock reservation from Apple Watch. Please try from the iPhone app. Error: \(err.localizedDescription)", preferredStyle: .alert, actions: [okAction])
+                    self.presentAlert(withTitle: "Reservation Error", message: "Failed to unlock reservation from Apple Watch. Please try from the iPhone app.", preferredStyle: .alert, actions: [okAction])
                 }
             }
         }
@@ -48,7 +48,7 @@ class HomeController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         self.manageObs()
-        self.unlockBtnGroup.setCornerRadius(20)
+        //self.unlockBtnGroup.setCornerRadius(20)
         self.activeReservationGroup.setCornerRadius(15.8)
         self.notActiveReservationGroup.setCornerRadius(15.8)
         if UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID") == nil {
@@ -79,7 +79,7 @@ class HomeController: WKInterfaceController {
                     }
                 case .failure(let err):
                     let okAction = WKAlertAction(title: "OK", style: .cancel) {}
-                    self.presentAlert(withTitle: "Roadout Error", message: "Failed to retrieve reservation information. Error: \(err.localizedDescription)", preferredStyle: .alert, actions: [okAction])
+                    self.presentAlert(withTitle: "Roadout Error", message: "Failed to retrieve reservation information.", preferredStyle: .alert, actions: [okAction])
                 }
             }
         }

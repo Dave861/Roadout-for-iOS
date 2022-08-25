@@ -62,11 +62,11 @@ class PayParkingView: UIView {
         self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
         cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
 
-        chooseMethodBtn.menu = UIMenu(title: "Choose a Payment method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        chooseMethodBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true
         
         if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
-            payBtn.menu = UIMenu(title: "Choose a Payment method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+            payBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
             payBtn.showsMenuAsPrimaryAction = true
         }
     }
@@ -93,10 +93,10 @@ class PayParkingView: UIView {
         
         fillPayData()
         
-        chooseMethodBtn.menu = UIMenu(title: "Choose a Payment method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        chooseMethodBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true
         
-        payBtn.menu = UIMenu(title: "Choose a Payment method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        payBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         payBtn.showsMenuAsPrimaryAction = true
         
         priceLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: priceLbl.range(after: " - "))
@@ -145,7 +145,7 @@ class PayParkingView: UIView {
     func makeMenuActions(cards: [String]) -> [UIAction] {
         var menuItems = [UIAction]()
         
-        let addAction = UIAction(title: "Add Card", image: UIImage(systemName: "plus")) { (_) in
+        let addAction = UIAction(title: "Add Card".localized(), image: UIImage(systemName: "plus")) { (_) in
             let sb = UIStoryboard(name: "Settings", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "AddCardVC") as! AddCardViewController
             self.parentViewController().present(vc, animated: true, completion: nil)

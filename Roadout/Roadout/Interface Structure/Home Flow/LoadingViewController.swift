@@ -44,7 +44,7 @@ class GetDataViewController: UIViewController {
     }
     
     func showErrors(error: Error) {
-        let alert = UIAlertController(title: "Download Error".localized(), message: "There was an error. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report. Error Code: ".localized() + error.localizedDescription, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Download Error".localized(), message: "There was an error reaching our server. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report at bugs@roadout.ro".localized() + error.localizedDescription, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
         alert.addAction(okAction)
         
@@ -53,7 +53,7 @@ class GetDataViewController: UIViewController {
         }
         alert.addAction(tryAgainAction)
         
-        alert.view.tintColor = UIColor(named: "DevBrown")
+        alert.view.tintColor = UIColor(named: "Kinda Red")
         self.present(alert, animated: true, completion: nil)
     }
     

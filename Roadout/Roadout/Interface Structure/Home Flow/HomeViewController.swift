@@ -299,7 +299,7 @@ class HomeViewController: UIViewController {
             UIAction(title: "Pay Parking".localized(), image: UIImage(systemName: "banknote"), handler: { (_) in
                 guard let coord = self.mapView.myLocation?.coordinate else {
                     
-                    let alert = UIAlertController(title: "Error", message: "Roadout can't access your location to show nearby spots, please enable it in Settings.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error".localized(), message: "Roadout can't access your location to show nearby spots, please enable it in Settings.".localized(), preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
                     alert.addAction(cancelAction)
                     alert.view.tintColor = UIColor(named: "Cash Yellow")!
@@ -326,8 +326,9 @@ class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
                     let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
+                    indicatorView.layer.borderColor = UIColor(named: "Background")!.cgColor
+                    indicatorView.layer.borderWidth = 1.0
                     indicatorView.dismissByDrag = false
-                    indicatorView.backgroundColor = UIColor(named: "Background")!
                     indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
                 }
                 FunctionsManager.sharedInstance.foundSpot = nil

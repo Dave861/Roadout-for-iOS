@@ -1878,7 +1878,7 @@ Made in Cluj :)</string>
                                 <rect key="frame" x="16" y="146" width="382" height="716"/>
                                 <color key="backgroundColor" name="Second Background"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectPayHeaderCell" rowHeight="35" id="cbY-qA-VEB" customClass="SelectPayHeaderCell" customModule="Roadout" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SelectPayHeaderCell" rowHeight="35" id="cbY-qA-VEB" customClass="SelectPayHeaderCell" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="382" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cbY-qA-VEB" id="TAD-Nh-exW">
@@ -2134,7 +2134,7 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="width" constant="115" id="eJB-25-Zmf"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven’t added any locations to Express Lane " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keV-9w-bZp">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven’t added any locations to Express Lane" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keV-9w-bZp">
                                         <rect key="frame" x="55" y="96" width="272" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="272" id="cBg-ZK-FpR"/>
@@ -2213,6 +2213,7 @@ Made in Cluj :)</string>
                         <outlet property="cancelButton" destination="H3f-vj-5kV" id="5L8-C1-XJL"/>
                         <outlet property="editLocationBtn" destination="KHo-1L-gXC" id="cvg-LX-Tzf"/>
                         <outlet property="placeholderAddBtn" destination="XBD-av-s0i" id="MSC-xl-kB6"/>
+                        <outlet property="placeholderText" destination="keV-9w-bZp" id="u5e-bA-ujy"/>
                         <outlet property="placeholderView" destination="TjE-hQ-5zu" id="t5n-T9-b77"/>
                         <outlet property="tableView" destination="BkK-7e-KVD" id="8lb-gp-kUx"/>
                         <outlet property="titleLbl" destination="JNS-ej-kwh" id="akA-Hb-nr8"/>
@@ -2242,7 +2243,7 @@ Made in Cluj :)</string>
                                 <rect key="frame" x="0.0" y="461" width="414" height="435"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdv-ap-q4I">
-                                        <rect key="frame" x="15" y="15" width="145" height="27"/>
+                                        <rect key="frame" x="15" y="15" width="145" height="23"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2305,7 +2306,7 @@ Made in Cluj :)</string>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="28" id="V75-oZ-zxj"/>
                                                                     </constraints>
-                                                                    <imageReference key="image" image="checkmark.circle.fill" catalog="system" symbolScale="small"/>
+                                                                    <imageReference key="image" image="circle" catalog="system" symbolScale="small"/>
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="15" scale="medium" weight="regular"/>
                                                                 </imageView>
                                                             </subviews>
@@ -2350,7 +2351,7 @@ Made in Cluj :)</string>
                                     <constraint firstItem="2aJ-0I-0s9" firstAttribute="leading" secondItem="2ya-4k-68H" secondAttribute="leading" constant="15" id="I3i-yl-A1s"/>
                                     <constraint firstAttribute="height" constant="435" id="IrA-TX-vJh"/>
                                     <constraint firstItem="Wdv-ap-q4I" firstAttribute="leading" secondItem="2ya-4k-68H" secondAttribute="leading" constant="15" id="Ubq-Pu-Htq"/>
-                                    <constraint firstItem="l8F-Bw-0OC" firstAttribute="top" secondItem="Wdv-ap-q4I" secondAttribute="bottom" constant="11" id="aCU-X9-wif"/>
+                                    <constraint firstItem="l8F-Bw-0OC" firstAttribute="top" secondItem="Wdv-ap-q4I" secondAttribute="bottom" constant="15" id="aCU-X9-wif"/>
                                     <constraint firstAttribute="trailing" secondItem="l8F-Bw-0OC" secondAttribute="trailing" constant="16" id="gGI-Zu-gkY"/>
                                     <constraint firstItem="W5N-J9-JpD" firstAttribute="top" secondItem="2ya-4k-68H" secondAttribute="top" constant="20" id="kZH-LA-PxA"/>
                                     <constraint firstAttribute="trailing" secondItem="2aJ-0I-0s9" secondAttribute="trailing" constant="15" id="ru7-Eo-zfQ"/>
@@ -2401,9 +2402,9 @@ Made in Cluj :)</string>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="building.2.fill" catalog="system" width="128" height="108"/>
         <image name="car.fill" catalog="system" width="128" height="95"/>
-        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="circle" catalog="system" width="128" height="123"/>
         <image name="circle.fill" catalog="system" width="128" height="123"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
         <image name="flag.2.crossed" catalog="system" width="128" height="72"/>

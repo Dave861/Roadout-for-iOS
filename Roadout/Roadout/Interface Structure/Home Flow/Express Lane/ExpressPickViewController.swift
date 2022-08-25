@@ -27,6 +27,7 @@ class ExpressPickViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var placeholderView: UIView!
+    @IBOutlet weak var placeholderText: UILabel!
     @IBOutlet weak var placeholderAddBtn: UIButton!
     
     @IBAction func placeholderAddTapped(_ sender: Any) {
@@ -52,8 +53,13 @@ class ExpressPickViewController: UIViewController {
         super.viewDidLoad()
         manageObs()
         
+        titleLbl.text = "Choose".localized()
+        
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
         editLocationBtn.setAttributedTitle(editLocationTitle, for: .normal)
+        
+        placeholderAddBtn.setTitle("Tap here to add".localized(), for: .normal)
+        placeholderText.text = "You haven’t added any locations to Express Lane".localized()
         
         getFavouriteLocations()
         
@@ -151,7 +157,8 @@ class ExpressPickViewController: UIViewController {
         let indicatorIcon = UIImage.init(systemName: "flag.2.crossed")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
         indicatorView.dismissByDrag = false
-        indicatorView.backgroundColor = UIColor(named: "Background")!
+        indicatorView.layer.borderColor = UIColor(named: "Background")!.cgColor
+        indicatorView.layer.borderWidth = 1.0
         indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
     }
     

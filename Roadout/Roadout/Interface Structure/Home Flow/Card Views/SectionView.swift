@@ -138,7 +138,8 @@ class SectionView: UIView {
     func showSelectedIndicator(letter: String) {
         let image = UIImage.init(systemName: "\(letter.lowercased()).circle.fill")!.withTintColor(UIColor(named: "Icons")!, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Section ".localized() + "\(letter)", message: "Selected".localized(), preset: .custom(image))
-        indicatorView.backgroundColor = UIColor(named: "Background")!
+        indicatorView.layer.borderColor = UIColor(named: "Background")!.cgColor
+        indicatorView.layer.borderWidth = 1.0
         indicatorView.present(duration: 0.7, haptic: .none, completion: nil)
     }
     

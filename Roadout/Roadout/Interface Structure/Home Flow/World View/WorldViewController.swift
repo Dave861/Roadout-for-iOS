@@ -19,6 +19,9 @@ struct WorldLocation {
 
 class WorldViewController: UIViewController {
     
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var descriptionLbl: UILabel!
+    
     @IBOutlet weak var worldImage: UIImageView!
     
     @IBOutlet weak var doneBtn: UIButton!
@@ -36,6 +39,9 @@ class WorldViewController: UIViewController {
             guard let data = UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.cachedWorldImage") else { return }
             self.worldImage.image = UIImage(data: data as Data)
         }
+        
+        titleLbl.text = "World View".localized()
+        descriptionLbl.text = "World View is provided by Google Maps and it shows a real world image of how the spot you reserved looked like at some point in time in order to help you locate it more easily".localized()
         
         doneBtn.layer.cornerRadius = 13.0
         doneBtn.setAttributedTitle(doneTitle, for: .normal)

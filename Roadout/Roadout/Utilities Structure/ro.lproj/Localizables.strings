@@ -80,9 +80,10 @@
 "See Reservation" = "Vezi Rezervare";
 
 //MARK: -UnlockedView-
-"Options" = "Opțiuni";
-"Open in AR (BETA)" = "Deschide în AR (BETA)";
-"Get Directions" = "Navighează";
+"Mark Spot" = "Marchează Loc";
+"Marked" = "Marcat";
+"Your spot is now unlocked, pay parking right from here or mark the spot to find your car later." = "Locul dvs. este acum deblocat, plătiți parcarea sau marcați locul pentru a vă găsi mașina mai târziu.";
+"Unlocked" = "Deblocat";
 
 //MARK: -NoWifiView-
 "Wifi Settings" = "Setări Wifi";
@@ -137,7 +138,9 @@
 "Delay" = "Prelungiți";
 "Directions" = "Navigați";
 "Open in AR" = "Vedeți AR";
-"Help" = "Ajutor";
+"Help & Support" = "Ajutor & Suport";
+"World View" = "Vedere Reală";
+"Navigate" = "Navighează";
 
 //MARK: -FindView-
 "Choose duration" = "Alege durată";
@@ -201,8 +204,9 @@
 "Report a Bug" = "Raporteaza o Eroare";
 "Privacy Policy & Terms of Use" = "Termeni și Condiții";
 "Acknowledgements" = "Mulțumiri";
-"FAQ & Support" = "Întrebări Frecvente și Ajutor";
+"FAQ & Support" = "Întrebări și Suport";
 "About Roadout" = "Despre Roadout";
+"About" = "Despre";
 "Developer" = "Dezvoltator";
 "Roadout for iOS - Report" = "Roadout pentru iOS - Raport";
 "Please describe your issue and steps to reproduce it. If you have any screenshots please attach them - Roadout Team" = "Descrieți problema dvs. și pașii pentru a o reproduce. Dacă aveți capturi de ecran, atașați-le. Mulțumim - Echipa Roadout";
@@ -256,14 +260,15 @@
 "Found!" = "Găsit!";
 
 //MARK: -SearchViewController-
-"Search Modes" = "Setări de Căutare";
-"Smart" = "Căutare Inteligentă";
-"Classic" = "Căutare Clasică";
+"Search Settings" = "Setări de Căutare";
+"Smart Search" = "Căutare Inteligentă";
+"Classic Search" = "Căutare Clasică";
 "Search" = "Căutare";
+"Search for a place..." = "Cautați un loc...";
 
 //MARK: -GetDataViewController-
 "Download Error" = "Eroare de Descărcare";
-"There was an error. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report. Error Code: " = "A apărut o eroare. Încercați din nou sau închideți forțat aplicația și redeschideți. Dacă problema persistă, faceți o captură de ecran și trimiteți un raport de eroare. Cod de eroare:";
+"There was an error reaching our server. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report at bugs@roadout.ro" = "A apărut o eroare la conectarea cu serverul. Încercați din nou sau închideți forțat aplicația și redeschideți. Dacă problema persistă, faceți o captură de ecran și trimiteți un raport de eroare la bugs@roadout.ro";
 "Try Again" = "Reîncercați";
 "Loading City Data" = "Încărcare Date Oraș";
 
@@ -315,6 +320,11 @@
 
 "Tap a location to find a free spot there" = "Atingeți o locație pentru a găsi un loc liber acolo";
 "It seems there are no free places in this location at the moment" = "Momentan, nu pare că exista locuri libere în această locație";
+"Choose" = "Alege";
+"Tap here to add" = "Atingeți pentru a adăuga";
+" Edit Locations" = " Editați Locațiile";
+"You haven’t added any locations to Express Lane" = "Nu aveți nicio locație adăugată la Bandă Expres";
+"Edit Locations" = "Editați Locațiile";
 
 //MARK: -SPIndicators-
 
@@ -324,10 +334,6 @@
 "Confirming" = "Confirmăm";
 "Checking..." = "Verificare...";
 "Confirmed" = "Confirmat";
-
-//MARK: -Tutorials-
-
-
 
 //MARK: -RateViewController-
 
@@ -395,3 +401,33 @@
 
 //MARK: -ARDirections-
 "AR Directions" = "Navigație AR";
+
+//MARK: -Menu Titles-
+"What would you like to do?" = "Ce ați vrea să faceți?";
+"Choose a Payment Method" = "Alegeți o Metodă de Plată";
+"Clear" = "Curăță";
+"Get Directions" = "Navighează";
+"Marked Spot" = "Loc Marcat";
+
+//MARK: -Pay Parking-
+"Pay Parking" = "Plătește Parcarea";
+"Roadout can't access your location to show nearby spots, please enable it in Settings." = "Roadout nu vă poate accesa locația pentru a afișa locurile din apropiere. Activați-o în Setări.";
+" Hours " = " Ore ";
+"Pay for " = "Plătește ";
+" hours" = " ore";
+"Select" = "Selectați";
+"Recent" = "Recente";
+"Nearby" = "În Apropiere";
+"No Recents" = "Fără Recente";
+
+//MARK: -MaintenanceController-
+"Maintenance" = "Mentenanță";
+"There still appear to be problems, we are working as hard as we can to fix them. Additionally you can try force quitting and reopening Roadout, you can also get support at maintenance@roadout.ro." = "Se pare că încă există probleme, muncim cât repede putem pentru a le remedia. Adițional, puteți încerca să renunțați forțat și să redeschideți Roadout, puteți obține asistență și la maintenance@roadout.ro.";
+"Sorry" = "Ne cerem scuze";
+"Server Problems" = "Probleme la Server";
+"No Worries" = "Nicio Grijă";
+"Oops! It seems Roadout’s servers are under maintenance or facing problems. We are sorry for the inconvenince" = "Hopa! Se pare că serverele Roadout sunt în întreținere sau se confruntă cu probleme. Ne pare rău pentru inconveniență";
+"We are already working to fix this, please be patient and check back a little later" = "Lucrăm deja pentru a remedia acest lucru, vă rugăm să aveți răbdare și să reveniți puțin mai târziu";
+
+//MARK: -WorldViewController-
+"World View is provided by Google Maps and it shows a real world image of how the spot you reserved looked like at some point in time in order to help you locate it more easily" = "Vedere Reală este oferită de Google Maps și arată o imagine reală a locului pe care l-ați rezervat pentru a vă ajuta să îl localizați mai ușor";
