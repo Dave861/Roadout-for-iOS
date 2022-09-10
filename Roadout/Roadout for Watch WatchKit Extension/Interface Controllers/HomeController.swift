@@ -48,7 +48,6 @@ class HomeController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         self.manageObs()
-        //self.unlockBtnGroup.setCornerRadius(20)
         self.activeReservationGroup.setCornerRadius(15.8)
         self.notActiveReservationGroup.setCornerRadius(15.8)
         if UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID") == nil {

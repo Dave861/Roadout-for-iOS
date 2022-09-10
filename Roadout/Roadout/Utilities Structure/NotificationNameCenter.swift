@@ -56,6 +56,7 @@ extension Notification.Name {
     static let updateReservationTimeLabelID = Notification.Name("ro.roadout.Roadout.updateReservationTimeLabelID")
     static let showRateReservationID = Notification.Name("ro.roadout.Roadout.showRateReservationAlertID")
     static let showNoFreeSpotInLocationID = Notification.Name("ro.roadout.Roadout.showNoFreeSpotInLocationID")
+    static let showNoFreeSpotInExpressID = Notification.Name("ro.roadout.Roadout.showNoFreeSpotInExpressID")
     static let showExpressLaneFreeSpotID = Notification.Name("ro.roadout.Roadout.showExpressLaneFreeSpotID")
     static let reloadExpressLocationsID = Notification.Name("ro.roadout.Roadout.reloadExpressLocationsID")
     static let addSpotMarkerID = Notification.Name("ro.roadout.Roadout.addSpotMarkerID")

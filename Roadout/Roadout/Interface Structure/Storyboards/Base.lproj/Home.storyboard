@@ -208,15 +208,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" name="MapBG"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLj-oG-4Bl">
-                                <rect key="frame" x="356" y="246" width="45" height="45"/>
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLj-oG-4Bl">
+                                <rect key="frame" x="356" y="251" width="45" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhJ-MI-Eph">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                         <color key="tintColor" name="Main Yellow"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="car.fill" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="14" weight="semibold"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="15" weight="semibold"/>
                                         </buttonConfiguration>
                                     </button>
                                 </subviews>
@@ -230,40 +230,34 @@
                                     <constraint firstAttribute="width" constant="45" id="ygF-nX-zuu"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4a-E4-NWU">
-                                <rect key="frame" x="356" y="153" width="45" height="85"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4a-E4-NWU">
+                                <rect key="frame" x="356" y="153" width="45" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HT-ap-i19">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="nDw-Uk-3hn"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="44.5"/>
                                         <color key="tintColor" name="Main Yellow"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="map.fill" catalog="system" symbolScale="large"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="13" scale="medium" weight="medium"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="14" scale="medium" weight="medium"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="mapTypeTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dHp-2i-6yq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-kK-9SK">
-                                        <rect key="frame" x="0.0" y="43" width="45" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="o3w-cl-bve"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="45.5" width="45" height="44.5"/>
                                         <color key="tintColor" name="Main Yellow"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="location" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="13" weight="semibold"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="14" weight="semibold"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="userLocationTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YPD-Yv-cDI"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZY-Eh-gXi">
-                                        <rect key="frame" x="0.0" y="42" width="45" height="1"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="45" height="1"/>
                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="hcP-Lh-NrL"/>
@@ -272,12 +266,14 @@
                                 </subviews>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
+                                    <constraint firstItem="IZY-Eh-gXi" firstAttribute="top" secondItem="9HT-ap-i19" secondAttribute="bottom" id="B8c-Rv-h4c"/>
+                                    <constraint firstItem="OWk-kK-9SK" firstAttribute="top" secondItem="IZY-Eh-gXi" secondAttribute="bottom" id="EaF-vf-Hy0"/>
                                     <constraint firstItem="IZY-Eh-gXi" firstAttribute="centerY" secondItem="H4a-E4-NWU" secondAttribute="centerY" id="Gmt-uC-XWj"/>
                                     <constraint firstAttribute="trailing" secondItem="9HT-ap-i19" secondAttribute="trailing" id="OMZ-3J-mfN"/>
                                     <constraint firstAttribute="trailing" secondItem="IZY-Eh-gXi" secondAttribute="trailing" id="Spe-AS-lRe"/>
                                     <constraint firstItem="IZY-Eh-gXi" firstAttribute="leading" secondItem="H4a-E4-NWU" secondAttribute="leading" id="T9Z-Hs-Nyx"/>
                                     <constraint firstItem="9HT-ap-i19" firstAttribute="leading" secondItem="H4a-E4-NWU" secondAttribute="leading" id="URh-eZ-8cs"/>
-                                    <constraint firstAttribute="height" constant="85" id="VtH-WH-9V3"/>
+                                    <constraint firstAttribute="height" constant="90" id="VtH-WH-9V3"/>
                                     <constraint firstItem="OWk-kK-9SK" firstAttribute="leading" secondItem="H4a-E4-NWU" secondAttribute="leading" id="Z8B-x7-ibS"/>
                                     <constraint firstAttribute="bottom" secondItem="OWk-kK-9SK" secondAttribute="bottom" id="ZMt-6u-Opw"/>
                                     <constraint firstAttribute="trailing" secondItem="OWk-kK-9SK" secondAttribute="trailing" id="ghQ-Fg-OQF"/>
@@ -298,12 +294,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dsk-s8-hyc">
+                                        <rect key="frame" x="13" y="70" width="388" height="52"/>
+                                        <color key="backgroundColor" name="FloatingBG"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
                                     <constraint firstItem="Uy4-V1-t9k" firstAttribute="leading" secondItem="HyE-Ut-PCE" secondAttribute="leading" constant="13" id="7cF-zA-jiL"/>
                                     <constraint firstItem="Uy4-V1-t9k" firstAttribute="top" secondItem="HyE-Ut-PCE" secondAttribute="top" constant="15" id="7oM-NT-Of4"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dsk-s8-hyc" secondAttribute="bottom" constant="15" id="DOA-BW-Gzo"/>
+                                    <constraint firstItem="Dsk-s8-hyc" firstAttribute="top" secondItem="Uy4-V1-t9k" secondAttribute="bottom" constant="19" id="H4p-zc-BrF"/>
                                     <constraint firstAttribute="height" constant="137" id="Mcc-e2-amS"/>
+                                    <constraint firstItem="Dsk-s8-hyc" firstAttribute="leading" secondItem="HyE-Ut-PCE" secondAttribute="leading" constant="13" id="r6E-s6-E6X"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dsk-s8-hyc" secondAttribute="trailing" constant="13" id="wkD-rX-D5e"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oc8-he-wio">
@@ -351,7 +355,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="FloatingBG"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="siF-SU-yBE" firstAttribute="leading" secondItem="qsP-mi-FaF" secondAttribute="trailing" constant="61" id="0j2-ps-uUw"/>
                                     <constraint firstItem="siF-SU-yBE" firstAttribute="centerY" secondItem="Oc8-he-wio" secondAttribute="centerY" id="3pz-sY-OKi"/>
@@ -398,6 +402,7 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Xmo-Qu-kgW"/>
                     <connections>
                         <outlet property="backgroundView" destination="HyE-Ut-PCE" id="BLY-fH-IcQ"/>
+                        <outlet property="focusedView" destination="Dsk-s8-hyc" id="mIT-ma-26b"/>
                         <outlet property="mapControlsView" destination="H4a-E4-NWU" id="m9O-fU-tBb"/>
                         <outlet property="mapHostingView" destination="Zia-25-Prg" id="BMf-1U-ReB"/>
                         <outlet property="mapTypeButton" destination="9HT-ap-i19" id="4su-lb-koW"/>

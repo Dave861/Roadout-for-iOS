@@ -86,22 +86,13 @@ class UnlockedView: UIView {
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
-        
         titleLbl.text = "Unlocked".localized()
-        descriptionLbl.text = "Your spot is now unlocked, pay parking right from here or mark the spot to find your car later.".localized()
+        descriptionLbl.text = "Spot is now unlocked, pay parking right from here or mark the spot to find your car later.".localized()
                 
         timerSeconds = 0
         
         styleActionButtons()
         doneBtn.layer.cornerRadius = doneBtn.frame.height/2
-        
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 10
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
     }
     
     class func instanceFromNib() -> UIView {

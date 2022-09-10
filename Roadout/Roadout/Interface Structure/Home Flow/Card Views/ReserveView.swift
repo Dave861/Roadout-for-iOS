@@ -13,6 +13,9 @@ class ReserveView: UIView {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
+        if returnToResult {
+            NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
+        }
         NotificationCenter.default.post(name: .removeReserveCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
@@ -23,7 +26,6 @@ class ReserveView: UIView {
         generator.impactOccurred()
         timerSeconds = Int(minuteSlider.value*60)
         NotificationCenter.default.post(name: .addPayCardID, object: nil)
-        
     }
     
     @IBOutlet weak var coordonatesLbl: UILabel!
@@ -68,13 +70,6 @@ class ReserveView: UIView {
         totalLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: totalLbl.range(after: " - "))
         totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
         
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 10
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
     }
     
     override func didMoveToSuperview() {

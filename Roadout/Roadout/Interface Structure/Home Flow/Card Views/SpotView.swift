@@ -30,11 +30,7 @@ class SpotView: UIView, PusherDelegate {
         let clockImage = UIImage.init(systemName: "clock")!.withTintColor(UIColor(named: "Dark Orange")!, renderingMode: .alwaysOriginal)
         let checkImage = UIImage.init(systemName: "checkmark")!.withTintColor(UIColor(named: "Dark Yellow")!, renderingMode: .alwaysOriginal)
         let checkingIndicatorView = SPIndicatorView(title: "Confirming".localized(), message: "Checking...".localized(), preset: .custom(clockImage))
-        checkingIndicatorView.layer.borderColor = UIColor(named: "Background")!.cgColor
-        checkingIndicatorView.layer.borderWidth = 1.0
         let confirmedIndicatorView = SPIndicatorView(title: "Confirmed".localized(), message: "Done".localized(), preset: .custom(checkImage))
-        confirmedIndicatorView.layer.borderColor = UIColor(named: "Background")!.cgColor
-        confirmedIndicatorView.layer.borderWidth = 1.0
         checkingIndicatorView.present(duration: 0.7, haptic: .none) {
             self.disconnectPusher()
             NotificationCenter.default.post(name: .addReserveCardID, object: nil)
@@ -63,10 +59,9 @@ class SpotView: UIView, PusherDelegate {
     
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        
+        self.layer.cornerRadius = 19.0
         setUpPusher()
         
-        self.layer.cornerRadius = 19.0
         continueBtn.layer.cornerRadius = 12.0
         continueBtn.isUserInteractionEnabled = true
         backBtn.setTitle("", for: .normal)
@@ -75,14 +70,6 @@ class SpotView: UIView, PusherDelegate {
         continueBtn.isEnabled = false
         continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
         
-        
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 10
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
         
         infoCard.layer.cornerRadius = 9.0
         
@@ -189,8 +176,8 @@ class SpotView: UIView, PusherDelegate {
         case 3:
             continueBtn.isEnabled = false
             continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
-            infoIcon.image = UIImage(systemName: "hammer")
-            infoIcon.tintColor = UIColor(named: "Dark Yellow")
+            infoIcon.image = UIImage(systemName: "exclamationmark.triangle")
+            infoIcon.tintColor = UIColor(named: "Greyish")
             infoText.text = "Selected spot is under maintenance".localized()
         default:
             continueBtn.isEnabled = false
@@ -231,9 +218,9 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
                 cell.mainBtn.tintColor = UIColor(named: "Dark Orange")
                 cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
             default:
-                cell.outlineView.backgroundColor = UIColor(named: "Dark Yellow")
-                cell.mainBtn.setImage(UIImage(systemName: "hammer"), for: .normal)
-                cell.mainBtn.tintColor = UIColor(named: "Dark Yellow")
+                cell.outlineView.backgroundColor = UIColor(named: "Greyish")
+                cell.mainBtn.setImage(UIImage(systemName: "exclamationmark.triangle"), for: .normal)
+                cell.mainBtn.tintColor = UIColor(named: "Greyish")
                 cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
         }
         return cell
@@ -259,7 +246,7 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
                 cell.mainBtn.backgroundColor = UIColor(named: "Dark Orange")
                 cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
             default:
-                cell.mainBtn.backgroundColor = UIColor(named: "Dark Yellow")
+                cell.mainBtn.backgroundColor = UIColor(named: "Greyish")
                 cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
         }
 
@@ -283,7 +270,7 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
                 cell.mainBtn.tintColor = UIColor(named: "Dark Orange")
             default:
                 cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
-                cell.mainBtn.tintColor = UIColor(named: "Dark Yellow")
+                cell.mainBtn.tintColor = UIColor(named: "Greyish")
         }
     }
 }

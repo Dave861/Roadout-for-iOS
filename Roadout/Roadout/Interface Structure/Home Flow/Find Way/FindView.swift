@@ -105,29 +105,15 @@ class FindView: UIView {
         timeBtn.menu = durationMenu
         timeBtn.showsMenuAsPrimaryAction = true
 
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 10
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
         NotificationCenter.default.post(name: .animateCameraToFoundID, object: nil)
         donateInteration()
         addToSiriBtn()
         
-        //LOADING
-        locationLbl.text = "Loading...".localized()
-        sectionLbl.text = "Loading...".localized()
-        spotLbl.text = "Loading...".localized()
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name
-            self.sectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name
-            self.spotLbl.text = "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
-        }
-        print("presented")
+        self.locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name
+        self.sectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name
+        self.spotLbl.text = "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
     }
     
     

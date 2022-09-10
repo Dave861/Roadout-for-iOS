@@ -22,7 +22,6 @@ class UnlockView: UIView {
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
-        
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
         
@@ -31,14 +30,6 @@ class UnlockView: UIView {
         
         explainerLbl.text = "Unlocking the spot cannot be undone. Once unlocked anyone can park on the spot, make sure you are at the spot before unlocking it.".localized()
         titleLbl.text = "Unlock Spot".localized()
-       
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 10
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
     }
     
     class func instanceFromNib() -> UIView {

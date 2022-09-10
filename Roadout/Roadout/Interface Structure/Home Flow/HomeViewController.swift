@@ -51,7 +51,7 @@ class HomeViewController: UIViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 280)
         //Clear saved car park
@@ -76,7 +76,7 @@ class HomeViewController: UIViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 310)
         //Clear saved car park
@@ -124,8 +124,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var settingsTapArea: UIButton!
     
-    @IBOutlet weak var shareplayView: UIView!
-    
+    //@IBOutlet weak var shareplayView: UIView!
     
     @IBOutlet weak var backgroundView: UIView!
     
@@ -133,7 +132,10 @@ class HomeViewController: UIViewController {
         backgroundView.setHeight(cardHeight+85, animateTime: 0.1)
         let mapInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: cardHeight-52, right: 0.0)
         mapView.padding = mapInsets
+        focusedView.layer.shadowPath = UIBezierPath(rect: focusedView.bounds).cgPath
     }
+    
+    @IBOutlet weak var focusedView: UIView!
     
     @IBOutlet weak var mapHostingView: UIView!
     
@@ -147,14 +149,14 @@ class HomeViewController: UIViewController {
     @IBAction func mapTypeTapped(_ sender: Any) {
         if selectedMapType == MapType.roadout {
             mapTypeButton.setImage(UIImage(systemName: "globe.europe.africa.fill"), for: .normal)
-            mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14), forImageIn: .normal)
+            mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 15), forImageIn: .normal)
             
             mapView.mapType = .satellite
             
             selectedMapType = .satellite
         } else {
             mapTypeButton.setImage(UIImage(systemName: "map.fill"), for: .normal)
-            mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 13), forImageIn: .normal)
+            mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14), forImageIn: .normal)
             
             mapView.mapType = .normal
             
@@ -270,7 +272,7 @@ class HomeViewController: UIViewController {
         spotMarker.title = "Selected Spot Marker"
         spotMarker.infoWindowAnchor = CGPoint()
         
-        spotMarker.icon = UIImage(named: "SpotMarker_" + selectedSpotColor)?.withResize(scaledToSize: CGSize(width: 35.0, height: 45.15))
+        spotMarker.icon = UIImage(named: "SpotMarker_" + selectedSpotColor)?.withResize(scaledToSize: CGSize(width: 30.0, height: 30.0))
         spotMarker.map = mapView
     }
     
@@ -296,7 +298,7 @@ class HomeViewController: UIViewController {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
                 self.navigationController?.pushViewController(vc, animated: true)
             }),
-            UIAction(title: "Pay Parking".localized(), image: UIImage(systemName: "banknote"), handler: { (_) in
+            UIAction(title: "Pay Parking".localized(), image: UIImage(systemName: "signpost.right"), handler: { (_) in
                 guard let coord = self.mapView.myLocation?.coordinate else {
                     
                     let alert = UIAlertController(title: "Error".localized(), message: "Roadout can't access your location to show nearby spots, please enable it in Settings.".localized(), preferredStyle: .alert)
@@ -326,8 +328,6 @@ class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
                     let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
-                    indicatorView.layer.borderColor = UIColor(named: "Background")!.cgColor
-                    indicatorView.layer.borderWidth = 1.0
                     indicatorView.dismissByDrag = false
                     indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
                 }
@@ -419,19 +419,19 @@ class HomeViewController: UIViewController {
         //Search Bar
         searchTapArea.setTitle("", for: .normal)
         settingsTapArea.setTitle("", for: .normal)
-        
-        searchBar.layer.cornerRadius = 17.0
-        
-        searchBar.layer.shadowColor = UIColor.black.cgColor
-        searchBar.layer.shadowOpacity = 0.1
-        searchBar.layer.shadowOffset = .zero
-        searchBar.layer.shadowRadius = 17
-        searchBar.layer.shadowPath = UIBezierPath(rect: searchBar.bounds).cgPath
-        searchBar.layer.shouldRasterize = true
-        searchBar.layer.rasterizationScale = UIScreen.main.scale
-        
+                
         settingsTapArea.menu = moreMenu
         settingsTapArea.showsMenuAsPrimaryAction = true
+        
+        focusedView.layer.cornerRadius = 17.0
+        
+        focusedView.layer.shadowColor = UIColor.black.cgColor
+        focusedView.layer.shadowOpacity = 0.15
+        focusedView.layer.shadowOffset = .zero
+        focusedView.layer.shadowRadius = 17.0
+        focusedView.layer.shadowPath = UIBezierPath(rect: focusedView.bounds).cgPath
+        focusedView.layer.shouldRasterize = true
+        focusedView.layer.rasterizationScale = UIScreen.main.scale
         
         //Map Controls
         mapControlsView.layer.cornerRadius = 9.0
@@ -443,7 +443,7 @@ class HomeViewController: UIViewController {
         mapControlsView.layer.shadowPath = UIBezierPath(rect: mapControlsView.bounds).cgPath
         mapControlsView.layer.shouldRasterize = true
         mapControlsView.layer.rasterizationScale = UIScreen.main.scale
-        
+                
         mapTypeButton.setTitle("", for: .normal)
         userLocationButton.setTitle("", for: .normal)
         
@@ -730,9 +730,10 @@ extension HomeViewController {
                 self.selectedMarker = marker
             }
         }
-    
-        searchBar.layer.shadowOpacity = 0.0
         
+        searchBar.alpha = 0.0
+        
+        self.updateBackgroundViewHeight(with: 142)
         guard let coord = self.mapView.myLocation?.coordinate else {
             var dif = 15.0
             DispatchQueue.main.async {
@@ -746,7 +747,6 @@ extension HomeViewController {
         }
         currentLocationCoord = coord
         
-        self.updateBackgroundViewHeight(with: 142)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -760,10 +760,10 @@ extension HomeViewController {
     @objc func removeResultCard() {
         self.updateBackgroundViewHeight(with: 52)
         DispatchQueue.main.async {
-            self.searchBar.layer.shadowOpacity = 0.1
+            self.searchBar.alpha = 1.0
             self.resultView.removeFromSuperview()
             if self.selectedMarker != nil {
-
+                
                 self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
                 imageView.contentMode = .scaleAspectFit
@@ -778,7 +778,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         
         self.updateBackgroundViewHeight(with: 331)
@@ -808,7 +808,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 318)
         var dif = 15.0
@@ -837,7 +837,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 310)
         var dif = 15.0
@@ -850,15 +850,28 @@ extension HomeViewController {
         }
     }
     @objc func removeReserveCard() {
-        self.updateBackgroundViewHeight(with: 318)
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
+        if returnToResult {
+            self.updateBackgroundViewHeight(with: 142)
+            var dif = 15.0
+            DispatchQueue.main.async {
+                if (UIDevice.current.hasNotch) {
+                    dif = 49.0
+                }
+                self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-142-dif, width: self.screenSize.width - 26, height: 142)
+                self.view.addSubview(self.resultView)
+                self.reserveView.removeFromSuperview()
             }
-            self.spotView.frame = CGRect(x: 13, y: self.screenSize.height-318-dif, width: self.screenSize.width - 26, height: 318)
-            self.view.addSubview(self.spotView)
-            self.reserveView.removeFromSuperview()
+        } else {
+            self.updateBackgroundViewHeight(with: 318)
+            var dif = 15.0
+            DispatchQueue.main.async {
+                if (UIDevice.current.hasNotch) {
+                    dif = 49.0
+                }
+                self.spotView.frame = CGRect(x: 13, y: self.screenSize.height-318-dif, width: self.screenSize.width - 26, height: 318)
+                self.view.addSubview(self.spotView)
+                self.reserveView.removeFromSuperview()
+            }
         }
     }
     //Pay Card
@@ -866,7 +879,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 237)
         var dif = 15.0
@@ -895,7 +908,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 292)
         var dif = 15.0
@@ -924,7 +937,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 205)
         var dif = 15.0
@@ -953,7 +966,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 237)
         var dif = 15.0
@@ -982,7 +995,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 221)
         var dif = 15.0
@@ -1011,7 +1024,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 155)
         var dif = 15.0
@@ -1031,7 +1044,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 206)
         var dif = 15.0
@@ -1060,7 +1073,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 271)
         var dif = 15.0
@@ -1098,7 +1111,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 52)
         var dif = 15.0
@@ -1115,7 +1128,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 52)
         var dif = 15.0
@@ -1132,7 +1145,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 52)
         var dif = 15.0
@@ -1149,8 +1162,9 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
+        self.removeSpotMarker()
         self.updateBackgroundViewHeight(with: 52)
         var dif = 15.0
         DispatchQueue.main.async {
@@ -1166,7 +1180,7 @@ extension HomeViewController {
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
-            self.searchBar.layer.shadowOpacity = 0.0
+            self.searchBar.alpha = 0.0
         }
         self.updateBackgroundViewHeight(with: 52)
         var dif = 15.0
@@ -1185,13 +1199,13 @@ extension HomeViewController {
             self.view.subviews.last!.removeFromSuperview()
         }
         self.updateBackgroundViewHeight(with: 52)
-        self.searchBar.layer.shadowOpacity = 0.1
+        self.searchBar.alpha = 1.0
     }
     
     @objc func removeNoWifiBar() {
         if self.view.subviews.last == noWifiBar {
             self.view.subviews.last!.removeFromSuperview()
-            self.searchBar.layer.shadowOpacity = 0.1
+            self.searchBar.alpha = 1.0
         }
     }
     

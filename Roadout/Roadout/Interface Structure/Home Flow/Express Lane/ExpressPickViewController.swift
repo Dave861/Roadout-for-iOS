@@ -44,7 +44,7 @@ class ExpressPickViewController: UIViewController {
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(showNoFreeSpotAlert), name: .showNoFreeSpotInLocationID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showNoFreeSpotAlert), name: .showNoFreeSpotInExpressID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showFreeSpot), name: .showExpressLaneFreeSpotID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getFavouriteLocations), name: .reloadExpressLocationsID, object: nil)
     }
@@ -110,7 +110,7 @@ class ExpressPickViewController: UIViewController {
     
     @objc func showNoFreeSpotAlert() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free places in this location at the moment".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "ExpressFocus")!
             alert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -157,8 +157,6 @@ class ExpressPickViewController: UIViewController {
         let indicatorIcon = UIImage.init(systemName: "flag.2.crossed")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
         indicatorView.dismissByDrag = false
-        indicatorView.layer.borderColor = UIColor(named: "Background")!.cgColor
-        indicatorView.layer.borderWidth = 1.0
         indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
     }
     

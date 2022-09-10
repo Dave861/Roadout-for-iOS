@@ -20,16 +20,7 @@ class PaidView: UIView {
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 17.0
-        seeBtn.setAttributedTitle(buttonTitle, for: .normal)
-        
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 10
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
-        
+        seeBtn.setAttributedTitle(buttonTitle, for: .normal)        
     }
     
     class func instanceFromNib() -> UIView {

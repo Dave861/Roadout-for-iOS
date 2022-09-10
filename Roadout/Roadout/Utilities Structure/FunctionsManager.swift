@@ -51,6 +51,37 @@ class FunctionsManager {
         completion(true)
     }
 
+    func reserveSpotInLocation(sectionIndex: Int, location: ParkLocation) {
+        foundLocation = location
+        if sectionIndex == 0 {
+            foundSpot = nil
+        }
+        if sectionIndex < location.sections.count-1 && foundSpot == nil {
+            self.findInSection(location.sections[sectionIndex].rID) { result in
+                  switch result {
+                      case .success(let didFindSpot):
+                          if didFindSpot {
+                              self.foundSection = location.sections[sectionIndex]
+                              selectedSpotID = self.foundSpot.rID
+                              selectedSpotHash = self.foundSpot.rHash
+                              selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
+                              selectedSpotColor = location.accentColor
+                              NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
+                              NotificationCenter.default.post(name: .addReserveCardID, object: nil)
+                          } else {
+                              self.reserveSpotInLocation(sectionIndex: sectionIndex+1, location: location)
+                          }
+                      case .failure(let err):
+                        NotificationCenter.default.post(name: .showNoFreeSpotInLocationID, object: nil)
+                        print(err)
+                }
+            }
+        } else {
+            if foundSpot == nil {
+                NotificationCenter.default.post(name: .showNoFreeSpotInLocationID, object: nil)
+            }
+        }
+    }
     
     func expressReserveInLocation(sectionIndex: Int, location: ParkLocation) {
         foundLocation = location
@@ -71,13 +102,13 @@ class FunctionsManager {
                               self.expressReserveInLocation(sectionIndex: sectionIndex+1, location: location)
                           }
                       case .failure(let err):
-                        NotificationCenter.default.post(name: .showNoFreeSpotInLocationID, object: nil)
+                        NotificationCenter.default.post(name: .showNoFreeSpotInExpressID, object: nil)
                         print(err)
                 }
             }
         } else {
             if foundSpot == nil {
-                NotificationCenter.default.post(name: .showNoFreeSpotInLocationID, object: nil)
+                NotificationCenter.default.post(name: .showNoFreeSpotInExpressID, object: nil)
             }
         }
     }

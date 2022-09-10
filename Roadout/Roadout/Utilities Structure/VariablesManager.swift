@@ -36,6 +36,9 @@ var currentLocationCoord: CLLocationCoordinate2D?
 var returnToDelay = false
 var returnToFind = false
 
+//Decides if Reserve Card returns to Result Card or Spot Card
+var returnToResult = false
+
 var reminders = [Reminder]()
 
 var cardNumbers = ["**** **** **** 9000", "**** **** **** 7250", "**** **** **** 7784", "**** **** **** 9432"]

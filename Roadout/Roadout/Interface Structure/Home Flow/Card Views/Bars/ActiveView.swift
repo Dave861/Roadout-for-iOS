@@ -22,14 +22,6 @@ class ActiveView: UIView {
         self.layer.cornerRadius = 17.0
         moreBtn.setTitle("", for: .normal)
         
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 10
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         self.timerLbl.text = dateFormatter.string(from: ReservationManager.sharedInstance.reservationEndDate)

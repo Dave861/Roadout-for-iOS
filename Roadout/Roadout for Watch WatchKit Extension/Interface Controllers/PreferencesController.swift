@@ -20,7 +20,6 @@ class PreferencesController: WKInterfaceController {
     }
     
     override func awake(withContext context: Any?) {
-        //self.signOutGroup.setCornerRadius(20)
         self.userGroup.setCornerRadius(15.8)
         guard let id = UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID") else {
             self.nameLbl.setText("Loading Name")

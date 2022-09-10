@@ -19,7 +19,7 @@ class UnlockedController: WKInterfaceController {
     }
     
     override func awake(withContext context: Any?) {
-        //self.doneGroup.setCornerRadius(20)
+
     }
     
     override func didAppear() {

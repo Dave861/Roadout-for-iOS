@@ -65,14 +65,6 @@ class SectionView: UIView {
         }
         
         
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 10
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
-        
         if letter == "A" {
             selectedSectionIndex = 0
         }
@@ -111,6 +103,11 @@ class SectionView: UIView {
             letterBtn.setTitle(sections[index].name, for: .normal)
             letterBtn.setTitleColor(UIColor(named: "Icons")!, for: .normal)
             
+            if letter == sections[index].name {
+                letterBtn.setTitleColor(UIColor(named: "Background")!, for: .normal)
+                letterBtn.backgroundColor = UIColor(named: "Icons")!
+            }
+            
             letterBtn.addAction(for: .touchUpInside) {
                 self.letter = sections[index].name
                 self.letterTitle = NSAttributedString(string: self.letter,
@@ -138,8 +135,6 @@ class SectionView: UIView {
     func showSelectedIndicator(letter: String) {
         let image = UIImage.init(systemName: "\(letter.lowercased()).circle.fill")!.withTintColor(UIColor(named: "Icons")!, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Section ".localized() + "\(letter)", message: "Selected".localized(), preset: .custom(image))
-        indicatorView.layer.borderColor = UIColor(named: "Background")!.cgColor
-        indicatorView.layer.borderWidth = 1.0
         indicatorView.present(duration: 0.7, haptic: .none, completion: nil)
     }
     

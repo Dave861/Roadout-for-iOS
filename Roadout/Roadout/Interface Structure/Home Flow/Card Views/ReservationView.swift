@@ -163,20 +163,12 @@ class ReservationView: UIView {
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        self.addObs()
         self.layer.cornerRadius = 19.0
+        self.addObs()
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
         
         styleActionButtons()
-        
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 10
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
