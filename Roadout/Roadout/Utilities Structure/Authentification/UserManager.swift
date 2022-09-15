@@ -41,7 +41,7 @@ class UserManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":id,"name":name]
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/UpdateName.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/UpdateName.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))
@@ -79,7 +79,7 @@ class UserManager {
         let hashedNewPswd = MD5(string: newPsw)
         let params : Parameters = ["id":id,"oldPsw":hashedOldPswd,"newPsw":hashedNewPswd]
     
-        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/UpdatePassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/UpdatePassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))
@@ -116,7 +116,7 @@ class UserManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["email":email,"password":hashedPswd]
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/DeleteAccount.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/DeleteAccount.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))
@@ -159,7 +159,7 @@ class UserManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":id]
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/GetUserData.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/GetUserData.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))
@@ -199,7 +199,7 @@ class UserManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["email":email]
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/ForgotPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/ForgotPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))
@@ -248,7 +248,7 @@ class UserManager {
         let hashedPswd = MD5(string: password)
         let params : Parameters = ["email":email,"psw":hashedPswd]
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/ResetPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/ResetPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(UserDBErrors.databaseFailure))

@@ -79,7 +79,7 @@ extension MaintenanceViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: "MaintenanceCell") as! MaintenanceCell
         cell.titleLabel.text = titles[indexPath.row]
         cell.infoLabel.text = descriptions[indexPath.row]
-        cell.iconImage.image = UIImage(named: icons[indexPath.row])!
+        cell.iconImage.image = UIImage(systemName: self.icons[indexPath.row])!
         
         return cell
     }

@@ -200,7 +200,6 @@
 		9AAE265F280947E000BBBAC3 /* GoogleMapsM4B in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE265E280947E000BBBAC3 /* GoogleMapsM4B */; };
 		9AAE2661280947E000BBBAC3 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE2660280947E000BBBAC3 /* GooglePlaces */; };
 		9AAEDF012886ABC10030ABBB /* SelectPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAEDF002886ABC10030ABBB /* SelectPayViewController.swift */; };
-		9AAEDF032886AD690030ABBB /* SelectPayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAEDF022886AD690030ABBB /* SelectPayHeaderCell.swift */; };
 		9AAEDF052886AD840030ABBB /* SelectPayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAEDF042886AD840030ABBB /* SelectPayCell.swift */; };
 		9AB4A1EA289829A0001B478E /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = 9AB4A1E9289829A0001B478E /* MarqueeLabel */; };
 		9AB827F628128879007BC842 /* GDMStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB827F528128879007BC842 /* GDMStructs.swift */; };
@@ -492,7 +491,6 @@
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9AAB8663285DA87600C01428 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		9AAEDF002886ABC10030ABBB /* SelectPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPayViewController.swift; sourceTree = "<group>"; };
-		9AAEDF022886AD690030ABBB /* SelectPayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPayHeaderCell.swift; sourceTree = "<group>"; };
 		9AAEDF042886AD840030ABBB /* SelectPayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPayCell.swift; sourceTree = "<group>"; };
 		9AB827F528128879007BC842 /* GDMStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDMStructs.swift; sourceTree = "<group>"; };
 		9AB827F728128883007BC842 /* GDMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDMManager.swift; sourceTree = "<group>"; };
@@ -967,7 +965,6 @@
 			isa = PBXGroup;
 			children = (
 				9AAEDF002886ABC10030ABBB /* SelectPayViewController.swift */,
-				9AAEDF022886AD690030ABBB /* SelectPayHeaderCell.swift */,
 				9AAEDF042886AD840030ABBB /* SelectPayCell.swift */,
 				9A92311028883F5700CC9D92 /* Card Views */,
 				9AC149CC28B4EFA900B9B394 /* Pay.xib */,
@@ -1625,7 +1622,6 @@
 				9A5FC6442787685200CDB49D /* UserDefSuite.swift in Sources */,
 				9A39B0CC272847FC008E7FD0 /* UserSettingsCell.swift in Sources */,
 				9AD832A02858E49A005DD49D /* DangerTableViewCell.swift in Sources */,
-				9AAEDF032886AD690030ABBB /* SelectPayHeaderCell.swift in Sources */,
 				9AAEDF012886ABC10030ABBB /* SelectPayViewController.swift in Sources */,
 				9A40C1DE2814458D00E44B23 /* DangerViewController.swift in Sources */,
 				9A401EE32813EFB800739687 /* AboutViewController.swift in Sources */,
@@ -1826,7 +1822,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1852,7 +1848,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1879,7 +1875,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1908,7 +1904,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick ReserveUI/Quick ReserveUIRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick ReserveUI/Info.plist";
@@ -1937,7 +1933,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick Reserve.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1966,7 +1962,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Quick Reserve/Quick ReserveRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick Reserve/Info.plist";
@@ -1998,7 +1994,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -2029,7 +2025,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -2057,7 +2053,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout for Watch WatchKit Extension/Info.plist";
@@ -2087,7 +2083,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout for Watch WatchKit Extension/Info.plist";
@@ -2119,7 +2115,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_for_Watch_WatchKit_Extension;
@@ -2144,7 +2140,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Roadout_for_Watch_WatchKit_Extension;
@@ -2293,7 +2289,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2336,7 +2332,7 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

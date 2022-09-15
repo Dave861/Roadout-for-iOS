@@ -117,7 +117,7 @@ class FunctionsManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id": sectionId]
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Parking/FirstSpot.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Parking/FirstSpot.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 completion(.failure(FunctionsErrors.databaseFailure))
                 return

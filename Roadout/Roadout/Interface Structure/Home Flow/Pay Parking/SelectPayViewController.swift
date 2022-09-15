@@ -10,10 +10,20 @@ import CoreLocation
 
 class SelectPayViewController: UIViewController {
     
-    let recentParkLocations = [testParkLocations.first!]
+    var recentParkLocations = [ParkLocation]()
     var nearbyParkLocations = [ParkLocation]()
     
     @IBOutlet weak var titleLbl: UILabel!
+    
+    @IBOutlet weak var placeholderView: UIView!
+    @IBOutlet weak var placeholderText: UILabel!
+    
+    @IBOutlet weak var segmentedSwitcher: UISegmentedControl!
+    
+    @IBAction func spotsSwitched(_ sender: Any) {
+        self.reloadSpotsCategory()
+    }
+    
     
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -31,12 +41,14 @@ class SelectPayViewController: UIViewController {
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
         tableView.delegate = self
         tableView.dataSource = self
-        
+        segmentedSwitcher.setTitle("Nearby".localized(), forSegmentAt: 0)
+        segmentedSwitcher.setTitle("Recent".localized(), forSegmentAt: 1)
         if currentLocationCoord != nil {
-            nearbyParkLocations = sortLocations(currentLocation: currentLocationCoord!).filter { !recentParkLocations.contains($0) }
+            nearbyParkLocations = sortLocations(currentLocation: currentLocationCoord!)
         } else {
-            nearbyParkLocations = parkLocations.filter { !recentParkLocations.contains($0) }
+            nearbyParkLocations = parkLocations
         }
+        reloadSpotsCategory()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,6 +64,32 @@ class SelectPayViewController: UIViewController {
              })
              UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip4")
          }
+    }
+    
+    func reloadSpotsCategory() {
+        if segmentedSwitcher.selectedSegmentIndex == 0 {
+            //Nearby
+            tableView.reloadData()
+            placeholderText.text = "No locations found nearby. Location access might be disabled".localized()
+            if nearbyParkLocations.count == 0 {
+                placeholderView.alpha = 1
+                tableView.alpha = 0
+            } else {
+                placeholderView.alpha = 0
+                tableView.alpha = 1
+            }
+        } else {
+            //Recent
+            tableView.reloadData()
+            placeholderText.text = "No recent locations found. Start in the nearby section".localized()
+            if recentParkLocations.count == 0 {
+                placeholderView.alpha = 1
+                tableView.alpha = 0
+            } else {
+                placeholderView.alpha = 0
+                tableView.alpha = 1
+            }
+        }
     }
     
     func sortLocations(currentLocation: CLLocationCoordinate2D) -> [ParkLocation] {
@@ -108,31 +146,23 @@ class SelectPayViewController: UIViewController {
 }
 extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recentParkLocations.count + nearbyParkLocations.count + 2
+        if segmentedSwitcher.selectedSegmentIndex == 0 {
+            return nearbyParkLocations.count
+        } else {
+            return recentParkLocations.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 || indexPath.row == recentParkLocations.count + 1 {
-            return 35
-        } else {
-            return 65
-        }
+        return 65
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayHeaderCell") as! SelectPayHeaderCell
-            cell.headerLbl.text = "Recent".localized()
-            if recentParkLocations.count == 0 {
-                cell.headerLbl.text = "No Recents".localized()
-            }
-            
-            return cell
-        } else if indexPath.row > 0 && indexPath.row <= recentParkLocations.count {
+        if segmentedSwitcher.selectedSegmentIndex == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayCell") as! SelectPayCell
-            cell.nameLbl.text = recentParkLocations[indexPath.row-1].name
+            cell.nameLbl.text = nearbyParkLocations[indexPath.row].name
             
-            let coord = CLLocationCoordinate2D(latitude: recentParkLocations[indexPath.row-1].latitude, longitude: recentParkLocations[indexPath.row-1].longitude)
+            let coord = CLLocationCoordinate2D(latitude: nearbyParkLocations[indexPath.row].latitude, longitude: nearbyParkLocations[indexPath.row].longitude)
             if currentLocationCoord != nil {
                 let c1 = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
                 let c2 = CLLocation(latitude: currentLocationCoord!.latitude, longitude: currentLocationCoord!.longitude)
@@ -146,22 +176,17 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.distanceLbl.text = "- km"
             }
             
-            let occupancyPercent = self.getPercentageFrom(totalSpots: recentParkLocations[indexPath.row-1].totalSpots, freeSpots: recentParkLocations[indexPath.row-1].freeSpots)
+            let occupancyPercent = self.getPercentageFrom(totalSpots: nearbyParkLocations[indexPath.row].totalSpots, freeSpots: nearbyParkLocations[indexPath.row].freeSpots)
             
             cell.gaugeIcon.transform = .identity
             cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: self.getRotationFor(occupancyPercent))
-            
-            return cell
-        } else if indexPath.row == recentParkLocations.count + 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayHeaderCell") as! SelectPayHeaderCell
-            cell.headerLbl.text = "Nearby".localized()
             
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayCell") as! SelectPayCell
-            cell.nameLbl.text = nearbyParkLocations[indexPath.row-2-recentParkLocations.count].name
+            cell.nameLbl.text = recentParkLocations[indexPath.row-1].name
             
-            let coord = CLLocationCoordinate2D(latitude: nearbyParkLocations[indexPath.row-2-recentParkLocations.count].latitude, longitude: nearbyParkLocations[indexPath.row-2-recentParkLocations.count].longitude)
+            let coord = CLLocationCoordinate2D(latitude: recentParkLocations[indexPath.row].latitude, longitude: recentParkLocations[indexPath.row].longitude)
             if currentLocationCoord != nil {
                 let c1 = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
                 let c2 = CLLocation(latitude: currentLocationCoord!.latitude, longitude: currentLocationCoord!.longitude)
@@ -175,52 +200,41 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.distanceLbl.text = "- km"
             }
             
-            let occupancyPercent = self.getPercentageFrom(totalSpots: nearbyParkLocations[indexPath.row-2-recentParkLocations.count].totalSpots, freeSpots: nearbyParkLocations[indexPath.row-2-recentParkLocations.count].freeSpots)
+            let occupancyPercent = self.getPercentageFrom(totalSpots: recentParkLocations[indexPath.row].totalSpots, freeSpots: recentParkLocations[indexPath.row].freeSpots)
             
             cell.gaugeIcon.transform = .identity
             cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: self.getRotationFor(occupancyPercent))
             
             return cell
         }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row > 0 && indexPath.row <= recentParkLocations.count {
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
-            selectedPayLocation = recentParkLocations[indexPath.row-1]
-            isPayFlow = true
-            //Clear saved car park
-            UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
-            carParkHash = "roadout_carpark_clear"
-            NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
-            NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
-            self.dismiss(animated: true)
-        } else if indexPath.row > recentParkLocations.count + 1 {
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
-            selectedPayLocation = nearbyParkLocations[indexPath.row-2-recentParkLocations.count]
-            isPayFlow = true
-            //Clear saved car park
-            UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
-            carParkHash = "roadout_carpark_clear"
-            NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
-            NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
-            self.dismiss(animated: true)
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        if segmentedSwitcher.selectedSegmentIndex == 0 {
+            selectedPayLocation = nearbyParkLocations[indexPath.row]
+        } else {
+            selectedPayLocation = recentParkLocations[indexPath.row]
         }
+        isPayFlow = true
+        //Clear saved car park
+        UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
+        carParkHash = "roadout_carpark_clear"
+        NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
+        NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
+        self.dismiss(animated: true)
+        
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        if indexPath.row != 0 && indexPath.row != recentParkLocations.count + 1 {
-            let cell = tableView.cellForRow(at: indexPath) as! SelectPayCell
-            cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
-        }
+        let cell = tableView.cellForRow(at: indexPath) as! SelectPayCell
+        cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        if indexPath.row != 0 && indexPath.row != recentParkLocations.count + 1 {
-            let cell = tableView.cellForRow(at: indexPath) as! SelectPayCell
-            cell.card.backgroundColor = UIColor(named: "Secondary Detail")
-        }
+        let cell = tableView.cellForRow(at: indexPath) as! SelectPayCell
+        cell.card.backgroundColor = UIColor(named: "Secondary Detail")
     }
 }

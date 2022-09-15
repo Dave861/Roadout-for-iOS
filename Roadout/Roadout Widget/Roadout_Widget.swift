@@ -33,7 +33,7 @@ struct Provider: IntentTimelineProvider {
         let params1 : Parameters = ["id":entry.configuration.location1?.rID ?? ""]
         let params2 : Parameters = ["id":entry.configuration.location2?.rID ?? ""]
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Parking/GetFreeParkingSpots.php", method: .post, parameters: params1, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Parking/GetFreeParkingSpots.php", method: .post, parameters: params1, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 return
             }
@@ -50,7 +50,7 @@ struct Provider: IntentTimelineProvider {
             }
         }
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Parking/GetFreeParkingSpots.php", method: .post, parameters: params2, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Parking/GetFreeParkingSpots.php", method: .post, parameters: params2, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 return
             }

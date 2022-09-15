@@ -19,7 +19,7 @@ class UserPrefsUtils {
     
     func returnMainCard() -> String {
         let cardIndex = UserDefaultsSuite.integer(forKey: "ro.roadout.defaultPaymentMethod")
-        let cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? ["**** **** **** 9000", "**** **** **** 7250", "**** **** **** 7784", "**** **** **** 9432"]
+        let cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
         let card = cardNumbers[cardIndex]
         return card
     }

@@ -34,7 +34,7 @@ class ReservationManager {
         let convertedDate = dateFormatter.string(from: date)
         let params: Parameters = ["date": convertedDate, "userID": userID]
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/CheckEndDate.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/CheckEndDate.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 completion(.failure(ReservationErrors.databaseFailure))
                 self.isReservationActive = 2
@@ -81,7 +81,7 @@ class ReservationManager {
         let convertedDate = dateFormatter.string(from: date)
         let params : Parameters = ["userID": userID, "date": convertedDate]
         
-        Alamofire.Session.default.request("https://www.roadout.ro/Authentification/UnlockReservation.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/UnlockReservation.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 completion(.failure(ReservationErrors.databaseFailure))
                 return

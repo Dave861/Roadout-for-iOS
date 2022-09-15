@@ -41,7 +41,7 @@ var returnToResult = false
 
 var reminders = [Reminder]()
 
-var cardNumbers = ["**** **** **** 9000", "**** **** **** 7250", "**** **** **** 7784", "**** **** **** 9432"]
+var cardNumbers = [String]()
 
 let colours = ["Main Yellow", "Dark Orange", "Icons", "Kinda Red", "Second Orange"]
 
