@@ -7,8 +7,8 @@
 
 import UIKit
 
-//Further details on Maintenance Screen
-//This screen will be shown when server is down, if that is to be done intentionally, firstly the make reservation API will go down, then all existing reservation will be honored, only then will the server be taken down
+///Further details on Maintenance Screen
+///This screen will be shown when server is down, if that is to be done intentionally, firstly the make reservation API will go down, then all existing reservation will be honored, only then will the server be taken down
 class MaintenanceViewController: UIViewController {
 
     let icons = ["server.rack", "lifepreserver"]

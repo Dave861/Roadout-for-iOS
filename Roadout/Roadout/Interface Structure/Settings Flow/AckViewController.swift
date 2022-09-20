@@ -15,7 +15,6 @@ class AckViewController: UIViewController {
                                   "GeohashKit",
                                   "Google Maps SDK",
                                   "IOSSecuritySuite",
-                                  "MarqueeLabel",
                                   "PusherSwift",
                                   "SPIndicator"]
     
@@ -25,7 +24,6 @@ class AckViewController: UIViewController {
                                       "Copyright (c) 2020 Alan Chu",
                                       "Copyright (c) 2012-2022 Google Inc.",
                                       "Copyright (c) 2019, SecuRing spółka z ograniczoną odpowiedzialnością spółka jawna",
-                                      "Copyright (c) 2011-2017 Charles Powell",
                                       "Copyright (c) 2015 Pusher Ltd.",
                                       "Copyright (c) 2021 Ivan Vorobei"]
     
@@ -35,7 +33,6 @@ class AckViewController: UIViewController {
                                  "https://github.com/ualch9/GeohashKit",
                                  "https://github.com/YAtechnologies/GoogleMaps-SP",
                                  "https://github.com/securing/IOSSecuritySuite",
-                                 "https://github.com/cbpowell/MarqueeLabel",
                                  "https://github.com/pusher/pusher-websocket-swift",
                                  "https://github.com/ivanvorobei/SPIndicator"]
 

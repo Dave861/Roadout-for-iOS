@@ -24,9 +24,9 @@ class UserPrefsUtils {
         return card
     }
      
-    func reservationNotificationsEnabled() -> Bool {
-        let enabled = UserDefaultsSuite.bool(forKey: "ro.roadout.reservationNotificationsEnabled")
-        return enabled
+    func reservationNotificationsEnabled() -> Int {
+        let option = UserDefaultsSuite.integer(forKey: "ro.roadout.reservationNotificationsOption")
+        return option
     }
     
     func reminderNotificationsEnabled() -> Bool {

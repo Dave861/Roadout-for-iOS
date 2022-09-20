@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21219" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21200"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -40,13 +40,6 @@
                         <action selector="continueTapped:" destination="GDG-ex-dZ6" eventType="touchUpInside" id="awc-jg-2dG"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1M-aW-ZXD">
-                    <rect key="frame" x="10" y="245" width="394" height="50"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="ZMq-mY-Lqb"/>
-                    </constraints>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lty-uS-wg4">
                     <rect key="frame" x="12" y="12" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
@@ -69,7 +62,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFu-YF-6sa">
                             <rect key="frame" x="0.0" y="0.0" width="187" height="55"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old Town" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LF-Ql-wm5" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old Town" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="0LF-Ql-wm5">
                                     <rect key="frame" x="35" y="4" width="148" height="47"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                     <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -120,7 +113,7 @@
                                         <constraint firstAttribute="height" constant="32" id="n0P-Gy-Su9"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dx-EN-Nch" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="8dx-EN-Nch">
                                     <rect key="frame" x="41" y="4" width="142" height="47"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                     <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -170,7 +163,7 @@
                                         <constraint firstAttribute="width" constant="21" id="WWA-87-K0b"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spot 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-Gr-ygb" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spot 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="eP9-Gr-ygb">
                                     <rect key="frame" x="37" y="4" width="146" height="47"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                     <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -204,7 +197,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SH6-9D-s9w">
                             <rect key="frame" x="197" y="0.0" width="187" height="55"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6As-Ei-GjG" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="6As-Ei-GjG">
                                     <rect key="frame" x="35" y="4" width="148" height="47"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                     <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -259,26 +252,41 @@
                         <constraint firstAttribute="width" constant="27" id="lL6-Ej-ZPJ"/>
                     </constraints>
                 </view>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldt-qV-pg1">
+                    <rect key="frame" x="10" y="245" width="394" height="50"/>
+                    <color key="backgroundColor" name="Secondary Floating"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="dpC-0I-rVO"/>
+                    </constraints>
+                    <color key="tintColor" systemColor="systemIndigoColor"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Use with Siri">
+                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="siriTapped:" destination="GDG-ex-dZ6" eventType="touchUpInside" id="VTH-EW-C2G"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="KBx-iq-SKJ"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="KBx-iq-SKJ" firstAttribute="trailing" secondItem="Qft-iO-bWU" secondAttribute="trailing" constant="10" id="COC-Sp-Zr0"/>
                 <constraint firstItem="r1r-1h-Ear" firstAttribute="leading" secondItem="KBx-iq-SKJ" secondAttribute="leading" constant="15" id="DSb-Jd-AnG"/>
+                <constraint firstItem="KBx-iq-SKJ" firstAttribute="trailing" secondItem="Ldt-qV-pg1" secondAttribute="trailing" constant="10" id="J9v-6G-8Bm"/>
                 <constraint firstItem="r1r-1h-Ear" firstAttribute="top" secondItem="AD3-2H-Kza" secondAttribute="bottom" constant="11" id="JXL-54-RU5"/>
-                <constraint firstItem="KBx-iq-SKJ" firstAttribute="bottom" secondItem="i1M-aW-ZXD" secondAttribute="bottom" constant="10" id="K2j-6z-mb9"/>
+                <constraint firstItem="Ldt-qV-pg1" firstAttribute="leading" secondItem="KBx-iq-SKJ" secondAttribute="leading" constant="10" id="Q8c-jL-6qs"/>
+                <constraint firstItem="Ldt-qV-pg1" firstAttribute="top" secondItem="Qft-iO-bWU" secondAttribute="bottom" constant="10" id="Rrr-o3-sxD"/>
                 <constraint firstItem="KBx-iq-SKJ" firstAttribute="trailing" secondItem="r1r-1h-Ear" secondAttribute="trailing" constant="15" id="UKG-2C-Y4t"/>
                 <constraint firstItem="AD3-2H-Kza" firstAttribute="leading" secondItem="GDG-ex-dZ6" secondAttribute="leading" constant="50" id="ZL3-n6-00x"/>
                 <constraint firstItem="AD3-2H-Kza" firstAttribute="top" secondItem="GDG-ex-dZ6" secondAttribute="top" constant="12" id="amY-UX-0qX"/>
                 <constraint firstItem="lty-uS-wg4" firstAttribute="leading" secondItem="GDG-ex-dZ6" secondAttribute="leading" constant="12" id="bKx-MH-Csa"/>
                 <constraint firstAttribute="trailing" secondItem="AD3-2H-Kza" secondAttribute="trailing" constant="20" id="bgO-wA-EQH"/>
                 <constraint firstItem="JUT-QC-vpM" firstAttribute="top" secondItem="GDG-ex-dZ6" secondAttribute="top" id="ccM-Q3-45n"/>
-                <constraint firstItem="i1M-aW-ZXD" firstAttribute="leading" secondItem="KBx-iq-SKJ" secondAttribute="leading" constant="10" id="dR1-21-dOd"/>
+                <constraint firstItem="KBx-iq-SKJ" firstAttribute="bottom" secondItem="Ldt-qV-pg1" secondAttribute="bottom" constant="10" id="hFk-cd-Rq8"/>
                 <constraint firstItem="ooh-7h-zIY" firstAttribute="leading" secondItem="KBx-iq-SKJ" secondAttribute="leading" constant="15" id="hGy-NK-ASD"/>
                 <constraint firstItem="KBx-iq-SKJ" firstAttribute="trailing" secondItem="ooh-7h-zIY" secondAttribute="trailing" constant="15" id="o4s-Tn-EWY"/>
-                <constraint firstItem="KBx-iq-SKJ" firstAttribute="trailing" secondItem="i1M-aW-ZXD" secondAttribute="trailing" constant="10" id="ogG-Lp-GG2"/>
                 <constraint firstItem="lty-uS-wg4" firstAttribute="top" secondItem="GDG-ex-dZ6" secondAttribute="top" constant="12" id="rAf-il-8A7"/>
-                <constraint firstItem="i1M-aW-ZXD" firstAttribute="top" secondItem="Qft-iO-bWU" secondAttribute="bottom" constant="10" id="rgy-c5-CKl"/>
                 <constraint firstItem="ooh-7h-zIY" firstAttribute="top" secondItem="r1r-1h-Ear" secondAttribute="bottom" constant="10" id="uen-Mz-muy"/>
                 <constraint firstItem="JUT-QC-vpM" firstAttribute="leading" secondItem="lty-uS-wg4" secondAttribute="trailing" constant="1" id="xC6-Ey-Vxv"/>
                 <constraint firstItem="Qft-iO-bWU" firstAttribute="leading" secondItem="KBx-iq-SKJ" secondAttribute="leading" constant="10" id="zQz-6m-uHm"/>
@@ -293,7 +301,7 @@
                 <outlet property="sectionBtn" destination="N3K-K1-Mje" id="T6t-mW-DtU"/>
                 <outlet property="sectionCard" destination="FfM-Cx-BnE" id="B2d-nD-BKo"/>
                 <outlet property="sectionLbl" destination="8dx-EN-Nch" id="4gf-ql-9FE"/>
-                <outlet property="siriBtnView" destination="i1M-aW-ZXD" id="uEx-SQ-MeU"/>
+                <outlet property="siriBtn" destination="Ldt-qV-pg1" id="Qu0-TC-kEY"/>
                 <outlet property="spotBtn" destination="4Ht-qO-zJT" id="wKo-u1-pga"/>
                 <outlet property="spotCard" destination="mtA-Xn-X42" id="K2g-46-rbL"/>
                 <outlet property="spotLbl" destination="eP9-Gr-ygb" id="K4L-vg-nCg"/>
@@ -305,20 +313,6 @@
             <point key="canvasLocation" x="1378.2608695652175" y="191.85267857142856"/>
         </view>
     </objects>
-    <designables>
-        <designable name="0LF-Ql-wm5">
-            <size key="intrinsicContentSize" width="77" height="21.5"/>
-        </designable>
-        <designable name="6As-Ei-GjG">
-            <size key="intrinsicContentSize" width="89.5" height="21.5"/>
-        </designable>
-        <designable name="8dx-EN-Nch">
-            <size key="intrinsicContentSize" width="79" height="21.5"/>
-        </designable>
-        <designable name="eP9-Gr-ygb">
-            <size key="intrinsicContentSize" width="62" height="21.5"/>
-        </designable>
-    </designables>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="grid" catalog="system" width="128" height="113"/>
@@ -339,6 +333,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

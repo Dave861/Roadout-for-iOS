@@ -6,9 +6,6 @@
 //
 
 import UIKit
-import IntentsUI
-import Intents
-import MarqueeLabel
 
 class FindView: UIView {
     
@@ -25,10 +22,10 @@ class FindView: UIView {
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
-    @IBOutlet weak var locationLbl: MarqueeLabel!
-    @IBOutlet weak var sectionLbl: MarqueeLabel!
-    @IBOutlet weak var spotLbl: MarqueeLabel!
-    @IBOutlet weak var timeLbl: MarqueeLabel!
+    @IBOutlet weak var locationLbl: UILabel!
+    @IBOutlet weak var sectionLbl: UILabel!
+    @IBOutlet weak var spotLbl: UILabel!
+    @IBOutlet weak var timeLbl: UILabel!
     
     @IBOutlet weak var locationCard: UIView!
     @IBOutlet weak var sectionCard: UIView!
@@ -46,7 +43,13 @@ class FindView: UIView {
         NotificationCenter.default.post(name: .addPayCardID, object: nil)
     }
     
-    @IBOutlet weak var siriBtnView: UIView!
+    @IBOutlet weak var siriBtn: UIButton!
+    
+    @IBAction func siriTapped(_ sender: Any) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SiriVC") as! SiriViewController
+        self.parentViewController().present(vc, animated: true)
+    }
     
     @IBOutlet weak var locationBtn: UIButton!
     
@@ -63,6 +66,7 @@ class FindView: UIView {
     
         
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let siriTitle = NSAttributedString(string: "Use with Siri".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Greyish")!])
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -89,6 +93,8 @@ class FindView: UIView {
         continueBtn.layer.cornerRadius = 12.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         
+        siriBtn.layer.cornerRadius = 12.0
+        siriBtn.setAttributedTitle(siriTitle, for: .normal)
         
         timeLbl.text = "\(minutesValue)" + " Minutes".localized()
         
@@ -106,8 +112,6 @@ class FindView: UIView {
         timeBtn.showsMenuAsPrimaryAction = true
 
         NotificationCenter.default.post(name: .animateCameraToFoundID, object: nil)
-        donateInteration()
-        addToSiriBtn()
         
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
@@ -147,64 +151,5 @@ class FindView: UIView {
         return UIMenu(title: "Choose duration".localized(), image: nil, identifier: nil, options: [], children: durationMenuItems)
     }
         
-    func donateInteration() {
-        let intent = QuickReserveIntent()
-        intent.suggestedInvocationPhrase = "Find me a Parking Spot"
-        let interaction = INInteraction(intent: intent, response: nil)
-        interaction.donate { err in
-            if err == nil {
-                print("Donated Succesfully")
-            } else {
-                print(String(describing: err?.localizedDescription))
-            }
-        }
-    }
     
-    func addToSiriBtn() {
-        let button = INUIAddVoiceShortcutButton(style: .automaticOutline)
-        button.backgroundColor = .clear
-        button.frame = CGRect(x: 0, y: 0, width: self.frame.width-20, height: 50)
-        button.delegate = self
-        let intent = QuickReserveIntent()
-        if let shortcut = INShortcut(intent: intent) {
-            button.shortcut = shortcut
-        }
-        siriBtnView.addSubview(button)
-    }
-    
-}
-extension FindView: INUIAddVoiceShortcutButtonDelegate {
-    
-    func present(_ addVoiceShortcutViewController: INUIAddVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
-        addVoiceShortcutViewController.delegate = self
-        self.parentViewController().present(addVoiceShortcutViewController, animated: true, completion: nil)
-    }
-    
-    func present(_ editVoiceShortcutViewController: INUIEditVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
-        editVoiceShortcutViewController.delegate = self
-        self.parentViewController().present(editVoiceShortcutViewController, animated: true, completion: nil)
-    }
-}
-
-extension FindView: INUIAddVoiceShortcutViewControllerDelegate, INUIEditVoiceShortcutViewControllerDelegate {
-    
-    func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didUpdate voiceShortcut: INVoiceShortcut?, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didDeleteVoiceShortcutWithIdentifier deletedVoiceShortcutIdentifier: UUID) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func editVoiceShortcutViewControllerDidCancel(_ controller: INUIEditVoiceShortcutViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
 }

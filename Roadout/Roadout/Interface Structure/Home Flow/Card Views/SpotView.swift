@@ -8,7 +8,6 @@
 import UIKit
 import SPIndicator
 import PusherSwift
-import MarqueeLabel
 
 class SpotView: UIView, PusherDelegate {
 
@@ -18,7 +17,7 @@ class SpotView: UIView, PusherDelegate {
     
     @IBOutlet weak var infoCard: UIView!
     @IBOutlet weak var infoIcon: UIImageView!
-    @IBOutlet weak var infoText: MarqueeLabel!
+    @IBOutlet weak var infoText: UILabel!
     
     @IBOutlet weak var continueBtn: UIButton!
     

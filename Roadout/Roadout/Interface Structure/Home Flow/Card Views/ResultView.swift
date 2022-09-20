@@ -7,7 +7,6 @@
 
 import UIKit
 import CoreLocation
-import MarqueeLabel
 import SPIndicator
 
 class ResultView: UIView {
@@ -16,9 +15,9 @@ class ResultView: UIView {
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     @IBOutlet weak var locationLbl: UILabel!
-    @IBOutlet weak var distanceLbl: MarqueeLabel!
-    @IBOutlet weak var sectionsLbl: MarqueeLabel!
-    @IBOutlet weak var freeSpotsLbl: MarqueeLabel!
+    @IBOutlet weak var distanceLbl: UILabel!
+    @IBOutlet weak var sectionsLbl: UILabel!
+    @IBOutlet weak var freeSpotsLbl: UILabel!
     
     @IBOutlet weak var distanceIcon: UIImageView!
     @IBOutlet weak var sectionsIcon: UIImageView!

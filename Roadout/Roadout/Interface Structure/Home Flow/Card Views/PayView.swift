@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MarqueeLabel
 
 class PayView: UIView {
     
@@ -31,8 +30,8 @@ class PayView: UIView {
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     
-    @IBOutlet weak var detailsLbl: MarqueeLabel!
-    @IBOutlet weak var timeLbl: MarqueeLabel!
+    @IBOutlet weak var detailsLbl: UILabel!
+    @IBOutlet weak var timeLbl: UILabel!
     
     @IBOutlet weak var payBtn: UIButton!
     @IBOutlet weak var chooseMethodBtn: UIButton!

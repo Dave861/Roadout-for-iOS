@@ -12,19 +12,19 @@ class HomeController: WKInterfaceController {
 
     @IBOutlet weak var unlockBtnGroup: WKInterfaceGroup!
     @IBAction func unlockTapped() {
-        let unlockAction = WKAlertAction(title: "Unlock", style: .default) {
+        let unlockAction = WKAlertAction(title: "Unlock".localized(), style: .default) {
             ReservationManager.sharedInstance.unlockReservation(UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID")!, date: Date()) { result in
                 switch result {
                 case .success():
                     self.presentController(withName: "UnlockedWKI", context: nil)
                 case .failure(let err):
-                    let okAction = WKAlertAction(title: "OK", style: .cancel) {}
-                    self.presentAlert(withTitle: "Reservation Error", message: "Failed to unlock reservation from Apple Watch. Please try from the iPhone app.", preferredStyle: .alert, actions: [okAction])
+                    let okAction = WKAlertAction(title: "OK".localized(), style: .cancel) {}
+                    self.presentAlert(withTitle: "Reservation Error".localized(), message: "Failed to unlock reservation from Apple Watch. Please try from the iPhone app.".localized(), preferredStyle: .alert, actions: [okAction])
                 }
             }
         }
-        let cancelAction = WKAlertAction(title: "Cancel", style: .cancel) {}
-        self.presentAlert(withTitle: "Unlock Spot", message: "Are you sure you want to unlock the spot? This cannot be undone, once unlocked anyone will be able to park on the spot. You may still receive notifications on your iPhone, please ignore them.", preferredStyle: .alert, actions: [unlockAction, cancelAction])
+        let cancelAction = WKAlertAction(title: "Cancel".localized(), style: .cancel) {}
+        self.presentAlert(withTitle: "Unlock Spot".localized(), message: "Are you sure you want to unlock the spot? This cannot be undone, once unlocked anyone will be able to park on the spot. You may still receive notifications on your iPhone, please ignore them.".localized(), preferredStyle: .alert, actions: [unlockAction, cancelAction])
     }
     @IBOutlet weak var timeLbl: WKInterfaceLabel!
     @IBOutlet weak var topTextLbl: WKInterfaceLabel!
@@ -58,7 +58,7 @@ class HomeController: WKInterfaceController {
     }
     
     @objc func reloadServerData() {
-        self.placeholderTopText.setText("Loading Reservation")
+        self.placeholderTopText.setText("Loading Reservation".localized())
         self.placeholderIcon.setImage(UIImage(systemName: "scribble"))
         if UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID") != nil {
             ReservationManager.sharedInstance.checkForReservation(Date(), userID: UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID")!) { result in
@@ -72,13 +72,13 @@ class HomeController: WKInterfaceController {
                         self.makePlaceholderViewVisible(visibility: false)
                     } else {
                         self.makeReservationViewVisible(visibility: false)
-                        self.placeholderTopText.setText("No Active Reservation")
+                        self.placeholderTopText.setText("No Active Reservation".localized())
                         self.placeholderIcon.setImage(UIImage(systemName: "nosign"))
                         self.makePlaceholderViewVisible(visibility: true)
                     }
                 case .failure(let err):
-                    let okAction = WKAlertAction(title: "OK", style: .cancel) {}
-                    self.presentAlert(withTitle: "Roadout Error", message: "Failed to retrieve reservation information.", preferredStyle: .alert, actions: [okAction])
+                    let okAction = WKAlertAction(title: "OK".localized(), style: .cancel) {}
+                    self.presentAlert(withTitle: "Roadout Error".localized(), message: "Failed to retrieve reservation information.".localized(), preferredStyle: .alert, actions: [okAction])
                 }
             }
         }

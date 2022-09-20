@@ -22,22 +22,22 @@ class PreferencesController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         self.userGroup.setCornerRadius(15.8)
         guard let id = UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserID") else {
-            self.nameLbl.setText("Loading Name")
+            self.nameLbl.setText("Loading Name".localized())
             return
         }
-        self.nameLbl.setText(UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserName") ?? "Loading Name")
+        self.nameLbl.setText(UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserName") ?? "Loading Name".localized())
         UserManager.sharedInstance.getUserName(id) { result in
             switch result {
             case .success():
                 self.nameLbl.setText(UserManager.sharedInstance.userName)
             case .failure(let error):
                 print(error)
-                self.nameLbl.setText(UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserName") ?? "Loading Name")
+                self.nameLbl.setText(UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserName") ?? "Loading Name".localized())
             }
         }
     }
     
     override func didAppear() {
-        self.nameLbl.setText(UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserName") ?? "Loading Name")
+        self.nameLbl.setText(UserDefaults.roadout!.string(forKey: "ro.roadout.RoadoutWatch.UserName") ?? "Loading Name".localized())
     }
 }

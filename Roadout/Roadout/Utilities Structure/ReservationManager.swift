@@ -49,7 +49,7 @@ class ReservationManager {
                     self.callResult = (jsonArray["status"] as! String)
                     if self.callResult == "Success" {
                         //Inserted reservation successfully
-                        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
+                        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() == 1 {
                             NotificationHelper.sharedInstance.scheduleReservationNotification()
                         }
                         self.reservationEndDate = date.addingTimeInterval(TimeInterval(time*60))
@@ -128,7 +128,7 @@ class ReservationManager {
                                 guard convertedEndDate != nil else { return }
                                 timerSeconds = Int(convertedEndDate!.timeIntervalSinceNow)
                                 NotificationHelper.sharedInstance.cancelReservationNotification()
-                                if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
+                                if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() == 1 {
                                     NotificationHelper.sharedInstance.scheduleReservationNotification()
                                 }
                             }
@@ -201,7 +201,7 @@ class ReservationManager {
                         }
                         timerSeconds = Int(newEndDate.timeIntervalSinceNow)
                         NotificationHelper.sharedInstance.cancelReservationNotification()
-                        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() {
+                        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() == 1 {
                             NotificationHelper.sharedInstance.scheduleReservationNotification()
                         }
                         NotificationCenter.default.post(name: .showPaidBarID, object: nil)
