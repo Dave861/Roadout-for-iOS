@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21219" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21200"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -26,7 +26,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ellipsis.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="z3j-rj-1nk">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ellipsis.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="z3j-rj-1nk">
                     <rect key="frame" x="0.0" y="16" width="38" height="38"/>
                     <color key="tintColor" systemColor="systemGrayColor"/>
                     <constraints>
@@ -75,7 +75,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="binoculars" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aFV-GF-i5m">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="binoculars.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aFV-GF-i5m">
                     <rect key="frame" x="0.0" y="17" width="38" height="37"/>
                     <color key="tintColor" systemColor="systemGrayColor"/>
                     <constraints>
@@ -124,7 +124,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag.2.crossed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xph-hm-U47">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag.2.crossed.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xph-hm-U47">
                     <rect key="frame" x="0.0" y="15.5" width="41" height="38.5"/>
                     <color key="tintColor" systemColor="systemGrayColor"/>
                     <constraints>
@@ -173,8 +173,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signpost.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GEh-25-zi1">
-                    <rect key="frame" x="0.0" y="15.5" width="41" height="38.5"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet.pass.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GEh-25-zi1">
+                    <rect key="frame" x="0.0" y="15.5" width="41" height="39"/>
                     <color key="tintColor" systemColor="systemGrayColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="39" id="cDC-fx-gfF"/>
@@ -210,10 +210,10 @@
         </view>
     </objects>
     <resources>
-        <image name="binoculars" catalog="system" width="128" height="90"/>
-        <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
-        <image name="flag.2.crossed" catalog="system" width="128" height="72"/>
-        <image name="signpost.right" catalog="system" width="128" height="121"/>
+        <image name="binoculars.fill" catalog="system" width="128" height="90"/>
+        <image name="ellipsis.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="flag.2.crossed.fill" catalog="system" width="128" height="72"/>
+        <image name="wallet.pass.fill" catalog="system" width="115" height="128"/>
         <namedColor name="Card Background">
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

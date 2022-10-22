@@ -125,27 +125,27 @@ class ExpressPickViewController: UIViewController {
     
     func getRotationFor(_ percent: Int) -> CGFloat {
         if percent == 100 {
-            return 1.7453
+            return 2.44
         } else if percent >= 90 {
-            return 1.2566
+            return 2.02
         } else if percent >= 80 {
-            return 0.7155
+            return 1.57
         } else if percent >= 70 {
-            return 0.1745
+            return 1.04
         } else if percent >= 60 {
-            return -0.2617
+            return 0.52
         } else if percent >= 50 {
-            return -0.7853
+            return 0
         } else if percent >= 40 {
-            return -1.3264
+            return -0.52
         } else if percent >= 30 {
-            return -1.7802
+            return -1.04
         } else if percent >= 20 {
-            return -2.3387
+            return -1.57
         } else if percent >= 10 {
-            return -2.8448
+            return -2.02
         } else {
-            return 3.0194
+            return 2.44
         }
     }
     
@@ -154,7 +154,7 @@ class ExpressPickViewController: UIViewController {
     }
     
     func showLoadingIndicator() {
-        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
+        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed.fill")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
         indicatorView.dismissByDrag = false
         indicatorView.present(duration: 1.0, haptic: .none, completion: nil)

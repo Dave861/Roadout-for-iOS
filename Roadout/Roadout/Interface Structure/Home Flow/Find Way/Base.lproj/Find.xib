@@ -26,7 +26,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qft-iO-bWU">
-                    <rect key="frame" x="10" y="185" width="394" height="50"/>
+                    <rect key="frame" x="10" y="187" width="394" height="50"/>
                     <color key="backgroundColor" name="Greyish"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="WO9-Vt-Vgz"/>
@@ -78,7 +78,7 @@
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain"/>
                                 </button>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kRV-aF-3Oh">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kRV-aF-3Oh">
                                     <rect key="frame" x="6" y="8.5" width="24" height="37.5"/>
                                     <color key="tintColor" name="Greyish"/>
                                     <constraints>
@@ -253,7 +253,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldt-qV-pg1">
-                    <rect key="frame" x="10" y="245" width="394" height="50"/>
+                    <rect key="frame" x="10" y="247" width="394" height="50"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="dpC-0I-rVO"/>
@@ -283,7 +283,7 @@
                 <constraint firstItem="lty-uS-wg4" firstAttribute="leading" secondItem="GDG-ex-dZ6" secondAttribute="leading" constant="12" id="bKx-MH-Csa"/>
                 <constraint firstAttribute="trailing" secondItem="AD3-2H-Kza" secondAttribute="trailing" constant="20" id="bgO-wA-EQH"/>
                 <constraint firstItem="JUT-QC-vpM" firstAttribute="top" secondItem="GDG-ex-dZ6" secondAttribute="top" id="ccM-Q3-45n"/>
-                <constraint firstItem="KBx-iq-SKJ" firstAttribute="bottom" secondItem="Ldt-qV-pg1" secondAttribute="bottom" constant="10" id="hFk-cd-Rq8"/>
+                <constraint firstItem="KBx-iq-SKJ" firstAttribute="bottom" secondItem="Ldt-qV-pg1" secondAttribute="bottom" constant="8" id="hFk-cd-Rq8"/>
                 <constraint firstItem="ooh-7h-zIY" firstAttribute="leading" secondItem="KBx-iq-SKJ" secondAttribute="leading" constant="15" id="hGy-NK-ASD"/>
                 <constraint firstItem="KBx-iq-SKJ" firstAttribute="trailing" secondItem="ooh-7h-zIY" secondAttribute="trailing" constant="15" id="o4s-Tn-EWY"/>
                 <constraint firstItem="lty-uS-wg4" firstAttribute="top" secondItem="GDG-ex-dZ6" secondAttribute="top" constant="12" id="rAf-il-8A7"/>
@@ -317,7 +317,7 @@
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="grid" catalog="system" width="128" height="113"/>
         <image name="hourglass" catalog="system" width="103" height="128"/>
-        <image name="map" catalog="system" width="128" height="112"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="rectangle.portrait" catalog="system" width="115" height="128"/>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

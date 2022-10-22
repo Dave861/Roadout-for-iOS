@@ -10,30 +10,30 @@ import SwiftUI
 import Intents
 import Alamofire
 
-struct RoadoutEntry: TimelineEntry {
+struct RoadoutWidgetEntry: TimelineEntry {
     let date = Date()
     let configuration: ConfigurationIntent
 }
 
-struct Provider: IntentTimelineProvider {
+struct RoadoutWidgetProvider: IntentTimelineProvider {
     
-    func placeholder(in context: Context) -> RoadoutEntry {
+    func placeholder(in context: Context) -> RoadoutWidgetEntry {
         return Entry(configuration: ConfigurationIntent())
     }
     
     
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (RoadoutEntry) -> ()) {
+    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (RoadoutWidgetEntry) -> ()) {
         completion(Entry(configuration: configuration))
     }
     
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<RoadoutWidgetEntry>) -> ()) {
         let entry = Entry(configuration: configuration)
         
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params1 : Parameters = ["id":entry.configuration.location1?.rID ?? ""]
         let params2 : Parameters = ["id":entry.configuration.location2?.rID ?? ""]
         
-        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Parking/GetFreeParkingSpots.php", method: .post, parameters: params1, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params1, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 return
             }
@@ -50,7 +50,7 @@ struct Provider: IntentTimelineProvider {
             }
         }
         
-        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Parking/GetFreeParkingSpots.php", method: .post, parameters: params2, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params2, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 return
             }
@@ -74,16 +74,17 @@ struct Provider: IntentTimelineProvider {
     
 }
 
-struct PlaceholderView: View {
+struct RoadoutWidgetPlaceholderView: View {
     var body: some View {
-        RoadoutView(date: Date(), spots1: 10, spots2: 10, freeSpots1: 5, freeSpots2: 5, coords1: "-, -", coords2: "-, -", location1: "Location 1", location2: "Location 2")
+        RoadoutWidgetView(date: Date(), spots1: 10, spots2: 10, freeSpots1: 5, freeSpots2: 5, coords1: "-, -", coords2: "-, -", location1: "Location 1", location2: "Location 2")
     }
 }
-struct WidgetEntryView: View {
-    var entry: Provider.Entry
+
+struct RoadoutWidgetEntryView: View {
+    var entry: RoadoutWidgetProvider.Entry
     
     var body: some View {
-        RoadoutView(date: Date(),
+        RoadoutWidgetView(date: Date(),
                     spots1: entry.configuration.location1?.totalSpots as? Int ?? 0,
                     spots2: entry.configuration.location2?.totalSpots as? Int ?? 0,
                     freeSpots1: entry.configuration.location1?.freeSpots as? Int ?? 0,
@@ -95,7 +96,7 @@ struct WidgetEntryView: View {
     }
 }
 
-struct RoadoutView: View {
+struct RoadoutWidgetView: View {
     
     let date: Date
     var spots1: Int
@@ -122,8 +123,9 @@ struct RoadoutView: View {
                     Text(location1)
                         .font(.system(size: 18, weight: .bold))
                     HStack(alignment: .center, spacing: 6) {
-                        Image(systemName: "barometer")
+                        Image("gauge.fill")
                             .resizable()
+                            .renderingMode(.template)
                             .frame(width: 17, height: 17, alignment: .center)
                             .foregroundColor(Color("AccentColor"))
                         HStack(alignment: .center, spacing: 4) {
@@ -178,8 +180,9 @@ struct RoadoutView: View {
                         Text(location1)
                             .font(.system(size: 18, weight: .bold))
                         HStack(alignment: .center, spacing: 6) {
-                            Image(systemName: "barometer")
+                            Image("gauge.fill")
                                 .resizable()
+                                .renderingMode(.template)
                                 .frame(width: 17, height: 17, alignment: .center)
                                 .foregroundColor(Color("AccentColor"))
                             HStack(alignment: .center, spacing: 4) {
@@ -232,8 +235,9 @@ struct RoadoutView: View {
                         Text(location2)
                             .font(.system(size: 18, weight: .bold))
                         HStack(alignment: .center, spacing: 6) {
-                            Image(systemName: "barometer")
+                            Image("gauge.fill")
                                 .resizable()
+                                .renderingMode(.template)
                                 .frame(width: 17, height: 17, alignment: .center)
                                 .foregroundColor(Color("Dark Orange"))
                             HStack(alignment: .center, spacing: 4) {
@@ -278,44 +282,21 @@ struct RoadoutView: View {
                 .background(Color("Secondary Detail"))
             }
         default:
-           if #available(iOS 16, *) {
-                if family == .accessoryCircular {
-                    ZStack {
-                      Image("ThreeThing")
-                            .resizable()
-                        
-                    }
-                    .background(Color(uiColor: UIColor(named: "AccentColor")!.withAlphaComponent(0.4)))
-                }
-            } else {
-                VStack(alignment: .leading, spacing: 30) {
-                    
-                }
-                .frame(width: 200, alignment: .leading)
-            }
+           Text("Unimplemented")
         }
     }
     
 }
-@main
+
 struct RoadoutWidget: Widget {
     private let kind = "Roadout_Widget"
     
     var body: some WidgetConfiguration {
-        if #available(iOSApplicationExtension 16.0, *) {
-            return IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-                WidgetEntryView(entry: entry)
-            }
-            .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular])
-            .configurationDisplayName("Roadout")
-            .description("Have Roadout at a glance".widgetLocalize())
-        } else {
-            return IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-                WidgetEntryView(entry: entry)
-            }
-            .supportedFamilies([.systemSmall, .systemMedium])
-            .configurationDisplayName("Roadout")
-            .description("Have Roadout at a glance".widgetLocalize())
+        return IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: RoadoutWidgetProvider()) { entry in
+            RoadoutWidgetEntryView(entry: entry)
         }
+        .supportedFamilies([.systemSmall, .systemMedium])
+        .configurationDisplayName("Roadout")
+        .description("Your favourite parking at a glance".widgetLocalize())
     }
 }

@@ -23,11 +23,11 @@ class UserSettingsCell: UITableViewCell {
     
     var menuItems: [UIAction] {
         return [
-            UIAction(title: "Edit Name".localized(), image: UIImage(systemName: "pencil"), handler: { (_) in
+            UIAction(title: "Edit Name".localized(), image: UIImage(systemName: "textformat"), handler: { (_) in
                 let vc = self.sb.instantiateViewController(withIdentifier: "EditNameVC") as! EditNameViewController
                 self.parentViewController().present(vc, animated: true, completion: nil)
             }),
-            UIAction(title: "Edit Password".localized(), image: UIImage(systemName: "key"), handler: { (_) in
+            UIAction(title: "Edit Password".localized(), image: UIImage(systemName: "key.fill"), handler: { (_) in
                 let vc = self.sb.instantiateViewController(withIdentifier: "EditPasswordVC") as! EditPasswordViewController
                 self.parentViewController().present(vc, animated: true, completion: nil)
             }),
@@ -35,7 +35,7 @@ class UserSettingsCell: UITableViewCell {
                 let vc = self.sb.instantiateViewController(withIdentifier: "LinkWatchVC") as! LinkWatchViewController
                 self.parentViewController().present(vc, animated: true, completion: nil)
             }),
-            UIAction(title: "Delete Account".localized(), image: UIImage(systemName: "trash"), handler: { (_) in
+            UIAction(title: "Delete Account".localized(), image: UIImage(systemName: "trash.fill"), handler: { (_) in
                 let vc = self.sb.instantiateViewController(withIdentifier: "DeleteAccountVC") as! DeleteAccountViewController
                 self.parentViewController().present(vc, animated: true, completion: nil)
             }),

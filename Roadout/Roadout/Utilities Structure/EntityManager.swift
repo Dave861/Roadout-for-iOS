@@ -25,7 +25,7 @@ class EntityManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":city]
         
-        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Parking/GetParkingLots.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetParkingLots.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 completion(.failure(EntityErrors.databaseFailure))
                 return
@@ -54,7 +54,7 @@ class EntityManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":location]
         
-        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Parking/GetParkingSections.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetParkingSections.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 completion(.failure(EntityErrors.databaseFailure))
                 return
@@ -84,7 +84,7 @@ class EntityManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":section]
         
-        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Parking/GetSectionInf.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetSectionInf.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 completion(.failure(EntityErrors.databaseFailure))
                 return
@@ -119,7 +119,7 @@ class EntityManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":location]
         
-        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Parking/GetFreeParkingSpots.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 completion(.failure(EntityErrors.databaseFailure))
                 return

@@ -41,13 +41,14 @@ struct RoadoutIntent: AppIntent {
             } else if reservationMinutes <= 0 {
                 throw RoadoutIntentErrors.valueZero
             }
-            /*
-            var findingErrorEncountered = false
+            
+           /* var findingErrorEncountered = false
             RoadoutIntentHelper.sharedInstance.performFind { result in
                 switch result {
                 case .success():
                     print("Found Spot!")
                     print(FunctionsManager.sharedInstance.foundLocation.name)
+                    
                 case .failure(let err):
                     print(err)
                     findingErrorEncountered = true
@@ -55,8 +56,8 @@ struct RoadoutIntent: AppIntent {
             }
             if findingErrorEncountered {
                 throw RoadoutIntentErrors.failureRequiringAppLaunch
-            }
-            */
+            }*/
+            
             try await requestConfirmation(result: .result(dialog: "Ready to reserve for 15 RON?") {
                 RoadoutIntentConfirmView(
                     parkLocationName: "Test Location",

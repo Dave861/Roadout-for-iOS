@@ -11,7 +11,7 @@ class SettingsViewController: UIViewController {
     
     var cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
     var cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Icons", "Dark Yellow", "", "Main Yellow", "Icons", "", "Greyish", "Brownish", "Kinda Red", "ExpressFocus", "Main Yellow"]
-    var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "book.closed.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "puzzlepiece.fill", "signature", "globe"]
+    var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "clock.fill", "scroll.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "puzzlepiece.fill", "signature", "globe"]
     var cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Reminders".localized(), "Reservation History".localized(), "", "Invite Friends".localized(), "Prizes".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "FAQ & Support".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
 
     var cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "FAQVC", "AckVC", "AboutVC"]

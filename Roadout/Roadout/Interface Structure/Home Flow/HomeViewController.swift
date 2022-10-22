@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.expressView.frame = CGRect(x: 13, y: self.screenSize.height-280-dif, width: self.screenSize.width - 26, height: 280)
+            self.expressView.frame = CGRect(x: 10, y: self.screenSize.height-280-dif, width: self.screenSize.width - 20, height: 280)
             self.view.addSubview(self.expressView)
         }
     }
@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.findView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
+            self.findView.frame = CGRect(x: 10, y: self.screenSize.height-310-dif, width: self.screenSize.width - 20, height: 310)
             self.view.addSubview(self.findView)
         }
     }
@@ -116,8 +116,12 @@ class HomeViewController: UIViewController {
         let vc = storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchViewController
         self.present(vc, animated: false, completion: nil)
     }
+    
+    @IBOutlet weak var settingsButton: UIButton!
+    
     @IBAction func settingsTapped(_ sender: Any) {
-        //Handled by menu
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBOutlet weak var searchTapArea: UIButton!
@@ -133,46 +137,40 @@ class HomeViewController: UIViewController {
         let mapInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: cardHeight-52, right: 0.0)
         mapView.padding = mapInsets
         focusedView.layer.shadowPath = UIBezierPath(rect: focusedView.bounds).cgPath
+        let mapPadding = UIEdgeInsets(top: 0, left: 0, bottom: cardHeight-44, right: 0)
+        mapView.padding = mapPadding
     }
     
     @IBOutlet weak var focusedView: UIView!
     
     @IBOutlet weak var mapHostingView: UIView!
-    
-    
-    @IBOutlet weak var mapControlsView: UIView!
-    
+        
     @IBOutlet weak var mapTypeButton: UIButton!
     
-    @IBOutlet weak var userLocationButton: UIButton!
+    @IBOutlet weak var mapFocusButton: UIButton!
     
     @IBAction func mapTypeTapped(_ sender: Any) {
         if selectedMapType == MapType.roadout {
             mapTypeButton.setImage(UIImage(systemName: "globe.europe.africa.fill"), for: .normal)
-            mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 15), forImageIn: .normal)
-            
+            mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(scale: .medium), forImageIn: .normal)
             mapView.mapType = .satellite
             
             selectedMapType = .satellite
         } else {
             mapTypeButton.setImage(UIImage(systemName: "map.fill"), for: .normal)
-            mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14), forImageIn: .normal)
-            
+            mapTypeButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(scale: .medium), forImageIn: .normal)
             mapView.mapType = .normal
             
             selectedMapType = .roadout
         }
     }
     
-    @IBAction func userLocationTapped(_ sender: Any) {
+    @IBAction func mapFocusTapped(_ sender: Any) {
         guard let coord = self.mapView.myLocation?.coordinate else { return }
         let camera = GMSCameraPosition.camera(withLatitude: coord.latitude, longitude: coord.longitude, zoom: 15.0)
         mapView.animate(to: camera)
-        
-        userLocationButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
     }
     
-    @IBOutlet weak var markedSpotView: UIView!
     
     @IBOutlet weak var markedSpotButton: UIButton!
     
@@ -284,9 +282,9 @@ class HomeViewController: UIViewController {
     
     @objc func refreshMarkedSpot() {
         if carParkHash == "roadout_carpark_clear" {
-            self.markedSpotView.isHidden = true
+            self.markedSpotButton.isHidden = true
         } else {
-            self.markedSpotView.isHidden = false
+            self.markedSpotButton.isHidden = false
         }
     }
     
@@ -294,11 +292,7 @@ class HomeViewController: UIViewController {
     
     var menuItems: [UIAction] {
         return [
-            UIAction(title: "Settings".localized(), image: UIImage(systemName: "gearshape.2"), handler: { (_) in
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
-                self.navigationController?.pushViewController(vc, animated: true)
-            }),
-            UIAction(title: "Pay Parking".localized(), image: UIImage(systemName: "signpost.right"), handler: { (_) in
+            UIAction(title: "Pay Parking".localized(), image: UIImage(systemName: "wallet.pass.fill"), handler: { (_) in
                 guard let coord = self.mapView.myLocation?.coordinate else {
                     
                     let alert = UIAlertController(title: "Error".localized(), message: "Roadout can't access your location to show nearby spots, please enable it in Settings.".localized(), preferredStyle: .alert)
@@ -314,7 +308,7 @@ class HomeViewController: UIViewController {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectPayVC") as! SelectPayViewController
                 self.present(vc, animated: true, completion: nil)
             }),
-            UIAction(title: "Express Lane".localized(), image: UIImage(systemName: "flag.2.crossed"), handler: { (_) in
+            UIAction(title: "Express Lane".localized(), image: UIImage(systemName: "flag.2.crossed.fill"), handler: { (_) in
                 guard let coord = self.mapView.myLocation?.coordinate else {
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpressPickVC") as! ExpressPickViewController
                     self.present(vc, animated: true, completion: nil)
@@ -324,9 +318,9 @@ class HomeViewController: UIViewController {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpressPickVC") as! ExpressPickViewController
                 self.present(vc, animated: true, completion: nil)
             }),
-            UIAction(title: "Find Way".localized(), image: UIImage(systemName: "binoculars"), handler: { (_) in
+            UIAction(title: "Find Way".localized(), image: UIImage(systemName: "binoculars.fill"), handler: { (_) in
                 DispatchQueue.main.async {
-                    let indicatorIcon = UIImage.init(systemName: "binoculars")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
+                    let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
                     let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
                     indicatorView.dismissByDrag = false
                     indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
@@ -433,44 +427,18 @@ class HomeViewController: UIViewController {
         focusedView.layer.shouldRasterize = true
         focusedView.layer.rasterizationScale = UIScreen.main.scale
         
-        //Map Controls
-        mapControlsView.layer.cornerRadius = 9.0
-        
-        mapControlsView.layer.shadowColor = UIColor.black.cgColor
-        mapControlsView.layer.shadowOpacity = 0.1
-        mapControlsView.layer.shadowOffset = .zero
-        mapControlsView.layer.shadowRadius = 9.0
-        mapControlsView.layer.shadowPath = UIBezierPath(rect: mapControlsView.bounds).cgPath
-        mapControlsView.layer.shouldRasterize = true
-        mapControlsView.layer.rasterizationScale = UIScreen.main.scale
-                
-        mapTypeButton.setTitle("", for: .normal)
-        userLocationButton.setTitle("", for: .normal)
-        
-        //Marked Spot
-        markedSpotView.layer.cornerRadius = 9.0
-        
-        markedSpotView.layer.shadowColor = UIColor.black.cgColor
-        markedSpotView.layer.shadowOpacity = 0.1
-        markedSpotView.layer.shadowOffset = .zero
-        markedSpotView.layer.shadowRadius = 9.0
-        markedSpotView.layer.shadowPath = UIBezierPath(rect: markedSpotView.bounds).cgPath
-        markedSpotView.layer.shouldRasterize = true
-        markedSpotView.layer.rasterizationScale = UIScreen.main.scale
-        
-        markedSpotButton.setTitle("", for: .normal)
-        markedSpotButton.menu = markedMenu
-        markedSpotButton.showsMenuAsPrimaryAction = true
-        
         refreshMarkedSpot()
         
         //Map Setup
         let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 15.0)
+        
         if UIDevice.current.hasNotch {
-            mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-171), camera: camera)
+            mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+7-backgroundView.frame.height-34), camera: camera)
         } else {
-            mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-137), camera: camera)
+            mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+7-backgroundView.frame.height), camera: camera)
         }
+        let mapPadding = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
+        mapView.padding = mapPadding
         mapView.delegate = self
         self.mapHostingView.insertSubview(mapView, at: 0)
         
@@ -489,10 +457,29 @@ class HomeViewController: UIViewController {
             mapView.isMyLocationEnabled = true
         }
         
+        markedSpotButton.showsMenuAsPrimaryAction = true
+        markedSpotButton.menu = markedMenu
+        
+        mapFocusButton.setTitle("", for: .normal)
+        mapTypeButton.setTitle("", for: .normal)
+        settingsButton.setTitle("", for: .normal)
+        markedSpotButton.setTitle("", for: .normal)
+        
+        mapFocusButton.layer.cornerRadius = 15.0
+        mapTypeButton.layer.cornerRadius = 15.0
+        settingsButton.layer.cornerRadius = 15.0
+        markedSpotButton.layer.cornerRadius = 15.0
+        
         //RE-ADD THIS WHEN GROUP RESERVE IS DONE
         /*
          setUpSharePlay()
          */
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        backgroundView.layer.cornerRadius = 12.0
+        backgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
         
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -587,18 +574,18 @@ class HomeViewController: UIViewController {
     
     var markedMenuItems: [UIAction] {
           return [
+              UIAction(title: "Clear".localized(), image: UIImage(systemName: "arrow.triangle.2.circlepath"), handler: { (_) in
+                UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
+                carParkHash = "roadout_carpark_clear"
+                NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
+              }),
               UIAction(title: "Get Directions".localized(), image: UIImage(systemName: "arrow.triangle.branch"), handler: { (_) in
                   let hashComponents = carParkHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
                   let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
                   let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
                   
                   self.openDirectionsToCoords(lat: lat, long: long)
-              }),
-              UIAction(title: "Clear".localized(), image: UIImage(systemName: "arrow.triangle.2.circlepath"), handler: { (_) in
-                  UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
-                  carParkHash = "roadout_carpark_clear"
-                  NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
-              }),
+              })
           ]
       }
       var markedMenu: UIMenu {
@@ -613,7 +600,7 @@ class HomeViewController: UIViewController {
           case "Waze":
               link = "https://www.waze.com/ul?ll=\(lat)%2C-\(long)&navigate=yes&zoom=15"
           default:
-              link = "http://maps.apple.com/?ll=\(lat),\(long)&q=Roadout%20Location"
+              link = "https://maps.apple.com/?ll=\(lat),\(long)&q=Roadout%20Location"
           }
           guard UIApplication.shared.canOpenURL(URL(string: link)!) else { return }
           UIApplication.shared.open(URL(string: link)!)
@@ -670,23 +657,26 @@ extension HomeViewController: CLLocationManagerDelegate {
 
 extension HomeViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedView && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
-            selectedLocationName = marker.title!
-            let colorSnippet = marker.snippet!
-            selectedLocationColor = UIColor(named: colorSnippet)!
-            selectedLocationCoord = marker.position
-            if self.view.subviews.last != searchBar && self.view.subviews.last != mapView {
-                self.view.subviews.last?.removeFromSuperview()
+        if marker != spotMarker {
+            if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedView && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
+                selectedLocationName = marker.title!
+                let colorSnippet = marker.snippet!
+                selectedLocationColor = UIColor(named: colorSnippet)!
+                selectedLocationCoord = marker.position
+                if self.view.subviews.last != searchBar && self.view.subviews.last != mapView {
+                    self.view.subviews.last?.removeFromSuperview()
+                }
+                if self.selectedMarker != nil {
+                    self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                    imageView.contentMode = .scaleAspectFit
+                    imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
+                    self.selectedMarker.iconView?.addSubview(imageView)
+                }
+                self.selectedMarker = marker
+                addResultCard()
+                self.removeSpotMarker()
             }
-            if self.selectedMarker != nil {
-                self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-                imageView.contentMode = .scaleAspectFit
-                imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
-                self.selectedMarker.iconView?.addSubview(imageView)
-            }
-            self.selectedMarker = marker
-            addResultCard()
         }
         return true
     }
@@ -695,15 +685,6 @@ extension HomeViewController: GMSMapViewDelegate {
         let latitude = mapView.camera.target.latitude
         let longitude = mapView.camera.target.longitude
         centerMapCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        
-        if mapView.isMyLocationEnabled {
-            if centerMapCoordinate.latitude.rounded(toPlaces: 4) != mapView.myLocation?.coordinate.latitude.rounded(toPlaces: 4) || centerMapCoordinate.longitude.rounded(toPlaces: 4) != mapView.myLocation?.coordinate.longitude.rounded(toPlaces: 4) {
-                
-                userLocationButton.setImage(UIImage(systemName: "location"), for: .normal)
-            } else {
-                userLocationButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
-            }
-        }
     }
     
 }
@@ -740,7 +721,7 @@ extension HomeViewController {
                 if (UIDevice.current.hasNotch) {
                     dif = 49.0
                 }
-                self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-142-dif, width: self.screenSize.width - 26, height: 142)
+                self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-142-dif, width: self.screenSize.width - 20, height: 142)
                 self.view.addSubview(self.resultView)
             }
             return
@@ -752,7 +733,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-142-dif, width: self.screenSize.width - 26, height: 142)
+            self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-142-dif, width: self.screenSize.width - 20, height: 142)
             self.view.addSubview(self.resultView)
         }
         
@@ -787,7 +768,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.sectionView.frame = CGRect(x: 13, y: self.screenSize.height-331-dif, width: self.screenSize.width - 26, height: 331)
+            self.sectionView.frame = CGRect(x: 10, y: self.screenSize.height-331-dif, width: self.screenSize.width - 20, height: 331)
             self.view.addSubview(self.sectionView)
         }
     }
@@ -798,7 +779,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-142-dif, width: self.screenSize.width - 26, height: 142)
+            self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-142-dif, width: self.screenSize.width - 20, height: 142)
             self.view.addSubview(self.resultView)
             self.sectionView.removeFromSuperview()
         }
@@ -816,7 +797,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.spotView.frame = CGRect(x: 13, y: self.screenSize.height-318-dif, width: self.screenSize.width - 26, height: 318)
+            self.spotView.frame = CGRect(x: 10, y: self.screenSize.height-318-dif, width: self.screenSize.width - 20, height: 318)
             self.view.addSubview(self.spotView)
         }
     }
@@ -827,7 +808,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.sectionView.frame = CGRect(x: 13, y: self.screenSize.height-331-dif, width: self.screenSize.width - 26, height: 331)
+            self.sectionView.frame = CGRect(x: 10, y: self.screenSize.height-331-dif, width: self.screenSize.width - 20, height: 331)
             self.view.addSubview(self.sectionView)
             self.spotView.removeFromSuperview()
         }
@@ -845,7 +826,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
+            self.reserveView.frame = CGRect(x: 10, y: self.screenSize.height-310-dif, width: self.screenSize.width - 20, height: 310)
             self.view.addSubview(self.reserveView)
         }
     }
@@ -857,7 +838,7 @@ extension HomeViewController {
                 if (UIDevice.current.hasNotch) {
                     dif = 49.0
                 }
-                self.resultView.frame = CGRect(x: 13, y: self.screenSize.height-142-dif, width: self.screenSize.width - 26, height: 142)
+                self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-142-dif, width: self.screenSize.width - 20, height: 142)
                 self.view.addSubview(self.resultView)
                 self.reserveView.removeFromSuperview()
             }
@@ -868,7 +849,7 @@ extension HomeViewController {
                 if (UIDevice.current.hasNotch) {
                     dif = 49.0
                 }
-                self.spotView.frame = CGRect(x: 13, y: self.screenSize.height-318-dif, width: self.screenSize.width - 26, height: 318)
+                self.spotView.frame = CGRect(x: 10, y: self.screenSize.height-318-dif, width: self.screenSize.width - 20, height: 318)
                 self.view.addSubview(self.spotView)
                 self.reserveView.removeFromSuperview()
             }
@@ -887,7 +868,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-237-dif, width: self.screenSize.width - 26, height: 237)
+            self.payView.frame = CGRect(x: 10, y: self.screenSize.height-237-dif, width: self.screenSize.width - 20, height: 237)
             self.view.addSubview(self.payView)
         }
     }
@@ -898,7 +879,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reserveView.frame = CGRect(x: 13, y: self.screenSize.height-310-dif, width: self.screenSize.width - 26, height: 310)
+            self.reserveView.frame = CGRect(x: 10, y: self.screenSize.height-310-dif, width: self.screenSize.width - 20, height: 310)
             self.view.addSubview(self.reserveView)
             self.payView.removeFromSuperview()
         }
@@ -916,7 +897,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-292-dif, width: self.screenSize.width - 26, height: 292)
+            self.reservationView.frame = CGRect(x: 10, y: self.screenSize.height-292-dif, width: self.screenSize.width - 20, height: 292)
             self.view.addSubview(self.reservationView)
         }
     }
@@ -927,7 +908,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.activeBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.activeBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
             self.view.addSubview(self.activeBar)
             self.reservationView.removeFromSuperview()
         }
@@ -945,7 +926,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.delayView.frame = CGRect(x: 13, y: self.screenSize.height-205-dif, width: self.screenSize.width - 26, height: 205)
+            self.delayView.frame = CGRect(x: 10, y: self.screenSize.height-205-dif, width: self.screenSize.width - 20, height: 205)
             self.view.addSubview(self.delayView)
         }
     }
@@ -956,7 +937,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-292-dif, width: self.screenSize.width - 26, height: 292)
+            self.reservationView.frame = CGRect(x: 10, y: self.screenSize.height-292-dif, width: self.screenSize.width - 20, height: 292)
             self.view.addSubview(self.reservationView)
             self.delayView.removeFromSuperview()
         }
@@ -974,7 +955,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.payView.frame = CGRect(x: 13, y: self.screenSize.height-237-dif, width: self.screenSize.width - 26, height: 237)
+            self.payView.frame = CGRect(x: 10, y: self.screenSize.height-237-dif, width: self.screenSize.width - 20, height: 237)
             self.view.addSubview(self.payView)
         }
     }
@@ -985,7 +966,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.delayView.frame = CGRect(x: 13, y: self.screenSize.height-205-dif, width: self.screenSize.width - 26, height: 205)
+            self.delayView.frame = CGRect(x: 10, y: self.screenSize.height-205-dif, width: self.screenSize.width - 20, height: 205)
             self.view.addSubview(self.delayView)
             self.payView.removeFromSuperview()
         }
@@ -1003,7 +984,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.unlockView.frame = CGRect(x: 13, y: self.screenSize.height-221-dif, width: self.screenSize.width - 26, height: 221)
+            self.unlockView.frame = CGRect(x: 10, y: self.screenSize.height-221-dif, width: self.screenSize.width - 20, height: 221)
             self.view.addSubview(self.unlockView)
         }
     }
@@ -1014,7 +995,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 13, y: self.screenSize.height-292-dif, width: self.screenSize.width - 26, height: 292)
+            self.reservationView.frame = CGRect(x: 10, y: self.screenSize.height-292-dif, width: self.screenSize.width - 20, height: 292)
             self.view.addSubview(self.reservationView)
             self.unlockView.removeFromSuperview()
         }
@@ -1032,7 +1013,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.unlockedView.frame = CGRect(x: 13, y: self.screenSize.height-155-dif, width: self.screenSize.width - 26, height: 155)
+            self.unlockedView.frame = CGRect(x: 10, y: self.screenSize.height-155-dif, width: self.screenSize.width - 20, height: 155)
             self.view.addSubview(self.unlockedView)
         }
     }
@@ -1052,7 +1033,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.payDurationView.frame = CGRect(x: 13, y: self.screenSize.height-206-dif, width: self.screenSize.width - 26, height: 206)
+            self.payDurationView.frame = CGRect(x: 10, y: self.screenSize.height-206-dif, width: self.screenSize.width - 20, height: 206)
             self.view.addSubview(self.payDurationView)
         }
     }
@@ -1063,7 +1044,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.unlockedView.frame = CGRect(x: 13, y: self.screenSize.height-155-dif, width: self.screenSize.width - 26, height: 155)
+            self.unlockedView.frame = CGRect(x: 10, y: self.screenSize.height-155-dif, width: self.screenSize.width - 20, height: 155)
             self.view.addSubview(self.unlockedView)
             self.payDurationView.removeFromSuperview()
         }
@@ -1081,7 +1062,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.payParkingView.frame = CGRect(x: 13, y: self.screenSize.height-271-dif, width: self.screenSize.width - 26, height: 271)
+            self.payParkingView.frame = CGRect(x: 10, y: self.screenSize.height-271-dif, width: self.screenSize.width - 20, height: 271)
             self.view.addSubview(self.payParkingView)
         }
     }
@@ -1092,7 +1073,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.payDurationView.frame = CGRect(x: 13, y: self.screenSize.height-206-dif, width: self.screenSize.width - 26, height: 206)
+            self.payDurationView.frame = CGRect(x: 10, y: self.screenSize.height-206-dif, width: self.screenSize.width - 20, height: 206)
             self.view.addSubview(self.payDurationView)
             self.payParkingView.removeFromSuperview()
         }
@@ -1119,7 +1100,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.paidBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.paidBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
             self.view.addSubview(self.paidBar)
         }
     }
@@ -1136,7 +1117,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.activeBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.activeBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
             self.view.addSubview(self.activeBar)
         }
     }
@@ -1153,7 +1134,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.cancelledBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.cancelledBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
             self.view.addSubview(self.cancelledBar)
         }
     }
@@ -1171,7 +1152,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.noWifiBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.noWifiBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
             self.view.addSubview(self.noWifiBar)
         }
     }
@@ -1188,7 +1169,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.paidParkingBar.frame = CGRect(x: 13, y: self.screenSize.height-52-dif, width: self.screenSize.width - 26, height: 52)
+            self.paidParkingBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
             self.view.addSubview(self.paidParkingBar)
         }
     }

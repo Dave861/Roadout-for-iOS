@@ -55,7 +55,7 @@ class NotificationsViewController: UIViewController {
             UserDefaultsSuite.set(2, forKey: "ro.roadout.reservationNotificationsOption")
             self.setReservationNotifPermissionsUI()
         } else {
-            let alert = UIAlertController(title: "Live Activities", message: "Live Activities are only available on iOS 16.1 or newer", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Live Activities".localized(), message: "Live Activities are only available on iOS 16.1 or newer".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
             alert.addAction(okAction)
             alert.view.tintColor = UIColor(named: "Redish")

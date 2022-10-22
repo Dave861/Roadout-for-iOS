@@ -41,6 +41,8 @@
 		9A300CE42789970C0038A085 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A300CE32789970C0038A085 /* DeleteAccountViewController.swift */; };
 		9A310783272A707100B1F84A /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A310782272A707100B1F84A /* RemindersViewController.swift */; };
 		9A310785272A708300B1F84A /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A310784272A708300B1F84A /* ReminderCell.swift */; };
+		9A378C572903F1AC0059C289 /* RoadoutWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A378C552903F15B0059C289 /* RoadoutWidgets.swift */; };
+		9A378C582903F1B30059C289 /* Roadout_LockWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A378C532903EFF90059C289 /* Roadout_LockWidget.swift */; };
 		9A397D3B280D4970003458BD /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6E7E6927563F3200E09B75 /* Intents.framework */; };
 		9A397D3E280D4970003458BD /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A397D3D280D4970003458BD /* IntentHandler.swift */; };
 		9A397D42280D4970003458BD /* RoadoutWidgetIntentHandler.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A397D3A280D4970003458BD /* RoadoutWidgetIntentHandler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -94,12 +96,10 @@
 		9A6B5491288942F800B88CB8 /* VariablesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9231172888416100CC9D92 /* VariablesManager.swift */; };
 		9A6B54932889430E00B88CB8 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
 		9A6B54942889430F00B88CB8 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
-		9A6B54952889431000B88CB8 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
 		9A6D80A22733CF4C00C354EF /* carkeysound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6D80A02733CF4C00C354EF /* carkeysound.aiff */; };
 		9A6D80A32733CF4C00C354EF /* hornsound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6D80A12733CF4C00C354EF /* hornsound.aiff */; };
 		9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */ = {isa = PBXBuildFile; productRef = 9A6E1C362731324B002E29F9 /* BarChartKit-static */; };
 		9A728C512732D849000F9DED /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
-		9A72D2FA2858BDC2000FBC7B /* ComplicationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A72D2F92858BDC2000FBC7B /* ComplicationViews.swift */; };
 		9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7331FD272877F400ACE30A /* NotificationsViewController.swift */; };
 		9A74D01928B3C015000DB497 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A74D01828B3C015000DB497 /* MaintenanceViewController.swift */; };
 		9A74D01B28B3C055000DB497 /* MaintenanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A74D01A28B3C055000DB497 /* MaintenanceTableViewCell.swift */; };
@@ -117,25 +117,7 @@
 		9A7C1A142776035F0088B54A /* Roadout WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A7C1A072776035E0088B54A /* Roadout WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9A81E5F927B8DED600F571C3 /* FunctionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A81E5F827B8DED600F571C3 /* FunctionsManager.swift */; };
 		9A825F5928426B91003C6F8D /* LinkWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A825F5828426B91003C6F8D /* LinkWatchViewController.swift */; };
-		9A825F6028426F0A003C6F8D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A825F5E28426F0A003C6F8D /* Interface.storyboard */; };
-		9A825F6228426F0B003C6F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A825F6128426F0B003C6F8D /* Assets.xcassets */; };
-		9A825F6828426F0B003C6F8D /* Roadout for Watch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A825F6728426F0B003C6F8D /* Roadout for Watch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		9A825F6F28426F0B003C6F8D /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A825F6E28426F0B003C6F8D /* ExtensionDelegate.swift */; };
-		9A825F7128426F0B003C6F8D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A825F7028426F0B003C6F8D /* ComplicationController.swift */; };
-		9A825F7328426F0C003C6F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A825F7228426F0C003C6F8D /* Assets.xcassets */; };
-		9A825F7728426F0C003C6F8D /* Roadout.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9A825F5C28426F0A003C6F8D /* Roadout.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		9A825F8528426F9F003C6F8D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A825F8428426F9F003C6F8D /* UserManager.swift */; };
-		9A825F8628426F9F003C6F8D /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A825F8328426F9F003C6F8D /* ReservationManager.swift */; };
-		9A825F8C28426FB6003C6F8D /* LinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A825F8B28426FB6003C6F8D /* LinkController.swift */; };
-		9A825F8D28426FB6003C6F8D /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A825F8828426FB6003C6F8D /* HomeController.swift */; };
-		9A825F8E28426FB6003C6F8D /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A825F8A28426FB6003C6F8D /* PreferencesController.swift */; };
-		9A825F8F28426FB6003C6F8D /* UnlockedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A825F8928426FB6003C6F8D /* UnlockedController.swift */; };
-		9A825F92284270DB003C6F8D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9A825F91284270DB003C6F8D /* Alamofire */; };
-		9A825F9328427126003C6F8D /* UserDefSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5FC6432787685200CDB49D /* UserDefSuite.swift */; };
-		9A825F942842727C003C6F8D /* NotificationNameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */; };
 		9A8484C22729A8AD00862685 /* DirectionsAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */; };
-		9A8836D028DA0AA300009E07 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8836CF28DA0AA300009E07 /* StringExtension.swift */; };
-		9A8836D328DA0AB100009E07 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A8836D528DA0AB100009E07 /* Localizable.strings */; };
 		9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9A8D8D3B27BADDAC0037DFE3 /* PusherSwift */; };
 		9A8DC951282FF88D008F92B6 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8DC950282FF88D008F92B6 /* HelpViewController.swift */; };
 		9A8DC953282FF89F008F92B6 /* HelpDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8DC952282FF89F008F92B6 /* HelpDetailViewController.swift */; };
@@ -219,20 +201,6 @@
 			remoteGlobalIDString = 9A7C1A062776035E0088B54A;
 			remoteInfo = "Roadout WidgetExtension";
 		};
-		9A825F6928426F0B003C6F8D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AC926DF272697F00054E453 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A825F6628426F0B003C6F8D;
-			remoteInfo = "Roadout for Watch WatchKit Extension";
-		};
-		9A825F7528426F0C003C6F8D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AC926DF272697F00054E453 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A825F5B28426F0A003C6F8D;
-			remoteInfo = "Roadout for Watch";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -248,24 +216,12 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A825F7B28426F0C003C6F8D /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				9A825F6828426F0B003C6F8D /* Roadout for Watch WatchKit Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9A8268452736A70100737DD3 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				9A825F7728426F0C003C6F8D /* Roadout.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +283,8 @@
 		9A300CE32789970C0038A085 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		9A310782272A707100B1F84A /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		9A310784272A708300B1F84A /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
+		9A378C532903EFF90059C289 /* Roadout_LockWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadout_LockWidget.swift; sourceTree = "<group>"; };
+		9A378C552903F15B0059C289 /* RoadoutWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutWidgets.swift; sourceTree = "<group>"; };
 		9A397D3A280D4970003458BD /* RoadoutWidgetIntentHandler.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RoadoutWidgetIntentHandler.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A397D3D280D4970003458BD /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		9A397D3F280D4970003458BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -371,7 +329,6 @@
 		9A6E7E6927563F3200E09B75 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		9A6E7E7427563F3300E09B75 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		9A728C502732D849000F9DED /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
-		9A72D2F92858BDC2000FBC7B /* ComplicationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationViews.swift; sourceTree = "<group>"; };
 		9A7331FD272877F400ACE30A /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		9A74D01828B3C015000DB497 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
 		9A74D01A28B3C055000DB497 /* MaintenanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceTableViewCell.swift; sourceTree = "<group>"; };
@@ -387,25 +344,7 @@
 		9A7C1A112776035F0088B54A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A81E5F827B8DED600F571C3 /* FunctionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsManager.swift; sourceTree = "<group>"; };
 		9A825F5828426B91003C6F8D /* LinkWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkWatchViewController.swift; sourceTree = "<group>"; };
-		9A825F5C28426F0A003C6F8D /* Roadout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roadout.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A825F5F28426F0A003C6F8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		9A825F6128426F0B003C6F8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9A825F6728426F0B003C6F8D /* Roadout for Watch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Roadout for Watch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A825F6E28426F0B003C6F8D /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		9A825F7028426F0B003C6F8D /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
-		9A825F7228426F0C003C6F8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9A825F7428426F0C003C6F8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A825F8328426F9F003C6F8D /* ReservationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationManager.swift; sourceTree = "<group>"; };
-		9A825F8428426F9F003C6F8D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		9A825F8828426FB6003C6F8D /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		9A825F8928426FB6003C6F8D /* UnlockedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockedController.swift; sourceTree = "<group>"; };
-		9A825F8A28426FB6003C6F8D /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
-		9A825F8B28426FB6003C6F8D /* LinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkController.swift; sourceTree = "<group>"; };
 		9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsAppViewController.swift; sourceTree = "<group>"; };
-		9A8836CD28DA09C500009E07 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Interface.strings; sourceTree = "<group>"; };
-		9A8836CF28DA0AA300009E07 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		9A8836D428DA0AB100009E07 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9A8836D628DA0AB400009E07 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A8DC950282FF88D008F92B6 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		9A8DC952282FF89F008F92B6 /* HelpDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpDetailViewController.swift; sourceTree = "<group>"; };
 		9A8DC957282FF993008F92B6 /* HelpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCell.swift; sourceTree = "<group>"; };
@@ -489,14 +428,6 @@
 				9A397D4D280D5268003458BD /* Alamofire in Frameworks */,
 				9A7C1A0B2776035E0088B54A /* SwiftUI.framework in Frameworks */,
 				9A7C1A092776035E0088B54A /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A825F6428426F0B003C6F8D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A825F92284270DB003C6F8D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,6 +673,8 @@
 			isa = PBXGroup;
 			children = (
 				9A7C1A0D2776035E0088B54A /* Roadout_Widget.swift */,
+				9A378C532903EFF90059C289 /* Roadout_LockWidget.swift */,
+				9A378C552903F15B0059C289 /* RoadoutWidgets.swift */,
 				9AED6DBB27E7244700B5004F /* WidgetLocalization.swift */,
 				9AED6DC327E7266900B5004F /* WidgetLocalizables.strings */,
 				9AED6DB627E723A400B5004F /* WidgetConfig.intentdefinition */,
@@ -749,59 +682,6 @@
 				9A7C1A112776035F0088B54A /* Info.plist */,
 			);
 			path = "Roadout Widget";
-			sourceTree = "<group>";
-		};
-		9A825F5D28426F0A003C6F8D /* Roadout for Watch */ = {
-			isa = PBXGroup;
-			children = (
-				9A825F5E28426F0A003C6F8D /* Interface.storyboard */,
-				9A825F6128426F0B003C6F8D /* Assets.xcassets */,
-			);
-			path = "Roadout for Watch";
-			sourceTree = "<group>";
-		};
-		9A825F6B28426F0B003C6F8D /* Roadout for Watch WatchKit Extension */ = {
-			isa = PBXGroup;
-			children = (
-				9A8836CE28DA0A9300009E07 /* Localization */,
-				9A825F9028426FC0003C6F8D /* Interface Controllers */,
-				9A825F8728426FAB003C6F8D /* Data Managers */,
-				9A825F6E28426F0B003C6F8D /* ExtensionDelegate.swift */,
-				9A825F7028426F0B003C6F8D /* ComplicationController.swift */,
-				9A72D2F92858BDC2000FBC7B /* ComplicationViews.swift */,
-				9A825F7228426F0C003C6F8D /* Assets.xcassets */,
-				9A825F7428426F0C003C6F8D /* Info.plist */,
-			);
-			path = "Roadout for Watch WatchKit Extension";
-			sourceTree = "<group>";
-		};
-		9A825F8728426FAB003C6F8D /* Data Managers */ = {
-			isa = PBXGroup;
-			children = (
-				9A825F8328426F9F003C6F8D /* ReservationManager.swift */,
-				9A825F8428426F9F003C6F8D /* UserManager.swift */,
-			);
-			path = "Data Managers";
-			sourceTree = "<group>";
-		};
-		9A825F9028426FC0003C6F8D /* Interface Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				9A825F8828426FB6003C6F8D /* HomeController.swift */,
-				9A825F8B28426FB6003C6F8D /* LinkController.swift */,
-				9A825F8A28426FB6003C6F8D /* PreferencesController.swift */,
-				9A825F8928426FB6003C6F8D /* UnlockedController.swift */,
-			);
-			path = "Interface Controllers";
-			sourceTree = "<group>";
-		};
-		9A8836CE28DA0A9300009E07 /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				9A8836CF28DA0AA300009E07 /* StringExtension.swift */,
-				9A8836D528DA0AB100009E07 /* Localizable.strings */,
-			);
-			path = Localization;
 			sourceTree = "<group>";
 		};
 		9A8DC956282FF983008F92B6 /* Help Views */ = {
@@ -896,8 +776,6 @@
 				9AC926E9272697F00054E453 /* Roadout */,
 				9A7C1A0C2776035E0088B54A /* Roadout Widget */,
 				9A397D3C280D4970003458BD /* RoadoutWidgetIntentHandler */,
-				9A825F5D28426F0A003C6F8D /* Roadout for Watch */,
-				9A825F6B28426F0B003C6F8D /* Roadout for Watch WatchKit Extension */,
 				9AC926E8272697F00054E453 /* Products */,
 				9A150810272BFA49008C083B /* Frameworks */,
 			);
@@ -909,8 +787,6 @@
 				9AC926E7272697F00054E453 /* Roadout.app */,
 				9A7C1A072776035E0088B54A /* Roadout WidgetExtension.appex */,
 				9A397D3A280D4970003458BD /* RoadoutWidgetIntentHandler.appex */,
-				9A825F5C28426F0A003C6F8D /* Roadout.app */,
-				9A825F6728426F0B003C6F8D /* Roadout for Watch WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1060,43 +936,6 @@
 			productReference = 9A7C1A072776035E0088B54A /* Roadout WidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		9A825F5B28426F0A003C6F8D /* Roadout for Watch */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9A825F7C28426F0C003C6F8D /* Build configuration list for PBXNativeTarget "Roadout for Watch" */;
-			buildPhases = (
-				9A825F5A28426F0A003C6F8D /* Resources */,
-				9A825F7B28426F0C003C6F8D /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9A825F6A28426F0B003C6F8D /* PBXTargetDependency */,
-			);
-			name = "Roadout for Watch";
-			productName = "Roadout for Watch";
-			productReference = 9A825F5C28426F0A003C6F8D /* Roadout.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		9A825F6628426F0B003C6F8D /* Roadout for Watch WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9A825F7828426F0C003C6F8D /* Build configuration list for PBXNativeTarget "Roadout for Watch WatchKit Extension" */;
-			buildPhases = (
-				9A825F6328426F0B003C6F8D /* Sources */,
-				9A825F6428426F0B003C6F8D /* Frameworks */,
-				9A825F6528426F0B003C6F8D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Roadout for Watch WatchKit Extension";
-			packageProductDependencies = (
-				9A825F91284270DB003C6F8D /* Alamofire */,
-			);
-			productName = "Roadout for Watch WatchKit Extension";
-			productReference = 9A825F6728426F0B003C6F8D /* Roadout for Watch WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
-		};
 		9AC926E6272697F00054E453 /* Roadout */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AC92711272697F20054E453 /* Build configuration list for PBXNativeTarget "Roadout" */;
@@ -1112,7 +951,6 @@
 			dependencies = (
 				9A7C1A132776035F0088B54A /* PBXTargetDependency */,
 				9A397D41280D4970003458BD /* PBXTargetDependency */,
-				9A825F7628426F0C003C6F8D /* PBXTargetDependency */,
 			);
 			name = Roadout;
 			packageProductDependencies = (
@@ -1140,7 +978,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					9A397D39280D4970003458BD = {
@@ -1148,12 +986,6 @@
 					};
 					9A7C1A062776035E0088B54A = {
 						CreatedOnToolsVersion = 13.1;
-					};
-					9A825F5B28426F0A003C6F8D = {
-						CreatedOnToolsVersion = 13.2.1;
-					};
-					9A825F6628426F0B003C6F8D = {
-						CreatedOnToolsVersion = 13.2.1;
 					};
 					9AC926E6272697F00054E453 = {
 						CreatedOnToolsVersion = 13.0;
@@ -1187,8 +1019,6 @@
 				9AC926E6272697F00054E453 /* Roadout */,
 				9A7C1A062776035E0088B54A /* Roadout WidgetExtension */,
 				9A397D39280D4970003458BD /* RoadoutWidgetIntentHandler */,
-				9A825F5B28426F0A003C6F8D /* Roadout for Watch */,
-				9A825F6628426F0B003C6F8D /* Roadout for Watch WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -1207,24 +1037,6 @@
 			files = (
 				9A7C1A102776035F0088B54A /* Assets.xcassets in Resources */,
 				9AED6DC127E7266900B5004F /* WidgetLocalizables.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A825F5A28426F0A003C6F8D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A825F6228426F0B003C6F8D /* Assets.xcassets in Resources */,
-				9A825F6028426F0A003C6F8D /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A825F6528426F0B003C6F8D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A825F7328426F0C003C6F8D /* Assets.xcassets in Resources */,
-				9A8836D328DA0AB100009E07 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1284,29 +1096,11 @@
 				9A7C1A0E2776035E0088B54A /* Roadout_Widget.swift in Sources */,
 				9A6B5490288942F700B88CB8 /* VariablesManager.swift in Sources */,
 				9A79932A277A0E880088E3FD /* ParkSpot.swift in Sources */,
+				9A378C582903F1B30059C289 /* Roadout_LockWidget.swift in Sources */,
+				9A378C572903F1AC0059C289 /* RoadoutWidgets.swift in Sources */,
 				9A799329277A0E880088E3FD /* ParkSection.swift in Sources */,
 				9A397D47280D49DE003458BD /* IntentHandler.swift in Sources */,
 				9AED6DBF27E7263E00B5004F /* WidgetLocalization.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A825F6328426F0B003C6F8D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A825F6F28426F0B003C6F8D /* ExtensionDelegate.swift in Sources */,
-				9A825F8C28426FB6003C6F8D /* LinkController.swift in Sources */,
-				9A825F8D28426FB6003C6F8D /* HomeController.swift in Sources */,
-				9A825F8528426F9F003C6F8D /* UserManager.swift in Sources */,
-				9A825F8F28426FB6003C6F8D /* UnlockedController.swift in Sources */,
-				9A825F8628426F9F003C6F8D /* ReservationManager.swift in Sources */,
-				9A825F8E28426FB6003C6F8D /* PreferencesController.swift in Sources */,
-				9A825F7128426F0B003C6F8D /* ComplicationController.swift in Sources */,
-				9A72D2FA2858BDC2000FBC7B /* ComplicationViews.swift in Sources */,
-				9A6B54952889431000B88CB8 /* Reminder.swift in Sources */,
-				9A825F942842727C003C6F8D /* NotificationNameCenter.swift in Sources */,
-				9A8836D028DA0AA300009E07 /* StringExtension.swift in Sources */,
-				9A825F9328427126003C6F8D /* UserDefSuite.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1446,16 +1240,6 @@
 			target = 9A7C1A062776035E0088B54A /* Roadout WidgetExtension */;
 			targetProxy = 9A7C1A122776035F0088B54A /* PBXContainerItemProxy */;
 		};
-		9A825F6A28426F0B003C6F8D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9A825F6628426F0B003C6F8D /* Roadout for Watch WatchKit Extension */;
-			targetProxy = 9A825F6928426F0B003C6F8D /* PBXContainerItemProxy */;
-		};
-		9A825F7628426F0C003C6F8D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9A825F5B28426F0A003C6F8D /* Roadout for Watch */;
-			targetProxy = 9A825F7528426F0C003C6F8D /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1520,24 +1304,6 @@
 				9A4CA21A27DDE12B00D2674D /* ro */,
 			);
 			name = Localizables.strings;
-			sourceTree = "<group>";
-		};
-		9A825F5E28426F0A003C6F8D /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9A825F5F28426F0A003C6F8D /* Base */,
-				9A8836CD28DA09C500009E07 /* ro */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
-		9A8836D528DA0AB100009E07 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9A8836D428DA0AB100009E07 /* en */,
-				9A8836D628DA0AB400009E07 /* ro */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		9AC149CC28B4EFA900B9B394 /* Pay.xib */ = {
@@ -1710,116 +1476,6 @@
 			};
 			name = Release;
 		};
-		9A825F7928426F0C003C6F8D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 35;
-				DEVELOPMENT_TEAM = T5769DN25J;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Roadout for Watch WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Roadout for Watch WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = Roadout_for_Watch_WatchKit_Extension.ComplicationController;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKExtensionDelegateClassName = Roadout_for_Watch_WatchKit_Extension.ExtensionDelegate;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ro.roadout.Roadout.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.0;
-			};
-			name = Debug;
-		};
-		9A825F7A28426F0C003C6F8D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 35;
-				DEVELOPMENT_TEAM = T5769DN25J;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Roadout for Watch WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Roadout for Watch WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = Roadout_for_Watch_WatchKit_Extension.ComplicationController;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKExtensionDelegateClassName = Roadout_for_Watch_WatchKit_Extension.ExtensionDelegate;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ro.roadout.Roadout.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.0;
-			};
-			name = Release;
-		};
-		9A825F7D28426F0C003C6F8D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 35;
-				DEVELOPMENT_TEAM = T5769DN25J;
-				GENERATE_INFOPLIST_FILE = YES;
-				IBSC_MODULE = Roadout_for_Watch_WatchKit_Extension;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = ro.roadout.Roadout;
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ro.roadout.Roadout.watchkitapp;
-				PRODUCT_NAME = Roadout;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.0;
-			};
-			name = Debug;
-		};
-		9A825F7E28426F0C003C6F8D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 35;
-				DEVELOPMENT_TEAM = T5769DN25J;
-				GENERATE_INFOPLIST_FILE = YES;
-				IBSC_MODULE = Roadout_for_Watch_WatchKit_Extension;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = ro.roadout.Roadout;
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ro.roadout.Roadout.watchkitapp;
-				PRODUCT_NAME = Roadout;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.0;
-			};
-			name = Release;
-		};
 		9AC9270F272697F20054E453 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1876,7 +1532,17 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-framework",
+					GoogleMaps,
+					"-framework",
+					GoogleMapsBase,
+					"-framework",
+					GoogleMapsCore,
+				);
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1933,7 +1599,17 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-framework",
+					GoogleMaps,
+					"-framework",
+					GoogleMapsBase,
+					"-framework",
+					GoogleMapsCore,
+				);
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1952,6 +1628,7 @@
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 35;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1979,6 +1656,9 @@
 				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = ro.roadout.Roadout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1995,6 +1675,7 @@
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 35;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = T5769DN25J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2022,6 +1703,9 @@
 				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = ro.roadout.Roadout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2045,24 +1729,6 @@
 			buildConfigurations = (
 				9A7C1A152776035F0088B54A /* Debug */,
 				9A7C1A162776035F0088B54A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9A825F7828426F0C003C6F8D /* Build configuration list for PBXNativeTarget "Roadout for Watch WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9A825F7928426F0C003C6F8D /* Debug */,
-				9A825F7A28426F0C003C6F8D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9A825F7C28426F0C003C6F8D /* Build configuration list for PBXNativeTarget "Roadout for Watch" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9A825F7D28426F0C003C6F8D /* Debug */,
-				9A825F7E28426F0C003C6F8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2148,8 +1814,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/YAtechnologies/GoogleMaps-SP";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				kind = exactVersion;
+				version = 6.2.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2184,11 +1850,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9A765C332896747600AF250D /* XCRemoteSwiftPackageReference "GeohashKit" */;
 			productName = GeohashKit;
-		};
-		9A825F91284270DB003C6F8D /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 		9A8D8D3B27BADDAC0037DFE3 /* PusherSwift */ = {
 			isa = XCSwiftPackageProductDependency;

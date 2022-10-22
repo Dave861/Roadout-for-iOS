@@ -83,7 +83,7 @@ class SearchViewController: UIViewController {
         searchBar.layer.rasterizationScale = UIScreen.main.scale
         
         searchField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(_:)), for: .editingChanged)
-        searchField.attributedPlaceholder = NSAttributedString(string: "Search for a place...".localized(),
+        searchField.attributedPlaceholder = NSAttributedString(string: "Search for a Place...".localized(),
                                                                attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         
         tableView.delegate = self
@@ -187,27 +187,27 @@ class SearchViewController: UIViewController {
     
     func getRotationFor(_ percent: Int) -> CGFloat {
         if percent == 100 {
-            return 1.7453
+            return 2.44
         } else if percent >= 90 {
-            return 1.2566
+            return 2.02
         } else if percent >= 80 {
-            return 0.7155
+            return 1.57
         } else if percent >= 70 {
-            return 0.1745
+            return 1.04
         } else if percent >= 60 {
-            return -0.2617
+            return 0.52
         } else if percent >= 50 {
-            return -0.7853
+            return 0
         } else if percent >= 40 {
-            return -1.3264
+            return -0.52
         } else if percent >= 30 {
-            return -1.7802
+            return -1.04
         } else if percent >= 20 {
-            return -2.3387
+            return -1.57
         } else if percent >= 10 {
-            return -2.8448
+            return -2.02
         } else {
-            return 3.0194
+            return 2.44
         }
     }
 
@@ -239,8 +239,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.distanceLbl.text = "- km"
         }
         let color = UIColor(named: results[indexPath.row].accentColor)!
+        cell.gaugeIcon.image = cell.gaugeIcon.image?.withRenderingMode(.alwaysTemplate)
         cell.gaugeIcon.tintColor = color
-        cell.gaugeCircle.tintColor = color
+        cell.distanceIcon.tintColor = color
         
         let occupancyPercent = self.getPercentageFrom(totalSpots: results[indexPath.row].totalSpots, freeSpots: results[indexPath.row].freeSpots)
         

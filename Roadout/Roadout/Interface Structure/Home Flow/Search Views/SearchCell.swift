@@ -15,7 +15,7 @@ class SearchCell: UITableViewCell {
     @IBOutlet weak var distanceLbl: UILabel!
     
     @IBOutlet weak var gaugeIcon: UIImageView!
-    @IBOutlet weak var gaugeCircle: UIImageView!
+    @IBOutlet weak var distanceIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

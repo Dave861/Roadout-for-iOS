@@ -34,7 +34,7 @@ class AuthManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["email":email]
         
-        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/VerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/VerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(AuthErrors.databaseFailure))
@@ -78,7 +78,7 @@ class AuthManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["email":email]
         
-        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/DeleteDataVerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/DeleteDataVerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
         }
     }
@@ -89,7 +89,7 @@ class AuthManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["name":name,"email":email,"password":hashedPswd]
         
-        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/userRegister.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/userRegister.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(AuthErrors.databaseFailure))
@@ -126,7 +126,7 @@ class AuthManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["email":email,"password":hashedPswd]
         
-        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/userLogin.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/userLogin.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 self.callResult = "database error"
                 completion(.failure(AuthErrors.databaseFailure))
@@ -161,7 +161,7 @@ class AuthManager {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":id]
         
-        Alamofire.Session.default.request("http://roadout-reteganda.pitunnel.com/Authentification/IdExists.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
+        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/IdExists.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
             guard response.value != nil else {
                 completion(.failure(AuthErrors.databaseFailure))
                 return
