@@ -1690,15 +1690,30 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="height" constant="33" id="bxE-9O-yZy"/>
                                         </constraints>
                                     </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iC6-DG-vPn">
+                                        <rect key="frame" x="292.5" y="4" width="97.5" height="44"/>
+                                        <color key="backgroundColor" name="Secondary Floating"/>
+                                        <color key="tintColor" name="Icons"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Try Again">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="tryAgainTapped:" destination="vy1-m5-4oI" eventType="touchUpInside" id="PPf-0Y-C7C"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="FloatingBG"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="iC6-DG-vPn" secondAttribute="bottom" constant="4" id="134-E3-E6L"/>
                                     <constraint firstItem="Dp6-oO-asO" firstAttribute="leading" secondItem="CoV-8M-q4W" secondAttribute="leading" constant="8" id="3O2-0J-jgc"/>
                                     <constraint firstAttribute="height" constant="52" id="60X-FH-E7q"/>
+                                    <constraint firstItem="iC6-DG-vPn" firstAttribute="top" secondItem="CoV-8M-q4W" secondAttribute="top" constant="4" id="6Ew-HZ-XN4"/>
                                     <constraint firstAttribute="trailing" secondItem="RuT-pa-Nn1" secondAttribute="trailing" constant="8" id="KaL-5t-mEl"/>
                                     <constraint firstItem="Dp6-oO-asO" firstAttribute="centerY" secondItem="CoV-8M-q4W" secondAttribute="centerY" id="LNv-rx-Oib"/>
                                     <constraint firstItem="RuT-pa-Nn1" firstAttribute="centerY" secondItem="CoV-8M-q4W" secondAttribute="centerY" id="al6-J0-NCW"/>
                                     <constraint firstItem="d5P-uH-zHK" firstAttribute="leading" secondItem="Dp6-oO-asO" secondAttribute="trailing" constant="7.5" id="mzA-Zg-70Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="iC6-DG-vPn" secondAttribute="trailing" constant="4" id="o43-ed-8wZ"/>
                                     <constraint firstItem="d5P-uH-zHK" firstAttribute="centerY" secondItem="CoV-8M-q4W" secondAttribute="centerY" id="reD-6k-Hh1"/>
                                 </constraints>
                             </view>
@@ -1715,6 +1730,7 @@ Made in Cluj :)</string>
                         <outlet property="activityIndicator" destination="RuT-pa-Nn1" id="LaK-ou-bob"/>
                         <outlet property="cardView" destination="CoV-8M-q4W" id="0v1-5q-jGh"/>
                         <outlet property="titleLbl" destination="d5P-uH-zHK" id="IV6-KB-xQ1"/>
+                        <outlet property="tryAgainBtn" destination="iC6-DG-vPn" id="18E-MR-Ztw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mhh-Df-f3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2467,7 +2483,7 @@ Made in Cluj :)</string>
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MapBG">
-            <color red="0.96862745098039216" green="0.95294117647058818" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96899998188018799" green="0.95300000905990601" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Redish">
             <color red="0.62000000476837158" green="0.22400000691413879" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

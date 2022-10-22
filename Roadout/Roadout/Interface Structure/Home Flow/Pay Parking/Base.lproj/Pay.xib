@@ -311,10 +311,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvB-fU-X2f">
-                    <rect key="frame" x="287" y="9" width="125" height="35"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="125" id="98d-kW-2VU"/>
-                    </constraints>
+                    <rect key="frame" x="344.66666666666669" y="4" width="65.333333333333314" height="44"/>
+                    <color key="backgroundColor" name="Secondary Floating"/>
                     <color key="tintColor" name="Cash Yellow"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Done">
@@ -337,11 +335,12 @@
             <color key="backgroundColor" name="FloatingBG"/>
             <constraints>
                 <constraint firstItem="ev5-Hi-dqF" firstAttribute="leading" secondItem="8TR-vv-4mu" secondAttribute="trailing" constant="12" id="7rq-lc-Zkt"/>
-                <constraint firstAttribute="trailing" secondItem="gvB-fU-X2f" secondAttribute="trailing" constant="2" id="MOy-eA-lA4"/>
+                <constraint firstItem="NEw-Ok-oV7" firstAttribute="bottom" secondItem="gvB-fU-X2f" secondAttribute="bottom" constant="4" id="B3D-wV-8az"/>
+                <constraint firstAttribute="trailing" secondItem="gvB-fU-X2f" secondAttribute="trailing" constant="4" id="MOy-eA-lA4"/>
                 <constraint firstItem="NEw-Ok-oV7" firstAttribute="bottom" secondItem="ev5-Hi-dqF" secondAttribute="bottom" constant="4" id="PYG-4f-sun"/>
                 <constraint firstItem="8TR-vv-4mu" firstAttribute="leading" secondItem="NEw-Ok-oV7" secondAttribute="leading" constant="11" id="YZn-UX-87q"/>
                 <constraint firstItem="8TR-vv-4mu" firstAttribute="centerY" secondItem="Jod-3W-ZP0" secondAttribute="centerY" id="byQ-bW-X6r"/>
-                <constraint firstItem="gvB-fU-X2f" firstAttribute="top" secondItem="NEw-Ok-oV7" secondAttribute="top" constant="9" id="oqZ-Xw-rRI"/>
+                <constraint firstItem="gvB-fU-X2f" firstAttribute="top" secondItem="NEw-Ok-oV7" secondAttribute="top" constant="4" id="oqZ-Xw-rRI"/>
                 <constraint firstItem="ev5-Hi-dqF" firstAttribute="top" secondItem="Jod-3W-ZP0" secondAttribute="top" constant="4" id="vmR-nB-bPd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

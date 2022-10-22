@@ -21,6 +21,7 @@ class ActiveView: UIView {
         self.addObs()
         self.layer.cornerRadius = 17.0
         moreBtn.setTitle("", for: .normal)
+        moreBtn.layer.cornerRadius = 15.0
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"

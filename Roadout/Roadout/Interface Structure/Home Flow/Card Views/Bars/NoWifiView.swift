@@ -21,6 +21,7 @@ class NoWifiView: UIView {
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 17.0
         settingsBtn.setAttributedTitle(buttonTitle, for: .normal)
+        settingsBtn.layer.cornerRadius = 15.0
     }
     
     class func instanceFromNib() -> UIView {

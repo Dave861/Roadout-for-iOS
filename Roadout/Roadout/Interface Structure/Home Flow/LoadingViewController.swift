@@ -15,6 +15,13 @@ class GetDataViewController: UIViewController {
     
     @IBOutlet weak var titleLbl: UILabel!
     
+    @IBOutlet weak var tryAgainBtn: UIButton!
+    
+    @IBAction func tryAgainTapped(_ sender: Any) {
+        tryAgainBtn.isHidden = true
+        self.downloadCityData()
+    }
+    
     func downloadCityData() {
         parkLocations = testParkLocations //will empty here
         EntityManager.sharedInstance.getParkLocations("Cluj") { result in
@@ -45,11 +52,14 @@ class GetDataViewController: UIViewController {
     
     func showErrors(error: Error) {
         let alert = UIAlertController(title: "Download Error".localized(), message: "There was an error reaching our server. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report at bugs@roadout.ro".localized(), preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "OK".localized(), style: .cancel) { _ in
+            self.tryAgainBtn.isHidden = false
+        }
         alert.addAction(okAction)
         
         let tryAgainAction = UIAlertAction(title: "Try Again".localized(), style: .default) { _ in
             self.downloadCityData()
+            self.tryAgainBtn.isHidden = true
         }
         alert.addAction(tryAgainAction)
         
@@ -60,6 +70,8 @@ class GetDataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cardView.layer.cornerRadius = 17.0
+        tryAgainBtn.layer.cornerRadius = 17.0
+        tryAgainBtn.isHidden = true
         titleLbl.text = "Loading City Data".localized()
         activityIndicator.startAnimating()
         self.downloadCityData()

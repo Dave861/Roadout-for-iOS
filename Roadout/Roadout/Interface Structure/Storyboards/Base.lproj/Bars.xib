@@ -33,10 +33,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tc1-lO-XUV">
-                    <rect key="frame" x="260" y="9" width="154" height="34"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="154" id="vpd-YJ-phR"/>
-                    </constraints>
+                    <rect key="frame" x="259.66666666666669" y="4" width="150.33333333333331" height="44"/>
+                    <color key="backgroundColor" name="Secondary Floating"/>
                     <color key="tintColor" name="Dark Orange"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="See Reservation">
@@ -51,10 +49,10 @@
             <color key="backgroundColor" name="FloatingBG"/>
             <constraints>
                 <constraint firstItem="veL-ns-eN4" firstAttribute="leading" secondItem="u59-Pg-inq" secondAttribute="trailing" constant="8" symbolic="YES" id="1VZ-Qp-Sgf"/>
-                <constraint firstItem="tc1-lO-XUV" firstAttribute="top" secondItem="Stf-Ye-wID" secondAttribute="top" constant="9" id="3U9-fA-XP4"/>
-                <constraint firstItem="Stf-Ye-wID" firstAttribute="bottom" secondItem="tc1-lO-XUV" secondAttribute="bottom" constant="9" id="CeD-f5-MU2"/>
+                <constraint firstItem="tc1-lO-XUV" firstAttribute="top" secondItem="Stf-Ye-wID" secondAttribute="top" constant="4" id="3U9-fA-XP4"/>
+                <constraint firstItem="Stf-Ye-wID" firstAttribute="bottom" secondItem="tc1-lO-XUV" secondAttribute="bottom" constant="4" id="CeD-f5-MU2"/>
                 <constraint firstItem="u59-Pg-inq" firstAttribute="leading" secondItem="Stf-Ye-wID" secondAttribute="leading" constant="9" id="Z80-mT-H71"/>
-                <constraint firstItem="tc1-lO-XUV" firstAttribute="trailing" secondItem="Stf-Ye-wID" secondAttribute="trailing" id="fqF-ae-czc"/>
+                <constraint firstItem="tc1-lO-XUV" firstAttribute="trailing" secondItem="Stf-Ye-wID" secondAttribute="trailing" constant="-4" id="fqF-ae-czc"/>
                 <constraint firstItem="u59-Pg-inq" firstAttribute="centerY" secondItem="qcH-Iz-BNt" secondAttribute="centerY" id="pVU-R1-Zjv"/>
                 <constraint firstItem="Stf-Ye-wID" firstAttribute="bottom" secondItem="veL-ns-eN4" secondAttribute="bottom" constant="4" id="uzn-u9-of9"/>
                 <constraint firstItem="veL-ns-eN4" firstAttribute="top" secondItem="Stf-Ye-wID" secondAttribute="top" constant="4" id="yy7-2s-Hah"/>
@@ -69,6 +67,19 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dx9-2g-UwI">
+                    <rect key="frame" x="306" y="4" width="104" height="44"/>
+                    <color key="backgroundColor" name="Secondary Floating"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="104" id="kmC-mf-8Bo"/>
+                    </constraints>
+                    <color key="tintColor" name="Icons"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title=""/>
+                    <connections>
+                        <action selector="moreTapped:" destination="5W2-Oy-UZ9" eventType="touchUpInside" id="A8H-4u-nMh"/>
+                    </connections>
+                </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rK4-OK-cVF">
                     <rect key="frame" x="9" y="12.666666666666666" width="32" height="26.666666666666671"/>
                     <color key="tintColor" name="Icons"/>
@@ -97,31 +108,19 @@
                     <color key="textColor" name="Icons"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dx9-2g-UwI">
-                    <rect key="frame" x="269" y="9" width="145" height="34"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="145" id="kmC-mf-8Bo"/>
-                    </constraints>
-                    <color key="tintColor" name="Dark Orange"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title=""/>
-                    <connections>
-                        <action selector="moreTapped:" destination="5W2-Oy-UZ9" eventType="touchUpInside" id="A8H-4u-nMh"/>
-                    </connections>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="AYZ-M4-UUf"/>
             <color key="backgroundColor" name="FloatingBG"/>
             <constraints>
                 <constraint firstItem="aIU-C6-ZRB" firstAttribute="leading" secondItem="Ws3-qE-Hcb" secondAttribute="trailing" constant="6" id="4EE-cb-T4A"/>
-                <constraint firstItem="AYZ-M4-UUf" firstAttribute="bottom" secondItem="dx9-2g-UwI" secondAttribute="bottom" constant="9" id="BQT-mF-DdD"/>
+                <constraint firstItem="AYZ-M4-UUf" firstAttribute="bottom" secondItem="dx9-2g-UwI" secondAttribute="bottom" constant="4" id="BQT-mF-DdD"/>
                 <constraint firstItem="Ws3-qE-Hcb" firstAttribute="bottom" secondItem="AYZ-M4-UUf" secondAttribute="bottom" id="DBg-aB-Yrc"/>
                 <constraint firstItem="AYZ-M4-UUf" firstAttribute="bottom" secondItem="Rp5-Nz-3xZ" secondAttribute="bottom" constant="4" id="GuJ-jh-jlV"/>
                 <constraint firstItem="Rp5-Nz-3xZ" firstAttribute="leading" secondItem="rK4-OK-cVF" secondAttribute="trailing" constant="8" symbolic="YES" id="MmH-pJ-kZ0"/>
-                <constraint firstItem="dx9-2g-UwI" firstAttribute="top" secondItem="AYZ-M4-UUf" secondAttribute="top" constant="9" id="RmO-gc-kcw"/>
+                <constraint firstItem="dx9-2g-UwI" firstAttribute="top" secondItem="AYZ-M4-UUf" secondAttribute="top" constant="4" id="RmO-gc-kcw"/>
                 <constraint firstItem="AYZ-M4-UUf" firstAttribute="trailing" secondItem="aIU-C6-ZRB" secondAttribute="trailing" constant="10" id="T3r-0Y-O1r"/>
                 <constraint firstItem="Ws3-qE-Hcb" firstAttribute="top" secondItem="AYZ-M4-UUf" secondAttribute="top" id="TRu-LO-fby"/>
-                <constraint firstItem="dx9-2g-UwI" firstAttribute="trailing" secondItem="AYZ-M4-UUf" secondAttribute="trailing" id="VnA-9R-oop"/>
+                <constraint firstItem="dx9-2g-UwI" firstAttribute="trailing" secondItem="AYZ-M4-UUf" secondAttribute="trailing" constant="-4" id="VnA-9R-oop"/>
                 <constraint firstItem="rK4-OK-cVF" firstAttribute="leading" secondItem="AYZ-M4-UUf" secondAttribute="leading" constant="9" id="cOM-Wh-6N9"/>
                 <constraint firstItem="aIU-C6-ZRB" firstAttribute="centerY" secondItem="5W2-Oy-UZ9" secondAttribute="centerY" id="dym-KK-g78"/>
                 <constraint firstItem="Rp5-Nz-3xZ" firstAttribute="top" secondItem="AYZ-M4-UUf" secondAttribute="top" constant="4" id="r0Z-pS-Etz"/>
@@ -144,11 +143,17 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBn-92-2WR">
-                    <rect key="frame" x="298" y="9" width="113" height="34"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.app.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GEq-FV-baD">
+                    <rect key="frame" x="14" y="16.333333333333329" width="22" height="20"/>
+                    <color key="tintColor" name="Redish"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="113" id="aAs-dj-pmx"/>
+                        <constraint firstAttribute="height" constant="23" id="WZ6-yw-TGZ"/>
+                        <constraint firstAttribute="width" constant="22" id="svZ-Xf-7gj"/>
                     </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBn-92-2WR">
+                    <rect key="frame" x="344.66666666666669" y="4" width="65.333333333333314" height="44"/>
+                    <color key="backgroundColor" name="Secondary Floating"/>
                     <color key="tintColor" name="Redish"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Done">
@@ -158,24 +163,17 @@
                         <action selector="doneTapped:" destination="idu-jF-tvt" eventType="touchUpInside" id="CIA-pg-HDz"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.app.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GEq-FV-baD">
-                    <rect key="frame" x="14" y="16.333333333333329" width="22" height="20"/>
-                    <color key="tintColor" name="Redish"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="23" id="WZ6-yw-TGZ"/>
-                        <constraint firstAttribute="width" constant="22" id="svZ-Xf-7gj"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="S1G-EX-uCN"/>
             <color key="backgroundColor" name="FloatingBG"/>
             <constraints>
                 <constraint firstItem="S1G-EX-uCN" firstAttribute="bottom" secondItem="V6o-gR-yBH" secondAttribute="bottom" constant="4" id="43U-ei-rbz"/>
                 <constraint firstItem="V6o-gR-yBH" firstAttribute="top" secondItem="S1G-EX-uCN" secondAttribute="top" constant="4" id="IXq-qz-Fpj"/>
+                <constraint firstItem="S1G-EX-uCN" firstAttribute="bottom" secondItem="fBn-92-2WR" secondAttribute="bottom" constant="4" id="IsK-uP-Zus"/>
                 <constraint firstItem="GEq-FV-baD" firstAttribute="leading" secondItem="S1G-EX-uCN" secondAttribute="leading" constant="14" id="JoY-M4-XcC"/>
                 <constraint firstItem="V6o-gR-yBH" firstAttribute="leading" secondItem="GEq-FV-baD" secondAttribute="trailing" constant="13" id="NCv-JS-2t2"/>
-                <constraint firstAttribute="trailing" secondItem="fBn-92-2WR" secondAttribute="trailing" constant="3" id="PeC-Fc-as8"/>
-                <constraint firstItem="fBn-92-2WR" firstAttribute="top" secondItem="S1G-EX-uCN" secondAttribute="top" constant="9" id="fe9-Lw-YDm"/>
+                <constraint firstAttribute="trailing" secondItem="fBn-92-2WR" secondAttribute="trailing" constant="4" id="PeC-Fc-as8"/>
+                <constraint firstItem="fBn-92-2WR" firstAttribute="top" secondItem="S1G-EX-uCN" secondAttribute="top" constant="4" id="fe9-Lw-YDm"/>
                 <constraint firstItem="GEq-FV-baD" firstAttribute="centerY" secondItem="idu-jF-tvt" secondAttribute="centerY" id="hq6-47-t4g"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -195,10 +193,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRs-aV-nQd">
-                    <rect key="frame" x="287" y="9" width="125" height="35"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="125" id="Dw2-LJ-ZSa"/>
-                    </constraints>
+                    <rect key="frame" x="286.33333333333331" y="4" width="123.66666666666669" height="44"/>
+                    <color key="backgroundColor" name="Secondary Floating"/>
                     <color key="tintColor" name="Greyish"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Wifi Settings">
@@ -224,9 +220,10 @@
                 <constraint firstItem="rag-Oh-Ii9" firstAttribute="centerY" secondItem="Rli-7c-2Qo" secondAttribute="centerY" id="TUS-SG-Jvf"/>
                 <constraint firstItem="rag-Oh-Ii9" firstAttribute="leading" secondItem="mVW-qb-Vg4" secondAttribute="leading" constant="11" id="n3b-iP-FVL"/>
                 <constraint firstItem="mVW-qb-Vg4" firstAttribute="bottom" secondItem="Lch-cb-uQy" secondAttribute="bottom" constant="4" id="pLR-1K-yRn"/>
-                <constraint firstAttribute="trailing" secondItem="cRs-aV-nQd" secondAttribute="trailing" constant="2" id="sTL-d8-2n7"/>
-                <constraint firstItem="cRs-aV-nQd" firstAttribute="top" secondItem="mVW-qb-Vg4" secondAttribute="top" constant="9" id="scM-dF-6Za"/>
+                <constraint firstAttribute="trailing" secondItem="cRs-aV-nQd" secondAttribute="trailing" constant="4" id="sTL-d8-2n7"/>
+                <constraint firstItem="cRs-aV-nQd" firstAttribute="top" secondItem="mVW-qb-Vg4" secondAttribute="top" constant="4" id="scM-dF-6Za"/>
                 <constraint firstItem="Lch-cb-uQy" firstAttribute="top" secondItem="mVW-qb-Vg4" secondAttribute="top" constant="4" id="svL-UJ-8gj"/>
+                <constraint firstItem="mVW-qb-Vg4" firstAttribute="bottom" secondItem="cRs-aV-nQd" secondAttribute="bottom" constant="4" id="xzb-FV-guN"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -255,6 +252,9 @@
         </namedColor>
         <namedColor name="Redish">
             <color red="0.62000000476837158" green="0.22400000691413879" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Secondary Floating">
+            <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
