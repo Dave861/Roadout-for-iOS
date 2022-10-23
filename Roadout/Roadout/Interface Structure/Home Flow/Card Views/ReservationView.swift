@@ -95,19 +95,23 @@ class ReservationView: UIView {
                 if ReservationManager.sharedInstance.delayWasMade == false {
                         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownDelayWarning") == false {
                             UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownDelayWarning")
-                            let alert = UIAlertController(title: "Delay Reservation".localized(), message: "You can only delay a reservation once. Use carefully.".localized(), preferredStyle: .alert)
+                            /*let alert = UIAlertController(title: "Delay Reservation".localized(), message: "You can only delay a reservation once. Use carefully.".localized(), preferredStyle: .alert)
                             alert.view.tintColor = UIColor(named: "Second Orange")
                             let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                             alert.addAction(cancelAction)
-                            self.parentViewController().present(alert, animated: true, completion: nil)
+                            self.parentViewController().present(alert, animated: true, completion: nil)*/
+                            let alert = UXAlertController(alertTag: 0, alertTitle: "Delay Reservation".localized(), alertMessage: "You can only delay a reservation once. Use carefully.".localized(), alertImage: "DelayOnceSO", alertTintColor: UIColor(named: "Second Orange")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
+                            self.parentViewController().present(alert, animated: true)
                         }
                         NotificationCenter.default.post(name: .addDelayCardID, object: nil)
                 } else {
-                    let alert = UIAlertController(title: "Delay Error".localized(), message: "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured.".localized(), preferredStyle: .alert)
+                    /*let alert = UIAlertController(title: "Delay Error".localized(), message: "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured.".localized(), preferredStyle: .alert)
                     alert.view.tintColor = UIColor(named: "Kinda Red")
                     let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(cancelAction)
-                    self.parentViewController().present(alert, animated: true, completion: nil)
+                    self.parentViewController().present(alert, animated: true, completion: nil)*/
+                    let alert = UXAlertController(alertTag: 0, alertTitle: "Delay Error".localized(), alertMessage: "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured.".localized(), alertImage: "AlreadyDelayedKR", alertTintColor: UIColor(named: "Kinda Red")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
+                    self.parentViewController().present(alert, animated: true)
                 }
                 case .failure(let err):
                     print(err)
@@ -119,7 +123,7 @@ class ReservationView: UIView {
     @IBAction func cancelTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        let alert = UIAlertController(title: "Cancel".localized(), message: "Are you sure you want to cancel your reservation? You will only get half the money back and only if the reservation is less than half consumed.".localized(), preferredStyle: .alert)
+        /*let alert = UIAlertController(title: "Cancel".localized(), message: "Are you sure you want to cancel your reservation? You will only get half the money back and only if the reservation is less than half consumed.".localized(), preferredStyle: .alert)
         alert.view.tintColor = UIColor(named: "Redish")
         let cancelAction = UIAlertAction(title: "No".localized(), style: .cancel, handler: nil)
         let proceedAction = UIAlertAction(title: "Yes".localized(), style: .destructive) { action in
@@ -138,7 +142,10 @@ class ReservationView: UIView {
         }
         alert.addAction(proceedAction)
         alert.addAction(cancelAction)
-        self.parentViewController().present(alert, animated: true, completion: nil)
+        self.parentViewController().present(alert, animated: true, completion: nil)*/
+        let alert = UXAlertController(alertTag: 1, alertTitle: "Cancel".localized(), alertMessage: "Are you sure you want to cancel your reservation? You will only get half the money back and only if the reservation is less than half consumed.".localized(), alertImage: "CancelReservationR", alertTintColor: UIColor(named: "Redish")!, alertPrimaryActionTitle: "No".localized(), isSecondaryActionHidden: false, alertSecondaryActionTitle: "Yes".localized())
+        alert.delegate = self
+        self.parentViewController().present(alert, animated: true)
     }
     
     @IBAction func arTapped(_ sender: Any) {
@@ -210,45 +217,82 @@ class ReservationView: UIView {
 
     func manageServerSideErrors(error: Error) {
         switch error {
-        case ReservationManager.ReservationErrors.spotAlreadyTaken:
-                let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Sorry, the 60 seconds have passed and it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
+            case ReservationManager.ReservationErrors.spotAlreadyTaken:
+                /*let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Sorry, the 60 seconds have passed and it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
-                self.parentViewController().present(alert, animated: true, completion: nil)
+                self.parentViewController().present(alert, animated: true, completion: nil)*/
+                let alert = UXAlertController(alertTag: 0, alertTitle: "Couldn't reserve".localized(), alertMessage: "Sorry, the 60 seconds have passed and it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), alertImage: "CouldntReserveR", alertTintColor: UIColor(named: "Redish")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
+                self.parentViewController().present(alert, animated: true)
             case ReservationManager.ReservationErrors.networkError:
-                let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
+                /*let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
-                self.parentViewController().present(alert, animated: true, completion: nil)
+                self.parentViewController().present(alert, animated: true, completion: nil)*/
+                let alert = UXAlertController(alertTag: 0, alertTitle: "Network Error".localized(), alertMessage: "Please check you network connection.".localized(), alertImage: "ServerErrorsR", alertTintColor: UIColor(named: "Redish")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
+                self.parentViewController().present(alert, animated: true)
             case ReservationManager.ReservationErrors.databaseFailure:
-                let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
+                /*let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
-                self.parentViewController().present(alert, animated: true, completion: nil)
+                self.parentViewController().present(alert, animated: true, completion: nil)*/
+                let alert = UXAlertController(alertTag: 0, alertTitle: "Internal Error".localized(), alertMessage: "There was an internal problem, please wait and try again a little later.".localized(), alertImage: "ServerErrorsR", alertTintColor: UIColor(named: "Redish")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
+                self.parentViewController().present(alert, animated: true)
             case ReservationManager.ReservationErrors.unknownError:
-                let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                /*let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
-                self.parentViewController().present(alert, animated: true, completion: nil)
+                self.parentViewController().present(alert, animated: true, completion: nil)*/
+                let alert = UXAlertController(alertTag: 0, alertTitle: "Unknown Error".localized(), alertMessage: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), alertImage: "ServerErrorsR", alertTintColor: UIColor(named: "Redish")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
+                self.parentViewController().present(alert, animated: true)
             case ReservationManager.ReservationErrors.errorWithJson:
-                let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                /*let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
-                self.parentViewController().present(alert, animated: true, completion: nil)
+                self.parentViewController().present(alert, animated: true, completion: nil)*/
+                let alert = UXAlertController(alertTag: 0, alertTitle: "JSON Error".localized(), alertMessage: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), alertImage: "ServerErrorsR", alertTintColor: UIColor(named: "Redish")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
+                self.parentViewController().present(alert, animated: true)
             default:
-                let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                /*let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")
-                self.parentViewController().present(alert, animated: true, completion: nil)
+                self.parentViewController().present(alert, animated: true, completion: nil)*/
+                let alert = UXAlertController(alertTag: 0, alertTitle: "Unknown Error".localized(), alertMessage: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), alertImage: "ServerErrorsR", alertTintColor: UIColor(named: "Redish")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
+                self.parentViewController().present(alert, animated: true)
         }
     }
     
     
 }
-
+extension ReservationView: UXAlertControllerDelegate {
+    
+    func primaryActionTapped(_ alert: UXAlertController, alertTag: Int) {
+        if alertTag == 1 {
+            //do nothing
+        }
+    }
+    
+    func secondaryActionTapped(_ alert: UXAlertController, alertTag: Int) {
+        if alertTag == 1 {
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+            let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+            ReservationManager.sharedInstance.cancelReservation(id, date: Date()) { result in
+                switch result {
+                    case .success():
+                        print("CANCELLED")
+                    case .failure(let err):
+                        print(err)
+                        self.manageServerSideErrors(error: err)
+                }
+            }
+        }
+    }
+    
+}

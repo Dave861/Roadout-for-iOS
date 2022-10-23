@@ -78,7 +78,7 @@ class HomeViewController: UIViewController {
         } else {
             self.searchBar.alpha = 0.0
         }
-        self.updateBackgroundViewHeight(with: 310)
+        self.updateBackgroundViewHeight(with: 245)
         //Clear saved car park
         UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
         carParkHash = "roadout_carpark_clear"
@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.findView.frame = CGRect(x: 10, y: self.screenSize.height-310-dif, width: self.screenSize.width - 20, height: 310)
+            self.findView.frame = CGRect(x: 10, y: self.screenSize.height-245-dif, width: self.screenSize.width - 20, height: 245)
             self.view.addSubview(self.findView)
         }
     }
@@ -295,12 +295,14 @@ class HomeViewController: UIViewController {
             UIAction(title: "Pay Parking".localized(), image: UIImage(systemName: "wallet.pass.fill"), handler: { (_) in
                 guard let coord = self.mapView.myLocation?.coordinate else {
                     
-                    let alert = UIAlertController(title: "Error".localized(), message: "Roadout can't access your location to show nearby spots, please enable it in Settings.".localized(), preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-                    alert.addAction(cancelAction)
+                    /*let alert = UIAlertController(title: "Error".localized(), message: "Roadout can't access your location to show nearby spots, please enable it in Settings.".localized(), preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
+                    alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Cash Yellow")!
                     
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(alert, animated: true, completion: nil)*/
+                    let alert = UXAlertController(alertTag: 0, alertTitle: "Error".localized(), alertMessage: "Roadout can't access your location to show nearby spots, please enable it in Settings.".localized(), alertImage: "LocationErrorCY", alertTintColor: UIColor(named: "Cash Yellow")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
+                    self.present(alert, animated: true)
                     
                     return
                 }
@@ -363,11 +365,13 @@ class HomeViewController: UIViewController {
     }
     
     func showFindLocationAlert() {
-        let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Spot".localized(), preferredStyle: .alert)
+        /*let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Way".localized(), preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         alert.view.tintColor = UIColor(named: "DevBrown")
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)*/
+        let alert = UXAlertController(alertTag: 0, alertTitle: "Error".localized(), alertMessage: "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Way".localized(), alertImage: "FindErrorG", alertTintColor: UIColor(named: "Greyish")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
+        self.present(alert, animated: true)
     }
     
     //MARK: -View Configuration-

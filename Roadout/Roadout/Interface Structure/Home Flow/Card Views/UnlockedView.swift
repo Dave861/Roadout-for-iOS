@@ -38,10 +38,12 @@ class UnlockedView: UIView {
         
         markLbl.text = "Marked".localized()
         markBtn.isEnabled = false
-        let alert = UIAlertController(title: "Spot Marked".localized(), message: "Your car location has been marked, you can return later and find it in Roadout".localized(), preferredStyle: .alert)
+        /*let alert = UIAlertController(title: "Spot Marked".localized(), message: "Your car location has been marked, you can return later and find it in Roadout".localized(), preferredStyle: .alert)
         alert.view.tintColor = UIColor(named: "DevBrown")!
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
         alert.addAction(okAction)
+        self.parentViewController().present(alert, animated: true)*/
+        let alert = UXAlertController(alertTag: 0, alertTitle: "Spot Marked".localized(), alertMessage: "Your car location has been marked, you can return later and find it in Roadout".localized(), alertImage: "SpotMarkedDB", alertTintColor: UIColor(named: "DevBrown")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
         self.parentViewController().present(alert, animated: true)
     }
     
@@ -51,7 +53,7 @@ class UnlockedView: UIView {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         ReservationManager.sharedInstance.checkForReservation(Date(), userID: id) { _ in
             //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done)
-            let rateAlert = UIAlertController(title: "Rate".localized(), message: "Would you like to rate your experience?".localized(), preferredStyle: .alert)
+            /*let rateAlert = UIAlertController(title: "Rate".localized(), message: "Would you like to rate your experience?".localized(), preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "Yes".localized(), style: .cancel) { _ in
                 NotificationCenter.default.post(name: .showRateReservationID, object: nil)
              }
@@ -62,7 +64,10 @@ class UnlockedView: UIView {
             rateAlert.addAction(yesAction)
             rateAlert.view.tintColor = UIColor(named: "Main Yellow")
              
-            self.parentViewController().present(rateAlert, animated: true, completion: nil)
+            self.parentViewController().present(rateAlert, animated: true, completion: nil)*/
+            let alert = UXAlertController(alertTag: 1, alertTitle: "Rate".localized(), alertMessage: "Would you like to rate your experience? Reviews help us ensure we provide best in class services.".localized(), alertImage: "RateMY", alertTintColor: UIColor(named: "Main Yellow")!, alertPrimaryActionTitle: "Yes".localized(), isSecondaryActionHidden: false, alertSecondaryActionTitle: "No".localized())
+            alert.delegate = self
+            self.parentViewController().present(alert, animated: true)
             NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
         }
     }
@@ -113,4 +118,19 @@ class UnlockedView: UIView {
         return location
     }
 
+}
+extension UnlockedView: UXAlertControllerDelegate {
+    
+    func primaryActionTapped(_ alert: UXAlertController, alertTag: Int) {
+        if alertTag == 1 {
+            NotificationCenter.default.post(name: .showRateReservationID, object: nil)
+        }
+    }
+    
+    func secondaryActionTapped(_ alert: UXAlertController, alertTag: Int) {
+        if alertTag == 1 {
+           //do nothing
+        }
+    }
+    
 }

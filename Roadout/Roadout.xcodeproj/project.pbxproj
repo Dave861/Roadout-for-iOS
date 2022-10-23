@@ -139,6 +139,8 @@
 		9AA0EFCE277B3DDD00B0F52A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */; };
 		9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9AA0EFD1277B5D5800B0F52A /* Alamofire */; };
 		9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA65124272D7DD10057DA24 /* SectionView.swift */; };
+		9AA84DE42905207E001CFBDE /* UXAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA84DE32905207E001CFBDE /* UXAlertController.swift */; };
+		9AA84DE629052871001CFBDE /* UXAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA84DE529052871001CFBDE /* UXAlertController.xib */; };
 		9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */; };
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
 		9AAB8664285DA87600C01428 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAB8663285DA87600C01428 /* ARViewController.swift */; };
@@ -364,6 +366,8 @@
 		9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		9AA0EFCF277B4C7C00B0F52A /* RoadoutRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RoadoutRelease.entitlements; sourceTree = "<group>"; };
 		9AA65124272D7DD10057DA24 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		9AA84DE32905207E001CFBDE /* UXAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXAlertController.swift; sourceTree = "<group>"; };
+		9AA84DE529052871001CFBDE /* UXAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UXAlertController.xib; sourceTree = "<group>"; };
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9AAB8663285DA87600C01428 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
@@ -737,6 +741,8 @@
 				9A92CF2128312A57003F2080 /* GradientView.swift */,
 				9A061AD5286D82DD008BC46F /* ToolTipView.swift */,
 				9A061AD7286D8314008BC46F /* ToolTipViewExtensions.swift */,
+				9AA84DE32905207E001CFBDE /* UXAlertController.swift */,
+				9AA84DE529052871001CFBDE /* UXAlertController.xib */,
 			);
 			path = "UI Classes";
 			sourceTree = "<group>";
@@ -1061,6 +1067,7 @@
 				9A5CC58C272C133A00A735A3 /* lightStyle.json in Resources */,
 				9AC149CF28B4F9E900B9B394 /* Tutorials.xib in Resources */,
 				9A24ADB327DCF2EB00BE8E1A /* Cards.xib in Resources */,
+				9AA84DE629052871001CFBDE /* UXAlertController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1145,6 +1152,7 @@
 				9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */,
 				9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */,
 				9A1ABE972726A5EF00D4AA4B /* WelcomeTableViewCell.swift in Sources */,
+				9AA84DE42905207E001CFBDE /* UXAlertController.swift in Sources */,
 				9A76DC662886E93E000990F9 /* ExpressPickViewController.swift in Sources */,
 				9A2D4BD32757883E0007EE2E /* FindView.swift in Sources */,
 				9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */,

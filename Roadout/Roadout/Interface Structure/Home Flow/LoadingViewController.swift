@@ -51,7 +51,7 @@ class GetDataViewController: UIViewController {
     }
     
     func showErrors(error: Error) {
-        let alert = UIAlertController(title: "Download Error".localized(), message: "There was an error reaching our server. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report at bugs@roadout.ro".localized(), preferredStyle: .alert)
+        /*let alert = UIAlertController(title: "Download Error".localized(), message: "There was an error reaching our server. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report at bugs@roadout.ro".localized(), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel) { _ in
             self.tryAgainBtn.isHidden = false
         }
@@ -64,7 +64,10 @@ class GetDataViewController: UIViewController {
         alert.addAction(tryAgainAction)
         
         alert.view.tintColor = UIColor(named: "Kinda Red")
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)*/
+        let alert = UXAlertController(alertTag: 0, alertTitle: "Download Error".localized(), alertMessage: "There was an error reaching our server. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report at bugs@roadout.ro".localized(), alertImage: "DownloadErrorKR", alertTintColor: UIColor(named: "Kinda Red")!, alertPrimaryActionTitle: "Try Again".localized(), isSecondaryActionHidden: false, alertSecondaryActionTitle: "OK".localized())
+        alert.delegate = self
+        self.present(alert, animated: true)
     }
     
     override func viewDidLoad() {
@@ -78,5 +81,17 @@ class GetDataViewController: UIViewController {
     }
 
     
+    
+}
+extension GetDataViewController: UXAlertControllerDelegate {
+    
+    func primaryActionTapped(_ alert: UXAlertController, alertTag: Int) {
+        self.downloadCityData()
+        self.tryAgainBtn.isHidden = true
+    }
+    
+    func secondaryActionTapped(_ alert: UXAlertController, alertTag: Int) {
+        self.tryAgainBtn.isHidden = false
+    }
     
 }

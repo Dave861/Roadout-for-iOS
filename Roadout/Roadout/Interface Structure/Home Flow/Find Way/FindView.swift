@@ -43,14 +43,6 @@ class FindView: UIView {
         NotificationCenter.default.post(name: .addPayCardID, object: nil)
     }
     
-    @IBOutlet weak var siriBtn: UIButton!
-    
-    @IBAction func siriTapped(_ sender: Any) {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "SiriVC") as! SiriViewController
-        self.parentViewController().present(vc, animated: true)
-    }
-    
     @IBOutlet weak var locationBtn: UIButton!
     
     @IBOutlet weak var sectionBtn: UIButton!
@@ -92,9 +84,6 @@ class FindView: UIView {
         
         continueBtn.layer.cornerRadius = 12.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
-        
-        siriBtn.layer.cornerRadius = 12.0
-        siriBtn.setAttributedTitle(siriTitle, for: .normal)
         
         timeLbl.text = "\(minutesValue)" + " Minutes".localized()
         

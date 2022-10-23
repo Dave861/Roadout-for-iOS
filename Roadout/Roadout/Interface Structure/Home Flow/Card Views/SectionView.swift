@@ -140,11 +140,13 @@ class SectionView: UIView {
     
         
     func showLoadingAlert() {
-        let alert = UIAlertController(title: "Loading...".localized(), message: "The spots are still downloading, this should not happen normally and might be caused by poor network connection. Please wait and try again.".localized(), preferredStyle: .alert)
+        /*let alert = UIAlertController(title: "Loading...".localized(), message: "The spots are still downloading, this should not happen normally and might be caused by poor network connection. Please wait and try again.".localized(), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
         alert.addAction(okAction)
         alert.view.tintColor = UIColor(named: "Icons")
-        self.parentViewController().present(alert, animated: true, completion: nil)
+        self.parentViewController().present(alert, animated: true, completion: nil)*/
+        let alert = UXAlertController(alertTag: 0, alertTitle: "Loading...".localized(), alertMessage: "The spots are still downloading, this should not happen normally and might be caused by poor network connection. Please wait and try again.".localized(), alertImage: "LoadingI", alertTintColor: UIColor(named: "Icons")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
+        self.parentViewController().present(alert, animated: true)
     }
     
     func makeMenuActions(sections: [ParkSection]) -> [UIAction] {
