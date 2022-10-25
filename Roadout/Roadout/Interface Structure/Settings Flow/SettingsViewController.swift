@@ -65,13 +65,11 @@ class SettingsViewController: UIViewController {
 
             present(mail, animated: true)
         } else {
-            /*let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Greyish")
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
             alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)*/
-            let alert = UXAlertController(alertTag: 0, alertTitle: "Error".localized(), alertMessage: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com".localized(), alertImage: "EmailsErrorG", alertTintColor: UIColor(named: "Greyish")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
-            self.present(alert, animated: true)
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
@@ -126,7 +124,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if cellTypes[indexPath.row] == "UserSettingCell" {
             print("cool")
         } else if cellTypes[indexPath.row] == "ButtonCell" {
-            /*let alert = UIAlertController(title: "Sign Out".localized(), message: "Are you sure you want to sign out?".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "Sign Out".localized(), message: "Are you sure you want to sign out?".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Dark Orange")
             let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
             let signOutAction = UIAlertAction(title: "Sign Out".localized(), style: .destructive) { action in
@@ -142,10 +140,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             alert.addAction(signOutAction)
             alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)*/
-            let alert = UXAlertController(alertTag: 1, alertTitle: "Sign Out".localized(), alertMessage: "Are you sure you want to sign out of this device?".localized(), alertImage: "SignOutDO", alertTintColor: UIColor(named: "Dark Orange")!, alertPrimaryActionTitle: "Yes".localized(), isSecondaryActionHidden: false, alertSecondaryActionTitle: "No".localized())
-            alert.delegate = self
-            self.present(alert, animated: true)
+            self.present(alert, animated: true, completion: nil)
         } else if cellTypes[indexPath.row] != "SpacerCell" &&  cellTypes[indexPath.row] != "TextCell" {
             if cellVCs[indexPath.row] == "ReportVC" {
                 sendEmail()
@@ -192,27 +187,4 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-}
-extension SettingsViewController: UXAlertControllerDelegate {
-    
-    func primaryActionTapped(_ alert: UXAlertController, alertTag: Int) {
-        if alertTag == 1 {
-            UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
-            UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip1")
-            UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip2")
-            UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip3")
-            UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip4")
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
-            self.view.window?.rootViewController = vc
-            self.view.window?.makeKeyAndVisible()
-        }
-    }
-    
-    func secondaryActionTapped(_ alert: UXAlertController, alertTag: Int) {
-        if alertTag == 1 {
-            //do nothing
-        }
-    }
-    
 }

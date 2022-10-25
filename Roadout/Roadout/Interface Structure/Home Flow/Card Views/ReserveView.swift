@@ -46,13 +46,11 @@ class ReserveView: UIView {
     @IBOutlet weak var recommendationLbl: UILabel!
     
     @IBAction func recommendationTapped(_ sender: Any) {
-        /*let alert = UIAlertController(title: "Recommended Time".localized(), message: "We recommend time based on your current location and estimated time to commute to the selected parking spot, if the time exceeds 20 minutes, we do not recommend reserving just yet.".localized(), preferredStyle: .alert)
+        let alert = UIAlertController(title: "Recommended Time".localized(), message: "We recommend time based on your current location and estimated time to commute to the selected parking spot, if the time exceeds 20 minutes, we do not recommend reserving just yet.".localized(), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
         alert.addAction(okAction)
         alert.view.tintColor = UIColor(named: "Dark Yellow")!
-        self.parentViewController().present(alert, animated: true, completion: nil)*/
-        let alert = UXAlertController(alertTag: 0, alertTitle: "Recommended Time".localized(), alertMessage: "We recommend time based on your current location and estimated time to commute to the selected parking spot, if the time exceeds 20 minutes, we do not recommend reserving just yet.".localized(), alertImage: "RecommendedTimeDY", alertTintColor: UIColor(named: "Dark Yellow")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
-        self.parentViewController().present(alert, animated: true)
+        self.parentViewController().present(alert, animated: true, completion: nil)
     }
     
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])

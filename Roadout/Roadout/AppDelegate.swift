@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 extension AppDelegate: WCSessionDelegate {
     
-    //Setting app the session when app launches
+    //Setting up the session when app launches
     func setUpWCSession() {
         if WCSession.isSupported() {
             let session = WCSession.default
@@ -53,7 +53,24 @@ extension AppDelegate: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print(activationState)
+        switch activationState {
+            case .activated:
+                print("Activated WCSession")
+                if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
+                    let data = [
+                        "action" : "UserID",
+                        "userID" : UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+                    ]
+                    WCSession.default.sendMessage(data, replyHandler: nil)
+                }
+            case .inactive:
+                print("Inactivated WCSession" + (error?.localizedDescription ?? ""))
+            case .notActivated:
+                print("Not Activated WCSession" + (error?.localizedDescription ?? ""))
+            @unknown default:
+                print("UNKNOWN WC STATE")
+        }
+        
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -89,8 +106,14 @@ extension AppDelegate: WCSessionDelegate {
                     }
                 }
             }
-        } else if message["action"] as? String == "Connected User" {
-            NotificationCenter.default.post(name: .dismissWatchConnectCardID, object: nil)
+        } else if message["action"] as? String == "Send UserID" {
+            if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
+                let data = [
+                    "action" : "UserID",
+                    "userID" : UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+                ]
+                WCSession.default.sendMessage(data, replyHandler: nil)
+            }
         }
     }
     

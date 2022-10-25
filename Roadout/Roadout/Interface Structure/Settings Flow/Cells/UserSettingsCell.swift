@@ -31,10 +31,6 @@ class UserSettingsCell: UITableViewCell {
                 let vc = self.sb.instantiateViewController(withIdentifier: "EditPasswordVC") as! EditPasswordViewController
                 self.parentViewController().present(vc, animated: true, completion: nil)
             }),
-            UIAction(title: "Link Apple Watch".localized(), image: UIImage(systemName: "applewatch"), handler: { (_) in
-                let vc = self.sb.instantiateViewController(withIdentifier: "LinkWatchVC") as! LinkWatchViewController
-                self.parentViewController().present(vc, animated: true, completion: nil)
-            }),
             UIAction(title: "Delete Account".localized(), image: UIImage(systemName: "trash.fill"), handler: { (_) in
                 let vc = self.sb.instantiateViewController(withIdentifier: "DeleteAccountVC") as! DeleteAccountViewController
                 self.parentViewController().present(vc, animated: true, completion: nil)

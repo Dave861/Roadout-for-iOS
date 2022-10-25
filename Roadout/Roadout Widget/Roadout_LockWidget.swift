@@ -82,7 +82,6 @@ struct RoadoutLockView: View {
                 Image("roadout.car")
                     .resizable()
                     .widgetAccentable()
-                    //.frame(width: 12, height: 21, alignment: .center)
             }
         case .accessoryRectangular:
             if isReservationActive {

@@ -1738,120 +1738,6 @@ Made in Cluj :)</string>
             </objects>
             <point key="canvasLocation" x="-686" y="94"/>
         </scene>
-        <!--Link Watch View Controller-->
-        <scene sceneID="lp4-90-qQk">
-            <objects>
-                <viewController storyboardIdentifier="LinkWatchVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yQB-bM-Xhz" customClass="LinkWatchViewController" customModule="Roadout" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ld0-n5-0KY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uA2-Rm-LNk">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xlr-vx-WmV">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="systemUltraThinMaterial"/>
-                            </visualEffectView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ph0-E8-9S6">
-                                <rect key="frame" x="0.0" y="690" width="414" height="206"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link Apple Watch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPh-lw-oju">
-                                        <rect key="frame" x="15" y="15" width="178.5" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATy-Kv-MSj">
-                                        <rect key="frame" x="15" y="121" width="384" height="50"/>
-                                        <color key="backgroundColor" name="Greyish"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="G1G-dk-9pL"/>
-                                        </constraints>
-                                        <color key="tintColor" name="Background"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Connect">
-                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="connectTapped:" destination="yQB-bM-Xhz" eventType="touchUpInside" id="jBM-s7-TG3"/>
-                                        </connections>
-                                    </button>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Q3N-c7-rg7">
-                                        <rect key="frame" x="197" y="55" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="4c6-wi-o2b"/>
-                                            <constraint firstAttribute="height" constant="20" id="hSc-lt-Esa"/>
-                                        </constraints>
-                                    </activityIndicatorView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DsM-N8-SZh">
-                                        <rect key="frame" x="150" y="79" width="114" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="PdU-Zy-6CW"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xad-DN-x7h">
-                                        <rect key="frame" x="338.5" y="20" width="72.5" height="17"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="17" id="Pbc-Ae-f7X"/>
-                                        </constraints>
-                                        <color key="tintColor" name="Greyish"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Cancel">
-                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="cancelTapped:" destination="yQB-bM-Xhz" eventType="touchUpInside" id="Dga-u8-bLA"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" name="Background"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Xad-DN-x7h" secondAttribute="trailing" constant="3" id="1y7-qK-6uq"/>
-                                    <constraint firstItem="IPh-lw-oju" firstAttribute="top" secondItem="Ph0-E8-9S6" secondAttribute="top" constant="15" id="79P-QG-r8I"/>
-                                    <constraint firstItem="Q3N-c7-rg7" firstAttribute="top" secondItem="Ph0-E8-9S6" secondAttribute="top" constant="55" id="E3V-UQ-8tg"/>
-                                    <constraint firstItem="DsM-N8-SZh" firstAttribute="centerX" secondItem="Ph0-E8-9S6" secondAttribute="centerX" id="FHP-qq-bpo"/>
-                                    <constraint firstItem="Xad-DN-x7h" firstAttribute="top" secondItem="Ph0-E8-9S6" secondAttribute="top" constant="20" id="LSa-TP-KZU"/>
-                                    <constraint firstAttribute="trailing" secondItem="ATy-Kv-MSj" secondAttribute="trailing" constant="15" id="Lnq-EG-lHu"/>
-                                    <constraint firstItem="DsM-N8-SZh" firstAttribute="top" secondItem="Q3N-c7-rg7" secondAttribute="bottom" constant="4" id="Lu2-U1-PbJ"/>
-                                    <constraint firstItem="ATy-Kv-MSj" firstAttribute="leading" secondItem="Ph0-E8-9S6" secondAttribute="leading" constant="15" id="O4h-lI-KME"/>
-                                    <constraint firstItem="Q3N-c7-rg7" firstAttribute="centerX" secondItem="Ph0-E8-9S6" secondAttribute="centerX" id="Tcq-mh-Oy6"/>
-                                    <constraint firstAttribute="height" constant="206" id="ZJI-34-vnV"/>
-                                    <constraint firstItem="IPh-lw-oju" firstAttribute="leading" secondItem="Ph0-E8-9S6" secondAttribute="leading" constant="15" id="ioK-24-sPw"/>
-                                    <constraint firstAttribute="bottom" secondItem="ATy-Kv-MSj" secondAttribute="bottom" constant="35" id="s9a-5U-b3U"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="jo1-Aq-LBt"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="uA2-Rm-LNk" firstAttribute="top" secondItem="ld0-n5-0KY" secondAttribute="top" id="9d5-5k-ZNn"/>
-                            <constraint firstItem="jo1-Aq-LBt" firstAttribute="trailing" secondItem="Ph0-E8-9S6" secondAttribute="trailing" id="GZO-xz-fAy"/>
-                            <constraint firstAttribute="bottom" secondItem="Ph0-E8-9S6" secondAttribute="bottom" id="HU2-HE-aQl" customClass="MagicKeyboardConstraint" customModule="Roadout" customModuleProvider="target"/>
-                            <constraint firstItem="Ph0-E8-9S6" firstAttribute="leading" secondItem="jo1-Aq-LBt" secondAttribute="leading" id="Nij-4O-Ccq"/>
-                            <constraint firstItem="uA2-Rm-LNk" firstAttribute="leading" secondItem="jo1-Aq-LBt" secondAttribute="leading" id="PF2-UV-bdo"/>
-                            <constraint firstItem="uA2-Rm-LNk" firstAttribute="trailing" secondItem="jo1-Aq-LBt" secondAttribute="trailing" id="WXQ-8I-BYA"/>
-                            <constraint firstAttribute="bottom" secondItem="uA2-Rm-LNk" secondAttribute="bottom" id="ZhO-U2-FwJ"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="activityIndicator" destination="Q3N-c7-rg7" id="LKz-cZ-X1G"/>
-                        <outlet property="blurEffect" destination="uA2-Rm-LNk" id="6Ew-va-St8"/>
-                        <outlet property="cancelBtn" destination="Xad-DN-x7h" id="9t1-Yi-65P"/>
-                        <outlet property="cardView" destination="Ph0-E8-9S6" id="XUD-Tw-Ce0"/>
-                        <outlet property="connectBtn" destination="ATy-Kv-MSj" id="2nL-fJ-xFb"/>
-                        <outlet property="statusLbl" destination="DsM-N8-SZh" id="y7S-DQ-peu"/>
-                        <outlet property="titleLbl" destination="IPh-lw-oju" id="2mZ-o5-whB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DVp-RU-GmZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2027.5362318840582" y="426.5625"/>
-        </scene>
         <!--Select Pay View Controller-->
         <scene sceneID="Ig4-zN-G11">
             <objects>
@@ -2464,7 +2350,7 @@ Made in Cluj :)</string>
             <color red="0.5" green="0.24099999666213989" blue="0.072999998927116394" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="ExpressFocus">
-            <color red="0.48199999332427979" green="0.30199998617172241" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.4823529411764706" green="0.30196078431372547" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="FloatingBG">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

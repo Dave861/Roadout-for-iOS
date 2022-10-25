@@ -64,12 +64,10 @@ class ResultView: UIView {
     }
     @objc func showNoFreeSpotAlert() {
         DispatchQueue.main.async {
-            /*let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
             alert.view.tintColor = selectedLocationColor ?? UIColor(named: "Main Yellow")!
             alert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
-            self.parentViewController().present(alert, animated: true, completion: nil)*/
-            let alert = UXAlertController(alertTag: 0, alertTitle: "Error".localized(), alertMessage: "It seems there are no free spots in this location at the moment".localized(), alertImage: "NoFreeSpotsMY", alertTintColor: UIColor(named: "Main Yellow")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
-            self.parentViewController().present(alert, animated: true)
+            self.parentViewController().present(alert, animated: true, completion: nil)
         }
     }
     

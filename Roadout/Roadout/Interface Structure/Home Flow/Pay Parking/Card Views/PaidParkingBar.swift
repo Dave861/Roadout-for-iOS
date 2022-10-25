@@ -21,7 +21,7 @@ class PaidParkingBar: UIView {
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 17.0
         optionsBtn.setAttributedTitle(buttonTitle, for: .normal)
-        optionsBtn.layer.cornerRadius = 15.0
+        optionsBtn.layer.cornerRadius = 14.0
     }
     
     class func instanceFromNib() -> UIView {

@@ -110,12 +110,10 @@ class ExpressPickViewController: UIViewController {
     
     @objc func showNoFreeSpotAlert() {
         DispatchQueue.main.async {
-            /*let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "ExpressFocus")!
             alert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)*/
-            let alert = UXAlertController(alertTag: 0, alertTitle: "Error".localized(), alertMessage: "It seems there are no free spots in this location at the moment".localized(), alertImage: "NoFreeSpotsEF", alertTintColor: UIColor(named: "ExpressFocus")!, alertPrimaryActionTitle: "OK".localized(), isSecondaryActionHidden: true, alertSecondaryActionTitle: "")
-            self.present(alert, animated: true)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

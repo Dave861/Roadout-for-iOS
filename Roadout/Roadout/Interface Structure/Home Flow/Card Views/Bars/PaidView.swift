@@ -21,7 +21,7 @@ class PaidView: UIView {
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 17.0
         seeBtn.setAttributedTitle(buttonTitle, for: .normal)
-        seeBtn.layer.cornerRadius = 15.0
+        seeBtn.layer.cornerRadius = 14.0
     }
     
     class func instanceFromNib() -> UIView {
