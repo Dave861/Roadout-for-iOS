@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SPIndicator
 
 class SectionView: UIView {
     

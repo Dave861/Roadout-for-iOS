@@ -8,7 +8,6 @@
 import UIKit
 import CoreLocation
 import UserNotifications
-import SPIndicator
 
 class SignInViewController: UIViewController {
     

@@ -7,7 +7,6 @@
 
 import UIKit
 import CoreLocation
-import SPIndicator
 
 class ExpressPickViewController: UIViewController {
     
@@ -156,6 +155,8 @@ class ExpressPickViewController: UIViewController {
     func showLoadingIndicator() {
         let indicatorIcon = UIImage.init(systemName: "flag.2.crossed.fill")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
+        indicatorView.layer.borderColor = UIColor(named: "Secondary Detail")!.cgColor
+        indicatorView.layer.borderWidth = 1.5
         indicatorView.dismissByDrag = false
         indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
     }

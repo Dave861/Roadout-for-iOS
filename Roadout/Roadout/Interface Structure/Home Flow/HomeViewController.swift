@@ -9,7 +9,6 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 import SwiftUI
-import SPIndicator
 import GeohashKit
 
 class HomeViewController: UIViewController {

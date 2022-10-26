@@ -36,8 +36,8 @@ class VoiceAssitantsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        siriCard.layer.cornerRadius = 12.0
-        otherCard.layer.cornerRadius = 12.0
+        siriCard.layer.cornerRadius = 16.0
+        otherCard.layer.cornerRadius = 16.0
         
         localizeLabels()
         addColorToPhraseLabels()

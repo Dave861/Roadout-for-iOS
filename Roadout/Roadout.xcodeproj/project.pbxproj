@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A00053F281C334D001F1FB7 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 9A00053E281C334D001F1FB7 /* SPIndicator */; };
 		9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0357162727CC61002A9ED9 /* HomeViewController.swift */; };
 		9A051E652907E1AF003F719A /* Roadout.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9A7596672905694600E0D680 /* Roadout.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9A061AD6286D82DD008BC46F /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A061AD5286D82DD008BC46F /* ToolTipView.swift */; };
@@ -162,8 +161,6 @@
 		9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9AA0EFD1277B5D5800B0F52A /* Alamofire */; };
 		9AA42EBF2905B04400B9CFE2 /* UserDefSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA42EBE2905B04400B9CFE2 /* UserDefSuite.swift */; };
 		9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA65124272D7DD10057DA24 /* SectionView.swift */; };
-		9AA84DE42905207E001CFBDE /* UXAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA84DE32905207E001CFBDE /* UXAlertController.swift */; };
-		9AA84DE629052871001CFBDE /* UXAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA84DE529052871001CFBDE /* UXAlertController.xib */; };
 		9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */; };
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
 		9AAB8664285DA87600C01428 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAB8663285DA87600C01428 /* ARViewController.swift */; };
@@ -191,6 +188,19 @@
 		9ACBFF54272704F90011B58F /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBFF53272704F90011B58F /* PermissionsViewController.swift */; };
 		9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACBFF55272705060011B58F /* PermissionTableViewCell.swift */; };
 		9AD832A02858E49A005DD49D /* DangerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8329F2858E49A005DD49D /* DangerTableViewCell.swift */; };
+		9ADB0A082909837400F548D9 /* SPIndicatorPresentSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB09F72909837400F548D9 /* SPIndicatorPresentSide.swift */; };
+		9ADB0A092909837400F548D9 /* SPIndicatorLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB09F82909837400F548D9 /* SPIndicatorLayout.swift */; };
+		9ADB0A0A2909837400F548D9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB09FA2909837400F548D9 /* UIColorExtension.swift */; };
+		9ADB0A0B2909837400F548D9 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB09FB2909837400F548D9 /* UILabelExtension.swift */; };
+		9ADB0A0C2909837400F548D9 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB09FC2909837400F548D9 /* UIFontExtension.swift */; };
+		9ADB0A0D2909837400F548D9 /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB09FD2909837400F548D9 /* SwiftUIExtension.swift */; };
+		9ADB0A0E2909837400F548D9 /* SPIndicatorIconPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB09FE2909837400F548D9 /* SPIndicatorIconPreset.swift */; };
+		9ADB0A0F2909837400F548D9 /* SPAlertIconErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB0A002909837400F548D9 /* SPAlertIconErrorView.swift */; };
+		9ADB0A102909837400F548D9 /* SPIndicatorIconDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB0A012909837400F548D9 /* SPIndicatorIconDoneView.swift */; };
+		9ADB0A112909837400F548D9 /* SPIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB0A022909837400F548D9 /* SPIndicator.swift */; };
+		9ADB0A122909837400F548D9 /* SPIndicatorIconAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB0A042909837400F548D9 /* SPIndicatorIconAnimatable.swift */; };
+		9ADB0A132909837400F548D9 /* SPIndicatorHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB0A062909837400F548D9 /* SPIndicatorHaptic.swift */; };
+		9ADB0A142909837400F548D9 /* SPIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB0A072909837400F548D9 /* SPIndicatorView.swift */; };
 		9ADEB748284FD3AD00AB6F23 /* SearchPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEB747284FD3AD00AB6F23 /* SearchPreviewController.swift */; };
 		9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFF6272BBFD70088A3ED /* HistoryViewController.swift */; };
 		9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */; };
@@ -435,8 +445,6 @@
 		9AA42EBE2905B04400B9CFE2 /* UserDefSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefSuite.swift; sourceTree = "<group>"; };
 		9AA42EC02905B0DE00B9CFE2 /* Roadout for Watch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Roadout for Watch Watch App.entitlements"; sourceTree = "<group>"; };
 		9AA65124272D7DD10057DA24 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
-		9AA84DE32905207E001CFBDE /* UXAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXAlertController.swift; sourceTree = "<group>"; };
-		9AA84DE529052871001CFBDE /* UXAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UXAlertController.xib; sourceTree = "<group>"; };
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9AAB8663285DA87600C01428 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
@@ -463,6 +471,19 @@
 		9ACBFF53272704F90011B58F /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		9ACBFF55272705060011B58F /* PermissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionTableViewCell.swift; sourceTree = "<group>"; };
 		9AD8329F2858E49A005DD49D /* DangerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerTableViewCell.swift; sourceTree = "<group>"; };
+		9ADB09F72909837400F548D9 /* SPIndicatorPresentSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPIndicatorPresentSide.swift; sourceTree = "<group>"; };
+		9ADB09F82909837400F548D9 /* SPIndicatorLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPIndicatorLayout.swift; sourceTree = "<group>"; };
+		9ADB09FA2909837400F548D9 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		9ADB09FB2909837400F548D9 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		9ADB09FC2909837400F548D9 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		9ADB09FD2909837400F548D9 /* SwiftUIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIExtension.swift; sourceTree = "<group>"; };
+		9ADB09FE2909837400F548D9 /* SPIndicatorIconPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPIndicatorIconPreset.swift; sourceTree = "<group>"; };
+		9ADB0A002909837400F548D9 /* SPAlertIconErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlertIconErrorView.swift; sourceTree = "<group>"; };
+		9ADB0A012909837400F548D9 /* SPIndicatorIconDoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPIndicatorIconDoneView.swift; sourceTree = "<group>"; };
+		9ADB0A022909837400F548D9 /* SPIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPIndicator.swift; sourceTree = "<group>"; };
+		9ADB0A042909837400F548D9 /* SPIndicatorIconAnimatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPIndicatorIconAnimatable.swift; sourceTree = "<group>"; };
+		9ADB0A062909837400F548D9 /* SPIndicatorHaptic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPIndicatorHaptic.swift; sourceTree = "<group>"; };
+		9ADB0A072909837400F548D9 /* SPIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPIndicatorView.swift; sourceTree = "<group>"; };
 		9ADEB747284FD3AD00AB6F23 /* SearchPreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPreviewController.swift; sourceTree = "<group>"; };
 		9AE2AFF6272BBFD70088A3ED /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
@@ -530,7 +551,6 @@
 				9AAE2659280947E000BBBAC3 /* GoogleMaps in Frameworks */,
 				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
 				9AAE2661280947E000BBBAC3 /* GooglePlaces in Frameworks */,
-				9A00053F281C334D001F1FB7 /* SPIndicator in Frameworks */,
 				9AAE265D280947E000BBBAC3 /* GoogleMapsCore in Frameworks */,
 				9A40C1DC281443FD00E44B23 /* IOSSecuritySuite in Frameworks */,
 				9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */,
@@ -887,6 +907,8 @@
 		9AA9C4132726C5A500ECCCE1 /* UI Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9ADB0A152909837C00F548D9 /* ToolTipViews */,
+				9ADB09F52909837400F548D9 /* SPIndicator */,
 				9A14B913273142A400967417 /* CustomTableView.swift */,
 				9A14B915273142C100967417 /* Extensions.swift */,
 				9A14B917273142E100967417 /* KeyboardConstraint.swift */,
@@ -894,10 +916,6 @@
 				9A14B91B2731431B00967417 /* PaddedTextField.swift */,
 				9AED6DAF27E7152A00B5004F /* SlidingButton.swift */,
 				9A92CF2128312A57003F2080 /* GradientView.swift */,
-				9A061AD5286D82DD008BC46F /* ToolTipView.swift */,
-				9A061AD7286D8314008BC46F /* ToolTipViewExtensions.swift */,
-				9AA84DE32905207E001CFBDE /* UXAlertController.swift */,
-				9AA84DE529052871001CFBDE /* UXAlertController.xib */,
 			);
 			path = "UI Classes";
 			sourceTree = "<group>";
@@ -1059,6 +1077,75 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		9ADB09F52909837400F548D9 /* SPIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				9ADB09F62909837400F548D9 /* Models */,
+				9ADB09F92909837400F548D9 /* Extensions */,
+				9ADB09FE2909837400F548D9 /* SPIndicatorIconPreset.swift */,
+				9ADB09FF2909837400F548D9 /* Icons */,
+				9ADB0A022909837400F548D9 /* SPIndicator.swift */,
+				9ADB0A032909837400F548D9 /* Protocols */,
+				9ADB0A052909837400F548D9 /* Services */,
+				9ADB0A072909837400F548D9 /* SPIndicatorView.swift */,
+			);
+			path = SPIndicator;
+			sourceTree = "<group>";
+		};
+		9ADB09F62909837400F548D9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9ADB09F72909837400F548D9 /* SPIndicatorPresentSide.swift */,
+				9ADB09F82909837400F548D9 /* SPIndicatorLayout.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9ADB09F92909837400F548D9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9ADB09FA2909837400F548D9 /* UIColorExtension.swift */,
+				9ADB09FB2909837400F548D9 /* UILabelExtension.swift */,
+				9ADB09FC2909837400F548D9 /* UIFontExtension.swift */,
+				9ADB09FD2909837400F548D9 /* SwiftUIExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9ADB09FF2909837400F548D9 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				9ADB0A002909837400F548D9 /* SPAlertIconErrorView.swift */,
+				9ADB0A012909837400F548D9 /* SPIndicatorIconDoneView.swift */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		9ADB0A032909837400F548D9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9ADB0A042909837400F548D9 /* SPIndicatorIconAnimatable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9ADB0A052909837400F548D9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9ADB0A062909837400F548D9 /* SPIndicatorHaptic.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9ADB0A152909837C00F548D9 /* ToolTipViews */ = {
+			isa = PBXGroup;
+			children = (
+				9A061AD5286D82DD008BC46F /* ToolTipView.swift */,
+				9A061AD7286D8314008BC46F /* ToolTipViewExtensions.swift */,
+			);
+			path = ToolTipViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1170,7 +1257,6 @@
 				9AAE265E280947E000BBBAC3 /* GoogleMapsM4B */,
 				9AAE2660280947E000BBBAC3 /* GooglePlaces */,
 				9A40C1DB281443FD00E44B23 /* IOSSecuritySuite */,
-				9A00053E281C334D001F1FB7 /* SPIndicator */,
 				9A765C342896747600AF250D /* GeohashKit */,
 			);
 			productName = Roadout;
@@ -1221,7 +1307,6 @@
 				9A8D8D3A27BADDAC0037DFE3 /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */,
 				9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 				9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */,
-				9A00053D281C334D001F1FB7 /* XCRemoteSwiftPackageReference "SPIndicator" */,
 				9A765C332896747600AF250D /* XCRemoteSwiftPackageReference "GeohashKit" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
@@ -1292,7 +1377,6 @@
 				9A5CC58C272C133A00A735A3 /* lightStyle.json in Resources */,
 				9AC149CF28B4F9E900B9B394 /* Tutorials.xib in Resources */,
 				9A24ADB327DCF2EB00BE8E1A /* Cards.xib in Resources */,
-				9AA84DE629052871001CFBDE /* UXAlertController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1374,7 +1458,9 @@
 				9A4131D627BFD8950012EADB /* SearchManager.swift in Sources */,
 				9A089E45272A7D78005B3FFE /* AddReminderViewController.swift in Sources */,
 				9A46BBA4272EF343002280DD /* PayView.swift in Sources */,
+				9ADB0A102909837400F548D9 /* SPIndicatorIconDoneView.swift in Sources */,
 				9AA0AEFE272D195400DA04A2 /* LegalViewController.swift in Sources */,
+				9ADB0A0E2909837400F548D9 /* SPIndicatorIconPreset.swift in Sources */,
 				9A96F877272B0A25008B58FE /* CardCell.swift in Sources */,
 				9A310F562909396500249300 /* VoiceAssitantsViewController.swift in Sources */,
 				9A061AD6286D82DD008BC46F /* ToolTipView.swift in Sources */,
@@ -1397,24 +1483,28 @@
 				9A49BFAF272FF42B00234A9F /* NoWifiView.swift in Sources */,
 				9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */,
 				9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */,
+				9ADB0A142909837400F548D9 /* SPIndicatorView.swift in Sources */,
 				9AC566E627BE354200955F7D /* EntityManager.swift in Sources */,
 				9A92311228883F7A00CC9D92 /* DurationView.swift in Sources */,
 				9A49BFAD272FF42100234A9F /* CancelledView.swift in Sources */,
 				9A310785272A708300B1F84A /* ReminderCell.swift in Sources */,
+				9ADB0A0A2909837400F548D9 /* UIColorExtension.swift in Sources */,
 				9A74D01B28B3C055000DB497 /* MaintenanceTableViewCell.swift in Sources */,
 				9A799322277A0E410088E3FD /* ParkSection.swift in Sources */,
 				9A49BFB1272FF8CB00234A9F /* Reachability.swift in Sources */,
 				9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */,
 				9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */,
 				9A1ABE972726A5EF00D4AA4B /* WelcomeTableViewCell.swift in Sources */,
-				9AA84DE42905207E001CFBDE /* UXAlertController.swift in Sources */,
 				9A76DC662886E93E000990F9 /* ExpressPickViewController.swift in Sources */,
 				9A2D4BD32757883E0007EE2E /* FindView.swift in Sources */,
 				9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */,
+				9ADB0A112909837400F548D9 /* SPIndicator.swift in Sources */,
 				9ACBFF54272704F90011B58F /* PermissionsViewController.swift in Sources */,
 				9AB96428272EFCE0008462E7 /* ActiveView.swift in Sources */,
 				9A14B918273142E100967417 /* KeyboardConstraint.swift in Sources */,
 				9A5381142789CA1600462D63 /* VerifyMailViewController.swift in Sources */,
+				9ADB0A132909837400F548D9 /* SPIndicatorHaptic.swift in Sources */,
+				9ADB0A082909837400F548D9 /* SPIndicatorPresentSide.swift in Sources */,
 				9AF798F3272C4BF70096D4C3 /* PrizesViewController.swift in Sources */,
 				9A65C5F227804B140060ABCA /* NotificationNameCenter.swift in Sources */,
 				9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */,
@@ -1445,8 +1535,10 @@
 				9A0B3013288C3EEF0044DD73 /* AddExpressViewController.swift in Sources */,
 				9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */,
 				9A92311628883F9400CC9D92 /* PaidParkingBar.swift in Sources */,
+				9ADB0A092909837400F548D9 /* SPIndicatorLayout.swift in Sources */,
 				9A8DC953282FF89F008F92B6 /* HelpDetailViewController.swift in Sources */,
 				9AED6DB327E723A400B5004F /* WidgetConfig.intentdefinition in Sources */,
+				9ADB0A122909837400F548D9 /* SPIndicatorIconAnimatable.swift in Sources */,
 				9A061AD8286D8315008BC46F /* ToolTipViewExtensions.swift in Sources */,
 				9AED6DB227E7156D00B5004F /* UnlockView.swift in Sources */,
 				9A0D58D9277721DA0093B3D3 /* ReservationManager.swift in Sources */,
@@ -1454,9 +1546,11 @@
 				9A310783272A707100B1F84A /* RemindersViewController.swift in Sources */,
 				9AF7143027AFC49200FEA4C4 /* AckCell.swift in Sources */,
 				9A401EE12813D8E900739687 /* QuestionCell.swift in Sources */,
+				9ADB0A0C2909837400F548D9 /* UIFontExtension.swift in Sources */,
 				9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */,
 				9A46BBA6272EF83D002280DD /* PaidView.swift in Sources */,
 				9AAB8664285DA87600C01428 /* ARViewController.swift in Sources */,
+				9ADB0A0B2909837400F548D9 /* UILabelExtension.swift in Sources */,
 				9A799324277A0E460088E3FD /* ParkSpot.swift in Sources */,
 				9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */,
 				9A49BFA6272FDA2000234A9F /* ReservationView.swift in Sources */,
@@ -1470,11 +1564,13 @@
 				9A39B0D02728480E008E7FD0 /* UpCornerCell.swift in Sources */,
 				9A92311428883F8500CC9D92 /* PayParkingView.swift in Sources */,
 				9A5FC6442787685200CDB49D /* UserDefSuite.swift in Sources */,
+				9ADB0A0D2909837400F548D9 /* SwiftUIExtension.swift in Sources */,
 				9A39B0CC272847FC008E7FD0 /* UserSettingsCell.swift in Sources */,
 				9AD832A02858E49A005DD49D /* DangerTableViewCell.swift in Sources */,
 				9AAEDF012886ABC10030ABBB /* SelectPayViewController.swift in Sources */,
 				9A40C1DE2814458D00E44B23 /* DangerViewController.swift in Sources */,
 				9A401EE32813EFB800739687 /* AboutViewController.swift in Sources */,
+				9ADB0A0F2909837400F548D9 /* SPAlertIconErrorView.swift in Sources */,
 				9AC48D1E273FC11300DBCEF8 /* ExpressPickCell.swift in Sources */,
 				9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */,
 				9ABA39B227C13382001660E7 /* LoadingViewController.swift in Sources */,
@@ -2157,14 +2253,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9A00053D281C334D001F1FB7 /* XCRemoteSwiftPackageReference "SPIndicator" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ivanvorobei/SPIndicator";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/securing/IOSSecuritySuite.git";
@@ -2224,11 +2312,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9A00053E281C334D001F1FB7 /* SPIndicator */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9A00053D281C334D001F1FB7 /* XCRemoteSwiftPackageReference "SPIndicator" */;
-			productName = SPIndicator;
-		};
 		9A397D4A280D5262003458BD /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;

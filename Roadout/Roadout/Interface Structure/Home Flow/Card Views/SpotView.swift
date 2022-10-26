@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SPIndicator
 import PusherSwift
 
 class SpotView: UIView, PusherDelegate {

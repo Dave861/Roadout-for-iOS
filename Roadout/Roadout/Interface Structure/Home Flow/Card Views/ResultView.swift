@@ -7,7 +7,6 @@
 
 import UIKit
 import CoreLocation
-import SPIndicator
 
 class ResultView: UIView {
     
