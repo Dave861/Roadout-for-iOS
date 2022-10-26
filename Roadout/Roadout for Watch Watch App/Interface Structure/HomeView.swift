@@ -22,6 +22,7 @@ struct HomeView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
+                print("Here")
                 resManager.getReservationData(Date(), userID: UserDefaults.roadout.string(forKey: "ro.roadout.Roadout.userID")!) { _ in
                     //no handling here, autohandles
                 }

@@ -10,7 +10,7 @@ import Alamofire
 
 class UserManager: ObservableObject {
     
-    @Published var userName: String = UserDefaults.standard.string(forKey: "ro.roadout.Roadout-W-Tester.UserName") ?? "User Name"
+    @Published var userName: String = UserDefaults.roadout.string(forKey: "ro.roadout.Roadout.UserName") ?? "User Name"
     
     var callResult = "network error"
     

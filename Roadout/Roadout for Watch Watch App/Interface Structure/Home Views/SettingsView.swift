@@ -48,10 +48,10 @@ struct SettingsView: View {
             if newPhase == .active {
                 userManager.getUserName(UserDefaults.roadout.string(forKey: "ro.roadout.Roadout.userID")!) { result in
                     switch result {
-                    case .success():
-                        print("User Name retrieved succesfully")
-                    case .failure(let err):
-                        print(err)
+                        case .success():
+                            print("User Name retrieved succesfully")
+                        case .failure(let err):
+                            print(err)
                     }
                 }
             }
