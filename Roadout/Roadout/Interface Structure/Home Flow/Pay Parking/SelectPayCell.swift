@@ -13,9 +13,11 @@ class SelectPayCell: UITableViewCell {
     
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
+    @IBOutlet weak var currentLocationLbl: UILabel!
     
     @IBOutlet weak var gaugeIcon: UIImageView!
     @IBOutlet weak var distanceIcon: UIImageView!
+    @IBOutlet weak var currentLocationIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +25,10 @@ class SelectPayCell: UITableViewCell {
         gaugeIcon.image = gaugeIcon.image?.withRenderingMode(.alwaysTemplate)
         gaugeIcon.tintColor = UIColor(named: "Cash Yellow")!
         distanceIcon.tintColor = UIColor(named: "Cash Yellow")!
+        currentLocationIcon.tintColor = UIColor(named: "Cash Yellow")!
+        
+        currentLocationLbl.isHidden = true
+        currentLocationIcon.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

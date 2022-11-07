@@ -130,7 +130,7 @@ class ResultView: UIView {
     }
     
     func showLoadingIndicator() {
-        let indicatorIcon = UIImage.init(systemName: "car.fill")!.withTintColor(selectedLocationColor ?? UIColor(named: "Main Yellow")!, renderingMode: .alwaysOriginal)
+        let indicatorIcon = UIImage(named: "roadout.car")!.withTintColor(selectedLocationColor ?? UIColor(named: "Main Yellow")!, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
         indicatorView.dismissByDrag = false
         indicatorView.present(duration: 1.0, haptic: .none, completion: nil)

@@ -8,5 +8,6 @@
 import Foundation
 
 extension UserDefaults {
-    static let roadout = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
+    static let roadout = UserDefaults.init(suiteName: "group.live.ro.roadout.Roadout")!
 }
+//change to live.ro.roadout.Roadout only when running

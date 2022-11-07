@@ -25,8 +25,11 @@ class ARViewController: UIViewController {
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var detailsLbl: UILabel!
     
+    @IBOutlet weak var backgroundView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundView.layer.cornerRadius = 12.0
         card.layer.cornerRadius = 19.0
         
         card.layer.shadowColor = UIColor.black.cgColor

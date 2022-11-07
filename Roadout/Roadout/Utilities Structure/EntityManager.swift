@@ -35,7 +35,9 @@ class EntityManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
                     dbParkLocations = [ParkLocation]()
                     for json in jsonArray {
-                        dbParkLocations.append(ParkLocation(name: json["name"] as! String, rID: json["id"] as! String, latitude: Double(json["lat"] as! String)!, longitude: Double(json["lng"] as! String)!, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: Int(json["freeParkingSpots"] as! String)!, sections: [ParkSection](), sectionImage: json["id"] as! String + ".Section", accentColor: colours.randomElement()!))
+                        var dbParkLocation = ParkLocation(name: json["name"] as! String, rID: json["id"] as! String, latitude: Double(json["lat"] as! String)!, longitude: Double(json["lng"] as! String)!, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: Int(json["freeParkingSpots"] as! String)!, sections: [ParkSection](), sectionImage: json["id"] as! String + ".Section", accentColor: colours.randomElement()!)
+                        self.makeAccentColor(parkLocation: &dbParkLocation)
+                        dbParkLocations.append(dbParkLocation)
                     }
                     completion(.success(()))
                 } else {
@@ -129,6 +131,7 @@ class EntityManager {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
                     if jsonArray["status"] as! String == "Success" {
                         parkLocations[index].freeSpots = Int(jsonArray["result"] as! String)!
+                        self.makeAccentColor(parkLocation: &parkLocations[index])
                         completion(.success(()))
                     }
                 }
@@ -146,6 +149,22 @@ class EntityManager {
         details.remove(at: 0)
         details[0] = details[0].camelCaseToWords()
         return details
+    }
+    
+    func makeAccentColor(parkLocation: inout ParkLocation) {
+        let percentage = 100-(Double(parkLocation.freeSpots)/Double(parkLocation.totalSpots))*100
+        print(percentage)
+        if percentage >= 90 {
+            parkLocation.accentColor = "KindaRed"
+        } else if percentage >= 80 {
+            parkLocation.accentColor = "Dark Orange"
+        } else if percentage >= 60 {
+            parkLocation.accentColor = "Second Orange"
+        } else if percentage >= 50 {
+            parkLocation.accentColor = "Icons"
+        } else {
+            parkLocation.accentColor = "Main Yellow"
+        }
     }
     
 }

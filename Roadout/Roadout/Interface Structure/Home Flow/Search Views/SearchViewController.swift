@@ -168,7 +168,10 @@ class SearchViewController: UIViewController {
             EntityManager.sharedInstance.getFreeParkSpots(parkLocations[index].rID, index) { result in
                 switch result {
                     case .success():
-                        print("Got it")
+                        if index == parkLocations.count-1 {
+                            //Reload marker colors
+                            NotificationCenter.default.post(name: .addMarkersID, object: nil)
+                        }
                     case .failure(let err):
                         print(err)
                 }

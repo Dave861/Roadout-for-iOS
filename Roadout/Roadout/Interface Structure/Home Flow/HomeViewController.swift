@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     var selectedMarker: GMSMarker!
     var markers = [GMSMarker]()
     var spotMarker: GMSMarker!
+    var isMarkerInteractive = true
     
     //Card Views
     let resultView = ResultView.instanceFromNib()
@@ -125,7 +126,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var searchTapArea: UIButton!
     
-    @IBOutlet weak var settingsTapArea: UIButton!
+    @IBOutlet weak var optionsTapArea: UIButton!
     
     //@IBOutlet weak var shareplayView: UIView!
     
@@ -318,6 +319,9 @@ class HomeViewController: UIViewController {
                 self.present(vc, animated: true, completion: nil)
             }),
             UIAction(title: "Find Way".localized(), image: UIImage(systemName: "binoculars.fill"), handler: { (_) in
+                //Make Search Bar and Markers not respond to events while running
+                self.switchInteractionForSearchItems(to: false)
+                
                 DispatchQueue.main.async {
                     let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
                     let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
@@ -336,21 +340,29 @@ class HomeViewController: UIViewController {
                                 if FunctionsManager.sharedInstance.foundSpot != nil {
                                     DispatchQueue.main.async {
                                         self.showFindCard()
+                                        //Revert Search Bar and Markers to respond to events
+                                        self.switchInteractionForSearchItems(to: true)
                                     }
                                 } else {
                                     DispatchQueue.main.async {
                                         self.showFindLocationAlert()
+                                        //Revert Search Bar and Markers to respond to events
+                                        self.switchInteractionForSearchItems(to: true)
                                     }
                                 }
                             } else {
                                 DispatchQueue.main.async {
                                     self.showFindLocationAlert()
+                                    //Revert Search Bar and Markers to respond to events
+                                    self.switchInteractionForSearchItems(to: true)
                                 }
                             }
                         }
                     } else {
                         DispatchQueue.main.async {
                             self.showFindLocationAlert()
+                            //Revert Search Bar and Markers to respond to events
+                            self.switchInteractionForSearchItems(to: true)
                         }
                     }
                 }
@@ -367,6 +379,12 @@ class HomeViewController: UIViewController {
         alert.addAction(action)
         alert.view.tintColor = UIColor(named: "DevBrown")
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func switchInteractionForSearchItems(to value: Bool) {
+        self.isMarkerInteractive = value
+        self.searchTapArea.isUserInteractionEnabled = value
+        self.optionsTapArea.isUserInteractionEnabled = value
     }
     
     //MARK: -View Configuration-
@@ -389,7 +407,7 @@ class HomeViewController: UIViewController {
         self.checkUserIsValid()
         
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip1") == false {
-            settingsTapArea.tooltip(TutorialView1.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+            optionsTapArea.tooltip(TutorialView1.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                 
                 configuration.backgroundColor = UIColor(named: "Card Background")!
                 configuration.shadowConfiguration.shadowOpacity = 0.1
@@ -411,10 +429,10 @@ class HomeViewController: UIViewController {
             
         //Search Bar
         searchTapArea.setTitle("", for: .normal)
-        settingsTapArea.setTitle("", for: .normal)
+        optionsTapArea.setTitle("", for: .normal)
                 
-        settingsTapArea.menu = moreMenu
-        settingsTapArea.showsMenuAsPrimaryAction = true
+        optionsTapArea.menu = moreMenu
+        optionsTapArea.showsMenuAsPrimaryAction = true
         
         focusedView.layer.cornerRadius = 17.0
         
@@ -657,7 +675,7 @@ extension HomeViewController: CLLocationManagerDelegate {
 extension HomeViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if marker != spotMarker {
-            if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedView && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar {
+            if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedView && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar && self.isMarkerInteractive {
                 selectedLocationName = marker.title!
                 let colorSnippet = marker.snippet!
                 selectedLocationColor = UIColor(named: colorSnippet)!

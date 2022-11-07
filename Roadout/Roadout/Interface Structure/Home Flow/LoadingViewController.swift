@@ -40,12 +40,14 @@ class GetDataViewController: UIViewController {
                                      }
                                 }
                             case .failure(let err):
-                                self.showErrors(error: err)
+                                //self.showErrors(error: err)
+                                self.showDevErrors(error: err)
                         }
                     }
                 }
                 case .failure(let err):
-                    self.showErrors(error: err)
+                    //self.showErrors(error: err)
+                    self.showDevErrors(error: err)
             }
         }
     }
@@ -58,6 +60,31 @@ class GetDataViewController: UIViewController {
         alert.addAction(okAction)
         
         let tryAgainAction = UIAlertAction(title: "Try Again".localized(), style: .default) { _ in
+            self.downloadCityData()
+            self.tryAgainBtn.isHidden = true
+        }
+        alert.addAction(tryAgainAction)
+        
+        alert.view.tintColor = UIColor(named: "Kinda Red")
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showDevErrors(error: Error) {
+        let alert = UIAlertController(title: "Download Error".localized(), message: "There was an error reaching our server. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report at bugs@roadout.ro".localized(), preferredStyle: .alert)
+        
+        alert.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Enter New Server"
+        }
+        
+        let okAction = UIAlertAction(title: "OK".localized(), style: .cancel) { _ in
+            self.tryAgainBtn.isHidden = false
+        }
+        alert.addAction(okAction)
+        
+        let tryAgainAction = UIAlertAction(title: "Try Again".localized(), style: .default) { _ in
+            let serverTextField = alert.textFields![0] as UITextField
+            roadoutServerURL = serverTextField.text!
+            UserDefaults.roadout!.set(roadoutServerURL, forKey: "ro.roadout.Roadout.devServerURL")
             self.downloadCityData()
             self.tryAgainBtn.isHidden = true
         }

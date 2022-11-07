@@ -20,8 +20,12 @@ class UserPrefsUtils {
     func returnMainCard() -> String {
         let cardIndex = UserDefaultsSuite.integer(forKey: "ro.roadout.defaultPaymentMethod")
         let cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
-        let card = cardNumbers[cardIndex]
-        return card
+        if cardIndex < cardNumbers.count {
+            let card = cardNumbers[cardIndex]
+            return card
+        } else {
+            return "0000 0000 0000 0000"
+        }
     }
      
     func reservationNotificationsEnabled() -> Int {

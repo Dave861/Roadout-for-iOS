@@ -172,6 +172,11 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
                 let roundedDist = Double(round(100*distanceKM)/100)
                 
                 cell.distanceLbl.text = "\(roundedDist) km"
+                
+                if distanceKM <= 0.15 {
+                    cell.currentLocationLbl.isHidden = false
+                    cell.currentLocationIcon.isHidden = false
+                }
             } else {
                 cell.distanceLbl.text = "- km"
             }
@@ -196,6 +201,11 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
                 let roundedDist = Double(round(100*distanceKM)/100)
                 
                 cell.distanceLbl.text = "\(roundedDist) km"
+                
+                if distanceKM <= 0.15 {
+                    cell.currentLocationLbl.isHidden = false
+                    cell.currentLocationIcon.isHidden = false
+                }
             } else {
                 cell.distanceLbl.text = "- km"
             }
