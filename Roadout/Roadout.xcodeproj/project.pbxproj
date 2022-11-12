@@ -104,7 +104,6 @@
 		9A6B54942889430F00B88CB8 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A292B862732F22D00E509C9 /* Reminder.swift */; };
 		9A6D80A22733CF4C00C354EF /* carkeysound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6D80A02733CF4C00C354EF /* carkeysound.aiff */; };
 		9A6D80A32733CF4C00C354EF /* hornsound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 9A6D80A12733CF4C00C354EF /* hornsound.aiff */; };
-		9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */ = {isa = PBXBuildFile; productRef = 9A6E1C362731324B002E29F9 /* BarChartKit-static */; };
 		9A728C512732D849000F9DED /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A728C502732D849000F9DED /* NotificationHelper.swift */; };
 		9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7331FD272877F400ACE30A /* NotificationsViewController.swift */; };
 		9A74D01928B3C015000DB497 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A74D01828B3C015000DB497 /* MaintenanceViewController.swift */; };
@@ -153,8 +152,6 @@
 		9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F872272B09DF008B58FE /* AddCardViewController.swift */; };
 		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
 		9A96F877272B0A25008B58FE /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F876272B0A25008B58FE /* CardCell.swift */; };
-		9A975B5328D5C98400F0E0DA /* RoadoutIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A975B5228D5C98400F0E0DA /* RoadoutIntent.swift */; };
-		9A975B5528D5C98E00F0E0DA /* RoadoutIntentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A975B5428D5C98D00F0E0DA /* RoadoutIntentViews.swift */; };
 		9AA01DDF2789D78E0004211A /* CHIOTPField in Frameworks */ = {isa = PBXBuildFile; productRef = 9AA01DDE2789D78E0004211A /* CHIOTPField */; };
 		9AA0AEFE272D195400DA04A2 /* LegalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */; };
 		9AA0EFCE277B3DDD00B0F52A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */; };
@@ -177,6 +174,9 @@
 		9ABA39B227C13382001660E7 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA39B127C13382001660E7 /* LoadingViewController.swift */; };
 		9AC149CA28B4EFA900B9B394 /* Pay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC149CC28B4EFA900B9B394 /* Pay.xib */; };
 		9AC149CF28B4F9E900B9B394 /* Tutorials.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC149D128B4F9E900B9B394 /* Tutorials.xib */; };
+		9AC16CC8291F9CCF004D7F55 /* EditLicensePlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC16CC7291F9CCF004D7F55 /* EditLicensePlateViewController.swift */; };
+		9AC16CED291FE124004D7F55 /* RoadoutAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC16CEC291FE124004D7F55 /* RoadoutAppIntent.swift */; };
+		9AC16CEF291FE12F004D7F55 /* RoadoutAppIntentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC16CEE291FE12F004D7F55 /* RoadoutAppIntentViews.swift */; };
 		9AC48D1E273FC11300DBCEF8 /* ExpressPickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC48D1D273FC11300DBCEF8 /* ExpressPickCell.swift */; };
 		9AC566E627BE354200955F7D /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC566E527BE354200955F7D /* EntityManager.swift */; };
 		9AC926EB272697F00054E453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC926EA272697F00054E453 /* AppDelegate.swift */; };
@@ -283,6 +283,16 @@
 				9A051E652907E1AF003F719A /* Roadout.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AC16CDA291FD97A004D7F55 /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed ExtensionKit Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -437,8 +447,6 @@
 		9A96F872272B09DF008B58FE /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		9A96F874272B09F1008B58FE /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		9A96F876272B0A25008B58FE /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
-		9A975B5228D5C98400F0E0DA /* RoadoutIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutIntent.swift; sourceTree = "<group>"; };
-		9A975B5428D5C98D00F0E0DA /* RoadoutIntentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutIntentViews.swift; sourceTree = "<group>"; };
 		9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
 		9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		9AA0EFCF277B4C7C00B0F52A /* RoadoutRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RoadoutRelease.entitlements; sourceTree = "<group>"; };
@@ -458,6 +466,9 @@
 		9AC149CE28B4EFAF00B9B394 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Pay.strings; sourceTree = "<group>"; };
 		9AC149D028B4F9E900B9B394 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Tutorials.xib; sourceTree = "<group>"; };
 		9AC149D328B4F9EE00B9B394 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Tutorials.strings; sourceTree = "<group>"; };
+		9AC16CC7291F9CCF004D7F55 /* EditLicensePlateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLicensePlateViewController.swift; sourceTree = "<group>"; };
+		9AC16CEC291FE124004D7F55 /* RoadoutAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutAppIntent.swift; sourceTree = "<group>"; };
+		9AC16CEE291FE12F004D7F55 /* RoadoutAppIntentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutAppIntentViews.swift; sourceTree = "<group>"; };
 		9AC48D1D273FC11300DBCEF8 /* ExpressPickCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressPickCell.swift; sourceTree = "<group>"; };
 		9AC566E527BE354200955F7D /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		9AC926E7272697F00054E453 /* Roadout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roadout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -549,7 +560,6 @@
 				9AAE265B280947E000BBBAC3 /* GoogleMapsBase in Frameworks */,
 				9AAE265F280947E000BBBAC3 /* GoogleMapsM4B in Frameworks */,
 				9AAE2659280947E000BBBAC3 /* GoogleMaps in Frameworks */,
-				9A6E1C372731324B002E29F9 /* BarChartKit-static in Frameworks */,
 				9AAE2661280947E000BBBAC3 /* GooglePlaces in Frameworks */,
 				9AAE265D280947E000BBBAC3 /* GoogleMapsCore in Frameworks */,
 				9A40C1DC281443FD00E44B23 /* IOSSecuritySuite in Frameworks */,
@@ -578,6 +588,7 @@
 				9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */,
 				9AE2AFFC272BD25C0088A3ED /* EditPasswordViewController.swift */,
 				9A300CE32789970C0038A085 /* DeleteAccountViewController.swift */,
+				9AC16CC7291F9CCF004D7F55 /* EditLicensePlateViewController.swift */,
 			);
 			path = Extras;
 			sourceTree = "<group>";
@@ -612,6 +623,7 @@
 		9A14B912273141E200967417 /* Utilities Structure */ = {
 			isa = PBXGroup;
 			children = (
+				9AC16CEB291FE116004D7F55 /* App Intent */,
 				9A4CA21927DDE12900D2674D /* Localizables.strings */,
 				9A14B91D2731436300967417 /* UserPrefsUtils.swift */,
 				9A728C502732D849000F9DED /* NotificationHelper.swift */,
@@ -886,15 +898,6 @@
 			path = "Card Views";
 			sourceTree = "<group>";
 		};
-		9A975B5128D5C94E00F0E0DA /* Roadout App Intent */ = {
-			isa = PBXGroup;
-			children = (
-				9A975B5228D5C98400F0E0DA /* RoadoutIntent.swift */,
-				9A975B5428D5C98D00F0E0DA /* RoadoutIntentViews.swift */,
-			);
-			path = "Roadout App Intent";
-			sourceTree = "<group>";
-		};
 		9AA0EFCC277B3DCF00B0F52A /* Authentification */ = {
 			isa = PBXGroup;
 			children = (
@@ -949,6 +952,15 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		9AC16CEB291FE116004D7F55 /* App Intent */ = {
+			isa = PBXGroup;
+			children = (
+				9AC16CEC291FE124004D7F55 /* RoadoutAppIntent.swift */,
+				9AC16CEE291FE12F004D7F55 /* RoadoutAppIntentViews.swift */,
+			);
+			path = "App Intent";
+			sourceTree = "<group>";
+		};
 		9AC926DE272697F00054E453 = {
 			isa = PBXGroup;
 			children = (
@@ -983,7 +995,6 @@
 				9AC926EA272697F00054E453 /* AppDelegate.swift */,
 				9AC926EC272697F00054E453 /* SceneDelegate.swift */,
 				9AC9271A27269B460054E453 /* Interface Structure */,
-				9A975B5128D5C94E00F0E0DA /* Roadout App Intent */,
 				9AC926F3272697F20054E453 /* Assets.xcassets */,
 				9A5CC589272C133900A735A3 /* darkStyle.json */,
 				9A5CC58A272C133A00A735A3 /* lightStyle.json */,
@@ -1237,6 +1248,7 @@
 				9AC926E5272697F00054E453 /* Resources */,
 				9A8268452736A70100737DD3 /* Embed Watch Content */,
 				9A6E7E8327563F3300E09B75 /* Embed App Extensions */,
+				9AC16CDA291FD97A004D7F55 /* Embed ExtensionKit Extensions */,
 			);
 			buildRules = (
 			);
@@ -1247,7 +1259,6 @@
 			);
 			name = Roadout;
 			packageProductDependencies = (
-				9A6E1C362731324B002E29F9 /* BarChartKit-static */,
 				9AA0EFD1277B5D5800B0F52A /* Alamofire */,
 				9AA01DDE2789D78E0004211A /* CHIOTPField */,
 				9A8D8D3B27BADDAC0037DFE3 /* PusherSwift */,
@@ -1301,7 +1312,6 @@
 			);
 			mainGroup = 9AC926DE272697F00054E453;
 			packageReferences = (
-				9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */,
 				9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9AA01DDD2789D78E0004211A /* XCRemoteSwiftPackageReference "CHIOTPField" */,
 				9A8D8D3A27BADDAC0037DFE3 /* XCRemoteSwiftPackageReference "pusher-websocket-swift" */,
@@ -1518,7 +1528,6 @@
 				9AAEDF052886AD840030ABBB /* SelectPayCell.swift in Sources */,
 				9A81E5F927B8DED600F571C3 /* FunctionsManager.swift in Sources */,
 				9A49BFAB272FF41B00234A9F /* UnlockedView.swift in Sources */,
-				9A975B5328D5C98400F0E0DA /* RoadoutIntent.swift in Sources */,
 				9A300CE42789970C0038A085 /* DeleteAccountViewController.swift in Sources */,
 				9A5381162789CA2400462D63 /* ResetPasswordViewController.swift in Sources */,
 				9A39B0D427284825008E7FD0 /* SettingCell.swift in Sources */,
@@ -1529,7 +1538,7 @@
 				9A96248327C96E9E00A17087 /* FAQViewController.swift in Sources */,
 				9A5A01832737CDD000BD7E70 /* ExpressView.swift in Sources */,
 				9A39B0D227284818008E7FD0 /* DownCornerCell.swift in Sources */,
-				9A975B5528D5C98E00F0E0DA /* RoadoutIntentViews.swift in Sources */,
+				9AC16CC8291F9CCF004D7F55 /* EditLicensePlateViewController.swift in Sources */,
 				9A765C372896769D00AF250D /* WorldViewController.swift in Sources */,
 				9A74D01928B3C015000DB497 /* MaintenanceViewController.swift in Sources */,
 				9A0B3013288C3EEF0044DD73 /* AddExpressViewController.swift in Sources */,
@@ -1571,6 +1580,7 @@
 				9A40C1DE2814458D00E44B23 /* DangerViewController.swift in Sources */,
 				9A401EE32813EFB800739687 /* AboutViewController.swift in Sources */,
 				9ADB0A0F2909837400F548D9 /* SPAlertIconErrorView.swift in Sources */,
+				9AC16CEF291FE12F004D7F55 /* RoadoutAppIntentViews.swift in Sources */,
 				9AC48D1E273FC11300DBCEF8 /* ExpressPickCell.swift in Sources */,
 				9AC926ED272697F00054E453 /* SceneDelegate.swift in Sources */,
 				9ABA39B227C13382001660E7 /* LoadingViewController.swift in Sources */,
@@ -1580,6 +1590,7 @@
 				9A39B0CE27284803008E7FD0 /* SpacerCell.swift in Sources */,
 				9A14B916273142C100967417 /* Extensions.swift in Sources */,
 				9A39B0D827284B38008E7FD0 /* SettingsTextCell.swift in Sources */,
+				9AC16CED291FE124004D7F55 /* RoadoutAppIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2261,14 +2272,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marekpridal/BarChart";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		9A765C332896747600AF250D /* XCRemoteSwiftPackageReference "GeohashKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ualch9/GeohashKit";
@@ -2326,11 +2329,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */;
 			productName = IOSSecuritySuite;
-		};
-		9A6E1C362731324B002E29F9 /* BarChartKit-static */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9A6E1C352731324B002E29F9 /* XCRemoteSwiftPackageReference "BarChart" */;
-			productName = "BarChartKit-static";
 		};
 		9A7596752905699200E0D680 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

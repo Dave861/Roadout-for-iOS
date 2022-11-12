@@ -62,7 +62,6 @@ class ReservationManager {
                         
                         completion(.success(()))
                     } else {
-                        print(jsonArray["status"]!)
                         completion(.failure(ReservationErrors.spotAlreadyTaken))
                     }
                 }
@@ -156,7 +155,6 @@ class ReservationManager {
                         }
                         completion(.success(()))
                     } else {
-                        print(jsonArray["status"]!)
                         completion(.failure(ReservationErrors.unknownError))
                         self.isReservationActive = -1
                     }
@@ -193,7 +191,7 @@ class ReservationManager {
                         let oldEndDate = jsonArray["endDate"] as! String
                         let convertedOldEndDate = dateFormatter.date(from: oldEndDate)!
                         let newEndDate = convertedOldEndDate.addingTimeInterval(TimeInterval(minutes*60))
-                        print(newEndDate)
+
                         self.reservationEndDate = newEndDate
                         self.reservationTimer = Timer(fireAt: newEndDate, interval: 0, target: self, selector: #selector(self.endReservation), userInfo: nil, repeats: false)
                         DispatchQueue.main.async {
@@ -208,7 +206,6 @@ class ReservationManager {
                         NotificationCenter.default.post(name: .updateReservationTimeLabelID, object: nil)
                         completion(.success(()))
                     } else {
-                        print(jsonArray["status"]!)
                         completion(.failure(ReservationErrors.unknownError))
                     }
                 }
@@ -244,7 +241,6 @@ class ReservationManager {
                         NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
                         completion(.success(()))
                     } else {
-                        print(jsonArray["status"]!)
                         completion(.failure(ReservationErrors.unknownError))
                     }
                 }
@@ -279,7 +275,6 @@ class ReservationManager {
                         NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
                         completion(.success(()))
                     } else {
-                        print(jsonArray["status"]!)
                         completion(.failure(ReservationErrors.unknownError))
                     }
                 }
@@ -312,7 +307,6 @@ class ReservationManager {
                         }
                         completion(.success(()))
                     } else {
-                        print(jsonArray["status"]!)
                         completion(.failure(ReservationErrors.unknownError))
                     }
                 }

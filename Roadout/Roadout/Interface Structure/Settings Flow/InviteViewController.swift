@@ -6,14 +6,14 @@
 //
 
 import UIKit
-import BarChartKit
+//import BarChartKit
 
 class InviteViewController: UIViewController {
 
-    let mockBarChartDataSet: BarChartView.DataSet? = BarChartView.DataSet(elements: [
+    /*let mockBarChartDataSet: BarChartView.DataSet? = BarChartView.DataSet(elements: [
         BarChartView.DataSet.DataElement(date: nil, xLabel: "Invites".localized(), bars: [BarChartView.DataSet.DataElement.Bar(value: 20000, color: UIColor(named: "Greyish")!)]),
         BarChartView.DataSet.DataElement(date: nil, xLabel: "Verified".localized(), bars: [BarChartView.DataSet.DataElement.Bar(value: 13000, color: UIColor(named: "Icons")!)])
-        ], selectionColor: UIColor(named: "Icons"))
+        ], selectionColor: UIColor(named: "Icons"))*/
     
     @IBOutlet weak var linkLbl: UILabel!
     
@@ -23,7 +23,7 @@ class InviteViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBOutlet weak var chartView: BarChartView!
+    //@IBOutlet weak var chartView: BarChartView!
     
     let buttonTitle = NSAttributedString(string: "Share".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
@@ -46,7 +46,7 @@ class InviteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chartView.dataSet = mockBarChartDataSet
+        //chartView.dataSet = mockBarChartDataSet
         shareBtn.setAttributedTitle(buttonTitle, for: .normal)
         shareBtnOutline.layer.cornerRadius = 12.0
         linkCard.layer.cornerRadius = 16.0

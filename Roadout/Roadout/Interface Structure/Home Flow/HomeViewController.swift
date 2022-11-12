@@ -173,7 +173,6 @@ class HomeViewController: UIViewController {
     
     
     @IBOutlet weak var markedSpotButton: UIButton!
-    
         
     //MARK: -OBSERVERS-
     
@@ -399,7 +398,6 @@ class HomeViewController: UIViewController {
         
     }
     
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
@@ -418,7 +416,6 @@ class HomeViewController: UIViewController {
             })
             UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip1")
         }
-        
     }
     
     
@@ -532,12 +529,11 @@ class HomeViewController: UIViewController {
         AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
             switch result {
                 case .success():
-                    print("User exists.")
+                    break
                 case .failure(let err):
                     print(err)
                     if let convertedError = err as? ReservationManager.ReservationErrors {
                         if convertedError == .databaseFailure && ConnectionManager.sharedInstance.reachability.connection != .unavailable {
-                            print("Server Error.")
                         } else {
                             self.userNotFoundAbort()
                         }
@@ -643,33 +639,6 @@ extension HomeViewController: CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
     }
     
-    func shakeMarkerView(marker: GMSMarker) {
-        let animation = CAKeyframeAnimation()
-        animation.keyPath = "transform.rotation.z"
-        animation.values = [ 0, -15 * .pi / 180.0, 15 * .pi / 180.0 , 0]
-        animation.keyTimes = [0, 0.33 , 0.66 , 1]
-        animation.duration = 0.6
-        animation.isAdditive = false
-        animation.isRemovedOnCompletion = true
-        animation.repeatCount = 1
-        
-        marker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 45))
-        //100, 90
-        let imageView = UIImageView(frame: CGRect(x: (marker.iconView?.frame.width)!/2 - 14.625, y: (marker.iconView?.frame.height)! - 37.5, width: 29.52, height: 37.5))
-        //29.25 75 58.5 75
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "SelectedMarker_" + marker.snippet!)
-        imageView.layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
-        imageView.layer.frame = CGRect(x: (marker.iconView?.frame.width)!/2 - 14.625, y: (marker.iconView?.frame.height)! - 37.5, width: 29.52, height: 37.5)
-        
-        marker.iconView?.addSubview(imageView)
-        marker.iconView!.subviews[0].layer.add(animation, forKey: "shakeAnimation")
-        UIView.animate(withDuration: 0.3) {
-            marker.iconView?.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
-        }
-        
-    }
-    
 }
 
 extension HomeViewController: GMSMapViewDelegate {
@@ -704,6 +673,32 @@ extension HomeViewController: GMSMapViewDelegate {
         centerMapCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
+    func shakeMarkerView(marker: GMSMarker) {
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "transform.rotation.z"
+        animation.values = [ 0, -15 * .pi / 180.0, 15 * .pi / 180.0 , 0]
+        animation.keyTimes = [0, 0.33 , 0.66 , 1]
+        animation.duration = 0.6
+        animation.isAdditive = false
+        animation.isRemovedOnCompletion = true
+        animation.repeatCount = 1
+        
+        marker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 45))
+        //100, 90
+        let imageView = UIImageView(frame: CGRect(x: (marker.iconView?.frame.width)!/2 - 14.625, y: (marker.iconView?.frame.height)! - 37.5, width: 29.52, height: 37.5))
+        //29.25 75 58.5 75
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "SelectedMarker_" + marker.snippet!)
+        imageView.layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
+        imageView.layer.frame = CGRect(x: (marker.iconView?.frame.width)!/2 - 14.625, y: (marker.iconView?.frame.height)! - 37.5, width: 29.52, height: 37.5)
+        
+        marker.iconView?.addSubview(imageView)
+        marker.iconView!.subviews[0].layer.add(animation, forKey: "shakeAnimation")
+        UIView.animate(withDuration: 0.3) {
+            marker.iconView?.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+        }
+        
+    }
 }
 
 //MARK: -Card Functions-

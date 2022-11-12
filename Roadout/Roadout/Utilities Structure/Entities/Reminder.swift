@@ -11,6 +11,6 @@ struct Reminder: Codable {
     
     var label: String
     var date: Date
-    var identifier: String 
+    var identifier: String
     
 }

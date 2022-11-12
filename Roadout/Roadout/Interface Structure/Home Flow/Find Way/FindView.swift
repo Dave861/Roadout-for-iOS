@@ -109,9 +109,6 @@ class FindView: UIView {
         self.spotLbl.text = "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
     }
     
-    
-    
-
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Find", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }

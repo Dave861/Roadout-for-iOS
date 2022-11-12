@@ -10,7 +10,6 @@ import UIKit
 class AckViewController: UIViewController {
 
     let acknowledgementsTitles = ["Alamofire",
-                                  "BarChartKit",
                                   "CHIOTPField",
                                   "GeohashKit",
                                   "Google Maps SDK",
@@ -19,7 +18,6 @@ class AckViewController: UIViewController {
                                   "SPIndicator"]
     
     let acknowledgementsCopyrights = ["Copyright (c) 2014-2022 Alamofire Software Foundation",
-                                      "Copyright (c) 2020 Marek Přidal",
                                       "Copyright (c) 2020 Chili",
                                       "Copyright (c) 2020 Alan Chu",
                                       "Copyright (c) 2012-2022 Google Inc.",
@@ -28,7 +26,6 @@ class AckViewController: UIViewController {
                                       "Copyright (c) 2021 Ivan Vorobei"]
     
     let acknowledgementsLinks = ["https://github.com/Alamofire/Alamofire",
-                                 "https://github.com/marekpridal/BarChart",
                                  "https://github.com/ChiliLabs/CHIOTPField",
                                  "https://github.com/ualch9/GeohashKit",
                                  "https://github.com/YAtechnologies/GoogleMaps-SP",

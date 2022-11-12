@@ -106,12 +106,11 @@ class SearchViewController: UIViewController {
             SearchManager.sharedInstance.startSearching(query: adjustedQuery) { result in
                 switch result {
                     case .success(let searchCoordinates):
-                        print("\(searchCoordinates.latitude), \(searchCoordinates.longitude)")
-                    self.findByCoordinate(coords: searchCoordinates) { success in
-                        if success {
-                            self.tableView.reloadData()
+                        self.findByCoordinate(coords: searchCoordinates) { success in
+                            if success {
+                                self.tableView.reloadData()
+                            }
                         }
-                    }
                     case .failure(let err):
                         print(err.localizedDescription)
                         self.bruteFind() { success in

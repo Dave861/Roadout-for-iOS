@@ -56,16 +56,16 @@ class VoiceAssitantsViewController: UIViewController {
     }
     
     func addColorToPhraseLabels() {
-        siriPhraseLbl1.set(textColor: UIColor(named: "Main Yellow")!, range: siriPhraseLbl1.range(string: "Roadout"))
-        siriPhraseLbl1.set(textColor: UIColor(named: "Main Yellow")!, range: siriPhraseLbl1.range(string: "somewhere to park"))
+        siriPhraseLbl1.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl1.range(string: "Roadout"))
+        siriPhraseLbl1.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl1.range(string: "somewhere to park"))
         
-        siriPhraseLbl2.set(textColor: UIColor(named: "Main Yellow")!, range: siriPhraseLbl2.range(string: "Roadout"))
-        siriPhraseLbl2.set(textColor: UIColor(named: "Main Yellow")!, range: siriPhraseLbl2.range(string: "parking"))
+        siriPhraseLbl2.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl2.range(string: "Roadout"))
+        siriPhraseLbl2.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl2.range(string: "parking"))
         
-        siriPhraseLbl3.set(textColor: UIColor(named: "Main Yellow")!, range: siriPhraseLbl3.range(string: "Roadout"))
-        siriPhraseLbl3.set(textColor: UIColor(named: "Main Yellow")!, range: siriPhraseLbl3.range(string: "parking"))
+        siriPhraseLbl3.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl3.range(string: "Roadout"))
+        siriPhraseLbl3.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl3.range(string: "parking"))
         
-        siriPhraseLbl4.set(textColor: UIColor(named: "Main Yellow")!, range: siriPhraseLbl4.range(string: "Roadout"))
-        siriPhraseLbl4.set(textColor: UIColor(named: "Main Yellow")!, range: siriPhraseLbl4.range(string: "somewhere to park"))
+        siriPhraseLbl4.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl4.range(string: "Roadout"))
+        siriPhraseLbl4.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl4.range(string: "somewhere to park"))
     }
 }

@@ -43,7 +43,6 @@ class AuthManager {
             let data = response.value!.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    print(jsonArray["status"]!)
                     self.callResult = jsonArray["status"] as! String
                     if self.callResult == "Success" {
                         let code = jsonArray["accessCode"] as! String
@@ -98,8 +97,6 @@ class AuthManager {
             let data = response.value!.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    print(jsonArray["status"]!)
-                    print(jsonArray["message"]!)
                     self.userID = String(jsonArray["id"] as! Int)
                     self.callResult = jsonArray["status"] as! String
                     if self.callResult == "Success" {
@@ -108,7 +105,6 @@ class AuthManager {
                         completion(.failure(AuthErrors.userExistsFailure))
                     }
                 } else {
-                    print("unknown error")
                     self.callResult = "unknown error"
                     completion(.failure(AuthErrors.unknownError))
                 }
@@ -135,8 +131,6 @@ class AuthManager {
             let data = response.value!.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    print(jsonArray["status"]!)
-                    print(jsonArray["message"]!)
                     self.userID = jsonArray["id"] as? String
                     self.callResult = jsonArray["status"] as! String
                     if self.callResult == "Success" {
@@ -145,7 +139,6 @@ class AuthManager {
                         completion(.failure(AuthErrors.userDoesNotExist))
                     }
                 } else {
-                    print("unknown error")
                     self.callResult = "unknown error"
                     completion(.failure(AuthErrors.unknownError))
                 }
@@ -169,8 +162,6 @@ class AuthManager {
             let data = response.value!.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    print(jsonArray["status"]!)
-                    print(jsonArray["message"]!)
                     if jsonArray["status"] as! String == "Success" && jsonArray["message"] as! String == "False" {
                         completion(.failure(AuthErrors.userDoesNotExist))
                     } else if jsonArray["message"] as! String == "True" {

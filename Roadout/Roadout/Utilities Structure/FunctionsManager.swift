@@ -134,7 +134,6 @@ class FunctionsManager {
                             completion(.success(false))
                         }
                     } else {
-                        print(jsonArray["status"]!)
                         completion(.failure(FunctionsErrors.unknownError))
                     }
                 }

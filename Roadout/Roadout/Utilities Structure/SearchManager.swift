@@ -31,9 +31,6 @@ class SearchManager {
                 completion(.failure(PlacesErrors.failedToFind))
                 return
             }
-            for result in results {
-                print(result.attributedFullText)
-            }
             guard let firstResult = results.first else {
                 completion(.failure(PlacesErrors.failedToFind))
                 return

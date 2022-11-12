@@ -41,7 +41,6 @@ class EntityManager {
                     }
                     completion(.success(()))
                 } else {
-                    print("unknown error")
                     completion(.failure(EntityErrors.unknownError))
                 }
             } catch let error as NSError {
@@ -71,7 +70,6 @@ class EntityManager {
                     }
                     completion(.success(()))
                 } else {
-                    print("unknown error")
                     completion(.failure(EntityErrors.unknownError))
                 }
             } catch let error as NSError {
@@ -101,7 +99,6 @@ class EntityManager {
                     dbParkSpots.sort { $0.number < $1.number }
                     completion(.success(()))
                 } else {
-                    print("unknown error")
                     completion(.failure(EntityErrors.unknownError))
                 }
             } catch let error as NSError {
@@ -153,7 +150,6 @@ class EntityManager {
     
     func makeAccentColor(parkLocation: inout ParkLocation) {
         let percentage = 100-(Double(parkLocation.freeSpots)/Double(parkLocation.totalSpots))*100
-        print(percentage)
         if percentage >= 90 {
             parkLocation.accentColor = "KindaRed"
         } else if percentage >= 80 {

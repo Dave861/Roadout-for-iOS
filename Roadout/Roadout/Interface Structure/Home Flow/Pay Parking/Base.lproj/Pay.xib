@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -253,6 +253,21 @@
                         <constraint firstAttribute="width" constant="26" id="t0E-NM-Na4"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJk-ZA-fYL">
+                    <rect key="frame" x="343" y="46" width="61" height="30"/>
+                    <color key="backgroundColor" name="Cash Yellow"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="eFC-dJ-7aQ"/>
+                    </constraints>
+                    <color key="tintColor" name="Background"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="EDIT">
+                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="editLicensePlateTapped:" destination="m6t-HG-AQQ" eventType="touchUpInside" id="e9U-Uu-zdv"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="krw-xc-u9M"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -260,6 +275,7 @@
                 <constraint firstItem="bnw-qp-XrS" firstAttribute="leading" secondItem="mmA-QY-8Lw" secondAttribute="trailing" constant="11" id="1h9-YV-kAy"/>
                 <constraint firstItem="vkQ-lK-J91" firstAttribute="leading" secondItem="krw-xc-u9M" secondAttribute="leading" constant="12" id="8aP-tF-Ims"/>
                 <constraint firstItem="krw-xc-u9M" firstAttribute="bottom" secondItem="m4v-64-moM" secondAttribute="bottom" constant="8" id="AU8-7X-VrB"/>
+                <constraint firstItem="krw-xc-u9M" firstAttribute="trailing" secondItem="IJk-ZA-fYL" secondAttribute="trailing" constant="10" id="Cnl-vW-z6l"/>
                 <constraint firstItem="Ne8-5u-5oC" firstAttribute="leading" secondItem="dW5-rC-0S6" secondAttribute="trailing" constant="12" id="DMm-73-5Su"/>
                 <constraint firstItem="VHs-XI-DMc" firstAttribute="leading" secondItem="EwV-un-Saj" secondAttribute="trailing" constant="11" id="Fc8-Fg-BMd"/>
                 <constraint firstItem="vkQ-lK-J91" firstAttribute="top" secondItem="krw-xc-u9M" secondAttribute="top" constant="12" id="JaW-Gw-VuX"/>
@@ -279,6 +295,7 @@
                 <constraint firstItem="bnw-qp-XrS" firstAttribute="top" secondItem="VHs-XI-DMc" secondAttribute="bottom" constant="10.33" id="YuX-cG-kwu"/>
                 <constraint firstItem="dW5-rC-0S6" firstAttribute="top" secondItem="mmA-QY-8Lw" secondAttribute="bottom" constant="12.666666666666728" id="Zi3-O6-gxR"/>
                 <constraint firstItem="VHs-XI-DMc" firstAttribute="top" secondItem="ORZ-i5-FWS" secondAttribute="bottom" constant="8" symbolic="YES" id="d7F-Fw-fTl"/>
+                <constraint firstItem="IJk-ZA-fYL" firstAttribute="top" secondItem="krw-xc-u9M" secondAttribute="top" constant="46" id="drl-te-hR3"/>
                 <constraint firstItem="krw-xc-u9M" firstAttribute="bottom" secondItem="rpD-je-aMw" secondAttribute="bottom" constant="8" id="jgo-1b-W8F"/>
                 <constraint firstItem="m4v-64-moM" firstAttribute="leading" secondItem="krw-xc-u9M" secondAttribute="leading" constant="10" id="ksb-5e-bYD"/>
                 <constraint firstItem="ORZ-i5-FWS" firstAttribute="top" secondItem="krw-xc-u9M" secondAttribute="top" constant="12" id="nGz-NS-tI9"/>
@@ -292,6 +309,7 @@
                 <outlet property="backBtn" destination="vkQ-lK-J91" id="RXr-dw-2oN"/>
                 <outlet property="chooseMethodBtn" destination="rpD-je-aMw" id="vgS-cI-lYV"/>
                 <outlet property="detailsLbl" destination="bnw-qp-XrS" id="anz-lr-rBN"/>
+                <outlet property="editLicensePlateBtn" destination="IJk-ZA-fYL" id="xNe-dW-gpo"/>
                 <outlet property="licensePlateLbl" destination="VHs-XI-DMc" id="Geb-Pn-jj5"/>
                 <outlet property="payBtn" destination="m4v-64-moM" id="du6-k1-qbD"/>
                 <outlet property="priceLbl" destination="hXg-ks-EJH" id="YkM-YF-heN"/>

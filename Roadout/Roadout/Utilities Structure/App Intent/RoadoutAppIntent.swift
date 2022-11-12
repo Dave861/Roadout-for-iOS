@@ -1,16 +1,15 @@
 //
-//  RoadoutIntent.swift
-//  Roadout
+//  RoadoutAppIntent.swift
+//  RoadoutAppIntent
 //
-//  Created by David Retegan on 17.09.2022.
+//  Created by David Retegan on 12.11.2022.
 //
 
-import Foundation
+import AppIntents
 import UIKit
 import CoreLocation
-import AppIntents
 
-@available (iOS 16.0, *)
+@available(iOS 16, *)
 enum RoadoutIntentErrors: Error {
     case valueZero
     case noFreeSpot
@@ -20,9 +19,21 @@ enum RoadoutIntentErrors: Error {
     case locationDisabled
 }
 
-@available (iOS 16.0, *)
-struct RoadoutIntent: AppIntent {
-    
+@available(iOS 16, *)
+struct RoadoutAppShortcuts: AppShortcutsProvider {
+    @AppShortcutsBuilder static var appShortcuts: [AppShortcut] {
+        AppShortcut(
+            intent: RoadoutAppIntent(),
+            phrases: ["Ask \(.applicationName) to find somewhere to park",
+                      "Ask \(.applicationName) to find parking",
+                      "Find parking with \(.applicationName)",
+                      "Find somewhere to park with \(.applicationName)"]
+        )
+    }
+}
+
+@available(iOS 16, *)
+struct RoadoutAppIntent: AppIntent {
     static var title: LocalizedStringResource = "Roadout Reservation"
     
     @Parameter(title: "Duration", description: "The duration of the reservation", requestValueDialog: IntentDialog("For how many minutes do you want to reserve? The maximum is 20 minutes."))
@@ -41,72 +52,58 @@ struct RoadoutIntent: AppIntent {
             } else if reservationMinutes <= 0 {
                 throw RoadoutIntentErrors.valueZero
             }
-            
-           /* var findingErrorEncountered = false
-            RoadoutIntentHelper.sharedInstance.performFind { result in
-                switch result {
-                case .success():
-                    print("Found Spot!")
-                    print(FunctionsManager.sharedInstance.foundLocation.name)
-                    
-                case .failure(let err):
-                    print(err)
-                    findingErrorEncountered = true
-                }
-            }
-            if findingErrorEncountered {
-                throw RoadoutIntentErrors.failureRequiringAppLaunch
-            }*/
-            
-            try await requestConfirmation(result: .result(dialog: "Ready to reserve for 15 RON?") {
-                RoadoutIntentConfirmView(
-                    parkLocationName: "Test Location",
-                    /*FunctionsManager.sharedInstance.foundLocation.name*/
-                    parkSectionLetter: "T",
-                    /*FunctionsManager.sharedInstance.foundSection.name*/
-                    parkSpotNumber: 1,
-                    /*FunctionsManager.sharedInstance.foundSpot.number*/
-                    reservationMinutes: reservationMinutes)
-            })
-            /*
-            var reservingErrorEncountered = false
-            RoadoutIntentHelper.sharedInstance.reserveSpot { result in
-                switch result {
-                case .success():
-                    print("Spot Reserved")
-                case .failure(let err):
-                    print(err)
-                    reservingErrorEncountered = true
-                }
-            }
-            if reservingErrorEncountered {
-                throw RoadoutIntentErrors.failureRequiringAppLaunch
-            }
-            */
-            return .result(dialog: "Spot Reserved! Open the app for directions.") {
-                RoadoutIntentSuccesView(reservationTime: Date().addingTimeInterval(Double(reservationMinutes)*60))
-            }
         } catch let err {
             throw err
         }
+         var findingErrorEncountered = false
+         await RoadoutIntentHelper.sharedInstance.performFind { result in
+             switch result {
+             case .success():
+                 print(FunctionsManager.sharedInstance.foundLocation.name)
+                 
+             case .failure(let err):
+                 print(err)
+                 findingErrorEncountered = true
+             }
+         }
+         if findingErrorEncountered {
+             throw RoadoutIntentErrors.failureRequiringAppLaunch
+         }
+        
+        try await requestConfirmation(
+              result: .result(
+                dialog: "Ready to reserve for 15 RON?",
+                view: RoadoutIntentConfirmView(
+                    parkLocationName: FunctionsManager.sharedInstance.foundLocation.name,
+                    parkSectionLetter: FunctionsManager.sharedInstance.foundSection.name,
+                    parkSpotNumber: FunctionsManager.sharedInstance.foundSpot.number,
+                    reservationMinutes: reservationMinutes)
+              ),
+              confirmationActionName: .request
+            )
+         
+         /*
+         var reservingErrorEncountered = false
+         RoadoutIntentHelper.sharedInstance.reserveSpot { result in
+             switch result {
+             case .success():
+                 print("Spot Reserved")
+             case .failure(let err):
+                 print(err)
+                 reservingErrorEncountered = true
+             }
+         }
+         if reservingErrorEncountered {
+             throw RoadoutIntentErrors.failureRequiringAppLaunch
+         }
+         */
+         return .result(dialog: "Spot Reserved! Open the app for directions.") {
+             RoadoutIntentSuccesView(reservationTime: Date().addingTimeInterval(Double(reservationMinutes)*60))
+         }
     }
-    
 }
 
-@available (iOS 16.0, *)
-struct RoadoutAutoShortcuts: AppShortcutsProvider {
-    static var appShortcuts: [AppShortcut] {
-        AppShortcut(
-            intent: RoadoutIntent(),
-            phrases: ["Ask \(.applicationName) to find somewhere to park",
-                      "Ask \(.applicationName) to find parking",
-                      "Find parking with \(.applicationName)",
-                      "Find somewhere to park with \(.applicationName)"]
-        )
-    }
-}
-
-@available (iOS 16.0, *)
+@available(iOS 16, *)
 class RoadoutIntentHelper: NSObject {
     
     static let sharedInstance = RoadoutIntentHelper()
@@ -137,9 +134,9 @@ class RoadoutIntentHelper: NSObject {
         }
     }
     
-    func performFind(completion: @escaping(Result<Void, Error>) -> Void) {
+    func performFind(completion: @escaping(Result<Void, Error>) -> Void) async {
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
-            if parkLocations.count < 11 {
+            if parkLocations.count == 1 {
                 self.downloadCityData()
             }
             
@@ -161,24 +158,23 @@ class RoadoutIntentHelper: NSObject {
                 self.locationManager = CLLocationManager()
                 self.locationManager?.delegate = self
                 self.locationManager?.startUpdatingLocation()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    if self.locationManager?.location != nil {
-                        FunctionsManager.sharedInstance.sortLocations(currentLocation: (self.locationManager?.location!.coordinate)!) { success in
-                            if success {
-                                FunctionsManager.sharedInstance.findSpot { success in
-                                    if success {
-                                        completion(.success(()))
-                                    } else {
-                                        completion(.failure(RoadoutIntentErrors.noFreeSpot))
-                                    }
+                
+                if self.locationManager?.location != nil {
+                    FunctionsManager.sharedInstance.sortLocations(currentLocation: (self.locationManager?.location!.coordinate)!) { success in
+                        if success {
+                            FunctionsManager.sharedInstance.findSpot { success in
+                                if success {
+                                    completion(.success(()))
+                                } else {
+                                    completion(.failure(RoadoutIntentErrors.noFreeSpot))
                                 }
-                            } else {
-                                completion(.failure(RoadoutIntentErrors.noFreeSpot))
                             }
+                        } else {
+                            completion(.failure(RoadoutIntentErrors.noFreeSpot))
                         }
-                    } else {
-                        completion(.failure(RoadoutIntentErrors.locationDisabled))
                     }
+                } else {
+                    completion(.failure(RoadoutIntentErrors.locationDisabled))
                 }
             }
         } else {
@@ -186,7 +182,7 @@ class RoadoutIntentHelper: NSObject {
         }
     }
     
-    func reserveSpot(completion: @escaping(Result<Void, Error>) -> Void) {
+    func reserveSpot(completion: @escaping(Result<Void, Error>) -> Void) async {
         locationManager?.stopUpdatingLocation()
         timerSeconds = 15*60
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
@@ -211,11 +207,10 @@ extension RoadoutIntentHelper: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
         if locations.last != nil {
             let location = locations.last
-            print("location:: \(location!.coordinate)")
+            print("new location: \(location!.coordinate)")
         }
-
     }
 }
+

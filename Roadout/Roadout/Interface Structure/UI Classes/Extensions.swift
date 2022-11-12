@@ -285,6 +285,16 @@ extension String {
     func localized() -> String {
         return NSLocalizedString(self, tableName: "Localizables", bundle: .main, value: self, comment: self)
     }
+    func formatLicensePlate() -> String {
+        var plateText = self.replacingOccurrences(of: " ", with: "").uppercased()
+        let plateNr = String(plateText.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
+        var plateNrRange = plateText.range(of: plateNr)!
+        plateText.insert("-", at: plateNrRange.lowerBound)
+        plateNrRange = plateText.range(of: plateNr)!
+        plateText.insert("-", at: plateNrRange.upperBound)
+        
+        return plateText
+    }
 }
 extension UIControl {
     
@@ -365,3 +375,4 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
 }
+

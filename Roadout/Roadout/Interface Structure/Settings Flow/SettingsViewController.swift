@@ -10,8 +10,8 @@ import MessageUI
 class SettingsViewController: UIViewController {
     
     var cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
-    var cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Main Yellow", "Icons", "Dark Yellow", "", "Icons", "Cash Yellow", "", "Greyish", "Brownish", "Kinda Red", "ExpressFocus", "Main Yellow"]
-    var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "lasso", "clock.fill", "scroll.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "puzzlepiece.fill", "signature", "globe"]
+    var cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "GoldBrown", "Icons", "Dark Yellow", "", "Icons", "Cash Yellow", "", "Greyish", "Brownish", "Kinda Red", "ExpressFocus", "Main Yellow"]
+    var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "waveform", "clock.fill", "scroll.fill", "", "envelope.open.fill", "rosette", "", "ant.fill", "newspaper.fill", "puzzlepiece.fill", "signature", "globe"]
     var cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Voice Assitants".localized(), "Reminders".localized(), "Reservation History".localized(), "", "Invite Friends".localized(), "Prizes".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "FAQ & Support".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
 
     var cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "VoiceAssitantsVC", "RemindersVC", "HistoryVC", "", "InviteVC", "PrizesVC", "", "ReportVC", "LegalVC", "FAQVC", "AckVC", "AboutVC"]
@@ -122,7 +122,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if cellTypes[indexPath.row] == "UserSettingCell" {
-            print("cool")
+            //do nothing
         } else if cellTypes[indexPath.row] == "ButtonCell" {
             let alert = UIAlertController(title: "Sign Out".localized(), message: "Are you sure you want to sign out?".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Dark Orange")

@@ -50,8 +50,6 @@ class UserManager {
             let data = response.value!.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    print(jsonArray["status"]!)
-                    print(jsonArray["message"]!)
                     self.callResult = jsonArray["status"] as! String
                     if self.callResult == "Success" {
                         completion(.success(()))
@@ -59,7 +57,6 @@ class UserManager {
                         completion(.failure(UserDBErrors.userDoesNotExist))
                     }
                 } else {
-                    print("unknown error")
                     self.callResult = "unknown error"
                     completion(.failure(UserDBErrors.unknownError))
                 }
@@ -88,8 +85,6 @@ class UserManager {
             let data = response.value!.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    print(jsonArray["status"]!)
-                    print(jsonArray["message"]!)
                     self.callResult = jsonArray["status"] as! String
                     if self.callResult == "Success" {
                         completion(.success(()))
@@ -125,8 +120,6 @@ class UserManager {
             let data = response.value!.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    print(jsonArray["status"]!)
-                    print(jsonArray["message"]!)
                     self.callResult = jsonArray["status"] as! String
                     if self.callResult == "Success" {
                         completion(.success(()))
@@ -134,7 +127,6 @@ class UserManager {
                         completion(.failure(UserDBErrors.userDoesNotExist))
                     }
                 } else {
-                    print("unknown error")
                     self.callResult = "unknown error"
                     completion(.failure(UserDBErrors.unknownError))
                 }
@@ -168,8 +160,6 @@ class UserManager {
             let data = response.value!.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    print(jsonArray["status"]!)
-                    print(jsonArray["message"]!)
                     self.callResult = jsonArray["status"] as! String
                     if self.callResult == "Success" {
                         self.userName = jsonArray["name"] as! String
@@ -181,7 +171,6 @@ class UserManager {
                         completion(.failure(UserDBErrors.userDoesNotExist))
                     }
                 } else {
-                    print("unknown error")
                     self.callResult = "unknown error"
                     completion(.failure(UserDBErrors.unknownError))
                 }
@@ -208,7 +197,6 @@ class UserManager {
             let data = response.value!.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    print(jsonArray["status"]!)
                     self.callResult = jsonArray["status"] as! String
                     if self.callResult == "Success" {
                         let code = jsonArray["accessCode"] as! String
@@ -223,7 +211,6 @@ class UserManager {
                         completion(.failure(UserDBErrors.unknownError))
                     }
                 } else {
-                    print("unknown error")
                     self.callResult = "unknown error"
                     completion(.failure(UserDBErrors.unknownError))
                 }
@@ -242,8 +229,6 @@ class UserManager {
         if email == "" {
             email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail") ?? "roadout_impossible."
         }
-        print(email)
-        print(password)
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let hashedPswd = MD5(string: password)
         let params : Parameters = ["email":email,"psw":hashedPswd]
@@ -257,7 +242,6 @@ class UserManager {
             let data = response.value!.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    print(jsonArray["status"]!)
                     self.callResult = jsonArray["status"] as! String
                     if self.callResult == "Success" {
                         completion(.success(()))
@@ -265,7 +249,6 @@ class UserManager {
                         completion(.failure(UserDBErrors.unknownError))
                     }
                 } else {
-                    print("unknown error")
                     self.callResult = "unknown error"
                     completion(.failure(UserDBErrors.unknownError))
                 }

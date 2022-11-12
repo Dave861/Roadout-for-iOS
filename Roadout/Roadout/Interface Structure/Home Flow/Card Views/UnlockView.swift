@@ -74,7 +74,6 @@ class UnlockView: UIView {
 }
 extension UnlockView: SlideButtonDelegate {
     func buttonStatus(status: String, sender: SlidingButton) {
-        print(status)
         if status == "Unlocked" {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()

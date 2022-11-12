@@ -222,7 +222,6 @@ class PayView: UIView {
             }
             index += 1
         }
-        print(index)
         return index
     }
     

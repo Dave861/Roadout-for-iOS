@@ -23,6 +23,16 @@ class PayParkingView: UIView {
     @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var licensePlateLbl: UILabel!
+    @IBOutlet weak var editLicensePlateBtn: UIButton!
+    @IBAction func editLicensePlateTapped(_ sender: Any) {
+        let sb = UIStoryboard(name: "Home", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "EditLicensePlateVC") as! EditLicensePlateViewController
+        self.parentViewController().present(vc, animated: true)
+    }
+    
+    let editPlateTitle = NSAttributedString(string: "EDIT".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .semibold)])
+    let addPlateTitle = NSAttributedString(string: "ADD".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .semibold)])
+    
     @IBOutlet weak var detailsLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     
@@ -56,6 +66,7 @@ class PayParkingView: UIView {
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshCardsMenu), name: .refreshCardsMenuID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshLicensePlate), name: .reloadLicensePlateID, object: nil)
     }
     
     @objc func refreshCardsMenu() {
@@ -71,12 +82,29 @@ class PayParkingView: UIView {
         }
     }
     
+    @objc func refreshLicensePlate() {
+        self.licensePlateLbl.text = userLicensePlate
+        if userLicensePlate == "NO-PLATE" {
+            self.editLicensePlateBtn.setAttributedTitle(addPlateTitle, for: .normal)
+        } else {
+            self.editLicensePlateBtn.setAttributedTitle(editPlateTitle, for: .normal)
+        }
+    }
+    
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
         manageObs()
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
+        editLicensePlateBtn.layer.cornerRadius = editLicensePlateBtn.frame.height/2
+        
+        licensePlateLbl.text = userLicensePlate
+        if userLicensePlate == "NO-PLATE" {
+            editLicensePlateBtn.setAttributedTitle(addPlateTitle, for: .normal)
+        } else {
+            editLicensePlateBtn.setAttributedTitle(editPlateTitle, for: .normal)
+        }
         
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         payBtn.layer.cornerRadius = 12.0

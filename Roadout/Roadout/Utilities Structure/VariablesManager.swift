@@ -60,5 +60,7 @@ var cityParkLocationsCount = 11
 //Remember car location
 var carParkHash = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.carParkHash") ?? "roadout_carpark_clear"
 
+var userLicensePlate = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.userLicensePlate") ?? "NO-PLATE"
+
 //While server is variable, makes changing the url easier
-var roadoutServerURL = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.devServerURL") ?? "d4bfe9e58e9d7362.p51.rt3.io"
+var roadoutServerURL = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.devServerURL") ?? "1e7d8093921f7766.p51.rt3.io"
