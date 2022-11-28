@@ -16,10 +16,15 @@ class CancelledView: UIView {
     
     @IBAction func doneTapped(_ sender: Any) {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        ReservationManager.sharedInstance.checkForReservation(Date(), userID: id) { _ in
-            //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done)
-            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+        //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done)
+        Task {
+            do {
+                try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id)
+            } catch let err {
+                print(err)
+            }
         }
+        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {

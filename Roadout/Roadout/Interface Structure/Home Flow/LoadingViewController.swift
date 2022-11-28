@@ -19,35 +19,37 @@ class GetDataViewController: UIViewController {
     
     @IBAction func tryAgainTapped(_ sender: Any) {
         tryAgainBtn.isHidden = true
-        self.downloadCityData()
+        saveCityData()
     }
     
-    func downloadCityData() {
+    func saveCityData() {
         parkLocations = testParkLocations //will empty here
-        EntityManager.sharedInstance.getParkLocations("Cluj") { result in
-            switch result {
-                case .success():
-                for index in 0...dbParkLocations.count-1 {
-                    EntityManager.sharedInstance.getParkSections(dbParkLocations[index].rID) { res in
-                        switch res {
-                            case .success():
-                                dbParkLocations[index].sections = dbParkSections
-                                parkLocations.append(dbParkLocations[index])
-                                if parkLocations.count >= cityParkLocationsCount {
-                                     self.activityIndicator.stopAnimating()
-                                     self.dismiss(animated: false) {
-                                         NotificationCenter.default.post(name: .addMarkersID, object: nil)
-                                     }
-                                }
-                            case .failure(let err):
-                                //self.showErrors(error: err)
-                                self.showDevErrors(error: err)
-                        }
-                    }
+        Task {
+            do {
+                try await downloadCityData("Cluj")
+                parkLocations = testParkLocations + dbParkLocations
+                self.activityIndicator.stopAnimating()
+                self.dismiss(animated: false) {
+                    NotificationCenter.default.post(name: .addMarkersID, object: nil)
                 }
-                case .failure(let err):
-                    //self.showErrors(error: err)
-                    self.showDevErrors(error: err)
+            } catch let err {
+                self.showDevErrors(error: err)
+            }
+        }
+    }
+    
+    func downloadCityData(_ city: String) async throws {
+        do {
+            try await EntityManager.sharedInstance.saveParkLocationsAsync(city)
+        } catch let err {
+            throw err
+        }
+        for pI in 0...dbParkLocations.count-1 {
+            do {
+                try await EntityManager.sharedInstance.saveParkSectionsAsync(dbParkLocations[pI].rID)
+                dbParkLocations[pI].sections = dbParkSections
+            } catch let err {
+                throw err
             }
         }
     }
@@ -60,7 +62,7 @@ class GetDataViewController: UIViewController {
         alert.addAction(okAction)
         
         let tryAgainAction = UIAlertAction(title: "Try Again".localized(), style: .default) { _ in
-            self.downloadCityData()
+            self.saveCityData()
             self.tryAgainBtn.isHidden = true
         }
         alert.addAction(tryAgainAction)
@@ -70,7 +72,7 @@ class GetDataViewController: UIViewController {
     }
     
     func showDevErrors(error: Error) {
-        let alert = UIAlertController(title: "Download Error".localized(), message: "There was an error reaching our server. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report at bugs@roadout.ro".localized(), preferredStyle: .alert)
+        let alert = UIAlertController(title: "Download Error".localized(), message: "There was an error reaching our server. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report at bugs@roadout.ro".localized() + error.localizedDescription, preferredStyle: .alert)
         
         alert.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter New Server"
@@ -85,7 +87,7 @@ class GetDataViewController: UIViewController {
             let serverTextField = alert.textFields![0] as UITextField
             roadoutServerURL = serverTextField.text!
             UserDefaults.roadout!.set(roadoutServerURL, forKey: "ro.roadout.Roadout.devServerURL")
-            self.downloadCityData()
+            self.saveCityData()
             self.tryAgainBtn.isHidden = true
         }
         alert.addAction(tryAgainAction)
@@ -101,9 +103,7 @@ class GetDataViewController: UIViewController {
         tryAgainBtn.isHidden = true
         titleLbl.text = "Loading City Data".localized()
         activityIndicator.startAnimating()
-        self.downloadCityData()
+        saveCityData()
     }
 
-    
-    
 }

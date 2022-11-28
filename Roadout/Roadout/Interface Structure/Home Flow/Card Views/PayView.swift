@@ -53,24 +53,26 @@ class PayView: UIView {
                 returnToDelay = false
                 timerSeconds += delaySeconds
                 let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-                ReservationManager.sharedInstance.delayReservation(Date(), minutes: delaySeconds/60, userID: id) { result in
-                    switch result {
-                        case .success():
-                            print("WE DELAYED")
-                        case .failure(let err):
-                            print(err)
-                            self.manageServerSideErrors(error: err)
+                Task {
+                    do {
+                        try await ReservationManager.sharedInstance.delayReservationAsync(date: Date(), minutes: delaySeconds/60, userID: id)
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: .showPaidBarID, object: nil)
+                        }
+                    } catch let err {
+                        self.manageServerSideErrors(error: err)
                     }
                 }
             } else {
                 let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-                ReservationManager.sharedInstance.makeReservation(Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id) { result in
-                    switch result {
-                        case .success():
-                            print("WE RESERVED")
-                        case .failure(let err):
-                            print(err)
-                            self.manageServerSideErrors(error: err)
+                Task {
+                    do {
+                        try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id)
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: .showPaidBarID, object: nil)
+                        }
+                    } catch let err {
+                        self.manageServerSideErrors(error: err)
                     }
                 }
             }

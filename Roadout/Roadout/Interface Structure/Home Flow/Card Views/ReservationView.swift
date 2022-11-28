@@ -89,10 +89,10 @@ class ReservationView: UIView {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        ReservationManager.sharedInstance.checkReservationWasDelayed(id) { result in
-            switch result {
-                case .success():
-                if ReservationManager.sharedInstance.delayWasMade == false {
+        Task {
+            do {
+                let delayWasMade = try await ReservationManager.sharedInstance.checkReservationWasDelayedAsync(userID: id)
+                if delayWasMade == false {
                         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownDelayWarning") == false {
                             UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownDelayWarning")
                             let alert = UIAlertController(title: "Delay Reservation".localized(), message: "You can only delay a reservation once. Use carefully.".localized(), preferredStyle: .alert)
@@ -109,9 +109,8 @@ class ReservationView: UIView {
                     alert.addAction(cancelAction)
                     self.parentViewController().present(alert, animated: true, completion: nil)
                 }
-                case .failure(let err):
-                    print(err)
-                    self.manageServerSideErrors(error: err)
+            } catch let err {
+                self.manageServerSideErrors(error: err)
             }
         }
     }
@@ -126,13 +125,11 @@ class ReservationView: UIView {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-            ReservationManager.sharedInstance.cancelReservation(id, date: Date()) { result in
-                switch result {
-                    case .success():
-                        print("CANCELLED")
-                    case .failure(let err):
-                        print(err)
-                        self.manageServerSideErrors(error: err)
+            Task {
+                do {
+                    try await ReservationManager.sharedInstance.cancelReservationAsync(userID: id, date: Date())
+                } catch let err {
+                    self.manageServerSideErrors(error: err)
                 }
             }
         }

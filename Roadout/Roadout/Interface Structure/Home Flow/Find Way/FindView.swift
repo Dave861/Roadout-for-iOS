@@ -58,7 +58,6 @@ class FindView: UIView {
     
         
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let siriTitle = NSAttributedString(string: "Use with Siri".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Greyish")!])
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()

@@ -27,7 +27,14 @@ class ResultView: UIView {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         returnToResult = false
-        self.downloadSpots()
+        Task.detached {
+            do {
+                try await self.downloadSpots()
+            } catch let err {
+                print(err)
+            }
+        }
+        
         //Clear saved car park
         UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
         carParkHash = "roadout_carpark_clear"
@@ -47,7 +54,18 @@ class ResultView: UIView {
         NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
         //Find first free spot
         self.showLoadingIndicator()
-        FunctionsManager.sharedInstance.reserveSpotInLocation(sectionIndex: 0, location: parkLocations[selectedParkLocationIndex])
+        Task {
+            do {
+                try await FunctionsManager.sharedInstance.reserveSpotInLocationAsync(location: parkLocations[selectedParkLocationIndex])
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
+                    NotificationCenter.default.post(name: .addReserveCardID, object: nil)
+                }
+            } catch let err {
+                self.showNoFreeSpotAlert()
+                print(err)
+            }
+        }
     }
     
     @IBAction func backTapped(_ sender: Any) {
@@ -57,11 +75,7 @@ class ResultView: UIView {
     }
     @IBOutlet weak var backBtn: UIButton!
     
-    func manageObs() {
-        NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(showNoFreeSpotAlert), name: .showNoFreeSpotInLocationID, object: nil)
-    }
-    @objc func showNoFreeSpotAlert() {
+    func showNoFreeSpotAlert() {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
             alert.view.tintColor = selectedLocationColor ?? UIColor(named: "Main Yellow")!
@@ -71,8 +85,6 @@ class ResultView: UIView {
     }
     
     override func willMove(toSuperview newSuperview: UIView?) {
-        manageObs()
-        
         self.layer.cornerRadius = 19.0
         locationLbl.text = parkLocations[selectedParkLocationIndex].name
         pickBtn.layer.cornerRadius = 12.0
@@ -112,19 +124,16 @@ class ResultView: UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
     
-    func downloadSpots() {
-        for index in 0...parkLocations[selectedParkLocationIndex].sections.count-1 {
-            parkLocations[selectedParkLocationIndex].sections[index].spots = [ParkSpot]()
+    func downloadSpots() async throws {
+        for sI in 0...parkLocations[selectedParkLocationIndex].sections.count-1 {
+            parkLocations[selectedParkLocationIndex].sections[sI].spots = [ParkSpot]()
         }
-        for index in 0...parkLocations[selectedParkLocationIndex].sections.count-1 {
-            EntityManager.sharedInstance.getParkSpots(parkLocations[selectedParkLocationIndex].sections[index].rID) { result in
-                switch result {
-                    case .success():
-                        parkLocations[selectedParkLocationIndex].sections[index].spots = dbParkSpots
-                        //selectedParkLocation.sections[index].spots = dbParkSpots
-                    case .failure(let err):
-                        print(err)
-                }
+        for sI in 0...parkLocations[selectedParkLocationIndex].sections.count-1 {
+            do {
+                try await EntityManager.sharedInstance.saveParkSpotsAsync(parkLocations[selectedParkLocationIndex].sections[sI].rID)
+                parkLocations[selectedParkLocationIndex].sections[sI].spots = dbParkSpots
+            } catch let err {
+                throw err
             }
         }
     }

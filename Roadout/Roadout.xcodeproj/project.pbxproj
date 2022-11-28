@@ -172,6 +172,7 @@
 		9AB827F828128883007BC842 /* GDMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB827F728128883007BC842 /* GDMManager.swift */; };
 		9AB96428272EFCE0008462E7 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB96427272EFCE0008462E7 /* ActiveView.swift */; };
 		9ABA39B227C13382001660E7 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABA39B127C13382001660E7 /* LoadingViewController.swift */; };
+		9ABDCC8629334D1500D5CE6A /* Locations in Frameworks */ = {isa = PBXBuildFile; productRef = 9ABDCC8529334D1500D5CE6A /* Locations */; };
 		9AC149CA28B4EFA900B9B394 /* Pay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC149CC28B4EFA900B9B394 /* Pay.xib */; };
 		9AC149CF28B4F9E900B9B394 /* Tutorials.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC149D128B4F9E900B9B394 /* Tutorials.xib */; };
 		9AC16CC8291F9CCF004D7F55 /* EditLicensePlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC16CC7291F9CCF004D7F55 /* EditLicensePlateViewController.swift */; };
@@ -447,6 +448,7 @@
 		9A96F872272B09DF008B58FE /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		9A96F874272B09F1008B58FE /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		9A96F876272B0A25008B58FE /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		9A9F3168292A9141006CDDF7 /* RoadoutWidgetIntentHandler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RoadoutWidgetIntentHandler.entitlements; sourceTree = "<group>"; };
 		9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
 		9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		9AA0EFCF277B4C7C00B0F52A /* RoadoutRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RoadoutRelease.entitlements; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				9AAE2659280947E000BBBAC3 /* GoogleMaps in Frameworks */,
 				9AAE2661280947E000BBBAC3 /* GooglePlaces in Frameworks */,
 				9AAE265D280947E000BBBAC3 /* GoogleMapsCore in Frameworks */,
+				9ABDCC8629334D1500D5CE6A /* Locations in Frameworks */,
 				9A40C1DC281443FD00E44B23 /* IOSSecuritySuite in Frameworks */,
 				9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */,
 				9AA01DDF2789D78E0004211A /* CHIOTPField in Frameworks */,
@@ -691,6 +694,7 @@
 		9A397D3C280D4970003458BD /* RoadoutWidgetIntentHandler */ = {
 			isa = PBXGroup;
 			children = (
+				9A9F3168292A9141006CDDF7 /* RoadoutWidgetIntentHandler.entitlements */,
 				9A397D3D280D4970003458BD /* IntentHandler.swift */,
 				9A397D3F280D4970003458BD /* Info.plist */,
 			);
@@ -1269,6 +1273,7 @@
 				9AAE2660280947E000BBBAC3 /* GooglePlaces */,
 				9A40C1DB281443FD00E44B23 /* IOSSecuritySuite */,
 				9A765C342896747600AF250D /* GeohashKit */,
+				9ABDCC8529334D1500D5CE6A /* Locations */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1318,6 +1323,7 @@
 				9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 				9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */,
 				9A765C332896747600AF250D /* XCRemoteSwiftPackageReference "GeohashKit" */,
+				9ABDCC8429334D1500D5CE6A /* XCRemoteSwiftPackageReference "swift-locations" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -1804,6 +1810,7 @@
 		9A397D44280D4970003458BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = RoadoutWidgetIntentHandler/RoadoutWidgetIntentHandler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = VKWWNVYVR5;
@@ -1830,6 +1837,7 @@
 		9A397D45280D4970003458BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = RoadoutWidgetIntentHandler/RoadoutWidgetIntentHandler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = VKWWNVYVR5;
@@ -2131,7 +2139,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Roadout;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2178,7 +2186,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Roadout;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2312,6 +2320,14 @@
 				version = 6.2.1;
 			};
 		};
+		9ABDCC8429334D1500D5CE6A /* XCRemoteSwiftPackageReference "swift-locations" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexandrehsaad/swift-locations.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2379,6 +2395,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
 			productName = GooglePlaces;
+		};
+		9ABDCC8529334D1500D5CE6A /* Locations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9ABDCC8429334D1500D5CE6A /* XCRemoteSwiftPackageReference "swift-locations" */;
+			productName = Locations;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

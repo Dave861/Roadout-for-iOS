@@ -49,22 +49,27 @@ class UnlockedView: UIView {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        ReservationManager.sharedInstance.checkForReservation(Date(), userID: id) { _ in
-            //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done)
-            let rateAlert = UIAlertController(title: "Rate".localized(), message: "Would you like to rate your experience?".localized(), preferredStyle: .alert)
-            let yesAction = UIAlertAction(title: "Yes".localized(), style: .cancel) { _ in
-                NotificationCenter.default.post(name: .showRateReservationID, object: nil)
-             }
-            let noAction = UIAlertAction(title: "No".localized(), style: .default) { _ in
-                rateAlert.dismiss(animated: true, completion: nil)
-             }
-            rateAlert.addAction(noAction)
-            rateAlert.addAction(yesAction)
-            rateAlert.view.tintColor = UIColor(named: "Main Yellow")
-             
-            self.parentViewController().present(rateAlert, animated: true, completion: nil)
-            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+        //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done)
+        Task {
+            do {
+                try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id)
+            } catch let err {
+                print(err)
+            }
         }
+        let rateAlert = UIAlertController(title: "Rate".localized(), message: "Would you like to rate your experience?".localized(), preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes".localized(), style: .cancel) { _ in
+            NotificationCenter.default.post(name: .showRateReservationID, object: nil)
+         }
+        let noAction = UIAlertAction(title: "No".localized(), style: .default) { _ in
+            rateAlert.dismiss(animated: true, completion: nil)
+         }
+        rateAlert.addAction(noAction)
+        rateAlert.addAction(yesAction)
+        rateAlert.view.tintColor = UIColor(named: "Main Yellow")
+         
+        self.parentViewController().present(rateAlert, animated: true, completion: nil)
+        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
     func styleActionButtons() {

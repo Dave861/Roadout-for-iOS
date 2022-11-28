@@ -21,91 +21,109 @@ class EntityManager {
         case unknownError
     }
     
-    func getParkLocations(_ city: String, completion: @escaping(Result<Void, Error>) -> Void) {
+    func getParkLocationsAsync(_ city: String) async throws -> String {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
-        let params : Parameters = ["id":city]
-        
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetParkingLots.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                completion(.failure(EntityErrors.databaseFailure))
-                return
-            }
-            let data = ("[" + response.value!.dropLast() + "]").data(using: .utf8)!
+        let params : Parameters = ["id": city]
+        let downloadRequest = AF.request("https://\(roadoutServerURL)/Parking/GetParkingLots.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        return try await downloadRequest.serializingString().value
+    }
+    
+    func saveParkLocationsAsync(_ city: String) async throws {
+        do {
+            let responseJson = try await getParkLocationsAsync(city)
+            let data = ("[" + responseJson.dropLast() + "]").data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
                     dbParkLocations = [ParkLocation]()
                     for json in jsonArray {
-                        var dbParkLocation = ParkLocation(name: json["name"] as! String, rID: json["id"] as! String, latitude: Double(json["lat"] as! String)!, longitude: Double(json["lng"] as! String)!, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: Int(json["freeParkingSpots"] as! String)!, sections: [ParkSection](), sectionImage: json["id"] as! String + ".Section", accentColor: colours.randomElement()!)
+                        var dbParkLocation = ParkLocation(name: json["name"] as! String,
+                                                          rID: json["id"] as! String,
+                                                          latitude: Double(json["lat"] as! String)!,
+                                                          longitude: Double(json["lng"] as! String)!,
+                                                          totalSpots: Int(json["nrParkingSpots"] as! String)!,
+                                                          freeSpots: Int(json["freeParkingSpots"] as! String)!,
+                                                          sections: [ParkSection](),
+                                                          sectionImage: json["id"] as! String + ".Section",
+                                                          accentColor: "Main Yellow")
                         self.makeAccentColor(parkLocation: &dbParkLocation)
                         dbParkLocations.append(dbParkLocation)
                     }
-                    completion(.success(()))
                 } else {
-                    completion(.failure(EntityErrors.unknownError))
+                    throw EntityErrors.unknownError
                 }
-            } catch let error as NSError {
-                print(error)
-
-                completion(.failure(EntityErrors.errorWithJson))
+            } catch {
+                throw EntityErrors.errorWithJson
             }
+        } catch {
+            throw EntityErrors.databaseFailure
         }
     }
     
-    func getParkSections(_ location: String, completion: @escaping(Result<Void, Error>) -> Void) {
+    func getParkSectionsAsync(_ location: String) async throws -> String {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":location]
-        
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetParkingSections.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                completion(.failure(EntityErrors.databaseFailure))
-                return
-            }
-            let data = ("[" + response.value!.dropLast() + "]").data(using: .utf8)!
+        let downloadRequest = AF.request("https://\(roadoutServerURL)/Parking/GetParkingSections.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        return try await downloadRequest.serializingString().value
+    }
+    
+    func saveParkSectionsAsync(_ location: String) async throws {
+        do {
+            let responseJson = try await getParkSectionsAsync(location)
+            let data = ("[" + responseJson.dropLast() + "]").data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
                     dbParkSections = [ParkSection]()
                     for json in jsonArray {
                         let imagePoint = ParkSectionImagePoint(x: Int(json["iOSPointImage.x"] as! String)!, y: Int(json["iOSPointImage.y"] as! String)!)
-                        dbParkSections.append(ParkSection(name: json["name"] as! String, totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: 0, rows: self.getNumbers(json["nrRows"] as! String), spots: [ParkSpot](), imagePoint: imagePoint, rID: json["sectionID"] as! String))
+                        dbParkSections.append(
+                            ParkSection(name: json["name"] as! String,
+                                        totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: 0,
+                                        rows: self.getNumbers(json["nrRows"] as! String),
+                                        spots: [ParkSpot](),
+                                        imagePoint: imagePoint,
+                                        rID: json["sectionID"] as! String))
                     }
-                    completion(.success(()))
                 } else {
-                    completion(.failure(EntityErrors.unknownError))
+                    throw EntityErrors.unknownError
                 }
-            } catch let error as NSError {
-                print(error)
-
-                completion(.failure(EntityErrors.errorWithJson))
+            } catch {
+                throw EntityErrors.errorWithJson
             }
+        } catch {
+            throw EntityErrors.databaseFailure
         }
     }
     
-    func getParkSpots(_ section: String, completion: @escaping(Result<Void, Error>) -> Void) {
+    func getParkSpotsAsync(_ section: String) async throws -> String {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":section]
-        
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetSectionInf.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                completion(.failure(EntityErrors.databaseFailure))
-                return
-            }
-            let data = ("[" + response.value!.dropLast() + "]").data(using: .utf8)!
+        let downloadRequest = AF.request("https://\(roadoutServerURL)/Parking/GetSectionInf.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        return try await downloadRequest.serializingString().value
+    }
+    
+    func saveParkSpotsAsync(_ section: String) async throws {
+        do {
+            let responseJson = try await getParkSpotsAsync(section)
+            let data = ("[" + responseJson.dropLast() + "]").data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
                     dbParkSpots = [ParkSpot]()
                     for json in jsonArray {
-                        dbParkSpots.append(ParkSpot(state: Int(json["state"] as! String)!, number: Int(json["number"] as! String)!, rHash: "u82f0bc6m303-f80-h70-p0", rID: json["id"] as! String))
+                        dbParkSpots.append(
+                            ParkSpot(state: Int(json["state"] as! String)!,
+                                     number: Int(json["number"] as! String)!,
+                                     rHash: "u82f0bc6m303-f80-h70-p0",
+                                     rID: json["id"] as! String))
                     }
                     dbParkSpots.sort { $0.number < $1.number }
-                    completion(.success(()))
                 } else {
-                    completion(.failure(EntityErrors.unknownError))
+                    throw EntityErrors.unknownError
                 }
-            } catch let error as NSError {
-                print(error)
-
-                completion(.failure(EntityErrors.errorWithJson))
+            } catch {
+                throw EntityErrors.errorWithJson
             }
+        } catch {
+            throw EntityErrors.databaseFailure
         }
     }
     
@@ -114,29 +132,33 @@ class EntityManager {
         return stringRecordedArr.map { Int($0)!}
     }
     
-    func getFreeParkSpots(_ location: String, _ index: Int, completion: @escaping(Result<Void, Error>) -> Void) {
+    func getFreeParkSpotsAsync(_ location: String) async throws -> String {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":location]
-        
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                completion(.failure(EntityErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
+        let downloadRequest = AF.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        return try await downloadRequest.serializingString().value
+    }
+    
+    func updateFreeParkSpotsAsync(_ location: String, _ index: Int) async throws {
+        do {
+            let responseJson = try await getFreeParkSpotsAsync(location)
+            let data = responseJson.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
                     if jsonArray["status"] as! String == "Success" {
                         parkLocations[index].freeSpots = Int(jsonArray["result"] as! String)!
                         self.makeAccentColor(parkLocation: &parkLocations[index])
-                        completion(.success(()))
+                    } else {
+                        throw EntityErrors.unknownError
                     }
+                } else {
+                    throw EntityErrors.unknownError
                 }
-            } catch let error as NSError {
-                print(error)
-
-                completion(.failure(EntityErrors.errorWithJson))
+            } catch {
+                throw EntityErrors.errorWithJson
             }
+        } catch {
+            throw EntityErrors.databaseFailure
         }
     }
     

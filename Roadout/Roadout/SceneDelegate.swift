@@ -52,33 +52,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 ]
                 WCSession.default.sendMessage(data, replyHandler: nil)
             }
-            //Check for reservation to refresh UI
-            ReservationManager.sharedInstance.checkForReservation(Date(), userID: id as! String) { result in
-                switch result {
-                    case .success():
-                        if ReservationManager.sharedInstance.isReservationActive == 0 {
-                            //active
-                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
-                        } else if ReservationManager.sharedInstance.isReservationActive == 1 {
-                            //unlocked
-                            //do nothing, keep current state
-                        } else if ReservationManager.sharedInstance.isReservationActive == 2 {
-                            //cancelled
-                            NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
-                        } else {
-                            //error or not active
-                            //do nothing, keep current state
-                        }
-                    case .failure(let err):
-                        print(err)
-                        if let convertedError = err as? ReservationManager.ReservationErrors {
-                            if convertedError == .databaseFailure && ConnectionManager.sharedInstance.reachability.connection != .unavailable {
-                                let mainSb = UIStoryboard(name: "Main", bundle: nil)
-                                let maintenanceVC = mainSb.instantiateViewController(withIdentifier: "MaintenanceVC") as! MaintenanceViewController
-                                self.window?.rootViewController = maintenanceVC
-                                self.window?.makeKeyAndVisible()
-                            }
-                        }
+            Task {
+                do {
+                    try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)
+                    if ReservationManager.sharedInstance.isReservationActive == 0 {
+                        //active
+                        NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                    } else if ReservationManager.sharedInstance.isReservationActive == 1 {
+                        //unlocked
+                        //do nothing, keep current state
+                    } else if ReservationManager.sharedInstance.isReservationActive == 2 {
+                        //cancelled
+                        NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
+                    } else {
+                        //error or not active
+                        //do nothing, keep current state
+                    }
                 }
             }
         }

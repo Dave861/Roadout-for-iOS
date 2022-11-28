@@ -26,16 +26,17 @@ class MaintenanceViewController: UIViewController {
                 self.showSorryAlert()
                 return
             }
-            ReservationManager.sharedInstance.checkForReservation(Date(), userID: id as! String) { result in
-                switch result {
-                    case .success():
-                        let homeSb = UIStoryboard(name: "Home", bundle: nil)
-                        let homeVC = homeSb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
-                        self.view.window?.rootViewController = homeVC
-                        self.view.window?.makeKeyAndVisible()
-                    case .failure(let err):
-                        print(err)
-                        self.showSorryAlert()
+            //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done)
+            Task {
+                do {
+                    try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)
+                    let homeSb = UIStoryboard(name: "Home", bundle: nil)
+                    let homeVC = homeSb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
+                    self.view.window?.rootViewController = homeVC
+                    self.view.window?.makeKeyAndVisible()
+                } catch let err {
+                    print(err)
+                    self.showSorryAlert()
                 }
             }
         } else {

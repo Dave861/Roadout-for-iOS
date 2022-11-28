@@ -21,16 +21,46 @@ class FunctionsManager {
         case unknownError
         case notFound
     }
-    
-    //MARK: -Find Spot-
-        
+            
     var foundLocation: ParkLocation!
     var foundSection: ParkSection!
     var foundSpot: ParkSpot!
     
     var sortedLocations = [ParkLocation]()
+    
+    func checkSectionAsync(sectionId: String) async throws -> Bool {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["id": sectionId]
+        
+        let checkRequest = AF.request("https://\(roadoutServerURL)/Parking/FirstSpot.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        do {
+            let responseJson = try await checkRequest.serializingString().value
+            let data = responseJson.data(using: .utf8)!
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String: Any] {
+                    if jsonArray["status"] as! String == "Success" {
+                        if (jsonArray["id"] as! String).lowercased() != "null" {
+                            let spotID = jsonArray["id"] as! String
+                            self.foundSpot = ParkSpot(state: 0, number: Int(EntityManager.sharedInstance.decodeSpotID(spotID)[2])!, rHash: "u82f0bc6m303-f80-h70-p0", rID: spotID)
+                            return true
+                        } else {
+                            return false
+                        }
+                    } else {
+                        throw FunctionsErrors.unknownError
+                    }
+                }
+            } catch {
+                throw FunctionsErrors.errorWithJson
+            }
+        } catch {
+            throw FunctionsErrors.databaseFailure
+        }
+        return false
+    }
 
-    func sortLocations(currentLocation: CLLocationCoordinate2D, completion: (_ success: Bool) -> Void) {
+    func sortLocations(currentLocation: CLLocationCoordinate2D) {
         let current = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
         var dictArray = [[String: Any]]()
         for i in 0 ..< parkLocations.count {
@@ -48,143 +78,66 @@ class FunctionsManager {
         }
         
         sortedLocations = sortedArray
-        completion(true)
     }
 
-    func reserveSpotInLocation(sectionIndex: Int, location: ParkLocation) {
+    func reserveSpotInLocationAsync(location: ParkLocation) async throws {
         foundLocation = location
-        if sectionIndex == 0 {
-            foundSpot = nil
-        }
-        if sectionIndex < location.sections.count-1 && foundSpot == nil {
-            self.findInSection(location.sections[sectionIndex].rID) { result in
-                  switch result {
-                      case .success(let didFindSpot):
-                          if didFindSpot {
-                              self.foundSection = location.sections[sectionIndex]
-                              selectedSpotID = self.foundSpot.rID
-                              selectedSpotHash = self.foundSpot.rHash
-                              selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
-                              selectedSpotColor = location.accentColor
-                              NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
-                              NotificationCenter.default.post(name: .addReserveCardID, object: nil)
-                          } else {
-                              self.reserveSpotInLocation(sectionIndex: sectionIndex+1, location: location)
-                          }
-                      case .failure(let err):
-                        NotificationCenter.default.post(name: .showNoFreeSpotInLocationID, object: nil)
-                        print(err)
-                }
-            }
-        } else {
-            if foundSpot == nil {
-                NotificationCenter.default.post(name: .showNoFreeSpotInLocationID, object: nil)
-            }
-        }
-    }
-    
-    func expressReserveInLocation(sectionIndex: Int, location: ParkLocation) {
-        foundLocation = location
-        if sectionIndex < location.sections.count-1 && foundSpot == nil {
-            self.findInSection(location.sections[sectionIndex].rID) { result in
-                  switch result {
-                      case .success(let didFindSpot):
-                          if didFindSpot {
-                              self.foundSection = location.sections[sectionIndex]
-                              selectedSpotID = self.foundSpot.rID
-                              selectedSpotHash = self.foundSpot.rHash
-                              selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
-                              selectedSpotColor = location.accentColor
-                              NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
-                              NotificationCenter.default.post(name: .addExpressViewID, object: nil)
-                              NotificationCenter.default.post(name: .showExpressLaneFreeSpotID, object: nil)
-                          } else {
-                              self.expressReserveInLocation(sectionIndex: sectionIndex+1, location: location)
-                          }
-                      case .failure(let err):
-                        NotificationCenter.default.post(name: .showNoFreeSpotInExpressID, object: nil)
-                        print(err)
-                }
-            }
-        } else {
-            if foundSpot == nil {
-                NotificationCenter.default.post(name: .showNoFreeSpotInExpressID, object: nil)
-            }
-        }
-    }
-    
-    func findInSection(_ sectionId: String, completion: @escaping(Result<Bool, Error>) -> Void) {
-        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
-        let params : Parameters = ["id": sectionId]
+        foundSpot = nil
         
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/FirstSpot.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                completion(.failure(FunctionsErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String: Any] {
-                    if jsonArray["status"] as! String == "Success" {
-                        if (jsonArray["id"] as! String).lowercased() != "null" {
-                            let spotID = jsonArray["id"] as! String
-                            self.foundSpot = ParkSpot(state: 0, number: Int(EntityManager.sharedInstance.decodeSpotID(spotID)[2])!, rHash: "u82f0bc6m303-f80-h70-p0", rID: spotID)
-                            completion(.success(true))
-                        } else {
-                            completion(.success(false))
-                        }
-                    } else {
-                        completion(.failure(FunctionsErrors.unknownError))
-                    }
-                }
-            } catch let error as NSError {
-                print(error)
-                completion(.failure(FunctionsErrors.errorWithJson))
-            }
-        }
-    }
-   
-    
-    func findSpot(completion: @escaping(_ success: Bool) -> Void) {
-        
-        let dispatchSemaphore = DispatchSemaphore(value: 0)
-        DispatchQueue.global().async {
-            for location in self.sortedLocations {
-                if self.foundSpot != nil {
-                    break
-                }
-                self.foundLocation = location
-                for section in location.sections {
-                    if self.foundSpot != nil {
-                        break
-                    }
-                    self.findInSection(section.rID) { result in
-                        switch result {
-                            case .success(let didFind):
-                                if didFind {
-                                    self.foundSection = section
-                                    selectedSpotID = self.foundSpot.rID
-                                    selectedSpotHash = self.foundSpot.rHash
-                                    selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
-                                    
-                                    selectedSpotColor = self.foundLocation.accentColor
-                                    NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
-                                }
-                            case .failure(let err):
-                                print(err)
-                        }
-                        dispatchSemaphore.signal()
-                    }
-                    dispatchSemaphore.wait()
-                }
-            }
-            if self.foundSpot == nil {
-                completion(false)
+        for parkSection in location.sections {
+            if foundSpot != nil {
+                break
             } else {
-                completion(true)
+                do {
+                    let didFindSpot = try await self.checkSectionAsync(sectionId: parkSection.rID)
+                    if didFindSpot {
+                        self.foundSection = parkSection
+                        selectedSpotID = self.foundSpot.rID
+                        selectedSpotHash = self.foundSpot.rHash
+                        selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
+                        selectedSpotColor = location.accentColor
+                    }
+                } catch let err {
+                    throw err
+                }
             }
         }
-        
+        if foundSpot == nil {
+            throw FunctionsErrors.notFound
+        }
     }
     
+    func findWay() async throws -> Bool {
+        foundSpot = nil
+        for parkLocation in sortedLocations {
+            if foundSpot != nil {
+                break
+            }
+            foundLocation = parkLocation
+            for parkSection in parkLocation.sections {
+                if foundSpot != nil {
+                    break
+                } else {
+                    do {
+                        let didFindSpot = try await self.checkSectionAsync(sectionId: parkSection.rID)
+                        if didFindSpot {
+                            foundSection = parkSection
+                            selectedSpotID = foundSpot.rID
+                            selectedSpotHash = foundSpot.rHash
+                            selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
+                            selectedSpotColor = parkLocation.accentColor
+                            return true
+                        }
+                    } catch let err {
+                        print(err) //should throw errors in production
+                    }
+                }
+            }
+        }
+        if foundSpot != nil {
+            return true
+        } else {
+            return false
+        }
+    }
 }

@@ -84,26 +84,24 @@ extension AppDelegate: WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if message["action"] as? String == "Refresh Reservation" {
             guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
-            DispatchQueue.main.async {
-                ReservationManager.sharedInstance.checkForReservation(Date(), userID: id as! String) { result in
-                    switch result {
-                        case .success():
-                            if ReservationManager.sharedInstance.isReservationActive == 0 {
-                                //active
-                                NotificationCenter.default.post(name: .showActiveBarID, object: nil)
-                            } else if ReservationManager.sharedInstance.isReservationActive == 1 {
-                                //unlocked
-                                NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
-                            } else if ReservationManager.sharedInstance.isReservationActive == 2 {
-                                //cancelled
-                                NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
-                            } else {
-                                //error or not active
-                                NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
-                            }
-                        case .failure(let err):
-                            print(err)
+            Task {
+                do {
+                    try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)
+                    if ReservationManager.sharedInstance.isReservationActive == 0 {
+                        //active
+                        NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                    } else if ReservationManager.sharedInstance.isReservationActive == 1 {
+                        //unlocked
+                        NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
+                    } else if ReservationManager.sharedInstance.isReservationActive == 2 {
+                        //cancelled
+                        NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
+                    } else {
+                        //error or not active
+                        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
                     }
+                } catch let err {
+                    print(err)
                 }
             }
         } else if message["action"] as? String == "Send UserID" {

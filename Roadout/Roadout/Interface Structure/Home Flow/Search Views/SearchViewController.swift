@@ -18,7 +18,6 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchTitle: UILabel!
     
     @IBOutlet weak var searchField: UITextField!
-    
     @IBOutlet weak var searchBar: UIView!
     
     @IBOutlet weak var cancelButton: UIButton!
@@ -33,10 +32,12 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var modesButton: UIButton!
-    
     @IBAction func modesTapped(_ sender: Any) {
         //Handled by menu
     }
+    
+    @IBOutlet weak var placeholderView: UIView!
+    @IBOutlet weak var placeholderLbl: UILabel!
     
     func makeModesMenu() -> UIMenu {
         let smartAction = UIAction(title: "Smart Search".localized(), image: nil, state: smartApplied ? .on : .off, handler: { (_) in
@@ -64,7 +65,9 @@ class SearchViewController: UIViewController {
         card.clipsToBounds = true
         card.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
-        reloadFreeSpots()
+        Task {
+            await self.reloadFreeSpots()
+        }
         
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
         modesButton.setTitle("", for: .normal)
@@ -89,6 +92,9 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.keyboardDismissMode = .interactive
+        
+        placeholderView.alpha = 0
+        placeholderLbl.text = "Wow, not so quick! You might be looking for a place that doesn't exist".localized()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -98,6 +104,11 @@ class SearchViewController: UIViewController {
                   self.bruteFind() { success in
                       if success {
                           self.tableView.reloadData()
+                          if results.count == 0 {
+                              self.placeholderView.alpha = 1
+                          } else {
+                              self.placeholderView.alpha = 0
+                          }
                       }
                   }
                   return
@@ -109,6 +120,11 @@ class SearchViewController: UIViewController {
                         self.findByCoordinate(coords: searchCoordinates) { success in
                             if success {
                                 self.tableView.reloadData()
+                                if self.results.count == 0 {
+                                    self.placeholderView.alpha = 1
+                                } else {
+                                    self.placeholderView.alpha = 0
+                                }
                             }
                         }
                     case .failure(let err):
@@ -116,6 +132,11 @@ class SearchViewController: UIViewController {
                         self.bruteFind() { success in
                             if success {
                                 self.tableView.reloadData()
+                                if self.results.count == 0 {
+                                    self.placeholderView.alpha = 1
+                                } else {
+                                    self.placeholderView.alpha = 0
+                                }
                             }
                         }
                 }
@@ -124,6 +145,11 @@ class SearchViewController: UIViewController {
             self.bruteFind() { success in
                 if success {
                     self.tableView.reloadData()
+                    if self.results.count == 0 {
+                        self.placeholderView.alpha = 1
+                    } else {
+                        self.placeholderView.alpha = 0
+                    }
                 }
             }
         }
@@ -162,19 +188,17 @@ class SearchViewController: UIViewController {
         self.searchField.becomeFirstResponder()
     }
     
-    func reloadFreeSpots() {
-        for index in 0...parkLocations.count-1 {
-            EntityManager.sharedInstance.getFreeParkSpots(parkLocations[index].rID, index) { result in
-                switch result {
-                    case .success():
-                        if index == parkLocations.count-1 {
-                            //Reload marker colors
-                            NotificationCenter.default.post(name: .addMarkersID, object: nil)
-                        }
-                    case .failure(let err):
-                        print(err)
-                }
+    func reloadFreeSpots() async {
+        for pI in 0...parkLocations.count-1 {
+            do {
+                try await EntityManager.sharedInstance.updateFreeParkSpotsAsync(parkLocations[pI].rID, pI)
+            } catch let err {
+                print(err.localizedDescription)
             }
+        }
+        NotificationCenter.default.post(name: .addMarkersID, object: nil)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
     

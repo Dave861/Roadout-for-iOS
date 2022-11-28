@@ -319,10 +319,10 @@ class HomeViewController: UIViewController {
             }),
             UIAction(title: "Find Way".localized(), image: UIImage(systemName: "binoculars.fill"), handler: { (_) in
                 //Make Search Bar and Markers not respond to events while running
-                self.switchInteractionForSearchItems(to: false)
+                //self.switchInteractionForSearchItems(to: false)
                 
                 DispatchQueue.main.async {
-                    let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
+                    let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor(named: "GoldBrown")!, renderingMode: .alwaysOriginal)
                     let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
                     indicatorView.dismissByDrag = false
                     indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
@@ -332,36 +332,28 @@ class HomeViewController: UIViewController {
                     self.showFindLocationAlert()
                     return
                 }
-                FunctionsManager.sharedInstance.sortLocations(currentLocation: coord) { success in
-                    if success {
-                        FunctionsManager.sharedInstance.findSpot { success in
-                            if success {
-                                if FunctionsManager.sharedInstance.foundSpot != nil {
-                                    DispatchQueue.main.async {
-                                        self.showFindCard()
-                                        //Revert Search Bar and Markers to respond to events
-                                        self.switchInteractionForSearchItems(to: true)
-                                    }
-                                } else {
-                                    DispatchQueue.main.async {
-                                        self.showFindLocationAlert()
-                                        //Revert Search Bar and Markers to respond to events
-                                        self.switchInteractionForSearchItems(to: true)
-                                    }
-                                }
-                            } else {
-                                DispatchQueue.main.async {
-                                    self.showFindLocationAlert()
-                                    //Revert Search Bar and Markers to respond to events
-                                    self.switchInteractionForSearchItems(to: true)
-                                }
+                FunctionsManager.sharedInstance.sortLocations(currentLocation: coord)
+                Task {
+                    do {
+                        let didFindSpot = try await FunctionsManager.sharedInstance.findWay()
+                        DispatchQueue.main.async {
+                            //Revert Search Bar and Markers to respond to events
+                            //self.switchInteractionForSearchItems(to: true)
+                        }
+                        if didFindSpot {
+                            DispatchQueue.main.async {
+                                self.showFindCard()
+                                NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                self.showFindLocationAlert()
                             }
                         }
-                    } else {
+                    } catch let err {
+                        print(err)
                         DispatchQueue.main.async {
                             self.showFindLocationAlert()
-                            //Revert Search Bar and Markers to respond to events
-                            self.switchInteractionForSearchItems(to: true)
                         }
                     }
                 }

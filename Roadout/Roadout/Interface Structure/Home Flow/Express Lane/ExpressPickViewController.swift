@@ -43,7 +43,6 @@ class ExpressPickViewController: UIViewController {
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(showNoFreeSpotAlert), name: .showNoFreeSpotInExpressID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showFreeSpot), name: .showExpressLaneFreeSpotID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getFavouriteLocations), name: .reloadExpressLocationsID, object: nil)
     }
@@ -107,7 +106,7 @@ class ExpressPickViewController: UIViewController {
         }
     }
     
-    @objc func showNoFreeSpotAlert() {
+    func showNoFreeSpotAlert() {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "ExpressFocus")!
@@ -212,8 +211,19 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
         generator.impactOccurred()
         self.showLoadingIndicator()
         selectedParkLocationIndex = findFavouriteIndexInParkLocations(favouriteLocations[indexPath.row].rID)
-        FunctionsManager.sharedInstance.foundSpot = nil
-        FunctionsManager.sharedInstance.expressReserveInLocation(sectionIndex: 0, location: favouriteLocations[indexPath.row])
+        Task {
+            do {
+                try await FunctionsManager.sharedInstance.reserveSpotInLocationAsync(location: favouriteLocations[indexPath.row])
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
+                    NotificationCenter.default.post(name: .addExpressViewID, object: nil)
+                    NotificationCenter.default.post(name: .showExpressLaneFreeSpotID, object: nil)
+                }
+            } catch let err {
+                self.showNoFreeSpotAlert()
+                print(err)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
@@ -254,8 +264,19 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
         let indexPath = configuration.identifier as! IndexPath
         self.showLoadingIndicator()
         selectedParkLocationIndex = findFavouriteIndexInParkLocations(favouriteLocations[indexPath.row].rID)
-        FunctionsManager.sharedInstance.foundSpot = nil
-        FunctionsManager.sharedInstance.expressReserveInLocation(sectionIndex: 0, location: favouriteLocations[indexPath.row])
+        Task {
+            do {
+                try await FunctionsManager.sharedInstance.reserveSpotInLocationAsync(location: favouriteLocations[indexPath.row])
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
+                    NotificationCenter.default.post(name: .addExpressViewID, object: nil)
+                    NotificationCenter.default.post(name: .showExpressLaneFreeSpotID, object: nil)
+                }
+            } catch let err {
+                self.showNoFreeSpotAlert()
+                print(err)
+            }
+        }
     }
     
 }
