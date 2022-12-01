@@ -361,11 +361,9 @@ extension UIView {
     }
 }
 extension UIView {
-
     func applyGradient(colours: [UIColor]) {
         self.applyGradient(colours: colours, locations: nil)
     }
-
 
     func applyGradient(colours: [UIColor], locations: [NSNumber]?) {
         let gradient: CAGradientLayer = CAGradientLayer()
@@ -375,4 +373,13 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
 }
-
+extension UITableViewCell {
+    var cellActionButtonLabel: UILabel? {
+        superview?.subviews
+            .filter { String(describing: $0).range(of: "UISwipeActionPullView") != nil }
+            .flatMap { $0.subviews }
+            .filter { String(describing: $0).range(of: "UISwipeActionStandardButton") != nil }
+            .flatMap { $0.subviews }
+            .compactMap { $0 as? UILabel }.first
+    }
+}

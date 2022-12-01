@@ -894,14 +894,6 @@ Made in Cluj :)</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvZ-hQ-Re6">
                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="62"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TqH-Bz-E7S">
-                                                            <rect key="frame" x="317" y="10.333333333333332" width="24" height="41.999999999999993"/>
-                                                            <color key="tintColor" name="Kinda Red"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="24" id="OeH-Rm-wZu"/>
-                                                                <constraint firstAttribute="height" constant="47" id="rKL-ts-dXr"/>
-                                                            </constraints>
-                                                        </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card1" translatesAutoresizingMaskIntoConstraints="NO" id="zwy-Hd-wcz">
                                                             <rect key="frame" x="10" y="9.6666666666666643" width="75" height="43"/>
                                                             <constraints>
@@ -910,7 +902,7 @@ Made in Cluj :)</string>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**** **** **** 9000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLJ-xx-zqL">
-                                                            <rect key="frame" x="98" y="9" width="211" height="44"/>
+                                                            <rect key="frame" x="98" y="9" width="247" height="44"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" name="Card1"/>
                                                             <nil key="highlightedColor"/>
@@ -919,13 +911,11 @@ Made in Cluj :)</string>
                                                     <color key="backgroundColor" name="Secondary Detail"/>
                                                     <constraints>
                                                         <constraint firstItem="eLJ-xx-zqL" firstAttribute="leading" secondItem="zwy-Hd-wcz" secondAttribute="trailing" constant="13" id="72e-uy-Kht"/>
-                                                        <constraint firstItem="TqH-Bz-E7S" firstAttribute="leading" secondItem="eLJ-xx-zqL" secondAttribute="trailing" constant="8" symbolic="YES" id="BYC-jv-Jl0"/>
+                                                        <constraint firstAttribute="trailing" secondItem="eLJ-xx-zqL" secondAttribute="trailing" constant="8" id="Htr-Tx-ldT"/>
                                                         <constraint firstItem="zwy-Hd-wcz" firstAttribute="centerY" secondItem="XvZ-hQ-Re6" secondAttribute="centerY" id="Ide-lJ-CJl"/>
                                                         <constraint firstItem="eLJ-xx-zqL" firstAttribute="top" secondItem="XvZ-hQ-Re6" secondAttribute="top" constant="9" id="PDJ-T7-Cj9"/>
-                                                        <constraint firstItem="TqH-Bz-E7S" firstAttribute="centerY" secondItem="XvZ-hQ-Re6" secondAttribute="centerY" id="Ytx-cC-gCX"/>
                                                         <constraint firstItem="zwy-Hd-wcz" firstAttribute="leading" secondItem="XvZ-hQ-Re6" secondAttribute="leading" constant="10" id="hDN-m7-my7"/>
                                                         <constraint firstAttribute="height" constant="62" id="isC-f0-ZNl"/>
-                                                        <constraint firstAttribute="trailing" secondItem="TqH-Bz-E7S" secondAttribute="trailing" constant="12" id="rU9-cj-fBY"/>
                                                         <constraint firstAttribute="bottom" secondItem="eLJ-xx-zqL" secondAttribute="bottom" constant="9" id="zBV-9r-Afd"/>
                                                     </constraints>
                                                 </view>
@@ -942,7 +932,6 @@ Made in Cluj :)</string>
                                             <outlet property="card" destination="XvZ-hQ-Re6" id="kxv-tW-X4d"/>
                                             <outlet property="cardIcon" destination="zwy-Hd-wcz" id="c3h-ad-igV"/>
                                             <outlet property="cardNrLbl" destination="eLJ-xx-zqL" id="1vt-CD-C3k"/>
-                                            <outlet property="selectedImg" destination="TqH-Bz-E7S" id="KIY-a6-GL1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1005,7 +994,7 @@ Made in Cluj :)</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOX-nh-uHW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="666.66666666666674" y="75.669642857142847"/>
+            <point key="canvasLocation" x="666.41221374045801" y="75.352112676056336"/>
         </scene>
         <!--Add Card View Controller-->
         <scene sceneID="E7T-Bq-LiD">
@@ -2102,7 +2091,7 @@ Made in Cluj :)</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7kv-R4-nub">
-                                                                    <rect key="frame" x="327" y="7.3333333333333321" width="18" height="34.333333333333336"/>
+                                                                    <rect key="frame" x="327" y="7.3333333333333321" width="18" height="34.333333333333343"/>
                                                                     <color key="tintColor" name="Kinda Red"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="18" id="Hgr-KN-66h"/>
@@ -2812,7 +2801,6 @@ Made in Cluj :)</string>
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="wand.and.stars" catalog="system" width="128" height="115"/>
         <image name="waveform.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

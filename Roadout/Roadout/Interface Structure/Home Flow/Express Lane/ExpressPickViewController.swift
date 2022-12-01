@@ -93,6 +93,12 @@ class ExpressPickViewController: UIViewController {
         self.reloadScreen()
     }
     
+    func removeFromFavouriteLocations(_ locationID: String) {
+        favouriteLocationIDs = favouriteLocationIDs.remove(locationID)
+        UserDefaults.roadout!.set(favouriteLocationIDs, forKey: "ro.roadout.Roadout.favouriteLocationIDs")
+        getFavouriteLocations()
+    }
+    
     func reloadScreen() {
         if favouriteLocations.count == 0 {
             placeholderView.isHidden = false
@@ -277,6 +283,17 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
                 print(err)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "  Remove".localized()) { _, _, completion in
+            self.removeFromFavouriteLocations(favouriteLocations[indexPath.row].rID)
+            completion(true)
+        }
+        deleteAction.backgroundColor = UIColor(named: "Second Background")!
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeConfiguration
     }
     
 }

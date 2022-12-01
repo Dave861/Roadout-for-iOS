@@ -38,6 +38,7 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        emailField.text = emailField.text?.replacingOccurrences(of: " ", with: "") //Account for user mistakes
         if !isValidEmail(emailField.text ?? "") {
             let alert = UIAlertController(title: "Error".localized(), message: "Please enter a valid email address".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
@@ -45,7 +46,7 @@ class SignUpViewController: UIViewController {
             alert.view.tintColor = UIColor(named: "Icons")
             self.present(alert, animated: true, completion: nil)
         } else if !isValidPassword(passwordField.text ?? "") {
-            let alert = UIAlertController(title: "Error".localized(), message: "Please enter a password with minimum 8 characters, one capital letter and one number".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error".localized(), message: "Please enter a password with minimum 6 characters, one capital letter and one number".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
             alert.addAction(okAction)
             alert.view.tintColor = UIColor(named: "Icons")
@@ -68,16 +69,18 @@ class SignUpViewController: UIViewController {
             UserDefaults.roadout!.set(self.nameField.text!, forKey: "ro.roadout.Roadout.UserName")
             UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
             UserDefaults.roadout!.set(self.passwordField.text!, forKey: "ro.roadout.Roadout.UserPassword")
-            AuthManager.sharedInstance.sendRegisterData(emailField.text!) { result in
-                switch result {
-                    case .success():
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "VerifyMailVC") as! VerifyMailViewController
+            Task {
+                do {
+                    try await AuthManager.sharedInstance.sendRegisterDataAsync(emailField.text!)
+                    DispatchQueue.main.async {
+                        self.indicatorView.dismiss()
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "VerifyMailVC") as! VerifyMailViewController
                         self.present(vc, animated: true, completion: nil)
-                    case .failure(let err):
-                        print(err)
-                        self.manageServerSideError()
+                    }
+                } catch let err {
+                    self.indicatorView.dismiss()
+                    self.manageServerSideError(err)
                 }
-                self.indicatorView.dismiss()
             }
         }
     }
@@ -163,7 +166,7 @@ class SignUpViewController: UIViewController {
     }
     
     func isValidPassword(_ password: String) -> Bool {
-        let pswRegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
+        let pswRegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$"
 
         let pswPred = NSPredicate(format:"SELF MATCHES %@", pswRegEx)
         return pswPred.evaluate(with: password)
@@ -178,46 +181,44 @@ class SignUpViewController: UIViewController {
     }
     
     
-     func manageServerSideError() {
-        switch AuthManager.sharedInstance.callResult {
-            case "error":
-            let alert = UIAlertController(title: "Error".localized(), message: "There was an error. Try force quiting the app and reopening.".localized(), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
-            case "user exists":
-            let alert = UIAlertController(title: "User Error".localized(), message: "User with this email already exists. Try signing in.".localized(), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
-            case "network error":
-            let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
-            case "database error":
-            let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
-            case "unknown error":
-            let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
-            case "error with json":
-            let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
+    func manageServerSideError(_ error: Error) {
+        switch error {
+            case AuthManager.AuthErrors.userExistsFailure:
+                let alert = UIAlertController(title: "User Error".localized(), message: "User with this email already exists. Try signing in.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+            case AuthManager.AuthErrors.networkError:
+                let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+            case AuthManager.AuthErrors.databaseFailure:
+                let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+            case AuthManager.AuthErrors.unknownError:
+                let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
+            case AuthManager.AuthErrors.errorWithJson:
+                let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
             default:
-                fatalError()
+                let alert = UIAlertController(title: "Error".localized(), message: "There was an error. Try force quiting the app and reopening.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                    alert.addAction(okAction)
+                    alert.view.tintColor = UIColor(named: "Redish")
+                    self.present(alert, animated: true, completion: nil)
         }
     }
 

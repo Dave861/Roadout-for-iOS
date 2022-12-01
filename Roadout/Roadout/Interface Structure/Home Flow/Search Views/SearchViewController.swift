@@ -196,7 +196,6 @@ class SearchViewController: UIViewController {
                 print(err.localizedDescription)
             }
         }
-        NotificationCenter.default.post(name: .addMarkersID, object: nil)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

@@ -24,4 +24,13 @@ class ExpressPickCell: UITableViewCell {
         gaugeIcon.tintColor = UIColor(named: "ExpressFocus")!
         distanceIcon.tintColor = UIColor(named: "ExpressFocus")!
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        cellActionButtonLabel?.textColor = UIColor(named: "Redish") ?? .systemRed
+    }
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        cellActionButtonLabel?.textColor = UIColor(named: "Redish") ?? .systemRed
+    }
 }

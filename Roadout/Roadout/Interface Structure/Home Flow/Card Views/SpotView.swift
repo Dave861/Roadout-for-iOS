@@ -166,7 +166,7 @@ class SpotView: UIView, PusherDelegate {
         case 2:
             continueBtn.isEnabled = false
             continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
-            infoIcon.image = UIImage(systemName: "clock")
+            infoIcon.image = UIImage(systemName: "clock.fill")
             infoIcon.tintColor = UIColor(named: "Dark Orange")
             infoText.text = "Selected spot is about to be reserved".localized()
         case 3:

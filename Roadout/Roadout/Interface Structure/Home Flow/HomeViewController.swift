@@ -518,18 +518,14 @@ class HomeViewController: UIViewController {
     
     func checkUserIsValid() {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        AuthManager.sharedInstance.checkIfUserExists(with: id) { result in
-            switch result {
-                case .success():
-                    break
-                case .failure(let err):
-                    print(err)
-                    if let convertedError = err as? ReservationManager.ReservationErrors {
-                        if convertedError == .databaseFailure && ConnectionManager.sharedInstance.reachability.connection != .unavailable {
-                        } else {
-                            self.userNotFoundAbort()
-                        }
-                    }
+        Task {
+            do {
+                try await AuthManager.sharedInstance.checkIfUserExistsAsync(with: id)
+            } catch let err {
+                let convertedError = err as? AuthManager.AuthErrors
+                if convertedError != .databaseFailure && ConnectionManager.sharedInstance.reachability.connection != .unavailable {
+                    self.userNotFoundAbort()
+                }
             }
         }
     }

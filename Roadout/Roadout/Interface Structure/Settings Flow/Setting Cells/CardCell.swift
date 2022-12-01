@@ -12,7 +12,6 @@ class CardCell: UITableViewCell {
     @IBOutlet weak var cardNrLbl: UILabel!
     @IBOutlet weak var cardIcon: UIImageView!
     @IBOutlet weak var card: UIView!
-    @IBOutlet weak var selectedImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,4 +25,13 @@ class CardCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        cellActionButtonLabel?.textColor = UIColor(named: "Redish") ?? .systemRed
+    }
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        cellActionButtonLabel?.textColor = UIColor(named: "Redish") ?? .systemRed
+    }
+    
 }

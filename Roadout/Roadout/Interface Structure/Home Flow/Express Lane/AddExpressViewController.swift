@@ -107,8 +107,10 @@ extension AddExpressViewController: UITableViewDelegate, UITableViewDataSource {
         cell.locationNameLbl.text = parkLocations[indexPath.row].name
         if favouriteLocationIDs.contains(parkLocations[indexPath.row].rID) {
             cell.check.image = UIImage(systemName: "checkmark.circle.fill")
+            cell.check.tintColor = UIColor(named: "DevBrown")!
         } else {
-            cell.check.image = UIImage(systemName: "circle")
+            cell.check.image = UIImage(systemName: "plus.circle.fill")
+            cell.check.tintColor = UIColor(named: "ExpressFocus")!
         }
         return cell
     }
@@ -120,11 +122,13 @@ extension AddExpressViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! AddExpressCell
-        if cell.check.image == UIImage(systemName: "circle") {
+        if cell.check.image == UIImage(systemName: "plus.circle.fill") {
             cell.check.image = UIImage(systemName: "checkmark.circle.fill")
+            cell.check.tintColor = UIColor(named: "DevBrown")!
             favouriteLocationIDs.append(parkLocations[indexPath.row].rID)
         } else {
-            cell.check.image = UIImage(systemName: "circle")
+            cell.check.image = UIImage(systemName: "plus.circle.fill")
+            cell.check.tintColor = UIColor(named: "ExpressFocus")!
             favouriteLocationIDs = favouriteLocationIDs.remove(parkLocations[indexPath.row].rID)
         }
     }

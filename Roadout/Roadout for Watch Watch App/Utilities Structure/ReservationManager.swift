@@ -21,9 +21,7 @@ struct ParkingReservationData: Identifiable {
 class ReservationManager: ObservableObject {
     
     @Published var reservationData = ParkingReservationData(id: 0, rID: "", reservationStatus: -5, reservationEndDate: Date())
-    
-    var callResult: String!
-    
+        
     //-1 for not assigned, 0 is active, 1 is unlocked, 2 is cancelled, 3 is not active
     var isReservationActive = -1
 
@@ -66,8 +64,7 @@ class ReservationManager: ObservableObject {
             let data = response.value!.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    self.callResult = (jsonArray["status"] as! String)
-                    if self.callResult == "Success" {
+                    if jsonArray["status"] as! String == "Success" {
                         //Could get to server successfully
                         if jsonArray["message"] as! String == "active" {
                             //There is an active reservation

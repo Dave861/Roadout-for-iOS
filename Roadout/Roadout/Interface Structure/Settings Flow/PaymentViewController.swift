@@ -60,7 +60,6 @@ class PaymentViewController: UIViewController {
         tableView.reloadData()
     }
     
-    
     func decideColor() -> Int {
         if indexNr%4 == 0 {
             return 4
@@ -90,20 +89,24 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-        let alert = UIAlertController(title: "Delete".localized(), message: "Do you want to delete this card?".localized(), preferredStyle: .actionSheet)
-        let deleteAction = UIAlertAction(title: "Delete".localized(), style: .destructive) { action in
-            cardNumbers.remove(at: indexPath.row)
-            self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
-            tableView.reloadData()
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "  Delete Card".localized()) { _, _, completion in
+            let alert = UIAlertController(title: "Delete".localized(), message: "Do you want to delete this card?".localized(), preferredStyle: .actionSheet)
+            let deleteAction = UIAlertAction(title: "Delete".localized(), style: .destructive) { action in
+                cardNumbers.remove(at: indexPath.row)
+                self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+                tableView.reloadData()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
+            alert.view.tintColor = UIColor(named: "Dark Orange")
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            completion(true)
         }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
-        alert.view.tintColor = UIColor(named: "Dark Orange")
-        alert.addAction(deleteAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        deleteAction.backgroundColor = UIColor(named: "Second Background")!
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeConfiguration
     }
-    
 }

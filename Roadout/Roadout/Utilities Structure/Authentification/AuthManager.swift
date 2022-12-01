@@ -12,7 +12,6 @@ import Alamofire
 
 class AuthManager {
     
-    var callResult = "network error"
     var userID: String!
     
     var verifyCode = 0
@@ -29,22 +28,18 @@ class AuthManager {
         case userDoesNotExist
     }
     
-    func sendRegisterData(_ email: String, completion: @escaping(Result<Void, Error>) -> Void) {
-        
+    func sendRegisterDataAsync(_ email: String) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["email":email]
         
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/VerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                self.callResult = "database error"
-                completion(.failure(AuthErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
+        let sendRequest = AF.request("https://\(roadoutServerURL)/Authentification/VerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        do {
+            let responseJson = try await sendRequest.serializingString().value
+            let data = responseJson.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    self.callResult = jsonArray["status"] as! String
-                    if self.callResult == "Success" {
+                    if jsonArray["status"] as! String == "Success" {
                         let code = jsonArray["accessCode"] as! String
                         let token = jsonArray["token"] as! String
                         let formatter = DateFormatter()
@@ -52,128 +47,110 @@ class AuthManager {
                         formatter.dateFormat = dateFormat
                         self.verifyCode = Int(code)!
                         self.dateToken = formatter.date(from: token) ?? Date.yesterday
-                        completion(.success(()))
-                    } else {
-                        if jsonArray["message"] as! String == "User already exists" {
-                            self.callResult = "user exists"
-                        }
-                        completion(.failure(AuthErrors.userExistsFailure))
+                    } else if jsonArray["status"] as! String == "User already exists" {
+                       throw AuthErrors.userExistsFailure
                     }
                 } else {
-                    self.callResult = "unknown error"
-                    completion(.failure(AuthErrors.unknownError))
+                    throw AuthErrors.unknownError
                 }
-            } catch let error as NSError {
-                print(error)
-                self.callResult = "error with json"
-                completion(.failure(AuthErrors.errorWithJson))
+            } catch {
+                throw AuthErrors.errorWithJson
             }
+        } catch {
+            throw AuthErrors.databaseFailure
         }
-                
     }
     
-    func deleteBadData(_ email: String) {
-        
+    func deleteBadDataAsync(_ email: String) async {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["email":email]
-        
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/DeleteDataVerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            print(response.value ?? "NO RESPONSE - ABORT MISSION SOLDIER")
+        let deleteRequest = AF.request("https://\(roadoutServerURL)/Authentification/DeleteDataVerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        do {
+            _ = try await deleteRequest.serializingString().value
+        } catch let err {
+            print(err)
         }
     }
     
-    func sendSignUpData(_ name: String, _ email: String, _ password: String, completion: @escaping(Result<Void, Error>) -> Void) {
-        
+    func sendSignUpDataAsync(_ name: String, _ email: String, _ password: String) async throws {
         let hashedPswd = MD5(string: password)
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["name":name,"email":email,"password":hashedPswd]
         
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/userRegister.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                self.callResult = "database error"
-                completion(.failure(AuthErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
+        let sendRequest = AF.request("https://\(roadoutServerURL)/Authentification/userRegister.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        do {
+            let responseJson = try await sendRequest.serializingString().value
+            let data = responseJson.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    self.userID = String(jsonArray["id"] as! Int)
-                    self.callResult = jsonArray["status"] as! String
-                    if self.callResult == "Success" {
-                        completion(.success(()))
+                    if jsonArray["status"] as! String == "Success" {
+                        self.userID = String(jsonArray["id"] as! Int)
                     } else {
-                        completion(.failure(AuthErrors.userExistsFailure))
+                        throw AuthErrors.userExistsFailure
                     }
                 } else {
-                    self.callResult = "unknown error"
-                    completion(.failure(AuthErrors.unknownError))
+                    throw AuthErrors.unknownError
                 }
-            } catch let error as NSError {
-                print(error)
-                self.callResult = "error with json"
-                completion(.failure(AuthErrors.errorWithJson))
+            } catch {
+                throw AuthErrors.errorWithJson
             }
+        } catch {
+            throw AuthErrors.databaseFailure
         }
     }
     
-    func sendSignInData(_ email: String, _ password: String, completion: @escaping(Result<Void, Error>) -> Void) {
-        
+    func sendSignInDataAsync(_ email: String, _ password: String) async throws {
         let hashedPswd = MD5(string: password)
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["email":email,"password":hashedPswd]
         
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/userLogin.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                self.callResult = "database error"
-                completion(.failure(AuthErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
+        let sendRequest = AF.request("https://\(roadoutServerURL)/Authentification/userLogin.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        do {
+            let responseJson = try await sendRequest.serializingString().value
+            let data = responseJson.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    self.userID = jsonArray["id"] as? String
-                    self.callResult = jsonArray["status"] as! String
-                    if self.callResult == "Success" {
-                        completion(.success(()))
+                    if jsonArray["status"] as! String == "Success" {
+                        self.userID = jsonArray["id"] as? String
                     } else {
-                        completion(.failure(AuthErrors.userDoesNotExist))
+                        throw AuthErrors.userDoesNotExist
                     }
                 } else {
-                    self.callResult = "unknown error"
-                    completion(.failure(AuthErrors.unknownError))
+                    throw AuthErrors.unknownError
                 }
-            } catch let error as NSError {
-                print(error)
-                self.callResult = "error with json"
-                completion(.failure(AuthErrors.errorWithJson))
+            } catch {
+                throw AuthErrors.errorWithJson
             }
+        } catch {
+            throw AuthErrors.databaseFailure
         }
     }
     
-    func checkIfUserExists(with id: String, completion: @escaping(Result<Void, Error>) -> Void) {
+    func checkIfUserExistsAsync(with id: String) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":id]
         
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/IdExists.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                completion(.failure(AuthErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
+        let checkRequest = AF.request("https://\(roadoutServerURL)/Authentification/IdExists.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        do {
+            let responseJson = try await checkRequest.serializingString().value
+            let data = responseJson.data(using: .utf8)!
             do {
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
                     if jsonArray["status"] as! String == "Success" && jsonArray["message"] as! String == "False" {
-                        completion(.failure(AuthErrors.userDoesNotExist))
+                        throw AuthErrors.userDoesNotExist
                     } else if jsonArray["message"] as! String == "True" {
-                        completion(.success(()))
+                        //We are good, user is valid
                     }
                 } else {
-                    completion(.failure(AuthErrors.unknownError))
+                    throw AuthErrors.unknownError
                 }
-            } catch let error as NSError {
-                print(error.debugDescription)
-                completion(.failure(AuthErrors.errorWithJson))
+            } catch {
+                throw AuthErrors.errorWithJson
             }
+        } catch {
+            throw AuthErrors.databaseFailure
         }
     }
     

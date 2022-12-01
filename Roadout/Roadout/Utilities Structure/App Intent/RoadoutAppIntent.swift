@@ -8,7 +8,6 @@
 import UIKit
 import AppIntents
 import CoreLocation
-import AsyncLocationKit
 
 @available(iOS 16, *)
 enum RoadoutIntentErrors: Error {
@@ -60,7 +59,7 @@ struct RoadoutAppIntent: AppIntent {
         guard let userCoords = await RoadoutIntentHelper.sharedInstance.getCurrentCoordinates() else {
             throw RoadoutIntentErrors.locationDisabled
         }
-        print(userCoords)
+
         //Find Way
         FunctionsManager.sharedInstance.foundSpot = nil
         FunctionsManager.sharedInstance.sortLocations(currentLocation: userCoords)
@@ -114,6 +113,8 @@ struct RoadoutAppIntent: AppIntent {
             )
          
         //Reserve
+        //MARK: -TODO-
+        
         return .result(dialog: "Spot Reserved! Open Roadout for more actions.") {
              RoadoutIntentSuccesView(reservationTime: Date().addingTimeInterval(Double(reservationMinutes!)*60))
          }
