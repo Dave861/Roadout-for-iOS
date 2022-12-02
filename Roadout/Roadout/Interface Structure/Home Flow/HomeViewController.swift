@@ -318,10 +318,7 @@ class HomeViewController: UIViewController {
                 self.present(vc, animated: true, completion: nil)
             }),
             UIAction(title: "Find Way".localized(), image: UIImage(systemName: "binoculars.fill"), handler: { (_) in
-                //Make Search Bar and Markers not respond to events while running
-                //self.switchInteractionForSearchItems(to: false)
-                
-                DispatchQueue.main.async {
+               DispatchQueue.main.async {
                     let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor(named: "GoldBrown")!, renderingMode: .alwaysOriginal)
                     let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
                     indicatorView.dismissByDrag = false
@@ -336,10 +333,6 @@ class HomeViewController: UIViewController {
                 Task {
                     do {
                         let didFindSpot = try await FunctionsManager.sharedInstance.findWay()
-                        DispatchQueue.main.async {
-                            //Revert Search Bar and Markers to respond to events
-                            //self.switchInteractionForSearchItems(to: true)
-                        }
                         if didFindSpot {
                             DispatchQueue.main.async {
                                 self.showFindCard()
@@ -372,12 +365,6 @@ class HomeViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func switchInteractionForSearchItems(to value: Bool) {
-        self.isMarkerInteractive = value
-        self.searchTapArea.isUserInteractionEnabled = value
-        self.optionsTapArea.isUserInteractionEnabled = value
-    }
-    
     //MARK: -View Configuration-
         
     override func viewWillAppear(_ animated: Bool) {
@@ -392,9 +379,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
-        self.manageCityData()
-        self.checkUserIsValid()
+
+        manageCityData()
+        checkUserIsValid()
         
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip1") == false {
             optionsTapArea.tooltip(TutorialView1.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
@@ -415,7 +402,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         manageObs()
-            
+        
         //Search Bar
         searchTapArea.setTitle("", for: .normal)
         optionsTapArea.setTitle("", for: .normal)
@@ -523,7 +510,7 @@ class HomeViewController: UIViewController {
                 try await AuthManager.sharedInstance.checkIfUserExistsAsync(with: id)
             } catch let err {
                 let convertedError = err as? AuthManager.AuthErrors
-                if convertedError != .databaseFailure && ConnectionManager.sharedInstance.reachability.connection != .unavailable {
+                if convertedError != .databaseFailure && convertedError != .errorWithJson && ConnectionManager.sharedInstance.reachability.connection != .unavailable {
                     self.userNotFoundAbort()
                 }
             }
@@ -540,6 +527,7 @@ class HomeViewController: UIViewController {
     }
     
     func manageCityData() {
+        //Should check if empty
         if parkLocations.count < cityParkLocationsCount {
             let sb = UIStoryboard(name: "Home", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "GetDataVC") as! GetDataViewController
@@ -891,13 +879,13 @@ extension HomeViewController {
         } else {
             self.searchBar.alpha = 0.0
         }
-        self.updateBackgroundViewHeight(with: 292)
+        self.updateBackgroundViewHeight(with: 265)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 10, y: self.screenSize.height-292-dif, width: self.screenSize.width - 20, height: 292)
+            self.reservationView.frame = CGRect(x: 10, y: self.screenSize.height-265-dif, width: self.screenSize.width - 20, height: 265)
             self.view.addSubview(self.reservationView)
         }
     }
@@ -931,13 +919,13 @@ extension HomeViewController {
         }
     }
     @objc func removeDelayCard() {
-        self.updateBackgroundViewHeight(with: 292)
+        self.updateBackgroundViewHeight(with: 265)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 10, y: self.screenSize.height-292-dif, width: self.screenSize.width - 20, height: 292)
+            self.reservationView.frame = CGRect(x: 10, y: self.screenSize.height-265-dif, width: self.screenSize.width - 20, height: 265)
             self.view.addSubview(self.reservationView)
             self.delayView.removeFromSuperview()
         }
@@ -989,13 +977,13 @@ extension HomeViewController {
         }
     }
     @objc func removeUnlockCard() {
-        self.updateBackgroundViewHeight(with: 292)
+        self.updateBackgroundViewHeight(with: 265)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reservationView.frame = CGRect(x: 10, y: self.screenSize.height-292-dif, width: self.screenSize.width - 20, height: 292)
+            self.reservationView.frame = CGRect(x: 10, y: self.screenSize.height-265-dif, width: self.screenSize.width - 20, height: 265)
             self.view.addSubview(self.reservationView)
             self.unlockView.removeFromSuperview()
         }

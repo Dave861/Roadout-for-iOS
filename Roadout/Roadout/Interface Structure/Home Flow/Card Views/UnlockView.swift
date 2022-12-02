@@ -81,6 +81,13 @@ extension UnlockView: SlideButtonDelegate {
             Task {
                 do {
                     try await ReservationManager.sharedInstance.unlockReservationAsync(userID: id, date: Date())
+                    DispatchQueue.main.async {
+                        if ReservationManager.sharedInstance.reservationTimer != nil {
+                            ReservationManager.sharedInstance.reservationTimer.invalidate()
+                        }
+                        NotificationHelper.sharedInstance.cancelReservationNotification()
+                        NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
+                    }
                 } catch let err {
                     self.manageServerSideErrors(error: err)
                 }

@@ -15,7 +15,7 @@ class EditNameViewController: UIViewController {
     @IBOutlet weak var cancelBtn: UIButton!
     
     @IBOutlet weak var saved: UIButton!
-    @IBOutlet weak var userNamelField: PaddedTextField!
+    @IBOutlet weak var userNameField: PaddedTextField!
     
     @IBOutlet weak var nameLbl: UILabel!
     
@@ -36,70 +36,65 @@ class EditNameViewController: UIViewController {
     }
     
     @IBAction func savedTapped(_ sender: Any) {
-        guard userNamelField.text != "" else { return }
+        guard userNameField.text != "" else { return }
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        UserManager.sharedInstance.updateName(id, userNamelField.text!) { result in
-            switch result {
-            case .success():
-                let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-                UserManager.sharedInstance.getUserName(id) { result in
-                    print(result)
-                    //manage errors
-                }
-                self.nameLbl.text = UserManager.sharedInstance.userName
-                let alert = UIAlertController(title: "Success".localized(), message: "Your name was successfully changed!".localized(), preferredStyle: UIAlertController.Style.alert)
-                let alertAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
-                    UIView.animate(withDuration: 0.1) {
-                        self.blurEffect.alpha = 0
-                    } completion: { done in
-                        self.dismiss(animated: true, completion: nil)
+        Task {
+            do {
+                try await UserManager.sharedInstance.updateNameAsync(id, userNameField.text!)
+                UserDefaults.roadout!.set(userNameField.text!, forKey: "ro.roadout.Roadout.UserName")
+                DispatchQueue.main.async {
+                    self.nameLbl.text = UserManager.sharedInstance.userName
+                    let alert = UIAlertController(title: "Success".localized(), message: "Your name was successfully changed!".localized(), preferredStyle: UIAlertController.Style.alert)
+                    let alertAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
+                        UIView.animate(withDuration: 0.1) {
+                            self.blurEffect.alpha = 0
+                        } completion: { done in
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                        NotificationCenter.default.post(name: .reloadUserNameID, object: nil)
                     }
-                    NotificationCenter.default.post(name: .reloadUserNameID, object: nil)
+                    alertAction.setValue(UIColor(named: "Main Yellow")!, forKey: "titleTextColor")
+                    alert.addAction(alertAction)
+                    self.present(alert, animated: true, completion: nil)
                 }
-                alertAction.setValue(UIColor(named: "Main Yellow")!, forKey: "titleTextColor")
-                alert.addAction(alertAction)
-                self.present(alert, animated: true, completion: nil)
-            case .failure(let err):
-                print(err)
-                self.manageServerResponseErrors()
+            } catch let err {
+                self.manageServerResponseErrors(err)
             }
         }
     }
     
-    func manageServerResponseErrors() {
-        switch UserManager.sharedInstance.callResult {
-            case "error":
-            let alert = UIAlertController(title: "Error".localized(), message: "There was an error with changing your name. Please try again.".localized(), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+    func manageServerResponseErrors(_ error: Error) {
+        switch error {
+            case UserManager.UserDBErrors.networkError:
+                let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
-            case "network error":
-            let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+            case UserManager.UserDBErrors.databaseFailure:
+                let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
-            case "database error":
-            let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+            case UserManager.UserDBErrors.unknownError:
+                let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
-            case "unknown error":
-            let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
-            case "error with json":
-            let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+            case UserManager.UserDBErrors.errorWithJson:
+                let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
             default:
-                fatalError()
+                let alert = UIAlertController(title: "Error".localized(), message: "There was an error with changing your name. Please try again.".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+                self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -127,18 +122,24 @@ class EditNameViewController: UIViewController {
         saved.layer.cornerRadius = 12
         saved.setAttributedTitle(savedTitle, for: .normal)
         
-        userNamelField.layer.cornerRadius = 12.0
-        userNamelField.attributedPlaceholder = NSAttributedString(
+        userNameField.layer.cornerRadius = 12.0
+        userNameField.attributedPlaceholder = NSAttributedString(
             string: "New Name".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        UserManager.sharedInstance.getUserName(id) { result in
-            print(result)
-            //manage errors
+        Task {
+            do {
+                try await UserManager.sharedInstance.getUserNameAsync(id)
+                DispatchQueue.main.async {
+                    self.nameLbl.text = UserManager.sharedInstance.userName
+                }
+            } catch let err {
+                print(err)
+            }
         }
-        nameLbl.text = UserManager.sharedInstance.userName
+        nameLbl.text = UserManager.sharedInstance.userName //if network call fails
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
@@ -152,7 +153,7 @@ class EditNameViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.blurEffect.alpha = 0.7
         } completion: { _ in
-            self.userNamelField.becomeFirstResponder()
+            self.userNameField.becomeFirstResponder()
         }
     }
 

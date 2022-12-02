@@ -58,19 +58,13 @@ class ExpressView: UIView {
                                                                                      spotID: selectedSpotID,
                                                                                      payment: 10,
                                                                                      userID: id)
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: .showPaidBarID, object: nil)
+                    }
                 } catch let err {
                     self.manageServerSideErrors(error: err)
                 }
             }
-            /*ReservationManager.sharedInstance.makeReservation(Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id) { result in
-                switch result {
-                    case .success():
-                        print("WE RESERVED")
-                    case .failure(let err):
-                        print(err)
-                        self.manageServerSideErrors(error: err)
-                }
-            } */
         }
     }
     

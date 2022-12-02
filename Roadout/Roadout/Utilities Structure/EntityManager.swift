@@ -29,33 +29,34 @@ class EntityManager {
     }
     
     func saveParkLocationsAsync(_ city: String) async throws {
+        var responseJson: String!
         do {
-            let responseJson = try await getParkLocationsAsync(city)
-            let data = ("[" + responseJson.dropLast() + "]").data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
-                    dbParkLocations = [ParkLocation]()
-                    for json in jsonArray {
-                        var dbParkLocation = ParkLocation(name: json["name"] as! String,
-                                                          rID: json["id"] as! String,
-                                                          latitude: Double(json["lat"] as! String)!,
-                                                          longitude: Double(json["lng"] as! String)!,
-                                                          totalSpots: Int(json["nrParkingSpots"] as! String)!,
-                                                          freeSpots: Int(json["freeParkingSpots"] as! String)!,
-                                                          sections: [ParkSection](),
-                                                          sectionImage: json["id"] as! String + ".Section",
-                                                          accentColor: "Main Yellow")
-                        self.makeAccentColor(parkLocation: &dbParkLocation)
-                        dbParkLocations.append(dbParkLocation)
-                    }
-                } else {
-                    throw EntityErrors.unknownError
-                }
-            } catch {
-                throw EntityErrors.errorWithJson
-            }
+            responseJson = try await getParkLocationsAsync(city)
         } catch {
             throw EntityErrors.databaseFailure
+        }
+        
+        let data = ("[" + responseJson.dropLast() + "]").data(using: .utf8)!
+        var jsonArray: Array<[String:Any]>!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]>
+        } catch {
+            throw EntityErrors.errorWithJson
+        }
+        
+        dbParkLocations = [ParkLocation]()
+        for json in jsonArray {
+            var dbParkLocation = ParkLocation(name: json["name"] as! String,
+                                              rID: json["id"] as! String,
+                                              latitude: Double(json["lat"] as! String)!,
+                                              longitude: Double(json["lng"] as! String)!,
+                                              totalSpots: Int(json["nrParkingSpots"] as! String)!,
+                                              freeSpots: Int(json["freeParkingSpots"] as! String)!,
+                                              sections: [ParkSection](),
+                                              sectionImage: json["id"] as! String + ".Section",
+                                              accentColor: "Main Yellow")
+            self.makeAccentColor(parkLocation: &dbParkLocation)
+            dbParkLocations.append(dbParkLocation)
         }
     }
     
@@ -67,30 +68,31 @@ class EntityManager {
     }
     
     func saveParkSectionsAsync(_ location: String) async throws {
+        var responseJson: String!
         do {
-            let responseJson = try await getParkSectionsAsync(location)
-            let data = ("[" + responseJson.dropLast() + "]").data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
-                    dbParkSections = [ParkSection]()
-                    for json in jsonArray {
-                        let imagePoint = ParkSectionImagePoint(x: Int(json["iOSPointImage.x"] as! String)!, y: Int(json["iOSPointImage.y"] as! String)!)
-                        dbParkSections.append(
-                            ParkSection(name: json["name"] as! String,
-                                        totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: 0,
-                                        rows: self.getNumbers(json["nrRows"] as! String),
-                                        spots: [ParkSpot](),
-                                        imagePoint: imagePoint,
-                                        rID: json["sectionID"] as! String))
-                    }
-                } else {
-                    throw EntityErrors.unknownError
-                }
-            } catch {
-                throw EntityErrors.errorWithJson
-            }
+            responseJson = try await getParkSectionsAsync(location)
         } catch {
             throw EntityErrors.databaseFailure
+        }
+        
+        let data = ("[" + responseJson.dropLast() + "]").data(using: .utf8)!
+        var jsonArray: Array<[String:Any]>!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]>
+        } catch {
+            throw EntityErrors.errorWithJson
+        }
+        
+        dbParkSections = [ParkSection]()
+        for json in jsonArray {
+            let imagePoint = ParkSectionImagePoint(x: Int(json["iOSPointImage.x"] as! String)!, y: Int(json["iOSPointImage.y"] as! String)!)
+            dbParkSections.append(
+                ParkSection(name: json["name"] as! String,
+                            totalSpots: Int(json["nrParkingSpots"] as! String)!, freeSpots: 0,
+                            rows: self.getNumbers(json["nrRows"] as! String),
+                            spots: [ParkSpot](),
+                            imagePoint: imagePoint,
+                            rID: json["sectionID"] as! String))
         }
     }
     
@@ -102,29 +104,30 @@ class EntityManager {
     }
     
     func saveParkSpotsAsync(_ section: String) async throws {
+        var responseJson: String!
         do {
-            let responseJson = try await getParkSpotsAsync(section)
-            let data = ("[" + responseJson.dropLast() + "]").data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]> {
-                    dbParkSpots = [ParkSpot]()
-                    for json in jsonArray {
-                        dbParkSpots.append(
-                            ParkSpot(state: Int(json["state"] as! String)!,
-                                     number: Int(json["number"] as! String)!,
-                                     rHash: "u82f0bc6m303-f80-h70-p0",
-                                     rID: json["id"] as! String))
-                    }
-                    dbParkSpots.sort { $0.number < $1.number }
-                } else {
-                    throw EntityErrors.unknownError
-                }
-            } catch {
-                throw EntityErrors.errorWithJson
-            }
+            responseJson = try await getParkSpotsAsync(section)
         } catch {
             throw EntityErrors.databaseFailure
         }
+        
+        let data = ("[" + responseJson.dropLast() + "]").data(using: .utf8)!
+        var jsonArray: Array<[String:Any]>!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Array<[String:Any]>
+        } catch {
+            throw EntityErrors.errorWithJson
+        }
+        
+        dbParkSpots = [ParkSpot]()
+        for json in jsonArray {
+            dbParkSpots.append(
+                ParkSpot(state: Int(json["state"] as! String)!,
+                         number: Int(json["number"] as! String)!,
+                         rHash: "u82f0bc6m303-f80-h70-p0",
+                         rID: json["id"] as! String))
+        }
+        dbParkSpots.sort { $0.number < $1.number }
     }
     
     func getNumbers(_ strArray: String) -> [Int] {
@@ -140,25 +143,26 @@ class EntityManager {
     }
     
     func updateFreeParkSpotsAsync(_ location: String, _ index: Int) async throws {
+        var responseJson: String!
         do {
-            let responseJson = try await getFreeParkSpotsAsync(location)
-            let data = responseJson.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    if jsonArray["status"] as! String == "Success" {
-                        parkLocations[index].freeSpots = Int(jsonArray["result"] as! String)!
-                        self.makeAccentColor(parkLocation: &parkLocations[index])
-                    } else {
-                        throw EntityErrors.unknownError
-                    }
-                } else {
-                    throw EntityErrors.unknownError
-                }
-            } catch {
-                throw EntityErrors.errorWithJson
-            }
+            responseJson = try await getFreeParkSpotsAsync(location)
         } catch {
             throw EntityErrors.databaseFailure
+        }
+        
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw EntityErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String == "Success" {
+            parkLocations[index].freeSpots = Int(jsonArray["result"] as! String)!
+            self.makeAccentColor(parkLocation: &parkLocations[index])
+        } else {
+            throw EntityErrors.unknownError
         }
     }
     

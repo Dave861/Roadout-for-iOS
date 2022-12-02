@@ -33,9 +33,15 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        UserManager.sharedInstance.getUserName(id) { result in
-            print(result)
-            self.tableView.reloadData()
+        Task {
+            do {
+                try await UserManager.sharedInstance.getUserNameAsync(id)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } catch let err {
+                print(err)
+            }
         }
         tableView.delegate = self
         tableView.dataSource = self
@@ -44,10 +50,16 @@ class SettingsViewController: UIViewController {
 
     @objc func reloadName() {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        UserManager.sharedInstance.getUserName(id) { result in
-            print(result)
+        Task {
+            do {
+                try await UserManager.sharedInstance.getUserNameAsync(id)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } catch let err {
+                print(err)
+            }
         }
-        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {

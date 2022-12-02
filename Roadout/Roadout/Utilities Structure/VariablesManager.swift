@@ -14,6 +14,11 @@ enum MapType {
     case satellite
 }
 
+enum RoadoutErrors: Error {
+    case wrongFormat
+    case unknown
+}
+
 var selectedMapType = MapType.roadout
 
 //Used to help with notification management
@@ -63,4 +68,4 @@ var carParkHash = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.carPa
 var userLicensePlate = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.userLicensePlate") ?? "NO-PLATE"
 
 //While server is variable, makes changing the url easier
-var roadoutServerURL = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.devServerURL") ?? "30e6d9242f4d4994.p50.rt3.io"
+var roadoutServerURL = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.devServerURL") ?? "roadout.live"

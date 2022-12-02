@@ -88,18 +88,21 @@ class ReserveView: UIView {
         }
         let ogCoords = myLocation.coordinate
         let destCoords = CLLocationCoordinate2D(latitude: parkLocations[selectedParkLocationIndex].latitude, longitude: parkLocations[selectedParkLocationIndex].longitude)
-        DistanceManager.sharedInstance.getTimeAndDistanceBetween(ogCoords, destCoords) { result in
-            switch result {
-            case .success(let resultedTime):
-                print(resultedTime)
-                if self.evaluateTime(resultedTime) {
-                    self.recommendationLbl.text = "We recommed reserving for ".localized() + resultedTime
-                } else {
-                    self.recommendationLbl.text = "We don't recommed reserving yet.".localized()
+        Task {
+            do {
+                let resultedTime = try await DistanceManager.sharedInstance.getTimeAndDistanceBetween(ogCoords, destCoords)
+                DispatchQueue.main.async {
+                    if self.evaluateTime(resultedTime) {
+                        self.recommendationLbl.text = "We recommed reserving for ".localized() + resultedTime
+                    } else {
+                        self.recommendationLbl.text = "We don't recommed reserving yet.".localized()
+                    }
                 }
-            case .failure(let err):
+            } catch let err {
                 print(err)
-                self.recommendationLbl.text = "Couldn't get a recommendation.".localized()
+                DispatchQueue.main.async {
+                    self.recommendationLbl.text = "Couldn't get a recommendation.".localized()
+                }
             }
         }
     }

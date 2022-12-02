@@ -13,18 +13,13 @@ import Alamofire
 class UserManager {
         
     static let sharedInstance = UserManager()
-    
-    var callResult = "network error"
-    
-    //Which screen handles with alerts when user forgets password
-    var forgotResumeScreen = "Sign In"
-    
+        
     var resetCode = 0
     var dateToken = Date.yesterday
     var userEmail = ""
     
     //MARK: -User Data-
-    var userName = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserName") ?? "roadout_user_name"
+    var userName = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserName") ?? "Roadout_User_Name"
     
     enum UserDBErrors: Error {
         case databaseFailure
@@ -33,108 +28,183 @@ class UserManager {
         case networkError
         case unknownError
         case userDoesNotExist
+        case wrongPassword
     }
     
-    
-    func updateName(_ id: String, _ name: String, completion: @escaping(Result<Void, Error>) -> Void) {
-        
+    func updateNameAsync(_ id: String, _ name: String) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id":id,"name":name]
         
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/UpdateName.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                self.callResult = "database error"
-                completion(.failure(UserDBErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    self.callResult = jsonArray["status"] as! String
-                    if self.callResult == "Success" {
-                        completion(.success(()))
-                    } else {
-                        completion(.failure(UserDBErrors.userDoesNotExist))
-                    }
-                } else {
-                    self.callResult = "unknown error"
-                    completion(.failure(UserDBErrors.unknownError))
-                }
-            } catch let error as NSError {
-                print(error)
-                self.callResult = "error with json"
-                completion(.failure(UserDBErrors.errorWithJson))
-            }
+        let updateRequest = AF.request("https://\(roadoutServerURL)/Authentification/UpdateName.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        var responseJson: String!
+        do {
+            responseJson = try await updateRequest.serializingString().value
+        } catch {
+            throw UserDBErrors.databaseFailure
         }
         
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw UserDBErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String != "Success" {
+            throw UserDBErrors.userDoesNotExist
+        }
     }
     
-    func updatePassword( _ id: String, _ oldPsw: String, _ newPsw: String, completion: @escaping(Result<Void, Error>) -> Void) {
-        
+    func updatePasswordAsync( _ id: String, _ oldPsw: String, _ newPsw: String) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let hashedOldPswd = MD5(string: oldPsw)
         let hashedNewPswd = MD5(string: newPsw)
         let params : Parameters = ["id":id,"oldPsw":hashedOldPswd,"newPsw":hashedNewPswd]
-    
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/UpdatePassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                self.callResult = "database error"
-                completion(.failure(UserDBErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    self.callResult = jsonArray["status"] as! String
-                    if self.callResult == "Success" {
-                        completion(.success(()))
-                    } else {
-                        completion(.failure(UserDBErrors.userDoesNotExist))
-                    }
-                } else {
-                    print("unknown error")
-                    self.callResult = "unknown error"
-                    completion(.failure(UserDBErrors.unknownError))
-                }
-            } catch let error as NSError {
-                print(error)
-                self.callResult = "error with json"
-                completion(.failure(UserDBErrors.errorWithJson))
-            }
+        
+        let updateRequest = AF.request("https://\(roadoutServerURL)/Authentification/UpdatePassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        var responseJson: String!
+        do {
+            responseJson = try await updateRequest.serializingString().value
+        } catch {
+            throw UserDBErrors.databaseFailure
         }
         
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw UserDBErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String != "Success" {
+            throw UserDBErrors.wrongPassword
+        }
     }
     
-    func deleteAccount(_ email: String, _ password: String, completion: @escaping(Result<Void, Error>) -> Void) {
-        
+    func deleteAccountAsync(_ email: String, _ password: String) async throws {
         let hashedPswd = MD5(string: password)
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["email":email,"password":hashedPswd]
         
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/DeleteAccount.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                self.callResult = "database error"
-                completion(.failure(UserDBErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    self.callResult = jsonArray["status"] as! String
-                    if self.callResult == "Success" {
-                        completion(.success(()))
-                    } else {
-                        completion(.failure(UserDBErrors.userDoesNotExist))
-                    }
-                } else {
-                    self.callResult = "unknown error"
-                    completion(.failure(UserDBErrors.unknownError))
-                }
-            } catch let error as NSError {
-                print(error)
-                self.callResult = "error with json"
-                completion(.failure(UserDBErrors.errorWithJson))
-            }
+        let deleteRequest = AF.request("https://\(roadoutServerURL)/Authentification/DeleteAccount.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        var responseJson: String!
+        do {
+            responseJson = try await deleteRequest.serializingString().value
+        } catch {
+            throw UserDBErrors.databaseFailure
+        }
+        
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw UserDBErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String != "Success" {
+            throw UserDBErrors.wrongPassword
+        }
+    }
+    
+    func getUserNameAsync(_ id: String) async throws {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["id":id]
+        
+        let getRequest = AF.request("https://\(roadoutServerURL)/Authentification/GetUserData.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        var responseJson: String!
+        do {
+            responseJson = try await getRequest.serializingString().value
+        } catch {
+            throw UserDBErrors.databaseFailure
+        }
+        
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw UserDBErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String == "Success" {
+            self.userName = jsonArray["name"] as! String
+            self.userEmail = jsonArray["email"] as! String
+            UserDefaults.roadout!.set(self.userEmail, forKey: "ro.roadout.Roadout.UserMail")
+            UserDefaults.roadout!.set(self.userName, forKey: "ro.roadout.Roadout.UserName")
+        } else {
+            throw UserDBErrors.userDoesNotExist
+        }
+    }
+    
+    func sendForgotDataAsync(_ email: String) async throws {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["email":email]
+        
+        let sendRequest = AF.request("https://\(roadoutServerURL)/Authentification/ForgotPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        var responseJson: String!
+        do {
+            responseJson = try await sendRequest.serializingString().value
+        } catch {
+            throw UserDBErrors.databaseFailure
+        }
+        
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw UserDBErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String == "Success" {
+            let code = jsonArray["accessCode"] as! String
+            let token = jsonArray["token"] as! String
+            let formatter = DateFormatter()
+            let dateFormat = "yyyy-MM-dd HH:mm:ss"
+            formatter.dateFormat = dateFormat
+            self.resetCode = Int(code)!
+            self.dateToken = formatter.date(from: token) ?? Date.yesterday
+        } else {
+            throw UserDBErrors.unknownError
+        }
+    }
+    
+    func resetPasswordAsync(_ password: String) async throws {
+        var email = UserManager.sharedInstance.userEmail
+        if email == "" {
+            email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail") ?? "Roadout_Impossible."
+        }
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let hashedPswd = MD5(string: password)
+        let params : Parameters = ["email":email,"psw":hashedPswd]
+        
+        let resetRequest = AF.request("https://\(roadoutServerURL)/Authentification/ResetPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        var responseJson: String!
+        do {
+            responseJson = try await resetRequest.serializingString().value
+        } catch {
+            throw UserDBErrors.databaseFailure
+        }
+        
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw UserDBErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String != "Success" {
+            throw UserDBErrors.unknownError
         }
     }
     
@@ -145,119 +215,4 @@ class UserManager {
             String(format: "%02hhx", $0)
         }.joined()
     }
-    
-    func getUserName(_ id: String, completion: @escaping(Result<Void, Error>) -> Void) {
-        
-        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
-        let params : Parameters = ["id":id]
-        
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/GetUserData.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                self.callResult = "database error"
-                completion(.failure(UserDBErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    self.callResult = jsonArray["status"] as! String
-                    if self.callResult == "Success" {
-                        self.userName = jsonArray["name"] as! String
-                        self.userEmail = jsonArray["email"] as! String
-                        UserDefaults.roadout!.set(self.userEmail, forKey: "ro.roadout.Roadout.UserMail")
-                        UserDefaults.roadout!.set(self.userName, forKey: "ro.roadout.Roadout.UserName")
-                        completion(.success(()))
-                    } else {
-                        completion(.failure(UserDBErrors.userDoesNotExist))
-                    }
-                } else {
-                    self.callResult = "unknown error"
-                    completion(.failure(UserDBErrors.unknownError))
-                }
-            } catch let error as NSError {
-                print(error)
-                self.callResult = "error with json"
-                completion(.failure(UserDBErrors.errorWithJson))
-                
-            }
-        }
-    }
-    
-    func sendForgotData(_ email: String, completion: @escaping(Result<Void, Error>) -> Void) {
-        
-        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
-        let params : Parameters = ["email":email]
-        
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/ForgotPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                self.callResult = "database error"
-                completion(.failure(UserDBErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    self.callResult = jsonArray["status"] as! String
-                    if self.callResult == "Success" {
-                        let code = jsonArray["accessCode"] as! String
-                        let token = jsonArray["token"] as! String
-                        let formatter = DateFormatter()
-                        let dateFormat = "yyyy-MM-dd HH:mm:ss"
-                        formatter.dateFormat = dateFormat
-                        self.resetCode = Int(code)!
-                        self.dateToken = formatter.date(from: token) ?? Date.yesterday
-                        completion(.success(()))
-                    } else {
-                        completion(.failure(UserDBErrors.unknownError))
-                    }
-                } else {
-                    self.callResult = "unknown error"
-                    completion(.failure(UserDBErrors.unknownError))
-                }
-            } catch let error as NSError {
-                print(error)
-                self.callResult = "error with json"
-                completion(.failure(UserDBErrors.errorWithJson))
-            }
-        }
-        
-    }
-    
-    func resetPassword(_ password: String, completion: @escaping(Result<Void, Error>) -> Void) {
-        
-        var email = UserManager.sharedInstance.userEmail
-        if email == "" {
-            email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail") ?? "roadout_impossible."
-        }
-        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
-        let hashedPswd = MD5(string: password)
-        let params : Parameters = ["email":email,"psw":hashedPswd]
-        
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Authentification/ResetPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                self.callResult = "database error"
-                completion(.failure(UserDBErrors.databaseFailure))
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    self.callResult = jsonArray["status"] as! String
-                    if self.callResult == "Success" {
-                        completion(.success(()))
-                    } else {
-                        completion(.failure(UserDBErrors.unknownError))
-                    }
-                } else {
-                    self.callResult = "unknown error"
-                    completion(.failure(UserDBErrors.unknownError))
-                }
-            } catch let error as NSError {
-                print(error)
-                self.callResult = "error with json"
-                completion(.failure(UserDBErrors.errorWithJson))
-            }
-        }
-    }
-    
 }

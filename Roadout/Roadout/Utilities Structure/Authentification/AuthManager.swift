@@ -34,37 +34,42 @@ class AuthManager {
         
         let sendRequest = AF.request("https://\(roadoutServerURL)/Authentification/VerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
         
+        var responseJson: String!
         do {
-            let responseJson = try await sendRequest.serializingString().value
-            let data = responseJson.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    if jsonArray["status"] as! String == "Success" {
-                        let code = jsonArray["accessCode"] as! String
-                        let token = jsonArray["token"] as! String
-                        let formatter = DateFormatter()
-                        let dateFormat = "yyyy-MM-dd HH:mm:ss"
-                        formatter.dateFormat = dateFormat
-                        self.verifyCode = Int(code)!
-                        self.dateToken = formatter.date(from: token) ?? Date.yesterday
-                    } else if jsonArray["status"] as! String == "User already exists" {
-                       throw AuthErrors.userExistsFailure
-                    }
-                } else {
-                    throw AuthErrors.unknownError
-                }
-            } catch {
-                throw AuthErrors.errorWithJson
-            }
+            responseJson = try await sendRequest.serializingString().value
         } catch {
             throw AuthErrors.databaseFailure
+        }
+        
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String: Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw AuthErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String == "Success" {
+            let code = jsonArray["accessCode"] as! String
+            let token = jsonArray["token"] as! String
+            let formatter = DateFormatter()
+            let dateFormat = "yyyy-MM-dd HH:mm:ss"
+            formatter.dateFormat = dateFormat
+            self.verifyCode = Int(code)!
+            self.dateToken = formatter.date(from: token) ?? Date.yesterday
+        } else if jsonArray["status"] as! String == "User already exists" {
+           throw AuthErrors.userExistsFailure
+        } else {
+            throw AuthErrors.unknownError
         }
     }
     
     func deleteBadDataAsync(_ email: String) async {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["email":email]
+        
         let deleteRequest = AF.request("https://\(roadoutServerURL)/Authentification/DeleteDataVerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
         do {
             _ = try await deleteRequest.serializingString().value
         } catch let err {
@@ -79,24 +84,25 @@ class AuthManager {
         
         let sendRequest = AF.request("https://\(roadoutServerURL)/Authentification/userRegister.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
         
+        var responseJson: String!
         do {
-            let responseJson = try await sendRequest.serializingString().value
-            let data = responseJson.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    if jsonArray["status"] as! String == "Success" {
-                        self.userID = String(jsonArray["id"] as! Int)
-                    } else {
-                        throw AuthErrors.userExistsFailure
-                    }
-                } else {
-                    throw AuthErrors.unknownError
-                }
-            } catch {
-                throw AuthErrors.errorWithJson
-            }
+            responseJson = try await sendRequest.serializingString().value
         } catch {
             throw AuthErrors.databaseFailure
+        }
+        
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw AuthErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String == "Success" {
+            self.userID = String(jsonArray["id"] as! Int)
+        } else {
+            throw AuthErrors.userExistsFailure
         }
     }
     
@@ -107,24 +113,25 @@ class AuthManager {
         
         let sendRequest = AF.request("https://\(roadoutServerURL)/Authentification/userLogin.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
         
+        var responseJson: String!
         do {
-            let responseJson = try await sendRequest.serializingString().value
-            let data = responseJson.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    if jsonArray["status"] as! String == "Success" {
-                        self.userID = jsonArray["id"] as? String
-                    } else {
-                        throw AuthErrors.userDoesNotExist
-                    }
-                } else {
-                    throw AuthErrors.unknownError
-                }
-            } catch {
-                throw AuthErrors.errorWithJson
-            }
+            responseJson = try await sendRequest.serializingString().value
         } catch {
             throw AuthErrors.databaseFailure
+        }
+        
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw AuthErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String == "Success" {
+            self.userID = jsonArray["id"] as? String
+        } else {
+            throw AuthErrors.userDoesNotExist
         }
     }
     
@@ -133,24 +140,26 @@ class AuthManager {
         let params : Parameters = ["id":id]
         
         let checkRequest = AF.request("https://\(roadoutServerURL)/Authentification/IdExists.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        var responseJson: String!
         do {
-            let responseJson = try await checkRequest.serializingString().value
-            let data = responseJson.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    if jsonArray["status"] as! String == "Success" && jsonArray["message"] as! String == "False" {
-                        throw AuthErrors.userDoesNotExist
-                    } else if jsonArray["message"] as! String == "True" {
-                        //We are good, user is valid
-                    }
-                } else {
-                    throw AuthErrors.unknownError
-                }
-            } catch {
-                throw AuthErrors.errorWithJson
-            }
+            responseJson = try await checkRequest.serializingString().value
         } catch {
             throw AuthErrors.databaseFailure
+        }
+        
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw AuthErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String == "Success" && jsonArray["message"] as! String == "False" {
+            throw AuthErrors.userDoesNotExist
+        } else if jsonArray["status"] as! String != "True" {
+            //We are good, user is valid
         }
     }
     

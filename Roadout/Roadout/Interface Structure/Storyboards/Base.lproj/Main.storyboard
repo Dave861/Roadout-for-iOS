@@ -753,37 +753,6 @@ Roadout</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhp-PN-42T">
-                                <rect key="frame" x="20" y="759" width="374" height="50"/>
-                                <color key="backgroundColor" systemColor="labelColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="juw-Kf-vVr"/>
-                                </constraints>
-                                <color key="tintColor" name="Background"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Reset Password">
-                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="resetTapped:" destination="v3P-2e-l6d" eventType="touchUpInside" id="0CX-FF-9bl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLQ-KU-HMn">
-                                <rect key="frame" x="107" y="817" width="200" height="40"/>
-                                <color key="backgroundColor" name="Background"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="47J-VQ-ne7"/>
-                                    <constraint firstAttribute="width" constant="200" id="ggp-mt-UxV"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Cancel">
-                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="cancelTapped:" destination="v3P-2e-l6d" eventType="touchUpInside" id="wGZ-dd-ETX"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NEV-3a-Xio" customClass="CHIOTPFieldOne" customModule="CHIOTPField">
                                 <rect key="frame" x="83" y="270" width="248" height="75"/>
                                 <color key="tintColor" systemColor="labelColor"/>
@@ -821,25 +790,6 @@ Roadout</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXX-ND-CA6">
-                                <rect key="frame" x="107" y="373" width="200" height="40"/>
-                                <color key="backgroundColor" systemColor="labelColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="4at-Px-vkJ"/>
-                                    <constraint firstAttribute="height" constant="40" id="xfe-uA-bgD"/>
-                                </constraints>
-                                <color key="tintColor" name="Background"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title=" Check">
-                                    <imageReference key="image" image="arrow_left_arrow_right" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="23" scale="large"/>
-                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
-                                    <color key="baseForegroundColor" name="Background"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="checkTapped:" destination="v3P-2e-l6d" eventType="touchUpInside" id="6Kj-tq-Sjr"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJm-Z0-R2x">
                                 <rect key="frame" x="91.5" y="138" width="231" height="37"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
@@ -854,31 +804,75 @@ Roadout</string>
                                     <constraint firstAttribute="height" constant="43" id="qNc-oZ-GM3"/>
                                 </constraints>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="D59-ZH-u8g">
+                                <rect key="frame" x="20" y="804" width="374" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXX-ND-CA6">
+                                        <rect key="frame" x="0.0" y="0.0" width="121.5" height="50"/>
+                                        <color key="backgroundColor" systemColor="labelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="xfe-uA-bgD"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Background"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" Check">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
+                                            <color key="baseForegroundColor" name="Background"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="checkTapped:" destination="v3P-2e-l6d" eventType="touchUpInside" id="6Kj-tq-Sjr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhp-PN-42T">
+                                        <rect key="frame" x="126.5" y="0.0" width="121" height="50"/>
+                                        <color key="backgroundColor" systemColor="labelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="juw-Kf-vVr"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Background"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Reset Password">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="resetTapped:" destination="v3P-2e-l6d" eventType="touchUpInside" id="0CX-FF-9bl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLQ-KU-HMn">
+                                        <rect key="frame" x="252.5" y="0.0" width="121.5" height="50"/>
+                                        <color key="backgroundColor" name="Card Background"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cancelTapped:" destination="v3P-2e-l6d" eventType="touchUpInside" id="wGZ-dd-ETX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ake-J6-Ux8"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
-                            <constraint firstItem="QLQ-KU-HMn" firstAttribute="centerX" secondItem="cIg-Vs-b0Y" secondAttribute="centerX" id="0Ah-Dg-PfJ"/>
                             <constraint firstItem="ake-J6-Ux8" firstAttribute="trailing" secondItem="Mn3-En-Mai" secondAttribute="trailing" constant="32.5" id="262-xt-Te0"/>
-                            <constraint firstItem="nXX-ND-CA6" firstAttribute="centerX" secondItem="cIg-Vs-b0Y" secondAttribute="centerX" id="2Ni-HW-yqj"/>
-                            <constraint firstItem="ake-J6-Ux8" firstAttribute="bottom" secondItem="QLQ-KU-HMn" secondAttribute="bottom" constant="5" id="3GP-bI-sGf" customClass="KeyboardLayoutConstraint" customModule="Roadout" customModuleProvider="target"/>
                             <constraint firstItem="fe3-w3-sWR" firstAttribute="top" secondItem="I3S-0q-Tqy" secondAttribute="bottom" constant="17" id="4bi-O4-15c"/>
                             <constraint firstItem="I3S-0q-Tqy" firstAttribute="centerX" secondItem="cIg-Vs-b0Y" secondAttribute="centerX" id="6Qi-Fz-TUf"/>
                             <constraint firstItem="I3S-0q-Tqy" firstAttribute="top" secondItem="GJm-Z0-R2x" secondAttribute="bottom" constant="8" id="7xf-iv-42x"/>
-                            <constraint firstItem="nXX-ND-CA6" firstAttribute="top" secondItem="Mn3-En-Mai" secondAttribute="bottom" constant="15" id="BCd-HO-lWI"/>
                             <constraint firstItem="IfT-zl-jwh" firstAttribute="centerX" secondItem="cIg-Vs-b0Y" secondAttribute="centerX" id="Dar-Fn-dIf"/>
                             <constraint firstItem="GJm-Z0-R2x" firstAttribute="top" secondItem="IfT-zl-jwh" secondAttribute="bottom" constant="8" symbolic="YES" id="HOh-t3-aeb"/>
                             <constraint firstItem="NEV-3a-Xio" firstAttribute="centerX" secondItem="cIg-Vs-b0Y" secondAttribute="centerX" id="IaW-Uk-9wc"/>
                             <constraint firstItem="Mn3-En-Mai" firstAttribute="leading" secondItem="ake-J6-Ux8" secondAttribute="leading" constant="32.5" id="JXS-bt-Woz"/>
-                            <constraint firstItem="ake-J6-Ux8" firstAttribute="trailing" secondItem="hhp-PN-42T" secondAttribute="trailing" constant="20" id="OPh-pe-9rL"/>
-                            <constraint firstItem="hhp-PN-42T" firstAttribute="leading" secondItem="ake-J6-Ux8" secondAttribute="leading" constant="20" id="R02-MN-0Fb"/>
                             <constraint firstItem="GJm-Z0-R2x" firstAttribute="top" secondItem="ake-J6-Ux8" secondAttribute="top" constant="90" id="YnG-Vx-wn3"/>
                             <constraint firstItem="ake-J6-Ux8" firstAttribute="trailing" secondItem="fe3-w3-sWR" secondAttribute="trailing" constant="32.5" id="d6w-6x-USM"/>
                             <constraint firstItem="GJm-Z0-R2x" firstAttribute="centerX" secondItem="cIg-Vs-b0Y" secondAttribute="centerX" id="kjS-Mq-Dxv"/>
                             <constraint firstItem="Mn3-En-Mai" firstAttribute="top" secondItem="fe3-w3-sWR" secondAttribute="bottom" constant="8" symbolic="YES" id="ll2-AP-e3R"/>
-                            <constraint firstItem="QLQ-KU-HMn" firstAttribute="top" secondItem="hhp-PN-42T" secondAttribute="bottom" constant="8" id="rmx-tL-W8x"/>
+                            <constraint firstItem="D59-ZH-u8g" firstAttribute="leading" secondItem="ake-J6-Ux8" secondAttribute="leading" constant="20" id="q9O-GB-a4e"/>
                             <constraint firstItem="NEV-3a-Xio" firstAttribute="top" secondItem="I3S-0q-Tqy" secondAttribute="bottom" constant="17" id="w20-eF-QOm"/>
                             <constraint firstItem="fe3-w3-sWR" firstAttribute="leading" secondItem="ake-J6-Ux8" secondAttribute="leading" constant="32.5" id="y1z-qs-Ygc"/>
+                            <constraint firstItem="ake-J6-Ux8" firstAttribute="bottom" secondItem="D59-ZH-u8g" secondAttribute="bottom" constant="8" id="yaz-Zt-Z91" customClass="SafeKeyboardConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstItem="ake-J6-Ux8" firstAttribute="trailing" secondItem="D59-ZH-u8g" secondAttribute="trailing" constant="20" id="ymc-ps-YQH"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1922,22 +1916,21 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
         <image name="HeaderProblemImage1" width="585" height="439.5"/>
         <image name="Logo" width="2094" height="2094"/>
         <image name="WorldPlaceholder" width="410" height="410"/>
-        <image name="arrow_left_arrow_right" width="16" height="20"/>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="car.fill" catalog="system" width="128" height="95"/>
         <image name="exclamationmark.octagon.fill" catalog="system" width="128" height="112"/>
         <image name="figure.wave" catalog="system" width="80" height="128"/>
-        <image name="globe_desk" width="17" height="19"/>
+        <image name="globe_desk" width="13" height="15"/>
         <image name="hand.raised" catalog="system" width="128" height="128"/>
         <image name="hand.raised.fill" catalog="system" width="128" height="128"/>
         <image name="hand.thumbsdown" catalog="system" width="123" height="128"/>
         <image name="hand.thumbsup" catalog="system" width="123" height="128"/>
-        <image name="key_fill" width="11" height="21"/>
+        <image name="key_fill" width="8" height="16"/>
         <image name="paintbrush.fill" catalog="system" width="122" height="128"/>
         <image name="server.rack" catalog="system" width="128" height="93"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="115"/>
-        <image name="wrench_and_screwdriver_fill" width="20" height="20"/>
+        <image name="wrench_and_screwdriver_fill" width="16" height="15"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

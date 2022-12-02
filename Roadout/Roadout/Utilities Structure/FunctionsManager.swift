@@ -34,30 +34,32 @@ class FunctionsManager {
         
         let checkRequest = AF.request("https://\(roadoutServerURL)/Parking/FirstSpot.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
         
+        var responseJson: String!
         do {
-            let responseJson = try await checkRequest.serializingString().value
-            let data = responseJson.data(using: .utf8)!
-            do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String: Any] {
-                    if jsonArray["status"] as! String == "Success" {
-                        if (jsonArray["id"] as! String).lowercased() != "null" {
-                            let spotID = jsonArray["id"] as! String
-                            self.foundSpot = ParkSpot(state: 0, number: Int(EntityManager.sharedInstance.decodeSpotID(spotID)[2])!, rHash: "u82f0bc6m303-f80-h70-p0", rID: spotID)
-                            return true
-                        } else {
-                            return false
-                        }
-                    } else {
-                        throw FunctionsErrors.unknownError
-                    }
-                }
-            } catch {
-                throw FunctionsErrors.errorWithJson
-            }
+            responseJson = try await checkRequest.serializingString().value
         } catch {
             throw FunctionsErrors.databaseFailure
         }
-        return false
+        
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw FunctionsErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String == "Success" {
+            if (jsonArray["id"] as! String).lowercased() != "null" {
+                let spotID = jsonArray["id"] as! String
+                self.foundSpot = ParkSpot(state: 0, number: Int(EntityManager.sharedInstance.decodeSpotID(spotID)[2])!, rHash: "u82f0bc6m303-f80-h70-p0", rID: spotID)
+                return true
+            } else {
+                return false
+            }
+        } else {
+            throw FunctionsErrors.unknownError
+        }
     }
 
     func sortLocations(currentLocation: CLLocationCoordinate2D) {

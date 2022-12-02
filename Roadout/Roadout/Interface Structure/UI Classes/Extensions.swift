@@ -285,10 +285,10 @@ extension String {
     func localized() -> String {
         return NSLocalizedString(self, tableName: "Localizables", bundle: .main, value: self, comment: self)
     }
-    func formatLicensePlate() -> String {
+    func formatLicensePlate() throws -> String {
         var plateText = self.replacingOccurrences(of: " ", with: "").uppercased()
         let plateNr = String(plateText.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
-        var plateNrRange = plateText.range(of: plateNr)!
+        guard var plateNrRange = plateText.range(of: plateNr) else { throw RoadoutErrors.wrongFormat }
         plateText.insert("-", at: plateNrRange.lowerBound)
         plateNrRange = plateText.range(of: plateNr)!
         plateText.insert("-", at: plateNrRange.upperBound)

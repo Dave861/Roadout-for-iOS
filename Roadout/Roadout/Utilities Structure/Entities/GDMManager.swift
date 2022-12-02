@@ -21,27 +21,28 @@ class DistanceManager {
     
     let language = "en".localized()
     
-    func getTimeAndDistanceBetween(_ ogCoords: CLLocationCoordinate2D, _ destCoords: CLLocationCoordinate2D, completion: @escaping(Result<String, Error>) -> Void) {
-        Alamofire.Session.default.request("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=\(destCoords.latitude),\(destCoords.longitude)&origins=\(ogCoords.latitude),\(ogCoords.longitude)&units=metric&departure_time=now&traffic_model=best_guess&language=\(language)&key=AIzaSyBCwiN3sMkKBigQhrsFfmAENeGEyJjbgcI", method: .get).responseString { response in
-            
-            guard response.value != nil else {
-                completion(.failure(DistanceErrors.networkError))
-                return
-            }
-            
-            let data = response.value!.data(using: .utf8)!
-            do {
-                let resp = try JSONDecoder().decode(GDMResponse.self, from: data)
-                if (resp.status == "OK") {
-                    completion(.success(resp.rows[0].elements[0].duration_in_traffic.text))
-                } else {
-                    completion(.failure(DistanceErrors.unknownError))
-                }
-            } catch let err {
-                print(err)
-                completion(.failure(DistanceErrors.jsonError))
-            }
-            
+    func getTimeAndDistanceBetween(_ ogCoords: CLLocationCoordinate2D, _ destCoords: CLLocationCoordinate2D) async throws -> String {
+        let getRequest = AF.request("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=\(destCoords.latitude),\(destCoords.longitude)&origins=\(ogCoords.latitude),\(ogCoords.longitude)&units=metric&departure_time=now&traffic_model=best_guess&language=\(language)&key=AIzaSyBCwiN3sMkKBigQhrsFfmAENeGEyJjbgcI", method: .get)
+        
+        var responseJson: String
+        do {
+            try await responseJson = getRequest.serializingString().value
+        } catch {
+            throw DistanceErrors.networkError
+        }
+        
+        let data = responseJson.data(using: .utf8)!
+        var resp: GDMResponse!
+        do {
+            resp = try JSONDecoder().decode(GDMResponse.self, from: data)
+        } catch {
+            throw DistanceErrors.jsonError
+        }
+        
+        if (resp.status == "OK") {
+            return resp.rows[0].elements[0].duration_in_traffic.text
+        } else {
+            throw DistanceErrors.unknownError
         }
     }
     

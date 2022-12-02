@@ -18,15 +18,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
-              let homeSb = UIStoryboard(name: "Home", bundle: nil)
-              let homeVC = homeSb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
-              window?.rootViewController = homeVC
-              window?.makeKeyAndVisible()
-            
-              let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-              UserManager.sharedInstance.getUserName(id) { result in
-                 //Nothing to do
-              }
+            let homeSb = UIStoryboard(name: "Home", bundle: nil)
+            let homeVC = homeSb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
+            window?.rootViewController = homeVC
+            window?.makeKeyAndVisible()
+    
+            let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+            Task {
+                do {
+                    try await UserManager.sharedInstance.getUserNameAsync(id)
+                } catch let err {
+                    print(err)
+                }
+            }
         }
         
         guard let _ = (scene as? UIWindowScene) else { return }

@@ -10,6 +10,7 @@ import UIKit
 class EditLicensePlateViewController: UIViewController {
     
     let changeTitle = NSAttributedString(string: "Change".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let removeTitle = NSAttributedString(string: "Remove".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -21,16 +22,31 @@ class EditLicensePlateViewController: UIViewController {
     @IBOutlet weak var changeBtn: UIButton!
     @IBAction func changeTapped(_ sender: Any) {
         if plateField.text != "" {
-            userLicensePlate = plateField.text?.formatLicensePlate() ?? "NO-PLATE"
+            do {
+                userLicensePlate = try plateField.text?.formatLicensePlate() ?? "NO-PLATE"
+                UserDefaults.roadout!.set(userLicensePlate, forKey: "ro.roadout.Roadout.userLicensePlate")
+                UIView.animate(withDuration: 0.1) {
+                    self.blurEffect.alpha = 0
+                } completion: { done in
+                    self.dismiss(animated: true, completion: nil)
+                    NotificationCenter.default.post(name: .reloadLicensePlateID, object: nil)
+                }
+            } catch {
+                let alert = UIAlertController(title: "Error".localized(), message: "Please enter a valid license plate".localized(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")!
+                self.present(alert, animated: true)
+            }
         } else {
             userLicensePlate = "NO-PLATE"
-        }
-        UserDefaults.roadout!.set(userLicensePlate, forKey: "ro.roadout.Roadout.userLicensePlate")
-        UIView.animate(withDuration: 0.1) {
-            self.blurEffect.alpha = 0
-        } completion: { done in
-            self.dismiss(animated: true, completion: nil)
-            NotificationCenter.default.post(name: .reloadLicensePlateID, object: nil)
+            UserDefaults.roadout!.set(userLicensePlate, forKey: "ro.roadout.Roadout.userLicensePlate")
+            UIView.animate(withDuration: 0.1) {
+                self.blurEffect.alpha = 0
+            } completion: { done in
+                self.dismiss(animated: true, completion: nil)
+                NotificationCenter.default.post(name: .reloadLicensePlateID, object: nil)
+            }
         }
     }
 
@@ -73,7 +89,11 @@ class EditLicensePlateViewController: UIViewController {
         addShadowToCardView()
 
         changeBtn.layer.cornerRadius = 13.0
-        changeBtn.setAttributedTitle(changeTitle, for: .normal)
+        if plateField.text == "" {
+            changeBtn.setAttributedTitle(removeTitle, for: .normal)
+        } else {
+            changeBtn.setAttributedTitle(changeTitle, for: .normal)
+        }
         
         plateField.layer.cornerRadius = 12.0
         plateField.attributedPlaceholder = NSAttributedString(
@@ -88,6 +108,7 @@ class EditLicensePlateViewController: UIViewController {
         
         plateView.layer.cornerRadius = plateView.frame.height/4
         plateText.text = userLicensePlate
+        plateField.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -99,4 +120,13 @@ class EditLicensePlateViewController: UIViewController {
         }
     }
    
+}
+extension EditLicensePlateViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField.text == "" && self.changeBtn.titleLabel?.text != "Remove".localized() {
+            self.changeBtn.setAttributedTitle(self.removeTitle, for: .normal)
+        } else if textField.text != "" && self.changeBtn.titleLabel?.text != "Change".localized() {
+            self.changeBtn.setAttributedTitle(self.changeTitle, for: .normal)
+        }
+    }
 }

@@ -23,7 +23,7 @@ class ReservationView: UIView {
     @IBOutlet weak var directionsBtn: UIButton!
     @IBOutlet weak var delayBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
-    @IBOutlet weak var arBtn: UIButton!
+    @IBOutlet weak var locateBtn: UIButton!
     @IBOutlet weak var worldBtn: UIButton!
     @IBOutlet weak var helpBtn: UIButton!
     
@@ -31,7 +31,7 @@ class ReservationView: UIView {
     @IBOutlet weak var directionsView: UIView!
     @IBOutlet weak var delayView: UIView!
     @IBOutlet weak var cancelView: UIView!
-    @IBOutlet weak var arView: UIView!
+    @IBOutlet weak var locateView: UIView!
     @IBOutlet weak var worldView: UIView!
     @IBOutlet weak var helpView: UIView!
     
@@ -39,7 +39,7 @@ class ReservationView: UIView {
     @IBOutlet weak var directionsLbl: UILabel!
     @IBOutlet weak var delayLbl: UILabel!
     @IBOutlet weak var cancelLbl: UILabel!
-    @IBOutlet weak var arLbl: UILabel!
+    @IBOutlet weak var locateLbl: UILabel!
     @IBOutlet weak var worldLbl: UILabel!
     @IBOutlet weak var helpLbl: UILabel!
     
@@ -48,7 +48,7 @@ class ReservationView: UIView {
         unlockBtn.setTitle("", for: .normal)
         directionsBtn.setTitle("", for: .normal)
         delayBtn.setTitle("", for: .normal)
-        arBtn.setTitle("", for: .normal)
+        locateBtn.setTitle("", for: .normal)
         helpBtn.setTitle("", for: .normal)
         cancelBtn.setTitle("", for: .normal)
         worldBtn.setTitle("", for: .normal)
@@ -57,14 +57,14 @@ class ReservationView: UIView {
         directionsView.layer.cornerRadius = 9
         delayView.layer.cornerRadius = 9
         cancelView.layer.cornerRadius = 9
-        arView.layer.cornerRadius = 9
+        locateView.layer.cornerRadius = 9
         helpView.layer.cornerRadius = 9
         worldView.layer.cornerRadius = 9
         
         unlockLbl.text = "Unlock".localized()
         directionsLbl.text = "Navigate".localized()
         delayLbl.text = "Delay".localized()
-        arLbl.text = "AR Directions".localized()
+        locateLbl.text = "Locate Spot".localized()
         cancelLbl.text = "Cancel".localized()
         worldLbl.text = "World View".localized()
         helpLbl.text = "Help & Support".localized()
@@ -128,6 +128,13 @@ class ReservationView: UIView {
             Task {
                 do {
                     try await ReservationManager.sharedInstance.cancelReservationAsync(userID: id, date: Date())
+                    DispatchQueue.main.async {
+                        if ReservationManager.sharedInstance.reservationTimer != nil {
+                            ReservationManager.sharedInstance.reservationTimer.invalidate()
+                        }
+                        NotificationHelper.sharedInstance.cancelReservationNotification()
+                        NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
+                    }
                 } catch let err {
                     self.manageServerSideErrors(error: err)
                 }
@@ -138,12 +145,10 @@ class ReservationView: UIView {
         self.parentViewController().present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func arTapped(_ sender: Any) {
+    @IBAction func locateTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        let sb = UIStoryboard(name: "Home", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "ARVC") as! ARViewController
-        self.parentViewController().present(vc, animated: true, completion: nil)
+        
     }
     
     @IBAction func worldTapped(_ sender: Any) {

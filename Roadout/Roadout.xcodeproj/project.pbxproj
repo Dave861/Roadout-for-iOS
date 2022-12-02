@@ -160,7 +160,6 @@
 		9AA65125272D7DD10057DA24 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA65124272D7DD10057DA24 /* SectionView.swift */; };
 		9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */; };
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
-		9AAB8664285DA87600C01428 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAB8663285DA87600C01428 /* ARViewController.swift */; };
 		9AAE2659280947E000BBBAC3 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE2658280947E000BBBAC3 /* GoogleMaps */; };
 		9AAE265B280947E000BBBAC3 /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE265A280947E000BBBAC3 /* GoogleMapsBase */; };
 		9AAE265D280947E000BBBAC3 /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE265C280947E000BBBAC3 /* GoogleMapsCore */; };
@@ -456,7 +455,6 @@
 		9AA65124272D7DD10057DA24 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		9AAB8663285DA87600C01428 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		9AAEDF002886ABC10030ABBB /* SelectPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPayViewController.swift; sourceTree = "<group>"; };
 		9AAEDF042886AD840030ABBB /* SelectPayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPayCell.swift; sourceTree = "<group>"; };
 		9AB827F528128879007BC842 /* GDMStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDMStructs.swift; sourceTree = "<group>"; };
@@ -925,12 +923,11 @@
 			path = "UI Classes";
 			sourceTree = "<group>";
 		};
-		9AAB8665285DA87B00C01428 /* AR Directions */ = {
+		9AAB8665285DA87B00C01428 /* Locate Spot */ = {
 			isa = PBXGroup;
 			children = (
-				9AAB8663285DA87600C01428 /* ARViewController.swift */,
 			);
-			path = "AR Directions";
+			path = "Locate Spot";
 			sourceTree = "<group>";
 		};
 		9AAEDEFF2886ABA30030ABBB /* Pay Parking */ = {
@@ -1068,7 +1065,7 @@
 				9ABA39B127C13382001660E7 /* LoadingViewController.swift */,
 				9A6727B72737BFFB0078479D /* Search Views */,
 				9A0C7772272E830500ECBFB2 /* Card Views */,
-				9AAB8665285DA87B00C01428 /* AR Directions */,
+				9AAB8665285DA87B00C01428 /* Locate Spot */,
 				9A765C382896773700AF250D /* World View */,
 				9AAEDEFF2886ABA30030ABBB /* Pay Parking */,
 				9A6727B82737C0050078479D /* Express Lane */,
@@ -1560,7 +1557,6 @@
 				9ADB0A0C2909837400F548D9 /* UIFontExtension.swift in Sources */,
 				9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */,
 				9A46BBA6272EF83D002280DD /* PaidView.swift in Sources */,
-				9AAB8664285DA87600C01428 /* ARViewController.swift in Sources */,
 				9ADB0A0B2909837400F548D9 /* UILabelExtension.swift in Sources */,
 				9A799324277A0E460088E3FD /* ParkSpot.swift in Sources */,
 				9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */,
