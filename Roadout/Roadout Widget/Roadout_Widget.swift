@@ -33,41 +33,49 @@ struct RoadoutWidgetProvider: IntentTimelineProvider {
         let params1 : Parameters = ["id":entry.configuration.location1?.rID ?? ""]
         let params2 : Parameters = ["id":entry.configuration.location2?.rID ?? ""]
         
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params1, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
+        let downloadRequest1 = AF.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params1, encoding: JSONEncoding.default, headers: _headers)
+        let downloadRequest2 = AF.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params2, encoding: JSONEncoding.default, headers: _headers)
+        
+        Task {
+            var responseJson1: String!
             do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    if jsonArray["status"] as! String == "Success" {
-                        entry.configuration.location1?.freeSpots = Int(jsonArray["result"] as! String) as NSNumber?
-                    }
-                }
-            } catch let error as NSError {
-                print(error)
-
+                responseJson1 = try await downloadRequest1.serializingString().value
+            } catch let err {
+                print(err)
+            }
+            let data1 = responseJson1.data(using: .utf8)!
+            var jsonArray1: [String:Any]!
+            do {
+                jsonArray1 = try JSONSerialization.jsonObject(with: data1, options : .allowFragments) as? [String:Any]
+            } catch let err {
+                print(err)
+            }
+            
+            if jsonArray1["status"] as! String == "Success" {
+                entry.configuration.location1?.freeSpots = Int(jsonArray1["result"] as! String) as NSNumber?
             }
         }
         
-        Alamofire.Session.default.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params2, encoding: JSONEncoding.default, headers: _headers).responseString { response in
-            guard response.value != nil else {
-                return
-            }
-            let data = response.value!.data(using: .utf8)!
+        Task {
+            var responseJson2: String!
             do {
-                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any] {
-                    if jsonArray["status"] as! String == "Success" {
-                        entry.configuration.location2?.freeSpots = Int(jsonArray["result"] as! String) as NSNumber?
-                    }
-                }
-            } catch let error as NSError {
-                print(error)
-
+                responseJson2 = try await downloadRequest2.serializingString().value
+            } catch let err {
+                print(err)
+            }
+            let data2 = responseJson2.data(using: .utf8)!
+            var jsonArray2: [String:Any]!
+            do {
+                jsonArray2 = try JSONSerialization.jsonObject(with: data2, options : .allowFragments) as? [String:Any]
+            } catch let err {
+                print(err)
+            }
+            
+            if jsonArray2["status"] as! String == "Success" {
+                entry.configuration.location2?.freeSpots = Int(jsonArray2["result"] as! String) as NSNumber?
             }
         }
-        
-        
+
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
     }

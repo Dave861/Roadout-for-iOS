@@ -40,8 +40,10 @@ struct ReservationUnlockedView: View {
                     }
                     Button("Done") {
                         resManager.isReservationActive = 3
-                        resManager.getReservationData(Date(), userID: UserDefaults.roadout.string(forKey: "ro.roadout.Roadout.userID")!) { _ in
-                            //no handling here
+                        Task {
+                            do {
+                                try await resManager.getReservationDataAsync(Date(), userID: UserDefaults.roadout.string(forKey: "ro.roadout.Roadout.userID")!)
+                            }
                         }
                     }
                     .padding(.top)

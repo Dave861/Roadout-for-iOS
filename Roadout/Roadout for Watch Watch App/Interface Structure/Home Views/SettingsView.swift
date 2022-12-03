@@ -46,12 +46,9 @@ struct SettingsView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                userManager.getUserName(UserDefaults.roadout.string(forKey: "ro.roadout.Roadout.userID")!) { result in
-                    switch result {
-                        case .success():
-                            print("User Name retrieved succesfully")
-                        case .failure(let err):
-                            print(err)
+                Task {
+                    do {
+                        try await userManager.getUserNameAsync(UserDefaults.roadout.string(forKey: "ro.roadout.Roadout.userID")!)
                     }
                 }
             }

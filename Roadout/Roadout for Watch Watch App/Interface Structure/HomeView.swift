@@ -22,8 +22,10 @@ struct HomeView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                resManager.getReservationData(Date(), userID: UserDefaults.roadout.string(forKey: "ro.roadout.Roadout.userID")!) { _ in
-                    //no handling here, autohandles
+                Task {
+                    do {
+                        try await resManager.getReservationDataAsync(Date(), userID: UserDefaults.roadout.string(forKey: "ro.roadout.Roadout.userID")!)
+                    }
                 }
             }
         }
