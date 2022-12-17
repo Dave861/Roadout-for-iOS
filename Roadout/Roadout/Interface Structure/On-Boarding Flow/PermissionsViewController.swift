@@ -8,12 +8,13 @@
 import UIKit
 import CoreLocation
 import UserNotifications
+import AVKit
 
 class PermissionsViewController: UIViewController {
 
-    let permissionsIcons = [UIImage(systemName: "bell.fill"), UIImage(systemName: "map")]
-    let permissionsTitles = ["Notifications".localized(), "Location".localized()]
-    let permissionsTexts = ["Roadout needs permission to send notifications in order to give you status updates for your reservations and reminders about our promotions. You can control which notifications you get in notification settings.".localized(), "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.".localized()]
+    let permissionsIcons = [UIImage(systemName: "bell.fill"), UIImage(systemName: "map"), UIImage(systemName: "camera.fill")]
+    let permissionsTitles = ["Notifications".localized(), "Location".localized(), "Camera".localized()]
+    let permissionsTexts = ["Roadout needs permission to send notifications in order to give you status updates for your reservations and reminders about our promotions. You can control which notifications you get in notification settings.".localized(), "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.".localized(), "Roadout needs camera access in order for AR Directions to work, camera data is processed locally and you will always know when the camera is open.".localized()]
     
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let skipTitle = NSAttributedString(
@@ -36,6 +37,7 @@ class PermissionsViewController: UIViewController {
     @IBAction func nextTapped(_ sender: Any) {
         manageNotifications()
         manageLocation()
+        manageCamera()
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
         let sb = UIStoryboard(name: "Home", bundle: nil)
@@ -120,11 +122,15 @@ class PermissionsViewController: UIViewController {
             }
         }
     }
+    
+    func manageCamera() {
+        AVCaptureDevice.requestAccess(for: .video, completionHandler: {_ in })
+    }
 
 }
 extension PermissionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return permissionsTitles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -136,7 +142,6 @@ extension PermissionsViewController: UITableViewDelegate, UITableViewDataSource 
         
         return cell
     }
-    
     
 }
 extension PermissionsViewController: CLLocationManagerDelegate {

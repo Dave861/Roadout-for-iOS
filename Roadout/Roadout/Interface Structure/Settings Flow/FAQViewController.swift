@@ -10,9 +10,9 @@ import MessageUI
 
 class FAQViewController: UIViewController {
     
-    let questions = ["What is question one?", "How does question two work?", "Can I question three?", "What if I question four?", "How much does question five?"]
+    let icons = ["parkingsign.circle.fill", "creditcard.fill", "car.2.fill", "clock.fill", "binoculars.fill"]
+    let questions = ["What is a parking reservation?", "Why does it cost money?", "How is a spot being reserved?", "Why is it maximum 20 min?", "How will I find the parking spot?"]
     let answers = ["", "", "", "", ""]
-    var isExpandedQuestions = [true, true, true, true, true]
 
     @IBOutlet weak var backButton: UIButton!
     
@@ -68,30 +68,10 @@ extension FAQViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell") as! QuestionCell
-        cell.questionLbl.text = questions[indexPath.row]
-        cell.answerTextView.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate Duis aute irure dolor in reprehenderit in voluptate."
+        cell.iconImage.image = UIImage(systemName: icons[indexPath.row])
+        cell.titleLabel.text = questions[indexPath.row]
+        cell.infoLabel.text = "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate Duis aute irure dolor in reprehenderit in voluptate."
         
-        cell.bottomView.isHidden = isExpandedQuestions[indexPath.row]
-        cell.bottomSpacerView.isHidden = isExpandedQuestions[indexPath.row]
-        cell.spacerView.isHidden = !(isExpandedQuestions[indexPath.row])
-        
-        if isExpandedQuestions[indexPath.row] {
-            cell.arrowView.image = UIImage(systemName: "chevron.down")
-            cell.topView.layer.cornerRadius = 12.0
-            cell.topView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        } else {
-            cell.arrowView.image = UIImage(systemName: "chevron.up")
-            
-            cell.topView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-            cell.topView.layer.cornerRadius = 12.0
-            
-            cell.bottomView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-            cell.bottomView.layer.cornerRadius = 12.0
-        }
         return cell
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.isExpandedQuestions[indexPath.row] = !(self.isExpandedQuestions[indexPath.row])
-        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

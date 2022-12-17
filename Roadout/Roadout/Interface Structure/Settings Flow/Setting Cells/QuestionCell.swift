@@ -9,29 +9,15 @@ import UIKit
 
 class QuestionCell: UITableViewCell {
 
-    @IBOutlet weak var containerStackView: UIStackView!
-    @IBOutlet weak var questionLbl: UILabel!
-    @IBOutlet weak var answerTextView: UITextView!
-    @IBOutlet weak var arrowView: UIImageView!
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var bottomView: UIView! {
-        didSet {
-            bottomView.isHidden = true
-        }
-    }
-    @IBOutlet weak var spacerView: UIView! {
-        didSet {
-            spacerView.isHidden = false
-        }
-    }
-    @IBOutlet weak var bottomSpacerView: UIView! {
-        didSet {
-            bottomSpacerView.isHidden = true
-        }
-    }
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var infoLabel: UILabel!
+    
+    @IBOutlet weak var cardView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        cardView.layer.cornerRadius = 13.0
     }
     
 
