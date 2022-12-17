@@ -68,6 +68,7 @@ class PayView: UIView {
                 Task {
                     do {
                         try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id)
+                        print("This is gud")
                         DispatchQueue.main.async {
                             NotificationCenter.default.post(name: .showPaidBarID, object: nil)
                         }

@@ -23,7 +23,7 @@ class ReservationView: UIView {
     @IBOutlet weak var directionsBtn: UIButton!
     @IBOutlet weak var delayBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
-    @IBOutlet weak var locateBtn: UIButton!
+    @IBOutlet weak var arBtn: UIButton!
     @IBOutlet weak var worldBtn: UIButton!
     @IBOutlet weak var helpBtn: UIButton!
     
@@ -31,7 +31,7 @@ class ReservationView: UIView {
     @IBOutlet weak var directionsView: UIView!
     @IBOutlet weak var delayView: UIView!
     @IBOutlet weak var cancelView: UIView!
-    @IBOutlet weak var locateView: UIView!
+    @IBOutlet weak var arView: UIView!
     @IBOutlet weak var worldView: UIView!
     @IBOutlet weak var helpView: UIView!
     
@@ -39,7 +39,7 @@ class ReservationView: UIView {
     @IBOutlet weak var directionsLbl: UILabel!
     @IBOutlet weak var delayLbl: UILabel!
     @IBOutlet weak var cancelLbl: UILabel!
-    @IBOutlet weak var locateLbl: UILabel!
+    @IBOutlet weak var arLbl: UILabel!
     @IBOutlet weak var worldLbl: UILabel!
     @IBOutlet weak var helpLbl: UILabel!
     
@@ -48,7 +48,7 @@ class ReservationView: UIView {
         unlockBtn.setTitle("", for: .normal)
         directionsBtn.setTitle("", for: .normal)
         delayBtn.setTitle("", for: .normal)
-        locateBtn.setTitle("", for: .normal)
+        arBtn.setTitle("", for: .normal)
         helpBtn.setTitle("", for: .normal)
         cancelBtn.setTitle("", for: .normal)
         worldBtn.setTitle("", for: .normal)
@@ -57,14 +57,14 @@ class ReservationView: UIView {
         directionsView.layer.cornerRadius = 9
         delayView.layer.cornerRadius = 9
         cancelView.layer.cornerRadius = 9
-        locateView.layer.cornerRadius = 9
+        arView.layer.cornerRadius = 9
         helpView.layer.cornerRadius = 9
         worldView.layer.cornerRadius = 9
         
         unlockLbl.text = "Unlock".localized()
         directionsLbl.text = "Navigate".localized()
         delayLbl.text = "Delay".localized()
-        locateLbl.text = "Locate Spot".localized()
+        arLbl.text = "Open in AR".localized()
         cancelLbl.text = "Cancel".localized()
         worldLbl.text = "World View".localized()
         helpLbl.text = "Help & Support".localized()
@@ -145,14 +145,28 @@ class ReservationView: UIView {
         self.parentViewController().present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func locateTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-        
+    @IBAction func arTapped(_ sender: Any) {
+        guard selectedSpotHash != "" else {
+            self.manageLocalError()
+            return
+        }
+
+        if ARManager.sharedInstance.shownTutorial() {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ARDirectionsVC") as! ARDirectionsViewController
+            self.parentViewController().present(vc, animated: true, completion: nil)
+        } else {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ARTutorialVC") as! ARTutorialViewController
+            self.parentViewController().present(vc, animated: true, completion: nil)
+        }
     }
     
     @IBAction func worldTapped(_ sender: Any) {
-        //Make sure selected spot hash is ok
+        guard selectedSpotHash != "" else {
+            self.manageLocalError()
+            return
+        }
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "WorldVC") as! WorldViewController
         self.parentViewController().present(vc, animated: true, completion: nil)
@@ -208,6 +222,14 @@ class ReservationView: UIView {
     
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[5] as! UIView
+    }
+    
+    func manageLocalError() {
+        let alert = UIAlertController(title: "Error".localized(), message: "There was an error requesting spot details.".localized(), preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: "Redish")
+        self.parentViewController().present(alert, animated: true, completion: nil)
     }
 
     func manageServerSideErrors(error: Error) {

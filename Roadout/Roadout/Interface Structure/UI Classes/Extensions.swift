@@ -6,6 +6,7 @@
 //
 import Foundation
 import UIKit
+import CoreLocation
 
 extension UIViewController {
 
@@ -372,6 +373,13 @@ extension UIView {
         gradient.locations = locations
         self.layer.insertSublayer(gradient, at: 0)
     }
+    
+    func rotationAngleRadians() -> CGFloat {
+        if #available(iOS 16.0, *) {
+            return self.transform.decomposed().rotation
+        }
+        return CGFloat(atan2f(Float(self.transform.b), Float(self.transform.a)))
+    }
 }
 extension UITableViewCell {
     var cellActionButtonLabel: UILabel? {
@@ -382,4 +390,34 @@ extension UITableViewCell {
             .flatMap { $0.subviews }
             .compactMap { $0 as? UILabel }.first
     }
+}
+extension Double {
+  var toRadians: Double { return self * .pi / 180 }
+  var toDegrees: Double { return self * 180 / .pi }
+}
+extension CGFloat {
+  var toRadians: CGFloat { return self * .pi / 180 }
+  var toDegrees: CGFloat { return self * 180 / .pi }
+}
+extension CLLocation {
+  func bearingToLocationRadian(_ destinationLocation: CLLocation) -> CGFloat {
+    
+    let lat1 = self.coordinate.latitude.toRadians
+    let lon1 = self.coordinate.longitude.toRadians
+    
+    let lat2 = destinationLocation.coordinate.latitude.toRadians
+    let lon2 = destinationLocation.coordinate.longitude.toRadians
+    
+    let dLon = lon2 - lon1
+    
+    let y = sin(dLon) * cos(lat2)
+    let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
+    let radiansBearing = atan2(y, x)
+    
+    return CGFloat(radiansBearing)
+  }
+  
+  func bearingToLocationDegrees(destinationLocation: CLLocation) -> CGFloat {
+    return bearingToLocationRadian(destinationLocation).toDegrees
+  }
 }

@@ -68,7 +68,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     } else if ReservationManager.sharedInstance.isReservationActive == 2 {
                         //cancelled
                         NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
-                    } else {
+                    } else if ReservationManager.sharedInstance.isReservationActive == 4 {
+                        //located
+                        //update timer and show screen if not shown
+                    }else {
                         //error or not active
                         //do nothing, keep current state
                     }

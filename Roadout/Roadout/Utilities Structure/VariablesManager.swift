@@ -31,7 +31,7 @@ var selectedParkLocationIndex = 0
 var selectedSectionIndex = 0
 var selectedLocationColor = UIColor(named: "Main Yellow")
 var selectedSpotID: String!
-var selectedSpotHash = "u82f0bc6m303-f80-h70-p0" //Manage once in database
+var selectedSpotHash = "" //Manage once in database - ex: u82f0bc6m303-f80-h70-p0
 var selectedLocationCoord: CLLocationCoordinate2D!
 var selectedSpotColor = "Main Yellow"
 

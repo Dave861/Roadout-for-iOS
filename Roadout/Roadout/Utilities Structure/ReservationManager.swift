@@ -22,7 +22,7 @@ class ReservationManager {
         case spotAlreadyTaken
     }
         
-    //-1 for not assigned, 0 is active, 1 is unlocked, 2 is cancelled, 3 is not active
+    //-1 for not assigned, 0 is active, 1 is unlocked, 2 is cancelled, 3 is not active, 4 is located
     var isReservationActive = -1
     
     var reservationEndDate = Date()
@@ -98,6 +98,7 @@ class ReservationManager {
             if jsonArray["message"] as! String == "active" {
                 //There is an active reservation
                 selectedSpotID = jsonArray["spotID"] as? String
+                //selectedSpotHash = jsonArray["spotHash"] as? String - once it exists
                 
                 let formattedEndDate = jsonArray["endDate"] as! String
                 let convertedEndDate = dateFormatter.date(from: formattedEndDate)
@@ -152,6 +153,14 @@ class ReservationManager {
                 }
                 NotificationHelper.sharedInstance.cancelReservationNotification()
                 self.isReservationActive = 1
+            } else if jsonArray["message"] as! String == "located" {
+                //Reservation ended, spot is being located
+                //get end date for locating & update
+                if self.reservationTimer != nil {
+                    self.reservationTimer.invalidate()
+                }
+                NotificationHelper.sharedInstance.cancelReservationNotification()
+                self.isReservationActive = 4
             } else {
                 //Error retrieving
                 self.isReservationActive = -1
