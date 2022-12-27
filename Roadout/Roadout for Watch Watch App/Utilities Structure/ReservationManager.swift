@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-var roadoutServerURL = "e8693947ab6e749e.p55.rt3.io"
+var roadoutServerURL = "roadout-for-db-2x8o3.ondigitalocean.app"
 
 struct ParkingReservationData: Identifiable {
     public var id: Int

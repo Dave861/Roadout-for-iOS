@@ -68,4 +68,4 @@ var carParkHash = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.carPa
 var userLicensePlate = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.userLicensePlate") ?? "NO-PLATE"
 
 //While server is variable, makes changing the url easier
-var roadoutServerURL = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.devServerURL") ?? "roadout.live"
+var roadoutServerURL = "roadout-for-db-2x8o3.ondigitalocean.app"//UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.devServerURL") ?? "roadout.live"

@@ -319,7 +319,7 @@ class HomeViewController: UIViewController {
             }),
             UIAction(title: "Find Way".localized(), image: UIImage(systemName: "binoculars.fill"), handler: { (_) in
                DispatchQueue.main.async {
-                    let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor(named: "GoldBrown")!, renderingMode: .alwaysOriginal)
+                    let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
                     let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
                     indicatorView.dismissByDrag = false
                     indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
