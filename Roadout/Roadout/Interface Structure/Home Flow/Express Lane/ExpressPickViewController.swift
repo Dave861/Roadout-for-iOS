@@ -112,7 +112,7 @@ class ExpressPickViewController: UIViewController {
         }
     }
     
-    func showNoFreeSpotAlert() {
+    func showNoFreeSpotAlert(indicatorView: SPIndicatorView) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "ExpressFocus")!
@@ -155,15 +155,6 @@ class ExpressPickViewController: UIViewController {
     
     func getPercentageFrom(totalSpots: Int, freeSpots: Int) -> Int {
         return 100-Int(Float(freeSpots)/Float(totalSpots) * 100)
-    }
-    
-    func showLoadingIndicator() {
-        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed.fill")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
-        let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
-        indicatorView.layer.borderColor = UIColor(named: "IndicatorBorder")!.cgColor
-        indicatorView.layer.borderWidth = 1.5
-        indicatorView.dismissByDrag = false
-        indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
     }
     
     func findFavouriteIndexInParkLocations(_ favouriteID: String) -> Int {
@@ -215,18 +206,26 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        self.showLoadingIndicator()
+        
+        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed.fill")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
+        let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
+        indicatorView.layer.borderColor = UIColor(named: "IndicatorBorder")!.cgColor
+        indicatorView.layer.borderWidth = 1.5
+        indicatorView.dismissByDrag = false
+        indicatorView.present()
+        
         selectedParkLocationIndex = findFavouriteIndexInParkLocations(favouriteLocations[indexPath.row].rID)
         Task {
             do {
                 try await FunctionsManager.sharedInstance.reserveSpotInLocationAsync(location: favouriteLocations[indexPath.row])
                 DispatchQueue.main.async {
+                    indicatorView.dismiss()
                     NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
                     NotificationCenter.default.post(name: .addExpressViewID, object: nil)
                     NotificationCenter.default.post(name: .showExpressLaneFreeSpotID, object: nil)
                 }
             } catch let err {
-                self.showNoFreeSpotAlert()
+                self.showNoFreeSpotAlert(indicatorView: indicatorView)
                 print(err)
             }
         }
@@ -268,18 +267,26 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         let indexPath = configuration.identifier as! IndexPath
-        self.showLoadingIndicator()
+        
+        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed.fill")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
+        let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
+        indicatorView.layer.borderColor = UIColor(named: "IndicatorBorder")!.cgColor
+        indicatorView.layer.borderWidth = 1.5
+        indicatorView.dismissByDrag = false
+        indicatorView.present()
+        
         selectedParkLocationIndex = findFavouriteIndexInParkLocations(favouriteLocations[indexPath.row].rID)
         Task {
             do {
                 try await FunctionsManager.sharedInstance.reserveSpotInLocationAsync(location: favouriteLocations[indexPath.row])
                 DispatchQueue.main.async {
+                    indicatorView.dismiss()
                     NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
                     NotificationCenter.default.post(name: .addExpressViewID, object: nil)
                     NotificationCenter.default.post(name: .showExpressLaneFreeSpotID, object: nil)
                 }
             } catch let err {
-                self.showNoFreeSpotAlert()
+                self.showNoFreeSpotAlert(indicatorView: indicatorView)
                 print(err)
             }
         }

@@ -53,17 +53,20 @@ class ResultView: UIView {
         carParkHash = "roadout_carpark_clear"
         NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
         //Find first free spot
-        self.showLoadingIndicator()
+        let indicatorIcon = UIImage(named: "roadout.car")!.withTintColor(selectedLocationColor ?? UIColor(named: "Main Yellow")!, renderingMode: .alwaysOriginal)
+        let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
+        indicatorView.dismissByDrag = false
+        indicatorView.present()
         Task {
             do {
                 try await FunctionsManager.sharedInstance.reserveSpotInLocationAsync(location: parkLocations[selectedParkLocationIndex])
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
                     NotificationCenter.default.post(name: .addReserveCardID, object: nil)
+                    indicatorView.dismiss()
                 }
-            } catch let err {
-                self.showNoFreeSpotAlert()
-                print(err)
+            } catch {
+                self.showNoFreeSpotAlert(indicatorView: indicatorView)
             }
         }
     }
@@ -75,8 +78,10 @@ class ResultView: UIView {
     }
     @IBOutlet weak var backBtn: UIButton!
     
-    func showNoFreeSpotAlert() {
+    func showNoFreeSpotAlert(indicatorView: SPIndicatorView) {
         DispatchQueue.main.async {
+            indicatorView.dismiss()
+            
             let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
             alert.view.tintColor = selectedLocationColor ?? UIColor(named: "Main Yellow")!
             alert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
@@ -136,13 +141,6 @@ class ResultView: UIView {
                 throw err
             }
         }
-    }
-    
-    func showLoadingIndicator() {
-        let indicatorIcon = UIImage(named: "roadout.car")!.withTintColor(selectedLocationColor ?? UIColor(named: "Main Yellow")!, renderingMode: .alwaysOriginal)
-        let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
-        indicatorView.dismissByDrag = false
-        indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
     }
 
 }

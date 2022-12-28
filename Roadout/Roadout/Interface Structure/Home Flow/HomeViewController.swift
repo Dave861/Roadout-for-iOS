@@ -318,11 +318,11 @@ class HomeViewController: UIViewController {
                 self.present(vc, animated: true, completion: nil)
             }),
             UIAction(title: "Find Way".localized(), image: UIImage(systemName: "binoculars.fill"), handler: { (_) in
-               DispatchQueue.main.async {
-                    let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
-                    let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
+                let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
+                let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
+                DispatchQueue.main.async {
                     indicatorView.dismissByDrag = false
-                    indicatorView.present(duration: 1.0, haptic: .none, completion: nil)
+                    indicatorView.present()
                 }
                 FunctionsManager.sharedInstance.foundSpot = nil
                 guard let coord = self.mapView.myLocation?.coordinate else {
@@ -337,16 +337,19 @@ class HomeViewController: UIViewController {
                             DispatchQueue.main.async {
                                 self.showFindCard()
                                 NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
+                                indicatorView.dismiss()
                             }
                         } else {
                             DispatchQueue.main.async {
                                 self.showFindLocationAlert()
+                                indicatorView.dismiss()
                             }
                         }
                     } catch let err {
                         print(err)
                         DispatchQueue.main.async {
                             self.showFindLocationAlert()
+                            indicatorView.dismiss()
                         }
                     }
                 }
