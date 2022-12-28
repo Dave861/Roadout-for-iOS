@@ -84,6 +84,21 @@ class SettingsViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    func signOutAllData() {
+        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
+        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.userID")
+        
+        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip1")
+        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip2")
+        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip3")
+        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip4")
+        
+        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.remindersList")
+        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.paymentMethods")
+        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.favouriteLocationIDs")
+        UserDefaults.roadout!.set("NO-PLATE", forKey: "ro.roadout.Roadout.userLicensePlate")
+    }
 }
 extension SettingsViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
@@ -140,11 +155,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             alert.view.tintColor = UIColor(named: "Dark Orange")
             let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
             let signOutAction = UIAlertAction(title: "Sign Out".localized(), style: .destructive) { action in
-                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
-                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip1")
-                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip2")
-                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip3")
-                UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip4")
+                self.signOutAllData()
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
                 self.view.window?.rootViewController = vc
