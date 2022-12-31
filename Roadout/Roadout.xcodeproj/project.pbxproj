@@ -96,8 +96,8 @@
 		9A5CC58C272C133A00A735A3 /* lightStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A5CC58A272C133A00A735A3 /* lightStyle.json */; };
 		9A5FC64227875F8D00CDB49D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5FC64127875F8D00CDB49D /* UserManager.swift */; };
 		9A5FC6442787685200CDB49D /* UserDefSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5FC6432787685200CDB49D /* UserDefSuite.swift */; };
-		9A65C5F227804B140060ABCA /* NotificationNameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */; };
-		9A65C5F627804E150060ABCA /* NotificationNameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */; };
+		9A65C5F227804B140060ABCA /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationCenter.swift */; };
+		9A65C5F627804E150060ABCA /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* NotificationCenter.swift */; };
 		9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A4A2E27293171008F69B3 /* SearchViewController.swift */; };
 		9A6A4A3127293184008F69B3 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A4A3027293184008F69B3 /* SearchCell.swift */; };
 		9A6B5490288942F700B88CB8 /* VariablesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9231172888416100CC9D92 /* VariablesManager.swift */; };
@@ -157,6 +157,13 @@
 		9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F872272B09DF008B58FE /* AddCardViewController.swift */; };
 		9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F874272B09F1008B58FE /* PaymentViewController.swift */; };
 		9A96F877272B0A25008B58FE /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A96F876272B0A25008B58FE /* CardCell.swift */; };
+		9A98CF0A29602F1E007339E6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7C1A082776035E0088B54A /* WidgetKit.framework */; };
+		9A98CF0B29602F1E007339E6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7C1A0A2776035E0088B54A /* SwiftUI.framework */; };
+		9A98CF1229602F1E007339E6 /* Roadout_Live_Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98CF1129602F1E007339E6 /* Roadout_Live_Activity.swift */; };
+		9A98CF1429602F20007339E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A98CF1329602F20007339E6 /* Assets.xcassets */; };
+		9A98CF1829602F20007339E6 /* Roadout Live ActivityExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9A98CF0929602F1E007339E6 /* Roadout Live ActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9A98CF1D29602F6F007339E6 /* RoadoutActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98CF1C29602F6F007339E6 /* RoadoutActivityAttributes.swift */; };
+		9A98CF1E29602FD3007339E6 /* RoadoutActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98CF1C29602F6F007339E6 /* RoadoutActivityAttributes.swift */; };
 		9AA01DDF2789D78E0004211A /* CHIOTPField in Frameworks */ = {isa = PBXBuildFile; productRef = 9AA01DDE2789D78E0004211A /* CHIOTPField */; };
 		9AA0AEFE272D195400DA04A2 /* LegalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */; };
 		9AA0EFCE277B3DDD00B0F52A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */; };
@@ -252,6 +259,13 @@
 			remoteGlobalIDString = 9A7C1A062776035E0088B54A;
 			remoteInfo = "Roadout WidgetExtension";
 		};
+		9A98CF1629602F20007339E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AC926DF272697F00054E453 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A98CF0829602F1E007339E6;
+			remoteInfo = "Roadout Live ActivityExtension";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -274,6 +288,7 @@
 			files = (
 				9A397D42280D4970003458BD /* RoadoutWidgetIntentHandler.appex in Embed App Extensions */,
 				9A7C1A142776035F0088B54A /* Roadout WidgetExtension.appex in Embed App Extensions */,
+				9A98CF1829602F20007339E6 /* Roadout Live ActivityExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,7 +416,7 @@
 		9A5CC58A272C133A00A735A3 /* lightStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lightStyle.json; sourceTree = "<group>"; };
 		9A5FC64127875F8D00CDB49D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		9A5FC6432787685200CDB49D /* UserDefSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefSuite.swift; sourceTree = "<group>"; };
-		9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameCenter.swift; sourceTree = "<group>"; };
+		9A65C5F127804B140060ABCA /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		9A6A4A2E27293171008F69B3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9A6A4A3027293184008F69B3 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		9A6D80A02733CF4C00C354EF /* carkeysound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = carkeysound.aiff; sourceTree = "<group>"; };
@@ -456,6 +471,11 @@
 		9A96F872272B09DF008B58FE /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		9A96F874272B09F1008B58FE /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		9A96F876272B0A25008B58FE /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		9A98CF0929602F1E007339E6 /* Roadout Live ActivityExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Roadout Live ActivityExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A98CF1129602F1E007339E6 /* Roadout_Live_Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadout_Live_Activity.swift; sourceTree = "<group>"; };
+		9A98CF1329602F20007339E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A98CF1529602F20007339E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A98CF1C29602F6F007339E6 /* RoadoutActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutActivityAttributes.swift; sourceTree = "<group>"; };
 		9A9F3168292A9141006CDDF7 /* RoadoutWidgetIntentHandler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RoadoutWidgetIntentHandler.entitlements; sourceTree = "<group>"; };
 		9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
 		9AA0EFCD277B3DDD00B0F52A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -560,6 +580,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9A98CF0629602F1E007339E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A98CF0B29602F1E007339E6 /* SwiftUI.framework in Frameworks */,
+				9A98CF0A29602F1E007339E6 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9AC926E4272697F00054E453 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -636,7 +665,7 @@
 				9A4CA21927DDE12900D2674D /* Localizables.strings */,
 				9A14B91D2731436300967417 /* UserPrefsUtils.swift */,
 				9A728C502732D849000F9DED /* NotificationHelper.swift */,
-				9A65C5F127804B140060ABCA /* NotificationNameCenter.swift */,
+				9A65C5F127804B140060ABCA /* NotificationCenter.swift */,
 				9A5FC6432787685200CDB49D /* UserDefSuite.swift */,
 				9AA0EFCC277B3DCF00B0F52A /* Authentification */,
 				9A799320277A0E2F0088E3FD /* Entities */,
@@ -920,6 +949,17 @@
 			path = "Card Views";
 			sourceTree = "<group>";
 		};
+		9A98CF0C29602F1E007339E6 /* Roadout Live Activity */ = {
+			isa = PBXGroup;
+			children = (
+				9A98CF1129602F1E007339E6 /* Roadout_Live_Activity.swift */,
+				9A98CF1C29602F6F007339E6 /* RoadoutActivityAttributes.swift */,
+				9A98CF1329602F20007339E6 /* Assets.xcassets */,
+				9A98CF1529602F20007339E6 /* Info.plist */,
+			);
+			path = "Roadout Live Activity";
+			sourceTree = "<group>";
+		};
 		9AA0EFCC277B3DCF00B0F52A /* Authentification */ = {
 			isa = PBXGroup;
 			children = (
@@ -983,6 +1023,7 @@
 				9A397D3C280D4970003458BD /* RoadoutWidgetIntentHandler */,
 				9A7596682905694600E0D680 /* Roadout for Watch Watch App */,
 				9A310F5E2909434C00249300 /* Roadout Complication */,
+				9A98CF0C29602F1E007339E6 /* Roadout Live Activity */,
 				9AC926E8272697F00054E453 /* Products */,
 				9A150810272BFA49008C083B /* Frameworks */,
 			);
@@ -996,6 +1037,7 @@
 				9A397D3A280D4970003458BD /* RoadoutWidgetIntentHandler.appex */,
 				9A7596672905694600E0D680 /* Roadout.app */,
 				9A310F5B2909434C00249300 /* Roadout ComplicationExtension.appex */,
+				9A98CF0929602F1E007339E6 /* Roadout Live ActivityExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1253,6 +1295,23 @@
 			productReference = 9A7C1A072776035E0088B54A /* Roadout WidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		9A98CF0829602F1E007339E6 /* Roadout Live ActivityExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A98CF1929602F20007339E6 /* Build configuration list for PBXNativeTarget "Roadout Live ActivityExtension" */;
+			buildPhases = (
+				9A98CF0529602F1E007339E6 /* Sources */,
+				9A98CF0629602F1E007339E6 /* Frameworks */,
+				9A98CF0729602F1E007339E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Roadout Live ActivityExtension";
+			productName = "Roadout Live ActivityExtension";
+			productReference = 9A98CF0929602F1E007339E6 /* Roadout Live ActivityExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		9AC926E6272697F00054E453 /* Roadout */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AC92711272697F20054E453 /* Build configuration list for PBXNativeTarget "Roadout" */;
@@ -1270,6 +1329,7 @@
 				9A7C1A132776035F0088B54A /* PBXTargetDependency */,
 				9A397D41280D4970003458BD /* PBXTargetDependency */,
 				9A051E672907E1B0003F719A /* PBXTargetDependency */,
+				9A98CF1729602F20007339E6 /* PBXTargetDependency */,
 			);
 			name = Roadout;
 			packageProductDependencies = (
@@ -1310,6 +1370,9 @@
 					9A7C1A062776035E0088B54A = {
 						CreatedOnToolsVersion = 13.1;
 					};
+					9A98CF0829602F1E007339E6 = {
+						CreatedOnToolsVersion = 14.1;
+					};
 					9AC926E6272697F00054E453 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -1342,6 +1405,7 @@
 				9A397D39280D4970003458BD /* RoadoutWidgetIntentHandler */,
 				9A7596662905694600E0D680 /* Roadout for Watch Watch App */,
 				9A310F5A2909434C00249300 /* Roadout ComplicationExtension */,
+				9A98CF0829602F1E007339E6 /* Roadout Live ActivityExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1377,6 +1441,14 @@
 			files = (
 				9A7C1A102776035F0088B54A /* Assets.xcassets in Resources */,
 				9AED6DC127E7266900B5004F /* WidgetLocalizables.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A98CF0729602F1E007339E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A98CF1429602F20007339E6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1456,7 +1528,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A65C5F627804E150060ABCA /* NotificationNameCenter.swift in Sources */,
+				9A65C5F627804E150060ABCA /* NotificationCenter.swift in Sources */,
 				9A0D58D627770CC80093B3D3 /* ParkLocation.swift in Sources */,
 				9A6B54932889430E00B88CB8 /* Reminder.swift in Sources */,
 				9A397D49280D523E003458BD /* EntityManager.swift in Sources */,
@@ -1470,6 +1542,15 @@
 				9A799329277A0E880088E3FD /* ParkSection.swift in Sources */,
 				9A397D47280D49DE003458BD /* IntentHandler.swift in Sources */,
 				9AED6DBF27E7263E00B5004F /* WidgetLocalization.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A98CF0529602F1E007339E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A98CF1E29602FD3007339E6 /* RoadoutActivityAttributes.swift in Sources */,
+				9A98CF1229602F1E007339E6 /* Roadout_Live_Activity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1532,7 +1613,7 @@
 				9ADB0A132909837400F548D9 /* SPIndicatorHaptic.swift in Sources */,
 				9ADB0A082909837400F548D9 /* SPIndicatorPresentSide.swift in Sources */,
 				9AF798F3272C4BF70096D4C3 /* PrizesViewController.swift in Sources */,
-				9A65C5F227804B140060ABCA /* NotificationNameCenter.swift in Sources */,
+				9A65C5F227804B140060ABCA /* NotificationCenter.swift in Sources */,
 				9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */,
 				9A14B914273142A400967417 /* CustomTableView.swift in Sources */,
 				9A8DC958282FF993008F92B6 /* HelpCell.swift in Sources */,
@@ -1604,6 +1685,7 @@
 				9ADEB748284FD3AD00AB6F23 /* SearchPreviewController.swift in Sources */,
 				9AED6DB027E7152A00B5004F /* SlidingButton.swift in Sources */,
 				9AF7142E27AFC41E00FEA4C4 /* AckViewController.swift in Sources */,
+				9A98CF1D29602F6F007339E6 /* RoadoutActivityAttributes.swift in Sources */,
 				9A39B0CE27284803008E7FD0 /* SpacerCell.swift in Sources */,
 				9A14B916273142C100967417 /* Extensions.swift in Sources */,
 				9A39B0D827284B38008E7FD0 /* SettingsTextCell.swift in Sources */,
@@ -1634,6 +1716,11 @@
 			isa = PBXTargetDependency;
 			target = 9A7C1A062776035E0088B54A /* Roadout WidgetExtension */;
 			targetProxy = 9A7C1A122776035F0088B54A /* PBXContainerItemProxy */;
+		};
+		9A98CF1729602F20007339E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A98CF0829602F1E007339E6 /* Roadout Live ActivityExtension */;
+			targetProxy = 9A98CF1629602F20007339E6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2003,6 +2090,64 @@
 			};
 			name = Release;
 		};
+		9A98CF1A29602F20007339E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 35;
+				DEVELOPMENT_TEAM = VKWWNVYVR5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Roadout Live Activity/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Roadout Live Activity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "live.roadout.Roadout.Roadout-Live-Activity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9A98CF1B29602F20007339E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 35;
+				DEVELOPMENT_TEAM = VKWWNVYVR5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Roadout Live Activity/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Roadout Live Activity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "live.roadout.Roadout.Roadout-Live-Activity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		9AC9270F272697F20054E453 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2154,6 +2299,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -2202,6 +2348,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -2261,6 +2408,15 @@
 			buildConfigurations = (
 				9A7C1A152776035F0088B54A /* Debug */,
 				9A7C1A162776035F0088B54A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A98CF1929602F20007339E6 /* Build configuration list for PBXNativeTarget "Roadout Live ActivityExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A98CF1A29602F20007339E6 /* Debug */,
+				9A98CF1B29602F20007339E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

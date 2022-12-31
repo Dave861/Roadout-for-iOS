@@ -8,6 +8,10 @@
 import Foundation
 import UserNotifications
 
+#if canImport(ActivityKit)
+import ActivityKit
+#endif
+
 class NotificationHelper {
     
     static let sharedInstance = NotificationHelper()
@@ -68,20 +72,26 @@ class NotificationHelper {
     //MARK: - Reservation -
     
     func scheduleReservationNotification() {
-        center.getNotificationSettings { settings in
-            if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
-                self.cancelReservationNotification()
-                if timerSeconds > 0 {
-                    self.scheduleReservationEndNot()
+        if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() == 1 {
+            center.getNotificationSettings { settings in
+                if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
+                    self.cancelReservationNotification()
+                    if timerSeconds > 0 {
+                        self.scheduleReservationEndNot()
+                    }
+                    if timerSeconds > 60 {
+                        self.scheduleReservation1Not()
+                    }
+                    if timerSeconds > 300 {
+                        self.scheduleReservation5Not()
+                    }
+                } else {
+                    self.askNotificationPermission(currentNotification: "Reservation")
                 }
-                if timerSeconds > 60 {
-                    self.scheduleReservation1Not()
-                }
-                if timerSeconds > 300 {
-                    self.scheduleReservation5Not()
-                }
-            } else {
-                self.askNotificationPermission(currentNotification: "Reservation")
+            }
+        } else if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() == 2 {
+            if #available(iOS 16.1, *) {
+                LiveActivityHelper.sharedInstance.startLiveActivity(with: timerSeconds)
             }
         }
     }
@@ -151,6 +161,9 @@ class NotificationHelper {
             center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.reservationDone"])
             self.UserDefaultsSuite.set(false, forKey: "ro.roadout.setDoneReservation")
         }
+        if #available(iOS 16.1, *) {
+            LiveActivityHelper.sharedInstance.endLiveActivity()
+        }
     }
     
     //MARK: - Reminders -
@@ -184,3 +197,64 @@ class NotificationHelper {
     }
     
 }
+
+@available(iOS 16.1, *)
+class LiveActivityHelper {
+    
+    static let sharedInstance = LiveActivityHelper()
+    
+    var roadoutLiveActivity: Activity<RoadoutReservationAttributes>!
+    
+    private init() {}
+    
+    func startLiveActivity(with timerSeconds: Int) {
+        if Activity<RoadoutReservationAttributes>.activities.isEmpty {
+            //Start new activity
+            let roadoutReservationAttributes = RoadoutReservationAttributes(parkSpotID: selectedSpotID)
+            let initialContentState = RoadoutReservationAttributes.RoadoutReservationStatus(endTime: Date()...Date().addingTimeInterval(Double(timerSeconds)))
+            Task {
+                do {
+                    roadoutLiveActivity = try Activity<RoadoutReservationAttributes>.request(
+                        attributes: roadoutReservationAttributes,
+                        contentState: initialContentState,
+                        pushType: nil)
+                } catch let err {
+                    print(err)
+                }
+            }
+        } else {
+            updateLiveActivity(with: timerSeconds)
+        }
+    }
+    
+    func updateLiveActivity(with timerSeconds: Int) {
+        if roadoutLiveActivity == nil {
+            roadoutLiveActivity = Activity<RoadoutReservationAttributes>.activities.first
+        }
+        guard roadoutLiveActivity != nil else {
+            startLiveActivity(with: timerSeconds)
+            return
+        }
+        //Update
+        let updatedStatus = RoadoutReservationAttributes.RoadoutReservationStatus(endTime: Date()...Date().addingTimeInterval(Double(timerSeconds)))
+        Task {
+            await roadoutLiveActivity.update(using: updatedStatus)
+        }
+    }
+    
+    func endLiveActivity() {
+        if roadoutLiveActivity == nil {
+            roadoutLiveActivity = Activity<RoadoutReservationAttributes>.activities.first
+        }
+        guard roadoutLiveActivity != nil else {
+            //Already ended
+            return
+        }
+        //End
+        let updatedStatus = RoadoutReservationAttributes.RoadoutReservationStatus(endTime: Date()...Date())
+        Task {
+            await roadoutLiveActivity.end(using: updatedStatus, dismissalPolicy: .immediate)
+        }
+    }
+}
+

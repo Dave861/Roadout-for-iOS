@@ -53,9 +53,7 @@ class ReservationManager {
         }
         
         if jsonArray["status"] as! String == "Success" {
-            if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() == 1 {
-                NotificationHelper.sharedInstance.scheduleReservationNotification()
-            }
+            NotificationHelper.sharedInstance.scheduleReservationNotification()
             self.reservationEndDate = date.addingTimeInterval(TimeInterval(time*60))
             
             //Remove once we have push notifications
@@ -131,9 +129,7 @@ class ReservationManager {
                     guard convertedEndDate != nil else { return }
                     timerSeconds = Int(convertedEndDate!.timeIntervalSinceNow)
                     NotificationHelper.sharedInstance.cancelReservationNotification()
-                    if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() == 1 {
-                        NotificationHelper.sharedInstance.scheduleReservationNotification()
-                    }
+                    NotificationHelper.sharedInstance.scheduleReservationNotification()
                 }
                 self.isReservationActive = 0
             } else if jsonArray["message"] as! String == "not active" {
@@ -214,9 +210,7 @@ class ReservationManager {
             
             timerSeconds = Int(newEndDate.timeIntervalSinceNow)
             NotificationHelper.sharedInstance.cancelReservationNotification()
-            if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() == 1 {
-                NotificationHelper.sharedInstance.scheduleReservationNotification()
-            }
+            NotificationHelper.sharedInstance.scheduleReservationNotification()
             
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .updateReservationTimeLabelID, object: nil)

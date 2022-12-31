@@ -89,7 +89,11 @@ class PermissionsViewController: UIViewController {
         if #available(iOS 15.0, *) {
             center.requestAuthorization(options: [.alert, .sound, .timeSensitive]) { granted, error in
                 if granted {
-                    self.UserDefaultsSuite.set(1, forKey: "ro.roadout.reservationNotificationsOption")
+                    if #available(iOS 16.1, *) {
+                        self.UserDefaultsSuite.set(2, forKey: "ro.roadout.reservationNotificationsOption")
+                    } else {
+                        self.UserDefaultsSuite.set(1, forKey: "ro.roadout.reservationNotificationsOption")
+                    }
                     self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reminderNotificationsEnabled")
                 } else {
                     self.UserDefaultsSuite.set(0, forKey: "ro.roadout.reservationNotificationsOption")
