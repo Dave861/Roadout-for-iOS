@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreLocation
+import GeohashKit
 import UserNotifications
 
 #if canImport(ActivityKit)
@@ -161,9 +163,51 @@ class NotificationHelper {
             center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.reservationDone"])
             self.UserDefaultsSuite.set(false, forKey: "ro.roadout.setDoneReservation")
         }
-        if #available(iOS 16.1, *) {
-            LiveActivityHelper.sharedInstance.endLiveActivity()
+    }
+    
+    //MARK: - Location Notifications -
+    
+    func scheduleLocationNotification() {
+        if UserPrefsUtils.sharedInstance.locationNotificationsEnabled() {
+            center.getNotificationSettings { settings in
+                if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
+                    let content = UNMutableNotificationContent()
+                    content.title = "Arrived at Parking"
+                    content.body = "It seems you have arrived at your parking location."
+                    content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "hornsound.aiff"))
+                    if #available(iOS 15.0, *) {
+                        content.interruptionLevel = .timeSensitive
+                    }
+                    let region = CLCircularRegion(center: self.decodeCoordsFromGeohash(), radius: 10.0, identifier: "ro.roadout.parkingSpotRegion")
+                    let trigger = UNLocationNotificationTrigger(region: region, repeats: false)
+                    let request = UNNotificationRequest(identifier: "ro.roadout.setLocationReservation", content: content, trigger: trigger)
+                    self.center.add(request) { err in
+                        if err == nil {
+                            self.UserDefaultsSuite.set(true, forKey: "ro.roadout.setLocationReservation")
+                        }
+                    }
+                }
+            }
         }
+    }
+    
+    func cancelLocationNotification() {
+        if UserDefaultsSuite.bool(forKey: "ro.roadout.setLocationReservation") {
+            center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.setLocationReservation"])
+            self.UserDefaultsSuite.set(false, forKey: "ro.roadout.setLocationReservation")
+        }
+    }
+    
+    func decodeCoordsFromGeohash() -> CLLocationCoordinate2D {
+        let hashComponents = selectedSpotHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
+        let fov = String(hashComponents[1].dropFirst())
+        let heading = String(hashComponents[2].dropFirst())
+        let pitch = String(hashComponents[3].dropFirst())
+        
+        let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
+        let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
+        
+        return CLLocationCoordinate2D(latitude: lat, longitude: long)
     }
     
     //MARK: - Reminders -
@@ -181,11 +225,7 @@ class NotificationHelper {
                 let dateComp = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.date)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: false)
                 let request = UNNotificationRequest(identifier: reminder.identifier, content: content, trigger: trigger)
-                self.center.add(request) { err in
-                    if err == nil {
-                        print("Scheduled Reminder")
-                    }
-                }
+                self.center.add(request) { _ in }
             } else {
                 self.askNotificationPermission(currentNotification: "Reminder", reminder: reminder)
             }

@@ -226,6 +226,8 @@ class HomeViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: .returnToSearchBarID, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBarWithError), name: .returnToSearchBarWithErrorID, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(showFindCard), name: .showFindCardID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(animateCameraToFoundLocation), name: .animateCameraToFoundID, object: nil)
         
@@ -730,32 +732,29 @@ extension HomeViewController {
         
     }
     @objc func removeResultCard() {
-        self.updateBackgroundViewHeight(with: 52)
         DispatchQueue.main.async {
+            self.updateBackgroundViewHeight(with: 52)
             self.searchBar.alpha = 1.0
             self.resultView.removeFromSuperview()
             if self.selectedMarker != nil {
-                
                 self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
                 imageView.contentMode = .scaleAspectFit
                 imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
                 self.selectedMarker.iconView?.addSubview(imageView)
-                
             }
         }
     }
     //Section Card
     @objc func addSectionCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        
-        self.updateBackgroundViewHeight(with: 331)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 331)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -764,9 +763,9 @@ extension HomeViewController {
         }
     }
     @objc func removeSectionCard() {
-        self.updateBackgroundViewHeight(with: 142)
-        var dif = 15.0
         DispatchQueue.main.async {
+            self.updateBackgroundViewHeight(with: 142)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -777,14 +776,14 @@ extension HomeViewController {
     }
     //Spot Card
     @objc func addSpotCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 318)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 318)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -793,9 +792,9 @@ extension HomeViewController {
         }
     }
     @objc func removeSpotCard() {
-        self.updateBackgroundViewHeight(with: 331)
-        var dif = 15.0
         DispatchQueue.main.async {
+            self.updateBackgroundViewHeight(with: 331)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -806,14 +805,14 @@ extension HomeViewController {
     }
     //Reserve Card
     @objc func addReserveCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 310)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 310)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -822,21 +821,20 @@ extension HomeViewController {
         }
     }
     @objc func removeReserveCard() {
-        if returnToResult {
-            self.updateBackgroundViewHeight(with: 142)
-            var dif = 15.0
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            if returnToResult {
+                self.updateBackgroundViewHeight(with: 142)
+                var dif = 15.0
                 if (UIDevice.current.hasNotch) {
                     dif = 49.0
                 }
                 self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-142-dif, width: self.screenSize.width - 20, height: 142)
                 self.view.addSubview(self.resultView)
                 self.reserveView.removeFromSuperview()
-            }
-        } else {
-            self.updateBackgroundViewHeight(with: 318)
-            var dif = 15.0
-            DispatchQueue.main.async {
+                
+            } else {
+                self.updateBackgroundViewHeight(with: 318)
+                var dif = 15.0
                 if (UIDevice.current.hasNotch) {
                     dif = 49.0
                 }
@@ -848,14 +846,14 @@ extension HomeViewController {
     }
     //Pay Card
     @objc func addPayCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 237)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 237)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -864,9 +862,9 @@ extension HomeViewController {
         }
     }
     @objc func removePayCard() {
-        self.updateBackgroundViewHeight(with: 310)
-        var dif = 15.0
         DispatchQueue.main.async {
+            self.updateBackgroundViewHeight(with: 310)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -877,14 +875,14 @@ extension HomeViewController {
     }
     //Reservation Card
     @objc func addReservationCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 265)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 265)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -893,9 +891,9 @@ extension HomeViewController {
         }
     }
     @objc func removeReservationCard() {
-        self.updateBackgroundViewHeight(with: 52)
-        var dif = 15.0
         DispatchQueue.main.async {
+            self.updateBackgroundViewHeight(with: 52)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -906,14 +904,14 @@ extension HomeViewController {
     }
     //Delay Card
     @objc func addDelayCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 205)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 205)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -922,9 +920,9 @@ extension HomeViewController {
         }
     }
     @objc func removeDelayCard() {
-        self.updateBackgroundViewHeight(with: 265)
-        var dif = 15.0
         DispatchQueue.main.async {
+            self.updateBackgroundViewHeight(with: 265)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -935,14 +933,14 @@ extension HomeViewController {
     }
     //Pay Delay Card
     @objc func addPayDelayCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 237)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 237)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -951,9 +949,9 @@ extension HomeViewController {
         }
     }
     @objc func removePayDelayCard() {
-        self.updateBackgroundViewHeight(with: 205)
-        var dif = 15.0
         DispatchQueue.main.async {
+            self.updateBackgroundViewHeight(with: 205)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -964,14 +962,14 @@ extension HomeViewController {
     }
     //Unlock Card
     @objc func addUnlockCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 221)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 221)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -980,9 +978,9 @@ extension HomeViewController {
         }
     }
     @objc func removeUnlockCard() {
-        self.updateBackgroundViewHeight(with: 265)
-        var dif = 15.0
         DispatchQueue.main.async {
+            self.updateBackgroundViewHeight(with: 265)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -993,14 +991,15 @@ extension HomeViewController {
     }
     
     @objc func showUnlockedView() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 155)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 155)
+            var dif = 15.0
+            
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -1008,19 +1007,19 @@ extension HomeViewController {
             self.view.addSubview(self.unlockedView)
         }
     }
-    
+
     @objc func addPayDurationCard() {
-        let camera = GMSCameraPosition.camera(withLatitude: (selectedPayLocation!.latitude), longitude: (selectedPayLocation!.longitude), zoom: 17.0)
-        self.mapView?.animate(to: camera)
-        
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 206)
-        var dif = 15.0
         DispatchQueue.main.async {
+            let camera = GMSCameraPosition.camera(withLatitude: (selectedPayLocation!.latitude), longitude: (selectedPayLocation!.longitude), zoom: 17.0)
+            self.mapView?.animate(to: camera)
+            
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 206)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -1029,9 +1028,9 @@ extension HomeViewController {
         }
     }
     @objc func removePayDurationCard() {
-        self.updateBackgroundViewHeight(with: 155)
-        var dif = 15.0
         DispatchQueue.main.async {
+            self.updateBackgroundViewHeight(with: 155)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -1042,14 +1041,14 @@ extension HomeViewController {
     }
     
     @objc func addPayParkingCard() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 271)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 271)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -1058,9 +1057,9 @@ extension HomeViewController {
         }
     }
     @objc func removePayParkingCard() {
-        self.updateBackgroundViewHeight(with: 206)
-        var dif = 15.0
         DispatchQueue.main.async {
+            self.updateBackgroundViewHeight(with: 206)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -1073,21 +1072,21 @@ extension HomeViewController {
     //MARK: -Bar functions-
     
     @objc func showPaidBar() {
-        if self.selectedMarker != nil {
-            self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
-            self.selectedMarker.iconView?.addSubview(imageView)
-        }
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 52)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.selectedMarker != nil {
+                self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                imageView.contentMode = .scaleAspectFit
+                imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
+                self.selectedMarker.iconView?.addSubview(imageView)
+            }
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 52)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -1097,31 +1096,33 @@ extension HomeViewController {
     }
     
     @objc func showActiveBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 52)
-        var dif = 15.0
         DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
+            if self.view.subviews.last != self.reservationView {
+                if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                    self.view.subviews.last!.removeFromSuperview()
+                } else {
+                    self.searchBar.alpha = 0.0
+                }
+                self.updateBackgroundViewHeight(with: 52)
+                var dif = 15.0
+                if (UIDevice.current.hasNotch) {
+                    dif = 49.0
+                }
+                self.activeBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
+                self.view.addSubview(self.activeBar)
             }
-            self.activeBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
-            self.view.addSubview(self.activeBar)
         }
     }
     
     @objc func showCancelledBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 52)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 52)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -1131,15 +1132,15 @@ extension HomeViewController {
     }
     
     @objc func showNoWifiBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.removeSpotMarker()
-        self.updateBackgroundViewHeight(with: 52)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.removeSpotMarker()
+            self.updateBackgroundViewHeight(with: 52)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -1149,14 +1150,14 @@ extension HomeViewController {
     }
     
     @objc func showPaidParkingBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 52)
-        var dif = 15.0
         DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 52)
+            var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
@@ -1167,17 +1168,40 @@ extension HomeViewController {
     
     //MARK: -Return to Search Bar-
     @objc func returnToSearchBar() {
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
+        DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            }
+            
+            self.updateBackgroundViewHeight(with: 52)
+            self.searchBar.alpha = 1.0
         }
-        self.updateBackgroundViewHeight(with: 52)
-        self.searchBar.alpha = 1.0
+    }
+    
+    @objc func returnToSearchBarWithError() {
+        DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            }
+
+            self.updateBackgroundViewHeight(with: 52)
+            self.searchBar.alpha = 1.0
+            //Show alert
+            let alert = UIAlertController(title: "Retrieving Error", message: "There was an error retrieving reservation details. If you have a reservation active please quit the app and try again.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .cancel)
+            alert.addAction(okAction)
+            
+            alert.view.tintColor = UIColor(named: "Dark Yellow")
+            self.present(alert, animated: true)
+        }
     }
     
     @objc func removeNoWifiBar() {
-        if self.view.subviews.last == noWifiBar {
-            self.view.subviews.last!.removeFromSuperview()
-            self.searchBar.alpha = 1.0
+        DispatchQueue.main.async {
+            if self.view.subviews.last == self.noWifiBar {
+                self.view.subviews.last!.removeFromSuperview()
+                self.searchBar.alpha = 1.0
+            }
         }
     }
     

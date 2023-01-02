@@ -85,16 +85,16 @@ Made in Cluj :)</string>
                                         </constraints>
                                         <color key="onTintColor" name="Redish"/>
                                         <connections>
-                                            <action selector="reminderSwitched:" destination="Y6W-OH-hqX" eventType="valueChanged" id="4dk-QI-fQU"/>
+                                            <action selector="locationSwitched:" destination="Y6W-OH-hqX" eventType="valueChanged" id="oDF-fK-iOx"/>
                                         </connections>
                                     </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get reminder notfications, set by you inside the app" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJb-OE-idj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get location based notifications when you arrive at the current reservation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJb-OE-idj">
                                         <rect key="frame" x="8" y="30" width="271" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminders Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfL-ZQ-BsQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfL-ZQ-BsQ">
                                         <rect key="frame" x="8" y="8" width="271" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="dpB-Pa-UqJ"/>
@@ -281,6 +281,49 @@ Made in Cluj :)</string>
                                     <constraint firstItem="CmP-P6-iu8" firstAttribute="leading" secondItem="s6L-ka-BGT" secondAttribute="leading" constant="8" id="zFG-kC-i8h"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VxM-de-cf0">
+                                <rect key="frame" x="20" y="425.33333333333331" width="353" height="74"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PZb-bH-KLD">
+                                        <rect key="frame" x="287" y="21.666666666666686" width="49" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="47" id="dPi-fT-ctT"/>
+                                            <constraint firstAttribute="height" constant="31" id="l8B-LA-4bz"/>
+                                        </constraints>
+                                        <color key="onTintColor" name="Redish"/>
+                                        <connections>
+                                            <action selector="reminderSwitched:" destination="Y6W-OH-hqX" eventType="valueChanged" id="7K9-YW-yLP"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get reminder notfications, set by you inside the app" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BU-ng-nn6">
+                                        <rect key="frame" x="8" y="30" width="271" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminders Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXZ-bM-P6p">
+                                        <rect key="frame" x="8" y="8" width="271" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="3cW-4N-976"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Secondary Detail"/>
+                                <constraints>
+                                    <constraint firstItem="iXZ-bM-P6p" firstAttribute="leading" secondItem="VxM-de-cf0" secondAttribute="leading" constant="8" id="4Lk-gu-2cg"/>
+                                    <constraint firstAttribute="bottom" secondItem="5BU-ng-nn6" secondAttribute="bottom" constant="8" id="B3c-wT-g6j"/>
+                                    <constraint firstItem="5BU-ng-nn6" firstAttribute="top" secondItem="iXZ-bM-P6p" secondAttribute="bottom" constant="1" id="Err-zF-ZUK"/>
+                                    <constraint firstItem="iXZ-bM-P6p" firstAttribute="top" secondItem="VxM-de-cf0" secondAttribute="top" constant="8" id="Fu0-te-phJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="PZb-bH-KLD" secondAttribute="trailing" constant="19" id="LAO-DT-DY9"/>
+                                    <constraint firstItem="PZb-bH-KLD" firstAttribute="leading" secondItem="5BU-ng-nn6" secondAttribute="trailing" constant="8" symbolic="YES" id="aFZ-ym-45H"/>
+                                    <constraint firstItem="PZb-bH-KLD" firstAttribute="centerY" secondItem="VxM-de-cf0" secondAttribute="centerY" id="i08-2E-mNm"/>
+                                    <constraint firstItem="PZb-bH-KLD" firstAttribute="leading" secondItem="iXZ-bM-P6p" secondAttribute="trailing" constant="8" symbolic="YES" id="oIv-hU-k11"/>
+                                    <constraint firstItem="5BU-ng-nn6" firstAttribute="leading" secondItem="VxM-de-cf0" secondAttribute="leading" constant="8" id="wze-ju-HyL"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="Second Background"/>
@@ -295,9 +338,12 @@ Made in Cluj :)</string>
                             <constraint firstItem="7eH-WR-cFg" firstAttribute="top" secondItem="c6x-BI-Dfb" secondAttribute="bottom" constant="13" id="V4e-0t-EJm"/>
                             <constraint firstItem="yjt-pM-e08" firstAttribute="top" secondItem="s6L-ka-BGT" secondAttribute="bottom" constant="10" id="ZIo-G2-ewo"/>
                             <constraint firstItem="yjt-pM-e08" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="aWm-ZP-ot8"/>
+                            <constraint firstItem="VxM-de-cf0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="bcy-lP-Ej1"/>
                             <constraint firstItem="Lau-2H-tem" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="7" id="h0h-la-0d1"/>
                             <constraint firstItem="eAV-RH-8eo" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="45" id="hAI-kR-n5k"/>
+                            <constraint firstItem="VxM-de-cf0" firstAttribute="top" secondItem="yjt-pM-e08" secondAttribute="bottom" constant="10" id="hSt-AW-GoL"/>
                             <constraint firstItem="eAV-RH-8eo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="k3G-gl-mAb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="VxM-de-cf0" secondAttribute="trailing" constant="20" id="lFv-7m-NBx"/>
                             <constraint firstItem="c6x-BI-Dfb" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="pac-kh-rwZ"/>
                             <constraint firstItem="nzW-Ux-ETF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="qWU-Ak-0Xw"/>
                             <constraint firstItem="7eH-WR-cFg" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="5" id="sa2-Ao-czd"/>
@@ -306,10 +352,14 @@ Made in Cluj :)</string>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="Lau-2H-tem" id="kW8-XO-d15"/>
-                        <outlet property="reminderDescription" destination="oJb-OE-idj" id="9hR-Qy-BqR"/>
-                        <outlet property="reminderNotifCard" destination="yjt-pM-e08" id="FB8-wt-s0z"/>
-                        <outlet property="reminderSwitch" destination="Zma-kX-HuV" id="JPs-9w-7Vz"/>
-                        <outlet property="reminderTitle" destination="QfL-ZQ-BsQ" id="3AT-a8-J8T"/>
+                        <outlet property="locationDescription" destination="oJb-OE-idj" id="TlH-J0-4jJ"/>
+                        <outlet property="locationNotifCard" destination="yjt-pM-e08" id="Hl6-9O-Yhb"/>
+                        <outlet property="locationSwitch" destination="Zma-kX-HuV" id="dZU-P7-Up0"/>
+                        <outlet property="locationTitle" destination="QfL-ZQ-BsQ" id="33X-UA-y4f"/>
+                        <outlet property="reminderDescription" destination="5BU-ng-nn6" id="9Ws-c8-nyX"/>
+                        <outlet property="reminderNotifCard" destination="VxM-de-cf0" id="aSg-rZ-0eu"/>
+                        <outlet property="reminderSwitch" destination="PZb-bH-KLD" id="FhT-F6-bmf"/>
+                        <outlet property="reminderTitle" destination="iXZ-bM-P6p" id="qml-Ky-xGb"/>
                         <outlet property="reservationDescription" destination="vxU-9Y-kXC" id="lou-k9-nn9"/>
                         <outlet property="reservationLiveBtn" destination="Ea1-ql-ctB" id="5T6-rv-ZBL"/>
                         <outlet property="reservationLiveIcon" destination="uU6-r1-CeM" id="hLY-PQ-Pfc"/>
@@ -387,7 +437,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OBN-Pc-CFS">
-                                        <rect key="frame" x="311" y="13.666666666666686" width="29" height="43.666666666666671"/>
+                                        <rect key="frame" x="311" y="13.333333333333343" width="29" height="43.666666666666671"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="E58-uX-UWJ"/>
@@ -440,7 +490,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WJZ-Yw-9kh">
-                                        <rect key="frame" x="311" y="13.666666666666686" width="29" height="43.666666666666671"/>
+                                        <rect key="frame" x="311" y="13.333333333333343" width="29" height="43.666666666666671"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="7pe-dW-flE"/>
@@ -493,7 +543,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="e9R-ju-qND">
-                                        <rect key="frame" x="311" y="13.666666666666629" width="29" height="43.666666666666671"/>
+                                        <rect key="frame" x="311" y="13.333333333333314" width="29" height="43.666666666666671"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="29" id="5kc-aW-duy"/>
@@ -2028,13 +2078,13 @@ Made in Cluj :)</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ &amp; Support" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0x-db-MEW">
-                                <rect key="frame" x="20" y="104" width="186" height="32.333333333333343"/>
+                                <rect key="frame" x="20" y="104" width="186" height="32.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Support" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SN8-fo-Fj4">
-                                <rect key="frame" x="20" y="152.33333333333334" width="106" height="23"/>
+                                <rect key="frame" x="20" y="152.66666666666666" width="106" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="z08-8x-tiZ"/>
                                 </constraints>
@@ -2043,7 +2093,7 @@ Made in Cluj :)</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZK-08-21W">
-                                <rect key="frame" x="20" y="184.33333333333334" width="353" height="43"/>
+                                <rect key="frame" x="20" y="184.66666666666666" width="353" height="43"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucO-F4-4G5">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="43"/>
@@ -2067,7 +2117,7 @@ Made in Cluj :)</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kLx-tj-CGM">
-                                <rect key="frame" x="20" y="271.33333333333326" width="353" height="500.66666666666674"/>
+                                <rect key="frame" x="20" y="271.66666666666674" width="353" height="500.33333333333326"/>
                                 <color key="backgroundColor" name="Second Background"/>
                                 <color key="sectionIndexBackgroundColor" name="Second Background"/>
                                 <prototypes>
@@ -2097,7 +2147,7 @@ Made in Cluj :)</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GZ1-71-tE5">
-                                                            <rect key="frame" x="4" y="15" width="35" height="39.33333333333335"/>
+                                                            <rect key="frame" x="4" y="15.000000000000005" width="35" height="39.333333333333336"/>
                                                             <color key="tintColor" name="Kinda Red"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="35" id="bRm-mU-F8k"/>
@@ -2139,7 +2189,7 @@ Made in Cluj :)</string>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequent Questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xA-ke-cTs">
-                                <rect key="frame" x="20" y="240.33333333333334" width="170.66666666666666" height="23.000000000000028"/>
+                                <rect key="frame" x="20" y="240.66666666666666" width="170.66666666666666" height="22.999999999999972"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="fLd-Js-2nx"/>
                                 </constraints>
@@ -2661,7 +2711,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More Integrations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec8-MY-yXM">
-                                        <rect key="frame" x="7.9999999999999929" y="8" width="124.33333333333331" height="21"/>
+                                        <rect key="frame" x="8.0000000000000071" y="8" width="124.66666666666669" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="mj8-kO-3w6"/>
                                         </constraints>

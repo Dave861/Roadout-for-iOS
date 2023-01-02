@@ -10,6 +10,9 @@ import Foundation
 class UserPrefsUtils {
     
     static let sharedInstance = UserPrefsUtils()
+    
+    private init() {}
+    
     let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
     
     func returnPrefferedMapsApp() -> String {
@@ -31,6 +34,11 @@ class UserPrefsUtils {
     func reservationNotificationsEnabled() -> Int {
         let option = UserDefaultsSuite.integer(forKey: "ro.roadout.reservationNotificationsOption")
         return option
+    }
+    
+    func locationNotificationsEnabled() -> Bool {
+        let enabled = UserDefaultsSuite.bool(forKey: "ro.roadout.locationNotificationsEnabled")
+        return enabled
     }
     
     func reminderNotificationsEnabled() -> Bool {

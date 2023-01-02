@@ -99,6 +99,9 @@ struct RoadoutAppIntent: AppIntent {
         } else if reservationMinutes! <= 0 {
             throw RoadoutIntentErrors.valueZero
         }
+        
+        timerSeconds = 60*reservationMinutes!
+        
         //Make price
         let resPrice = Double(reservationMinutes!).rounded(toPlaces: 2)*0.75
         
@@ -113,11 +116,16 @@ struct RoadoutAppIntent: AppIntent {
             )
          
         //Reserve
-        //MARK: -TODO-
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        do {
+            try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: Int(resPrice), userID: id)
+        } catch {
+            throw RoadoutIntentErrors.failureRequiringAppLaunch
+        }
         
         return .result(dialog: "Spot Reserved! Open Roadout for more actions.") {
              RoadoutIntentSuccesView(reservationTime: Date().addingTimeInterval(Double(reservationMinutes!)*60))
-         }
+        }
     }
 }
 

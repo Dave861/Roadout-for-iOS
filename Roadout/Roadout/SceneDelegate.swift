@@ -36,13 +36,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
-    }
-
     func sceneDidBecomeActive(_ scene: UIScene) {
         NotificationHelper.sharedInstance.checkNotificationStatus()
         NotificationCenter.default.post(name: .updateLocationID, object: nil)
@@ -61,27 +54,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)
                     if ReservationManager.sharedInstance.isReservationActive == 0 {
                         //active
-                        NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                        if openedByLiveActivity {
+                            openedByLiveActivity = false
+                            NotificationCenter.default.post(name: .addUnlockCardID, object: nil)
+                        } else {
+                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                        }
                     } else if ReservationManager.sharedInstance.isReservationActive == 1 {
                         //unlocked
-                        //do nothing, keep current state
+                        NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
                     } else if ReservationManager.sharedInstance.isReservationActive == 2 {
                         //cancelled
                         NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
-                    } else if ReservationManager.sharedInstance.isReservationActive == 4 {
-                        //located
-                        //update timer and show screen if not shown
-                    }else {
-                        //error or not active
-                        //do nothing, keep current state
+                    } else if ReservationManager.sharedInstance.isReservationActive == 3 {
+                        //not active
+                        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+                    } else {
+                        //error
+                        NotificationCenter.default.post(name: .returnToSearchBarWithErrorID, object: nil)
                     }
                 }
             }
         }
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
@@ -92,13 +86,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.makeKeyAndVisible()
         }
     }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let _: UIOpenURLContext = URLContexts.first(where: { $0.url.scheme == "roadout-live" }) else { return }
+        if URLContexts.first?.url.absoluteString == "roadout-live://unlock" {
+            openedByLiveActivity = true
+        }
     }
-
-
 }
 

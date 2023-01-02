@@ -101,21 +101,21 @@ struct DIBottonView: View {
     var context: ActivityViewContext<RoadoutReservationAttributes>
     
     var body: some View {
-        Button {
-            // Deep link to unlock card.
-        } label: {
-            HStack {
-                Spacer()
-                Label("Unlock Spot", systemImage: "lock.open.fill")
-                    .frame(height: 44)
-                    .font(.system(size: 18, weight: .medium))
-                Spacer()
+        Link(destination: URL(string: "roadout-live://unlock")!) {
+            Button {} label: {
+                HStack {
+                    Spacer()
+                    Label("Unlock Spot", systemImage: "lock.fill")
+                        .frame(height: 44)
+                        .font(.system(size: 18, weight: .medium))
+                    Spacer()
+                }
             }
+            .tint(Color("Main Yellow"))
+            .buttonStyle(.bordered)
+            .frame(height: 44)
+            .cornerRadius(22.5)
         }
-        .tint(Color("Main Yellow"))
-        .buttonStyle(.bordered)
-        .frame(height: 44)
-        .cornerRadius(22.5)
     }
 }
 //MARK: -LockScreen-

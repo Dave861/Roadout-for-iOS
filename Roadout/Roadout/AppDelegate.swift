@@ -96,9 +96,12 @@ extension AppDelegate: WCSessionDelegate {
                     } else if ReservationManager.sharedInstance.isReservationActive == 2 {
                         //cancelled
                         NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
-                    } else {
-                        //error or not active
+                    } else if ReservationManager.sharedInstance.isReservationActive == 3 {
+                        //not active
                         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+                    } else {
+                        //error
+                        NotificationCenter.default.post(name: .returnToSearchBarWithErrorID, object: nil)
                     }
                 } catch let err {
                     print(err)

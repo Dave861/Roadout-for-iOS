@@ -63,6 +63,14 @@ class NotificationsViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var locationNotifCard: UIView!
+    @IBOutlet weak var locationTitle: UILabel!
+    @IBOutlet weak var locationDescription: UILabel!
+    @IBOutlet weak var locationSwitch: UISwitch!
+    @IBAction func locationSwitched(_ sender: Any) {
+        UserDefaultsSuite.set(locationSwitch.isOn, forKey: "ro.roadout.locationNotificationsEnabled")
+    }
+    
     @IBOutlet weak var reminderNotifCard: UIView!
     @IBOutlet weak var reminderTitle: UILabel!
     @IBOutlet weak var reminderDescription: UILabel!
@@ -88,7 +96,9 @@ class NotificationsViewController: UIViewController {
         self.localizeDescriptions()
         self.setReservationNotifPermissionsUI()
         self.reminderSwitch.setOn(UserPrefsUtils.sharedInstance.reminderNotificationsEnabled(), animated: false)
+        self.locationSwitch.setOn(UserPrefsUtils.sharedInstance.locationNotificationsEnabled(), animated: false)
         reservationNotifCard.layer.cornerRadius = 16.0
+        locationNotifCard.layer.cornerRadius = 16.0
         reminderNotifCard.layer.cornerRadius = 16.0
         reservationNoneBtn.setTitle("", for: .normal)
         reservationNotifBtn.setTitle("", for: .normal)
@@ -99,9 +109,13 @@ class NotificationsViewController: UIViewController {
     
     func localizeDescriptions() {
         reservationTitle.text = "Reservation Status Notifications".localized()
+        locationTitle.text = "Location Notifications".localized()
         reminderTitle.text = "Reminders Notifications".localized()
-        reservationDescription.text = "Get timely notifications about the remaining time".localized()
+        
+        reservationDescription.text = "Get timely notifications about the remaining time. Changes will apply to your next reservation".localized()
+        locationDescription.text = "Get location based notifications when you arrive at the current reservation".localized()
         reminderDescription.text = "Get reminder notfications, set by you inside the app".localized()
+        
         reservationNoneLabel.text = "None".localized()
         reservationNotifLabel.text = "Notifications".localized()
         reservationLiveLabel.text = "Live Activity".localized()

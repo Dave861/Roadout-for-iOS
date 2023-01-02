@@ -95,9 +95,11 @@ class PermissionsViewController: UIViewController {
                         self.UserDefaultsSuite.set(1, forKey: "ro.roadout.reservationNotificationsOption")
                     }
                     self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(true, forKey: "ro.roadout.locationNotificationsEnabled")
                 } else {
                     self.UserDefaultsSuite.set(0, forKey: "ro.roadout.reservationNotificationsOption")
                     self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(false, forKey: "ro.roadout.locationNotificationsEnabled")
                 }
             }
         } else {
@@ -105,9 +107,11 @@ class PermissionsViewController: UIViewController {
                 if granted {
                     self.UserDefaultsSuite.set(1, forKey: "ro.roadout.reservationNotificationsOption")
                     self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(true, forKey: "ro.roadout.locationNotificationsEnabled")
                 } else {
                     self.UserDefaultsSuite.set(0, forKey: "ro.roadout.reservationNotificationsOption")
                     self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(false, forKey: "ro.roadout.locationNotificationsEnabled")
                 }
             }
         }

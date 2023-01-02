@@ -22,7 +22,7 @@ class ReservationManager {
         case spotAlreadyTaken
     }
         
-    //-1 for not assigned, 0 is active, 1 is unlocked, 2 is cancelled, 3 is not active, 4 is located
+    //-1 for not assigned, 0 is active, 1 is unlocked, 2 is cancelled, 3 is not active
     var isReservationActive = -1
     
     var reservationEndDate = Date()
@@ -54,6 +54,7 @@ class ReservationManager {
         
         if jsonArray["status"] as! String == "Success" {
             NotificationHelper.sharedInstance.scheduleReservationNotification()
+            NotificationHelper.sharedInstance.scheduleLocationNotification()
             self.reservationEndDate = date.addingTimeInterval(TimeInterval(time*60))
             
             //Remove once we have push notifications
@@ -135,12 +136,20 @@ class ReservationManager {
             } else if jsonArray["message"] as! String == "not active" {
                 //There isn't an active reservation
                 self.isReservationActive = 3
+                NotificationHelper.sharedInstance.cancelLocationNotification()
+                if #available(iOS 16.1, *) {
+                    LiveActivityHelper.sharedInstance.endLiveActivity()
+                }
             } else if jsonArray["message"] as! String == "cancelled" {
                 //Most recent reservation was cancelled
                 if self.reservationTimer != nil {
                     self.reservationTimer.invalidate()
                 }
                 NotificationHelper.sharedInstance.cancelReservationNotification()
+                NotificationHelper.sharedInstance.cancelLocationNotification()
+                if #available(iOS 16.1, *) {
+                    LiveActivityHelper.sharedInstance.endLiveActivity()
+                }
                 self.isReservationActive = 2
             } else if jsonArray["message"] as! String == "unlocked" {
                 //Most recent reservation was unlocked
@@ -148,17 +157,17 @@ class ReservationManager {
                     self.reservationTimer.invalidate()
                 }
                 NotificationHelper.sharedInstance.cancelReservationNotification()
-                self.isReservationActive = 1
-            } else if jsonArray["message"] as! String == "located" {
-                //Reservation ended, spot is being located
-                //get end date for locating & update
-                if self.reservationTimer != nil {
-                    self.reservationTimer.invalidate()
+                NotificationHelper.sharedInstance.cancelLocationNotification()
+                if #available(iOS 16.1, *) {
+                    LiveActivityHelper.sharedInstance.endLiveActivity()
                 }
-                NotificationHelper.sharedInstance.cancelReservationNotification()
-                self.isReservationActive = 4
+                self.isReservationActive = 1
             } else {
                 //Error retrieving
+                NotificationHelper.sharedInstance.cancelLocationNotification()
+                if #available(iOS 16.1, *) {
+                    LiveActivityHelper.sharedInstance.endLiveActivity()
+                }
                 self.isReservationActive = -1
             }
         } else {
@@ -321,12 +330,27 @@ class ReservationManager {
                 } else if ReservationManager.sharedInstance.isReservationActive == 1 {
                     //unlocked
                     NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
+                    if #available(iOS 16.1, *) {
+                        LiveActivityHelper.sharedInstance.endLiveActivity()
+                    }
                 } else if ReservationManager.sharedInstance.isReservationActive == 2 {
                     //cancelled
                     NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
-                } else {
-                    //error or not active
+                    if #available(iOS 16.1, *) {
+                        LiveActivityHelper.sharedInstance.endLiveActivity()
+                    }
+                } else if ReservationManager.sharedInstance.isReservationActive == 3 {
+                    //not active
                     NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+                    if #available(iOS 16.1, *) {
+                        LiveActivityHelper.sharedInstance.endLiveActivity()
+                    }
+                } else {
+                    //error
+                    NotificationCenter.default.post(name: .returnToSearchBarWithErrorID, object: nil)
+                    if #available(iOS 16.1, *) {
+                        LiveActivityHelper.sharedInstance.endLiveActivity()
+                    }
                 }
             } catch let err {
                 print(err)

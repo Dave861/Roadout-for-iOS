@@ -86,6 +86,10 @@ extension UnlockView: SlideButtonDelegate {
                             ReservationManager.sharedInstance.reservationTimer.invalidate()
                         }
                         NotificationHelper.sharedInstance.cancelReservationNotification()
+                        NotificationHelper.sharedInstance.cancelLocationNotification()
+                        if #available(iOS 16.1, *) {
+                            LiveActivityHelper.sharedInstance.endLiveActivity()
+                        }
                         NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
                     }
                 } catch let err {

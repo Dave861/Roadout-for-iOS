@@ -40,6 +40,7 @@ extension Notification.Name {
     static let removeNoWifiBarID = Notification.Name("ro.roadout.Roadout.removeNoWifiBarID")
     static let showPaidParkingBarID = Notification.Name("ro.roadout.Roadout.showPaidParkingBarID")
     static let returnToSearchBarID = Notification.Name("ro.roadout.Roadout.returnToSearchBarID")
+    static let returnToSearchBarWithErrorID = Notification.Name("ro.roadout.Roadout.returnToSearchBarWithErrorID")
     static let addExpressViewID = Notification.Name("ro.roadout.Roadout.addExpressViewID")
     static let showFindCardID = Notification.Name("ro.roadout.Roadout.showFindCardID")
     static let animateCameraToFoundID = Notification.Name("ro.roadout.Roadout.animateCameraToFoundID")

@@ -103,7 +103,7 @@ class ReservationView: UIView {
                         }
                         NotificationCenter.default.post(name: .addDelayCardID, object: nil)
                 } else {
-                    let alert = UIAlertController(title: "Delay Error".localized(), message: "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured.".localized(), preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Delay Restriction".localized(), message: "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured.".localized(), preferredStyle: .alert)
                     alert.view.tintColor = UIColor(named: "Kinda Red")
                     let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(cancelAction)
@@ -133,6 +133,10 @@ class ReservationView: UIView {
                             ReservationManager.sharedInstance.reservationTimer.invalidate()
                         }
                         NotificationHelper.sharedInstance.cancelReservationNotification()
+                        NotificationHelper.sharedInstance.cancelLocationNotification()
+                        if #available(iOS 16.1, *) {
+                            LiveActivityHelper.sharedInstance.endLiveActivity()
+                        }
                         NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
                     }
                 } catch let err {
