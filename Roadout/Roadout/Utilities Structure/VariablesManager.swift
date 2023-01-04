@@ -71,4 +71,5 @@ var userLicensePlate = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.
 var openedByLiveActivity = false
 
 //While server is variable, makes changing the url easier
-var roadoutServerURL = "roadout-for-db-2x8o3.ondigitalocean.app"//UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.devServerURL") ?? "roadout.live"
+var roadoutServerURL = "api.roadout.live"
+//UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.devServerURL") ?? "roadout.live"

@@ -98,6 +98,7 @@ class SettingsViewController: UIViewController {
         UserDefaults.roadout!.removeObject(forKey: "ro.roadout.paymentMethods")
         UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.favouriteLocationIDs")
         UserDefaults.roadout!.set("NO-PLATE", forKey: "ro.roadout.Roadout.userLicensePlate")
+        userLicensePlate = "NO-PLATE"
     }
 }
 extension SettingsViewController: MFMailComposeViewControllerDelegate {
