@@ -72,7 +72,7 @@ class WorldViewController: UIViewController {
     }
     
     func getWorldImage(for worldLocation: WorldLocation) {
-        let urlString = "https://maps.googleapis.com/maps/api/streetview?location=\(worldLocation.latitude),\(worldLocation.longitude)&size=900x900&fov=80&heading=70&pitch=0&key=AIzaSyBCwiN3sMkKBigQhrsFfmAENeGEyJjbgcI&signature=nZk52ru4h0fswKqRx5G-hRX8dlQ="
+        let urlString = "https://maps.googleapis.com/maps/api/streetview?location=\(worldLocation.latitude),\(worldLocation.longitude)&size=900x900&fov=\(worldLocation.fov)&heading=\(worldLocation.heading)&pitch=\(worldLocation.pitch)&key=AIzaSyBCwiN3sMkKBigQhrsFfmAENeGEyJjbgcI&signature=nZk52ru4h0fswKqRx5G-hRX8dlQ="
         
         AF.request(urlString).responseData { response in
             if response.error == nil {

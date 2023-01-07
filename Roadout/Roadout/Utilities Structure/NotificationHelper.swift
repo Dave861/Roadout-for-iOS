@@ -178,7 +178,7 @@ class NotificationHelper {
                     if #available(iOS 15.0, *) {
                         content.interruptionLevel = .timeSensitive
                     }
-                    let region = CLCircularRegion(center: self.decodeCoordsFromGeohash(), radius: 10.0, identifier: "ro.roadout.parkingSpotRegion")
+                    let region = CLCircularRegion(center: self.decodeCoordsFromGeohash(), radius: 5.0, identifier: "ro.roadout.parkingSpotRegion")
                     let trigger = UNLocationNotificationTrigger(region: region, repeats: false)
                     let request = UNNotificationRequest(identifier: "ro.roadout.setLocationReservation", content: content, trigger: trigger)
                     self.center.add(request) { err in
