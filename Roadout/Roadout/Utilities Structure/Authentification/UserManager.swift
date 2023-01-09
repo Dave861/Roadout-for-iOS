@@ -145,7 +145,8 @@ class UserManager {
     
     func sendForgotDataAsync(_ email: String) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
-        let params : Parameters = ["email":email]
+        let timezone = TimeZone.current.secondsFromGMT()/3600
+        let params : Parameters = ["email":email, "timezone":timezone]
         
         let sendRequest = AF.request("https://\(roadoutServerURL)/Authentification/ForgotPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
         

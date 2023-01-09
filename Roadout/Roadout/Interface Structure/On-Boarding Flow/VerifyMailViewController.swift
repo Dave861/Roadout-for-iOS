@@ -24,7 +24,7 @@ class VerifyMailViewController: UIViewController {
     
     @IBAction func verifyTapped(_ sender: Any) {
         if let codeField = codeField as? CHIOTPFieldOne {
-            if Int(codeField.text!) == AuthManager.sharedInstance.verifyCode && Date().addingTimeInterval(300) < AuthManager.sharedInstance.dateToken {
+            if Int(codeField.text!) == AuthManager.sharedInstance.verifyCode && Date() < AuthManager.sharedInstance.dateToken {
                 let name = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserName")!
                 let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
                 let password = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserPassword")!

@@ -16,7 +16,7 @@ class ResetPasswordViewController: UIViewController {
     @IBOutlet weak var checkBtn: UIButton!
     @IBAction func checkTapped(_ sender: Any) {
         if let codeField = codeField as? CHIOTPFieldOne {
-            if Int(codeField.text!) == UserManager.sharedInstance.resetCode && Date().addingTimeInterval(600) < UserManager.sharedInstance.dateToken {
+            if Int(codeField.text!) == UserManager.sharedInstance.resetCode && Date() < UserManager.sharedInstance.dateToken {
                 passwordField.alpha = 1
                 confirmPasswordField.alpha = 1
                 passwordField.isEnabled = true
@@ -67,7 +67,7 @@ class ResetPasswordViewController: UIViewController {
                 do {
                     try await UserManager.sharedInstance.resetPasswordAsync(passwordField.text!)
                     DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
+                        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
                     }
                 } catch let err {
                     self.manageServerSideErrors(err)
