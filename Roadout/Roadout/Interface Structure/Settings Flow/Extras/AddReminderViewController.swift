@@ -40,7 +40,7 @@ class AddReminderViewController: UIViewController {
             if labelField.text != "" {
 
                 let reminder = Reminder(label: labelField.text!, date: datePicker.date, identifier: "ro.roadout.reminder.\(labelField.text!.replacingOccurrences(of: " ", with: ""))")
-                if UserPrefsUtils.sharedInstance.reminderNotificationsEnabled() {
+                if UserPrefsUtils.sharedInstance.futureNotificationsEnabled() {
                     NotificationHelper.sharedInstance.scheduleReminder(reminder: reminder)
                 }
                 saveReminder(reminder: reminder)

@@ -37,9 +37,8 @@ var selectedSpotColor = "Main Yellow"
 
 var currentLocationCoord: CLLocationCoordinate2D?
 
-//Decides if Pay Card returns to Delay Card, Find Card or Select Card
+//Decides if Pay Card returns to Delay Card or Select Card
 var returnToDelay = false
-var returnToFind = false
 
 //Decides if Reserve Card returns to Result Card or Spot Card
 var returnToResult = false

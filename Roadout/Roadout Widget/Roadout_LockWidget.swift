@@ -4,7 +4,7 @@
 //
 //  Created by David Retegan on 22.10.2022.
 //
-
+import Alamofire
 import WidgetKit
 import SwiftUI
 
@@ -12,7 +12,7 @@ import SwiftUI
 struct RoadoutLockEntry: TimelineEntry {
     let date = Date()
     var isReservationActive = false
-    var reservationEndDate = Date()
+    var reservationEndDate = ""
     var reservationParkingName = ""
 }
 
@@ -26,22 +26,69 @@ struct RoadoutLockProvider: TimelineProvider {
      func getSnapshot(in context: Context, completion: @escaping (RoadoutLockEntry) -> ()) {
          completion(RoadoutLockEntry(isReservationActive: false))
      }
-
-     func getTimeline(in context: Context, completion: @escaping (Timeline<RoadoutLockEntry>) -> ()) {
-         var entry = RoadoutLockEntry()
-         //get reservation data
-         entry.isReservationActive = false
-         
-         let timeline = Timeline(entries: [entry], policy: .atEnd)
-         completion(timeline)
-     }
     
+     func getTimeline(in context: Context, completion: @escaping (Timeline<RoadoutLockEntry>) -> ()) {
+         Task {
+             var entry = RoadoutLockEntry()
+             
+             if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
+                 let _headers: HTTPHeaders = ["Content-Type":"application/json"]
+                 let dateFormatter = DateFormatter()
+                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                 dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                 let convertedDate = dateFormatter.string(from: Date())
+                 let params: Parameters = ["date": convertedDate, "userID": UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String]
+                 
+                 let checkRequest = AF.request("https://\(roadoutServerURL)/Authentification/CheckEndDate.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+                 
+                 var responseJson: String!
+                 do {
+                     responseJson = try await checkRequest.serializingString().value
+                 } catch {
+                     entry.isReservationActive = false
+                     let timeline = Timeline(entries: [entry], policy: .atEnd)
+                     completion(timeline)
+                 }
+                 
+                 let data = responseJson.data(using: .utf8)!
+                 var jsonArray: [String:Any]!
+                 do {
+                     jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+                 } catch {
+                     entry.isReservationActive = false
+                     let timeline = Timeline(entries: [entry], policy: .atEnd)
+                     completion(timeline)
+                 }
+                 
+                 if jsonArray["status"] as! String == "Success" && jsonArray["message"] as! String == "active" {
+                     entry.isReservationActive = true
+                     entry.reservationParkingName = EntityManager.sharedInstance.decodeSpotID(jsonArray["spotID"] as! String)[0]
+                     
+                     let formattedEndDate = jsonArray["endDate"] as! String
+                     let convertedEndDate = dateFormatter.date(from: formattedEndDate)
+                     dateFormatter.dateFormat = "HH:mm"
+                     entry.reservationEndDate = dateFormatter.string(from: convertedEndDate!)
+                     
+                     let timeline = Timeline(entries: [entry], policy: .after(convertedEndDate!.addingTimeInterval(15)))
+                     completion(timeline)
+                 } else {
+                     entry.isReservationActive = false
+                     let timeline = Timeline(entries: [entry], policy: .atEnd)
+                     completion(timeline)
+                 }
+             } else {
+                 entry.isReservationActive = false
+                 let timeline = Timeline(entries: [entry], policy: .atEnd)
+                 completion(timeline)
+             }
+         }
+     }
 }
 
 @available(iOS 16.0, *)
 struct RoadoutLockPlaceholderView: View {
     var body: some View {
-        RoadoutLockView(date: Date(), isReservationActive: false, reservationEndDate: Date(), reservationParkingName: "")
+        RoadoutLockView(date: Date(), isReservationActive: false, reservationEndDate: "", reservationParkingName: "")
     }
 }
 
@@ -59,7 +106,7 @@ struct RoadoutLockView: View {
     
     let date: Date
     var isReservationActive: Bool
-    var reservationEndDate: Date
+    var reservationEndDate: String
     var reservationParkingName: String
 
     @Environment(\.widgetFamily) var family
@@ -98,7 +145,7 @@ struct RoadoutLockView: View {
                     }
                     Text("Reserved for ")
                         .font(.body.bold())
-                    + Text(reservationEndDate, style: .time)
+                    + Text(reservationEndDate)
                         .font(.body.bold())
                     Text(reservationParkingName)
                         .font(.body)

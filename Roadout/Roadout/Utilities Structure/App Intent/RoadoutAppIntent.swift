@@ -8,6 +8,7 @@
 import UIKit
 import AppIntents
 import CoreLocation
+import WidgetKit
 
 @available(iOS 16, *)
 enum RoadoutIntentErrors: Error {
@@ -119,6 +120,7 @@ struct RoadoutAppIntent: AppIntent {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         do {
             try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: Int(resPrice), userID: id)
+            WidgetCenter.shared.reloadAllTimelines()
         } catch {
             throw RoadoutIntentErrors.failureRequiringAppLaunch
         }

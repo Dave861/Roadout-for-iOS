@@ -31,7 +31,7 @@ class AuthManager {
     func sendRegisterDataAsync(_ email: String) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let timezone = TimeZone.current.secondsFromGMT()/3600
-        let params : Parameters = ["email":email, "timezone":timezone]
+        let params : Parameters = ["email":email, "timezone":timezone, "lang": "en".localized()]
         
         let sendRequest = AF.request("https://\(roadoutServerURL)/Authentification/VerifyEmail.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
         
@@ -159,8 +159,6 @@ class AuthManager {
         
         if jsonArray["status"] as! String == "Success" && jsonArray["message"] as! String == "False" {
             throw AuthErrors.userDoesNotExist
-        } else if jsonArray["status"] as! String != "True" {
-            //We are good, user is valid
         }
     }
     

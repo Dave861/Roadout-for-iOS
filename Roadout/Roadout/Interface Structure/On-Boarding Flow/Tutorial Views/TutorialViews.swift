@@ -10,11 +10,19 @@ import UIKit
 
 class TutorialView1: UIView {
     
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var explanationLbl: UILabel!
+    
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        
         self.layer.cornerRadius = 12.0
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "account"))
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "settings"))
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "Roadout Guide"))
         
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "account"))
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "settings"))
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "Roadout Guide"))
     }
     
     class func instanceFromNib() -> UIView {
@@ -24,11 +32,17 @@ class TutorialView1: UIView {
 
 class TutorialView2: UIView {
     
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var explanationLbl: UILabel!
+    
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        
         self.layer.cornerRadius = 12.0
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "easiest"))
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "nearest"))
         
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "easiest"))
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "nearest"))
     }
     
     class func instanceFromNib() -> UIView {
@@ -38,11 +52,17 @@ class TutorialView2: UIView {
 
 class TutorialView3: UIView {
     
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var explanationLbl: UILabel!
+    
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        
         self.layer.cornerRadius = 12.0
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "free"))
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "favourite"))
         
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "free"))
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "favourite"))
     }
     
     class func instanceFromNib() -> UIView {
@@ -52,11 +72,17 @@ class TutorialView3: UIView {
 
 class TutorialView4: UIView {
     
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var explanationLbl: UILabel!
+    
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
-        
         self.layer.cornerRadius = 12.0
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "pay"))
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "location"))
         
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "pay"))
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "location"))
     }
     
     class func instanceFromNib() -> UIView {

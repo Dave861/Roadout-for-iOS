@@ -1,5 +1,5 @@
 //
-//  ExpressPickCell.swift
+//  ExpressChooseCell.swift
 //  Roadout
 //
 //  Created by David Retegan on 13.11.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExpressPickCell: UITableViewCell {
+class ExpressChooseCell: UITableViewCell {
 
     @IBOutlet weak var card: UIView!
     

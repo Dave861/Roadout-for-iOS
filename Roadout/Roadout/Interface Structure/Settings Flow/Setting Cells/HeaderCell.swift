@@ -1,23 +1,19 @@
 //
-//  HistoryCell.swift
+//  HeaderCell.swift
 //  Roadout
 //
-//  Created by David Retegan on 29.10.2021.
+//  Created by David Retegan on 14.01.2023.
 //
+
 import UIKit
 
-class HistoryCell: UITableViewCell {
+class HeaderCell: UITableViewCell {
     
-    @IBOutlet weak var card: UIView!
-    
-    @IBOutlet weak var placeLbl: UILabel!
-    @IBOutlet weak var timePriceLbl: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
 
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        card.layer.cornerRadius = 16.0
+        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -62,7 +62,7 @@ class ResultView: UIView {
                 try await FunctionsManager.sharedInstance.reserveSpotInLocationAsync(location: parkLocations[selectedParkLocationIndex])
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
-                    NotificationCenter.default.post(name: .addReserveCardID, object: nil)
+                    NotificationCenter.default.post(name: .addTimeCardID, object: nil)
                     indicatorView.dismiss()
                 }
             } catch {

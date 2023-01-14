@@ -41,8 +41,8 @@ class UserPrefsUtils {
         return enabled
     }
     
-    func reminderNotificationsEnabled() -> Bool {
-        let enabled = UserDefaultsSuite.bool(forKey: "ro.roadout.reminderNotificationsEnabled")
+    func futureNotificationsEnabled() -> Bool {
+        let enabled = UserDefaultsSuite.bool(forKey: "ro.roadout.futureNotificationsEnabled")
         return enabled
     }
     

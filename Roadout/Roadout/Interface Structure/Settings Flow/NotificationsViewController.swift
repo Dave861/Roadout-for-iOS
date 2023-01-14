@@ -71,12 +71,12 @@ class NotificationsViewController: UIViewController {
         UserDefaultsSuite.set(locationSwitch.isOn, forKey: "ro.roadout.locationNotificationsEnabled")
     }
     
-    @IBOutlet weak var reminderNotifCard: UIView!
-    @IBOutlet weak var reminderTitle: UILabel!
-    @IBOutlet weak var reminderDescription: UILabel!
-    @IBOutlet weak var reminderSwitch: UISwitch!
-    @IBAction func reminderSwitched(_ sender: Any) {
-        UserDefaultsSuite.set(reminderSwitch.isOn, forKey: "ro.roadout.reminderNotificationsEnabled")
+    @IBOutlet weak var futureNotifCard: UIView!
+    @IBOutlet weak var futureTitle: UILabel!
+    @IBOutlet weak var futureDescription: UILabel!
+    @IBOutlet weak var futureSwitch: UISwitch!
+    @IBAction func futureSwitched(_ sender: Any) {
+        UserDefaultsSuite.set(futureSwitch.isOn, forKey: "ro.roadout.futureNotificationsEnabled")
     }
     
     override func viewDidLoad() {
@@ -95,11 +95,11 @@ class NotificationsViewController: UIViewController {
         
         self.localizeDescriptions()
         self.setReservationNotifPermissionsUI()
-        self.reminderSwitch.setOn(UserPrefsUtils.sharedInstance.reminderNotificationsEnabled(), animated: false)
+        self.futureSwitch.setOn(UserPrefsUtils.sharedInstance.futureNotificationsEnabled(), animated: false)
         self.locationSwitch.setOn(UserPrefsUtils.sharedInstance.locationNotificationsEnabled(), animated: false)
         reservationNotifCard.layer.cornerRadius = 16.0
         locationNotifCard.layer.cornerRadius = 16.0
-        reminderNotifCard.layer.cornerRadius = 16.0
+        futureSwitch.layer.cornerRadius = 16.0
         reservationNoneBtn.setTitle("", for: .normal)
         reservationNotifBtn.setTitle("", for: .normal)
         reservationLiveBtn.setTitle("", for: .normal)
@@ -110,11 +110,11 @@ class NotificationsViewController: UIViewController {
     func localizeDescriptions() {
         reservationTitle.text = "Reservation Status Notifications".localized()
         locationTitle.text = "Location Notifications".localized()
-        reminderTitle.text = "Reminders Notifications".localized()
+        futureTitle.text = "Future Notifications".localized()
         
         reservationDescription.text = "Get timely notifications about the remaining time. Changes will apply to your next reservation".localized()
         locationDescription.text = "Get location based notifications when you arrive at the current reservation".localized()
-        reminderDescription.text = "Get reminder notfications, set by you inside the app".localized()
+        futureDescription.text = "Get future reserve notfications, set by you inside the app".localized()
         
         reservationNoneLabel.text = "None".localized()
         reservationNotifLabel.text = "Notifications".localized()

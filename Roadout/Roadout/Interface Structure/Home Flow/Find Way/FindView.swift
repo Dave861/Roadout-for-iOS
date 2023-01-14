@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import WidgetKit
 
 class FindView: UIView {
     
-    var minutesValue = 15
+    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
+    var selectedCard: String?
     
     @IBOutlet weak var tipSourceView: UIView!
     
@@ -22,42 +24,79 @@ class FindView: UIView {
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
+    @IBOutlet weak var chargeLbl: UILabel!
+    
+    @IBOutlet weak var slider: UISlider!
+    
+    @IBAction func sliderChangedValue(_ sender: Any) {
+        let roundedValue = round(slider.value/1.0)*1.0
+        slider.value = roundedValue
+        chargeLbl.text = "\(Int(slider.value))" + " Minutes ".localized() + "- \(Int(slider.value)) RON"
+        chargeLbl.set(textColor: UIColor(named: "Greyish")!, range: chargeLbl.range(after: " - "))
+        chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
+    }
+    
     @IBOutlet weak var locationLbl: UILabel!
-    @IBOutlet weak var sectionLbl: UILabel!
-    @IBOutlet weak var spotLbl: UILabel!
-    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var spotSectionLbl: UILabel!
     
-    @IBOutlet weak var locationCard: UIView!
-    @IBOutlet weak var sectionCard: UIView!
-    @IBOutlet weak var spotCard: UIView!
-    @IBOutlet weak var timeCard: UIView!
-    
-    
-    @IBOutlet weak var continueBtn: UIButton!
-    
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBOutlet weak var payBtn: UIButton!
+    @IBOutlet weak var chooseMethodBtn: UIButton!
+        
+    @IBAction func payBtnTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        returnToFind = true
-        timerSeconds = minutesValue*60
-        NotificationCenter.default.post(name: .addPayCardID, object: nil)
+        
+        timerSeconds = Int(slider.value*60)
+        
+        if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
+            //Handled by menu
+        } else {
+            NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
+            
+            let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+            Task {
+                do {
+                    try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(),
+                                                                                     time: timerSeconds/60,
+                                                                                     spotID: selectedSpotID,
+                                                                                     payment: 10,
+                                                                                     userID: id)
+                    DispatchQueue.main.async {
+                        WidgetCenter.shared.reloadAllTimelines()
+                        NotificationCenter.default.post(name: .showPaidBarID, object: nil)
+                    }
+                } catch let err {
+                    self.manageServerSideErrors(error: err)
+                }
+            }
+        }
     }
     
-    @IBOutlet weak var locationBtn: UIButton!
-    
-    @IBOutlet weak var sectionBtn: UIButton!
-    
-    @IBOutlet weak var spotBtn: UIButton!
-    
-    
-    @IBAction func timeTapped(_ sender: Any) {
+    @IBAction func chooseMethodTapped(_ sender: Any) {
         //Handled by menu
     }
-    @IBOutlet weak var timeBtn: UIButton!
     
+    let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+    var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let choosePaymentTitle = NSAttributedString(string: "Choose Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
+    func manageObs() {
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshCardsMenu), name: .refreshCardsMenuID, object: nil)
+    }
+    
+    @objc func refreshCardsMenu() {
+        self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+        cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
         
-    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+        chooseMethodBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        chooseMethodBtn.showsMenuAsPrimaryAction = true
+        
+        if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
+            payBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+            payBtn.showsMenuAsPrimaryAction = true
+        }
+    }
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -77,64 +116,145 @@ class FindView: UIView {
    
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
-        
+        manageObs()
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
         
-        continueBtn.layer.cornerRadius = 12.0
-        continueBtn.setAttributedTitle(continueTitle, for: .normal)
+        mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         
-        timeLbl.text = "\(minutesValue)" + " Minutes".localized()
+        payBtn.layer.cornerRadius = 12.0
+        payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
+        payBtn.backgroundColor = UIColor(named: "Greyish")!
         
-        locationCard.layer.cornerRadius = 12.0
-        sectionCard.layer.cornerRadius = 12.0
-        spotCard.layer.cornerRadius = 12.0
-        timeCard.layer.cornerRadius = 12.0
+        chooseMethodBtn.layer.cornerRadius = 12.0
+        chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        chooseMethodBtn.setTitle("", for: .normal)
         
-        locationBtn.setTitle("", for: .normal)
-        sectionBtn.setTitle("", for: .normal)
-        spotBtn.setTitle("", for: .normal)
-        timeBtn.setTitle("", for: .normal)
-    
-        timeBtn.menu = durationMenu
-        timeBtn.showsMenuAsPrimaryAction = true
+        chargeLbl.set(textColor: UIColor(named: "Greyish")!, range: chargeLbl.range(after: " - "))
+        chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
+        
+        cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
+        selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
+                
 
+        chooseMethodBtn.menu = UIMenu(title: "Choose a payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        chooseMethodBtn.showsMenuAsPrimaryAction = true
+        
+        payBtn.menu = UIMenu(title: "Choose a payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        payBtn.showsMenuAsPrimaryAction = true
+        
+                
+        locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name
+        spotSectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
+        
+        spotSectionLbl.set(textColor: UIColor(named: "Greyish")!, range: spotSectionLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
+        spotSectionLbl.set(textColor: UIColor(named: "Greyish")!, range: spotSectionLbl.range(after: " - Spot ".localized()))
+        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
+        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: " - Spot ".localized()))
         NotificationCenter.default.post(name: .animateCameraToFoundID, object: nil)
         
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        self.locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name
-        self.sectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name
-        self.spotLbl.text = "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
     }
     
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Find", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
     
-    var durationMenuItems: [UIAction] {
-        return [
-            UIAction(title: "20" + " Minutes".localized(), image: nil, handler: { (_) in
-                self.timeLbl.text = "20" + " Minutes".localized()
-                self.minutesValue = 20
-            }),
-            UIAction(title: "15" + " Minutes".localized(), image: nil, handler: { (_) in
-                self.timeLbl.text = "15" + " Minutes".localized()
-                self.minutesValue = 15
-            }),
-            UIAction(title: "10" + " Minutes".localized(), image: nil, handler: { (_) in
-                self.timeLbl.text = "10" + " Minutes".localized()
-                self.minutesValue = 10
-            }),
-            UIAction(title: "5" + " Minutes".localized(), image: nil, handler: { (_) in
-                self.timeLbl.text = "5" + " Minutes".localized()
-                self.minutesValue = 5
-            })
-        ]
-    }
-    var durationMenu: UIMenu {
-        return UIMenu(title: "Choose duration".localized(), image: nil, identifier: nil, options: [], children: durationMenuItems)
-    }
+    func reloadMainCard() {
+        payBtn.showsMenuAsPrimaryAction = false
+        payBtn.menu = nil
         
+        mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+        payBtn.setAttributedTitle(mainCardTitle, for: .normal)
+        payBtn.backgroundColor = UIColor(named: "Greyish")!
+    }
     
+    func showApplePayBtn() {
+        payBtn.showsMenuAsPrimaryAction = false
+        payBtn.menu = nil
+        
+        payBtn.setAttributedTitle(applePayTitle, for: .normal)
+        payBtn.backgroundColor = UIColor.label
+    }
+    
+    func makeMenuActions(cards: [String]) -> [UIAction] {
+        var menuItems = [UIAction]()
+        
+        let addAction = UIAction(title: "Add Card".localized(), image: UIImage(systemName: "plus")) { (_) in
+            let sb = UIStoryboard(name: "Settings", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "AddCardVC") as! AddCardViewController
+            self.parentViewController().present(vc, animated: true, completion: nil)
+        }
+        menuItems.append(addAction)
+        
+        for card in cards {
+            let action = UIAction(title: card, image: UIImage(systemName: "creditcard.fill"), handler: { (_) in
+                self.UserDefaultsSuite.set(self.getIndexInArray(card, cards), forKey: "ro.roadout.defaultPaymentMethod")
+                self.reloadMainCard()
+            })
+            menuItems.append(action)
+        }
+        
+        let applePayAction = UIAction(title: "Apple Pay", image: UIImage(systemName: "applelogo")) { (_) in
+            self.showApplePayBtn()
+        }
+        menuItems.append(applePayAction)
+        
+        return menuItems
+    }
+    
+    func getIndexInArray(_ element: String, _ array: [String]) -> Int {
+        var index = 0
+        for el in array {
+            if el == element {
+                break
+            }
+            index += 1
+        }
+        print(index)
+        return index
+    }
+    
+    func manageServerSideErrors(error: Error) {
+        switch error {
+        case ReservationManager.ReservationErrors.spotAlreadyTaken:
+            let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Sorry, the 60 seconds have passed and it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+            self.parentViewController().present(alert, animated: true, completion: nil)
+        case ReservationManager.ReservationErrors.networkError:
+            let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+            self.parentViewController().present(alert, animated: true, completion: nil)
+        case ReservationManager.ReservationErrors.databaseFailure:
+            let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+            self.parentViewController().present(alert, animated: true, completion: nil)
+        case ReservationManager.ReservationErrors.unknownError:
+            let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+            self.parentViewController().present(alert, animated: true, completion: nil)
+        case ReservationManager.ReservationErrors.errorWithJson:
+            let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+            self.parentViewController().present(alert, animated: true, completion: nil)
+        default:
+            let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.view.tintColor = UIColor(named: "Redish")
+            self.parentViewController().present(alert, animated: true, completion: nil)
+        }
+    }
 }

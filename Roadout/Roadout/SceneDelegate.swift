@@ -10,6 +10,7 @@ import GoogleMaps
 import GooglePlaces
 import IOSSecuritySuite
 import WatchConnectivity
+import WidgetKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -39,6 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         NotificationHelper.sharedInstance.checkNotificationStatus()
         NotificationCenter.default.post(name: .updateLocationID, object: nil)
+        WidgetCenter.shared.reloadAllTimelines()
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
             guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
             //Send user ID to Apple Watch if reachable

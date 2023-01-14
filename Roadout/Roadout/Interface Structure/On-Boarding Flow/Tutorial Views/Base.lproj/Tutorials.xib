@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="oy2-Cq-Kve">
+        <view contentMode="scaleToFill" id="oy2-Cq-Kve" customClass="TutorialView1" customModule="Roadout" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="347" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pij-T0-PhM">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pij-T0-PhM">
                     <rect key="frame" x="46" y="0.0" width="301" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="301" id="kh6-lH-ZHh"/>
@@ -26,15 +26,15 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ellipsis.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="z3j-rj-1nk">
-                    <rect key="frame" x="0.0" y="16" width="38" height="38"/>
-                    <color key="tintColor" systemColor="systemGrayColor"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gearshape.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="z3j-rj-1nk">
+                    <rect key="frame" x="0.0" y="15.5" width="38" height="38.5"/>
+                    <color key="tintColor" name="GoldBrown"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="39" id="6yF-FF-Jp0"/>
                         <constraint firstAttribute="width" constant="38" id="cal-3b-oI5"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap here to see other ways to reserve a spot and settings" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRG-Ks-5yJ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access your account and settings, as well as the Roadout Guide" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRG-Ks-5yJ">
                     <rect key="frame" x="46" y="27" width="301" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="301" id="bXS-pK-eyR"/>
@@ -59,9 +59,13 @@
             </constraints>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="explanationLbl" destination="oRG-Ks-5yJ" id="kdy-Sz-ieP"/>
+                <outlet property="titleLbl" destination="Pij-T0-PhM" id="LfT-Pn-JvI"/>
+            </connections>
             <point key="canvasLocation" x="709.4202898550725" y="-754.01785714285711"/>
         </view>
-        <view contentMode="scaleToFill" id="Y0z-xx-g5X">
+        <view contentMode="scaleToFill" id="Y0z-xx-g5X" customClass="TutorialView2" customModule="Roadout" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="314" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -77,7 +81,7 @@
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="binoculars.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aFV-GF-i5m">
                     <rect key="frame" x="0.0" y="17" width="38" height="37"/>
-                    <color key="tintColor" systemColor="systemGrayColor"/>
+                    <color key="tintColor" name="GoldBrown"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="39" id="IOd-xL-3X6"/>
                         <constraint firstAttribute="width" constant="38" id="L79-Vm-156"/>
@@ -108,9 +112,13 @@
             </constraints>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="1288.4057971014495" y="-754.01785714285711"/>
+            <connections>
+                <outlet property="explanationLbl" destination="mc9-c1-JDu" id="7CW-Wm-N9p"/>
+                <outlet property="titleLbl" destination="mSW-dj-e52" id="4ey-IZ-Z3m"/>
+            </connections>
+            <point key="canvasLocation" x="709" y="-674"/>
         </view>
-        <view contentMode="scaleToFill" id="ZCM-la-D05">
+        <view contentMode="scaleToFill" id="ZCM-la-D05" customClass="TutorialView3" customModule="Roadout" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -126,7 +134,7 @@
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag.2.crossed.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xph-hm-U47">
                     <rect key="frame" x="0.0" y="15.5" width="41" height="38.5"/>
-                    <color key="tintColor" systemColor="systemGrayColor"/>
+                    <color key="tintColor" name="GoldBrown"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="39" id="QC7-Fl-pe6"/>
                         <constraint firstAttribute="width" constant="41" id="bQe-96-fvE"/>
@@ -157,9 +165,13 @@
             </constraints>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="1850.7246376811595" y="-754.01785714285711"/>
+            <connections>
+                <outlet property="explanationLbl" destination="eQa-0u-LmE" id="f3g-Xa-WfS"/>
+                <outlet property="titleLbl" destination="9ew-53-URq" id="ICy-7O-aOf"/>
+            </connections>
+            <point key="canvasLocation" x="709" y="-588"/>
         </view>
-        <view contentMode="scaleToFill" id="lcq-cU-NBA">
+        <view contentMode="scaleToFill" id="lcq-cU-NBA" customClass="TutorialView4" customModule="Roadout" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="296" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -175,7 +187,7 @@
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet.pass.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GEh-25-zi1">
                     <rect key="frame" x="0.0" y="15.5" width="41" height="39"/>
-                    <color key="tintColor" systemColor="systemGrayColor"/>
+                    <color key="tintColor" name="GoldBrown"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="39" id="cDC-fx-gfF"/>
                         <constraint firstAttribute="width" constant="41" id="lrq-bh-Ooy"/>
@@ -206,16 +218,23 @@
             </constraints>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="2399.275362318841" y="-754.01785714285711"/>
+            <connections>
+                <outlet property="explanationLbl" destination="z3l-zs-M9k" id="cgP-HG-4Bx"/>
+                <outlet property="titleLbl" destination="7Pk-CQ-wZV" id="jzY-l6-ebW"/>
+            </connections>
+            <point key="canvasLocation" x="709" y="-504"/>
         </view>
     </objects>
     <resources>
         <image name="binoculars.fill" catalog="system" width="128" height="90"/>
-        <image name="ellipsis.circle.fill" catalog="system" width="128" height="123"/>
         <image name="flag.2.crossed.fill" catalog="system" width="128" height="72"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="wallet.pass.fill" catalog="system" width="115" height="128"/>
         <namedColor name="Card Background">
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GoldBrown">
+            <color red="0.80000001192092896" green="0.55299997329711914" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

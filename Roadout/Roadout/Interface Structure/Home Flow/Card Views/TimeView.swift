@@ -1,5 +1,5 @@
 //
-//  ReserveView.swift
+//  TimeView.swift
 //  Roadout
 //
 //  Created by David Retegan on 31.10.2021.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ReserveView: UIView {
+class TimeView: UIView {
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -16,7 +16,7 @@ class ReserveView: UIView {
         if returnToResult {
             NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         }
-        NotificationCenter.default.post(name: .removeReserveCardID, object: nil)
+        NotificationCenter.default.post(name: .removeTimeCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
     
@@ -28,7 +28,6 @@ class ReserveView: UIView {
         NotificationCenter.default.post(name: .addPayCardID, object: nil)
     }
     
-    @IBOutlet weak var coordonatesLbl: UILabel!
     @IBOutlet weak var priceLbl: UILabel!
     
     @IBOutlet weak var minuteSlider: UISlider!
@@ -61,10 +60,8 @@ class ReserveView: UIView {
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
-        
-        coordonatesLbl.text = "\(parkLocations[selectedParkLocationIndex].latitude), \(parkLocations[selectedParkLocationIndex].longitude)"
+
         recommendationLbl.text = "We recommed reserving for ".localized() + "..."
-        
         recommendationCard.layer.cornerRadius = recommendationCard.frame.height/5
         
         totalLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: totalLbl.range(after: " - "))

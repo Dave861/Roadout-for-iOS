@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WidgetKit
 
 class ExpressView: UIView {
     
@@ -59,6 +60,7 @@ class ExpressView: UIView {
                                                                                      payment: 10,
                                                                                      userID: id)
                     DispatchQueue.main.async {
+                        WidgetCenter.shared.reloadAllTimelines()
                         NotificationCenter.default.post(name: .showPaidBarID, object: nil)
                     }
                 } catch let err {

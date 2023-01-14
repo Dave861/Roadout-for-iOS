@@ -48,7 +48,7 @@ class PermissionsViewController: UIViewController {
     
     @IBAction func skipTapped(_ sender: Any) {
         UserDefaultsSuite.set(0, forKey: "ro.roadout.reservationNotificationsOption")
-        UserDefaultsSuite.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
+        UserDefaultsSuite.set(false, forKey: "ro.roadout.futureNotificationsEnabled")
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
         let sb = UIStoryboard(name: "Home", bundle: nil)
@@ -94,11 +94,11 @@ class PermissionsViewController: UIViewController {
                     } else {
                         self.UserDefaultsSuite.set(1, forKey: "ro.roadout.reservationNotificationsOption")
                     }
-                    self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(true, forKey: "ro.roadout.futureNotificationsEnabled")
                     self.UserDefaultsSuite.set(true, forKey: "ro.roadout.locationNotificationsEnabled")
                 } else {
                     self.UserDefaultsSuite.set(0, forKey: "ro.roadout.reservationNotificationsOption")
-                    self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(false, forKey: "ro.roadout.futureNotificationsEnabled")
                     self.UserDefaultsSuite.set(false, forKey: "ro.roadout.locationNotificationsEnabled")
                 }
             }
@@ -106,11 +106,11 @@ class PermissionsViewController: UIViewController {
             center.requestAuthorization(options: [.alert, .sound]) { granted, error in
                 if granted {
                     self.UserDefaultsSuite.set(1, forKey: "ro.roadout.reservationNotificationsOption")
-                    self.UserDefaultsSuite.set(true, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(true, forKey: "ro.roadout.futureNotificationsEnabled")
                     self.UserDefaultsSuite.set(true, forKey: "ro.roadout.locationNotificationsEnabled")
                 } else {
                     self.UserDefaultsSuite.set(0, forKey: "ro.roadout.reservationNotificationsOption")
-                    self.UserDefaultsSuite.set(false, forKey: "ro.roadout.reminderNotificationsEnabled")
+                    self.UserDefaultsSuite.set(false, forKey: "ro.roadout.futureNotificationsEnabled")
                     self.UserDefaultsSuite.set(false, forKey: "ro.roadout.locationNotificationsEnabled")
                 }
             }

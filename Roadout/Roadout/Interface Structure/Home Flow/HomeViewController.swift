@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
     let resultView = ResultView.instanceFromNib()
     let sectionView = SectionView.instanceFromNib()
     let spotView = SpotView.instanceFromNib()
-    let reserveView = ReserveView.instanceFromNib()
+    let timeView = TimeView.instanceFromNib()
     let payView = PayView.instanceFromNib()
     let reservationView = ReservationView.instanceFromNib()
     let delayView = DelayView.instanceFromNib()
@@ -78,7 +78,7 @@ class HomeViewController: UIViewController {
         } else {
             self.searchBar.alpha = 0.0
         }
-        self.updateBackgroundViewHeight(with: 245)
+        self.updateBackgroundViewHeight(with: 280)
         //Clear saved car park
         UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
         carParkHash = "roadout_carpark_clear"
@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.findView.frame = CGRect(x: 10, y: self.screenSize.height-245-dif, width: self.screenSize.width - 20, height: 245)
+            self.findView.frame = CGRect(x: 10, y: self.screenSize.height-280-dif, width: self.screenSize.width - 20, height: 280)
             self.view.addSubview(self.findView)
         }
     }
@@ -188,8 +188,8 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(addSpotCard), name: .addSpotCardID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeSpotCard), name: .removeSpotCardID, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(addReserveCard), name: .addReserveCardID, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeReserveCard), name: .removeReserveCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addTimeCard), name: .addTimeCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeTimeCard), name: .removeTimeCardID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(addPayCard), name: .addPayCardID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removePayCard), name: .removePayCardID, object: nil)
@@ -309,14 +309,24 @@ class HomeViewController: UIViewController {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectPayVC") as! SelectPayViewController
                 self.present(vc, animated: true, completion: nil)
             }),
+            UIAction(title: "Future Reserve".localized(), image: UIImage(systemName: "eye.fill"), handler: { (_) in
+                guard let coord = self.mapView.myLocation?.coordinate else {
+                    //let vc = self.storyboard?.instantiateViewController(withIdentifier: "FuturePickVC") as! FuturePickViewController
+                    //self.present(vc, animated: true, completion: nil)
+                    return
+                }
+                currentLocationCoord = coord
+//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "FuturePickVC") as!       FuturePickViewController
+//                self.present(vc, animated: true, completion: nil)
+            }),
             UIAction(title: "Express Lane".localized(), image: UIImage(systemName: "flag.2.crossed.fill"), handler: { (_) in
                 guard let coord = self.mapView.myLocation?.coordinate else {
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpressPickVC") as! ExpressPickViewController
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpressChooseVC") as! ExpressChooseViewController
                     self.present(vc, animated: true, completion: nil)
                     return
                 }
                 currentLocationCoord = coord
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpressPickVC") as! ExpressPickViewController
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpressChooseVC") as! ExpressChooseViewController
                 self.present(vc, animated: true, completion: nil)
             }),
             UIAction(title: "Find Way".localized(), image: UIImage(systemName: "binoculars.fill"), handler: { (_) in
@@ -389,7 +399,7 @@ class HomeViewController: UIViewController {
         checkUserIsValid()
         
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip1") == false {
-            optionsTapArea.tooltip(TutorialView1.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+            settingsButton.tooltip(TutorialView1.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                 
                 configuration.backgroundColor = UIColor(named: "Card Background")!
                 configuration.shadowConfiguration.shadowOpacity = 0.1
@@ -804,23 +814,23 @@ extension HomeViewController {
         }
     }
     //Reserve Card
-    @objc func addReserveCard() {
+    @objc func addTimeCard() {
         DispatchQueue.main.async {
             if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
                 self.view.subviews.last!.removeFromSuperview()
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 310)
+            self.updateBackgroundViewHeight(with: 280)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reserveView.frame = CGRect(x: 10, y: self.screenSize.height-310-dif, width: self.screenSize.width - 20, height: 310)
-            self.view.addSubview(self.reserveView)
+            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-280-dif, width: self.screenSize.width - 20, height: 280)
+            self.view.addSubview(self.timeView)
         }
     }
-    @objc func removeReserveCard() {
+    @objc func removeTimeCard() {
         DispatchQueue.main.async {
             if returnToResult {
                 self.updateBackgroundViewHeight(with: 142)
@@ -830,7 +840,7 @@ extension HomeViewController {
                 }
                 self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-142-dif, width: self.screenSize.width - 20, height: 142)
                 self.view.addSubview(self.resultView)
-                self.reserveView.removeFromSuperview()
+                self.timeView.removeFromSuperview()
                 
             } else {
                 self.updateBackgroundViewHeight(with: 318)
@@ -840,7 +850,7 @@ extension HomeViewController {
                 }
                 self.spotView.frame = CGRect(x: 10, y: self.screenSize.height-318-dif, width: self.screenSize.width - 20, height: 318)
                 self.view.addSubview(self.spotView)
-                self.reserveView.removeFromSuperview()
+                self.timeView.removeFromSuperview()
             }
         }
     }
@@ -863,13 +873,13 @@ extension HomeViewController {
     }
     @objc func removePayCard() {
         DispatchQueue.main.async {
-            self.updateBackgroundViewHeight(with: 310)
+            self.updateBackgroundViewHeight(with: 280)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.reserveView.frame = CGRect(x: 10, y: self.screenSize.height-310-dif, width: self.screenSize.width - 20, height: 310)
-            self.view.addSubview(self.reserveView)
+            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-280-dif, width: self.screenSize.width - 20, height: 280)
+            self.view.addSubview(self.timeView)
             self.payView.removeFromSuperview()
         }
     }

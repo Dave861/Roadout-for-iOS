@@ -1,5 +1,5 @@
 //
-//  ExpressPickViewController.swift
+//  ExpressChooseViewController.swift
 //  Roadout
 //
 //  Created by David Retegan on 19.07.2022.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ExpressPickViewController: UIViewController {
+class ExpressChooseViewController: UIViewController {
     
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
@@ -167,7 +167,7 @@ class ExpressPickViewController: UIViewController {
     }
 
 }
-extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource {
+extension ExpressChooseViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favouriteLocations.count
@@ -178,7 +178,7 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpressPickCell") as! ExpressPickCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpressChooseCell") as! ExpressChooseCell
         cell.nameLbl.text = favouriteLocations[indexPath.row].name
         let coord = CLLocationCoordinate2D(latitude: favouriteLocations[indexPath.row].latitude, longitude: favouriteLocations[indexPath.row].longitude)
         if currentLocationCoord != nil {
@@ -232,18 +232,18 @@ extension ExpressPickViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! ExpressPickCell
+        let cell = tableView.cellForRow(at: indexPath) as! ExpressChooseCell
         cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! ExpressPickCell
+        let cell = tableView.cellForRow(at: indexPath) as! ExpressChooseCell
         cell.card.backgroundColor = UIColor(named: "Secondary Detail")
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        let cell = tableView.cellForRow(at: indexPath) as! ExpressPickCell
+        let cell = tableView.cellForRow(at: indexPath) as! ExpressChooseCell
         
         let config = UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchPreviewVC") as! SearchPreviewController

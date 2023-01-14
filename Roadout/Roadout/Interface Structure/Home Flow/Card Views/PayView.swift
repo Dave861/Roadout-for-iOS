@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WidgetKit
 
 class PayView: UIView {
     
@@ -18,9 +19,6 @@ class PayView: UIView {
         if returnToDelay {
             returnToDelay = false
             NotificationCenter.default.post(name: .removePayDelayCardID, object: nil)
-        } else if returnToFind {
-            returnToFind = false
-            NotificationCenter.default.post(name: .showFindCardID, object: nil)
         } else {
             NotificationCenter.default.post(name: .removePayCardID, object: nil)
         }
@@ -45,10 +43,6 @@ class PayView: UIView {
         if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
             //Handled by menu
         } else {
-            if returnToFind {
-                returnToFind = false
-            }
-            
             if returnToDelay {
                 returnToDelay = false
                 timerSeconds += delaySeconds
@@ -68,8 +62,8 @@ class PayView: UIView {
                 Task {
                     do {
                         try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id)
-                        print("This is gud")
                         DispatchQueue.main.async {
+                            WidgetCenter.shared.reloadAllTimelines()
                             NotificationCenter.default.post(name: .showPaidBarID, object: nil)
                         }
                     } catch let err {

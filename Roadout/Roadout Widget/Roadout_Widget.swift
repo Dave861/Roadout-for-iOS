@@ -27,16 +27,17 @@ struct RoadoutWidgetProvider: IntentTimelineProvider {
     }
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<RoadoutWidgetEntry>) -> ()) {
-        let entry = Entry(configuration: configuration)
-        
-        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
-        let params1 : Parameters = ["id":entry.configuration.location1?.rID ?? ""]
-        let params2 : Parameters = ["id":entry.configuration.location2?.rID ?? ""]
-        
-        let downloadRequest1 = AF.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params1, encoding: JSONEncoding.default, headers: _headers)
-        let downloadRequest2 = AF.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params2, encoding: JSONEncoding.default, headers: _headers)
-        
         Task {
+            let entry = Entry(configuration: configuration)
+            
+            let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+            let params1 : Parameters = ["id":entry.configuration.location1?.rID ?? ""]
+            let params2 : Parameters = ["id":entry.configuration.location2?.rID ?? ""]
+            
+            let downloadRequest1 = AF.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params1, encoding: JSONEncoding.default, headers: _headers)
+            let downloadRequest2 = AF.request("https://\(roadoutServerURL)/Parking/GetFreeParkingSpots.php", method: .post, parameters: params2, encoding: JSONEncoding.default, headers: _headers)
+            
+            
             var responseJson1: String!
             do {
                 responseJson1 = try await downloadRequest1.serializingString().value
@@ -54,9 +55,9 @@ struct RoadoutWidgetProvider: IntentTimelineProvider {
             if jsonArray1["status"] as! String == "Success" {
                 entry.configuration.location1?.freeSpots = Int(jsonArray1["result"] as! String) as NSNumber?
             }
-        }
-        
-        Task {
+            
+            
+            
             var responseJson2: String!
             do {
                 responseJson2 = try await downloadRequest2.serializingString().value
@@ -74,10 +75,11 @@ struct RoadoutWidgetProvider: IntentTimelineProvider {
             if jsonArray2["status"] as! String == "Success" {
                 entry.configuration.location2?.freeSpots = Int(jsonArray2["result"] as! String) as NSNumber?
             }
+            
+            
+            let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(3600)))
+            completion(timeline)
         }
-
-        let timeline = Timeline(entries: [entry], policy: .atEnd)
-        completion(timeline)
     }
     
 }

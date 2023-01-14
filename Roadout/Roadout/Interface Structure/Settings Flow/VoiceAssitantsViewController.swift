@@ -52,20 +52,20 @@ class VoiceAssitantsViewController: UIViewController {
         siriDescriptionTitle.text = "Use Roadout with Siri".localized()
         siriDescriptionLbl.text = "There is no set-up required, just say one of the following phrases to find a parking spot through Siri. In order to function properly make sure location is enabled for Roadout.".localized()
         otherDescriptionTitle.text = "More Integrations".localized()
-        otherDescriptionLbl.text = "Stay tuned, more integrations with your favourite assitants are coming soon…".localized()
+        otherDescriptionLbl.text = "Stay tuned, more integrations are coming soon…".localized()
     }
     
     func addColorToPhraseLabels() {
-        siriPhraseLbl1.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl1.range(string: "Roadout"))
-        siriPhraseLbl1.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl1.range(string: "somewhere to park"))
+        siriPhraseLbl1.set(textColor: UIColor(named: "Icons")!, range: siriPhraseLbl1.range(string: "Roadout"))
+        siriPhraseLbl1.set(textColor: UIColor(named: "Icons")!, range: siriPhraseLbl1.range(string: "somewhere to park"))
         
-        siriPhraseLbl2.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl2.range(string: "Roadout"))
-        siriPhraseLbl2.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl2.range(string: "parking"))
+        siriPhraseLbl2.set(textColor: UIColor(named: "Icons")!, range: siriPhraseLbl2.range(string: "Roadout"))
+        siriPhraseLbl2.set(textColor: UIColor(named: "Icons")!, range: siriPhraseLbl2.range(string: "parking"))
         
-        siriPhraseLbl3.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl3.range(string: "Roadout"))
-        siriPhraseLbl3.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl3.range(string: "parking"))
+        siriPhraseLbl3.set(textColor: UIColor(named: "Icons")!, range: siriPhraseLbl3.range(string: "Roadout"))
+        siriPhraseLbl3.set(textColor: UIColor(named: "Icons")!, range: siriPhraseLbl3.range(string: "parking"))
         
-        siriPhraseLbl4.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl4.range(string: "Roadout"))
-        siriPhraseLbl4.set(textColor: UIColor(named: "GoldBrown")!, range: siriPhraseLbl4.range(string: "somewhere to park"))
+        siriPhraseLbl4.set(textColor: UIColor(named: "Icons")!, range: siriPhraseLbl4.range(string: "Roadout"))
+        siriPhraseLbl4.set(textColor: UIColor(named: "Icons")!, range: siriPhraseLbl4.range(string: "somewhere to park"))
     }
 }
