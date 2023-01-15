@@ -14,7 +14,6 @@ class GuideCell: UITableViewCell {
     @IBOutlet weak var explanationLbl: UILabel!
     
     @IBOutlet weak var leftIcon: UIImageView!
-    @IBOutlet weak var rightIcon: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,5 +1,5 @@
 //
-//  GuideInfoViewController.swift
+//  MoreInfoViewController.swift
 //  Roadout
 //
 //  Created by David Retegan on 14.01.2023.
@@ -7,10 +7,11 @@
 
 import UIKit
 
-class GuideInfoViewController: UIViewController {
+class MoreInfoViewController: UIViewController {
     
     public var titleText: String!
     public var descriptionText: String!
+    public var highlightColor: String!
     public var highlightedWords: [String]!
 
     @IBOutlet weak var cardView: UIView!
@@ -52,6 +53,8 @@ class GuideInfoViewController: UIViewController {
         doneBtn.setAttributedTitle(doneTitle, for: .normal)
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
+        
+        doneBtn.backgroundColor = UIColor(named: highlightColor)!
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,7 +80,7 @@ class GuideInfoViewController: UIViewController {
         
         for highlightedWord in highlightedWords {
             descriptionLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: descriptionLbl.range(string: highlightedWord))
-            descriptionLbl.set(textColor: UIColor(named: "GoldBrown")!, range: descriptionLbl.range(string: highlightedWord))
+            descriptionLbl.set(textColor: UIColor(named: highlightColor)!, range: descriptionLbl.range(string: highlightedWord))
         }
     }
 }

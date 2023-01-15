@@ -157,11 +157,11 @@ class PayView: UIView {
         self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - Spot ".localized()))
         
         if returnToDelay {
-            self.timeLbl.text = "Delay for ".localized() + "\(Int(delaySeconds/60))" + " minutes".localized()
+            self.timeLbl.text = "Delay for ".localized() + "\(Int(delaySeconds/60))" + " minute/s".localized()
             self.timeLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.timeLbl.range(after: "Delay for ".localized()))
             self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Delay for ".localized()))
         } else {
-            self.timeLbl.text = "Reserve for ".localized() + "\(Int(timerSeconds/60))" + " minutes".localized()
+            self.timeLbl.text = "Reserve for ".localized() + "\(Int(timerSeconds/60))" + " minute/s".localized()
             self.timeLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.timeLbl.range(after: "Reserve for ".localized()))
             self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Reserve for ".localized()))
         }

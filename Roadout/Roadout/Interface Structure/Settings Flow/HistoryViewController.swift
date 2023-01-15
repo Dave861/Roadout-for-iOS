@@ -7,23 +7,24 @@
 
 import UIKit
 
+struct HistoryItem {
+    var parkingSpotID: String
+    
+    var time: Int
+    var price: Float
+    var date: Date
+}
+
+var historyItems = [
+    HistoryItem(parkingSpotID: "Cluj.Eroilor.A.10", time: 12, price: 8.7, date: Date()),
+    HistoryItem(parkingSpotID: "Cluj.Marasti.B.2", time: 11, price: 7.6, date: Date()),
+    HistoryItem(parkingSpotID: "Cluj.OldTown.C.1", time: 17, price: 11.5, date: Date()),
+    HistoryItem(parkingSpotID: "Cluj.Manastur.D.5", time: 20, price: 16.0, date: Date())
+]
+
 class HistoryViewController: UIViewController {
     
-    struct HistoryItem {
-        var parkingSpotID: String
-        
-        var time: Int
-        var price: Float
-        var date: Date
-    }
     let dates = ["12.01.2023", "10.01.2023", "02.01.2023", "29.12.2022"]
-    var historyItems = [
-        HistoryItem(parkingSpotID: "Cluj.Eroilor.A.10", time: 12, price: 8.7, date: Date()),
-        HistoryItem(parkingSpotID: "Cluj.Marasti.B.2", time: 11, price: 7.6, date: Date()),
-        HistoryItem(parkingSpotID: "Cluj.OldTown.C.1", time: 17, price: 11.5, date: Date()),
-        HistoryItem(parkingSpotID: "Cluj.Manastur.D.5", time: 20, price: 16.0, date: Date())
-    ]
-    
     var weekHistoryItems = [HistoryItem]()
     var olderHistoryItems = [HistoryItem]()
 

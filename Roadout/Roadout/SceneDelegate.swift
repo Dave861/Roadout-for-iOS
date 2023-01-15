@@ -9,7 +9,6 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import IOSSecuritySuite
-import WatchConnectivity
 import WidgetKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -43,14 +42,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         WidgetCenter.shared.reloadAllTimelines()
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
             guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
-            //Send user ID to Apple Watch if reachable
-            if WCSession.isSupported() && WCSession.default.isReachable {
-                let data = [
-                    "action" : "UserID",
-                    "userID" : UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-                ]
-                WCSession.default.sendMessage(data, replyHandler: nil)
-            }
             Task {
                 do {
                     try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)

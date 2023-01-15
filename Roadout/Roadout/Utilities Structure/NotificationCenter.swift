@@ -45,10 +45,11 @@ extension Notification.Name {
     static let showFindCardID = Notification.Name("ro.roadout.Roadout.showFindCardID")
     static let animateCameraToFoundID = Notification.Name("ro.roadout.Roadout.animateCameraToFoundID")
     
-    //REMINDERS & CARDS
+    //SETTINGS
     static let refreshReminderID = Notification.Name("ro.roadout.Roadout.refreshReminder")
     static let refreshCardsID = Notification.Name("ro.roadout.Roadout.refreshCards")
     static let refreshCardsMenuID = Notification.Name("ro.roadout.Roadout.refreshCardsMenu")
+    static let refreshOptionsTableViewID = Notification.Name("ro.roadout.Roadout.refreshOptionsTableViewID")
     
     //OTHERS
     static let reloadUserNameID = Notification.Name("ro.roadout.Roadout.reloadUserNameID")
@@ -63,8 +64,5 @@ extension Notification.Name {
     static let removeSpotMarkerID = Notification.Name("ro.roadout.Roadout.removeSpotMarkerID")
     static let refreshMarkedSpotID = Notification.Name("ro.roadout.Roadout.refreshMarkedSpotID")
     
-    //APPLE WATCH
-    static let reloadServerDataAWID = Notification.Name("ro.roadout.RoadoutWatch.reloadServerDataAWID")
-    static let dismissWatchConnectCardID = Notification.Name("ro.roadout.RoadoutWatch.dismissWatchConnectCardID")
-    static let receivedUserOnWatchID = Notification.Name("ro.roadout.RoadoutWatch.receivedUserOnWatchID")
+    
 }

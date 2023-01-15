@@ -31,7 +31,7 @@ class FindView: UIView {
     @IBAction func sliderChangedValue(_ sender: Any) {
         let roundedValue = round(slider.value/1.0)*1.0
         slider.value = roundedValue
-        chargeLbl.text = "\(Int(slider.value))" + " Minutes ".localized() + "- \(Int(slider.value)) RON"
+        chargeLbl.text = "\(Int(slider.value))" + " Minute/s".localized() + " - \(Int(slider.value)) RON"
         chargeLbl.set(textColor: UIColor(named: "Greyish")!, range: chargeLbl.range(after: " - "))
         chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
     }
@@ -138,10 +138,10 @@ class FindView: UIView {
         selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
                 
 
-        chooseMethodBtn.menu = UIMenu(title: "Choose a payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        chooseMethodBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true
         
-        payBtn.menu = UIMenu(title: "Choose a payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        payBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         payBtn.showsMenuAsPrimaryAction = true
         
                 

@@ -30,7 +30,7 @@ class DelayView: UIView {
         let roundedValue = round(minuteSlider.value/1.0)*1.0
         minuteSlider.value = roundedValue
         delaySeconds = Int(roundedValue)*60
-        priceLbl.text = "Charge".localized() + " - \(Int(minuteSlider.value)) RON"
+        priceLbl.text = "\(Int(minuteSlider.value))" + " Minute/s".localized() + " - \(Int(minuteSlider.value)) RON"
         priceLbl.set(textColor: UIColor(named: "Second Orange")!, range: priceLbl.range(after: " - "))
         priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
     }

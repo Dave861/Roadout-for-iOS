@@ -53,7 +53,7 @@ class HomeViewController: UIViewController {
         } else {
             self.searchBar.alpha = 0.0
         }
-        self.updateBackgroundViewHeight(with: 280)
+        self.updateBackgroundViewHeight(with: 285)
         //Clear saved car park
         UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
         carParkHash = "roadout_carpark_clear"
@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.expressView.frame = CGRect(x: 10, y: self.screenSize.height-280-dif, width: self.screenSize.width - 20, height: 280)
+            self.expressView.frame = CGRect(x: 10, y: self.screenSize.height-285-dif, width: self.screenSize.width - 20, height: 285)
             self.view.addSubview(self.expressView)
         }
     }
@@ -78,7 +78,7 @@ class HomeViewController: UIViewController {
         } else {
             self.searchBar.alpha = 0.0
         }
-        self.updateBackgroundViewHeight(with: 280)
+        self.updateBackgroundViewHeight(with: 285)
         //Clear saved car park
         UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
         carParkHash = "roadout_carpark_clear"
@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.findView.frame = CGRect(x: 10, y: self.screenSize.height-280-dif, width: self.screenSize.width - 20, height: 280)
+            self.findView.frame = CGRect(x: 10, y: self.screenSize.height-285-dif, width: self.screenSize.width - 20, height: 285)
             self.view.addSubview(self.findView)
         }
     }

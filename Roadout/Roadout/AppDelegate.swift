@@ -8,7 +8,6 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
-import WatchConnectivity
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ConnectionManager.sharedInstance.observeReachability()
         
         NotificationHelper.sharedInstance.checkNotificationStatus()
-        self.setUpWCSession()
         
         return true
     }
@@ -41,82 +39,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-extension AppDelegate: WCSessionDelegate {
-    
-    //Setting up the session when app launches
-    func setUpWCSession() {
-        if WCSession.isSupported() {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
-        }
-    }
-    
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        switch activationState {
-            case .activated:
-                print("Activated WCSession")
-                if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
-                    let data = [
-                        "action" : "UserID",
-                        "userID" : UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-                    ]
-                    WCSession.default.sendMessage(data, replyHandler: nil)
-                }
-            case .inactive:
-                print("Inactivated WCSession" + (error?.localizedDescription ?? ""))
-            case .notActivated:
-                print("Not Activated WCSession" + (error?.localizedDescription ?? ""))
-            @unknown default:
-                print("UNKNOWN WC STATE")
-        }
-        
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        //Manage when/if needed
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        //Manage when/if needed
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        if message["action"] as? String == "Refresh Reservation" {
-            guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
-            Task {
-                do {
-                    try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)
-                    if ReservationManager.sharedInstance.isReservationActive == 0 {
-                        //active
-                        NotificationCenter.default.post(name: .showActiveBarID, object: nil)
-                    } else if ReservationManager.sharedInstance.isReservationActive == 1 {
-                        //unlocked
-                        NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
-                    } else if ReservationManager.sharedInstance.isReservationActive == 2 {
-                        //cancelled
-                        NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
-                    } else if ReservationManager.sharedInstance.isReservationActive == 3 {
-                        //not active
-                        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
-                    } else {
-                        //error
-                        NotificationCenter.default.post(name: .returnToSearchBarWithErrorID, object: nil)
-                    }
-                } catch let err {
-                    print(err)
-                }
-            }
-        } else if message["action"] as? String == "Send UserID" {
-            if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
-                let data = [
-                    "action" : "UserID",
-                    "userID" : UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-                ]
-                WCSession.default.sendMessage(data, replyHandler: nil)
-            }
-        }
-    }
-    
-}
-

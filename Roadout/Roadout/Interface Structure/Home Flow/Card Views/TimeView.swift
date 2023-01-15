@@ -34,7 +34,7 @@ class TimeView: UIView {
     @IBAction func slided(_ sender: Any) {
         let roundedValue = round(minuteSlider.value/1.0)*1.0
         minuteSlider.value = roundedValue
-        totalLbl.text = "\(Int(minuteSlider.value))" + " Minutes ".localized() + "- \(Int(minuteSlider.value)) RON"
+        totalLbl.text = "\(Int(minuteSlider.value))" + " Minute/s".localized() + " - \(Int(minuteSlider.value)) RON"
         totalLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: totalLbl.range(after: " - "))
         totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
     }
