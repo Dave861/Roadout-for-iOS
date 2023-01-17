@@ -311,13 +311,13 @@ class HomeViewController: UIViewController {
             }),
             UIAction(title: "Future Reserve".localized(), image: UIImage(systemName: "eye.fill"), handler: { (_) in
                 guard let coord = self.mapView.myLocation?.coordinate else {
-                    //let vc = self.storyboard?.instantiateViewController(withIdentifier: "FuturePickVC") as! FuturePickViewController
-                    //self.present(vc, animated: true, completion: nil)
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "FutureReserveVC") as! FutureReserveViewController
+                    self.present(vc, animated: true, completion: nil)
                     return
                 }
                 currentLocationCoord = coord
-//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "FuturePickVC") as!       FuturePickViewController
-//                self.present(vc, animated: true, completion: nil)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "FutureReserveVC") as! FutureReserveViewController
+                self.present(vc, animated: true, completion: nil)
             }),
             UIAction(title: "Express Lane".localized(), image: UIImage(systemName: "flag.2.crossed.fill"), handler: { (_) in
                 guard let coord = self.mapView.myLocation?.coordinate else {

@@ -8,21 +8,16 @@
 import UIKit
 import MessageUI
 
-struct VoteOption {
-    var title: String
-    var description: String
-    var expandedDescription: String
-    var highlightedWords: [String]
-}
+
 
 let voteOptions = [
-    VoteOption(title: "Add more support for Siri", description: "Expand our Siri support with prompts for express reserve, pay parking and others, find out more", expandedDescription: "We are thinking of expanding our Siri support to cover more requests. Our proposed requests are Reserve a Spot in a certain location, Pay Parking & Future Reserve all through Siri.", highlightedWords: ["Reserve a Spot", "Pay Parking", "Future Reserve"]),
-    VoteOption(title: "Support more Assistants", description: "Add support for Alexa & Google Assistant on smart speakers and car systems, find out more", expandedDescription: "We are thinking of adding the Find Way capability to Google Assitant and Alexa powered devices, such as smart speakers and car systems", highlightedWords: ["Find Way", "smart speakers", "car systems"])
+    VoteOption(title: "Expand support for Siri", description: "Expand our Siri support with prompts for express reserve, pay parking and others", highlightedWords: ["express reserve", "pay parking"]),
+    VoteOption(title: "Support more Assistants", description: "Add support for Alexa & Google Assistant on smart speakers and car systems", highlightedWords: ["smart speakers", "car systems"])
 ]
 
-var selectedOptionIndex = -1
-
 class VoteViewController: UIViewController {
+    
+    var selectedOptionIndex = 0
 
     @IBOutlet weak var backButton: UIButton!
     
@@ -40,44 +35,37 @@ class VoteViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var submitCard: UIView!
-    @IBOutlet weak var submitBtn: UIButton!
-    @IBAction func submitTapped(_ sender: Any) {
+    @IBOutlet weak var actionCard: UIView!
+    @IBOutlet weak var actionBtn: UIButton!
+    @IBAction func actionTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        
-    }
-    
-    @IBOutlet weak var suggestCard: UIView!
-    @IBOutlet weak var suggestBtn: UIButton!
-    @IBAction func suggestTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.view.tintColor = UIColor(named: "Icons")
-            mail.setToRecipients(["suggestions@roadout.ro"])
-            mail.setSubject("Roadout - Feature Suggestion".localized())
-            mail.setMessageBody("Describe your idea here here - Roadout Team".localized(), isHTML: false)
-
-            present(mail, animated: true)
+        if !voteOptions.isEmpty {
+            
         } else {
-            let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or send the email at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: "Icons")
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.view.tintColor = UIColor(named: "Icons")
+                mail.setToRecipients(["suggestions@roadout.ro"])
+                mail.setSubject("Roadout - Feature Suggestion".localized())
+                mail.setMessageBody("Describe your idea here here - Roadout Team".localized(), isHTML: false)
+
+                present(mail, animated: true)
+            } else {
+                let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or send the email at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
+                alert.view.tintColor = UIColor(named: "Icons")
+                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
-    let buttonTitle = NSAttributedString(string: "Submit".localized(),
+    let submitTitle = NSAttributedString(string: "Submit".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
-    
-    func addObs() {
-        NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadOptionsTableView), name: .refreshOptionsTableViewID, object: nil)
-    }
+    let suggestTitle = NSAttributedString(string: "Suggest".localized(),
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
     
     @objc func reloadOptionsTableView() {
         self.loadVoteOptions()
@@ -86,15 +74,12 @@ class VoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addObs()
         loadVoteOptions()
         tableView.delegate = self
         tableView.dataSource = self
+        
         questionCard.layer.cornerRadius = 16.0
-        submitCard.layer.cornerRadius = 12.0
-        suggestCard.layer.cornerRadius = 12.0
-        submitBtn.setAttributedTitle(buttonTitle, for: .normal)
-        suggestBtn.setTitle("", for: .normal)
+        actionCard.layer.cornerRadius = 12.0
     }
     
     func loadVoteOptions() {
@@ -107,6 +92,8 @@ class VoteViewController: UIViewController {
             
             questionDescription.set(font: .systemFont(ofSize: 17, weight: .medium), range: questionDescription.range(string: "stay tuned"))
             questionDescription.set(textColor: UIColor(named: "Icons")!, range: questionDescription.range(string: "stay tuned"))
+            
+            actionBtn.setAttributedTitle(suggestTitle, for: .normal)
         } else {
             optionsHeader.isHidden = false
             questionHeader.text = "Active Question"
@@ -116,9 +103,10 @@ class VoteViewController: UIViewController {
             
             questionDescription.set(font: .systemFont(ofSize: 17, weight: .medium), range: questionDescription.range(string: "pick below"))
             questionDescription.set(textColor: UIColor(named: "Icons")!, range: questionDescription.range(string: "pick below"))
+            
+            actionBtn.setAttributedTitle(submitTitle, for: .normal)
         }
     }
-    
 }
 extension VoteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,25 +115,23 @@ extension VoteViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VoteCell") as! VoteCell
-        cell.index = indexPath.row
         cell.titleLbl.text = voteOptions[indexPath.row].title
         cell.explanationLbl.text = voteOptions[indexPath.row].description
-        cell.optionIcon.setImage(selectedOptionIndex == indexPath.row ? UIImage(systemName: "seal.fill") : UIImage(systemName: "seal"), for: .normal)
+        cell.optionIcon.image = selectedOptionIndex == indexPath.row ? UIImage(systemName: "checkmark.seal.fill") : UIImage(systemName: "seal")
         
-        cell.explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.explanationLbl.range(string: "find out more"))
-        cell.explanationLbl.set(textColor: UIColor(named: "Icons")!, range: cell.explanationLbl.range(string: "find out more"))
+        for highlightedWord in voteOptions[indexPath.row].highlightedWords {
+            cell.explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.explanationLbl.range(string: highlightedWord))
+            cell.explanationLbl.set(textColor: UIColor(named: "Icons")!, range: cell.explanationLbl.range(string: highlightedWord))
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "MoreInfoVC") as! MoreInfoViewController
-        vc.titleText = voteOptions[indexPath.row].title
-        vc.descriptionText = voteOptions[indexPath.row].expandedDescription
-        vc.highlightedWords = voteOptions[indexPath.row].highlightedWords
-        vc.highlightColor = "Icons"
-        
-        self.present(vc, animated: true)
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        selectedOptionIndex = indexPath.row
+        tableView.reloadData()
     }
 }
 extension VoteViewController: MFMailComposeViewControllerDelegate {

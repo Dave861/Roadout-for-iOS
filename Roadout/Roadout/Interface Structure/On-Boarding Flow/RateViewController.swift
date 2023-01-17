@@ -7,10 +7,7 @@
 
 import UIKit
 
-struct Reason {
-    var description: String
-    var isSelected: Bool
-}
+
 
 class RateViewController: UIViewController {
     

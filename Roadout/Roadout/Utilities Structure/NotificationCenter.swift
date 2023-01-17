@@ -46,10 +46,8 @@ extension Notification.Name {
     static let animateCameraToFoundID = Notification.Name("ro.roadout.Roadout.animateCameraToFoundID")
     
     //SETTINGS
-    static let refreshReminderID = Notification.Name("ro.roadout.Roadout.refreshReminder")
     static let refreshCardsID = Notification.Name("ro.roadout.Roadout.refreshCards")
     static let refreshCardsMenuID = Notification.Name("ro.roadout.Roadout.refreshCardsMenu")
-    static let refreshOptionsTableViewID = Notification.Name("ro.roadout.Roadout.refreshOptionsTableViewID")
     
     //OTHERS
     static let reloadUserNameID = Notification.Name("ro.roadout.Roadout.reloadUserNameID")
@@ -60,6 +58,7 @@ extension Notification.Name {
     static let showRateReservationID = Notification.Name("ro.roadout.Roadout.showRateReservationAlertID")
     static let showExpressLaneFreeSpotID = Notification.Name("ro.roadout.Roadout.showExpressLaneFreeSpotID")
     static let reloadExpressLocationsID = Notification.Name("ro.roadout.Roadout.reloadExpressLocationsID")
+    static let reloadFutureReservationsID = Notification.Name("ro.roadout.Roadout.reloadFutureReservationsID")
     static let addSpotMarkerID = Notification.Name("ro.roadout.Roadout.addSpotMarkerID")
     static let removeSpotMarkerID = Notification.Name("ro.roadout.Roadout.removeSpotMarkerID")
     static let refreshMarkedSpotID = Notification.Name("ro.roadout.Roadout.refreshMarkedSpotID")

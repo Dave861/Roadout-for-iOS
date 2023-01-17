@@ -112,37 +112,6 @@ class SelectPayViewController: UIViewController {
         return sortedArray
     }
     
-    func getRotationFor(_ percent: Int) -> CGFloat {
-        if percent == 100 {
-            return 2.44
-        } else if percent >= 90 {
-            return 2.02
-        } else if percent >= 80 {
-            return 1.57
-        } else if percent >= 70 {
-            return 1.04
-        } else if percent >= 60 {
-            return 0.52
-        } else if percent >= 50 {
-            return 0
-        } else if percent >= 40 {
-            return -0.52
-        } else if percent >= 30 {
-            return -1.04
-        } else if percent >= 20 {
-            return -1.57
-        } else if percent >= 10 {
-            return -2.02
-        } else {
-            return 2.44
-        }
-    }
-    
-    func getPercentageFrom(totalSpots: Int, freeSpots: Int) -> Int {
-        return 100-Int(Float(freeSpots)/Float(totalSpots) * 100)
-    }
-    
-
 }
 extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -181,11 +150,6 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.distanceLbl.text = "- km"
             }
             
-            let occupancyPercent = self.getPercentageFrom(totalSpots: nearbyParkLocations[indexPath.row].totalSpots, freeSpots: nearbyParkLocations[indexPath.row].freeSpots)
-            
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: self.getRotationFor(occupancyPercent))
-            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayCell") as! SelectPayCell
@@ -209,11 +173,6 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 cell.distanceLbl.text = "- km"
             }
-            
-            let occupancyPercent = self.getPercentageFrom(totalSpots: recentParkLocations[indexPath.row].totalSpots, freeSpots: recentParkLocations[indexPath.row].freeSpots)
-            
-            cell.gaugeIcon.transform = .identity
-            cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: self.getRotationFor(occupancyPercent))
             
             return cell
         }

@@ -7,13 +7,7 @@
 
 import UIKit
 
-struct HistoryItem {
-    var parkingSpotID: String
-    
-    var time: Int
-    var price: Float
-    var date: Date
-}
+
 
 var historyItems = [
     HistoryItem(parkingSpotID: "Cluj.Eroilor.A.10", time: 12, price: 8.7, date: Date()),

@@ -43,7 +43,7 @@ var returnToDelay = false
 //Decides if Reserve Card returns to Result Card or Spot Card
 var returnToResult = false
 
-var reminders = [Reminder]()
+var futureReservations = [FutureReservation]()
 
 var cardNumbers = [String]()
 

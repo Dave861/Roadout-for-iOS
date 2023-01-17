@@ -1,20 +1,18 @@
 //
-//  AddReminderViewController.swift
+//  AddFutureReserveViewController.swift
 //  Roadout
 //
-//  Created by David Retegan on 28.10.2021.
+//  Created by David Retegan on 16.01.2023.
 //
 
 import UIKit
 
-class AddReminderViewController: UIViewController {
+class AddFutureReserveViewController: UIViewController {
 
     let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
     
-    let setTitle = NSAttributedString(string: "Set".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
-    var oldSelectedDate = Date().addingTimeInterval(900)
-
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -27,32 +25,30 @@ class AddReminderViewController: UIViewController {
         }
     }
     
-    
-    @IBOutlet weak var setBtn: UIButton!
-    @IBAction func setTapped(_ sender: Any) {
+    @IBOutlet weak var doneBtn: UIButton!
+    @IBAction func doneTapped(_ sender: Any) {
         var ok = true
-        for reminder in reminders {
-            if reminder.label == labelField.text {
+        for futureReservation in futureReservations {
+            if futureReservation.place == placeField.text {
                 ok = false
             }
         }
         if ok == true {
-            if labelField.text != "" {
-
-                let reminder = Reminder(label: labelField.text!, date: datePicker.date, identifier: "ro.roadout.reminder.\(labelField.text!.replacingOccurrences(of: " ", with: ""))")
+            if placeField.text != "" {
+                let futureReservation = FutureReservation(place: placeField.text!, date: datePicker.date, identifier: "ro.roadout.Roadout.FR.\(placeField.text!.replacingOccurrences(of: " ", with: ""))")
                 if UserPrefsUtils.sharedInstance.futureNotificationsEnabled() {
-                    NotificationHelper.sharedInstance.scheduleReminder(reminder: reminder)
+                    NotificationHelper.sharedInstance.scheduleFutureReservation(futureReservation: futureReservation)
                 }
-                saveReminder(reminder: reminder)
+                saveFutureReservation(futureReservation: futureReservation)
                 
-                NotificationCenter.default.post(name: .refreshReminderID, object: nil)
+                NotificationCenter.default.post(name: .reloadFutureReservationsID, object: nil)
                 UIView.animate(withDuration: 0.1) {
                     self.blurEffect.alpha = 0
                 } completion: { done in
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
-                let alert = UIAlertController(title: "Error".localized(), message: "Please add a label to the reminder".localized(), preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error".localized(), message: "Please add a place to the future reservation".localized(), preferredStyle: .alert)
                 alert.view.tintColor = UIColor(named: "Icons")
                 let okAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                     self.dismiss(animated: true, completion: nil)
@@ -61,7 +57,7 @@ class AddReminderViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         } else {
-            let alert = UIAlertController(title: "Error".localized(), message: "There is already an active reminder with this label, please pick another label".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error".localized(), message: "There is already an active future reservation for this place, please pick another place".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Icons")
             let okAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                 self.dismiss(animated: true, completion: nil)
@@ -71,20 +67,20 @@ class AddReminderViewController: UIViewController {
         }
     }
     
-    func saveReminder(reminder: Reminder) {
-        reminders.append(reminder)
+    func saveFutureReservation(futureReservation: FutureReservation) {
+        futureReservations.append(futureReservation)
         do {
             let encoder = JSONEncoder()
-            let data = try encoder.encode(reminders)
-            UserDefaultsSuite.set(data, forKey: "ro.roadout.remindersList")
+            let data = try encoder.encode(futureReservations)
+            UserDefaultsSuite.set(data, forKey: "ro.roadout.Roadout.futureReservations")
         } catch {
-            print("Unable to Encode Array of Reminders (\(error))")
+            print("Unable to Encode Array of Future Reservations (\(error))")
         }
     }
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var labelField: PaddedTextField!
+    @IBOutlet weak var placeField: PaddedTextField!
     
     @IBAction func cancelTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
@@ -113,14 +109,14 @@ class AddReminderViewController: UIViewController {
         
         addShadowToCardView()
 
-        setBtn.layer.cornerRadius = 13.0
-        setBtn.setAttributedTitle(setTitle, for: .normal)
+        doneBtn.layer.cornerRadius = 13.0
+        doneBtn.setAttributedTitle(doneTitle, for: .normal)
         
-        datePicker.minimumDate = Date().addingTimeInterval(900)
+        datePicker.minimumDate = makeNextDate()
         
-        labelField.layer.cornerRadius = 12.0
-        labelField.attributedPlaceholder = NSAttributedString(
-            string: "Notification Label".localized(),
+        placeField.layer.cornerRadius = 12.0
+        placeField.attributedPlaceholder = NSAttributedString(
+            string: "Reservation Place".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         
@@ -136,8 +132,17 @@ class AddReminderViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.blurEffect.alpha = 0.7
         } completion: { _ in
-            self.labelField.becomeFirstResponder()
+            self.placeField.becomeFirstResponder()
         }
+    }
+    
+    func makeNextDate() -> Date {
+        let calendar = Calendar.current
+        var nextDate = Date()
+        let minutes = calendar.component(.minute, from: nextDate)
+        let diff = 5 - (minutes % 5)
+        nextDate = calendar.date(byAdding: .minute, value: diff, to: nextDate)!
+        return nextDate
     }
 
 }

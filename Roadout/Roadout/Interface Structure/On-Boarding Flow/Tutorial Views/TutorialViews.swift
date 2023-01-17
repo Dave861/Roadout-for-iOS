@@ -89,3 +89,23 @@ class TutorialView4: UIView {
         return UINib(nibName: "Tutorials", bundle: nil).instantiate(withOwner: nil, options: nil)[3] as! UIView
     }
 }
+
+class TutorialView5: UIView {
+    
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var explanationLbl: UILabel!
+    
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        self.layer.cornerRadius = 12.0
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "future"))
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "worry"))
+        
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "future"))
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "worry"))
+    }
+    
+    class func instanceFromNib() -> UIView {
+        return UINib(nibName: "Tutorials", bundle: nil).instantiate(withOwner: nil, options: nil)[4] as! UIView
+    }
+}

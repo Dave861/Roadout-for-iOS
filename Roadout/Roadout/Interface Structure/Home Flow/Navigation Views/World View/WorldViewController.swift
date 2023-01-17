@@ -9,13 +9,7 @@ import UIKit
 import GeohashKit
 import Alamofire
 
-struct WorldLocation {
-    var latitude: Double
-    var longitude: Double
-    var fov: Int
-    var heading: Int
-    var pitch: Int
-}
+
 
 class WorldViewController: UIViewController {
     

@@ -43,14 +43,14 @@ class NotificationHelper {
         }
     }
     
-    func askNotificationPermission(currentNotification: String, reminder: Reminder? = nil) {
+    func askNotificationPermission(currentNotification: String, futureReservation: FutureReservation? = nil) {
         if #available(iOS 15.0, *) {
             center.requestAuthorization(options: [.alert, .sound, .timeSensitive]) { granted, error in
                 if granted {
                     if currentNotification == "Reservation" {
                         self.scheduleReservationNotification()
-                    } else if currentNotification == "Reminder" {
-                        self.scheduleReminder(reminder: reminder!)
+                    } else if currentNotification == "Future Reservation" {
+                        self.scheduleFutureReservation(futureReservation: futureReservation!)
                     }
                 } else {
                     print("Notifications are denied")
@@ -61,8 +61,8 @@ class NotificationHelper {
                 if granted {
                     if currentNotification == "Reservation" {
                         self.scheduleReservationNotification()
-                    } else if currentNotification == "Reminder" {
-                        self.scheduleReminder(reminder: reminder!)
+                    } else if currentNotification == "Future Reservation" {
+                        self.scheduleFutureReservation(futureReservation: futureReservation!)
                     }
                 } else {
                     print("Notifications are denied")
@@ -210,30 +210,30 @@ class NotificationHelper {
         return CLLocationCoordinate2D(latitude: lat, longitude: long)
     }
     
-    //MARK: - Reminders -
+    //MARK: - Future Reservations -
     
-    func scheduleReminder(reminder: Reminder) {
+    func scheduleFutureReservation(futureReservation: FutureReservation) {
         center.getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
                 let content = UNMutableNotificationContent()
-                content.title = reminder.label
+                content.title = "Reserve near " + futureReservation.place
                 content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "carkeysound.aiff"))
                 if #available(iOS 15.0, *) {
                     content.interruptionLevel = .timeSensitive
                 }
                 let calendar = Calendar(identifier: .gregorian)
-                let dateComp = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.date)
+                let dateComp = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: futureReservation.date)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: false)
-                let request = UNNotificationRequest(identifier: reminder.identifier, content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: futureReservation.identifier, content: content, trigger: trigger)
                 self.center.add(request) { _ in }
             } else {
-                self.askNotificationPermission(currentNotification: "Reminder", reminder: reminder)
+                self.askNotificationPermission(currentNotification: "Future Reservation", futureReservation: futureReservation)
             }
         }
     }
     
-    func removeReminder(reminder: Reminder) {
-        center.removePendingNotificationRequests(withIdentifiers: [reminder.identifier])
+    func removeFutureReservation(futureReservation: FutureReservation) {
+        center.removePendingNotificationRequests(withIdentifiers: [futureReservation.identifier])
     }
     
 }
