@@ -8,8 +8,6 @@
 import UIKit
 
 class AddFutureReserveViewController: UIViewController {
-
-    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
     
     let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
@@ -72,7 +70,7 @@ class AddFutureReserveViewController: UIViewController {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(futureReservations)
-            UserDefaultsSuite.set(data, forKey: "ro.roadout.Roadout.futureReservations")
+            UserDefaults.roadout!.set(data, forKey: "ro.roadout.Roadout.futureReservations")
         } catch {
             print("Unable to Encode Array of Future Reservations (\(error))")
         }

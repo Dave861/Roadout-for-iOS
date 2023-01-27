@@ -94,7 +94,7 @@ class SettingsViewController: UIViewController {
         UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip5")
         
         UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.futureReservations")
-        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.paymentMethods")
+        UserDefaults.roadout!.set([String](), forKey: "ro.roadout.paymentMethods")
         UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.favouriteLocationIDs")
         UserDefaults.roadout!.set("NO-PLATE", forKey: "ro.roadout.Roadout.userLicensePlate")
         userLicensePlate = "NO-PLATE"

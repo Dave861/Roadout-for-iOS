@@ -438,7 +438,7 @@ Made in Cluj :)</string>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OBN-Pc-CFS">
                                         <rect key="frame" x="311" y="13.666666666666686" width="29" height="43.666666666666671"/>
-                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <color key="tintColor" name="Second Orange"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="E58-uX-UWJ"/>
                                             <constraint firstAttribute="width" constant="29" id="R0x-Yd-48S"/>
@@ -491,7 +491,7 @@ Made in Cluj :)</string>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WJZ-Yw-9kh">
                                         <rect key="frame" x="311" y="13.666666666666686" width="29" height="43.666666666666671"/>
-                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <color key="tintColor" name="Second Orange"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="7pe-dW-flE"/>
                                             <constraint firstAttribute="width" constant="29" id="XRm-OC-G6F"/>
@@ -544,7 +544,7 @@ Made in Cluj :)</string>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="e9R-ju-qND">
                                         <rect key="frame" x="311" y="13.666666666666629" width="29" height="43.666666666666671"/>
-                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <color key="tintColor" name="Second Orange"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="29" id="5kc-aW-duy"/>
                                             <constraint firstAttribute="height" constant="45" id="QIK-wN-asi"/>
@@ -744,6 +744,54 @@ Made in Cluj :)</string>
                                     <constraint firstAttribute="bottom" secondItem="X10-hg-4Qk" secondAttribute="bottom" id="wsE-iV-WNJ"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0Q-ai-Fle">
+                                <rect key="frame" x="16" y="321.66666666666669" width="361" height="209.00000000000006"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditcard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wuZ-Yl-7zN">
+                                        <rect key="frame" x="143" y="20" width="75" height="60.333333333333329"/>
+                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="8e6-aW-t5c"/>
+                                            <constraint firstAttribute="height" constant="64.5" id="hNA-6R-pDz"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven’t added any payment methods yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIT-sC-eF6">
+                                        <rect key="frame" x="44.666666666666657" y="96" width="272" height="49"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="Rzy-bQ-7cb"/>
+                                            <constraint firstAttribute="width" constant="272" id="b7A-gl-WtV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLd-tR-IJb">
+                                        <rect key="frame" x="104.66666666666669" y="153" width="152" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="152" id="sgc-Na-hs2"/>
+                                            <constraint firstAttribute="height" constant="36" id="tju-bE-RLC"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Dark Orange"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Tap here to add">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="placeholderAddTapped:" destination="gDW-Gn-zbR" eventType="touchUpInside" id="3qA-z7-aeT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="Second Background"/>
+                                <constraints>
+                                    <constraint firstItem="SLd-tR-IJb" firstAttribute="top" secondItem="sIT-sC-eF6" secondAttribute="bottom" constant="8" symbolic="YES" id="CSR-gz-uQm"/>
+                                    <constraint firstItem="wuZ-Yl-7zN" firstAttribute="top" secondItem="J0Q-ai-Fle" secondAttribute="top" constant="18" id="I0s-zo-MID"/>
+                                    <constraint firstItem="sIT-sC-eF6" firstAttribute="centerX" secondItem="J0Q-ai-Fle" secondAttribute="centerX" id="R4d-1r-doi"/>
+                                    <constraint firstItem="sIT-sC-eF6" firstAttribute="top" secondItem="wuZ-Yl-7zN" secondAttribute="bottom" constant="13.5" id="abu-ZJ-qUq"/>
+                                    <constraint firstItem="wuZ-Yl-7zN" firstAttribute="centerX" secondItem="J0Q-ai-Fle" secondAttribute="centerX" id="dOu-Fl-vIO"/>
+                                    <constraint firstAttribute="height" constant="209" id="fks-Wb-lAT"/>
+                                    <constraint firstItem="SLd-tR-IJb" firstAttribute="centerX" secondItem="J0Q-ai-Fle" secondAttribute="centerX" id="oYV-Je-XQB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hAu-we-wdk"/>
                         <color key="backgroundColor" name="Second Background"/>
@@ -754,12 +802,15 @@ Made in Cluj :)</string>
                             <constraint firstItem="7bz-f7-ras" firstAttribute="leading" secondItem="hAu-we-wdk" secondAttribute="leading" constant="7" id="M2a-We-rAa"/>
                             <constraint firstItem="Lro-EB-HFp" firstAttribute="top" secondItem="gZi-7y-1t4" secondAttribute="bottom" constant="8" id="Pvl-bO-Ctu"/>
                             <constraint firstItem="Fbi-bI-hjl" firstAttribute="bottom" secondItem="hAu-we-wdk" secondAttribute="bottom" constant="5" id="Th6-ti-Bx2"/>
+                            <constraint firstItem="J0Q-ai-Fle" firstAttribute="leading" secondItem="kRQ-fL-uZz" secondAttribute="leading" constant="16" id="cIF-7L-TVb"/>
                             <constraint firstItem="Lro-EB-HFp" firstAttribute="leading" secondItem="hAu-we-wdk" secondAttribute="leading" constant="20" id="dtQ-Z9-MA4"/>
                             <constraint firstItem="plv-FK-oM6" firstAttribute="top" secondItem="hAu-we-wdk" secondAttribute="top" constant="45" id="dzC-fq-2Fx"/>
+                            <constraint firstItem="J0Q-ai-Fle" firstAttribute="centerY" secondItem="kRQ-fL-uZz" secondAttribute="centerY" id="g2a-Bm-yDB"/>
                             <constraint firstItem="hAu-we-wdk" firstAttribute="trailing" secondItem="gZi-7y-1t4" secondAttribute="trailing" constant="20" id="g5d-jK-G4Y"/>
                             <constraint firstItem="hAu-we-wdk" firstAttribute="trailing" secondItem="Lro-EB-HFp" secondAttribute="trailing" constant="20" id="jOA-5k-KEe"/>
                             <constraint firstItem="Fbi-bI-hjl" firstAttribute="top" secondItem="Lro-EB-HFp" secondAttribute="bottom" constant="8" id="peJ-kX-2m2"/>
                             <constraint firstItem="gZi-7y-1t4" firstAttribute="top" secondItem="plv-FK-oM6" secondAttribute="bottom" constant="15" id="pmB-xC-zXv"/>
+                            <constraint firstItem="hAu-we-wdk" firstAttribute="trailing" secondItem="J0Q-ai-Fle" secondAttribute="trailing" constant="16" id="qiZ-gK-7ap"/>
                             <constraint firstItem="plv-FK-oM6" firstAttribute="leading" secondItem="hAu-we-wdk" secondAttribute="leading" constant="20" id="tsg-9N-Y1P"/>
                         </constraints>
                     </view>
@@ -767,6 +818,9 @@ Made in Cluj :)</string>
                         <outlet property="addBtnOutline" destination="Lro-EB-HFp" id="TVe-K4-bb6"/>
                         <outlet property="addCardBtn" destination="X10-hg-4Qk" id="o7v-yD-mfb"/>
                         <outlet property="backButton" destination="7bz-f7-ras" id="FuQ-mW-2vg"/>
+                        <outlet property="placeholderAddBtn" destination="SLd-tR-IJb" id="x9B-sR-F2S"/>
+                        <outlet property="placeholderText" destination="sIT-sC-eF6" id="P3q-qB-hdy"/>
+                        <outlet property="placeholderView" destination="J0Q-ai-Fle" id="tO9-3Q-iwb"/>
                         <outlet property="tableView" destination="gZi-7y-1t4" id="UvI-Jz-CEg"/>
                     </connections>
                 </viewController>
@@ -1928,8 +1982,8 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyY-1E-mfX">
                                 <rect key="frame" x="20" y="272" width="353" height="77"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.0 - Build 34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQ5-7w-8DN">
-                                        <rect key="frame" x="122.66666666666666" y="28.666666666666686" width="174.99999999999997" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQ5-7w-8DN">
+                                        <rect key="frame" x="162" y="28.666666666666686" width="96" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Qgh-hT-t0S"/>
                                         </constraints>
@@ -1938,7 +1992,7 @@ Made in Cluj :)</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ad6-ze-Q1B">
-                                        <rect key="frame" x="55.666666666666671" y="11" width="55" height="55"/>
+                                        <rect key="frame" x="95" y="11" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="5Wq-m2-fDd"/>
                                             <constraint firstAttribute="width" constant="55" id="XeE-a2-VjU"/>
@@ -2500,6 +2554,7 @@ Made in Cluj :)</string>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="creditcard" catalog="system" width="128" height="88"/>
         <image name="questionmark" catalog="system" width="94" height="128"/>
         <image name="seal" catalog="system" width="128" height="124"/>
         <image name="waveform.circle.fill" catalog="system" width="128" height="123"/>

@@ -60,7 +60,7 @@ class SectionView: UIView {
         if newSuperview != nil {
             addPointsToImage(sections: parkLocations[selectedParkLocationIndex].sections)
         } else {
-            sectionImage.subviews.forEach({ $0.removeFromSuperview() })
+            removePointsFromImage()
         }
         
         
@@ -123,6 +123,10 @@ class SectionView: UIView {
         }
     }
     
+    func removePointsFromImage() {
+        sectionImage.subviews.forEach({ $0.removeFromSuperview() })
+    }
+    
     func decolorButtonsInSectionImage() {
         for subview in sectionImage.subviews {
             guard let btn = subview as? UIButton else { return }
@@ -156,6 +160,9 @@ class SectionView: UIView {
                                                  attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
                 self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
                 selectedSectionIndex = index
+                self.showSelectedIndicator(letter: self.letter)
+                self.removePointsFromImage()
+                self.addPointsToImage(sections: sections)
             })
             menuItems.append(action)
         }

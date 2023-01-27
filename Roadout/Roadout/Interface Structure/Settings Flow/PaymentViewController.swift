@@ -8,23 +8,26 @@
 import UIKit
 
 class PaymentViewController: UIViewController {
-    
-    var indexNr = 0
-    
-    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
-    
+            
     @IBOutlet weak var backButton: UIButton!
     @IBAction func backTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBOutlet weak var tableView: ContentSizedTableView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var placeholderView: UIView!
+    @IBOutlet weak var placeholderText: UILabel!
+    @IBOutlet weak var placeholderAddBtn: UIButton!
+    
+    @IBAction func placeholderAddTapped(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AddCardVC") as! AddCardViewController
+        self.present(vc, animated: true, completion: nil)
+    }
     
     @IBOutlet weak var addBtnOutline: UIView!
     @IBOutlet weak var addCardBtn: UIButton!
     @IBAction func addCardTapped(_ sender: Any) {
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
         let vc = storyboard?.instantiateViewController(withIdentifier: "AddCardVC") as! AddCardViewController
         self.present(vc, animated: true, completion: nil)
     }
@@ -39,8 +42,15 @@ class PaymentViewController: UIViewController {
     
     @objc func refreshTableView() {
         DispatchQueue.main.async {
-            self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+            UserDefaults.roadout!.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
             self.tableView.reloadData()
+            if cardNumbers.count == 0 {
+                self.addBtnOutline.isHidden = true
+                self.placeholderView.isHidden = false
+            } else {
+                self.addBtnOutline.isHidden = false
+                self.placeholderView.isHidden = true
+            }
         }
     }
     
@@ -51,21 +61,24 @@ class PaymentViewController: UIViewController {
         tableView.dataSource = self
         addCardBtn.setAttributedTitle(buttonTitle, for: .normal)
         addBtnOutline.layer.cornerRadius = 12.0
-        cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
-        UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
+        UserDefaults.roadout!.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
         tableView.reloadData()
+        if cardNumbers.count == 0 {
+            addBtnOutline.isHidden = true
+            placeholderView.isHidden = false
+        } else {
+            addBtnOutline.isHidden = false
+            placeholderView.isHidden = true
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
-    
-    func decideColor() -> Int {
-        if indexNr%4 == 0 {
+    func decideColor(for index: Int) -> Int {
+        if index%4 == 0 {
             return 4
-        } else if indexNr%3 == 0 {
+        } else if index%3 == 0 {
             return 3
-        } else if indexNr%2 == 0 {
+        } else if index%2 == 0 {
             return 2
         } else {
             return 1
@@ -82,10 +95,9 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardCell") as! CardCell
         cell.cardNrLbl.text = cardNumbers[indexPath.row]
-        indexNr = indexPath.row
-        let randomNr = decideColor()
-        cell.cardNrLbl.textColor = UIColor(named: "Card\(randomNr)")
-        cell.cardIcon.image = UIImage(named: "Card\(randomNr)")
+        let colorNr = decideColor(for: indexPath.row+1)
+        cell.cardNrLbl.textColor = UIColor(named: "Card\(colorNr)")
+        cell.cardIcon.image = UIImage(named: "Card\(colorNr)")
         return cell
     }
     
@@ -94,8 +106,16 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
             let alert = UIAlertController(title: "Delete".localized(), message: "Do you want to delete this card?".localized(), preferredStyle: .actionSheet)
             let deleteAction = UIAlertAction(title: "Delete".localized(), style: .destructive) { action in
                 cardNumbers.remove(at: indexPath.row)
-                self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+                UserDefaults.roadout!.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
                 tableView.reloadData()
+                if cardNumbers.count == 0 {
+                    self.addBtnOutline.isHidden = true
+                    self.placeholderView.isHidden = false
+                } else {
+                    self.addBtnOutline.isHidden = false
+                    self.placeholderView.isHidden = true
+                }
+                NotificationCenter.default.post(name: .refreshCardsMenuID, object: nil)
             }
             let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
             alert.view.tintColor = UIColor(named: "Dark Orange")

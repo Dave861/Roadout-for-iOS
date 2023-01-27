@@ -18,7 +18,6 @@ class NotificationHelper {
     
     static let sharedInstance = NotificationHelper()
     let center = UNUserNotificationCenter.current()
-    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
     var areNotificationsAllowed: Bool?
     
   //MARK: - Authorization -
@@ -111,7 +110,7 @@ class NotificationHelper {
         center.add(request) { err in
             if err == nil {
                 print("Scheduled End Notification")
-                self.UserDefaultsSuite.set(true, forKey: "ro.roadout.setDoneReservation")
+                UserDefaults.roadout!.set(true, forKey: "ro.roadout.setDoneReservation")
             }
         }
     }
@@ -128,7 +127,7 @@ class NotificationHelper {
         let request = UNNotificationRequest(identifier: "ro.roadout.reservation1", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {
-                self.UserDefaultsSuite.set(true, forKey: "ro.roadout.set1Reservation")
+                UserDefaults.roadout!.set(true, forKey: "ro.roadout.set1Reservation")
             }
         }
     }
@@ -145,23 +144,23 @@ class NotificationHelper {
         let request = UNNotificationRequest(identifier: "ro.roadout.reservation5", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {
-                self.UserDefaultsSuite.set(true, forKey: "ro.roadout.set5Reservation")
+                UserDefaults.roadout!.set(true, forKey: "ro.roadout.set5Reservation")
             }
         }
     }
     
     func cancelReservationNotification() {
-        if UserDefaultsSuite.bool(forKey: "ro.roadout.set5Reservation") {
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.set5Reservation") {
             center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.reservation5"])
-            self.UserDefaultsSuite.set(false, forKey: "ro.roadout.set5Reservation")
+            UserDefaults.roadout!.set(false, forKey: "ro.roadout.set5Reservation")
         }
-        if UserDefaultsSuite.bool(forKey: "ro.roadout.set1Reservation") {
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.set1Reservation") {
             center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.reservation1"])
-            self.UserDefaultsSuite.set(false, forKey: "ro.roadout.set1Reservation")
+            UserDefaults.roadout!.set(false, forKey: "ro.roadout.set1Reservation")
         }
-        if UserDefaultsSuite.bool(forKey: "ro.roadout.setDoneReservation") {
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.setDoneReservation") {
             center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.reservationDone"])
-            self.UserDefaultsSuite.set(false, forKey: "ro.roadout.setDoneReservation")
+            UserDefaults.roadout!.set(false, forKey: "ro.roadout.setDoneReservation")
         }
     }
     
@@ -183,7 +182,7 @@ class NotificationHelper {
                     let request = UNNotificationRequest(identifier: "ro.roadout.setLocationReservation", content: content, trigger: trigger)
                     self.center.add(request) { err in
                         if err == nil {
-                            self.UserDefaultsSuite.set(true, forKey: "ro.roadout.setLocationReservation")
+                            UserDefaults.roadout!.set(true, forKey: "ro.roadout.setLocationReservation")
                         }
                     }
                 }
@@ -192,17 +191,14 @@ class NotificationHelper {
     }
     
     func cancelLocationNotification() {
-        if UserDefaultsSuite.bool(forKey: "ro.roadout.setLocationReservation") {
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.setLocationReservation") {
             center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.setLocationReservation"])
-            self.UserDefaultsSuite.set(false, forKey: "ro.roadout.setLocationReservation")
+            UserDefaults.roadout!.set(false, forKey: "ro.roadout.setLocationReservation")
         }
     }
     
     func decodeCoordsFromGeohash() -> CLLocationCoordinate2D {
         let hashComponents = selectedSpotHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
-        let fov = String(hashComponents[1].dropFirst())
-        let heading = String(hashComponents[2].dropFirst())
-        let pitch = String(hashComponents[3].dropFirst())
         
         let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
         let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude

@@ -9,8 +9,6 @@ import UIKit
 
 class FutureReserveViewController: UIViewController {
     
-    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
-
     let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Icons")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     let planReservationTitle = NSAttributedString(string: " Plan Reservation".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Icons")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
@@ -99,7 +97,7 @@ class FutureReserveViewController: UIViewController {
     }
     
     @objc func getFutureReservations() {
-        if let data = UserDefaultsSuite.data(forKey: "ro.roadout.Roadout.futureReservations") {
+        if let data = UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.futureReservations") {
             do {
                 let decoder = JSONDecoder()
                 futureReservations = try decoder.decode([FutureReservation].self, from: data)
@@ -115,7 +113,7 @@ class FutureReserveViewController: UIViewController {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(futureReservations)
-            UserDefaultsSuite.set(data, forKey: "ro.roadout.Roadout.futureReservations")
+            UserDefaults.roadout!.set(data, forKey: "ro.roadout.Roadout.futureReservations")
         } catch {
             print("Unable to Encode Array of FRs (\(error))")
         }

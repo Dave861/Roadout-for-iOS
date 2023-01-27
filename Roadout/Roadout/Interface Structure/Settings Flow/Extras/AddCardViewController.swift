@@ -108,7 +108,7 @@ class AddCardViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.blurEffect.alpha = 0.7
         } completion: { _ in
-            self.cvvField.becomeFirstResponder()
+            self.numberField.becomeFirstResponder()
         }
     }
             

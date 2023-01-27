@@ -9,8 +9,6 @@ import UIKit
 
 class DirectionsAppViewController: UIViewController {
     
-    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
-
     var index = 1
     
     @IBOutlet weak var backButton: UIButton!
@@ -24,21 +22,21 @@ class DirectionsAppViewController: UIViewController {
     
     @IBAction func appleMapsTapped(_ sender: Any) {
         index = 1
-        UserDefaultsSuite.set("Apple Maps", forKey: "ro.roadout.defaultDirectionsApp")
+        UserDefaults.roadout!.set("Apple Maps", forKey: "ro.roadout.defaultDirectionsApp")
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         updateSelection()
     }
     @IBAction func googleMapsTapped(_ sender: Any) {
         index = 2
-        UserDefaultsSuite.set("Google Maps", forKey: "ro.roadout.defaultDirectionsApp")
+        UserDefaults.roadout!.set("Google Maps", forKey: "ro.roadout.defaultDirectionsApp")
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         updateSelection()
     }
     @IBAction func wazeTapped(_ sender: Any) {
         index = 3
-        UserDefaultsSuite.set("Waze", forKey: "ro.roadout.defaultDirectionsApp")
+        UserDefaults.roadout!.set("Waze", forKey: "ro.roadout.defaultDirectionsApp")
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         updateSelection()

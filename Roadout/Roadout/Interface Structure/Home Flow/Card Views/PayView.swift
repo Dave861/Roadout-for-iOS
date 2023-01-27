@@ -10,7 +10,6 @@ import WidgetKit
 
 class PayView: UIView {
     
-    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
     var selectedCard: String?
 
     @IBAction func backTapped(_ sender: Any) {
@@ -88,16 +87,15 @@ class PayView: UIView {
     }
     
     @objc func refreshCardsMenu() {
-        self.UserDefaultsSuite.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
-        cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
+        UserDefaults.roadout!.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
 
         chooseMethodBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true
         
-        if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
-            payBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
-            payBtn.showsMenuAsPrimaryAction = true
-        }
+        payBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        payBtn.showsMenuAsPrimaryAction = true
+        payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
     }
     
     
@@ -117,7 +115,7 @@ class PayView: UIView {
         chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         chooseMethodBtn.setTitle("", for: .normal)
         
-        cardNumbers = UserDefaultsSuite.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
+        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
         selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
         
         fillReservationData(for: selectedSpotID)
@@ -196,7 +194,7 @@ class PayView: UIView {
         
         for card in cards {
             let action = UIAction(title: card, image: UIImage(systemName: "creditcard.fill"), handler: { (_) in
-                self.UserDefaultsSuite.set(self.getIndexInArray(card, cards), forKey: "ro.roadout.defaultPaymentMethod")
+                UserDefaults.roadout!.set(self.getIndexInArray(card, cards), forKey: "ro.roadout.defaultPaymentMethod")
                 self.reloadMainCard()
             })
             menuItems.append(action)

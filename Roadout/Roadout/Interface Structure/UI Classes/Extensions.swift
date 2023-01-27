@@ -65,22 +65,17 @@ extension UITextField {
         // Create a UIDatePicker object and assign to inputView
         let screenWidth = UIScreen.main.bounds.width
         let datePicker = MonthYearPickerView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))//1
-        //datePicker.datePickerMode = .date
         
-        // iOS 14 and above
-        /*if #available(iOS 14, *) {// Added condition for iOS 14
-          datePicker.preferredDatePickerStyle = .wheels
-          datePicker.sizeToFit()
-        }*/
         self.inputView = datePicker //3
         
         // Create a toolbar and assign it to inputAccessoryView
         let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 44.0)) //4
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //5
-        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(tapCancel)) // 6
-        let barButton = UIBarButtonItem(title: "Done", style: .plain, target: target, action: selector) //7
+        let cancel = UIBarButtonItem(title: "Cancel".localized(), style: .plain, target: nil, action: #selector(tapCancel)) // 6
+        let barButton = UIBarButtonItem(title: "Set".localized(), style: .plain, target: target, action: selector) //7
         toolBar.setItems([cancel, flexible, barButton], animated: false) //8
-        self.inputAccessoryView = toolBar //9
+        toolBar.tintColor = UIColor(named: "Dark Orange")!//9
+        self.inputAccessoryView = toolBar //10
     }
     
     @objc func tapCancel() {

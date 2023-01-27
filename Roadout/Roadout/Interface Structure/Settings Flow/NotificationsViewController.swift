@@ -8,9 +8,7 @@
 import UIKit
 
 class NotificationsViewController: UIViewController {
-    
-    let UserDefaultsSuite = UserDefaults.init(suiteName: "group.ro.roadout.Roadout")!
-    
+        
     var selectedNotificationTypeIndex = 0
 
     @IBOutlet weak var backButton: UIButton!
@@ -37,14 +35,14 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var reservationNoneLabel: UILabel!
     @IBOutlet weak var reservationNoneBtn: UIButton!
     @IBAction func reservationNoneTapped(_ sender: Any) {
-        UserDefaultsSuite.set(0, forKey: "ro.roadout.reservationNotificationsOption")
+        UserDefaults.roadout!.set(0, forKey: "ro.roadout.reservationNotificationsOption")
         self.setReservationNotifPermissionsUI()
     }
     @IBOutlet weak var reservationNotifIcon: UIImageView!
     @IBOutlet weak var reservationNotifLabel: UILabel!
     @IBOutlet weak var reservationNotifBtn: UIButton!
     @IBAction func reservationNotifTapped(_ sender: Any) {
-        UserDefaultsSuite.set(1, forKey: "ro.roadout.reservationNotificationsOption")
+        UserDefaults.roadout!.set(1, forKey: "ro.roadout.reservationNotificationsOption")
         self.setReservationNotifPermissionsUI()
     }
     @IBOutlet weak var reservationLiveIcon: UIImageView!
@@ -52,7 +50,7 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var reservationLiveBtn: UIButton!
     @IBAction func reservationLiveTapped(_ sender: Any) {
         if #available(iOS 16.1, *) {
-            UserDefaultsSuite.set(2, forKey: "ro.roadout.reservationNotificationsOption")
+            UserDefaults.roadout!.set(2, forKey: "ro.roadout.reservationNotificationsOption")
             self.setReservationNotifPermissionsUI()
         } else {
             let alert = UIAlertController(title: "Live Activities".localized(), message: "Live Activities are only available on iOS 16.1 or newer".localized(), preferredStyle: .alert)
@@ -68,7 +66,7 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var locationDescription: UILabel!
     @IBOutlet weak var locationSwitch: UISwitch!
     @IBAction func locationSwitched(_ sender: Any) {
-        UserDefaultsSuite.set(locationSwitch.isOn, forKey: "ro.roadout.locationNotificationsEnabled")
+        UserDefaults.roadout!.set(locationSwitch.isOn, forKey: "ro.roadout.locationNotificationsEnabled")
     }
     
     @IBOutlet weak var futureNotifCard: UIView!
@@ -76,7 +74,7 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var futureDescription: UILabel!
     @IBOutlet weak var futureSwitch: UISwitch!
     @IBAction func futureSwitched(_ sender: Any) {
-        UserDefaultsSuite.set(futureSwitch.isOn, forKey: "ro.roadout.futureNotificationsEnabled")
+        UserDefaults.roadout!.set(futureSwitch.isOn, forKey: "ro.roadout.futureNotificationsEnabled")
     }
     
     override func viewDidLoad() {
@@ -99,7 +97,7 @@ class NotificationsViewController: UIViewController {
         self.locationSwitch.setOn(UserPrefsUtils.sharedInstance.locationNotificationsEnabled(), animated: false)
         reservationNotifCard.layer.cornerRadius = 16.0
         locationNotifCard.layer.cornerRadius = 16.0
-        futureSwitch.layer.cornerRadius = 16.0
+        futureNotifCard.layer.cornerRadius = 16.0
         reservationNoneBtn.setTitle("", for: .normal)
         reservationNotifBtn.setTitle("", for: .normal)
         reservationLiveBtn.setTitle("", for: .normal)

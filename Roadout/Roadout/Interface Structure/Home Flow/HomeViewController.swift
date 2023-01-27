@@ -281,6 +281,16 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc func deselectSpotMarker() {
+        if self.selectedMarker != nil {
+            self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
+            self.selectedMarker.iconView?.addSubview(imageView)
+        }
+    }
+    
     @objc func refreshMarkedSpot() {
         if carParkHash == "roadout_carpark_clear" {
             self.markedSpotButton.isHidden = true
@@ -688,7 +698,6 @@ extension HomeViewController: GMSMapViewDelegate {
         UIView.animate(withDuration: 0.3) {
             marker.iconView?.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         }
-        
     }
 }
 
@@ -746,13 +755,7 @@ extension HomeViewController {
             self.updateBackgroundViewHeight(with: 52)
             self.searchBar.alpha = 1.0
             self.resultView.removeFromSuperview()
-            if self.selectedMarker != nil {
-                self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-                imageView.contentMode = .scaleAspectFit
-                imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
-                self.selectedMarker.iconView?.addSubview(imageView)
-            }
+            self.deselectSpotMarker()
         }
     }
     //Section Card
@@ -1149,6 +1152,7 @@ extension HomeViewController {
                 self.searchBar.alpha = 0.0
             }
             self.removeSpotMarker()
+            self.deselectSpotMarker()
             self.updateBackgroundViewHeight(with: 52)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
@@ -1182,7 +1186,8 @@ extension HomeViewController {
             if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
                 self.view.subviews.last!.removeFromSuperview()
             }
-            
+            self.removeSpotMarker()
+            self.deselectSpotMarker()
             self.updateBackgroundViewHeight(with: 52)
             self.searchBar.alpha = 1.0
         }
@@ -1193,7 +1198,8 @@ extension HomeViewController {
             if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
                 self.view.subviews.last!.removeFromSuperview()
             }
-
+            self.removeSpotMarker()
+            self.deselectSpotMarker()
             self.updateBackgroundViewHeight(with: 52)
             self.searchBar.alpha = 1.0
             //Show alert
