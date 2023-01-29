@@ -15,7 +15,7 @@ class AddCardViewController: UIViewController {
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
-    @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var addBtn: UXButton!
     @IBAction func addTapped(_ sender: Any) {
         if cvvField.text?.count == 3 && expiryField.text != "" && numberField.text?.count == 16 {
             let blurredNr = "**** **** **** \(numberField.text!.suffix(4))"

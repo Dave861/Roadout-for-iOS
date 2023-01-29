@@ -15,7 +15,7 @@ class EditPasswordViewController: UIViewController {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
-    @IBOutlet weak var save: UIButton!
+    @IBOutlet weak var saveBtn: UXButton!
     @IBOutlet weak var oldPswField: PaddedTextField!
     @IBOutlet weak var newPswField: PaddedTextField!
     @IBOutlet weak var confPswField: PaddedTextField!
@@ -203,8 +203,8 @@ class EditPasswordViewController: UIViewController {
         
         addShadowToCardView()
 
-        save.layer.cornerRadius = 12
-        save.setAttributedTitle(savedTitle, for: .normal)
+        saveBtn.layer.cornerRadius = 12
+        saveBtn.setAttributedTitle(savedTitle, for: .normal)
         
         oldPswField.layer.cornerRadius = 12.0
         oldPswField.attributedPlaceholder =

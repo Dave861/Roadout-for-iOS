@@ -21,7 +21,7 @@ class HelpViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var doneBtn: UXButton!
     @IBAction func doneTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

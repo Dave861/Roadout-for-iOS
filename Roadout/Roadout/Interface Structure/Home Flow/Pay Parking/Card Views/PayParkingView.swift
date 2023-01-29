@@ -35,8 +35,8 @@ class PayParkingView: UIView {
     @IBOutlet weak var detailsLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     
-    @IBOutlet weak var payBtn: UIButton!
-    @IBOutlet weak var chooseMethodBtn: UIButton!
+    @IBOutlet weak var payBtn: UXButton!
+    @IBOutlet weak var chooseMethodBtn: UXButton!
     
     @IBAction func payTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -169,6 +169,10 @@ class PayParkingView: UIView {
         var menuItems = [UIAction]()
         
         let addAction = UIAction(title: "Add Card".localized(), image: UIImage(systemName: "plus")) { (_) in
+            UIView.animate(withDuration: 0.1, animations: {
+                self.payBtn.transform = CGAffineTransform.identity
+                self.chooseMethodBtn.transform = CGAffineTransform.identity
+            })
             let sb = UIStoryboard(name: "Settings", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "AddCardVC") as! AddCardViewController
             self.parentViewController().present(vc, animated: true, completion: nil)
@@ -179,12 +183,20 @@ class PayParkingView: UIView {
             let action = UIAction(title: card, image: UIImage(systemName: "creditcard.fill"), handler: { (_) in
                 UserDefaults.roadout!.set(self.getIndexInArray(card, cards), forKey: "ro.roadout.defaultPaymentMethod")
                 self.reloadMainCard()
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.payBtn.transform = CGAffineTransform.identity
+                    self.chooseMethodBtn.transform = CGAffineTransform.identity
+                })
             })
             menuItems.append(action)
         }
         
         let applePayAction = UIAction(title: "Apple Pay", image: UIImage(systemName: "applelogo")) { (_) in
             self.showApplePayBtn()
+            UIView.animate(withDuration: 0.1, animations: {
+                self.payBtn.transform = CGAffineTransform.identity
+                self.chooseMethodBtn.transform = CGAffineTransform.identity
+            })
         }
         menuItems.append(applePayAction)
         

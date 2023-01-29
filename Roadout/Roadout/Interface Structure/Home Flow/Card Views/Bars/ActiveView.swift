@@ -11,7 +11,7 @@ class ActiveView: UIView {
         
     @IBOutlet weak var timerLbl: UILabel!
     
-    @IBOutlet weak var moreBtn: UIButton!
+    @IBOutlet weak var moreBtn: UXButton!
     
     @IBAction func moreTapped(_ sender: Any) {
         NotificationCenter.default.post(name: .addReservationCardID, object: nil)

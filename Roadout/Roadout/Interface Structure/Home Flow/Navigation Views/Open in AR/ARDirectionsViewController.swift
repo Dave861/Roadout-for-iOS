@@ -16,8 +16,8 @@ class ARDirectionsViewController: UIViewController {
     @IBOutlet weak var backgroundCard: UIView!
     @IBOutlet weak var floatingCard: UIView!
     
-    @IBOutlet weak var infoBtn: UIButton!
-    @IBOutlet weak var questionBtn: UIButton!
+    @IBOutlet weak var infoBtn: UXButton!
+    @IBOutlet weak var questionBtn: UXButton!
   
     @IBAction func infoTapped(_ sender: Any) {
         ARManager.sharedInstance.helpMode = .info
@@ -32,7 +32,7 @@ class ARDirectionsViewController: UIViewController {
     
     //Card components
     @IBOutlet weak var closeBtn: UIButton!
-    @IBOutlet weak var arrivedBtn: UIButton!
+    @IBOutlet weak var arrivedBtn: UXButton!
     
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!

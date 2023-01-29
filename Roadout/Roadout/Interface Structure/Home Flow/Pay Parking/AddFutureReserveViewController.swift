@@ -23,7 +23,7 @@ class AddFutureReserveViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var doneBtn: UXButton!
     @IBAction func doneTapped(_ sender: Any) {
         var ok = true
         for futureReservation in futureReservations {
@@ -46,13 +46,7 @@ class AddFutureReserveViewController: UIViewController {
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
-                let alert = UIAlertController(title: "Error".localized(), message: "Please add a place to the future reservation".localized(), preferredStyle: .alert)
-                alert.view.tintColor = UIColor(named: "Icons")
-                let okAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
-                    self.dismiss(animated: true, completion: nil)
-                }
-                alert.addAction(okAction)
-                self.present(alert, animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         } else {
             let alert = UIAlertController(title: "Error".localized(), message: "There is already an active future reservation for this place, please pick another place".localized(), preferredStyle: .alert)

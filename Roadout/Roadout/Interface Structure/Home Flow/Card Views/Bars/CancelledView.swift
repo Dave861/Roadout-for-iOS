@@ -12,7 +12,7 @@ class CancelledView: UIView {
     let buttonTitle = NSAttributedString(string: "Done".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Redish")!])
     
-    @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var doneBtn: UXButton!
     
     @IBAction func doneTapped(_ sender: Any) {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String

@@ -21,7 +21,7 @@ class SectionView: UIView {
     @IBOutlet weak var sectionBtn: UIButton!
     
     
-    @IBOutlet weak var continueBtn: UIButton!
+    @IBOutlet weak var continueBtn: UXButton!
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()

@@ -13,7 +13,7 @@ class ResetPasswordViewController: UIViewController {
     @IBOutlet weak var explainLbl: UILabel!
     
     @IBOutlet weak var codeField: AnyObject?
-    @IBOutlet weak var checkBtn: UIButton!
+    @IBOutlet weak var checkBtn: UXButton!
     @IBAction func checkTapped(_ sender: Any) {
         if let codeField = codeField as? CHIOTPFieldOne {
             if Int(codeField.text!) == UserManager.sharedInstance.resetCode && Date() < UserManager.sharedInstance.dateToken {
@@ -43,8 +43,8 @@ class ResetPasswordViewController: UIViewController {
     @IBOutlet weak var passwordField: PaddedTextField!
     @IBOutlet weak var confirmPasswordField: PaddedTextField!
     
-    @IBOutlet weak var resetBtn: UIButton!
-    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var resetBtn: UXButton!
+    @IBOutlet weak var cancelBtn: UXButton!
     
     @IBAction func cancelTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

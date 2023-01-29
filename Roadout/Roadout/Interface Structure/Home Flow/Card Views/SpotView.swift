@@ -18,7 +18,7 @@ class SpotView: UIView, PusherDelegate {
     @IBOutlet weak var infoIcon: UIImageView!
     @IBOutlet weak var infoText: UILabel!
     
-    @IBOutlet weak var continueBtn: UIButton!
+    @IBOutlet weak var continueBtn: UXButton!
     
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -183,6 +183,16 @@ class SpotView: UIView, PusherDelegate {
             infoText.text = "Pick a spot to get info about it".localized()
         }
     }
+    
+    func springCell(cell: UICollectionViewCell) {
+        UIView.animate(withDuration: 0.1, animations: {
+            cell.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }) { _ in
+            UIView.animate(withDuration: 0.1) {
+                cell.transform = .identity
+            }
+        }
+    }
 
 }
 extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -224,6 +234,7 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cell = collectionView.cellForItem(at: indexPath) as! SpotCell
+        self.springCell(cell: cell)
         
         let index = (indexPath[0])*collectionView.numberOfItems(inSection: 0) + indexPath[1]
         updateInfo(spotState: parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state)

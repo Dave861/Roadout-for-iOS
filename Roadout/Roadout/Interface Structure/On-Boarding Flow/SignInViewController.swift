@@ -35,7 +35,7 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var cancelBtn: UIButton!
     
-    @IBOutlet weak var signInBtn: UIButton!
+    @IBOutlet weak var signInBtn: UXButton!
     
     @IBOutlet weak var emailField: PaddedTextField!
     @IBOutlet weak var passwordField: PaddedTextField!

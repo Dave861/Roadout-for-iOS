@@ -29,7 +29,7 @@ class PermissionsViewController: UIViewController {
     
     @IBOutlet weak var permissionsTableView: UITableView!
     
-    @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var nextBtn: UXButton!
     @IBOutlet weak var skipBtn: UIButton!
     
     @IBAction func nextTapped(_ sender: Any) {

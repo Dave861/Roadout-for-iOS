@@ -19,7 +19,7 @@ class EditLicensePlateViewController: UIViewController {
     @IBOutlet weak var plateView: UIView!
     @IBOutlet weak var plateText: UILabel!
     
-    @IBOutlet weak var changeBtn: UIButton!
+    @IBOutlet weak var changeBtn: UXButton!
     @IBAction func changeTapped(_ sender: Any) {
         if plateField.text != "" {
             do {

@@ -147,7 +147,7 @@ class HomeViewController: UIViewController {
         self.present(vc, animated: false, completion: nil)
     }
     
-    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var settingsButton: UXButton!
     
     @IBAction func settingsTapped(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
@@ -173,9 +173,9 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var mapHostingView: UIView!
         
-    @IBOutlet weak var mapTypeButton: UIButton!
+    @IBOutlet weak var mapTypeButton: UXButton!
     
-    @IBOutlet weak var mapFocusButton: UIButton!
+    @IBOutlet weak var mapFocusButton: UXButton!
     
     @IBAction func mapTypeTapped(_ sender: Any) {
         if selectedMapType == MapType.roadout {
@@ -200,7 +200,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var markedSpotButton: UIButton!
+    @IBOutlet weak var markedSpotButton: UXButton!
         
     //MARK: -OBSERVERS-
     

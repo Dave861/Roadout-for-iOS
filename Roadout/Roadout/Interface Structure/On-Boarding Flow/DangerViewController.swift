@@ -19,7 +19,7 @@ class DangerViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var questionBtn: UIButton!
+    @IBOutlet weak var questionBtn: UXButton!
     @IBAction func questionTapped(_ sender: Any) {
         if IOSSecuritySuite.amIJailbroken() {
             self.showAlert(title: "Jailbreak".localized(), message: "If your device is jailbroken you can look online for guides on how to remove the jailbreak or unwanted device tweaks. Reopen the app after that.".localized())

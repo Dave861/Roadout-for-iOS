@@ -16,7 +16,7 @@ class DelayView: UIView {
     }
     @IBOutlet weak var backBtn: UIButton!
     
-    @IBOutlet weak var continueBtn: UIButton!
+    @IBOutlet weak var continueBtn: UXButton!
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()

@@ -14,13 +14,13 @@ class UnlockedView: UIView {
     
     @IBOutlet weak var doneBtn: UIButton!
     
-    @IBOutlet weak var payBtn: UIButton!
+    @IBOutlet weak var payBtn: UXButton!
     @IBOutlet weak var payView: UIView!
     @IBOutlet weak var payLbl: UILabel!
     
     @IBOutlet weak var markLbl: UILabel!
     @IBOutlet weak var markView: UIView!
-    @IBOutlet weak var markBtn: UIButton!
+    @IBOutlet weak var markBtn: UXButton!
     
     @IBAction func payTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -76,8 +76,8 @@ class UnlockedView: UIView {
         payBtn.setTitle("", for: .normal)
         markBtn.setTitle("", for: .normal)
         
-        payView.layer.cornerRadius = 9
-        markView.layer.cornerRadius = 9
+        payBtn.layer.cornerRadius = 9
+        markBtn.layer.cornerRadius = 9
         
         payLbl.text = "Pay Parking".localized()
         if carParkHash == "roadout_carpark_clear" {

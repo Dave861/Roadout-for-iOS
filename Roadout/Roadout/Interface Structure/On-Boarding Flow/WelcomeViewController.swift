@@ -25,8 +25,8 @@ class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var infoTableView: UITableView!
     
-    @IBOutlet weak var signInBtn: UIButton!
-    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var signInBtn: UXButton!
+    @IBOutlet weak var signUpBtn: UXButton!
     
     @IBOutlet weak var legalBtn: UIButton!
     

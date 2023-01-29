@@ -12,7 +12,7 @@ class NoWifiView: UIView {
     let buttonTitle = NSAttributedString(string: "Wifi Settings".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Greyish")!])
 
-    @IBOutlet weak var settingsBtn: UIButton!
+    @IBOutlet weak var settingsBtn: UXButton!
     
     @IBAction func settingsTapped(_ sender: Any) {
         

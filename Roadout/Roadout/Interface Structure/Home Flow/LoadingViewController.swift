@@ -15,7 +15,7 @@ class GetDataViewController: UIViewController {
     
     @IBOutlet weak var titleLbl: UILabel!
     
-    @IBOutlet weak var tryAgainBtn: UIButton!
+    @IBOutlet weak var tryAgainBtn: UXButton!
     
     @IBAction func tryAgainTapped(_ sender: Any) {
         tryAgainBtn.isHidden = true

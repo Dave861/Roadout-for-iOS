@@ -104,7 +104,7 @@ class RateViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet weak var submitBtn: UXButton!
     @IBOutlet weak var cancelBtn: UIButton!
     
     @IBAction func submitTapped(_ sender: Any) {

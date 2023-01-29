@@ -22,7 +22,7 @@ class ResultView: UIView {
     @IBOutlet weak var sectionsIcon: UIImageView!
     @IBOutlet weak var spotsIcon: UIImageView!
     
-    @IBOutlet weak var pickBtn: UIButton!
+    @IBOutlet weak var pickBtn: UXButton!
     @IBAction func pickTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()

@@ -28,7 +28,7 @@ class MoreInfoViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var doneBtn: UXButton!
     @IBAction func doneTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
             self.blurEffect.alpha = 0

@@ -18,7 +18,7 @@ class WorldViewController: UIViewController {
     
     @IBOutlet weak var worldImage: UIImageView!
     
-    @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var doneBtn: UXButton!
     
     @IBAction func doneTapped(_ sender: Any) {
         self.dismiss(animated: true)

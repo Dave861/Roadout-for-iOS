@@ -19,7 +19,7 @@ class VerifyMailViewController: UIViewController {
 
     @IBOutlet weak var codeField: AnyObject?
     
-    @IBOutlet weak var continueBtn: UIButton!
+    @IBOutlet weak var continueBtn: UXButton!
     @IBOutlet weak var cancelBtn: UIButton!
     
     @IBAction func verifyTapped(_ sender: Any) {

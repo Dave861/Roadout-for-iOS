@@ -56,7 +56,7 @@
                                         <rect key="frame" x="13" y="70" width="367" height="52"/>
                                         <color key="backgroundColor" name="FloatingBG"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-Xa-0TC">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-Xa-0TC" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="350" y="18" width="30" height="30"/>
                                         <color key="backgroundColor" name="Secondary Floating"/>
                                         <constraints>
@@ -73,7 +73,7 @@
                                             <action selector="settingsTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nZp-PK-SFU"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdM-C3-2B6">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdM-C3-2B6" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="305" y="18" width="30" height="30"/>
                                         <color key="backgroundColor" name="Secondary Floating"/>
                                         <constraints>
@@ -89,7 +89,7 @@
                                             <action selector="mapTypeTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ycl-mp-Vcd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zd2-gq-SFD">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zd2-gq-SFD" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="260" y="18" width="30" height="30"/>
                                         <color key="backgroundColor" name="Secondary Floating"/>
                                         <constraints>
@@ -106,7 +106,7 @@
                                             <action selector="mapFocusTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="b7z-RC-4WB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0F-8S-hYT">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0F-8S-hYT" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="215" y="18" width="30" height="30"/>
                                         <color key="backgroundColor" name="Secondary Floating"/>
                                         <constraints>
@@ -1217,7 +1217,7 @@ Made in Cluj :)</string>
                                             <action selector="tapped:" destination="IJ0-Vp-Psm" eventType="touchUpInside" id="fZA-N2-Ydd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL5-oT-4XE">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL5-oT-4XE" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="155" width="363" height="50"/>
                                         <color key="backgroundColor" name="Main Yellow"/>
                                         <constraints>
@@ -1225,7 +1225,7 @@ Made in Cluj :)</string>
                                         </constraints>
                                         <color key="tintColor" name="Background"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Sign In">
+                                        <buttonConfiguration key="configuration" style="plain" title="Save">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -1309,7 +1309,7 @@ Made in Cluj :)</string>
                         <outlet property="cancelBtn" destination="agB-Hm-7h3" id="3i1-7H-r3C"/>
                         <outlet property="cardView" destination="dDj-5P-Kug" id="bIM-G4-n7b"/>
                         <outlet property="nameLbl" destination="0dp-75-5yY" id="480-Sv-asn"/>
-                        <outlet property="saved" destination="oL5-oT-4XE" id="2m5-HB-rYh"/>
+                        <outlet property="saveBtn" destination="oL5-oT-4XE" id="cPG-t4-sxt"/>
                         <outlet property="userNameField" destination="A7q-sC-Frp" id="XFz-pi-ueP"/>
                     </connections>
                 </viewController>
@@ -1356,7 +1356,7 @@ Made in Cluj :)</string>
                                             <action selector="cancelTapped:" destination="iYN-sY-jCj" eventType="touchUpInside" id="0OF-nT-O7d"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmF-hw-K8Y">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmF-hw-K8Y" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="219" width="363" height="50"/>
                                         <color key="backgroundColor" name="Dark Yellow"/>
                                         <constraints>
@@ -1462,7 +1462,7 @@ Made in Cluj :)</string>
                         <outlet property="forgotBtn" destination="HiJ-zc-MNf" id="Plz-ut-1CT"/>
                         <outlet property="newPswField" destination="4P2-9j-3vk" id="uuW-C7-GGm"/>
                         <outlet property="oldPswField" destination="b7Y-Jp-TRF" id="L7z-u1-GeK"/>
-                        <outlet property="save" destination="LmF-hw-K8Y" id="D7F-3h-HN0"/>
+                        <outlet property="saveBtn" destination="LmF-hw-K8Y" id="sxz-Vu-tAP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tcD-i9-iaP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1531,7 +1531,7 @@ Made in Cluj :)</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pq-HO-snU">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pq-HO-snU" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="171" width="363" height="50"/>
                                         <color key="backgroundColor" name="Redish"/>
                                         <constraints>
@@ -1643,7 +1643,7 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="height" constant="33" id="bxE-9O-yZy"/>
                                         </constraints>
                                     </activityIndicatorView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iC6-DG-vPn">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iC6-DG-vPn" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="271.66666666666669" y="4" width="97.333333333333314" height="44"/>
                                         <color key="backgroundColor" name="Secondary Floating"/>
                                         <color key="tintColor" name="Icons"/>
@@ -2139,7 +2139,7 @@ Made in Cluj :)</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aJ-0I-0s9">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aJ-0I-0s9" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="350" width="363" height="50"/>
                                         <color key="backgroundColor" name="DevBrown"/>
                                         <constraints>
@@ -2314,7 +2314,7 @@ Made in Cluj :)</string>
                                             <action selector="cancelTapped:" destination="046-v8-33p" eventType="touchUpInside" id="k4G-kR-IM3"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2d-kv-Bz4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2d-kv-Bz4" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="185" width="363" height="50"/>
                                         <color key="backgroundColor" name="Main Yellow"/>
                                         <constraints>
@@ -2447,7 +2447,7 @@ Made in Cluj :)</string>
                                             <action selector="cancelTapped:" destination="zSF-Dy-bYN" eventType="touchUpInside" id="5OI-ve-pyr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsz-Tt-AFs">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsz-Tt-AFs" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="168" width="363" height="50"/>
                                         <color key="backgroundColor" name="Icons"/>
                                         <constraints>

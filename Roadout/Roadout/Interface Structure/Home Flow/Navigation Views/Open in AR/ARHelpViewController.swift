@@ -29,7 +29,7 @@ class ARHelpViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var doneBtn: UXButton!
     @IBOutlet weak var helpBtn: UIButton!
     
     @IBAction func doneTapped(_ sender: Any) {

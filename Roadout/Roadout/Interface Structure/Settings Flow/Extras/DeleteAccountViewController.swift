@@ -19,7 +19,7 @@ class DeleteAccountViewController: UIViewController {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
-    @IBOutlet weak var deleteBtn: UIButton!
+    @IBOutlet weak var deleteBtn: UXButton!
     
     @IBOutlet weak var emailField: PaddedTextField!
     @IBOutlet weak var passwordField: PaddedTextField!

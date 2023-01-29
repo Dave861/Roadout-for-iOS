@@ -19,7 +19,7 @@ class MaintenanceViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var checkBtn: UIButton!
+    @IBOutlet weak var checkBtn: UXButton!
     @IBAction func checkTapped(_ sender: Any) {
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
             guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else {

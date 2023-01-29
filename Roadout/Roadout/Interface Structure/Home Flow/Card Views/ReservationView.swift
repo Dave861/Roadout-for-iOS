@@ -19,13 +19,13 @@ class ReservationView: UIView {
     
     @IBOutlet weak var timerLbl: UILabel!
         
-    @IBOutlet weak var unlockBtn: UIButton!
-    @IBOutlet weak var directionsBtn: UIButton!
-    @IBOutlet weak var delayBtn: UIButton!
-    @IBOutlet weak var cancelBtn: UIButton!
-    @IBOutlet weak var arBtn: UIButton!
-    @IBOutlet weak var worldBtn: UIButton!
-    @IBOutlet weak var helpBtn: UIButton!
+    @IBOutlet weak var unlockBtn: UXButton!
+    @IBOutlet weak var directionsBtn: UXButton!
+    @IBOutlet weak var delayBtn: UXButton!
+    @IBOutlet weak var cancelBtn: UXButton!
+    @IBOutlet weak var arBtn: UXButton!
+    @IBOutlet weak var worldBtn: UXButton!
+    @IBOutlet weak var helpBtn: UXButton!
     
     @IBOutlet weak var unlockView: UIView!
     @IBOutlet weak var directionsView: UIView!
@@ -53,13 +53,13 @@ class ReservationView: UIView {
         cancelBtn.setTitle("", for: .normal)
         worldBtn.setTitle("", for: .normal)
         
-        unlockView.layer.cornerRadius = 9
-        directionsView.layer.cornerRadius = 9
-        delayView.layer.cornerRadius = 9
-        cancelView.layer.cornerRadius = 9
-        arView.layer.cornerRadius = 9
-        helpView.layer.cornerRadius = 9
-        worldView.layer.cornerRadius = 9
+        unlockBtn.layer.cornerRadius = 9
+        directionsBtn.layer.cornerRadius = 9
+        delayBtn.layer.cornerRadius = 9
+        cancelBtn.layer.cornerRadius = 9
+        arBtn.layer.cornerRadius = 9
+        helpBtn.layer.cornerRadius = 9
+        worldBtn.layer.cornerRadius = 9
         
         unlockLbl.text = "Unlock".localized()
         directionsLbl.text = "Navigate".localized()

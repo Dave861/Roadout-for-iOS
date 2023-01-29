@@ -36,7 +36,7 @@ class AddExpressViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var doneBtn: UXButton!
     
     @IBAction func doneTapped(_ sender: Any) {
         UserDefaults.roadout!.set(favouriteLocationIDs, forKey: "ro.roadout.Roadout.favouriteLocationIDs")

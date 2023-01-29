@@ -12,7 +12,7 @@ class PaidParkingBar: UIView {
     let buttonTitle = NSAttributedString(string: "Done".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Cash Yellow")!])
     
-    @IBOutlet weak var optionsBtn: UIButton!
+    @IBOutlet weak var optionsBtn: UXButton!
     
     @IBAction func optionsTapped(_ sender: Any) {
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)

@@ -14,7 +14,7 @@ class EditNameViewController: UIViewController {
     
     @IBOutlet weak var cancelBtn: UIButton!
     
-    @IBOutlet weak var saved: UIButton!
+    @IBOutlet weak var saveBtn: UXButton!
     @IBOutlet weak var userNameField: PaddedTextField!
     
     @IBOutlet weak var nameLbl: UILabel!
@@ -109,8 +109,8 @@ class EditNameViewController: UIViewController {
         
         addShadowToCardView()
 
-        saved.layer.cornerRadius = 12
-        saved.setAttributedTitle(savedTitle, for: .normal)
+        saveBtn.layer.cornerRadius = 12
+        saveBtn.setAttributedTitle(savedTitle, for: .normal)
         
         userNameField.layer.cornerRadius = 12.0
         userNameField.attributedPlaceholder = NSAttributedString(

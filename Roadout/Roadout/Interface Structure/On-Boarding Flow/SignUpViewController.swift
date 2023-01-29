@@ -27,7 +27,7 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var cancelBtn: UIButton!
     
-    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var signUpBtn: UXButton!
     
     @IBOutlet weak var nameField: PaddedTextField!
     @IBOutlet weak var emailField: PaddedTextField!

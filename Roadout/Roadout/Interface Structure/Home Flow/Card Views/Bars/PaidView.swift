@@ -12,7 +12,7 @@ class PaidView: UIView {
     let buttonTitle = NSAttributedString(string: "See Reservation".localized(),
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Orange")!])
     
-    @IBOutlet weak var seeBtn: UIButton!
+    @IBOutlet weak var seeBtn: UXButton!
     
     @IBAction func seeTapped(_ sender: Any) {
         NotificationCenter.default.post(name: .showActiveBarID, object: nil)
