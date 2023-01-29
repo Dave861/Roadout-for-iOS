@@ -45,7 +45,7 @@ class EditPasswordViewController: UIViewController {
                 do {
                     try await UserManager.sharedInstance.updatePasswordAsync(id, oldPswField.text!, newPswField.text!)
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Success".localized(), message: "Your password was successfully changed!".localized(), preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: "Success".localized(), message: "Your password is now changed".localized(), preferredStyle: UIAlertController.Style.alert)
                         let alertAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                             UIView.animate(withDuration: 0.1) {
                                 self.blurEffect.alpha = 0

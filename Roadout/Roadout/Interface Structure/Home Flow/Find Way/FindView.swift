@@ -150,7 +150,6 @@ class FindView: UIView {
         spotSectionLbl.set(textColor: UIColor(named: "Greyish")!, range: spotSectionLbl.range(after: " - Spot ".localized()))
         spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
         spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: " - Spot ".localized()))
-        NotificationCenter.default.post(name: .animateCameraToFoundID, object: nil)
         
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()

@@ -1149,10 +1149,43 @@ Made in Cluj :)</string>
                                     <constraint firstItem="TLk-qw-drZ" firstAttribute="top" secondItem="5ee-TG-2Af" secondAttribute="top" id="yUR-83-rHB"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESU-XR-GOo">
+                                <rect key="frame" x="16" y="343.66666666666669" width="361" height="165"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scroll" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5w1-u8-k95">
+                                        <rect key="frame" x="143" y="18.666666666666668" width="75" height="63.666666666666643"/>
+                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64.5" id="3MF-3i-fS2"/>
+                                            <constraint firstAttribute="width" constant="75" id="A9P-2K-5He"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No history, make a reservation in order for it to appear here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai1-aY-UFQ">
+                                        <rect key="frame" x="44.666666666666657" y="96" width="272" height="49"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="272" id="SQJ-tJ-C8d"/>
+                                            <constraint firstAttribute="height" constant="49" id="nmV-gx-LOF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Second Background"/>
+                                <constraints>
+                                    <constraint firstItem="5w1-u8-k95" firstAttribute="top" secondItem="ESU-XR-GOo" secondAttribute="top" constant="18" id="F0t-w4-A2r"/>
+                                    <constraint firstItem="5w1-u8-k95" firstAttribute="centerX" secondItem="ESU-XR-GOo" secondAttribute="centerX" id="J8w-dI-oJX"/>
+                                    <constraint firstItem="Ai1-aY-UFQ" firstAttribute="top" secondItem="5w1-u8-k95" secondAttribute="bottom" constant="13.5" id="JDt-8P-BAh"/>
+                                    <constraint firstItem="Ai1-aY-UFQ" firstAttribute="centerX" secondItem="ESU-XR-GOo" secondAttribute="centerX" id="neC-v3-5uS"/>
+                                    <constraint firstAttribute="height" constant="165" id="rVs-Jg-S9n"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="o6w-e8-Q9Q"/>
                         <color key="backgroundColor" name="Second Background"/>
                         <constraints>
+                            <constraint firstItem="ESU-XR-GOo" firstAttribute="leading" secondItem="o6w-e8-Q9Q" secondAttribute="leading" constant="16" id="7ib-gc-WX0"/>
+                            <constraint firstItem="o6w-e8-Q9Q" firstAttribute="trailing" secondItem="ESU-XR-GOo" secondAttribute="trailing" constant="16" id="BPe-qU-zF7"/>
                             <constraint firstItem="5ee-TG-2Af" firstAttribute="leading" secondItem="o6w-e8-Q9Q" secondAttribute="leading" constant="20" id="BRw-a7-Jjn"/>
                             <constraint firstItem="RZp-wV-n8q" firstAttribute="centerX" secondItem="8Ji-yz-kf4" secondAttribute="centerX" id="EHO-zL-9th"/>
                             <constraint firstItem="y3f-WO-nwm" firstAttribute="top" secondItem="Crc-ED-aM6" secondAttribute="bottom" constant="12" id="F5A-Ua-36g"/>
@@ -1165,6 +1198,7 @@ Made in Cluj :)</string>
                             <constraint firstItem="5ee-TG-2Af" firstAttribute="top" secondItem="y3f-WO-nwm" secondAttribute="bottom" constant="8" id="XTk-Vl-whc"/>
                             <constraint firstItem="RZp-wV-n8q" firstAttribute="bottom" secondItem="o6w-e8-Q9Q" secondAttribute="bottom" constant="5" id="aVz-SU-JYo"/>
                             <constraint firstItem="RZp-wV-n8q" firstAttribute="top" secondItem="5ee-TG-2Af" secondAttribute="bottom" constant="8" id="bg1-jn-fVC"/>
+                            <constraint firstItem="ESU-XR-GOo" firstAttribute="centerY" secondItem="8Ji-yz-kf4" secondAttribute="centerY" id="ec9-WK-avp"/>
                             <constraint firstItem="o6w-e8-Q9Q" firstAttribute="trailing" secondItem="5ee-TG-2Af" secondAttribute="trailing" constant="20" id="q6T-aH-9M2"/>
                         </constraints>
                     </view>
@@ -1172,12 +1206,13 @@ Made in Cluj :)</string>
                         <outlet property="backButton" destination="wrb-TV-AkR" id="lRb-0b-tzh"/>
                         <outlet property="clearBtn" destination="TLk-qw-drZ" id="9cI-OM-aUF"/>
                         <outlet property="clearCard" destination="5ee-TG-2Af" id="rFi-7p-5Xs"/>
+                        <outlet property="placeholderView" destination="ESU-XR-GOo" id="W9j-oP-n2Z"/>
                         <outlet property="tableView" destination="y3f-WO-nwm" id="Hex-SJ-aWL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgO-Po-ovN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2656" y="75"/>
+            <point key="canvasLocation" x="2655.7251908396947" y="74.647887323943664"/>
         </scene>
         <!--Vote View Controller-->
         <scene sceneID="fJP-e4-lV4">
@@ -1514,13 +1549,13 @@ Made in Cluj :)</string>
                                                                     <rect key="frame" x="42" y="0.0" width="297" height="83"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="What is this?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L03-PZ-NUv">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="297" height="20.333333333333332"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="297" height="0.0"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This is the Roadout Guide, here you will find any information you need regarding this app, tap any item for details" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7r-Fv-KUM">
-                                                                            <rect key="frame" x="0.0" y="24.333333333333339" width="297" height="58.666666666666657"/>
+                                                                            <rect key="frame" x="0.0" y="4" width="297" height="79"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" systemColor="systemGrayColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -2556,6 +2591,7 @@ Made in Cluj :)</string>
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="creditcard" catalog="system" width="128" height="88"/>
         <image name="questionmark" catalog="system" width="94" height="128"/>
+        <image name="scroll" catalog="system" width="128" height="114"/>
         <image name="seal" catalog="system" width="128" height="124"/>
         <image name="waveform.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="Background">
@@ -2568,7 +2604,7 @@ Made in Cluj :)</string>
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Card1">
-            <color red="0.40400001406669617" green="0.28200000524520874" blue="0.019999999552965164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5690000057220459" green="0.33199998736381531" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Dark Orange">
             <color red="0.83899998664855957" green="0.42699998617172241" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

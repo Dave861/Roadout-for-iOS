@@ -48,6 +48,22 @@ class HomeViewController: UIViewController {
         let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
         self.mapView?.animate(to: camera)
         
+        var index = 0
+        for location in parkLocations {
+            if location.name == selectedLocationName {
+                selectedParkLocationIndex = index
+                break
+            }
+            index += 1
+        }
+        
+        for marker in markers {
+            if marker.position.latitude == selectedLocationCoord!.latitude && marker.position.longitude == selectedLocationCoord!.longitude {
+                self.shakeMarkerView(marker: marker)
+                self.selectedMarker = marker
+            }
+        }
+        
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
@@ -73,11 +89,31 @@ class HomeViewController: UIViewController {
     let findView = FindView.instanceFromNib()
         
     @objc func showFindCard() {
+        let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
+        self.mapView?.animate(to: camera)
+
+        var index = 0
+        for location in parkLocations {
+            if location.name == selectedLocationName {
+                selectedParkLocationIndex = index
+                break
+            }
+            index += 1
+        }
+
+        for marker in markers {
+            if marker.position.latitude == selectedLocationCoord!.latitude && marker.position.longitude == selectedLocationCoord!.longitude {
+                self.shakeMarkerView(marker: marker)
+                self.selectedMarker = marker
+            }
+        }
+        
         if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
             self.view.subviews.last!.removeFromSuperview()
         } else {
             self.searchBar.alpha = 0.0
         }
+        
         self.updateBackgroundViewHeight(with: 285)
         //Clear saved car park
         UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
@@ -92,12 +128,6 @@ class HomeViewController: UIViewController {
             self.view.addSubview(self.findView)
         }
     }
-    
-    @objc func animateCameraToFoundLocation() {
-        let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
-        self.mapView?.animate(to: camera)
-    }
-    
     
     //MARK: -IBOutlets-
     @IBOutlet weak var titleLbl: UILabel!
@@ -127,9 +157,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchTapArea: UIButton!
     
     @IBOutlet weak var optionsTapArea: UIButton!
-    
-    //@IBOutlet weak var shareplayView: UIView!
-    
+        
     @IBOutlet weak var backgroundView: UIView!
     
     func updateBackgroundViewHeight(with cardHeight: CGFloat) {
@@ -229,8 +257,6 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBarWithError), name: .returnToSearchBarWithErrorID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showFindCard), name: .showFindCardID, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(animateCameraToFoundLocation), name: .animateCameraToFoundID, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(showRateReservation), name: .showRateReservationID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateLocation), name: .updateLocationID, object: nil)
@@ -288,6 +314,7 @@ class HomeViewController: UIViewController {
             imageView.contentMode = .scaleAspectFit
             imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
             self.selectedMarker.iconView?.addSubview(imageView)
+            self.selectedMarker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
         }
     }
     
@@ -404,7 +431,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-
         manageCityData()
         checkUserIsValid()
         
@@ -487,11 +513,6 @@ class HomeViewController: UIViewController {
         mapTypeButton.layer.cornerRadius = 15.0
         settingsButton.layer.cornerRadius = 15.0
         markedSpotButton.layer.cornerRadius = 15.0
-        
-        //RE-ADD THIS WHEN GROUP RESERVE IS DONE
-        /*
-         setUpSharePlay()
-         */
     }
     
     override func viewDidLayoutSubviews() {
@@ -684,16 +705,16 @@ extension HomeViewController: GMSMapViewDelegate {
         animation.isRemovedOnCompletion = true
         animation.repeatCount = 1
         
-        marker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 45))
-        //100, 90
-        let imageView = UIImageView(frame: CGRect(x: (marker.iconView?.frame.width)!/2 - 14.625, y: (marker.iconView?.frame.height)! - 37.5, width: 29.52, height: 37.5))
-        //29.25 75 58.5 75
+        marker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 80))
+        
+        let imageView = UIImageView(frame: CGRect(x: (marker.iconView?.frame.width)!/2 - 14.625, y: (marker.iconView?.frame.height)! - 43.2, width: 29.52, height: 43.2))
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "SelectedMarker_" + marker.snippet!)
-        imageView.layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
-        imageView.layer.frame = CGRect(x: (marker.iconView?.frame.width)!/2 - 14.625, y: (marker.iconView?.frame.height)! - 37.5, width: 29.52, height: 37.5)
+        imageView.layer.frame = CGRect(x: (marker.iconView?.frame.width)!/2 - 14.625, y: (marker.iconView?.frame.height)! - 43.2, width: 29.52, height: 43.2)
         
+        marker.groundAnchor = CGPoint(x: 0.5, y: 1.0)
         marker.iconView?.addSubview(imageView)
+        marker.iconView!.subviews[0].layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         marker.iconView!.subviews[0].layer.add(animation, forKey: "shakeAnimation")
         UIView.animate(withDuration: 0.3) {
             marker.iconView?.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)

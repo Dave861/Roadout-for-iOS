@@ -44,18 +44,8 @@ class EditNameViewController: UIViewController {
                 UserDefaults.roadout!.set(userNameField.text!, forKey: "ro.roadout.Roadout.UserName")
                 DispatchQueue.main.async {
                     self.nameLbl.text = UserManager.sharedInstance.userName
-                    let alert = UIAlertController(title: "Success".localized(), message: "Your name was successfully changed!".localized(), preferredStyle: UIAlertController.Style.alert)
-                    let alertAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
-                        UIView.animate(withDuration: 0.1) {
-                            self.blurEffect.alpha = 0
-                        } completion: { done in
-                            self.dismiss(animated: true, completion: nil)
-                        }
-                        NotificationCenter.default.post(name: .reloadUserNameID, object: nil)
-                    }
-                    alertAction.setValue(UIColor(named: "Main Yellow")!, forKey: "titleTextColor")
-                    alert.addAction(alertAction)
-                    self.present(alert, animated: true, completion: nil)
+                    NotificationCenter.default.post(name: .reloadUserNameID, object: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }
             } catch let err {
                 self.manageServerResponseErrors(err)

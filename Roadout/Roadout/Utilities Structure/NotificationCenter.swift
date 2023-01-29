@@ -43,7 +43,6 @@ extension Notification.Name {
     static let returnToSearchBarWithErrorID = Notification.Name("ro.roadout.Roadout.returnToSearchBarWithErrorID")
     static let addExpressViewID = Notification.Name("ro.roadout.Roadout.addExpressViewID")
     static let showFindCardID = Notification.Name("ro.roadout.Roadout.showFindCardID")
-    static let animateCameraToFoundID = Notification.Name("ro.roadout.Roadout.animateCameraToFoundID")
     
     //SETTINGS
     static let refreshCardsID = Notification.Name("ro.roadout.Roadout.refreshCards")

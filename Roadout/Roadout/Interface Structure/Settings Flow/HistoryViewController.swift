@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 var historyItems = [
     HistoryItem(parkingSpotID: "Cluj.Eroilor.A.10", time: 12, price: 8.7, date: Date()),
     HistoryItem(parkingSpotID: "Cluj.Marasti.B.2", time: 11, price: 7.6, date: Date()),
@@ -28,6 +26,8 @@ class HistoryViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBOutlet weak var placeholderView: UIView!
+    
     @IBOutlet weak var clearCard: UIView!
     @IBOutlet weak var clearBtn: UIButton!
     @IBAction func clearTapped(_ sender: Any) {
@@ -36,7 +36,7 @@ class HistoryViewController: UIViewController {
         historyItems = [HistoryItem]()
         weekHistoryItems = [HistoryItem]()
         olderHistoryItems = [HistoryItem]()
-        tableView.reloadData()
+        loadTableViewData()
     }
     
     let buttonTitle = NSAttributedString(string: "Clear".localized(),
@@ -50,25 +50,34 @@ class HistoryViewController: UIViewController {
         tableView.dataSource = self
         clearBtn.setAttributedTitle(buttonTitle, for: .normal)
         clearCard.layer.cornerRadius = 12.0
-        filterHistoryItems()
+        loadTableViewData()
     }
     
-    func filterHistoryItems() {
-        if historyItems.count > 0 {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy"
-            let lastWeek = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
-            
-            for index in 0...historyItems.count-1 {
-                var historyItem = historyItems[index]
-                historyItem.date = dateFormatter.date(from: dates[index])!
-                if historyItem.date >= lastWeek {
-                    weekHistoryItems.append(historyItem)
-                } else {
-                    olderHistoryItems.append(historyItem)
-                }
+    func loadHistoryItems() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let lastWeek = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
+        
+        for index in 0...historyItems.count-1 {
+            var historyItem = historyItems[index]
+            historyItem.date = dateFormatter.date(from: dates[index])!
+            if historyItem.date >= lastWeek {
+                weekHistoryItems.append(historyItem)
+            } else {
+                olderHistoryItems.append(historyItem)
             }
-            
+        }
+        tableView.reloadData()
+    }
+    
+    func loadTableViewData() {
+        if historyItems.count > 0 {
+            placeholderView.isHidden = true
+            clearCard.isHidden = false
+            loadHistoryItems()
+        } else {
+            placeholderView.isHidden = false
+            clearCard.isHidden = true
             tableView.reloadData()
         }
     }
@@ -76,19 +85,19 @@ class HistoryViewController: UIViewController {
 }
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if weekHistoryItems.isEmpty {
-            return historyItems.count + 1
+        if historyItems.count != 0 {
+            if weekHistoryItems.isEmpty {
+                return historyItems.count + 1
+            } else {
+                return historyItems.count + 2
+            }
         } else {
-            return historyItems.count + 2
+            return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if historyItems.isEmpty {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryHeaderCell") as! HeaderCell
-            cell.titleLbl.text = "No History"
-            return cell
-        } else if weekHistoryItems.isEmpty {
+         if weekHistoryItems.isEmpty {
            //We only have older
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryHeaderCell") as! HeaderCell
