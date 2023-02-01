@@ -431,9 +431,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        manageCityData()
-        checkUserIsValid()
-        
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip1") == false {
             settingsButton.tooltip(TutorialView1.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                 
@@ -513,6 +510,12 @@ class HomeViewController: UIViewController {
         mapTypeButton.layer.cornerRadius = 15.0
         settingsButton.layer.cornerRadius = 15.0
         markedSpotButton.layer.cornerRadius = 15.0
+        
+        checkUserIsValid()
+        //Should check if not empty
+        if parkLocations.count >= cityParkLocationsCount {
+            self.addMarkers()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -523,7 +526,6 @@ class HomeViewController: UIViewController {
         
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-
         switch traitCollection.userInterfaceStyle {
                 case .light, .unspecified:
                     self.applyStyleToMap(style: "lightStyle")
@@ -538,6 +540,7 @@ class HomeViewController: UIViewController {
         do {
           if let styleURL = Bundle.main.url(forResource: style, withExtension: "json") {
             mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+            manageCityData()
           } else {
             print("Unable to find style.json")
           }
@@ -578,8 +581,6 @@ class HomeViewController: UIViewController {
             let sb = UIStoryboard(name: "Home", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "GetDataVC") as! GetDataViewController
             self.present(vc, animated: false, completion: nil)
-        } else {
-            self.addMarkers()
         }
     }
     
@@ -609,12 +610,20 @@ class HomeViewController: UIViewController {
     
     var markedMenuItems: [UIAction] {
           return [
-              UIAction(title: "Clear".localized(), image: UIImage(systemName: "arrow.triangle.2.circlepath"), handler: { (_) in
-                UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
-                carParkHash = "roadout_carpark_clear"
-                NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
+              UIAction(title: "Remove".localized(), image: UIImage(systemName: "arrow.triangle.2.circlepath"), handler: { (_) in
+                  UIView.animate(withDuration: 0.1, animations: {
+                      self.markedSpotButton.transform = CGAffineTransform.identity
+                  })
+                  
+                  UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
+                  carParkHash = "roadout_carpark_clear"
+                  NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
               }),
-              UIAction(title: "Get Directions".localized(), image: UIImage(systemName: "arrow.triangle.branch"), handler: { (_) in
+              UIAction(title: "Navigate".localized(), image: UIImage(systemName: "arrow.triangle.branch"), handler: { (_) in
+                  UIView.animate(withDuration: 0.1, animations: {
+                      self.markedSpotButton.transform = CGAffineTransform.identity
+                  })
+                  
                   let hashComponents = carParkHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
                   let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
                   let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude

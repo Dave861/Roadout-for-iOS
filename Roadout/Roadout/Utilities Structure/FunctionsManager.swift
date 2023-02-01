@@ -52,7 +52,7 @@ class FunctionsManager {
         if jsonArray["status"] as! String == "Success" {
             if (jsonArray["id"] as! String).lowercased() != "null" {
                 let spotID = jsonArray["id"] as! String
-                self.foundSpot = ParkSpot(state: 0, number: Int(EntityManager.sharedInstance.decodeSpotID(spotID)[2])!, rHash: "u82f0ftyjk0w-f80-h70-p0", rID: spotID)
+                self.foundSpot = ParkSpot(state: 0, number: Int(EntityManager.sharedInstance.decodeSpotID(spotID)[2])!, rHash: "u82f0ftyjk0w-f120-h70-p0", rID: spotID)
                 //u82f0bc6m303
                 return true
             } else {

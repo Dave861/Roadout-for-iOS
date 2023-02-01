@@ -58,13 +58,13 @@ class RateViewController: UIViewController {
         //Handled by menu
     }
     
-    @IBOutlet weak var reservingGoodBtn: UIButton!
-    @IBOutlet weak var reservingOkBtn: UIButton!
-    @IBOutlet weak var reservingBadBtn: UIButton!
+    @IBOutlet weak var reservingGoodBtn: UXButton!
+    @IBOutlet weak var reservingOkBtn: UXButton!
+    @IBOutlet weak var reservingBadBtn: UXButton!
     
-    @IBOutlet weak var parkingGoodBtn: UIButton!
-    @IBOutlet weak var parkingOkBtn: UIButton!
-    @IBOutlet weak var parkingBadBtn: UIButton!
+    @IBOutlet weak var parkingGoodBtn: UXButton!
+    @IBOutlet weak var parkingOkBtn: UXButton!
+    @IBOutlet weak var parkingBadBtn: UXButton!
     
     
     @IBAction func reservingGoodTapped(_ sender: UIButton) {
