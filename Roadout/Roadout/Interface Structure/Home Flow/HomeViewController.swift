@@ -45,12 +45,12 @@ class HomeViewController: UIViewController {
     let expressView = ExpressView.instanceFromNib()
     
     @objc func addExpressView() {
-        let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
+        let camera = GMSCameraPosition.camera(withLatitude: selectedLocation.latitude, longitude: selectedLocation.longitude, zoom: 16.0)
         self.mapView?.animate(to: camera)
         
         var index = 0
         for location in parkLocations {
-            if location.name == selectedLocationName {
+            if location.name == selectedLocation.name {
                 selectedParkLocationIndex = index
                 break
             }
@@ -58,7 +58,7 @@ class HomeViewController: UIViewController {
         }
         
         for marker in markers {
-            if marker.position.latitude == selectedLocationCoord!.latitude && marker.position.longitude == selectedLocationCoord!.longitude {
+            if marker.position.latitude == selectedLocation.latitude && marker.position.longitude == selectedLocation.longitude {
                 self.shakeMarkerView(marker: marker)
                 self.selectedMarker = marker
             }
@@ -89,12 +89,12 @@ class HomeViewController: UIViewController {
     let findView = FindView.instanceFromNib()
         
     @objc func showFindCard() {
-        let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
+        let camera = GMSCameraPosition.camera(withLatitude: selectedLocation.latitude, longitude: selectedLocation.longitude, zoom: 16.0)
         self.mapView?.animate(to: camera)
 
         var index = 0
         for location in parkLocations {
-            if location.name == selectedLocationName {
+            if location.name == selectedLocation.name {
                 selectedParkLocationIndex = index
                 break
             }
@@ -102,7 +102,7 @@ class HomeViewController: UIViewController {
         }
 
         for marker in markers {
-            if marker.position.latitude == selectedLocationCoord!.latitude && marker.position.longitude == selectedLocationCoord!.longitude {
+            if marker.position.latitude == selectedLocation.latitude && marker.position.longitude == selectedLocation.longitude {
                 self.shakeMarkerView(marker: marker)
                 self.selectedMarker = marker
             }
@@ -195,7 +195,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func mapFocusTapped(_ sender: Any) {
         guard let coord = self.mapView.myLocation?.coordinate else { return }
-        let camera = GMSCameraPosition.camera(withLatitude: coord.latitude, longitude: coord.longitude, zoom: 15.0)
+        let camera = GMSCameraPosition.camera(withLatitude: coord.latitude, longitude: coord.longitude, zoom: 16.0)
         mapView.animate(to: camera)
     }
     
@@ -290,14 +290,14 @@ class HomeViewController: UIViewController {
         if spotMarker != nil {
             spotMarker.map = nil
         }
-        let hashComponents = selectedSpotHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
+        let hashComponents = selectedSpot.rHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
         let markerPosition = CLLocationCoordinate2D(latitude: Geohash(geohash: hashComponents[0])!.coordinates.latitude, longitude: Geohash(geohash: hashComponents[0])!.coordinates.longitude)
         //"SpotMarker_" + parkLocations[selectedParkLocationIndex].accentColor
         spotMarker = GMSMarker(position: markerPosition)
         spotMarker.title = "Selected Spot Marker"
         spotMarker.infoWindowAnchor = CGPoint()
         
-        spotMarker.icon = UIImage(named: "SpotMarker_" + selectedSpotColor)?.withResize(scaledToSize: CGSize(width: 30.0, height: 30.0))
+        spotMarker.icon = UIImage(named: "SpotMarker_" + selectedLocation.accentColor/*here was*/)?.withResize(scaledToSize: CGSize(width: 30.0, height: 30.0))
         spotMarker.map = mapView
     }
     
@@ -471,7 +471,7 @@ class HomeViewController: UIViewController {
         refreshMarkedSpot()
         
         //Map Setup
-        let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 15.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 16.0)
         
         if UIDevice.current.hasNotch {
             mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+7-backgroundView.frame.height-34), camera: camera)
@@ -665,7 +665,7 @@ extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         currentLocationCoord = location?.coordinate
-        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17.0)
+        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 16.0)
         self.mapView?.animate(to: camera)
         self.locationManager.stopUpdatingLocation()
     }
@@ -676,10 +676,11 @@ extension HomeViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if marker != spotMarker {
             if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedView && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar && self.isMarkerInteractive {
-                selectedLocationName = marker.title!
+                selectedLocation.name = marker.title!
                 let colorSnippet = marker.snippet!
-                selectedLocationColor = UIColor(named: colorSnippet)!
-                selectedLocationCoord = marker.position
+                selectedLocation.accentColor = colorSnippet
+                selectedLocation.latitude = marker.position.latitude
+                selectedLocation.longitude = marker.position.longitude
                 if self.view.subviews.last != searchBar && self.view.subviews.last != mapView {
                     self.view.subviews.last?.removeFromSuperview()
                 }
@@ -735,12 +736,12 @@ extension HomeViewController: GMSMapViewDelegate {
 extension HomeViewController {
     //Result Card
     @objc func addResultCard() {
-        let camera = GMSCameraPosition.camera(withLatitude: (selectedLocationCoord!.latitude), longitude: (selectedLocationCoord!.longitude), zoom: 17.0)
+        let camera = GMSCameraPosition.camera(withLatitude: selectedLocation.latitude, longitude: selectedLocation.longitude, zoom: 16.0)
         self.mapView?.animate(to: camera)
         
         var index = 0
         for location in parkLocations {
-            if location.name == selectedLocationName {
+            if location.name == selectedLocation.name {
                 selectedParkLocationIndex = index
                 break
             }
@@ -748,7 +749,7 @@ extension HomeViewController {
         }
         
         for marker in markers {
-            if marker.position.latitude == selectedLocationCoord!.latitude && marker.position.longitude == selectedLocationCoord!.longitude {
+            if marker.position.latitude == selectedLocation.latitude && marker.position.longitude == selectedLocation.longitude {
                 self.shakeMarkerView(marker: marker)
                 self.selectedMarker = marker
             }
@@ -1053,7 +1054,7 @@ extension HomeViewController {
 
     @objc func addPayDurationCard() {
         DispatchQueue.main.async {
-            let camera = GMSCameraPosition.camera(withLatitude: (selectedPayLocation!.latitude), longitude: (selectedPayLocation!.longitude), zoom: 17.0)
+            let camera = GMSCameraPosition.camera(withLatitude: (selectedPayLocation!.latitude), longitude: (selectedPayLocation!.longitude), zoom: 16.0)
             self.mapView?.animate(to: camera)
             
             if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {

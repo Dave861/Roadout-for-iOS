@@ -14,6 +14,9 @@ class FindView: UIView {
     
     @IBOutlet weak var tipSourceView: UIView!
     
+    @IBOutlet weak var mapIcon: UIImageView!
+    @IBOutlet weak var carIcon: UIImageView!
+    
     @IBOutlet weak var backBtn: UIButton!
     
     @IBAction func backTapped(_ sender: Any) {
@@ -31,7 +34,7 @@ class FindView: UIView {
         let roundedValue = round(slider.value/1.0)*1.0
         slider.value = roundedValue
         chargeLbl.text = "\(Int(slider.value))" + " Minute/s".localized() + " - \(Int(slider.value)) RON"
-        chargeLbl.set(textColor: UIColor(named: "Greyish")!, range: chargeLbl.range(after: " - "))
+        chargeLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: chargeLbl.range(after: " - "))
         chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
     }
     
@@ -57,7 +60,7 @@ class FindView: UIView {
                 do {
                     try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(),
                                                                                      time: timerSeconds/60,
-                                                                                     spotID: selectedSpotID,
+                                                                                     spotID: selectedSpot.rID,
                                                                                      payment: 10,
                                                                                      userID: id)
                     DispatchQueue.main.async {
@@ -118,45 +121,47 @@ class FindView: UIView {
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
         
+        preparePayButtons()
+        fillParkingLabels()
+        setAccentColors()
+    }
+    
+    class func instanceFromNib() -> UIView {
+        return UINib(nibName: "Find", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+    }
+    
+    func preparePayButtons() {
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         
         payBtn.layer.cornerRadius = 12.0
         payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
-        payBtn.backgroundColor = UIColor(named: "Greyish")!
         
         chooseMethodBtn.layer.cornerRadius = 12.0
         chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         chooseMethodBtn.setTitle("", for: .normal)
         
-        chargeLbl.set(textColor: UIColor(named: "Greyish")!, range: chargeLbl.range(after: " - "))
-        chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
-        
         cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
         selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
                 
-
         chooseMethodBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true
         
         payBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         payBtn.showsMenuAsPrimaryAction = true
+    }
+    
+    func fillParkingLabels() {
+        chargeLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: chargeLbl.range(after: " - "))
+        chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
         
-                
         locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name
         spotSectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
         
-        spotSectionLbl.set(textColor: UIColor(named: "Greyish")!, range: spotSectionLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
-        spotSectionLbl.set(textColor: UIColor(named: "Greyish")!, range: spotSectionLbl.range(after: " - Spot ".localized()))
+        spotSectionLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: spotSectionLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
+        spotSectionLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: spotSectionLbl.range(after: " - Spot ".localized()))
         spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
         spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: " - Spot ".localized()))
-        
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-    }
-    
-    class func instanceFromNib() -> UIView {
-        return UINib(nibName: "Find", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
     
     func reloadMainCard() {
@@ -165,7 +170,7 @@ class FindView: UIView {
         
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         payBtn.setAttributedTitle(mainCardTitle, for: .normal)
-        payBtn.backgroundColor = UIColor(named: "Greyish")!
+        payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)!
     }
     
     func showApplePayBtn() {
@@ -224,6 +229,14 @@ class FindView: UIView {
         }
         print(index)
         return index
+    }
+    
+    func setAccentColors() {
+        mapIcon.tintColor = UIColor(named: selectedLocation.accentColor)
+        carIcon.tintColor = UIColor(named: selectedLocation.accentColor)
+        slider.tintColor = UIColor(named: selectedLocation.accentColor)
+        chooseMethodBtn.tintColor = UIColor(named: selectedLocation.accentColor)
+        payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)
     }
     
     func manageServerSideErrors(error: Error) {

@@ -53,7 +53,7 @@ class ResultView: UIView {
         carParkHash = "roadout_carpark_clear"
         NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
         //Find first free spot
-        let indicatorIcon = UIImage(named: "roadout.car")!.withTintColor(selectedLocationColor ?? UIColor(named: "Main Yellow")!, renderingMode: .alwaysOriginal)
+        let indicatorIcon = UIImage(named: "roadout.car")!.withTintColor(UIColor(named: selectedLocation.accentColor)!, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
         indicatorView.dismissByDrag = false
         indicatorView.present()
@@ -83,7 +83,7 @@ class ResultView: UIView {
             indicatorView.dismiss()
             
             let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
-            alert.view.tintColor = selectedLocationColor ?? UIColor(named: "Main Yellow")!
+            alert.view.tintColor = UIColor(named: selectedLocation.accentColor)!
             alert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
             self.parentViewController().present(alert, animated: true, completion: nil)
         }
@@ -99,10 +99,10 @@ class ResultView: UIView {
         backBtn.layer.cornerRadius = 15.0
         
         pickBtn.setAttributedTitle(pickTitle, for: .normal)
-        pickBtn.tintColor = selectedLocationColor
+        pickBtn.tintColor = UIColor(named: selectedLocation.accentColor)!
         
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
-        continueBtn.backgroundColor = selectedLocationColor
+        continueBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)!
         
         if currentLocationCoord != nil {
             let c1 = CLLocation(latitude: parkLocations[selectedParkLocationIndex].latitude, longitude: parkLocations[selectedParkLocationIndex].longitude)
@@ -120,9 +120,9 @@ class ResultView: UIView {
         sectionsLbl.text = "\(parkLocations[selectedParkLocationIndex].sections.count) " + "sections".localized()
         freeSpotsLbl.text = "\(parkLocations[selectedParkLocationIndex].freeSpots) " + "free spots".localized()
         
-        distanceIcon.tintColor = selectedLocationColor
-        sectionsIcon.tintColor = selectedLocationColor
-        spotsIcon.tintColor = selectedLocationColor
+        distanceIcon.tintColor = UIColor(named: selectedLocation.accentColor)!
+        sectionsIcon.tintColor = UIColor(named: selectedLocation.accentColor)!
+        spotsIcon.tintColor = UIColor(named: selectedLocation.accentColor)!
     }
     
     class func instanceFromNib() -> UIView {

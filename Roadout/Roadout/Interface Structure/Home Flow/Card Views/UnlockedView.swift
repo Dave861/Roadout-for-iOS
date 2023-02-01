@@ -26,14 +26,14 @@ class UnlockedView: UIView {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         isPayFlow = false
-        selectedPayLocation = getLocationWith(name: EntityManager.sharedInstance.decodeSpotID(selectedSpotID)[0])
+        selectedPayLocation = getLocationWith(name: EntityManager.sharedInstance.decodeSpotID(selectedSpot.rID)[0])
         NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
     }
     
     @IBAction func markTapped(_ sender: Any) {
         //Make sure spot hash is ok
-        UserDefaults.roadout!.setValue(selectedSpotHash, forKey: "ro.roadout.Roadout.carParkHash")
-        carParkHash = selectedSpotHash
+        UserDefaults.roadout!.setValue(selectedSpot.rHash, forKey: "ro.roadout.Roadout.carParkHash")
+        carParkHash = selectedSpot.rHash
         NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
         
         markLbl.text = "Marked".localized()

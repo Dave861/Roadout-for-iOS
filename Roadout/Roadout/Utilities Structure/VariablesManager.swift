@@ -26,14 +26,11 @@ var timerSeconds = 0
 var delaySeconds = 300
 var paidHours = 0
 
-var selectedLocationName = "Location"
+var selectedLocation = ParkLocation(name: "Selected Location", rID: "", latitude: 0.0, longitude: 0.0, totalSpots: 0, freeSpots: 0, sections: [ParkSection](), sectionImage: "SelectedLocationSection", accentColor: "Main Yellow")
 var selectedParkLocationIndex = 0
 var selectedSectionIndex = 0
-var selectedLocationColor = UIColor(named: "Main Yellow")
-var selectedSpotID: String!
-var selectedSpotHash = "" //Manage once in database - ex: u82f0bc6m303-f80-h70-p0
-var selectedLocationCoord: CLLocationCoordinate2D!
-var selectedSpotColor = "Main Yellow"
+
+var selectedSpot = ParkSpot(state: 0, number: 0, rHash: "", rID: "") //Manage once in database - ex: u82f0bc6m303-f80-h70-p0
 
 var currentLocationCoord: CLLocationCoordinate2D?
 
@@ -51,8 +48,8 @@ let colours = ["Main Yellow", "Dark Orange", "Icons", "Kinda Red", "Second Orang
 
 //Decides if Duration Card return to Unlocked Card or Search Bar
 var isPayFlow = false
-
 var selectedPayLocation: ParkLocation!
+var userLicensePlate = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.userLicensePlate") ?? "NO-PLATE"
 
 //Express Lane IDs
 var favouriteLocationIDs = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.Roadout.favouriteLocationIDs") ?? [String]()
@@ -64,11 +61,8 @@ var cityParkLocationsCount = 11
 //Remember car location
 var carParkHash = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.carParkHash") ?? "roadout_carpark_clear"
 
-var userLicensePlate = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.userLicensePlate") ?? "NO-PLATE"
-
 //Live Activity
 var openedByLiveActivity = false
 
 //While server is variable, makes changing the url easier
 var roadoutServerURL = "api.roadout.live"
-//UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.devServerURL") ?? "roadout.live"

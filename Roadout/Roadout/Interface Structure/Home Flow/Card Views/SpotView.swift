@@ -239,8 +239,8 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
         let index = (indexPath[0])*collectionView.numberOfItems(inSection: 0) + indexPath[1]
         updateInfo(spotState: parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state)
         
-        selectedSpotID = parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].rID
-        selectedSpotHash = parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].rHash
+        selectedSpot.rID = parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].rID
+        selectedSpot.rHash = parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].rHash
         
         switch parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[index].state {
             case 0:
@@ -256,8 +256,8 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
                 cell.mainBtn.backgroundColor = UIColor(named: "Greyish")
                 cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
         }
-
-        selectedSpotColor = parkLocations[selectedParkLocationIndex].accentColor
+        /*here*/
+        selectedLocation.accentColor = parkLocations[selectedParkLocationIndex].accentColor
         NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

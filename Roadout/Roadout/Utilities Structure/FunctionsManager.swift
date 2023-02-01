@@ -94,11 +94,13 @@ class FunctionsManager {
                 do {
                     let didFindSpot = try await self.checkSectionAsync(sectionId: parkSection.rID)
                     if didFindSpot {
-                        self.foundSection = parkSection
-                        selectedSpotID = self.foundSpot.rID
-                        selectedSpotHash = self.foundSpot.rHash
-                        selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
-                        selectedSpotColor = location.accentColor
+                        foundSection = parkSection
+                        selectedSpot.rID = foundSpot.rID
+                        selectedSpot.rHash = foundSpot.rHash
+                        selectedLocation.latitude = foundLocation.latitude
+                        selectedLocation.longitude = foundLocation.longitude
+                        /*here*/
+                        selectedLocation.accentColor = location.accentColor
                     }
                 } catch let err {
                     throw err
@@ -125,10 +127,12 @@ class FunctionsManager {
                         let didFindSpot = try await self.checkSectionAsync(sectionId: parkSection.rID)
                         if didFindSpot {
                             foundSection = parkSection
-                            selectedSpotID = foundSpot.rID
-                            selectedSpotHash = foundSpot.rHash
-                            selectedLocationCoord = CLLocationCoordinate2D(latitude: self.foundLocation.latitude, longitude: self.foundLocation.longitude)
-                            selectedSpotColor = parkLocation.accentColor
+                            selectedSpot.rID = foundSpot.rID
+                            selectedSpot.rHash = foundSpot.rHash
+                            selectedLocation.latitude = foundLocation.latitude
+                            selectedLocation.longitude = foundLocation.longitude
+                            /*here*/
+                            selectedLocation.accentColor = parkLocation.accentColor
                             return true
                         }
                     } catch let err {

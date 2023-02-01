@@ -34,8 +34,8 @@ class HelpCenterProblem {
     }
     
     func fillOutSpotInformation() {
-        self.solution = self.solution.replacingOccurrences(of: "SPOT-ID", with: convertSpotIDToReadable(spotID: selectedSpotID))
-        self.sectionImage = "Cluj." + EntityManager.sharedInstance.decodeSpotID(selectedSpotID)[0].replacingOccurrences(of: " ", with: "") + ".SectionMarked"
+        self.solution = self.solution.replacingOccurrences(of: "SPOT-ID", with: convertSpotIDToReadable(spotID: selectedSpot.rID))
+        self.sectionImage = "Cluj." + EntityManager.sharedInstance.decodeSpotID(selectedSpot.rID)[0].replacingOccurrences(of: " ", with: "") + ".SectionMarked"
     }
      
 }

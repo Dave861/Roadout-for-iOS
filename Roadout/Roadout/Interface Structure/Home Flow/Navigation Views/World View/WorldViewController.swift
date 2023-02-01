@@ -28,7 +28,7 @@ class WorldViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.cachedWorldHash") ?? "" == selectedSpotHash &&
+        if UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.cachedWorldHash") ?? "" == selectedSpot.rHash &&
             UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.cachedWorldImage") != nil {
             guard let data = UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.cachedWorldImage") else { return }
             self.worldImage.image = UIImage(data: data as Data)
@@ -43,16 +43,16 @@ class WorldViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.cachedWorldHash") ?? "" != selectedSpotHash ||
+        if UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.cachedWorldHash") ?? "" != selectedSpot.rHash ||
             UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.cachedWorldImage") == nil {
             decodeGeohash()
         }
     }
     
     func decodeGeohash() {
-        UserDefaults.roadout!.setValue(selectedSpotHash, forKey: "ro.roadout.Roadout.cachedWorldHash")
+        UserDefaults.roadout!.setValue(selectedSpot.rHash, forKey: "ro.roadout.Roadout.cachedWorldHash")
         
-        let hashComponents = selectedSpotHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
+        let hashComponents = selectedSpot.rHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
         let fov = String(hashComponents[1].dropFirst())
         let heading = String(hashComponents[2].dropFirst())
         let pitch = String(hashComponents[3].dropFirst())

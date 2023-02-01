@@ -119,7 +119,7 @@ struct RoadoutAppIntent: AppIntent {
         //Reserve
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         do {
-            try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: Int(resPrice), userID: id)
+            try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpot.rID, payment: Int(resPrice), userID: id)
             WidgetCenter.shared.reloadAllTimelines()
         } catch {
             throw RoadoutIntentErrors.failureRequiringAppLaunch

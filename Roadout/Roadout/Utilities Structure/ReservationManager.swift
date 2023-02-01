@@ -96,8 +96,8 @@ class ReservationManager {
         if jsonArray["status"] as! String == "Success" {
             if jsonArray["message"] as! String == "active" {
                 //There is an active reservation
-                selectedSpotID = jsonArray["spotID"] as? String
-                //selectedSpotHash = jsonArray["spotHash"] as? String - once it exists
+                selectedSpot.rID = jsonArray["spotID"] as? String ?? "Roadout.Parking.P.1"
+                //selectedSpot.rHash = jsonArray["spotHash"] as? String - once it exists
                 
                 let formattedEndDate = jsonArray["endDate"] as! String
                 let convertedEndDate = dateFormatter.date(from: formattedEndDate)

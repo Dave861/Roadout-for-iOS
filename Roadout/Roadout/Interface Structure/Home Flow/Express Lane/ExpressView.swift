@@ -55,7 +55,7 @@ class ExpressView: UIView {
                 do {
                     try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(),
                                                                                      time: timerSeconds/60,
-                                                                                     spotID: selectedSpotID,
+                                                                                     spotID: selectedSpot.rID,
                                                                                      payment: 10,
                                                                                      userID: id)
                     DispatchQueue.main.async {

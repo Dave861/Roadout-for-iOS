@@ -45,7 +45,7 @@ class SearchPreviewController: UIViewController {
         gridIcon.tintColor = previewLocationColor
         spotIcon.tintColor = previewLocationColor
             
-        let camera = GMSCameraPosition.camera(withLatitude: previewLocationCoords.latitude, longitude: previewLocationCoords.longitude, zoom: 15.0)
+        let camera = GMSCameraPosition.camera(withLatitude: previewLocationCoords.latitude, longitude: previewLocationCoords.longitude, zoom: 16.0)
         mapView = GMSMapView.map(withFrame: self.mapHostView.frame, camera: camera)
        
         self.mapHostView.insertSubview(mapView, at: 0)

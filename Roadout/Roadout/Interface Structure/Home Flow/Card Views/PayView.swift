@@ -60,7 +60,7 @@ class PayView: UIView {
                 let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
                 Task {
                     do {
-                        try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpotID, payment: 10, userID: id)
+                        try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpot.rID, payment: 10, userID: id)
                         DispatchQueue.main.async {
                             WidgetCenter.shared.reloadAllTimelines()
                             NotificationCenter.default.post(name: .showPaidBarID, object: nil)
@@ -118,7 +118,7 @@ class PayView: UIView {
         cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
         selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
         
-        fillReservationData(for: selectedSpotID)
+        fillReservationData(for: selectedSpot.rID)
         
         chooseMethodBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true

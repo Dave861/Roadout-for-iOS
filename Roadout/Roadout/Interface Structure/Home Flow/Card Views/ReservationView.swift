@@ -78,7 +78,7 @@ class ReservationView: UIView {
     }
     
     @IBAction func directionsTapped(_ sender: Any) {
-        let hashComponents = selectedSpotHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
+        let hashComponents = selectedSpot.rHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
         let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
         let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
         
@@ -150,7 +150,7 @@ class ReservationView: UIView {
     }
     
     @IBAction func arTapped(_ sender: Any) {
-        guard selectedSpotHash != "" else {
+        guard selectedSpot.rHash != "" else {
             self.manageLocalError()
             return
         }
@@ -167,7 +167,7 @@ class ReservationView: UIView {
     }
     
     @IBAction func worldTapped(_ sender: Any) {
-        guard selectedSpotHash != "" else {
+        guard selectedSpot.rHash != "" else {
             self.manageLocalError()
             return
         }

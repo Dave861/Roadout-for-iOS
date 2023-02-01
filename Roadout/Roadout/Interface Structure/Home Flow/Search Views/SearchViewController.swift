@@ -279,10 +279,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        selectedLocationName = results[indexPath.row].name
-        selectedLocationCoord = CLLocationCoordinate2D(latitude: results[indexPath.row].latitude, longitude: results[indexPath.row].longitude)
+        selectedLocation.name = results[indexPath.row].name
+        selectedLocation.latitude = results[indexPath.row].latitude
+        selectedLocation.longitude = results[indexPath.row].longitude
         let cell = tableView.cellForRow(at: indexPath) as! SearchCell
-        selectedLocationColor = cell.gaugeIcon.tintColor
+        selectedLocation.accentColor = results[indexPath.row].accentColor
         NotificationCenter.default.post(name: .addResultCardID, object: nil)
         self.view.endEditing(true)
         self.dismiss(animated: false, completion: nil)
@@ -324,10 +325,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         let indexPath = configuration.identifier as! IndexPath
-        selectedLocationName = results[indexPath.row].name
-        selectedLocationCoord = CLLocationCoordinate2D(latitude: results[indexPath.row].latitude, longitude: results[indexPath.row].longitude)
+        selectedLocation.name = results[indexPath.row].name
+        selectedLocation.latitude = results[indexPath.row].latitude
+        selectedLocation.longitude = results[indexPath.row].longitude
         let cell = tableView.cellForRow(at: indexPath) as! SearchCell
-        selectedLocationColor = cell.gaugeIcon.tintColor
+        selectedLocation.accentColor = results[indexPath.row].accentColor
         NotificationCenter.default.post(name: .addResultCardID, object: nil)
         self.dismiss(animated: false) {
             self.dismissScreen()

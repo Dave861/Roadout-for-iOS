@@ -198,7 +198,7 @@ class NotificationHelper {
     }
     
     func decodeCoordsFromGeohash() -> CLLocationCoordinate2D {
-        let hashComponents = selectedSpotHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
+        let hashComponents = selectedSpot.rHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
         
         let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
         let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
@@ -246,7 +246,7 @@ class LiveActivityHelper {
     func startLiveActivity(with timerSeconds: Int) {
         if Activity<RoadoutReservationAttributes>.activities.isEmpty {
             //Start new activity
-            let roadoutReservationAttributes = RoadoutReservationAttributes(parkSpotID: selectedSpotID)
+            let roadoutReservationAttributes = RoadoutReservationAttributes(parkSpotID: selectedSpot.rID)
             let initialContentState = RoadoutReservationAttributes.RoadoutReservationStatus(endTime: Date()...Date().addingTimeInterval(Double(timerSeconds)))
             Task {
                 do {
