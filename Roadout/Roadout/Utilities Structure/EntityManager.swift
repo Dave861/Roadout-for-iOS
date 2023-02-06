@@ -177,7 +177,7 @@ class EntityManager {
     func makeAccentColor(parkLocation: inout ParkLocation) {
         let percentage = 100-(Double(parkLocation.freeSpots)/Double(parkLocation.totalSpots))*100
         if percentage >= 90 {
-            parkLocation.accentColor = "KindaRed"
+            parkLocation.accentColor = "Kinda Red"
         } else if percentage >= 80 {
             parkLocation.accentColor = "Dark Orange"
         } else if percentage >= 60 {

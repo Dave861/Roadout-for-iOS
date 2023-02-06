@@ -18,7 +18,7 @@ class IntentHandler: INExtension, ConfigurationIntentHandling {
                 widgetParkLocation.rID = parkLocation.rID
                 widgetParkLocation.locationName = parkLocation.name
                 widgetParkLocation.totalSpots = parkLocation.totalSpots as NSNumber
-                widgetParkLocation.coords = "\(Double(round(1000 * parkLocation.latitude) / 1000)), \(Double(round(1000 * parkLocation.longitude) / 1000))"
+                widgetParkLocation.occupancyColor = self.makeAccentColor(parkLocation: parkLocation)
                 return widgetParkLocation
             }
             let collection = INObjectCollection(items: widgetParkLocations)
@@ -37,7 +37,7 @@ class IntentHandler: INExtension, ConfigurationIntentHandling {
                 widgetParkLocation.rID = parkLocation.rID
                 widgetParkLocation.locationName = parkLocation.name
                 widgetParkLocation.totalSpots = parkLocation.totalSpots as NSNumber
-                widgetParkLocation.coords = "\(Double(round(1000 * parkLocation.latitude) / 1000)), \(Double(round(1000 * parkLocation.longitude) / 1000))"
+                widgetParkLocation.occupancyColor = self.makeAccentColor(parkLocation: parkLocation)
                 return widgetParkLocation
             }
             let collection = INObjectCollection(items: widgetParkLocations)
@@ -54,6 +54,21 @@ class IntentHandler: INExtension, ConfigurationIntentHandling {
         // you can override this and return the handler you want for that particular intent.
         
         return self
+    }
+    
+    func makeAccentColor(parkLocation: ParkLocation) -> String {
+        let percentage = 100-(Double(parkLocation.freeSpots)/Double(parkLocation.totalSpots))*100
+        if percentage >= 90 {
+            return "Kinda Red"
+        } else if percentage >= 80 {
+            return "Dark Orange"
+        } else if percentage >= 60 {
+            return "Second Orange"
+        } else if percentage >= 50 {
+            return "Icons"
+        } else {
+            return "Main Yellow"
+        }
     }
     
 }

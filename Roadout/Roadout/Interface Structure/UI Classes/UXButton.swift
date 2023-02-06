@@ -18,9 +18,11 @@ class UXButton: UIButton {
 
     
     @objc func buttonHeld() {
-        UIView.animate(withDuration: 0.1, animations: {
-            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        })
+        if !self.showsMenuAsPrimaryAction {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            })
+        }
     }
 
     @objc func buttonReleased() {

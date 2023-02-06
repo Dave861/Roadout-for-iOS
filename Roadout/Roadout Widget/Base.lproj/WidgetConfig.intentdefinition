@@ -9,11 +9,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>ZgbLEg</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21F79</string>
+	<string>22C65</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>14A5229c</string>
+	<string>14B47b</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>14.0</string>
+	<string>14.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -154,7 +154,7 @@
 			<key>INTypeDisplayNameID</key>
 			<string>CgQ1yN</string>
 			<key>INTypeLastPropertyTag</key>
-			<integer>109</integer>
+			<integer>112</integer>
 			<key>INTypeName</key>
 			<string>WidgetParkLocation</string>
 			<key>INTypeProperties</key>
@@ -184,14 +184,16 @@
 					<string>String</string>
 				</dict>
 				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
+					<key>INTypePropertyDisplayName</key>
+					<string>Location Name</string>
+					<key>INTypePropertyDisplayNameID</key>
+					<string>YDAt57</string>
 					<key>INTypePropertyDisplayPriority</key>
 					<integer>3</integer>
 					<key>INTypePropertyName</key>
-					<string>pronunciationHint</string>
+					<string>locationName</string>
 					<key>INTypePropertyTag</key>
-					<integer>3</integer>
+					<integer>100</integer>
 					<key>INTypePropertyType</key>
 					<string>String</string>
 				</dict>
@@ -200,6 +202,32 @@
 					<true/>
 					<key>INTypePropertyDisplayPriority</key>
 					<integer>4</integer>
+					<key>INTypePropertyName</key>
+					<string>pronunciationHint</string>
+					<key>INTypePropertyTag</key>
+					<integer>3</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDisplayName</key>
+					<string>Free Spots</string>
+					<key>INTypePropertyDisplayNameID</key>
+					<string>vBJUAP</string>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>5</integer>
+					<key>INTypePropertyName</key>
+					<string>freeSpots</string>
+					<key>INTypePropertyTag</key>
+					<integer>104</integer>
+					<key>INTypePropertyType</key>
+					<string>Integer</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDefault</key>
+					<true/>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>6</integer>
 					<key>INTypePropertyName</key>
 					<string>alternativeSpeakableMatches</string>
 					<key>INTypePropertySupportsMultipleValues</key>
@@ -211,17 +239,17 @@
 				</dict>
 				<dict>
 					<key>INTypePropertyDisplayName</key>
-					<string>Location Name</string>
+					<string>Total Spots</string>
 					<key>INTypePropertyDisplayNameID</key>
-					<string>YDAt57</string>
+					<string>CE1WbU</string>
 					<key>INTypePropertyDisplayPriority</key>
-					<integer>5</integer>
+					<integer>7</integer>
 					<key>INTypePropertyName</key>
-					<string>locationName</string>
+					<string>totalSpots</string>
 					<key>INTypePropertyTag</key>
-					<integer>100</integer>
+					<integer>112</integer>
 					<key>INTypePropertyType</key>
-					<string>String</string>
+					<string>Integer</string>
 				</dict>
 				<dict>
 					<key>INTypePropertyDisplayName</key>
@@ -229,7 +257,7 @@
 					<key>INTypePropertyDisplayNameID</key>
 					<string>h57ZHr</string>
 					<key>INTypePropertyDisplayPriority</key>
-					<integer>6</integer>
+					<integer>8</integer>
 					<key>INTypePropertyName</key>
 					<string>rID</string>
 					<key>INTypePropertyTag</key>
@@ -239,43 +267,15 @@
 				</dict>
 				<dict>
 					<key>INTypePropertyDisplayName</key>
-					<string>Free Spots</string>
+					<string>Occupancy Color</string>
 					<key>INTypePropertyDisplayNameID</key>
-					<string>vBJUAP</string>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>7</integer>
-					<key>INTypePropertyName</key>
-					<string>freeSpots</string>
-					<key>INTypePropertyTag</key>
-					<integer>104</integer>
-					<key>INTypePropertyType</key>
-					<string>Integer</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDisplayName</key>
-					<string>Total Spots</string>
-					<key>INTypePropertyDisplayNameID</key>
-					<string>V5biBJ</string>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>8</integer>
-					<key>INTypePropertyName</key>
-					<string>totalSpots</string>
-					<key>INTypePropertyTag</key>
-					<integer>106</integer>
-					<key>INTypePropertyType</key>
-					<string>Integer</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDisplayName</key>
-					<string>Coords</string>
-					<key>INTypePropertyDisplayNameID</key>
-					<string>OFBh8R</string>
+					<string>ZRHxla</string>
 					<key>INTypePropertyDisplayPriority</key>
 					<integer>9</integer>
 					<key>INTypePropertyName</key>
-					<string>coords</string>
+					<string>occupancyColor</string>
 					<key>INTypePropertyTag</key>
-					<integer>109</integer>
+					<integer>110</integer>
 					<key>INTypePropertyType</key>
 					<string>String</string>
 				</dict>

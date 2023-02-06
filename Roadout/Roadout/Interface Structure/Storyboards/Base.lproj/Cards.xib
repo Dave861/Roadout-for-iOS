@@ -459,7 +459,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="LUN-fz-Zol">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="LUN-fz-Zol">
                     <rect key="frame" x="54" y="138" width="306" height="30"/>
                     <color key="tintColor" name="Dark Yellow"/>
                     <constraints>
@@ -469,7 +469,7 @@
                         <action selector="slided:" destination="5uk-r6-x1e" eventType="valueChanged" id="C7f-cN-thZ"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2q1-rQ-7bi">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2q1-rQ-7bi">
                     <rect key="frame" x="16" y="131" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="LPJ-AU-djI"/>
@@ -1245,7 +1245,7 @@
                         <action selector="continueTapped:" destination="C9a-x4-yeN" eventType="touchUpInside" id="Gxg-RR-YQc"/>
                     </connections>
                 </button>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="1JX-hX-znc">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="1JX-hX-znc">
                     <rect key="frame" x="54" y="62" width="306" height="30"/>
                     <color key="tintColor" name="Second Orange"/>
                     <constraints>
@@ -1255,7 +1255,7 @@
                         <action selector="slided:" destination="C9a-x4-yeN" eventType="valueChanged" id="QFc-XG-BEe"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWr-ar-epm">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWr-ar-epm">
                     <rect key="frame" x="16" y="55" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="9qv-6K-oBS"/>

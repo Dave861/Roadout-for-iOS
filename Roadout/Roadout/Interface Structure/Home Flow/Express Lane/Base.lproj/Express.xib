@@ -119,7 +119,7 @@
                     <rect key="frame" x="8" y="126" width="398" height="1"/>
                     <color key="backgroundColor" systemColor="systemGray4Color"/>
                 </view>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="6tr-IQ-CnZ">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="6tr-IQ-CnZ">
                     <rect key="frame" x="54" y="143" width="306" height="30"/>
                     <color key="tintColor" name="ExpressFocus"/>
                     <constraints>
@@ -129,7 +129,7 @@
                         <action selector="sliderChangedValue:" destination="gWk-Zf-jxN" eventType="valueChanged" id="OeI-lC-XON"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JS1-9H-4b8">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JS1-9H-4b8">
                     <rect key="frame" x="16" y="136" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="3Gl-2G-jUo"/>

@@ -137,7 +137,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="W0a-r3-1ke">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="W0a-r3-1ke">
                     <rect key="frame" x="54" y="143" width="306" height="30"/>
                     <color key="tintColor" name="Greyish"/>
                     <constraints>
@@ -147,7 +147,7 @@
                         <action selector="sliderChangedValue:" destination="GDG-ex-dZ6" eventType="valueChanged" id="IV7-80-nV5"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8c-zk-93c">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8c-zk-93c">
                     <rect key="frame" x="16" y="136" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="RFl-9J-vgQ"/>

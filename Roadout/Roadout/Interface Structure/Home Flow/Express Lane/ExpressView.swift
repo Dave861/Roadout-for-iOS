@@ -172,20 +172,12 @@ class ExpressView: UIView {
             let action = UIAction(title: card, image: UIImage(systemName: "creditcard.fill"), handler: { (_) in
                 UserDefaults.roadout!.set(self.getIndexInArray(card, cards), forKey: "ro.roadout.defaultPaymentMethod")
                 self.reloadMainCard()
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.payBtn.transform = CGAffineTransform.identity
-                    self.chooseMethodBtn.transform = CGAffineTransform.identity
-                })
             })
             menuItems.append(action)
         }
         
         let applePayAction = UIAction(title: "Apple Pay", image: UIImage(systemName: "applelogo")) { (_) in
             self.showApplePayBtn()
-            UIView.animate(withDuration: 0.1, animations: {
-                self.payBtn.transform = CGAffineTransform.identity
-                self.chooseMethodBtn.transform = CGAffineTransform.identity
-            })
         }
         menuItems.append(applePayAction)
         
