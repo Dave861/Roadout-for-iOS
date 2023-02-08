@@ -79,7 +79,7 @@ struct RoadoutWidgetProvider: IntentTimelineProvider {
             }
             
             
-            let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(3600)))
+            let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(5400)))
             completion(timeline)
         }
     }
@@ -149,7 +149,7 @@ struct RoadoutWidgetView: View {
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.gray)
                     }
-                    .padding(.leading, 2)
+                    .padding(.leading, 3)
                     HStack(alignment: .center, spacing: 5) {
                         Image(systemName: "clock.fill")
                             .resizable()
@@ -191,7 +191,7 @@ struct RoadoutWidgetView: View {
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.gray)
                     }
-                    .padding(.leading, 2)
+                    .padding(.leading, 3)
                     HStack(alignment: .center, spacing: 5) {
                         Image(systemName: "clock.fill")
                             .resizable()
@@ -230,7 +230,7 @@ struct RoadoutWidgetView: View {
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.gray)
                     }
-                    .padding(.leading, 2)
+                    .padding(.leading, 3)
                     HStack(alignment: .center, spacing: 5) {
                         Image(systemName: "clock.fill")
                             .resizable()
