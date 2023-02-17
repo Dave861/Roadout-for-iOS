@@ -10,6 +10,8 @@ import UIKit
 
 class UXButton: UIButton {
     
+    private var color: UIColor!
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.addTarget(self, action: #selector(buttonHeld), for: .touchDown)
@@ -20,6 +22,8 @@ class UXButton: UIButton {
     @objc func buttonHeld() {
         if !self.showsMenuAsPrimaryAction {
             UIView.animate(withDuration: 0.1, animations: {
+                self.color = self.backgroundColor
+                self.backgroundColor = self.color.withAlphaComponent(0.8)
                 self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             })
         }
@@ -27,6 +31,7 @@ class UXButton: UIButton {
 
     @objc func buttonReleased() {
         UIView.animate(withDuration: 0.1, animations: {
+            self.backgroundColor = self.color
             self.transform = CGAffineTransform.identity
         })
     }

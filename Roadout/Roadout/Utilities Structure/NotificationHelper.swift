@@ -24,9 +24,7 @@ class NotificationHelper {
     
     func manageNotifications() {
         center.getNotificationSettings { settings in
-            if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
-                print("Notifications are authorized")
-            } else {
+            if settings.authorizationStatus != .authorized && settings.authorizationStatus != .provisional {
                 self.askNotificationPermission(currentNotification: "")
             }
         }
@@ -51,8 +49,6 @@ class NotificationHelper {
                     } else if currentNotification == "Future Reservation" {
                         self.scheduleFutureReservation(futureReservation: futureReservation!)
                     }
-                } else {
-                    print("Notifications are denied")
                 }
             }
         } else {
@@ -63,8 +59,6 @@ class NotificationHelper {
                     } else if currentNotification == "Future Reservation" {
                         self.scheduleFutureReservation(futureReservation: futureReservation!)
                     }
-                } else {
-                    print("Notifications are denied")
                 }
             }
         }
@@ -99,8 +93,8 @@ class NotificationHelper {
     
     func scheduleReservationEndNot() {
         let content = UNMutableNotificationContent()
-        content.title = "Reservation Done"
-        content.body = "Thank you for using Roadout! We hope you enjoyed the experience!"
+        content.title = "Reservation Done".localized()
+        content.body = "Thank you for using Roadout! We hope you enjoyed the experience!".localized()
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "hornsound.aiff"))
         if #available(iOS 15.0, *) {
             content.interruptionLevel = .timeSensitive
@@ -117,8 +111,8 @@ class NotificationHelper {
     
     func scheduleReservation1Not() {
         let content = UNMutableNotificationContent()
-        content.title = "1 Minute Left"
-        content.body = "There is a minute left from your reservation."
+        content.title = "1 Minute Left".localized()
+        content.body = "There is a minute left from your reservation.".localized()
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "hornsound.aiff"))
         if #available(iOS 15.0, *) {
             content.interruptionLevel = .timeSensitive
@@ -134,8 +128,8 @@ class NotificationHelper {
     
     func scheduleReservation5Not() {
         let content = UNMutableNotificationContent()
-        content.title = "5 Minutes Left"
-        content.body = "There are 5 minutes left from your reservation."
+        content.title = "5 Minutes Left".localized()
+        content.body = "There are 5 minutes left from your reservation.".localized()
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "hornsound.aiff"))
         if #available(iOS 15.0, *) {
             content.interruptionLevel = .timeSensitive
@@ -171,8 +165,8 @@ class NotificationHelper {
             center.getNotificationSettings { settings in
                 if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
                     let content = UNMutableNotificationContent()
-                    content.title = "Arrived at Parking"
-                    content.body = "It seems you have arrived at your parking location."
+                    content.title = "Arrived at Parking".localized()
+                    content.body = "It seems you have arrived at your parking location.".localized()
                     content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "hornsound.aiff"))
                     if #available(iOS 15.0, *) {
                         content.interruptionLevel = .timeSensitive
@@ -212,7 +206,7 @@ class NotificationHelper {
         center.getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
                 let content = UNMutableNotificationContent()
-                content.title = "Reserve near " + futureReservation.place
+                content.title = "Reserve near ".localized() + futureReservation.place
                 content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "carkeysound.aiff"))
                 if #available(iOS 15.0, *) {
                     content.interruptionLevel = .timeSensitive

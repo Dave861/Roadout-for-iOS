@@ -39,7 +39,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         NotificationHelper.sharedInstance.checkNotificationStatus()
         NotificationCenter.default.post(name: .updateLocationID, object: nil)
-        WidgetCenter.shared.reloadAllTimelines()
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
             guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
             Task {
@@ -61,7 +60,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
                     } else if ReservationManager.sharedInstance.isReservationActive == 3 {
                         //not active
-                        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+                        if !isSelectionFlow {
+                            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+                        }
                     } else {
                         //error
                         NotificationCenter.default.post(name: .returnToSearchBarWithErrorID, object: nil)

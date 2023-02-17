@@ -13,6 +13,7 @@ class TimeView: UIView {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
+        isSelectionFlow = true
         if returnToResult {
             NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         }
@@ -45,7 +46,7 @@ class TimeView: UIView {
     @IBOutlet weak var recommendationLbl: UILabel!
     
     @IBAction func recommendationTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Recommended Time".localized(), message: "We recommend time based on your current location and estimated time to commute to the selected parking spot, if the time exceeds 20 minutes, we do not recommend reserving just yet.".localized(), preferredStyle: .alert)
+        let alert = UIAlertController(title: "Recommended Time".localized(), message: "We recommend time based on your current location and estimated time to commute to the selected parking spot, if the time exceeds 30 minutes, we do not recommend reserving just yet.".localized(), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
         alert.addAction(okAction)
         alert.view.tintColor = UIColor(named: "Dark Yellow")!
@@ -89,9 +90,11 @@ class TimeView: UIView {
             do {
                 let resultedTime = try await DistanceManager.sharedInstance.getTimeAndDistanceBetween(ogCoords, destCoords)
                 DispatchQueue.main.async {
-                    if self.evaluateTime(resultedTime) {
+                    if self.evaluateTime(resultedTime) == 2 {
+                        self.recommendationLbl.text = "We recommed ".localized() + "20 mins + " + self.getDelayTime(resultedTime)
+                    } else if self.evaluateTime(resultedTime) == 1 {
                         self.recommendationLbl.text = "We recommed reserving for ".localized() + resultedTime
-                    } else {
+                    } else if self.evaluateTime(resultedTime) == 0 {
                         self.recommendationLbl.text = "We don't recommed reserving yet.".localized()
                     }
                 }
@@ -104,18 +107,27 @@ class TimeView: UIView {
         }
     }
     
-    func evaluateTime(_ time: String) -> Bool {
+    func evaluateTime(_ time: String) -> Int {
+        //0 for > 30, 1 for < 20, 2 for < 30
         if time.contains("hours".localized()) {
-            return false
+            return 0
         } else {
             let timeToConvert = time.replacingOccurrences(of: " mins".localized(), with: "")
             let convertedTime = Int(timeToConvert) ?? 100
-            if convertedTime > 20 {
-                return false
+            if convertedTime > 30 {
+                return 0
+            } else if convertedTime > 20 {
+                return 2
             } else {
-                return true
+                return 1
             }
         }
+    }
+    
+    func getDelayTime(_ time: String) -> String {
+        let timeToConvert = time.replacingOccurrences(of: " mins".localized(), with: "")
+        let convertedTime = Int(timeToConvert) ?? 100
+        return "\(convertedTime-20) min " + "delay".localized()
     }
     
     class func instanceFromNib() -> UIView {

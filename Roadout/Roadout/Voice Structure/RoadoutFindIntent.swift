@@ -8,33 +8,12 @@
 import UIKit
 import AppIntents
 import CoreLocation
-import WidgetKit
 
 @available(iOS 16, *)
-enum RoadoutIntentErrors: Error {
-    case valueZero
-    case failureRequiringAppLaunch
-    case locationDisabled
-}
-
-@available(iOS 16, *)
-struct RoadoutAppShortcuts: AppShortcutsProvider {
-    @AppShortcutsBuilder static var appShortcuts: [AppShortcut] {
-        AppShortcut(
-            intent: RoadoutAppIntent(),
-            phrases: ["Find parking with \(.applicationName)",
-                      "Find somewhere to park with \(.applicationName)",
-                      "Ask \(.applicationName) to find somewhere to park",
-                      "Ask \(.applicationName) to find parking"]
-        )
-    }
-}
-
-@available(iOS 16, *)
-struct RoadoutAppIntent: AppIntent {
-    static var title: LocalizedStringResource = "Reserve a Parking Spot"
+struct RoadoutFindIntent: AppIntent {
+    static var title: LocalizedStringResource = "Reserve the closest Parking Spot"
     
-    static var description: IntentDescription = "Find and quickly reserve the nearest parking spot."
+    static var description: IntentDescription = "Find and easily reserve the closest available parking spot."
 
     @Parameter(title: "Duration", description: "The duration of the reservation", requestValueDialog: IntentDialog("For how many minutes do you want to reserve? The maximum is 20 minutes."))
     var reservationMinutes: Int?
@@ -48,7 +27,7 @@ struct RoadoutAppIntent: AppIntent {
     func perform() async throws -> some IntentResult {
         //Check pre-conditions
         do {
-            let conditionsCheckResult = try await RoadoutIntentHelper.sharedInstance.checkConditions()
+            let conditionsCheckResult = try await RoadoutFindIntentHelper.sharedInstance.checkConditions()
             if conditionsCheckResult == false {
                 throw RoadoutIntentErrors.failureRequiringAppLaunch
             }
@@ -57,7 +36,7 @@ struct RoadoutAppIntent: AppIntent {
         }
         
         //Get user location
-        guard let userCoords = await RoadoutIntentHelper.sharedInstance.getCurrentCoordinates() else {
+        guard let userCoords = await RoadoutFindIntentHelper.sharedInstance.getCurrentCoordinates() else {
             throw RoadoutIntentErrors.locationDisabled
         }
 
@@ -100,9 +79,7 @@ struct RoadoutAppIntent: AppIntent {
         } else if reservationMinutes! <= 0 {
             throw RoadoutIntentErrors.valueZero
         }
-        
-        timerSeconds = 60*reservationMinutes!
-        
+                
         //Make price
         let resPrice = Double(reservationMinutes!).rounded(toPlaces: 2)*0.75
         
@@ -110,8 +87,9 @@ struct RoadoutAppIntent: AppIntent {
               result: .result(
                 dialog: "The total comes to \(String(format: "%.2f", resPrice)) RON. Ready to reserve for \(reservationMinutes!) minutes?",
                 view: RoadoutIntentConfirmPayView(
-                    reservationMinutes: reservationMinutes!,
-                    total: resPrice)
+                    minutesValue: reservationMinutes!,
+                    total: resPrice,
+                    isReservation: true)
               ),
               confirmationActionName: .pay
             )
@@ -119,22 +97,21 @@ struct RoadoutAppIntent: AppIntent {
         //Reserve
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         do {
-            try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpot.rID, payment: Int(resPrice), userID: id)
-            WidgetCenter.shared.reloadAllTimelines()
+            try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: reservationMinutes!, spotID: selectedSpot.rID, payment: Int(resPrice), userID: id)
         } catch {
             throw RoadoutIntentErrors.failureRequiringAppLaunch
         }
         
         return .result(dialog: "Spot Reserved! Open Roadout for more actions.") {
-             RoadoutIntentSuccesView(reservationTime: Date().addingTimeInterval(Double(reservationMinutes!)*60))
+            RoadoutIntentActiveView(reservationTime: ReservationManager.sharedInstance.reservationEndDate)
         }
     }
 }
 
 @available(iOS 16, *)
-class RoadoutIntentHelper: NSObject {
+class RoadoutFindIntentHelper: NSObject {
     
-    static let sharedInstance = RoadoutIntentHelper()
+    static let sharedInstance = RoadoutFindIntentHelper()
     
     var userLocationCallback: ((CLLocationCoordinate2D?) -> Void)?
     var locationManager: CLLocationManager!
@@ -222,7 +199,7 @@ class RoadoutIntentHelper: NSObject {
     
 }
 @available(iOS 16, *)
-extension RoadoutIntentHelper: CLLocationManagerDelegate {
+extension RoadoutFindIntentHelper: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.userLocationCallback?(locations.first?.coordinate)
     }

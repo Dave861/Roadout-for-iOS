@@ -692,6 +692,7 @@ extension HomeViewController: GMSMapViewDelegate {
                     self.selectedMarker.iconView?.addSubview(imageView)
                 }
                 self.selectedMarker = marker
+                isSelectionFlow = true
                 addResultCard()
                 self.removeSpotMarker()
             }

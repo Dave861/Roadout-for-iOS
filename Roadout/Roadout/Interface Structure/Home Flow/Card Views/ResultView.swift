@@ -61,6 +61,7 @@ class ResultView: UIView {
             do {
                 try await FunctionsManager.sharedInstance.reserveSpotInLocationAsync(location: parkLocations[selectedParkLocationIndex])
                 DispatchQueue.main.async {
+                    isSelectionFlow = false
                     NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
                     NotificationCenter.default.post(name: .addTimeCardID, object: nil)
                     indicatorView.dismiss()
@@ -74,6 +75,7 @@ class ResultView: UIView {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
+        isSelectionFlow = false
         NotificationCenter.default.post(name: .removeResultCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!

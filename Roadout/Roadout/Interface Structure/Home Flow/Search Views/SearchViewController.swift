@@ -282,8 +282,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         selectedLocation.name = results[indexPath.row].name
         selectedLocation.latitude = results[indexPath.row].latitude
         selectedLocation.longitude = results[indexPath.row].longitude
-        let cell = tableView.cellForRow(at: indexPath) as! SearchCell
         selectedLocation.accentColor = results[indexPath.row].accentColor
+        isSelectionFlow = true
         NotificationCenter.default.post(name: .addResultCardID, object: nil)
         self.view.endEditing(true)
         self.dismiss(animated: false, completion: nil)
@@ -328,8 +328,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         selectedLocation.name = results[indexPath.row].name
         selectedLocation.latitude = results[indexPath.row].latitude
         selectedLocation.longitude = results[indexPath.row].longitude
-        let cell = tableView.cellForRow(at: indexPath) as! SearchCell
         selectedLocation.accentColor = results[indexPath.row].accentColor
+        isSelectionFlow = true
         NotificationCenter.default.post(name: .addResultCardID, object: nil)
         self.dismiss(animated: false) {
             self.dismissScreen()

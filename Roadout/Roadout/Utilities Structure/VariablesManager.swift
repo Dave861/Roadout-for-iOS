@@ -30,15 +30,15 @@ var selectedLocation = ParkLocation(name: "Selected Location", rID: "", latitude
 var selectedParkLocationIndex = 0
 var selectedSectionIndex = 0
 
-var selectedSpot = ParkSpot(state: 0, number: 0, rHash: "", rID: "") //Manage once in database - ex: u82f0bc6m303-f80-h70-p0
+var selectedSpot = ParkSpot(state: 0, number: 0, rHash: "u82f0bc6m303-f80-h70-p0", rID: "") //Manage once in database - replace rHash with ""
 
 var currentLocationCoord: CLLocationCoordinate2D?
 
-//Decides if Pay Card returns to Delay Card or Select Card
+//Flow controllers
 var returnToDelay = false
-
-//Decides if Reserve Card returns to Result Card or Spot Card
 var returnToResult = false
+var isPayFlow = false
+var isSelectionFlow = false
 
 var futureReservations = [FutureReservation]()
 
@@ -46,8 +46,6 @@ var cardNumbers = [String]()
 
 let colours = ["Main Yellow", "Dark Orange", "Icons", "Kinda Red", "Second Orange"]
 
-//Decides if Duration Card return to Unlocked Card or Search Bar
-var isPayFlow = false
 var selectedPayLocation: ParkLocation!
 var userLicensePlate = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.userLicensePlate") ?? "NO-PLATE"
 
@@ -66,3 +64,4 @@ var openedByLiveActivity = false
 
 //While server is variable, makes changing the url easier
 var roadoutServerURL = "api.roadout.live"
+var webAPIKey = "AIzaSyD_5r7bTeg94Fr6IqXPKA5X8o-qUQXuTmg"

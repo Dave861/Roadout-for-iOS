@@ -20,7 +20,7 @@ class GuideViewController: UIViewController {
     }
     
     let guideTips = [
-        GuideTip(title: "What is this?", icon: "book.fill", description: "This is the Roadout Guide, here you will find any information you need regarding this app, tap any item for details", expandedDescription: "This is the Roadout Guide, here you will find any information you need regarding this app, everything from the basics to power features is explained here, scroll down the list and tap any item", highlightedWords: ["tap any item"], expandedHighlightedWords: ["information", "basics", "explained"]),
+        GuideTip(title: "What is this?", icon: "book.fill", description: "This is the User Guide, here you will find any information you need regarding this app, tap any item for details", expandedDescription: "This is the User Guide, here you will find any information you need regarding this app, everything from the basics to power features is explained here, scroll down the list and tap any item", highlightedWords: ["tap any item"], expandedHighlightedWords: ["information", "basics", "explained"]),
         
         GuideTip(title: "Roadout Basics", icon: "", description: "", expandedDescription: "", highlightedWords: [String](), expandedHighlightedWords: [String]()),
         
@@ -38,7 +38,7 @@ class GuideViewController: UIViewController {
         
         GuideTip(title: "World View", icon: "globe.desk.fill", description: "World View shows you a real world image of the reserved spot", expandedDescription: "World View shows you a real world image of the reserved spot. The image may or may not be up to date, Google Street View holds all copyrights to them", highlightedWords: ["real world"], expandedHighlightedWords: ["real world", "Google Street View"]),
         
-        GuideTip(title: "Find Way", icon: "binoculars.fill", description: "Find Way searches for the nearest free parking spot and gives you the option to reserve in a second", expandedDescription: "Find Way searches for the nearest free parking spot and gives you the option to reserve in a second, you can also use Find Way through Siri, see the Voice Assistants section for details", highlightedWords: ["nearest", "option", "reserve"], expandedHighlightedWords: ["nearest", "option", "reserve", "Siri"]),
+        GuideTip(title: "Find Way", icon: "binoculars.fill", description: "Find Way searches for the nearest free parking spot and gives you the option to reserve in a second", expandedDescription: "Find Way searches for the nearest free parking spot and gives you the option to reserve in a second, you can also use Find Way through Siri, see the Car section for details", highlightedWords: ["nearest", "option", "reserve"], expandedHighlightedWords: ["nearest", "option", "reserve", "Siri"]),
         
         GuideTip(title: "Express Lane", icon: "flag.fill", description: "Express Lane lets you pick favourite locations and quickly access them", expandedDescription: "Express Lane lets you pick favourite locations and quickly access them. Edit your Express Lane locations at any time from the choose screen", highlightedWords: ["favourite", "quickly"], expandedHighlightedWords: ["favourite", "quickly", "Edit"]),
         

@@ -29,12 +29,6 @@ struct HistoryItem {
     var date: Date
 }
 
-struct VoteOption {
-    var title: String
-    var description: String
-    var highlightedWords: [String]
-}
-
 struct Reason {
     var description: String
     var isSelected: Bool

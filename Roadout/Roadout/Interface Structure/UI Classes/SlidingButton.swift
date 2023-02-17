@@ -70,7 +70,7 @@ protocol SlideButtonDelegate {
         }
     }
     
-    @IBInspectable var buttonUnlockedText: String = "Unlocked".localized()
+    @IBInspectable var buttonUnlockedText: String = "Unlocking...".localized()
     @IBInspectable var buttonUnlockedColor: UIColor = UIColor.black
     var buttonFont = UIFont.boldSystemFont(ofSize: 17)
     

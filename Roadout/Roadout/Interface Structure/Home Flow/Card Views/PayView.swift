@@ -62,7 +62,6 @@ class PayView: UIView {
                     do {
                         try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpot.rID, payment: 10, userID: id)
                         DispatchQueue.main.async {
-                            WidgetCenter.shared.reloadAllTimelines()
                             NotificationCenter.default.post(name: .showPaidBarID, object: nil)
                         }
                     } catch let err {

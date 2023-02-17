@@ -18,11 +18,11 @@ class TutorialView1: UIView {
         self.layer.cornerRadius = 12.0
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "account"))
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "settings"))
-        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "Roadout Guide"))
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "User Guide"))
         
         explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "account"))
         explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "settings"))
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "Roadout Guide"))
+        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "User Guide"))
     }
     
     class func instanceFromNib() -> UIView {

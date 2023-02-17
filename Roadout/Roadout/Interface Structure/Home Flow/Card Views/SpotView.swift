@@ -31,6 +31,7 @@ class SpotView: UIView, PusherDelegate {
         let confirmedIndicatorView = SPIndicatorView(title: "Confirmed".localized(), message: "Done".localized(), preset: .custom(checkImage))
         checkingIndicatorView.present(duration: 0.7, haptic: .none) {
             self.disconnectPusher()
+            isSelectionFlow = false
             NotificationCenter.default.post(name: .addTimeCardID, object: nil)
             confirmedIndicatorView.present(duration: 0.7, haptic: .success)
         }

@@ -9,8 +9,6 @@ import UIKit
 import GeohashKit
 import Alamofire
 
-
-
 class WorldViewController: UIViewController {
     
     @IBOutlet weak var titleLbl: UILabel!
@@ -66,7 +64,7 @@ class WorldViewController: UIViewController {
     }
     
     func getWorldImage(for worldLocation: WorldLocation) {
-        let urlString = "https://maps.googleapis.com/maps/api/streetview?location=\(worldLocation.latitude),\(worldLocation.longitude)&size=900x900&fov=\(worldLocation.fov)&heading=\(worldLocation.heading)&pitch=\(worldLocation.pitch)&key=AIzaSyCGi6_yxY1g5857pCuiBoYQZYMU7dUxPGI"
+        let urlString = "https://maps.googleapis.com/maps/api/streetview?location=\(worldLocation.latitude),\(worldLocation.longitude)&size=900x900&fov=\(worldLocation.fov)&heading=\(worldLocation.heading)&pitch=\(worldLocation.pitch)&key=\(webAPIKey)"
         
         AF.request(urlString).responseData { response in
             if response.error == nil {

@@ -151,7 +151,7 @@ class ReservationView: UIView {
     
     @IBAction func arTapped(_ sender: Any) {
         guard selectedSpot.rHash != "" else {
-            self.manageLocalError()
+            self.manageLocalError(color: "Kinda Red")
             return
         }
 
@@ -168,7 +168,7 @@ class ReservationView: UIView {
     
     @IBAction func worldTapped(_ sender: Any) {
         guard selectedSpot.rHash != "" else {
-            self.manageLocalError()
+            self.manageLocalError(color: "Limey")
             return
         }
         let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -228,11 +228,11 @@ class ReservationView: UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[5] as! UIView
     }
     
-    func manageLocalError() {
-        let alert = UIAlertController(title: "Error".localized(), message: "There was an error requesting spot details.".localized(), preferredStyle: .alert)
+    func manageLocalError(color: String) {
+        let alert = UIAlertController(title: "Error".localized(), message: "There was an error requesting spot location.".localized(), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
             alert.addAction(okAction)
-            alert.view.tintColor = UIColor(named: "Redish")
+            alert.view.tintColor = UIColor(named: color)
         self.parentViewController().present(alert, animated: true, completion: nil)
     }
 

@@ -124,7 +124,7 @@ class EntityManager {
             dbParkSpots.append(
                 ParkSpot(state: Int(json["state"] as! String)!,
                          number: Int(json["number"] as! String)!,
-                         rHash: "u82f0ftyjk0w-f120-h70-p0", //u82f0bc6m303-f80-h70-p0
+                         rHash: "u82f0ftyjk0w-f120-h20-p0", //u82f0bc6m303-f80-h70-p0
                          rID: json["id"] as! String))
         }
         dbParkSpots.sort { $0.number < $1.number }

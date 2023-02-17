@@ -156,6 +156,9 @@ struct RoadoutWidgetView: View {
                             .frame(width: 17, height: 17, alignment: .center)
                             .foregroundColor(Color(location1?.occupancyColor ?? "Main Yellow"))
                         HStack(alignment: .center, spacing: 4) {
+                            Text("at")
+                                .font(.system(size: 16, weight: .regular))
+                                .foregroundColor(.gray)
                             Text(date, style: .time)
                                 .font(.system(size: 16, weight: .regular))
                                 .foregroundColor(.gray)
@@ -170,7 +173,7 @@ struct RoadoutWidgetView: View {
                 .padding(.trailing, 4)
             
         case .systemMedium:
-            HStack() {
+            HStack {
                 VStack(alignment: .leading, spacing: 7) {
                     Image("Marker_" + (location1?.occupancyColor ?? "Main Yellow"))
                         .resizable()
@@ -198,6 +201,9 @@ struct RoadoutWidgetView: View {
                             .frame(width: 17, height: 17, alignment: .center)
                             .foregroundColor(Color(location1?.occupancyColor ?? "Main Yellow"))
                         HStack(alignment: .center, spacing: 4) {
+                            Text("at")
+                                .font(.system(size: 16, weight: .regular))
+                                .foregroundColor(.gray)
                             Text(date, style: .time)
                                 .font(.system(size: 16, weight: .regular))
                                 .foregroundColor(.gray)
@@ -237,6 +243,9 @@ struct RoadoutWidgetView: View {
                             .frame(width: 17, height: 17, alignment: .center)
                             .foregroundColor(Color(location2?.occupancyColor ?? "Main Yellow"))
                         HStack(alignment: .center, spacing: 4) {
+                            Text("at")
+                                .font(.system(size: 16, weight: .regular))
+                                .foregroundColor(.gray)
                             Text(date, style: .time)
                                 .font(.system(size: 16, weight: .regular))
                                 .foregroundColor(.gray)
@@ -252,7 +261,32 @@ struct RoadoutWidgetView: View {
                 .background(Color("Secondary Detail"))
             }
         default:
-           Text("Unimplemented")
+            if #available(iOS 16.0, *) {
+                if family == .accessoryRectangular {
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack {
+                            Image("roadout.car")
+                              .resizable()
+                              .widgetAccentable()
+                              .frame(width: 15, height: 12.5)
+                            Text("Roadout")
+                                .font(.headline)
+                                .foregroundColor(Color("Main Yellow"))
+                                .widgetAccentable()
+                        }
+                        Text(location1?.locationName ?? "Location Name")
+                            .font(.body.bold())
+                        Text("\(location1?.freeSpots ?? 0) free spots")
+                            .font(.body)
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                } else {
+                    Text("Unimplemented")
+                }
+            } else {
+                Text("Unimplemented")
+            }
         }
     }
     
@@ -262,11 +296,40 @@ struct RoadoutWidget: Widget {
     private let kind = "Roadout_Widget"
     
     var body: some WidgetConfiguration {
-        return IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: RoadoutWidgetProvider()) { entry in
-            RoadoutWidgetEntryView(entry: entry)
+        if #available(iOSApplicationExtension 16.0, *) {
+            return IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: RoadoutWidgetProvider()) { entry in
+                RoadoutWidgetEntryView(entry: entry)
+            }
+            .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular])
+            .configurationDisplayName("Roadout")
+            .description("Your Favourite Parking at a Glance".widgetLocalize())
+        } else {
+            return IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: RoadoutWidgetProvider()) { entry in
+                RoadoutWidgetEntryView(entry: entry)
+            }
+            .supportedFamilies([.systemSmall, .systemMedium])
+            .configurationDisplayName("Roadout")
+            .description("Your Favourite Parking at a Glance".widgetLocalize())
         }
-        .supportedFamilies([.systemSmall, .systemMedium])
-        .configurationDisplayName("Roadout")
-        .description("Your favourite parking at a glance".widgetLocalize())
     }
 }
+/**
+ VStack(alignment: .leading, spacing: 0) {
+     HStack {
+         Image("roadout.car")
+           .resizable()
+           .widgetAccentable()
+           .frame(width: 15, height: 12.5)
+         Text("Roadout")
+             .font(.headline)
+             .foregroundColor(Color("Main Yellow"))
+             .widgetAccentable()
+     }
+     Text("No Reservation")
+         .font(.body.bold())
+     Text("Tap to open")
+         .font(.body)
+         .foregroundColor(.gray)
+ }
+ .frame(maxWidth: .infinity, alignment: .leading)
+ */

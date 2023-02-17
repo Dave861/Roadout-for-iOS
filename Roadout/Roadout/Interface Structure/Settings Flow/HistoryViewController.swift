@@ -163,12 +163,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.placeLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.placeLbl.range(string: spotNumber))
                 
                 cell.timePriceLbl.text = "\(olderHistoryItems[currentIndex].time) min - \(olderHistoryItems[currentIndex].price) RON"
-                cell.placeLbl.set(font: .systemFont(ofSize: 16, weight: .medium), range: cell.placeLbl.range(string: "\(olderHistoryItems[currentIndex].price) RON"))
-                cell.placeLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.placeLbl.range(string: "\(olderHistoryItems[currentIndex].price) RON"))
                 
-                cell.timePriceLbl.text = "\(olderHistoryItems[currentIndex].time) min - \(olderHistoryItems[currentIndex].price) RON"
-                cell.timePriceLbl.set(font: .systemFont(ofSize: 16, weight: .medium), range: cell.timePriceLbl.range(string: "\(olderHistoryItems[currentIndex].price) RON"))
-                cell.timePriceLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.timePriceLbl.range(string: "\(olderHistoryItems[currentIndex].price) RON"))
                 return cell
             }
         }
