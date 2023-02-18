@@ -284,7 +284,7 @@ extension String {
     func formatLicensePlate() throws -> String {
         var plateText = self.replacingOccurrences(of: " ", with: "").uppercased()
         let plateNr = String(plateText.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
-        guard var plateNrRange = plateText.range(of: plateNr) else { throw RoadoutErrors.wrongFormat }
+        guard var plateNrRange = plateText.range(of: plateNr) else { throw LicensePlateErrors.wrongFormat }
         plateText.insert("-", at: plateNrRange.lowerBound)
         plateNrRange = plateText.range(of: plateNr)!
         plateText.insert("-", at: plateNrRange.upperBound)

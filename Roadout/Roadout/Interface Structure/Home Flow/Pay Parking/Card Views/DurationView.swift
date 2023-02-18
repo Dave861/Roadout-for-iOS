@@ -8,6 +8,8 @@
 import UIKit
 
 class DurationView: UIView {
+    
+    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -24,7 +26,7 @@ class DurationView: UIView {
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        paidHours = Int(hourSlider.value)
+        paidTime = Int(hourSlider.value)
         NotificationCenter.default.post(name: .addPayParkingCardID, object: nil)
     }
     
@@ -39,7 +41,7 @@ class DurationView: UIView {
     
     @IBOutlet weak var totalLbl: UILabel!
     
-    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    //MARK: - View Configuration -
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0

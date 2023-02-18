@@ -70,6 +70,7 @@ class ReservationView: UIView {
         helpLbl.text = "Help & Support".localized()
     }
     
+    //MARK: - Reservation Actions -
     
     @IBAction func unlockTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -182,9 +183,16 @@ class ReservationView: UIView {
         self.parentViewController().present(vc, animated: true, completion: nil)
     }
     
+    //MARK: - View Configuration -
+    
+    func manageObs() {
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTimeLbl), name: .updateReservationTimeLabelID, object: nil)
+    }
+    
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
-        self.addObs()
+        manageObs()
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
         
@@ -196,9 +204,8 @@ class ReservationView: UIView {
         self.timerLbl.text = formattedDate
     }
     
-    func addObs() {
-        NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTimeLbl), name: .updateReservationTimeLabelID, object: nil)
+    class func instanceFromNib() -> UIView {
+        return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[5] as! UIView
     }
     
     @objc func updateTimeLbl() {
@@ -207,7 +214,6 @@ class ReservationView: UIView {
         let formattedDate = dateFormatter.string(from: ReservationManager.sharedInstance.reservationEndDate)
         self.timerLbl.text = formattedDate
     }
-    
     
     func openDirectionsToCoords(lat: Double, long: Double) {
         var link: String
@@ -221,11 +227,6 @@ class ReservationView: UIView {
         }
         guard UIApplication.shared.canOpenURL(URL(string: link)!) else { return }
         UIApplication.shared.open(URL(string: link)!)
-    }
-
-    
-    class func instanceFromNib() -> UIView {
-        return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[5] as! UIView
     }
     
     func manageLocalError(color: String) {
@@ -276,7 +277,6 @@ class ReservationView: UIView {
                 self.parentViewController().present(alert, animated: true, completion: nil)
         }
     }
-    
     
 }
 

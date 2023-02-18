@@ -8,6 +8,9 @@
 import UIKit
 
 class EditNameViewController: UIViewController {
+    
+    let savedTitle = NSAttributedString(string: "Save".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
 
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
@@ -53,54 +56,7 @@ class EditNameViewController: UIViewController {
         }
     }
     
-    func manageServerResponseErrors(_ error: Error) {
-        switch error {
-            case UserManager.UserDBErrors.networkError:
-                let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
-            case UserManager.UserDBErrors.databaseFailure:
-                let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
-            case UserManager.UserDBErrors.unknownError:
-                let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
-            case UserManager.UserDBErrors.errorWithJson:
-                let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
-            default:
-                let alert = UIAlertController(title: "Error".localized(), message: "There was an error with changing your name. Please try again.".localized(), preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
-                self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    let savedTitle = NSAttributedString(string: "Save".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    
-    func addShadowToCardView() {
-        cardView.layer.shadowColor = UIColor.black.cgColor
-        cardView.layer.shadowOpacity = 0.1
-        cardView.layer.shadowOffset = .zero
-        cardView.layer.shadowRadius = 20.0
-        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
-        cardView.layer.shouldRasterize = true
-        cardView.layer.rasterizationScale = UIScreen.main.scale
-    }
-    
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,5 +102,49 @@ class EditNameViewController: UIViewController {
             self.userNameField.becomeFirstResponder()
         }
     }
+    
+    func addShadowToCardView() {
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 20.0
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
 
+    func manageServerResponseErrors(_ error: Error) {
+        switch error {
+        case UserManager.UserDBErrors.networkError:
+            let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: "Redish")
+            self.present(alert, animated: true, completion: nil)
+        case UserManager.UserDBErrors.databaseFailure:
+            let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: "Redish")
+            self.present(alert, animated: true, completion: nil)
+        case UserManager.UserDBErrors.unknownError:
+            let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: "Redish")
+            self.present(alert, animated: true, completion: nil)
+        case UserManager.UserDBErrors.errorWithJson:
+            let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: "Redish")
+            self.present(alert, animated: true, completion: nil)
+        default:
+            let alert = UIAlertController(title: "Error".localized(), message: "There was an error with changing your name. Please try again.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor(named: "Redish")
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }

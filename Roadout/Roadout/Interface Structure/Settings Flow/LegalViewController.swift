@@ -16,9 +16,10 @@ class LegalViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //MARK: - View Configuration -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
 }

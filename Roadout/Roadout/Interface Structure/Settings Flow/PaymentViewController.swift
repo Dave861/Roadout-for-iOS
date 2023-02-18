@@ -8,6 +8,9 @@
 import UIKit
 
 class PaymentViewController: UIViewController {
+    
+    let buttonTitle = NSAttributedString(string: "Add Card".localized(),
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Orange")!])
             
     @IBOutlet weak var backButton: UIButton!
     @IBAction func backTapped(_ sender: Any) {
@@ -32,8 +35,7 @@ class PaymentViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    let buttonTitle = NSAttributedString(string: "Add Card".localized(),
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Orange")!])
+    //MARK: - View Configuration -
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
@@ -85,7 +87,6 @@ class PaymentViewController: UIViewController {
         }
     }
 
-    
 }
 extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

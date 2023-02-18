@@ -23,6 +23,8 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    //MARK: - View Configuration -
+    
     func addObs() {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadName), name: .reloadUserNameID, object: nil)
@@ -45,6 +47,12 @@ class SettingsViewController: UIViewController {
         tableView.dataSource = self
         addObs()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    //MARK: - Logic Functions -
 
     @objc func reloadName() {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
@@ -58,10 +66,6 @@ class SettingsViewController: UIViewController {
                 print(err)
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     func sendEmail() {

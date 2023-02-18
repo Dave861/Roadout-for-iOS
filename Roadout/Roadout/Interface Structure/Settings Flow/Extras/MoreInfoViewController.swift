@@ -9,6 +9,8 @@ import UIKit
 
 class MoreInfoViewController: UIViewController {
     
+    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    
     public var titleText: String!
     public var descriptionText: String!
     public var highlightColor: String!
@@ -37,9 +39,7 @@ class MoreInfoViewController: UIViewController {
         }
     }
 
-
-    
-    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()

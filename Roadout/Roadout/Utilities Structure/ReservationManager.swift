@@ -12,8 +12,6 @@ class ReservationManager {
     
     static let sharedInstance = ReservationManager()
     
-    var reservationTimer: Timer!
-    
     enum ReservationErrors: Error {
         case databaseFailure
         case errorWithJson
@@ -24,9 +22,12 @@ class ReservationManager {
         
     //-1 for not assigned, 0 is active, 1 is unlocked, 2 is cancelled, 3 is not active
     var isReservationActive = -1
-    
+    var reservationTimer: Timer!
     var reservationEndDate = Date()
+    
+    private init() {}
   
+    //MARK: - Create & Check Functions -
     
     func makeReservationAsync(date: Date, time: Int, spotID: String, payment: Int, userID: String) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
@@ -128,7 +129,7 @@ class ReservationManager {
 
                     //Manage notifications
                     guard convertedEndDate != nil else { return }
-                    timerSeconds = Int(convertedEndDate!.timeIntervalSinceNow)
+                    reservationTime = Int(convertedEndDate!.timeIntervalSinceNow)
                     NotificationHelper.sharedInstance.cancelReservationNotification()
                     NotificationHelper.sharedInstance.scheduleReservationNotification()
                 }
@@ -177,6 +178,8 @@ class ReservationManager {
 
     }
     
+    //MARK: - Delay Functions -
+    
     func delayReservationAsync(date: Date, minutes: Int, userID: String) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let dateFormatter = DateFormatter()
@@ -217,7 +220,7 @@ class ReservationManager {
                 RunLoop.main.add(self.reservationTimer, forMode: .common)
             }
             
-            timerSeconds = Int(newEndDate.timeIntervalSinceNow)
+            reservationTime = Int(newEndDate.timeIntervalSinceNow)
             NotificationHelper.sharedInstance.cancelReservationNotification()
             NotificationHelper.sharedInstance.scheduleReservationNotification()
             
@@ -228,6 +231,40 @@ class ReservationManager {
             throw ReservationErrors.unknownError
         }
     }
+    
+    func checkReservationWasDelayedAsync(userID: String) async throws -> Bool {
+        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
+        let params : Parameters = ["userID": userID]
+        
+        let checkRequest = AF.request("https://\(roadoutServerURL)/Authentification/CheckDelay.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
+        
+        var responseJson: String!
+        do {
+            responseJson = try await checkRequest.serializingString().value
+        } catch {
+            throw ReservationErrors.databaseFailure
+        }
+        
+        let data = responseJson.data(using: .utf8)!
+        var jsonArray: [String:Any]!
+        do {
+            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
+        } catch {
+            throw ReservationErrors.errorWithJson
+        }
+        
+        if jsonArray["status"] as! String == "Success" {
+            if jsonArray["message"] as! String == "Delay was not made" {
+                return false
+            } else {
+                return true
+            }
+        } else {
+            throw ReservationErrors.unknownError
+        }
+    }
+    
+    //MARK: - End Functions -
     
     func unlockReservationAsync(userID: String, date: Date) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
@@ -283,38 +320,6 @@ class ReservationManager {
         }
         
         if jsonArray["status"] as! String != "Success" {
-            throw ReservationErrors.unknownError
-        }
-    }
-    
-    func checkReservationWasDelayedAsync(userID: String) async throws -> Bool {
-        let _headers : HTTPHeaders = ["Content-Type":"application/json"]
-        let params : Parameters = ["userID": userID]
-        
-        let checkRequest = AF.request("https://\(roadoutServerURL)/Authentification/CheckDelay.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
-        
-        var responseJson: String!
-        do {
-            responseJson = try await checkRequest.serializingString().value
-        } catch {
-            throw ReservationErrors.databaseFailure
-        }
-        
-        let data = responseJson.data(using: .utf8)!
-        var jsonArray: [String:Any]!
-        do {
-            jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
-        } catch {
-            throw ReservationErrors.errorWithJson
-        }
-        
-        if jsonArray["status"] as! String == "Success" {
-            if jsonArray["message"] as! String == "Delay was not made" {
-                return false
-            } else {
-                return true
-            }
-        } else {
             throw ReservationErrors.unknownError
         }
     }

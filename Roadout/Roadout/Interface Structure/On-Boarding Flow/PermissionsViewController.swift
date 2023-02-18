@@ -55,6 +55,8 @@ class PermissionsViewController: UIViewController {
         self.view.window?.makeKeyAndVisible()
     }
     
+    //MARK: - View Configuration -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nextBtn.layer.cornerRadius = 13.0
@@ -66,6 +68,8 @@ class PermissionsViewController: UIViewController {
         locationManager?.delegate = self
         
     }
+    
+    //MARK: - Permission Managers -
     
     func manageNotifications() {
         center.getNotificationSettings { settings in

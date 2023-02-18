@@ -11,6 +11,8 @@ import Alamofire
 
 class WorldViewController: UIViewController {
     
+    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     
@@ -22,7 +24,7 @@ class WorldViewController: UIViewController {
         self.dismiss(animated: true)
     }
 
-    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,8 @@ class WorldViewController: UIViewController {
             decodeGeohash()
         }
     }
+    
+    //MARK: - Getting Image -
     
     func decodeGeohash() {
         UserDefaults.roadout!.setValue(selectedSpot.rHash, forKey: "ro.roadout.Roadout.cachedWorldHash")
@@ -75,5 +79,4 @@ class WorldViewController: UIViewController {
             }
         }
     }
-    
 }

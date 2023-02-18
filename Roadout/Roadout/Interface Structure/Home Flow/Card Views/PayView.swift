@@ -6,11 +6,13 @@
 //
 
 import UIKit
-import WidgetKit
 
 class PayView: UIView {
     
     var selectedCard: String?
+    let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+    var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let choosePaymentTitle = NSAttributedString(string: "Choose Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -39,16 +41,14 @@ class PayView: UIView {
         
         NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         
-        if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
-            //Handled by menu
-        } else {
+        if payBtn.titleLabel?.text != "Choose Payment Method".localized() {
             if returnToDelay {
                 returnToDelay = false
-                timerSeconds += delaySeconds
+                reservationTime += delayTime
                 let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
                 Task {
                     do {
-                        try await ReservationManager.sharedInstance.delayReservationAsync(date: Date(), minutes: delaySeconds/60, userID: id)
+                        try await ReservationManager.sharedInstance.delayReservationAsync(date: Date(), minutes: delayTime/60, userID: id)
                         DispatchQueue.main.async {
                             NotificationCenter.default.post(name: .showPaidBarID, object: nil)
                         }
@@ -60,7 +60,7 @@ class PayView: UIView {
                 let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
                 Task {
                     do {
-                        try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: timerSeconds/60, spotID: selectedSpot.rID, payment: 10, userID: id)
+                        try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: reservationTime/60, spotID: selectedSpot.rID, payment: 10, userID: id)
                         DispatchQueue.main.async {
                             NotificationCenter.default.post(name: .showPaidBarID, object: nil)
                         }
@@ -72,13 +72,9 @@ class PayView: UIView {
         }
     }
     
-    @IBAction func chooseMethodTapped(_ sender: Any) {
-        //Handled by menu
-    }
-        
-    let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
-    var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let choosePaymentTitle = NSAttributedString(string: "Choose Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    @IBAction func chooseMethodTapped(_ sender: Any) {}
+    
+    //MARK: - View Configuration -
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
@@ -154,15 +150,17 @@ class PayView: UIView {
         self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - Spot ".localized()))
         
         if returnToDelay {
-            self.timeLbl.text = "Delay for ".localized() + "\(Int(delaySeconds/60))" + " minute/s".localized()
+            self.timeLbl.text = "Delay for ".localized() + "\(Int(delayTime/60))" + " minute/s".localized()
             self.timeLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.timeLbl.range(after: "Delay for ".localized()))
             self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Delay for ".localized()))
         } else {
-            self.timeLbl.text = "Reserve for ".localized() + "\(Int(timerSeconds/60))" + " minute/s".localized()
+            self.timeLbl.text = "Reserve for ".localized() + "\(Int(reservationTime/60))" + " minute/s".localized()
             self.timeLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.timeLbl.range(after: "Reserve for ".localized()))
             self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Reserve for ".localized()))
         }
     }
+    
+    //MARK: - Payment Configuration -
 
     func reloadMainCard() {
         payBtn.showsMenuAsPrimaryAction = false
@@ -263,5 +261,4 @@ class PayView: UIView {
                 self.parentViewController().present(alert, animated: true, completion: nil)
         }
     }
-    
 }

@@ -17,13 +17,13 @@ class AckViewController: UIViewController {
                                   "PusherSwift",
                                   "SPIndicator"]
     
-    let acknowledgementsCopyrights = ["Copyright (c) 2014-2022 Alamofire Software Foundation",
-                                      "Copyright (c) 2020 Chili",
-                                      "Copyright (c) 2020 Alan Chu",
-                                      "Copyright (c) 2012-2022 Google Inc.",
-                                      "Copyright (c) 2019, SecuRing spółka z ograniczoną odpowiedzialnością spółka jawna",
-                                      "Copyright (c) 2015 Pusher Ltd.",
-                                      "Copyright (c) 2021 Ivan Vorobei"]
+    let acknowledgementsCopyrights = ["Copyright (c) 2014-2023 Alamofire Software Foundation",
+                                      "Copyright (c) 2023 Chili",
+                                      "Copyright (c) 2023 Alan Chu",
+                                      "Copyright (c) 2012-2023 Google Inc.",
+                                      "Copyright (c) 2023, SecuRing spółka z ograniczoną odpowiedzialnością spółka jawna",
+                                      "Copyright (c) 2023 Pusher Ltd.",
+                                      "Copyright (c) 2023 Ivan Vorobei"]
     
     let acknowledgementsLinks = ["https://github.com/Alamofire/Alamofire",
                                  "https://github.com/ChiliLabs/CHIOTPField",
@@ -41,6 +41,7 @@ class AckViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -11,6 +11,7 @@ import CoreLocation
 
 @available(iOS 16, *)
 struct RoadoutFindIntent: AppIntent {
+    
     static var title: LocalizedStringResource = "Reserve the closest Parking Spot"
     
     static var description: IntentDescription = "Find and easily reserve the closest available parking spot."
@@ -52,6 +53,7 @@ struct RoadoutFindIntent: AppIntent {
             print(err)
             throw RoadoutIntentErrors.failureRequiringAppLaunch
         }
+        
         //Make distance
         let distanceInMeters = CLLocation(latitude: FunctionsManager.sharedInstance.foundLocation.latitude, longitude: FunctionsManager.sharedInstance.foundLocation.longitude).distance(from: CLLocation(latitude: userCoords.latitude, longitude: userCoords.longitude))
         let distance = (distanceInMeters/1000.0).rounded(toPlaces: 2)
@@ -94,7 +96,7 @@ struct RoadoutFindIntent: AppIntent {
               confirmationActionName: .pay
             )
          
-        //Reserve
+        //Reserve spot
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         do {
             try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: reservationMinutes!, spotID: selectedSpot.rID, payment: Int(resPrice), userID: id)

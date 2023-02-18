@@ -40,6 +40,8 @@ class FutureReserveViewController: UIViewController {
         self.present(vc, animated: true)
     }
     
+    //MARK: - View Configuration -
+    
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(getFutureReservations), name: .reloadFutureReservationsID, object: nil)
@@ -95,6 +97,8 @@ class FutureReserveViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    //MARK: - Data Functions -
     
     @objc func getFutureReservations() {
         if let data = UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.futureReservations") {

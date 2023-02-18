@@ -22,6 +22,8 @@ class UnlockedView: UIView {
     @IBOutlet weak var markView: UIView!
     @IBOutlet weak var markBtn: UXButton!
     
+    //MARK: - Actions -
+    
     @IBAction func payTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
@@ -31,7 +33,6 @@ class UnlockedView: UIView {
     }
     
     @IBAction func markTapped(_ sender: Any) {
-        //Make sure spot hash is ok
         UserDefaults.roadout!.setValue(selectedSpot.rHash, forKey: "ro.roadout.Roadout.carParkHash")
         carParkHash = selectedSpot.rHash
         NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
@@ -87,14 +88,14 @@ class UnlockedView: UIView {
         }
     }
     
-    
+    //MARK: - View Configuration -
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
         titleLbl.text = "Unlocked".localized()
         descriptionLbl.text = "Spot is now unlocked, pay parking right from here or mark the spot to find your car later.".localized()
                 
-        timerSeconds = 0
+        reservationTime = 0
         
         styleActionButtons()
         doneBtn.layer.cornerRadius = doneBtn.frame.height/2
@@ -114,7 +115,7 @@ class UnlockedView: UIView {
                 break
             }
         }
-        
+
         return location
     }
 

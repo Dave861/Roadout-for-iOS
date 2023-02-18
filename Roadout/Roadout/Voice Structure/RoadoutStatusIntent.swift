@@ -11,6 +11,7 @@ import SwiftUI
 
 @available(iOS 16, *)
 struct RoadoutStatusIntent: AppIntent {
+    
     static var title: LocalizedStringResource = "Check your Reservation Status"
     
     static var description: IntentDescription = "Get a summary about your current reservation"
@@ -31,6 +32,7 @@ struct RoadoutStatusIntent: AppIntent {
             throw RoadoutIntentErrors.failureRequiringAppLaunch
         }
         
+        //Return reservation status
         if ReservationManager.sharedInstance.isReservationActive == 0 {
             return .result(dialog: reservationDetails) {
                 RoadoutIntentActiveView(reservationTime: ReservationManager.sharedInstance.reservationEndDate)

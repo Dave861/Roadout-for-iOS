@@ -10,12 +10,10 @@ import SwiftUI
 import UIKit
 
 struct RoadoutIntentConfirmSpotView: View {
-    
     var parkLocationName: String
     var parkSectionLetter: String
     var parkSpotNumber: Int
     var distance: Double
-    
     
     var body: some View {
         VStack {
@@ -63,7 +61,6 @@ struct RoadoutIntentConfirmSpotView: View {
 }
 
 struct RoadoutIntentConfirmPayView: View {
-    
     var minutesValue: Int
     var total: Double
     var isReservation: Bool
@@ -105,7 +102,6 @@ struct RoadoutIntentConfirmPayView: View {
 }
 
 struct RoadoutIntentSuccesView: View {
-    
     var reservationTime: Date
     
     var body: some View {
@@ -125,12 +121,10 @@ struct RoadoutIntentSuccesView: View {
             Spacer(minLength: 15)
         }
         .padding([.leading, .trailing])
-        
     }
 }
 
 struct RoadoutIntentActiveView: View {
-    
     var reservationTime: Date
     
     var body: some View {
@@ -151,7 +145,6 @@ struct RoadoutIntentActiveView: View {
             Spacer(minLength: 15)
         }
         .padding([.leading, .trailing])
-        
     }
 }
 

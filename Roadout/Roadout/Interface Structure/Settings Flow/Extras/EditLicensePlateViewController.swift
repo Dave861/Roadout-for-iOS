@@ -11,6 +11,7 @@ class EditLicensePlateViewController: UIViewController {
     
     let changeTitle = NSAttributedString(string: "Change".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let removeTitle = NSAttributedString(string: "Remove".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
 
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -68,18 +69,7 @@ class EditLicensePlateViewController: UIViewController {
         }
     }
     
-    
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    
-    func addShadowToCardView() {
-        cardView.layer.shadowColor = UIColor.black.cgColor
-        cardView.layer.shadowOpacity = 0.1
-        cardView.layer.shadowOffset = .zero
-        cardView.layer.shadowRadius = 20.0
-        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
-        cardView.layer.shouldRasterize = true
-        cardView.layer.rasterizationScale = UIScreen.main.scale
-    }
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +109,16 @@ class EditLicensePlateViewController: UIViewController {
             self.plateField.becomeFirstResponder()
         }
     }
-   
+    
+    func addShadowToCardView() {
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 20.0
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
 }
 extension EditLicensePlateViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {

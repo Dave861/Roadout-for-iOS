@@ -24,7 +24,7 @@ class SearchManager {
         let filter = GMSAutocompleteFilter()
         filter.country = "ro"
         filter.type = .geocode
-        
+                
         client.findAutocompletePredictions(fromQuery: query, filter: filter, sessionToken: nil) { results, err in
             guard let results = results, err == nil else {
                 print(String(describing: err?.localizedDescription))

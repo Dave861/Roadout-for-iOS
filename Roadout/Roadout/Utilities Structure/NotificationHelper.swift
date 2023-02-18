@@ -20,12 +20,19 @@ class NotificationHelper {
     let center = UNUserNotificationCenter.current()
     var areNotificationsAllowed: Bool?
     
+    enum NotificationType {
+        case reservation
+        case location
+        case future
+        case none
+    }
+    
   //MARK: - Authorization -
     
     func manageNotifications() {
         center.getNotificationSettings { settings in
             if settings.authorizationStatus != .authorized && settings.authorizationStatus != .provisional {
-                self.askNotificationPermission(currentNotification: "")
+                self.askNotificationPermission(currentNotification: .none)
             }
         }
     }
@@ -40,13 +47,13 @@ class NotificationHelper {
         }
     }
     
-    func askNotificationPermission(currentNotification: String, futureReservation: FutureReservation? = nil) {
+    func askNotificationPermission(currentNotification: NotificationType, futureReservation: FutureReservation? = nil) {
         if #available(iOS 15.0, *) {
             center.requestAuthorization(options: [.alert, .sound, .timeSensitive]) { granted, error in
                 if granted {
-                    if currentNotification == "Reservation" {
+                    if currentNotification == .reservation {
                         self.scheduleReservationNotification()
-                    } else if currentNotification == "Future Reservation" {
+                    } else if currentNotification == .future {
                         self.scheduleFutureReservation(futureReservation: futureReservation!)
                     }
                 }
@@ -54,9 +61,9 @@ class NotificationHelper {
         } else {
             center.requestAuthorization(options: [.alert, .sound]) { granted, error in
                 if granted {
-                    if currentNotification == "Reservation" {
+                    if currentNotification == .reservation {
                         self.scheduleReservationNotification()
-                    } else if currentNotification == "Future Reservation" {
+                    } else if currentNotification == .future {
                         self.scheduleFutureReservation(futureReservation: futureReservation!)
                     }
                 }
@@ -64,29 +71,29 @@ class NotificationHelper {
         }
     }
     
-    //MARK: - Reservation -
+    //MARK: - Reservation Notifications -
     
     func scheduleReservationNotification() {
         if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() == 1 {
             center.getNotificationSettings { settings in
                 if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
                     self.cancelReservationNotification()
-                    if timerSeconds > 0 {
+                    if reservationTime > 0 {
                         self.scheduleReservationEndNot()
                     }
-                    if timerSeconds > 60 {
+                    if reservationTime > 60 {
                         self.scheduleReservation1Not()
                     }
-                    if timerSeconds > 300 {
+                    if reservationTime > 300 {
                         self.scheduleReservation5Not()
                     }
                 } else {
-                    self.askNotificationPermission(currentNotification: "Reservation")
+                    self.askNotificationPermission(currentNotification: .reservation)
                 }
             }
         } else if UserPrefsUtils.sharedInstance.reservationNotificationsEnabled() == 2 {
             if #available(iOS 16.1, *) {
-                LiveActivityHelper.sharedInstance.startLiveActivity(with: timerSeconds)
+                LiveActivityHelper.sharedInstance.startLiveActivity(with: reservationTime)
             }
         }
     }
@@ -99,11 +106,10 @@ class NotificationHelper {
         if #available(iOS 15.0, *) {
             content.interruptionLevel = .timeSensitive
         }
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(timerSeconds), repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(reservationTime), repeats: false)
         let request = UNNotificationRequest(identifier: "ro.roadout.reservationDone", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {
-                print("Scheduled End Notification")
                 UserDefaults.roadout!.set(true, forKey: "ro.roadout.setDoneReservation")
             }
         }
@@ -117,7 +123,7 @@ class NotificationHelper {
         if #available(iOS 15.0, *) {
             content.interruptionLevel = .timeSensitive
         }
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(timerSeconds-60), repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(reservationTime-60), repeats: false)
         let request = UNNotificationRequest(identifier: "ro.roadout.reservation1", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {
@@ -134,7 +140,7 @@ class NotificationHelper {
         if #available(iOS 15.0, *) {
             content.interruptionLevel = .timeSensitive
         }
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(timerSeconds-300), repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(reservationTime-300), repeats: false)
         let request = UNNotificationRequest(identifier: "ro.roadout.reservation5", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {
@@ -200,7 +206,7 @@ class NotificationHelper {
         return CLLocationCoordinate2D(latitude: lat, longitude: long)
     }
     
-    //MARK: - Future Reservations -
+    //MARK: - Future Notifications -
     
     func scheduleFutureReservation(futureReservation: FutureReservation) {
         center.getNotificationSettings { settings in
@@ -217,7 +223,7 @@ class NotificationHelper {
                 let request = UNNotificationRequest(identifier: futureReservation.identifier, content: content, trigger: trigger)
                 self.center.add(request) { _ in }
             } else {
-                self.askNotificationPermission(currentNotification: "Future Reservation", futureReservation: futureReservation)
+                self.askNotificationPermission(currentNotification: .future, futureReservation: futureReservation)
             }
         }
     }
@@ -237,11 +243,11 @@ class LiveActivityHelper {
     
     private init() {}
     
-    func startLiveActivity(with timerSeconds: Int) {
+    func startLiveActivity(with reservationTime: Int) {
         if Activity<RoadoutReservationAttributes>.activities.isEmpty {
             //Start new activity
             let roadoutReservationAttributes = RoadoutReservationAttributes(parkSpotID: selectedSpot.rID)
-            let initialContentState = RoadoutReservationAttributes.RoadoutReservationStatus(endTime: Date()...Date().addingTimeInterval(Double(timerSeconds)))
+            let initialContentState = RoadoutReservationAttributes.RoadoutReservationStatus(endTime: Date()...Date().addingTimeInterval(Double(reservationTime)))
             Task {
                 do {
                     roadoutLiveActivity = try Activity<RoadoutReservationAttributes>.request(
@@ -253,20 +259,20 @@ class LiveActivityHelper {
                 }
             }
         } else {
-            updateLiveActivity(with: timerSeconds)
+            updateLiveActivity(with: reservationTime)
         }
     }
     
-    func updateLiveActivity(with timerSeconds: Int) {
+    func updateLiveActivity(with reservationTime: Int) {
         if roadoutLiveActivity == nil {
             roadoutLiveActivity = Activity<RoadoutReservationAttributes>.activities.first
         }
         guard roadoutLiveActivity != nil else {
-            startLiveActivity(with: timerSeconds)
+            startLiveActivity(with: reservationTime)
             return
         }
         //Update
-        let updatedStatus = RoadoutReservationAttributes.RoadoutReservationStatus(endTime: Date()...Date().addingTimeInterval(Double(timerSeconds)))
+        let updatedStatus = RoadoutReservationAttributes.RoadoutReservationStatus(endTime: Date()...Date().addingTimeInterval(Double(reservationTime)))
         Task {
             await roadoutLiveActivity.update(using: updatedStatus)
         }

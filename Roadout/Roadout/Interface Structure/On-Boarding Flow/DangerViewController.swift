@@ -10,6 +10,8 @@ import IOSSecuritySuite
 
 class DangerViewController: UIViewController {
     
+    let questionTitle = NSAttributedString(string: "What can I do?".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    
     let icons = ["wrench_and_screwdriver_fill", "scroll_fill", "network"]
     let titles = ["Jailbreak".localized(), "Reverse Engineering".localized(), "Proxy".localized()]
     let descriptions = ["Your device may be jailbroken or has been tampered with.".localized(), "You may have tried to reverse engineer our app or see the source code.".localized(), "You or someone else on your network may have tried to proxy our API calls.".localized()]
@@ -35,7 +37,7 @@ class DangerViewController: UIViewController {
         }
     }
     
-    let questionTitle = NSAttributedString(string: "What can I do?".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    //MARK: - View Configuration -
         
     override func viewDidLoad() {
         super.viewDidLoad()

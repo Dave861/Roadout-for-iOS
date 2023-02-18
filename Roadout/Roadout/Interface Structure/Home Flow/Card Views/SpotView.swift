@@ -11,6 +11,7 @@ import PusherSwift
 class SpotView: UIView, PusherDelegate {
 
     var pusher: Pusher!
+    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -54,8 +55,7 @@ class SpotView: UIView, PusherDelegate {
     }
     @IBOutlet weak var backBtn: UIButton!
     
-    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    
+    //MARK: - View Confiuration -
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
@@ -102,45 +102,6 @@ class SpotView: UIView, PusherDelegate {
         collectionView.layoutIfNeeded()
         collectionView.reloadData()
     }
-    
-    
-    func setUpPusher() {
-        let options = PusherClientOptions(
-                host: .cluster("eu")
-              )
-          pusher = Pusher(
-            key: "3ca9033d239bcdc322bd",
-            options: options
-          )
-
-          pusher.delegate = self
-
-          let channel = pusher.subscribe("testSpots-channel")
-        
-          let _ = channel.bind(eventName: "spots-changed", eventCallback: { (event: PusherEvent) in
-              if let data = event.data {                  
-                let intData = self.getNumbers(data: data.replacingOccurrences(of: "\"", with: ""))
-                  parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[intData[1]-1].state = intData[0]
-                self.collectionView.reloadData()
-                self.updateInfo(spotState: 100)
-              }
-          })
-
-          pusher.connect()
-    }
-    
-    func disconnectPusher() {
-        pusher.disconnect()
-        pusher.unsubscribe("testSpots-channel")
-        pusher = nil
-    }
-    
-    
-    func getNumbers(data: String) -> [Int] {
-        let stringRecordedArr = data.components(separatedBy: ", ")
-        return stringRecordedArr.map { Int($0)!}
-    }
-    
     
     func centerItemsInCollectionView(cellWidth: Double, numberOfItems: Double, spaceBetweenCell: Double, collectionView: UICollectionView) -> UIEdgeInsets {
         let totalWidth = cellWidth * numberOfItems
@@ -193,6 +154,44 @@ class SpotView: UIView, PusherDelegate {
                 cell.transform = .identity
             }
         }
+    }
+    
+    //MARK: - Pusher Functions -
+    
+    func setUpPusher() {
+        let options = PusherClientOptions(
+                host: .cluster("eu")
+              )
+          pusher = Pusher(
+            key: "3ca9033d239bcdc322bd",
+            options: options
+          )
+
+          pusher.delegate = self
+
+          let channel = pusher.subscribe("testSpots-channel")
+        
+          let _ = channel.bind(eventName: "spots-changed", eventCallback: { (event: PusherEvent) in
+              if let data = event.data {
+                let intData = self.getNumbers(data: data.replacingOccurrences(of: "\"", with: ""))
+                  parkLocations[selectedParkLocationIndex].sections[selectedSectionIndex].spots[intData[1]-1].state = intData[0]
+                self.collectionView.reloadData()
+                self.updateInfo(spotState: 100)
+              }
+          })
+
+          pusher.connect()
+    }
+    
+    func disconnectPusher() {
+        pusher.disconnect()
+        pusher.unsubscribe("testSpots-channel")
+        pusher = nil
+    }
+    
+    func getNumbers(data: String) -> [Int] {
+        let stringRecordedArr = data.components(separatedBy: ", ")
+        return stringRecordedArr.map { Int($0)!}
     }
 
 }
@@ -257,7 +256,6 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
                 cell.mainBtn.backgroundColor = UIColor(named: "Greyish")
                 cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
         }
-        /*here*/
         selectedLocation.accentColor = parkLocations[selectedParkLocationIndex].accentColor
         NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
     }

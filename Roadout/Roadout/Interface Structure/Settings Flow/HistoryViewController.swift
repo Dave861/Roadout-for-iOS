@@ -7,18 +7,20 @@
 
 import UIKit
 
-var historyItems = [
-    HistoryItem(parkingSpotID: "Cluj.Eroilor.A.10", time: 12, price: 8.7, date: Date()),
-    HistoryItem(parkingSpotID: "Cluj.Marasti.B.2", time: 11, price: 7.6, date: Date()),
-    HistoryItem(parkingSpotID: "Cluj.OldTown.C.1", time: 17, price: 11.5, date: Date()),
-    HistoryItem(parkingSpotID: "Cluj.Manastur.D.5", time: 20, price: 16.0, date: Date())
-]
-
 class HistoryViewController: UIViewController {
     
     let dates = ["12.01.2023", "10.01.2023", "02.01.2023", "29.12.2022"]
-    var weekHistoryItems = [HistoryItem]()
-    var olderHistoryItems = [HistoryItem]()
+    var weekHistoryItems = [HistoryReservation]()
+    var olderHistoryItems = [HistoryReservation]()
+    var historyItems = [
+        HistoryReservation(parkingSpotID: "Cluj.Eroilor.A.10", time: 12, price: 8.7, date: Date()),
+        HistoryReservation(parkingSpotID: "Cluj.Marasti.B.2", time: 11, price: 7.6, date: Date()),
+        HistoryReservation(parkingSpotID: "Cluj.OldTown.C.1", time: 17, price: 11.5, date: Date()),
+        HistoryReservation(parkingSpotID: "Cluj.Manastur.D.5", time: 20, price: 16.0, date: Date())
+    ]
+    
+    let buttonTitle = NSAttributedString(string: "Clear".localized(),
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Yellow")!])
 
     @IBOutlet weak var backButton: UIButton!
     
@@ -33,16 +35,15 @@ class HistoryViewController: UIViewController {
     @IBAction func clearTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        historyItems = [HistoryItem]()
-        weekHistoryItems = [HistoryItem]()
-        olderHistoryItems = [HistoryItem]()
+        historyItems = [HistoryReservation]()
+        weekHistoryItems = [HistoryReservation]()
+        olderHistoryItems = [HistoryReservation]()
         loadTableViewData()
     }
     
-    let buttonTitle = NSAttributedString(string: "Clear".localized(),
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Yellow")!])
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()

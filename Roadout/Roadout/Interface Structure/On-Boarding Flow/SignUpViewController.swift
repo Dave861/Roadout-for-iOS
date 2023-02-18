@@ -10,6 +10,7 @@ import UIKit
 class SignUpViewController: UIViewController {
 
     let signUpTitle = NSAttributedString(string: "Sign Up".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     let indicatorImage = UIImage.init(systemName: "lines.measurement.horizontal")!.withTintColor(UIColor(named: "Dark Yellow")!, renderingMode: .alwaysOriginal)
     var indicatorView: SPIndicatorView!
@@ -92,18 +93,8 @@ class SignUpViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
-   
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
-    func addShadowToCardView() {
-        cardView.layer.shadowColor = UIColor.black.cgColor
-        cardView.layer.shadowOpacity = 0.1
-        cardView.layer.shadowOffset = .zero
-        cardView.layer.shadowRadius = 20.0
-        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
-        cardView.layer.shouldRasterize = true
-        cardView.layer.rasterizationScale = UIScreen.main.scale
-    }
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,9 +137,7 @@ class SignUpViewController: UIViewController {
         
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
     }
-    
-    
-   
+       
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 0.5) {
@@ -157,6 +146,18 @@ class SignUpViewController: UIViewController {
             self.nameField.becomeFirstResponder()
         }
     }
+    
+    func addShadowToCardView() {
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 20.0
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    //MARK: - Validation Functions -
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

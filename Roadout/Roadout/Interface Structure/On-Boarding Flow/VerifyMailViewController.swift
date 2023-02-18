@@ -12,6 +12,12 @@ import UserNotifications
 
 class VerifyMailViewController: UIViewController {
     
+    let continueTitle = NSAttributedString(string: "Verify".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let skipTitle = NSAttributedString(
+        string: "Cancel".localized(),
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
+    )
+    
     let center = UNUserNotificationCenter.current()
     var locationManager: CLLocationManager?
     
@@ -24,7 +30,7 @@ class VerifyMailViewController: UIViewController {
     
     @IBAction func verifyTapped(_ sender: Any) {
         if let codeField = codeField as? CHIOTPFieldOne {
-            if Int(codeField.text!) == AuthManager.sharedInstance.verifyCode && Date() < AuthManager.sharedInstance.dateToken {
+            if Int(codeField.text!) == AuthManager.sharedInstance.token && Date() < AuthManager.sharedInstance.dateToken {
                 let name = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserName")!
                 let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
                 let password = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserPassword")!
@@ -63,12 +69,7 @@ class VerifyMailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    let continueTitle = NSAttributedString(string: "Verify".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let skipTitle = NSAttributedString(
-        string: "Cancel".localized(),
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
-    )
-    
+    //MARK: - View Configuration -
    
     override func viewDidLoad() {
         super.viewDidLoad()

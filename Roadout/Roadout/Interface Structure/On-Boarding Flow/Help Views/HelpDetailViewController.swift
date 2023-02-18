@@ -27,6 +27,8 @@ class HelpDetailViewController: UIViewController {
     @IBOutlet weak var problemImage: UIImageView!
     @IBOutlet weak var solutionTextView: UITextView!
     
+    //MARK: - View Configuration -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         closeButton.setTitle("", for: .normal)

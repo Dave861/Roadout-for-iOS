@@ -10,13 +10,20 @@ import CHIOTPField
 
 class ResetPasswordViewController: UIViewController {
     
+    let continueTitle = NSAttributedString(string: "Reset".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let checkTitle = NSAttributedString(string: "Check".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let skipTitle = NSAttributedString(
+        string: "Cancel".localized(),
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor.label, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
+    )
+    
     @IBOutlet weak var explainLbl: UILabel!
     
     @IBOutlet weak var codeField: AnyObject?
     @IBOutlet weak var checkBtn: UXButton!
     @IBAction func checkTapped(_ sender: Any) {
         if let codeField = codeField as? CHIOTPFieldOne {
-            if Int(codeField.text!) == UserManager.sharedInstance.resetCode && Date() < UserManager.sharedInstance.dateToken {
+            if Int(codeField.text!) == UserManager.sharedInstance.token && Date() < UserManager.sharedInstance.dateToken {
                 passwordField.alpha = 1
                 confirmPasswordField.alpha = 1
                 passwordField.isEnabled = true
@@ -75,14 +82,9 @@ class ResetPasswordViewController: UIViewController {
             }
         }
     }
-    
-    let continueTitle = NSAttributedString(string: "Reset".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let checkTitle = NSAttributedString(string: "Check".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let skipTitle = NSAttributedString(
-        string: "Cancel".localized(),
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor.label, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
-    )
         
+    //MARK: - View Configuration -
+    
     override func viewDidLoad() {
         super.viewDidLoad()        
         passwordField.alpha = 0
@@ -115,6 +117,7 @@ class ResetPasswordViewController: UIViewController {
         checkBtn.setAttributedTitle(checkTitle, for: .normal)
     }
     
+    //MARK: - Validation Functions -
     
     func isValidPassword(_ password: String) -> Bool {
         let pswRegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$"

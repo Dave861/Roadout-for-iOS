@@ -9,6 +9,9 @@ import UIKit
 import MessageUI
 
 class GuideViewController: UIViewController {
+    
+    let buttonTitle = NSAttributedString(string: "Reach Out".localized(),
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "GoldBrown")!])
         
     struct GuideTip {
         var title: String
@@ -76,10 +79,9 @@ class GuideViewController: UIViewController {
         }
     }
     
-    let buttonTitle = NSAttributedString(string: "Reach Out".localized(),
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "GoldBrown")!])
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,6 +9,8 @@ import UIKit
 import CoreLocation
 
 class TimeView: UIView {
+    
+    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -25,7 +27,7 @@ class TimeView: UIView {
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        timerSeconds = Int(minuteSlider.value*60)
+        reservationTime = Int(minuteSlider.value*60)
         NotificationCenter.default.post(name: .addPayCardID, object: nil)
     }
     
@@ -53,7 +55,7 @@ class TimeView: UIView {
         self.parentViewController().present(alert, animated: true, completion: nil)
     }
     
-    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    //MARK: - View Confiuration -
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
@@ -75,6 +77,8 @@ class TimeView: UIView {
             self.getTimeToCommute()
         }
     }
+    
+    //MARK: - Time Predictors -
     
     func getTimeToCommute() {
         guard let parentVC = self.parentViewController() as? HomeViewController else {

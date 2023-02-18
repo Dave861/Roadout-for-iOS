@@ -20,6 +20,8 @@ class UnlockView: UIView {
     @IBOutlet weak var explainerLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     
+    //MARK: - View Configuration -
+    
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
         backBtn.setTitle("", for: .normal)

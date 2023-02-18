@@ -5,11 +5,9 @@
 //  Created by David Retegan on 25.10.2021.
 //
 
+import Foundation
 import UIKit
-import GoogleMaps
-import GooglePlaces
 import IOSSecuritySuite
-import WidgetKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,15 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let homeVC = homeSb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
             window?.rootViewController = homeVC
             window?.makeKeyAndVisible()
-    
-            let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-            Task {
-                do {
-                    try await UserManager.sharedInstance.getUserNameAsync(id)
-                } catch let err {
-                    print(err)
-                }
-            }
         }
         
         guard let _ = (scene as? UIWindowScene) else { return }
@@ -39,6 +28,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         NotificationHelper.sharedInstance.checkNotificationStatus()
         NotificationCenter.default.post(name: .updateLocationID, object: nil)
+        
+        //Check for reservation status
         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
             guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
             Task {

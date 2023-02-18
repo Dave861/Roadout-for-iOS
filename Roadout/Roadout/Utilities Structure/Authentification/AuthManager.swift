@@ -14,10 +14,12 @@ class AuthManager {
     
     var userID: String!
     
-    var verifyCode = 0
+    var token = 0
     var dateToken = Date.yesterday
     
     static let sharedInstance = AuthManager()
+    
+    private init() {}
     
     enum AuthErrors: Error {
         case databaseFailure
@@ -27,6 +29,8 @@ class AuthManager {
         case unknownError
         case userDoesNotExist
     }
+    
+    //MARK: - Sign Up Functions -
     
     func sendRegisterDataAsync(_ email: String) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
@@ -56,7 +60,7 @@ class AuthManager {
             let formatter = DateFormatter()
             let dateFormat = "yyyy-MM-dd HH:mm:ss"
             formatter.dateFormat = dateFormat
-            self.verifyCode = Int(code)!
+            self.token = Int(code)!
             self.dateToken = formatter.date(from: token) ?? Date.yesterday
         } else if jsonArray["status"] as! String == "User already exists" {
            throw AuthErrors.userExistsFailure
@@ -106,6 +110,8 @@ class AuthManager {
             throw AuthErrors.userExistsFailure
         }
     }
+    
+    //MARK: - Sign In Functions -
     
     func sendSignInDataAsync(_ email: String, _ password: String) async throws {
         let hashedPswd = MD5(string: password)
@@ -162,6 +168,8 @@ class AuthManager {
         }
     }
     
+    //MARK: - Utility -
+    
     func MD5(string: String) -> String {
         let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
 
@@ -169,6 +177,5 @@ class AuthManager {
             String(format: "%02hhx", $0)
         }.joined()
     }
-    
     
 }

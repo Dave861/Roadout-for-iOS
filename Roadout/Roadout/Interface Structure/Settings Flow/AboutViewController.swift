@@ -60,6 +60,8 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var twitterBtn: UIButton!
     @IBOutlet weak var youtubeBtn: UIButton!
     
+    //MARK: - View Configuration -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         websiteCard.layer.cornerRadius = 12.0

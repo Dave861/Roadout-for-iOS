@@ -9,6 +9,7 @@ import UIKit
 
 class NotificationsViewController: UIViewController {
         
+    ///0 is for none, 1 is for normal notifications, 2 is for live activity
     var selectedNotificationTypeIndex = 0
 
     @IBOutlet weak var backButton: UIButton!
@@ -76,6 +77,8 @@ class NotificationsViewController: UIViewController {
     @IBAction func futureSwitched(_ sender: Any) {
         UserDefaults.roadout!.set(futureSwitch.isOn, forKey: "ro.roadout.futureNotificationsEnabled")
     }
+    
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,6 +156,4 @@ class NotificationsViewController: UIViewController {
                 self.reservationLiveLabel.textColor = UIColor.systemGray
         }
     }
-    
-
 }

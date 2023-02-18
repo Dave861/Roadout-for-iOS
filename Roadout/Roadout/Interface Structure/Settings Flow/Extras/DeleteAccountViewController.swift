@@ -10,10 +10,10 @@ import UIKit
 class DeleteAccountViewController: UIViewController {
 
     let deleteTitle = NSAttributedString(string: "Confirm".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    let forgotTitle = NSAttributedString(string: "Forgot Password?".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     var errorCounter = 0
-    
-    //MARK: -IB Connections-
-    
+        
     @IBOutlet weak var cancelBtn: UIButton!
     
     @IBOutlet weak var cardView: UIView!
@@ -74,7 +74,7 @@ class DeleteAccountViewController: UIViewController {
     }
    
     
-    //MARK: -Forgot password-
+    //MARK: - Forgot Password -
         
     @IBOutlet weak var forgotBtn: UIButton!
     
@@ -114,20 +114,7 @@ class DeleteAccountViewController: UIViewController {
     }
     
     
-    //MARK: -View Configuration-
-    
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    let forgotTitle = NSAttributedString(string: "Forgot Password?".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    
-    func addShadowToCardView() {
-        cardView.layer.shadowColor = UIColor.black.cgColor
-        cardView.layer.shadowOpacity = 0.1
-        cardView.layer.shadowOffset = .zero
-        cardView.layer.shadowRadius = 20.0
-        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
-        cardView.layer.shouldRasterize = true
-        cardView.layer.rasterizationScale = UIScreen.main.scale
-    }
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,6 +156,17 @@ class DeleteAccountViewController: UIViewController {
         }
     }
     
+    func addShadowToCardView() {
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 20.0
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    //MARK: - Validation Functions -
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

@@ -13,6 +13,13 @@ struct FutureReservation: Codable {
     var identifier: String
 }
 
+struct HistoryReservation {
+    var parkingSpotID: String
+    var time: Int
+    var price: Float
+    var date: Date
+}
+
 struct WorldLocation {
     var latitude: Double
     var longitude: Double
@@ -21,15 +28,7 @@ struct WorldLocation {
     var pitch: Int
 }
 
-struct HistoryItem {
-    var parkingSpotID: String
-    
-    var time: Int
-    var price: Float
-    var date: Date
-}
-
-struct Reason {
+struct RateReason {
     var description: String
     var isSelected: Bool
 }

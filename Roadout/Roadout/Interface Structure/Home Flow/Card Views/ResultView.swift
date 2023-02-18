@@ -59,7 +59,7 @@ class ResultView: UIView {
         indicatorView.present()
         Task {
             do {
-                try await FunctionsManager.sharedInstance.reserveSpotInLocationAsync(location: parkLocations[selectedParkLocationIndex])
+                try await FunctionsManager.sharedInstance.findSpotInLocationAsync(location: parkLocations[selectedParkLocationIndex])
                 DispatchQueue.main.async {
                     isSelectionFlow = false
                     NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
@@ -80,16 +80,7 @@ class ResultView: UIView {
     }
     @IBOutlet weak var backBtn: UIButton!
     
-    func showNoFreeSpotAlert(indicatorView: SPIndicatorView) {
-        DispatchQueue.main.async {
-            indicatorView.dismiss()
-            
-            let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: selectedLocation.accentColor)!
-            alert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
-            self.parentViewController().present(alert, animated: true, completion: nil)
-        }
-    }
+    //MARK: - View Confiuration -
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
@@ -131,6 +122,8 @@ class ResultView: UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
     
+    //MARK: - Data Preparation -
+    
     func downloadSpots() async throws {
         for sI in 0...parkLocations[selectedParkLocationIndex].sections.count-1 {
             parkLocations[selectedParkLocationIndex].sections[sI].spots = [ParkSpot]()
@@ -145,4 +138,15 @@ class ResultView: UIView {
         }
     }
 
+    func showNoFreeSpotAlert(indicatorView: SPIndicatorView) {
+        DispatchQueue.main.async {
+            indicatorView.dismiss()
+            
+            let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
+            alert.view.tintColor = UIColor(named: selectedLocation.accentColor)!
+            alert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
+            self.parentViewController().present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }

@@ -12,6 +12,7 @@ import GeohashKit
 
 @available(iOS 16, *)
 struct RoadoutUnlockIntent: AppIntent {
+    
     static var title: LocalizedStringResource = "Unlock you current Reservation"
     
     static var description: IntentDescription = "Unlock and park on your currently reserved spot"

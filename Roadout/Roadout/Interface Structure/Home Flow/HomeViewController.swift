@@ -13,6 +13,7 @@ import GeohashKit
 
 class HomeViewController: UIViewController {
 
+    //Map Utilities
     var mapView: GMSMapView!
     var centerMapCoordinate: CLLocationCoordinate2D!
     let locationManager = CLLocationManager()
@@ -41,7 +42,7 @@ class HomeViewController: UIViewController {
     let noWifiBar = NoWifiView.instanceFromNib()
     let paidParkingBar = PaidParkingBar.instanceFromNib()
     
-    //MARK: -Express Reserve-
+    //MARK: -Express Lane-
     let expressView = ExpressView.instanceFromNib()
     
     @objc func addExpressView() {
@@ -85,7 +86,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    //MARK: -Find me a spot-
+    //MARK: -Find Way-
     let findView = FindView.instanceFromNib()
         
     @objc func showFindCard() {
@@ -160,15 +161,6 @@ class HomeViewController: UIViewController {
         
     @IBOutlet weak var backgroundView: UIView!
     
-    func updateBackgroundViewHeight(with cardHeight: CGFloat) {
-        backgroundView.setHeight(cardHeight+85, animateTime: 0.1)
-        let mapInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: cardHeight-52, right: 0.0)
-        mapView.padding = mapInsets
-        focusedView.layer.shadowPath = UIBezierPath(rect: focusedView.bounds).cgPath
-        let mapPadding = UIEdgeInsets(top: 0, left: 0, bottom: cardHeight-44, right: 0)
-        mapView.padding = mapPadding
-    }
-    
     @IBOutlet weak var focusedView: UIView!
     
     @IBOutlet weak var mapHostingView: UIView!
@@ -202,7 +194,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var markedSpotButton: UXButton!
         
-    //MARK: -OBSERVERS-
+    //MARK: - OBSERVERS -
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
@@ -267,7 +259,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshMarkedSpot), name: .refreshMarkedSpotID, object: nil)
     }
     
-   //MARK: -Markers-
+   //MARK: - Markers Configuration -
     
     @objc func addMarkers() {
         mapView.clear()
@@ -326,7 +318,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    //MARK: -Menu-
+    //MARK: -Action Menu-
     
     var menuItems: [UIAction] {
         return [
@@ -417,6 +409,50 @@ class HomeViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    //MARK: -Marked Spot Menu-
+       
+       var markedSpotMenuItems: [UIAction] {
+             return [
+                 UIAction(title: "Remove".localized(), image: UIImage(systemName: "arrow.triangle.2.circlepath"), handler: { (_) in
+                     UIView.animate(withDuration: 0.1, animations: {
+                         self.markedSpotButton.transform = CGAffineTransform.identity
+                     })
+                     
+                     UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
+                     carParkHash = "roadout_carpark_clear"
+                     NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
+                 }),
+                 UIAction(title: "Navigate".localized(), image: UIImage(systemName: "arrow.triangle.branch"), handler: { (_) in
+                     UIView.animate(withDuration: 0.1, animations: {
+                         self.markedSpotButton.transform = CGAffineTransform.identity
+                     })
+                     
+                     let hashComponents = carParkHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
+                     let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
+                     let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
+                     
+                     self.openDirectionsToCoords(lat: lat, long: long)
+                 })
+             ]
+         }
+         var markedSpotMenu: UIMenu {
+             return UIMenu(title: "Marked Spot".localized(), image: nil, identifier: nil, options: [], children: markedSpotMenuItems)
+         }
+         
+         func openDirectionsToCoords(lat: Double, long: Double) {
+             var link: String
+             switch UserPrefsUtils.sharedInstance.returnPrefferedMapsApp() {
+             case "Google Maps":
+                 link = "https://www.google.com/maps/search/?api=1&query=\(lat),\(long)"
+             case "Waze":
+                 link = "https://www.waze.com/ul?ll=\(lat)%2C-\(long)&navigate=yes&zoom=15"
+             default:
+                 link = "https://maps.apple.com/?ll=\(lat),\(long)&q=Roadout%20Location"
+             }
+             guard UIApplication.shared.canOpenURL(URL(string: link)!) else { return }
+             UIApplication.shared.open(URL(string: link)!)
+         }
+    
     //MARK: -View Configuration-
         
     override func viewWillAppear(_ animated: Bool) {
@@ -499,7 +535,7 @@ class HomeViewController: UIViewController {
         }
         
         markedSpotButton.showsMenuAsPrimaryAction = true
-        markedSpotButton.menu = markedMenu
+        markedSpotButton.menu = markedSpotMenu
         
         mapFocusButton.setTitle("", for: .normal)
         mapTypeButton.setTitle("", for: .normal)
@@ -550,7 +586,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    //MARK: -Data & Map Configuration-
+    //MARK: -Data & UI Configuration-
     
     func checkUserIsValid() {
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
@@ -584,6 +620,15 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func updateBackgroundViewHeight(with cardHeight: CGFloat) {
+        backgroundView.setHeight(cardHeight+85, animateTime: 0.1)
+        let mapInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: cardHeight-52, right: 0.0)
+        mapView.padding = mapInsets
+        focusedView.layer.shadowPath = UIBezierPath(rect: focusedView.bounds).cgPath
+        let mapPadding = UIEdgeInsets(top: 0, left: 0, bottom: cardHeight-44, right: 0)
+        mapView.padding = mapPadding
+    }
+    
     @objc func updateLocation() {
         if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
             if centerMapCoordinate == nil  {
@@ -605,50 +650,6 @@ class HomeViewController: UIViewController {
         let vc = sb.instantiateViewController(withIdentifier: "RateVC") as! RateViewController
         self.present(vc, animated: true, completion: nil)
     }
-  
- //MARK: -Marked Spot Menu-
-    
-    var markedMenuItems: [UIAction] {
-          return [
-              UIAction(title: "Remove".localized(), image: UIImage(systemName: "arrow.triangle.2.circlepath"), handler: { (_) in
-                  UIView.animate(withDuration: 0.1, animations: {
-                      self.markedSpotButton.transform = CGAffineTransform.identity
-                  })
-                  
-                  UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
-                  carParkHash = "roadout_carpark_clear"
-                  NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
-              }),
-              UIAction(title: "Navigate".localized(), image: UIImage(systemName: "arrow.triangle.branch"), handler: { (_) in
-                  UIView.animate(withDuration: 0.1, animations: {
-                      self.markedSpotButton.transform = CGAffineTransform.identity
-                  })
-                  
-                  let hashComponents = carParkHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
-                  let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
-                  let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
-                  
-                  self.openDirectionsToCoords(lat: lat, long: long)
-              })
-          ]
-      }
-      var markedMenu: UIMenu {
-          return UIMenu(title: "Marked Spot".localized(), image: nil, identifier: nil, options: [], children: markedMenuItems)
-      }
-      
-      func openDirectionsToCoords(lat: Double, long: Double) {
-          var link: String
-          switch UserPrefsUtils.sharedInstance.returnPrefferedMapsApp() {
-          case "Google Maps":
-              link = "https://www.google.com/maps/search/?api=1&query=\(lat),\(long)"
-          case "Waze":
-              link = "https://www.waze.com/ul?ll=\(lat)%2C-\(long)&navigate=yes&zoom=15"
-          default:
-              link = "https://maps.apple.com/?ll=\(lat),\(long)&q=Roadout%20Location"
-          }
-          guard UIApplication.shared.canOpenURL(URL(string: link)!) else { return }
-          UIApplication.shared.open(URL(string: link)!)
-      }
     
 }
 

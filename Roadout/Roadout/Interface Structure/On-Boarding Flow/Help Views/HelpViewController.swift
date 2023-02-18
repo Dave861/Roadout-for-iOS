@@ -10,8 +10,13 @@ import MessageUI
 
 class HelpViewController: UIViewController {
     
-    var centerCell: HelpCell!
+    let doneTitle = NSAttributedString(string: "Thanks! Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let helpTitle = NSAttributedString(
+        string: "I still need help".localized(),
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Icons")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
+    )
     
+    var centerCell: HelpCell!
     let problems = [ProblemManager.sharedInstance.problem1,
                     ProblemManager.sharedInstance.problem2,
                     ProblemManager.sharedInstance.problem3,
@@ -46,17 +51,13 @@ class HelpViewController: UIViewController {
         }
     }
     
+    //MARK: - View Configuration -
+    
     override func viewDidAppear(_ animated: Bool) {
         let indexPath = IndexPath(item: 0, section: 0)
         centerCell = collectionView.cellForItem(at: indexPath) as? HelpCell
         centerCell.transformToLarge()
     }
-        
-    let doneTitle = NSAttributedString(string: "Thanks! Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let helpTitle = NSAttributedString(
-        string: "I still need help".localized(),
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Icons")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
-    )
     
     override func viewDidLoad() {
         super.viewDidLoad()

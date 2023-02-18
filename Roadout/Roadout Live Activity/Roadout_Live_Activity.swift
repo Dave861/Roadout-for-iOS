@@ -118,7 +118,7 @@ struct DIBottonView: View {
         }
     }
 }
-//MARK: -LockScreen-
+//MARK: -Lock Screen-
 struct LockScreenView: View {
     
     var context: ActivityViewContext<RoadoutReservationAttributes>

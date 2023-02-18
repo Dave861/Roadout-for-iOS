@@ -12,6 +12,7 @@ import GeohashKit
 
 @available(iOS 16, *)
 struct RoadoutDelayIntent: AppIntent {
+    
     static var title: LocalizedStringResource = "Delay you current Reservation"
     
     static var description: IntentDescription = "Add more minutes to your current reservation so you get to your spot in time"

@@ -12,6 +12,7 @@ class SelectPayViewController: UIViewController {
     
     var recentParkLocations = [ParkLocation]()
     var nearbyParkLocations = [ParkLocation]()
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Cash Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     @IBOutlet weak var titleLbl: UILabel!
     
@@ -32,9 +33,9 @@ class SelectPayViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Cash Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: - View Configuration -
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +66,8 @@ class SelectPayViewController: UIViewController {
              UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip4")
          }
     }
+    
+    //MARK: - Data Managers -
     
     func reloadSpotsCategory() {
         if segmentedSwitcher.selectedSegmentIndex == 0 {
@@ -188,9 +191,11 @@ extension SelectPayViewController: UITableViewDelegate, UITableViewDataSource {
             selectedPayLocation = recentParkLocations[indexPath.row]
         }
         isPayFlow = true
-        //Clear saved car park
+        
+        //Clear saved hash
         UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
         carParkHash = "roadout_carpark_clear"
+        
         NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
         NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
         self.dismiss(animated: true)

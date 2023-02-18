@@ -12,6 +12,7 @@ import GeohashKit
 
 @available(iOS 16, *)
 struct RoadoutDirectionsIntent: AppIntent {
+    
     static var title: LocalizedStringResource = "Navigate to your current Reservation"
     
     static var description: IntentDescription = "Get directions in your favourite maps app to the spot you reserved"

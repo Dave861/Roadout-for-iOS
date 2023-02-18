@@ -10,6 +10,8 @@ import UIKit
 class EditPasswordViewController: UIViewController {
 
     let savedTitle = NSAttributedString(string: "Save".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    let forgotTitle = NSAttributedString(string: "Forgot Password?".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     var errorCounter = 0
     
     @IBOutlet weak var cardView: UIView!
@@ -72,7 +74,109 @@ class EditPasswordViewController: UIViewController {
     }
     
     
+    //MARK: - Forgot Password -
+        
+    @IBOutlet weak var forgotBtn: UIButton!
     
+    @IBAction func forgotTapped(_ sender: Any) {
+        let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
+        let alert = UIAlertController(title: "Forgot Password".localized(), message: "We will send an email with a verification code to: ".localized() + "\(email).", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Proceed".localized(), style: .default) { _ in
+            Task {
+                do {
+                    try await UserManager.sharedInstance.sendForgotDataAsync(email)
+                    DispatchQueue.main.async {
+                        let sb = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
+                        self.present(vc, animated: true, completion: nil)
+                    }
+                } catch let err {
+                    self.manageServerSideErrors(err)
+                }
+            }
+        }
+        let noAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        alert.view.tintColor = UIColor(named: "Brownish")!
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func manageForgotView(_ show: Bool) {
+        if show {
+            forgotBtn.isEnabled = true
+            forgotBtn.alpha = 1
+            forgotBtn.shake()
+        } else {
+            forgotBtn.isEnabled = false
+            forgotBtn.alpha = 0
+        }
+    }
+    
+    //MARK: - View Configuration -
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()        
+        cardView.layer.cornerRadius = 20.0
+        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        addShadowToCardView()
+
+        saveBtn.layer.cornerRadius = 12
+        saveBtn.setAttributedTitle(savedTitle, for: .normal)
+        
+        oldPswField.layer.cornerRadius = 12.0
+        oldPswField.attributedPlaceholder =
+         NSAttributedString(
+            string: "Old Password".localized(),
+         attributes:
+            [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+         )
+        newPswField.layer.cornerRadius = 12.0
+        newPswField.attributedPlaceholder =
+         NSAttributedString(
+            string: "New Password".localized(),
+         attributes:
+            [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+         )
+        confPswField.layer.cornerRadius = 12.0
+        confPswField.attributedPlaceholder =
+         NSAttributedString(
+            string: "Confirm Password".localized(),
+         attributes:
+            [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
+         )
+        
+        manageForgotView(false)
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
+        blurEffect.addGestureRecognizer(tapRecognizer)
+        
+        cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
+        forgotBtn.setAttributedTitle(forgotTitle, for: .normal)
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        UIView.animate(withDuration: 0.3) {
+            self.blurEffect.alpha = 0.7
+        } completion: { _ in
+            self.oldPswField.becomeFirstResponder()
+        }
+    }
+    
+    func addShadowToCardView() {
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 20.0
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    //MARK: - Validation Functions -
     func validateFields() -> Bool {
         if oldPswField.text == "" {
             return false
@@ -141,109 +245,6 @@ class EditPasswordViewController: UIViewController {
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")
                 self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    //MARK: -Forgot password-
-        
-    @IBOutlet weak var forgotBtn: UIButton!
-    
-    @IBAction func forgotTapped(_ sender: Any) {
-        let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
-        let alert = UIAlertController(title: "Forgot Password".localized(), message: "We will send an email with a verification code to: ".localized() + "\(email).", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Proceed".localized(), style: .default) { _ in
-            Task {
-                do {
-                    try await UserManager.sharedInstance.sendForgotDataAsync(email)
-                    DispatchQueue.main.async {
-                        let sb = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
-                        self.present(vc, animated: true, completion: nil)
-                    }
-                } catch let err {
-                    self.manageServerSideErrors(err)
-                }
-            }
-        }
-        let noAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
-        alert.addAction(noAction)
-        alert.addAction(yesAction)
-        alert.view.tintColor = UIColor(named: "Brownish")!
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func manageForgotView(_ show: Bool) {
-        if show {
-            forgotBtn.isEnabled = true
-            forgotBtn.alpha = 1
-            forgotBtn.shake()
-        } else {
-            forgotBtn.isEnabled = false
-            forgotBtn.alpha = 0
-        }
-    }
-    
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    let forgotTitle = NSAttributedString(string: "Forgot Password?".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    
-    func addShadowToCardView() {
-        cardView.layer.shadowColor = UIColor.black.cgColor
-        cardView.layer.shadowOpacity = 0.1
-        cardView.layer.shadowOffset = .zero
-        cardView.layer.shadowRadius = 20.0
-        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
-        cardView.layer.shouldRasterize = true
-        cardView.layer.rasterizationScale = UIScreen.main.scale
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()        
-        cardView.layer.cornerRadius = 20.0
-        cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        
-        addShadowToCardView()
-
-        saveBtn.layer.cornerRadius = 12
-        saveBtn.setAttributedTitle(savedTitle, for: .normal)
-        
-        oldPswField.layer.cornerRadius = 12.0
-        oldPswField.attributedPlaceholder =
-         NSAttributedString(
-            string: "Old Password".localized(),
-         attributes:
-            [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
-         )
-        newPswField.layer.cornerRadius = 12.0
-        newPswField.attributedPlaceholder =
-         NSAttributedString(
-            string: "New Password".localized(),
-         attributes:
-            [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
-         )
-        confPswField.layer.cornerRadius = 12.0
-        confPswField.attributedPlaceholder =
-         NSAttributedString(
-            string: "Confirm Password".localized(),
-         attributes:
-            [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
-         )
-        
-        manageForgotView(false)
-        
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
-        blurEffect.addGestureRecognizer(tapRecognizer)
-        
-        cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
-        forgotBtn.setAttributedTitle(forgotTitle, for: .normal)
-    }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        UIView.animate(withDuration: 0.3) {
-            self.blurEffect.alpha = 0.7
-        } completion: { _ in
-            self.oldPswField.becomeFirstResponder()
         }
     }
 }

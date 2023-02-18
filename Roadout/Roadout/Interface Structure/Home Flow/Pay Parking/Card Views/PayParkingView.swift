@@ -10,6 +10,9 @@ import UIKit
 class PayParkingView: UIView {
 
     var selectedCard: String?
+    let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+    var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let choosePaymentTitle = NSAttributedString(string: "Choose Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -42,9 +45,7 @@ class PayParkingView: UIView {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         
-        if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
-            //Handled by menu
-        } else {
+        if payBtn.titleLabel?.text != "Choose Payment Method".localized() {
             let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
             //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done)
             Task {
@@ -59,13 +60,9 @@ class PayParkingView: UIView {
         }
     }
     
-    @IBAction func chooseMethodTapped(_ sender: Any) {
-        //Handled by menu
-    }
+    @IBAction func chooseMethodTapped(_ sender: Any) {}
         
-    let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
-    var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let choosePaymentTitle = NSAttributedString(string: "Choose Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    //MARK: - View Configuration -
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
@@ -140,10 +137,12 @@ class PayParkingView: UIView {
         return UINib(nibName: "Pay", bundle: nil).instantiate(withOwner: nil, options: nil)[1] as! UIView
     }
     
+    //MARK: - Payment Configuration -
+    
     func fillPayData() {
         self.detailsLbl.text = selectedPayLocation.name
         
-        self.timeLbl.text = "Pay for ".localized() + "\(paidHours)" + " hours".localized()
+        self.timeLbl.text = "Pay for ".localized() + "\(paidTime)" + " hours".localized()
         self.timeLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.timeLbl.range(after: "Pay for ".localized()))
         self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Pay for ".localized()))
     }
@@ -207,6 +206,5 @@ class PayParkingView: UIView {
         print(index)
         return index
     }
-    
 
 }

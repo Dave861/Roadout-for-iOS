@@ -22,6 +22,8 @@ class CarViewController: UIViewController {
     @IBOutlet weak var carplayCard: UIView!
     @IBOutlet weak var carplayTitle: UILabel!
     @IBOutlet weak var carplayDescription: UILabel!
+    
+    //MARK: - View Configuration -
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -22,7 +22,7 @@
 		9A0D58D627770CC80093B3D3 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
 		9A0D58D9277721DA0093B3D3 /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */; };
 		9A122993299A36A300C82CBD /* CarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A122992299A36A300C82CBD /* CarViewController.swift */; };
-		9A14B914273142A400967417 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B913273142A400967417 /* CustomTableView.swift */; };
+		9A14B914273142A400967417 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B913273142A400967417 /* ContentSizedTableView.swift */; };
 		9A14B916273142C100967417 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B915273142C100967417 /* Extensions.swift */; };
 		9A14B918273142E100967417 /* KeyboardConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B917273142E100967417 /* KeyboardConstraint.swift */; };
 		9A14B91A2731430400967417 /* MonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B9192731430400967417 /* MonthPickerView.swift */; };
@@ -286,7 +286,7 @@
 		9A0C7774272E831E00ECBFB2 /* SpotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotCell.xib; sourceTree = "<group>"; };
 		9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationManager.swift; sourceTree = "<group>"; };
 		9A122992299A36A300C82CBD /* CarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewController.swift; sourceTree = "<group>"; };
-		9A14B913273142A400967417 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		9A14B913273142A400967417 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		9A14B915273142C100967417 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9A14B917273142E100967417 /* KeyboardConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardConstraint.swift; sourceTree = "<group>"; };
 		9A14B9192731430400967417 /* MonthPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthPickerView.swift; sourceTree = "<group>"; };
@@ -588,9 +588,9 @@
 			children = (
 				9A4CA21927DDE12900D2674D /* Localizables.strings */,
 				9A14B91D2731436300967417 /* UserPrefsUtils.swift */,
+				9A5FC6432787685200CDB49D /* UserDefSuite.swift */,
 				9A728C502732D849000F9DED /* NotificationHelper.swift */,
 				9A65C5F127804B140060ABCA /* NotificationCenter.swift */,
-				9A5FC6432787685200CDB49D /* UserDefSuite.swift */,
 				9AA0EFCC277B3DCF00B0F52A /* Authentification */,
 				9A799320277A0E2F0088E3FD /* Entities */,
 				9A49BFB2272FF8D000234A9F /* Wifi Helper */,
@@ -766,6 +766,7 @@
 		9A7C1A0C2776035E0088B54A /* Roadout Widget */ = {
 			isa = PBXGroup;
 			children = (
+				9A6A227E296EFCD80047BB09 /* Roadout WidgetExtension.entitlements */,
 				9A7C1A0D2776035E0088B54A /* Roadout_Widget.swift */,
 				9A378C532903EFF90059C289 /* Roadout_LockWidget.swift */,
 				9A378C552903F15B0059C289 /* RoadoutWidgets.swift */,
@@ -824,7 +825,7 @@
 			children = (
 				9ADB0A152909837C00F548D9 /* ToolTipViews */,
 				9ADB09F52909837400F548D9 /* SPIndicator */,
-				9A14B913273142A400967417 /* CustomTableView.swift */,
+				9A14B913273142A400967417 /* ContentSizedTableView.swift */,
 				9A14B915273142C100967417 /* Extensions.swift */,
 				9A14B917273142E100967417 /* KeyboardConstraint.swift */,
 				9A14B9192731430400967417 /* MonthPickerView.swift */,
@@ -874,7 +875,6 @@
 		9AC926DE272697F00054E453 = {
 			isa = PBXGroup;
 			children = (
-				9A6A227E296EFCD80047BB09 /* Roadout WidgetExtension.entitlements */,
 				9AC926E9272697F00054E453 /* Roadout */,
 				9A7C1A0C2776035E0088B54A /* Roadout Widget */,
 				9A397D3C280D4970003458BD /* RoadoutWidgetIntentHandler */,
@@ -1392,7 +1392,7 @@
 				9A65C5F227804B140060ABCA /* NotificationCenter.swift in Sources */,
 				9AD1DF952972C7FD00ACBAAC /* MoreInfoViewController.swift in Sources */,
 				9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */,
-				9A14B914273142A400967417 /* CustomTableView.swift in Sources */,
+				9A14B914273142A400967417 /* ContentSizedTableView.swift in Sources */,
 				9A8DC958282FF993008F92B6 /* HelpCell.swift in Sources */,
 				9A865A0C294E099D00E8CCDE /* ARHelpCell.swift in Sources */,
 				9A50EB062846653400B136DF /* RateViewController.swift in Sources */,
@@ -1678,7 +1678,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "Roadout WidgetExtension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Roadout Widget/Roadout WidgetExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 35;
@@ -1709,7 +1709,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = "Roadout WidgetExtension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Roadout Widget/Roadout WidgetExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 35;

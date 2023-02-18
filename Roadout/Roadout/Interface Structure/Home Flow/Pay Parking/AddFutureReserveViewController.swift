@@ -10,6 +10,7 @@ import UIKit
 class AddFutureReserveViewController: UIViewController {
     
     let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
@@ -59,17 +60,6 @@ class AddFutureReserveViewController: UIViewController {
         }
     }
     
-    func saveFutureReservation(futureReservation: FutureReservation) {
-        futureReservations.append(futureReservation)
-        do {
-            let encoder = JSONEncoder()
-            let data = try encoder.encode(futureReservations)
-            UserDefaults.roadout!.set(data, forKey: "ro.roadout.Roadout.futureReservations")
-        } catch {
-            print("Unable to Encode Array of Future Reservations (\(error))")
-        }
-    }
-    
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var placeField: PaddedTextField!
@@ -82,17 +72,7 @@ class AddFutureReserveViewController: UIViewController {
         }
     }
     
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    
-    func addShadowToCardView() {
-        cardView.layer.shadowColor = UIColor.black.cgColor
-        cardView.layer.shadowOpacity = 0.1
-        cardView.layer.shadowOffset = .zero
-        cardView.layer.shadowRadius = 20.0
-        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
-        cardView.layer.shouldRasterize = true
-        cardView.layer.rasterizationScale = UIScreen.main.scale
-    }
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,6 +105,29 @@ class AddFutureReserveViewController: UIViewController {
             self.blurEffect.alpha = 0.7
         } completion: { _ in
             self.placeField.becomeFirstResponder()
+        }
+    }
+    
+    func addShadowToCardView() {
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 20.0
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    //MARK: - Logic Functions -
+    
+    func saveFutureReservation(futureReservation: FutureReservation) {
+        futureReservations.append(futureReservation)
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(futureReservations)
+            UserDefaults.roadout!.set(data, forKey: "ro.roadout.Roadout.futureReservations")
+        } catch {
+            print("Unable to Encode Array of Future Reservations (\(error))")
         }
     }
     

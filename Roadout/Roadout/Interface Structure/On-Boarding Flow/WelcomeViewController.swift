@@ -46,6 +46,8 @@ class WelcomeViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+    //MARK: - View Configuration -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         signInBtn.layer.cornerRadius = 13.0

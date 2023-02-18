@@ -11,6 +11,9 @@ import WidgetKit
 class ExpressView: UIView {
     
     var selectedCard: String?
+    let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
+    var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let choosePaymentTitle = NSAttributedString(string: "Choose Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     @IBOutlet weak var backBtn: UIButton!
     
@@ -43,18 +46,16 @@ class ExpressView: UIView {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         
-        timerSeconds = Int(slider.value*60)
+        reservationTime = Int(slider.value*60)
         
-        if payBtn.titleLabel?.text == "Choose Payment Method".localized() {
-            //Handled by menu
-        } else {
+        if payBtn.titleLabel?.text != "Choose Payment Method".localized() {
             NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
             
             let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
             Task {
                 do {
                     try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(),
-                                                                                     time: timerSeconds/60,
+                                                                                     time: reservationTime/60,
                                                                                      spotID: selectedSpot.rID,
                                                                                      payment: 10,
                                                                                      userID: id)
@@ -68,13 +69,9 @@ class ExpressView: UIView {
         }
     }
     
-    @IBAction func chooseMethodTapped(_ sender: Any) {
-        //Handled by menu
-    }
+    @IBAction func chooseMethodTapped(_ sender: Any) {}
     
-    let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
-    var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let choosePaymentTitle = NSAttributedString(string: "Choose Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    //MARK: - View Configuration -
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
@@ -135,6 +132,8 @@ class ExpressView: UIView {
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Express", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
+    
+    //MARK: - Payment Configuration -
     
     func reloadMainCard() {
         payBtn.showsMenuAsPrimaryAction = false

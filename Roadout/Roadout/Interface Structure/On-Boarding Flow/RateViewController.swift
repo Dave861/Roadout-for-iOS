@@ -7,22 +7,26 @@
 
 import UIKit
 
-
-
 class RateViewController: UIViewController {
     
-    var reservingReasons = [Reason(description: "Easy to use".localized(), isSelected: false),
-                            Reason(description: "Fast & Reliable".localized(), isSelected: false),
-                            Reason(description: "Intuitive".localized(), isSelected: false),
-                            Reason(description: "Stable".localized(), isSelected: false),
-                            Reason(description: "Buggy".localized(), isSelected: false),
-                            Reason(description: "Hard to understand".localized(), isSelected: false),]
+    let submitTitle = NSAttributedString(string: "Submit".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let cancelTitle = NSAttributedString(
+        string: "Cancel".localized(),
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
+    )
     
-    var parkingReasons = [Reason(description: "Easy to find".localized(), isSelected: false),
-                          Reason(description: "Fast".localized(), isSelected: false),
-                          Reason(description: "Close to destination".localized(), isSelected: false),
-                          Reason(description: "Slow & Unreliable".localized(), isSelected: false),
-                          Reason(description: "Hard to move around".localized(), isSelected: false)]
+    var reservingReasons = [RateReason(description: "Easy to use".localized(), isSelected: false),
+                            RateReason(description: "Fast & Reliable".localized(), isSelected: false),
+                            RateReason(description: "Intuitive".localized(), isSelected: false),
+                            RateReason(description: "Stable".localized(), isSelected: false),
+                            RateReason(description: "Buggy".localized(), isSelected: false),
+                            RateReason(description: "Hard to understand".localized(), isSelected: false),]
+    
+    var parkingReasons = [RateReason(description: "Easy to find".localized(), isSelected: false),
+                          RateReason(description: "Fast".localized(), isSelected: false),
+                          RateReason(description: "Close to destination".localized(), isSelected: false),
+                          RateReason(description: "Slow & Unreliable".localized(), isSelected: false),
+                          RateReason(description: "Hard to move around".localized(), isSelected: false)]
     
     var reservingScore = -1
     var parkingScore = -1
@@ -50,13 +54,9 @@ class RateViewController: UIViewController {
     @IBOutlet weak var reservingReasonLbl: UILabel!
     @IBOutlet weak var parkingReasonLbl: UILabel!
     
-    @IBAction func reservingReasonTapped(_ sender: Any) {
-        //Handled by menu
-    }
+    @IBAction func reservingReasonTapped(_ sender: Any) {}
     
-    @IBAction func parkingReasonTapped(_ sender: Any) {
-        //Handled by menu
-    }
+    @IBAction func parkingReasonTapped(_ sender: Any) {}
     
     @IBOutlet weak var reservingGoodBtn: UXButton!
     @IBOutlet weak var reservingOkBtn: UXButton!
@@ -116,11 +116,7 @@ class RateViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    let submitTitle = NSAttributedString(string: "Submit".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let cancelTitle = NSAttributedString(
-        string: "Cancel".localized(),
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
-    )
+    //MARK: - View Configuration -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,6 +168,8 @@ class RateViewController: UIViewController {
         self.reservingReasonLbl.text = "Tell us why".localized()
         self.parkingReasonLbl.text = "Tell us why".localized()
     }
+    
+    //MARK: - Button Managers -
     
     func updateReservingCardInfo(impression: String, icon: String, sender: UIButton) {
         let generator = UIImpactFeedbackGenerator(style: .medium)

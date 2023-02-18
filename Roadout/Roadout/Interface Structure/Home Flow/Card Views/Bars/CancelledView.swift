@@ -31,7 +31,7 @@ class CancelledView: UIView {
         self.layer.cornerRadius = 17.0
         doneBtn.setAttributedTitle(buttonTitle, for: .normal)
         doneBtn.layer.cornerRadius = 14.0
-        timerSeconds = 0
+        reservationTime = 0
     }
     
     class func instanceFromNib() -> UIView {

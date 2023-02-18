@@ -14,11 +14,11 @@ class UserManager {
         
     static let sharedInstance = UserManager()
         
-    var resetCode = 0
+    var token = 0
     var dateToken = Date.yesterday
-    var userEmail = ""
     
-    //MARK: -User Data-
+    //User Data
+    var userEmail: String!
     var userName = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserName") ?? "Roadout_User_Name"
     
     enum UserDBErrors: Error {
@@ -30,6 +30,8 @@ class UserManager {
         case userDoesNotExist
         case wrongPassword
     }
+    
+    //MARK: - CRUD Functions -
     
     func updateNameAsync(_ id: String, _ name: String) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
@@ -143,6 +145,8 @@ class UserManager {
         }
     }
     
+    //MARK: - Recovery Functions -
+    
     func sendForgotDataAsync(_ email: String) async throws {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let timezone = TimeZone.current.secondsFromGMT()/3600
@@ -171,7 +175,7 @@ class UserManager {
             let formatter = DateFormatter()
             let dateFormat = "yyyy-MM-dd HH:mm:ss"
             formatter.dateFormat = dateFormat
-            self.resetCode = Int(code)!
+            self.token = Int(code)!
             self.dateToken = formatter.date(from: token) ?? Date.yesterday
         } else {
             throw UserDBErrors.unknownError
@@ -179,13 +183,12 @@ class UserManager {
     }
     
     func resetPasswordAsync(_ password: String) async throws {
-        var email = UserManager.sharedInstance.userEmail
-        if email == "" {
-            email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail") ?? "Roadout_Impossible."
+        if userEmail == nil {
+            userEmail = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail") ?? "Roadout_Impossible."
         }
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let hashedPswd = MD5(string: password)
-        let params : Parameters = ["email":email,"psw":hashedPswd]
+        let params : Parameters = ["email":userEmail,"psw":hashedPswd]
         
         let resetRequest = AF.request("https://\(roadoutServerURL)/Authentification/ResetPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
         
@@ -208,6 +211,8 @@ class UserManager {
             throw UserDBErrors.unknownError
         }
     }
+    
+    //MARK: - Utility -
     
     func MD5(string: String) -> String {
         let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())

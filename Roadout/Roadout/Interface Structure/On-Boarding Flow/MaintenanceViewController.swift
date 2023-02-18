@@ -10,6 +10,8 @@ import UIKit
 ///Further details on Maintenance Screen
 ///This screen will be shown when server is down, if that is to be done intentionally, firstly the make reservation API will go down, then all existing reservation will be honored, only then will the server be taken down
 class MaintenanceViewController: UIViewController {
+    
+    let checkTitle = NSAttributedString(string: "Check Again".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
     let icons = ["server.rack", "lifepreserver"]
     let titles = ["Server Problems".localized(), "No Worries".localized()]
@@ -26,7 +28,6 @@ class MaintenanceViewController: UIViewController {
                 self.showSorryAlert()
                 return
             }
-            //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done)
             Task {
                 do {
                     try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)
@@ -48,7 +49,7 @@ class MaintenanceViewController: UIViewController {
         }
     }
     
-    let checkTitle = NSAttributedString(string: "Check Again".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    //MARK: - View Configuration -
         
     override func viewDidLoad() {
         super.viewDidLoad()

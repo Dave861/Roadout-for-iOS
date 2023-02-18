@@ -10,8 +10,12 @@ import CoreLocation
 
 class SearchViewController: UIViewController {
     
-    var results = parkLocations
-    var smartApplied = true
+    var searchResults = parkLocations
+    var smartSearchApplied = true
+    
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    
+    //MARK: - IBOutlets -
     
     @IBOutlet weak var card: UIView!
     
@@ -27,27 +31,23 @@ class SearchViewController: UIViewController {
         self.dismiss(animated: false, completion: nil)
     }
     
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var modesButton: UIButton!
-    @IBAction func modesTapped(_ sender: Any) {
-        //Handled by menu
-    }
+    @IBAction func modesTapped(_ sender: Any) {}
     
     @IBOutlet weak var placeholderView: UIView!
     @IBOutlet weak var placeholderLbl: UILabel!
     
     func makeModesMenu() -> UIMenu {
-        let smartAction = UIAction(title: "Smart Search".localized(), image: nil, state: smartApplied ? .on : .off, handler: { (_) in
-            self.smartApplied = true
+        let smartAction = UIAction(title: "Smart Search".localized(), image: nil, state: smartSearchApplied ? .on : .off, handler: { (_) in
+            self.smartSearchApplied = true
             self.modesButton.menu = self.makeModesMenu()
             self.modesButton.showsMenuAsPrimaryAction = true
             self.tableView.reloadData()
         })
-        let classicAction = UIAction(title: "Classic Search".localized(), image: nil, state: smartApplied ? .off : .on, handler: { (_) in
-            self.smartApplied = false
+        let classicAction = UIAction(title: "Classic Search".localized(), image: nil, state: smartSearchApplied ? .off : .on, handler: { (_) in
+            self.smartSearchApplied = false
             self.modesButton.menu = self.makeModesMenu()
             self.modesButton.showsMenuAsPrimaryAction = true
             self.tableView.reloadData()
@@ -55,8 +55,8 @@ class SearchViewController: UIViewController {
         return UIMenu(title: "Search Settings".localized(), image: nil, identifier: nil, options: [], children: [classicAction, smartAction])
     }
     
-    
-    
+    //MARK: - View Configuration -
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTitle.text = "Search".localized()
@@ -97,14 +97,19 @@ class SearchViewController: UIViewController {
         placeholderLbl.text = "Wow, not so quick! You might be looking for a place that doesn't exist".localized()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.searchField.becomeFirstResponder()
+    }
+    
+    //MARK: - Search Query -
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if smartApplied {
+        if smartSearchApplied {
             guard let query = searchField.text,
               !query.trimmingCharacters(in: .whitespaces).isEmpty else {
                   self.bruteFind() { success in
                       if success {
                           self.tableView.reloadData()
-                          if results.count == 0 {
+                          if searchResults.count == 0 {
                               self.placeholderView.alpha = 1
                           } else {
                               self.placeholderView.alpha = 0
@@ -120,19 +125,18 @@ class SearchViewController: UIViewController {
                         self.findByCoordinate(coords: searchCoordinates) { success in
                             if success {
                                 self.tableView.reloadData()
-                                if self.results.count == 0 {
+                                if self.searchResults.count == 0 {
                                     self.placeholderView.alpha = 1
                                 } else {
                                     self.placeholderView.alpha = 0
                                 }
                             }
                         }
-                    case .failure(let err):
-                        print(err.localizedDescription)
+                    case .failure(_):
                         self.bruteFind() { success in
                             if success {
                                 self.tableView.reloadData()
-                                if self.results.count == 0 {
+                                if self.searchResults.count == 0 {
                                     self.placeholderView.alpha = 1
                                 } else {
                                     self.placeholderView.alpha = 0
@@ -145,7 +149,7 @@ class SearchViewController: UIViewController {
             self.bruteFind() { success in
                 if success {
                     self.tableView.reloadData()
-                    if self.results.count == 0 {
+                    if self.searchResults.count == 0 {
                         self.placeholderView.alpha = 1
                     } else {
                         self.placeholderView.alpha = 0
@@ -157,9 +161,9 @@ class SearchViewController: UIViewController {
     
     func bruteFind(completion: (_ success: Bool) -> Void) {
         if searchField.text == "" {
-            results = parkLocations
+            searchResults = parkLocations
         } else {
-            results = parkLocations.filter { $0.name.localizedCaseInsensitiveContains(searchField.text!) }
+            searchResults = parkLocations.filter { $0.name.localizedCaseInsensitiveContains(searchField.text!) }
         }
         completion(true)
     }
@@ -180,13 +184,11 @@ class SearchViewController: UIViewController {
             sortedArray.append(i["location"] as! ParkLocation)
         }
         
-        results = sortedArray
+        searchResults = sortedArray
         completion(true)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.searchField.becomeFirstResponder()
-    }
+    //MARK: - Occupancy Functions -
     
     func reloadFreeSpots() async {
         for pI in 0...parkLocations.count-1 {
@@ -240,7 +242,7 @@ class SearchViewController: UIViewController {
 }
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
+        return searchResults.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -249,8 +251,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell") as! SearchCell
-        cell.nameLbl.text = results[indexPath.row].name
-        let coord = CLLocationCoordinate2D(latitude: results[indexPath.row].latitude, longitude: results[indexPath.row].longitude)
+        cell.nameLbl.text = searchResults[indexPath.row].name
+        let coord = CLLocationCoordinate2D(latitude: searchResults[indexPath.row].latitude, longitude: searchResults[indexPath.row].longitude)
         if currentLocationCoord != nil {
             let c1 = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
             let c2 = CLLocation(latitude: currentLocationCoord!.latitude, longitude: currentLocationCoord!.longitude)
@@ -263,12 +265,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.distanceLbl.text = "- km"
         }
-        let color = UIColor(named: results[indexPath.row].accentColor)!
+        let color = UIColor(named: searchResults[indexPath.row].accentColor)!
         cell.gaugeIcon.image = cell.gaugeIcon.image?.withRenderingMode(.alwaysTemplate)
         cell.gaugeIcon.tintColor = color
         cell.distanceIcon.tintColor = color
         
-        let occupancyPercent = self.getPercentageFrom(totalSpots: results[indexPath.row].totalSpots, freeSpots: results[indexPath.row].freeSpots)
+        let occupancyPercent = self.getPercentageFrom(totalSpots: searchResults[indexPath.row].totalSpots, freeSpots: searchResults[indexPath.row].freeSpots)
         
         cell.gaugeIcon.transform = .identity
         cell.gaugeIcon.transform = cell.gaugeIcon.transform.rotated(by: self.getRotationFor(occupancyPercent))
@@ -279,10 +281,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        selectedLocation.name = results[indexPath.row].name
-        selectedLocation.latitude = results[indexPath.row].latitude
-        selectedLocation.longitude = results[indexPath.row].longitude
-        selectedLocation.accentColor = results[indexPath.row].accentColor
+        selectedLocation.name = searchResults[indexPath.row].name
+        selectedLocation.latitude = searchResults[indexPath.row].latitude
+        selectedLocation.longitude = searchResults[indexPath.row].longitude
+        selectedLocation.accentColor = searchResults[indexPath.row].accentColor
         isSelectionFlow = true
         NotificationCenter.default.post(name: .addResultCardID, object: nil)
         self.view.endEditing(true)
@@ -307,12 +309,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchPreviewVC") as! SearchPreviewController
             vc.preferredContentSize = CGSize(width: cell.frame.width, height: 250)
             
-            vc.previewLocationName = self.results[indexPath.row].name
+            vc.previewLocationName = self.searchResults[indexPath.row].name
             vc.previewLocationDistance = cell.distanceLbl.text ?? "- km"
-            vc.previewLocationFreeSpots = self.results[indexPath.row].freeSpots
-            vc.previewLocationSections = self.results[indexPath.row].sections.count
-            vc.previewLocationCoords = CLLocationCoordinate2D(latitude: self.results[indexPath.row].latitude, longitude: self.results[indexPath.row].longitude)
-            vc.previewLocationColorName = self.results[indexPath.row].accentColor
+            vc.previewLocationFreeSpots = self.searchResults[indexPath.row].freeSpots
+            vc.previewLocationSections = self.searchResults[indexPath.row].sections.count
+            vc.previewLocationCoords = CLLocationCoordinate2D(latitude: self.searchResults[indexPath.row].latitude, longitude: self.searchResults[indexPath.row].longitude)
+            vc.previewLocationColorName = self.searchResults[indexPath.row].accentColor
             vc.previewLocationColor = cell.gaugeIcon.tintColor
             
             
@@ -325,10 +327,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         let indexPath = configuration.identifier as! IndexPath
-        selectedLocation.name = results[indexPath.row].name
-        selectedLocation.latitude = results[indexPath.row].latitude
-        selectedLocation.longitude = results[indexPath.row].longitude
-        selectedLocation.accentColor = results[indexPath.row].accentColor
+        selectedLocation.name = searchResults[indexPath.row].name
+        selectedLocation.latitude = searchResults[indexPath.row].latitude
+        selectedLocation.longitude = searchResults[indexPath.row].longitude
+        selectedLocation.accentColor = searchResults[indexPath.row].accentColor
         isSelectionFlow = true
         NotificationCenter.default.post(name: .addResultCardID, object: nil)
         self.dismiss(animated: false) {

@@ -21,6 +21,8 @@ class EntityManager {
         case unknownError
     }
     
+    //MARK: - Get & Set Functions -
+    
     func getParkLocationsAsync(_ city: String) async throws -> String {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id": city]
@@ -124,7 +126,7 @@ class EntityManager {
             dbParkSpots.append(
                 ParkSpot(state: Int(json["state"] as! String)!,
                          number: Int(json["number"] as! String)!,
-                         rHash: "u82f0ftyjk0w-f120-h20-p0", //u82f0bc6m303-f80-h70-p0
+                         rHash: "u82f0ftyjk0w-f120-h20-p0", //get from db
                          rID: json["id"] as! String))
         }
         dbParkSpots.sort { $0.number < $1.number }
@@ -134,6 +136,8 @@ class EntityManager {
         let stringRecordedArr = strArray.components(separatedBy: ",")
         return stringRecordedArr.map { Int($0)!}
     }
+    
+    //MARK: - Update Functions -
     
     func getFreeParkSpotsAsync(_ location: String) async throws -> String {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
@@ -165,6 +169,8 @@ class EntityManager {
             throw EntityErrors.unknownError
         }
     }
+    
+    //MARK: - Utilities -
     
     func decodeSpotID(_ spotID: String) -> [String] {
         var details = [String]()

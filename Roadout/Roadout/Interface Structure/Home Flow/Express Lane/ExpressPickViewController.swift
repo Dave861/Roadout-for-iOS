@@ -11,7 +11,6 @@ import CoreLocation
 class ExpressChooseViewController: UIViewController {
     
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    
     let editLocationTitle = NSAttributedString(string: " Edit Locations".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "DevBrown")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     @IBOutlet weak var titleLbl: UILabel!
@@ -40,6 +39,8 @@ class ExpressChooseViewController: UIViewController {
         let vc = storyboard?.instantiateViewController(withIdentifier: "AddExpressVC") as! AddExpressViewController
         self.present(vc, animated: true)
     }
+    
+    //MARK: - View Configuration -
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
@@ -81,6 +82,8 @@ class ExpressChooseViewController: UIViewController {
              UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip3")
          }
     }
+    
+    //MARK: - Data Functions -
     
     @objc func getFavouriteLocations() {
         favouriteLocationIDs = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.Roadout.favouriteLocationIDs") ?? [String]()
@@ -217,7 +220,7 @@ extension ExpressChooseViewController: UITableViewDelegate, UITableViewDataSourc
         selectedParkLocationIndex = findFavouriteIndexInParkLocations(favouriteLocations[indexPath.row].rID)
         Task {
             do {
-                try await FunctionsManager.sharedInstance.reserveSpotInLocationAsync(location: favouriteLocations[indexPath.row])
+                try await FunctionsManager.sharedInstance.findSpotInLocationAsync(location: favouriteLocations[indexPath.row])
                 DispatchQueue.main.async {
                     indicatorView.dismiss()
                     NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
@@ -278,7 +281,7 @@ extension ExpressChooseViewController: UITableViewDelegate, UITableViewDataSourc
         selectedParkLocationIndex = findFavouriteIndexInParkLocations(favouriteLocations[indexPath.row].rID)
         Task {
             do {
-                try await FunctionsManager.sharedInstance.reserveSpotInLocationAsync(location: favouriteLocations[indexPath.row])
+                try await FunctionsManager.sharedInstance.findSpotInLocationAsync(location: favouriteLocations[indexPath.row])
                 DispatchQueue.main.async {
                     indicatorView.dismiss()
                     NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)

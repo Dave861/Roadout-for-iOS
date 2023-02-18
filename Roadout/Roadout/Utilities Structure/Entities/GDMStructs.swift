@@ -9,28 +9,27 @@ import Foundation
 
 struct GDMResponse: Decodable {
 
-    public let destinationAddresses : [String]!
-    public let originAddresses : [String]!
-    public let rows : [GDMRow]!
-    public let status : String!
-
+    let destinationAddresses: [String]!
+    let originAddresses: [String]!
+    let rows: [GDMRow]!
+    let status: String!
 }
+
 struct GDMElement: Decodable {
 
-    public let distance : GDMVariable!
-    public let duration : GDMVariable!
-    public let duration_in_traffic : GDMVariable!
-    public let status : String!
-
+    let distance: GDMVariable!
+    let duration: GDMVariable!
+    let duration_in_traffic: GDMVariable!
+    let status: String!
 }
+
 struct GDMRow: Decodable {
 
-    public let elements : [GDMElement]!
-
+    let elements: [GDMElement]!
 }
+
 struct GDMVariable: Decodable {
 
-    public let text : String!
-    public let value : Int!
-
+    let text: String!
+    let value: Int!
 }

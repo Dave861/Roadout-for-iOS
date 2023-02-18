@@ -130,12 +130,12 @@ protocol SlideButtonDelegate {
             self.buttonLabel.textColor = self.buttonTextColor
             self.addSubview(self.buttonLabel)
             
-            self.dragPointButtonLabel               = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
+            self.dragPointButtonLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
             self.dragPointButtonLabel.textAlignment = .center
-            self.dragPointButtonLabel.text          = buttonText
-            self.dragPointButtonLabel.textColor     = UIColor.white
-            self.dragPointButtonLabel.font          = self.buttonFont
-            self.dragPointButtonLabel.textColor     = self.dragPointTextColor
+            self.dragPointButtonLabel.text = buttonText
+            self.dragPointButtonLabel.textColor = UIColor.white
+            self.dragPointButtonLabel.font = self.buttonFont
+            self.dragPointButtonLabel.textColor = self.dragPointTextColor
             self.dragPoint.addSubview(self.dragPointButtonLabel)
         }
         self.bringSubviewToFront(self.dragPoint)
@@ -162,18 +162,17 @@ protocol SlideButtonDelegate {
         if sender.state == .ended{
             
             let velocityX = sender.velocity(in: self).x * 0.2
-            var finalX    = translatedPoint.x + velocityX
-            if finalX < 0{
+            var finalX = translatedPoint.x + velocityX
+            if finalX < 0 {
                 finalX = 0
-            }else if finalX + self.dragPointWidth  >  (self.frame.size.width - 60){
+            } else if finalX + self.dragPointWidth > (self.frame.size.width - 60) {
                 unlocked = true
                 self.unlock()
             }
             
             let animationDuration: Double = abs(Double(velocityX) * 0.0002) + 0.2
-            UIView.transition(with: self, duration: animationDuration, options: UIView.AnimationOptions.curveEaseOut, animations: {
-                }, completion: { (Status) in
-                    if Status{
+            UIView.transition(with: self, duration: animationDuration, options: UIView.AnimationOptions.curveEaseOut, animations: {}, completion: { (status) in
+                    if status {
                         self.animationFinished()
                     }
             })

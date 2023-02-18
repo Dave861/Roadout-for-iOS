@@ -50,6 +50,8 @@ class DirectionsAppViewController: UIViewController {
     @IBOutlet weak var circle2: UIImageView!
     @IBOutlet weak var circle3: UIImageView!
     
+    //MARK: - View Configuration -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         card1.layer.cornerRadius = 16.0

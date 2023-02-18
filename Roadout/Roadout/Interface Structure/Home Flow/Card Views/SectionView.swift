@@ -16,6 +16,8 @@ class SectionView: UIView {
         return UIMenu(title: "Choose a section".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(sections: parkLocations[selectedParkLocationIndex].sections))
     }
     
+    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    
     @IBOutlet weak var sectionImage: UIImageView!
     
     @IBOutlet weak var sectionBtn: UIButton!
@@ -40,12 +42,9 @@ class SectionView: UIView {
     }
     @IBOutlet weak var backBtn: UIButton!
     
-    @IBAction func sectionTapped(_ sender: Any) {
-        //Handled by menu
-    }
+    @IBAction func sectionTapped(_ sender: Any) {}
     
-    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    
+    //MARK: - View Confiuration -
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
@@ -81,6 +80,28 @@ class SectionView: UIView {
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[1] as! UIView
     }
+    
+    func makeMenuActions(sections: [ParkSection]) -> [UIAction] {
+        var menuItems = [UIAction]()
+        
+        for index in 0...sections.count-1 {
+            let action = UIAction(title: "Section ".localized() + "\(sections[index].name)", image: nil, handler: { (_) in
+                self.letter = sections[index].name
+                self.letterTitle = NSAttributedString(string: self.letter,
+                                                 attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+                self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
+                selectedSectionIndex = index
+                self.showSelectedIndicator(letter: self.letter)
+                self.removePointsFromImage()
+                self.addPointsToImage(sections: sections)
+            })
+            menuItems.append(action)
+        }
+        
+        return menuItems
+    }
+    
+    //MARK: - Image Configuration -
     
     func addPointsToImage(sections: [ParkSection]) {
         let sectionWidth = UIScreen.main.bounds.width - 46
@@ -135,12 +156,13 @@ class SectionView: UIView {
         }
     }
     
+    //MARK: - Indicators -
+    
     func showSelectedIndicator(letter: String) {
         let image = UIImage.init(systemName: "\(letter.lowercased()).circle.fill")!.withTintColor(UIColor(named: "Icons")!, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Section ".localized() + "\(letter)", message: "Selected".localized(), preset: .custom(image))
         indicatorView.present(duration: 0.7, haptic: .none, completion: nil)
     }
-    
         
     func showLoadingAlert() {
         let alert = UIAlertController(title: "Loading...".localized(), message: "The spots are still downloading, this should not happen normally and might be caused by poor network connection. Please wait and try again.".localized(), preferredStyle: .alert)
@@ -150,23 +172,4 @@ class SectionView: UIView {
         self.parentViewController().present(alert, animated: true, completion: nil)
     }
     
-    func makeMenuActions(sections: [ParkSection]) -> [UIAction] {
-        var menuItems = [UIAction]()
-        
-        for index in 0...sections.count-1 {
-            let action = UIAction(title: "Section ".localized() + "\(sections[index].name)", image: nil, handler: { (_) in
-                self.letter = sections[index].name
-                self.letterTitle = NSAttributedString(string: self.letter,
-                                                 attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
-                self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
-                selectedSectionIndex = index
-                self.showSelectedIndicator(letter: self.letter)
-                self.removePointsFromImage()
-                self.addPointsToImage(sections: sections)
-            })
-            menuItems.append(action)
-        }
-        
-        return menuItems
-    }
 }

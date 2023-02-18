@@ -28,7 +28,29 @@ class FunctionsManager {
     
     var sortedLocations = [ParkLocation]()
     
-    func checkSectionAsync(sectionId: String) async throws -> Bool {
+    func sortLocations(currentLocation: CLLocationCoordinate2D) {
+        let current = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+        var dictArray = [[String: Any]]()
+        for i in 0 ..< parkLocations.count {
+            let loc = CLLocation(latitude: parkLocations[i].latitude, longitude: parkLocations[i].longitude)
+            let distanceInMeters = current.distance(from: loc)
+            let a:[String: Any] = ["distance": distanceInMeters, "location": parkLocations[i]]
+            dictArray.append(a)
+        }
+        dictArray = dictArray.sorted(by: {($0["distance"] as! CLLocationDistance) < ($1["distance"] as! CLLocationDistance)})
+        
+        var sortedArray = [ParkLocation]()
+       
+        for i in dictArray {
+            sortedArray.append(i["location"] as! ParkLocation)
+        }
+        
+        sortedLocations = sortedArray
+    }
+    
+    //MARK: - Finding Functions -
+    
+    func findSpotInSectionAsync(sectionId: String) async throws -> Bool {
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let params : Parameters = ["id": sectionId]
         
@@ -63,27 +85,7 @@ class FunctionsManager {
         }
     }
 
-    func sortLocations(currentLocation: CLLocationCoordinate2D) {
-        let current = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
-        var dictArray = [[String: Any]]()
-        for i in 0 ..< parkLocations.count {
-            let loc = CLLocation(latitude: parkLocations[i].latitude, longitude: parkLocations[i].longitude)
-            let distanceInMeters = current.distance(from: loc)
-            let a:[String: Any] = ["distance": distanceInMeters, "location": parkLocations[i]]
-            dictArray.append(a)
-        }
-        dictArray = dictArray.sorted(by: {($0["distance"] as! CLLocationDistance) < ($1["distance"] as! CLLocationDistance)})
-        
-        var sortedArray = [ParkLocation]()
-       
-        for i in dictArray {
-            sortedArray.append(i["location"] as! ParkLocation)
-        }
-        
-        sortedLocations = sortedArray
-    }
-
-    func reserveSpotInLocationAsync(location: ParkLocation) async throws {
+    func findSpotInLocationAsync(location: ParkLocation) async throws {
         foundLocation = location
         foundSpot = nil
         
@@ -92,14 +94,13 @@ class FunctionsManager {
                 break
             } else {
                 do {
-                    let didFindSpot = try await self.checkSectionAsync(sectionId: parkSection.rID)
+                    let didFindSpot = try await self.findSpotInSectionAsync(sectionId: parkSection.rID)
                     if didFindSpot {
                         foundSection = parkSection
                         selectedSpot.rID = foundSpot.rID
                         selectedSpot.rHash = foundSpot.rHash
                         selectedLocation.latitude = foundLocation.latitude
                         selectedLocation.longitude = foundLocation.longitude
-                        /*here*/
                         selectedLocation.accentColor = location.accentColor
                     }
                 } catch let err {
@@ -124,19 +125,18 @@ class FunctionsManager {
                     break
                 } else {
                     do {
-                        let didFindSpot = try await self.checkSectionAsync(sectionId: parkSection.rID)
+                        let didFindSpot = try await self.findSpotInSectionAsync(sectionId: parkSection.rID)
                         if didFindSpot {
                             foundSection = parkSection
                             selectedSpot.rID = foundSpot.rID
                             selectedSpot.rHash = foundSpot.rHash
                             selectedLocation.latitude = foundLocation.latitude
                             selectedLocation.longitude = foundLocation.longitude
-                            /*here*/
                             selectedLocation.accentColor = parkLocation.accentColor
                             return true
                         }
                     } catch let err {
-                        print(err) //should throw errors in production
+                        print(err) //!IMPORTANT should throw errors in production
                     }
                 }
             }

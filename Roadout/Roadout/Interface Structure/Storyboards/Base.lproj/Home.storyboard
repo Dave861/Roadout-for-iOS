@@ -1655,15 +1655,25 @@ Made in Cluj :)</string>
                                             <action selector="tryAgainTapped:" destination="vy1-m5-4oI" eventType="touchUpInside" id="PPf-0Y-C7C"/>
                                         </connections>
                                     </button>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yag-Ac-Vt1">
+                                        <rect key="frame" x="0.0" y="49" width="373" height="3"/>
+                                        <color key="tintColor" name="Icons"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="3" id="R7N-Yx-ZTO"/>
+                                        </constraints>
+                                    </progressView>
                                 </subviews>
                                 <color key="backgroundColor" name="FloatingBG"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="iC6-DG-vPn" secondAttribute="bottom" constant="4" id="134-E3-E6L"/>
                                     <constraint firstItem="Dp6-oO-asO" firstAttribute="leading" secondItem="CoV-8M-q4W" secondAttribute="leading" constant="8" id="3O2-0J-jgc"/>
+                                    <constraint firstAttribute="trailing" secondItem="yag-Ac-Vt1" secondAttribute="trailing" id="4Ry-Kt-FtU"/>
                                     <constraint firstAttribute="height" constant="52" id="60X-FH-E7q"/>
                                     <constraint firstItem="iC6-DG-vPn" firstAttribute="top" secondItem="CoV-8M-q4W" secondAttribute="top" constant="4" id="6Ew-HZ-XN4"/>
+                                    <constraint firstAttribute="bottom" secondItem="yag-Ac-Vt1" secondAttribute="bottom" id="EJK-3E-P4i"/>
                                     <constraint firstAttribute="trailing" secondItem="RuT-pa-Nn1" secondAttribute="trailing" constant="8" id="KaL-5t-mEl"/>
                                     <constraint firstItem="Dp6-oO-asO" firstAttribute="centerY" secondItem="CoV-8M-q4W" secondAttribute="centerY" id="LNv-rx-Oib"/>
+                                    <constraint firstItem="yag-Ac-Vt1" firstAttribute="leading" secondItem="CoV-8M-q4W" secondAttribute="leading" id="Mkb-hh-vhV"/>
                                     <constraint firstItem="RuT-pa-Nn1" firstAttribute="centerY" secondItem="CoV-8M-q4W" secondAttribute="centerY" id="al6-J0-NCW"/>
                                     <constraint firstItem="d5P-uH-zHK" firstAttribute="leading" secondItem="Dp6-oO-asO" secondAttribute="trailing" constant="7.5" id="mzA-Zg-70Q"/>
                                     <constraint firstAttribute="trailing" secondItem="iC6-DG-vPn" secondAttribute="trailing" constant="4" id="o43-ed-8wZ"/>
@@ -1681,14 +1691,15 @@ Made in Cluj :)</string>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="RuT-pa-Nn1" id="LaK-ou-bob"/>
-                        <outlet property="cardView" destination="CoV-8M-q4W" id="0v1-5q-jGh"/>
+                        <outlet property="cardView" destination="CoV-8M-q4W" id="7T0-q6-fqN"/>
+                        <outlet property="progressView" destination="yag-Ac-Vt1" id="x80-4P-6Af"/>
                         <outlet property="titleLbl" destination="d5P-uH-zHK" id="IV6-KB-xQ1"/>
                         <outlet property="tryAgainBtn" destination="iC6-DG-vPn" id="18E-MR-Ztw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mhh-Df-f3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-686" y="94"/>
+            <point key="canvasLocation" x="-686.25954198473278" y="93.661971830985919"/>
         </scene>
         <!--Select Pay View Controller-->
         <scene sceneID="Ig4-zN-G11">
