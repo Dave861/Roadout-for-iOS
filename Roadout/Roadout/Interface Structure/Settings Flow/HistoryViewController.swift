@@ -102,7 +102,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
            //We only have older
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryHeaderCell") as! HeaderCell
-                cell.titleLbl.text = "Older"
+                cell.titleLbl.text = "Older".localized()
                 return cell
             } else {
                 let currentIndex = indexPath.row-1
@@ -111,7 +111,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
                 let spotNumber = EntityManager.sharedInstance.decodeSpotID(olderHistoryItems[currentIndex].parkingSpotID)[2]
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell") as! HistoryCell
-                cell.placeLbl.text = locationName + " - Section " + sectionLetter + " - Spot " + spotNumber
+                cell.placeLbl.text = locationName + " - " + "Section ".localized() + sectionLetter + " - " + "Spot ".localized() + spotNumber
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: sectionLetter))
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: spotNumber))
                 cell.placeLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.placeLbl.range(string: sectionLetter))
@@ -123,10 +123,10 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         } else {
-            //We have all three
+            //We have both
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryHeaderCell") as! HeaderCell
-                cell.titleLbl.text = "This Week"
+                cell.titleLbl.text = "This Week".localized()
                 return cell
             } else if indexPath.row <= weekHistoryItems.count {
                 let currentIndex = indexPath.row-1
@@ -135,7 +135,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
                 let spotNumber = EntityManager.sharedInstance.decodeSpotID(weekHistoryItems[currentIndex].parkingSpotID)[2]
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell") as! HistoryCell
-                cell.placeLbl.text = locationName + " - Section " + sectionLetter + " - Spot " + spotNumber
+                cell.placeLbl.text = locationName + " - " + "Section ".localized() + sectionLetter + " - " + "Spot ".localized() + spotNumber
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: sectionLetter))
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: spotNumber))
                 cell.placeLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.placeLbl.range(string: sectionLetter))
@@ -148,7 +148,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
                 
             } else if indexPath.row == weekHistoryItems.count+1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryHeaderCell") as! HeaderCell
-                cell.titleLbl.text = "Older"
+                cell.titleLbl.text = "Older".localized()
                 return cell
             } else {
                 let currentIndex = indexPath.row-weekHistoryItems.count-2
@@ -157,7 +157,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
                 let spotNumber = EntityManager.sharedInstance.decodeSpotID(olderHistoryItems[currentIndex].parkingSpotID)[2]
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell") as! HistoryCell
-                cell.placeLbl.text = locationName + " - Section " + sectionLetter + " - Spot " + spotNumber
+                cell.placeLbl.text = locationName + " - " + "Section ".localized() + sectionLetter + " - " + "Spot ".localized() + spotNumber
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: sectionLetter))
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: spotNumber))
                 cell.placeLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.placeLbl.range(string: sectionLetter))

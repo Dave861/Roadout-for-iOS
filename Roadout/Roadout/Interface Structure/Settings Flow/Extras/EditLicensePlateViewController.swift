@@ -9,7 +9,7 @@ import UIKit
 
 class EditLicensePlateViewController: UIViewController {
     
-    let changeTitle = NSAttributedString(string: "Change".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let changeTitle = NSAttributedString(string: "Save".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let removeTitle = NSAttributedString(string: "Remove".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
 
@@ -124,7 +124,7 @@ extension EditLicensePlateViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField.text == "" && self.changeBtn.titleLabel?.text != "Remove".localized() {
             self.changeBtn.setAttributedTitle(self.removeTitle, for: .normal)
-        } else if textField.text != "" && self.changeBtn.titleLabel?.text != "Change".localized() {
+        } else if textField.text != "" && self.changeBtn.titleLabel?.text != "Save".localized() {
             self.changeBtn.setAttributedTitle(self.changeTitle, for: .normal)
         }
     }

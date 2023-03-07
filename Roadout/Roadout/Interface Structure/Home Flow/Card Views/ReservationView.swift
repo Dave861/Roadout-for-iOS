@@ -35,24 +35,8 @@ class ReservationView: UIView {
     @IBOutlet weak var worldView: UIView!
     @IBOutlet weak var helpView: UIView!
     
-    @IBOutlet weak var unlockLbl: UILabel!
-    @IBOutlet weak var directionsLbl: UILabel!
-    @IBOutlet weak var delayLbl: UILabel!
-    @IBOutlet weak var cancelLbl: UILabel!
-    @IBOutlet weak var arLbl: UILabel!
-    @IBOutlet weak var worldLbl: UILabel!
-    @IBOutlet weak var helpLbl: UILabel!
-    
     
     func styleActionButtons() {
-        unlockBtn.setTitle("", for: .normal)
-        directionsBtn.setTitle("", for: .normal)
-        delayBtn.setTitle("", for: .normal)
-        arBtn.setTitle("", for: .normal)
-        helpBtn.setTitle("", for: .normal)
-        cancelBtn.setTitle("", for: .normal)
-        worldBtn.setTitle("", for: .normal)
-        
         unlockBtn.layer.cornerRadius = 9
         directionsBtn.layer.cornerRadius = 9
         delayBtn.layer.cornerRadius = 9
@@ -61,13 +45,13 @@ class ReservationView: UIView {
         helpBtn.layer.cornerRadius = 9
         worldBtn.layer.cornerRadius = 9
         
-        unlockLbl.text = "Unlock".localized()
-        directionsLbl.text = "Navigate".localized()
-        delayLbl.text = "Delay".localized()
-        arLbl.text = "Open in AR".localized()
-        cancelLbl.text = "Cancel".localized()
-        worldLbl.text = "World View".localized()
-        helpLbl.text = "Help & Support".localized()
+        unlockBtn.setAttributedTitle(NSAttributedString(string: " Unlock".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        directionsBtn.setAttributedTitle(NSAttributedString(string: " Navigate".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        delayBtn.setAttributedTitle(NSAttributedString(string: " Delay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        cancelBtn.setAttributedTitle(NSAttributedString(string: " Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        arBtn.setAttributedTitle(NSAttributedString(string: " Open in AR".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        helpBtn.setAttributedTitle(NSAttributedString(string: " Help & Support".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        worldBtn.setAttributedTitle(NSAttributedString(string: " World View".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
     }
     
     //MARK: - Reservation Actions -
@@ -104,7 +88,7 @@ class ReservationView: UIView {
                         }
                         NotificationCenter.default.post(name: .addDelayCardID, object: nil)
                 } else {
-                    let alert = UIAlertController(title: "Delay Restriction".localized(), message: "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured.".localized(), preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Delay Restricted".localized(), message: "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured.".localized(), preferredStyle: .alert)
                     alert.view.tintColor = UIColor(named: "Kinda Red")
                     let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(cancelAction)
@@ -119,7 +103,7 @@ class ReservationView: UIView {
     @IBAction func cancelTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        let alert = UIAlertController(title: "Cancel".localized(), message: "Are you sure you want to cancel your reservation? You will only get half the money back and only if the reservation is less than half consumed.".localized(), preferredStyle: .alert)
+        let alert = UIAlertController(title: "Cancel Reservation".localized(), message: "Are you sure you want to cancel your reservation? You will only get half the money back and only if the reservation is less than half consumed.".localized(), preferredStyle: .alert)
         alert.view.tintColor = UIColor(named: "Redish")
         let cancelAction = UIAlertAction(title: "No".localized(), style: .cancel, handler: nil)
         let proceedAction = UIAlertAction(title: "Yes".localized(), style: .destructive) { action in
@@ -240,7 +224,7 @@ class ReservationView: UIView {
     func manageServerSideErrors(error: Error) {
         switch error {
             case ReservationManager.ReservationErrors.spotAlreadyTaken:
-                let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Sorry, the 60 seconds have passed and it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
+                let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Something went wrong, it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")

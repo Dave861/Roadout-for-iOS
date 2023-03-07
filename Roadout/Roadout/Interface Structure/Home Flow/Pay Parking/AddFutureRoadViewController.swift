@@ -1,5 +1,5 @@
 //
-//  AddFutureReserveViewController.swift
+//  AddFutureRoadViewController.swift
 //  Roadout
 //
 //  Created by David Retegan on 16.01.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddFutureReserveViewController: UIViewController {
+class AddFutureRoadViewController: UIViewController {
     
     let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
@@ -50,7 +50,7 @@ class AddFutureReserveViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         } else {
-            let alert = UIAlertController(title: "Error".localized(), message: "There is already an active future reservation for this place, please pick another place".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error".localized(), message: "There is already an active future road for this location, please pick another location".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Icons")
             let okAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                 self.dismiss(animated: true, completion: nil)

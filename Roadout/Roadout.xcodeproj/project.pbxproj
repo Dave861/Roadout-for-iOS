@@ -21,6 +21,7 @@
 		9A0C7776272E831E00ECBFB2 /* SpotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0C7774272E831E00ECBFB2 /* SpotCell.xib */; };
 		9A0D58D627770CC80093B3D3 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
 		9A0D58D9277721DA0093B3D3 /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */; };
+		9A0F3C7829A4016200B55F92 /* SwiftSVG in Frameworks */ = {isa = PBXBuildFile; productRef = 9A0F3C7729A4016200B55F92 /* SwiftSVG */; };
 		9A122993299A36A300C82CBD /* CarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A122992299A36A300C82CBD /* CarViewController.swift */; };
 		9A14B914273142A400967417 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B913273142A400967417 /* ContentSizedTableView.swift */; };
 		9A14B916273142C100967417 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B915273142C100967417 /* Extensions.swift */; };
@@ -29,6 +30,7 @@
 		9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91B2731431B00967417 /* PaddedTextField.swift */; };
 		9A14B91E2731436300967417 /* UserPrefsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91D2731436300967417 /* UserPrefsUtils.swift */; };
 		9A1ABE972726A5EF00D4AA4B /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1ABE962726A5EF00D4AA4B /* WelcomeTableViewCell.swift */; };
+		9A1E42C629AA18BF004CDE45 /* ParkingToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1E42C529AA18BF004CDE45 /* ParkingToolsView.swift */; };
 		9A24ADA927DCF20C00BE8E1A /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A24ADAB27DCF20C00BE8E1A /* Home.storyboard */; };
 		9A24ADAE27DCF2CF00BE8E1A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A24ADB027DCF2CF00BE8E1A /* Settings.storyboard */; };
 		9A24ADB327DCF2EB00BE8E1A /* Cards.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A24ADB527DCF2EB00BE8E1A /* Cards.xib */; };
@@ -39,6 +41,7 @@
 		9A2BF911299E1FBE003B2ADB /* RoadoutStatusIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BF910299E1FBE003B2ADB /* RoadoutStatusIntent.swift */; };
 		9A2BF913299E1FCB003B2ADB /* RoadoutDirectionsIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BF912299E1FCB003B2ADB /* RoadoutDirectionsIntent.swift */; };
 		9A2BF915299E1FEB003B2ADB /* RoadoutDelayIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BF914299E1FEB003B2ADB /* RoadoutDelayIntent.swift */; };
+		9A2D09C229B3799000F98724 /* UXLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D09C129B3799000F98724 /* UXLabel.swift */; };
 		9A2D4BD32757883E0007EE2E /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D4BD22757883E0007EE2E /* FindView.swift */; };
 		9A300CE42789970C0038A085 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A300CE32789970C0038A085 /* DeleteAccountViewController.swift */; };
 		9A30F0EF2986C4A800A05F7C /* UXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30F0EE2986C4A800A05F7C /* UXButton.swift */; };
@@ -110,9 +113,9 @@
 		9A799324277A0E460088E3FD /* ParkSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799323277A0E460088E3FD /* ParkSpot.swift */; };
 		9A799329277A0E880088E3FD /* ParkSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799321277A0E410088E3FD /* ParkSection.swift */; };
 		9A79932A277A0E880088E3FD /* ParkSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A799323277A0E460088E3FD /* ParkSpot.swift */; };
-		9A7B65742975BE20002B3FF3 /* FutureReserveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B65732975BE20002B3FF3 /* FutureReserveViewController.swift */; };
-		9A7B65762975BE27002B3FF3 /* AddFutureReserveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B65752975BE27002B3FF3 /* AddFutureReserveViewController.swift */; };
-		9A7B65782975BE43002B3FF3 /* FutureReserveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B65772975BE43002B3FF3 /* FutureReserveCell.swift */; };
+		9A7B65742975BE20002B3FF3 /* FutureRoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B65732975BE20002B3FF3 /* FutureRoadViewController.swift */; };
+		9A7B65762975BE27002B3FF3 /* AddFutureRoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B65752975BE27002B3FF3 /* AddFutureRoadViewController.swift */; };
+		9A7B65782975BE43002B3FF3 /* FutureRoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B65772975BE43002B3FF3 /* FutureRoadCell.swift */; };
 		9A7B657A2975C23A002B3FF3 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B65792975C23A002B3FF3 /* Other.swift */; };
 		9A7B657B2975C2DF002B3FF3 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B65792975C23A002B3FF3 /* Other.swift */; };
 		9A7B657C2975C2E0002B3FF3 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7B65792975C23A002B3FF3 /* Other.swift */; };
@@ -197,6 +200,7 @@
 		9ADB0A122909837400F548D9 /* SPIndicatorIconAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB0A042909837400F548D9 /* SPIndicatorIconAnimatable.swift */; };
 		9ADB0A132909837400F548D9 /* SPIndicatorHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB0A062909837400F548D9 /* SPIndicatorHaptic.swift */; };
 		9ADB0A142909837400F548D9 /* SPIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB0A072909837400F548D9 /* SPIndicatorView.swift */; };
+		9ADE4EA729A7B36F006ED7D1 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE4EA629A7B36F006ED7D1 /* AccountViewController.swift */; };
 		9ADEB748284FD3AD00AB6F23 /* SearchPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEB747284FD3AD00AB6F23 /* SearchPreviewController.swift */; };
 		9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFF6272BBFD70088A3ED /* HistoryViewController.swift */; };
 		9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */; };
@@ -310,6 +314,7 @@
 		9A150824272BFAD8008C083B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9A15082F272BFAE1008C083B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9A1ABE962726A5EF00D4AA4B /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
+		9A1E42C529AA18BF004CDE45 /* ParkingToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingToolsView.swift; sourceTree = "<group>"; };
 		9A24ADA827DCF1C500BE8E1A /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Main.strings; sourceTree = "<group>"; };
 		9A24ADAA27DCF20C00BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		9A24ADAD27DCF21400BE8E1A /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Home.strings; sourceTree = "<group>"; };
@@ -327,6 +332,7 @@
 		9A2BF910299E1FBE003B2ADB /* RoadoutStatusIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutStatusIntent.swift; sourceTree = "<group>"; };
 		9A2BF912299E1FCB003B2ADB /* RoadoutDirectionsIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutDirectionsIntent.swift; sourceTree = "<group>"; };
 		9A2BF914299E1FEB003B2ADB /* RoadoutDelayIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutDelayIntent.swift; sourceTree = "<group>"; };
+		9A2D09C129B3799000F98724 /* UXLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXLabel.swift; sourceTree = "<group>"; };
 		9A2D4BD22757883E0007EE2E /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		9A300CE32789970C0038A085 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		9A30F0EE2986C4A800A05F7C /* UXButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXButton.swift; sourceTree = "<group>"; };
@@ -386,9 +392,9 @@
 		9A76DC652886E93E000990F9 /* ExpressPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressPickViewController.swift; sourceTree = "<group>"; };
 		9A799321277A0E410088E3FD /* ParkSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSection.swift; sourceTree = "<group>"; };
 		9A799323277A0E460088E3FD /* ParkSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkSpot.swift; sourceTree = "<group>"; };
-		9A7B65732975BE20002B3FF3 /* FutureReserveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureReserveViewController.swift; sourceTree = "<group>"; };
-		9A7B65752975BE27002B3FF3 /* AddFutureReserveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFutureReserveViewController.swift; sourceTree = "<group>"; };
-		9A7B65772975BE43002B3FF3 /* FutureReserveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureReserveCell.swift; sourceTree = "<group>"; };
+		9A7B65732975BE20002B3FF3 /* FutureRoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureRoadViewController.swift; sourceTree = "<group>"; };
+		9A7B65752975BE27002B3FF3 /* AddFutureRoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFutureRoadViewController.swift; sourceTree = "<group>"; };
+		9A7B65772975BE43002B3FF3 /* FutureRoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureRoadCell.swift; sourceTree = "<group>"; };
 		9A7B65792975C23A002B3FF3 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		9A7C1A072776035E0088B54A /* Roadout WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Roadout WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7C1A082776035E0088B54A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -468,6 +474,7 @@
 		9ADB0A042909837400F548D9 /* SPIndicatorIconAnimatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPIndicatorIconAnimatable.swift; sourceTree = "<group>"; };
 		9ADB0A062909837400F548D9 /* SPIndicatorHaptic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPIndicatorHaptic.swift; sourceTree = "<group>"; };
 		9ADB0A072909837400F548D9 /* SPIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPIndicatorView.swift; sourceTree = "<group>"; };
+		9ADE4EA629A7B36F006ED7D1 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		9ADEB747284FD3AD00AB6F23 /* SearchPreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPreviewController.swift; sourceTree = "<group>"; };
 		9AE2AFF6272BBFD70088A3ED /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		9AE2AFFA272BD2550088A3ED /* EditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
@@ -519,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */,
+				9A0F3C7829A4016200B55F92 /* SwiftSVG in Frameworks */,
 				9A765C352896747600AF250D /* GeohashKit in Frameworks */,
 				9AAE265B280947E000BBBAC3 /* GoogleMapsBase in Frameworks */,
 				9AAE265F280947E000BBBAC3 /* GoogleMapsM4B in Frameworks */,
@@ -561,6 +569,7 @@
 			children = (
 				9A49BFA9272FF40D00234A9F /* Bars */,
 				9A0C7777272E832800ECBFB2 /* Spot Component */,
+				9A1E42C529AA18BF004CDE45 /* ParkingToolsView.swift */,
 				9AEF29F1272D71A600FEE390 /* ResultView.swift */,
 				9AA65124272D7DD10057DA24 /* SectionView.swift */,
 				9A0C7770272E7B1700ECBFB2 /* SpotView.swift */,
@@ -833,6 +842,7 @@
 				9AED6DAF27E7152A00B5004F /* SlidingButton.swift */,
 				9A92CF2128312A57003F2080 /* GradientView.swift */,
 				9A30F0EE2986C4A800A05F7C /* UXButton.swift */,
+				9A2D09C129B3799000F98724 /* UXLabel.swift */,
 			);
 			path = "UI Classes";
 			sourceTree = "<group>";
@@ -953,6 +963,7 @@
 				9A089E46272A7D7D005B3FFE /* Extras */,
 				9A7332012728796A00ACE30A /* Setting Cells */,
 				9A39B0CA272847D1008E7FD0 /* Cells */,
+				9ADE4EA629A7B36F006ED7D1 /* AccountViewController.swift */,
 				9A7331FD272877F400ACE30A /* NotificationsViewController.swift */,
 				9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */,
 				9A96F874272B09F1008B58FE /* PaymentViewController.swift */,
@@ -975,7 +986,7 @@
 				9A0C7772272E830500ECBFB2 /* Card Views */,
 				9AD1DF922972B7C000ACBAAC /* Navigation Views */,
 				9AAEDEFF2886ABA30030ABBB /* Pay Parking */,
-				9AD1DF932972B7D800ACBAAC /* Future Reserve */,
+				9AD1DF932972B7D800ACBAAC /* Future Road */,
 				9A6727B82737C0050078479D /* Express Lane */,
 				9A2D4BD4275788520007EE2E /* Find Way */,
 			);
@@ -1004,14 +1015,14 @@
 			path = "Navigation Views";
 			sourceTree = "<group>";
 		};
-		9AD1DF932972B7D800ACBAAC /* Future Reserve */ = {
+		9AD1DF932972B7D800ACBAAC /* Future Road */ = {
 			isa = PBXGroup;
 			children = (
-				9A7B65732975BE20002B3FF3 /* FutureReserveViewController.swift */,
-				9A7B65752975BE27002B3FF3 /* AddFutureReserveViewController.swift */,
-				9A7B65772975BE43002B3FF3 /* FutureReserveCell.swift */,
+				9A7B65732975BE20002B3FF3 /* FutureRoadViewController.swift */,
+				9A7B65752975BE27002B3FF3 /* AddFutureRoadViewController.swift */,
+				9A7B65772975BE43002B3FF3 /* FutureRoadCell.swift */,
 			);
-			name = "Future Reserve";
+			name = "Future Road";
 			path = "Pay Parking";
 			sourceTree = "<group>";
 		};
@@ -1174,6 +1185,7 @@
 				9AAE2660280947E000BBBAC3 /* GooglePlaces */,
 				9A40C1DB281443FD00E44B23 /* IOSSecuritySuite */,
 				9A765C342896747600AF250D /* GeohashKit */,
+				9A0F3C7729A4016200B55F92 /* SwiftSVG */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1220,6 +1232,7 @@
 				9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 				9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */,
 				9A765C332896747600AF250D /* XCRemoteSwiftPackageReference "GeohashKit" */,
+				9A0F3C7629A4016200B55F92 /* XCRemoteSwiftPackageReference "SwiftSVG" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -1375,7 +1388,7 @@
 				9ACBFF56272705060011B58F /* PermissionTableViewCell.swift in Sources */,
 				9A865A0A294E080300E8CCDE /* ARManager.swift in Sources */,
 				9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */,
-				9A7B65782975BE43002B3FF3 /* FutureReserveCell.swift in Sources */,
+				9A7B65782975BE43002B3FF3 /* FutureRoadCell.swift in Sources */,
 				9A1ABE972726A5EF00D4AA4B /* WelcomeTableViewCell.swift in Sources */,
 				9A76DC662886E93E000990F9 /* ExpressPickViewController.swift in Sources */,
 				9A2D4BD32757883E0007EE2E /* FindView.swift in Sources */,
@@ -1396,6 +1409,7 @@
 				9A8DC958282FF993008F92B6 /* HelpCell.swift in Sources */,
 				9A865A0C294E099D00E8CCDE /* ARHelpCell.swift in Sources */,
 				9A50EB062846653400B136DF /* RateViewController.swift in Sources */,
+				9A2D09C229B3799000F98724 /* UXLabel.swift in Sources */,
 				9A0357172727CC61002A9ED9 /* HomeViewController.swift in Sources */,
 				9A14B91A2731430400967417 /* MonthPickerView.swift in Sources */,
 				9A3F3A242868E3B200C3FB71 /* HistoryCell.swift in Sources */,
@@ -1409,7 +1423,7 @@
 				9A92CF2228312A57003F2080 /* GradientView.swift in Sources */,
 				9A2BF90F299E1F07003B2ADB /* RoadoutAppIntents.swift in Sources */,
 				9AE2AFF7272BBFD70088A3ED /* HistoryViewController.swift in Sources */,
-				9A7B65762975BE27002B3FF3 /* AddFutureReserveViewController.swift in Sources */,
+				9A7B65762975BE27002B3FF3 /* AddFutureRoadViewController.swift in Sources */,
 				9A0C7775272E831E00ECBFB2 /* SpotCell.swift in Sources */,
 				9A46BBA2272EE764002280DD /* TimeView.swift in Sources */,
 				9A5A01832737CDD000BD7E70 /* ExpressView.swift in Sources */,
@@ -1421,7 +1435,8 @@
 				9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */,
 				9A92311628883F9400CC9D92 /* PaidParkingBar.swift in Sources */,
 				9ADB0A092909837400F548D9 /* SPIndicatorLayout.swift in Sources */,
-				9A7B65742975BE20002B3FF3 /* FutureReserveViewController.swift in Sources */,
+				9ADE4EA729A7B36F006ED7D1 /* AccountViewController.swift in Sources */,
+				9A7B65742975BE20002B3FF3 /* FutureRoadViewController.swift in Sources */,
 				9A8DC953282FF89F008F92B6 /* HelpDetailViewController.swift in Sources */,
 				9AED6DB327E723A400B5004F /* WidgetConfig.intentdefinition in Sources */,
 				9ADB0A122909837400F548D9 /* SPIndicatorIconAnimatable.swift in Sources */,
@@ -1447,6 +1462,7 @@
 				9A14B91E2731436300967417 /* UserPrefsUtils.swift in Sources */,
 				9AC926EB272697F00054E453 /* AppDelegate.swift in Sources */,
 				9A96F875272B09F1008B58FE /* PaymentViewController.swift in Sources */,
+				9A1E42C629AA18BF004CDE45 /* ParkingToolsView.swift in Sources */,
 				9A39B0D02728480E008E7FD0 /* UpCornerCell.swift in Sources */,
 				9A92311428883F8500CC9D92 /* PayParkingView.swift in Sources */,
 				9A5FC6442787685200CDB49D /* UserDefSuite.swift in Sources */,
@@ -2071,6 +2087,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9A0F3C7629A4016200B55F92 /* XCRemoteSwiftPackageReference "SwiftSVG" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mchoe/SwiftSVG";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/securing/IOSSecuritySuite.git";
@@ -2122,6 +2146,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9A0F3C7729A4016200B55F92 /* SwiftSVG */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A0F3C7629A4016200B55F92 /* XCRemoteSwiftPackageReference "SwiftSVG" */;
+			productName = SwiftSVG;
+		};
 		9A397D4A280D5262003458BD /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;

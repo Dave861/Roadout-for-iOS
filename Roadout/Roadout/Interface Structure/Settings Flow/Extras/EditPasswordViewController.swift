@@ -80,8 +80,8 @@ class EditPasswordViewController: UIViewController {
     
     @IBAction func forgotTapped(_ sender: Any) {
         let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
-        let alert = UIAlertController(title: "Forgot Password".localized(), message: "We will send an email with a verification code to: ".localized() + "\(email).", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Proceed".localized(), style: .default) { _ in
+        let alert = UIAlertController(title: "Forgot Password".localized(), message: "We will send an email with a verification code to ".localized() + "\(email).", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Continue".localized(), style: .default) { _ in
             Task {
                 do {
                     try await UserManager.sharedInstance.sendForgotDataAsync(email)
@@ -205,7 +205,7 @@ class EditPasswordViewController: UIViewController {
     func manageServerSideErrors(_ error: Error) {
         switch error {
             case UserManager.UserDBErrors.wrongPassword:
-                let alert = UIAlertController(title: "Error".localized(), message: "Old password is incorrect.".localized(), preferredStyle: .alert)
+                let alert = UIAlertController(title: "Verification Error".localized(), message: "Old password is incorrect.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: { _ in
                     self.errorCounter += 1
                     if self.errorCounter >= 2 {

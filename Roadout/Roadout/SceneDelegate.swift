@@ -51,9 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
                     } else if ReservationManager.sharedInstance.isReservationActive == 3 {
                         //not active
-                        if !isSelectionFlow {
-                            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
-                        }
+                        NotificationCenter.default.post(name: .returnToSearchBarFromReservationID, object: nil)
                     } else {
                         //error
                         NotificationCenter.default.post(name: .returnToSearchBarWithErrorID, object: nil)

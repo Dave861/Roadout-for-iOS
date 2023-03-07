@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
     var isMarkerInteractive = true
     
     //Card Views
+    let toolsView = ParkingToolsView.instanceFromNib()
     let resultView = ResultView.instanceFromNib()
     let sectionView = SectionView.instanceFromNib()
     let spotView = SpotView.instanceFromNib()
@@ -42,7 +43,8 @@ class HomeViewController: UIViewController {
     let noWifiBar = NoWifiView.instanceFromNib()
     let paidParkingBar = PaidParkingBar.instanceFromNib()
     
-    //MARK: -Express Lane-
+    //MARK: - Express Lane -
+    
     let expressView = ExpressView.instanceFromNib()
     
     @objc func addExpressView() {
@@ -86,7 +88,8 @@ class HomeViewController: UIViewController {
     }
     
     
-    //MARK: -Find Way-
+    //MARK: - Find Way -
+    
     let findView = FindView.instanceFromNib()
         
     @objc func showFindCard() {
@@ -130,7 +133,16 @@ class HomeViewController: UIViewController {
         }
     }
     
-    //MARK: -IBOutlets-
+    func showFindLocationAlert() {
+        let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Way".localized(), preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+        alert.addAction(action)
+        alert.view.tintColor = UIColor(named: "DevBrown")
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK: - IBOutlets -
+    
     @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var searchBar: UIView!
@@ -157,7 +169,11 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var searchTapArea: UIButton!
     
-    @IBOutlet weak var optionsTapArea: UIButton!
+    @IBOutlet weak var optionsBtn: UIButton!
+    
+    @IBAction func optionsTapped(_ sender: Any) {
+        self.addToolsCard()
+    }
         
     @IBOutlet weak var backgroundView: UIView!
     
@@ -198,6 +214,9 @@ class HomeViewController: UIViewController {
     
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addToolsCard), name: .addToolsCardID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeToolsCard), name: .removeToolsCardID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(addResultCard), name: .addResultCardID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeResultCard), name: .removeResultCardID, object: nil)
@@ -245,7 +264,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showPaidParkingBar), name: .showPaidParkingBarID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: .returnToSearchBarID, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBarFromReservation), name: .returnToSearchBarFromReservationID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBarWithError), name: .returnToSearchBarWithErrorID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showFindCard), name: .showFindCardID, object: nil)
@@ -284,12 +303,12 @@ class HomeViewController: UIViewController {
         }
         let hashComponents = selectedSpot.rHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
         let markerPosition = CLLocationCoordinate2D(latitude: Geohash(geohash: hashComponents[0])!.coordinates.latitude, longitude: Geohash(geohash: hashComponents[0])!.coordinates.longitude)
-        //"SpotMarker_" + parkLocations[selectedParkLocationIndex].accentColor
+        
         spotMarker = GMSMarker(position: markerPosition)
         spotMarker.title = "Selected Spot Marker"
         spotMarker.infoWindowAnchor = CGPoint()
         
-        spotMarker.icon = UIImage(named: "SpotMarker_" + selectedLocation.accentColor/*here was*/)?.withResize(scaledToSize: CGSize(width: 30.0, height: 30.0))
+        spotMarker.icon = UIImage(named: "SpotMarker_" + selectedLocation.accentColor)?.withResize(scaledToSize: CGSize(width: 30.0, height: 30.0))
         spotMarker.map = mapView
     }
     
@@ -318,102 +337,11 @@ class HomeViewController: UIViewController {
         }
     }
     
-    //MARK: -Action Menu-
-    
-    var menuItems: [UIAction] {
-        return [
-            UIAction(title: "Pay Parking".localized(), image: UIImage(systemName: "wallet.pass.fill"), handler: { (_) in
-                guard let coord = self.mapView.myLocation?.coordinate else {
-                    
-                    let alert = UIAlertController(title: "Error".localized(), message: "Roadout can't access your location to show nearby spots, please enable it in Settings.".localized(), preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
-                    alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Cash Yellow")!
-                    
-                    self.present(alert, animated: true, completion: nil)
-                    
-                    return
-                }
-                currentLocationCoord = coord
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectPayVC") as! SelectPayViewController
-                self.present(vc, animated: true, completion: nil)
-            }),
-            UIAction(title: "Future Reserve".localized(), image: UIImage(systemName: "eye.fill"), handler: { (_) in
-                guard let coord = self.mapView.myLocation?.coordinate else {
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "FutureReserveVC") as! FutureReserveViewController
-                    self.present(vc, animated: true, completion: nil)
-                    return
-                }
-                currentLocationCoord = coord
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "FutureReserveVC") as! FutureReserveViewController
-                self.present(vc, animated: true, completion: nil)
-            }),
-            UIAction(title: "Express Lane".localized(), image: UIImage(systemName: "flag.2.crossed.fill"), handler: { (_) in
-                guard let coord = self.mapView.myLocation?.coordinate else {
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpressChooseVC") as! ExpressChooseViewController
-                    self.present(vc, animated: true, completion: nil)
-                    return
-                }
-                currentLocationCoord = coord
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpressChooseVC") as! ExpressChooseViewController
-                self.present(vc, animated: true, completion: nil)
-            }),
-            UIAction(title: "Find Way".localized(), image: UIImage(systemName: "binoculars.fill"), handler: { (_) in
-                let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
-                let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
-                DispatchQueue.main.async {
-                    indicatorView.dismissByDrag = false
-                    indicatorView.present()
-                }
-                FunctionsManager.sharedInstance.foundSpot = nil
-                guard let coord = self.mapView.myLocation?.coordinate else {
-                    self.showFindLocationAlert()
-                    return
-                }
-                FunctionsManager.sharedInstance.sortLocations(currentLocation: coord)
-                Task {
-                    do {
-                        let didFindSpot = try await FunctionsManager.sharedInstance.findWay()
-                        if didFindSpot {
-                            DispatchQueue.main.async {
-                                self.showFindCard()
-                                NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
-                                indicatorView.dismiss()
-                            }
-                        } else {
-                            DispatchQueue.main.async {
-                                self.showFindLocationAlert()
-                                indicatorView.dismiss()
-                            }
-                        }
-                    } catch let err {
-                        print(err)
-                        DispatchQueue.main.async {
-                            self.showFindLocationAlert()
-                            indicatorView.dismiss()
-                        }
-                    }
-                }
-            })
-        ]
-    }
-    var moreMenu: UIMenu {
-        return UIMenu(title: "What would you like to do?".localized(), image: nil, identifier: nil, options: [], children: menuItems)
-    }
-    
-    func showFindLocationAlert() {
-        let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Way".localized(), preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        alert.view.tintColor = UIColor(named: "DevBrown")
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     //MARK: -Marked Spot Menu-
        
        var markedSpotMenuItems: [UIAction] {
              return [
-                 UIAction(title: "Remove".localized(), image: UIImage(systemName: "arrow.triangle.2.circlepath"), handler: { (_) in
+                 UIAction(title: "Remove".localized(), image: UIImage(systemName: "xmark"), handler: { (_) in
                      UIView.animate(withDuration: 0.1, animations: {
                          self.markedSpotButton.transform = CGAffineTransform.identity
                      })
@@ -489,10 +417,9 @@ class HomeViewController: UIViewController {
         
         //Search Bar
         searchTapArea.setTitle("", for: .normal)
-        optionsTapArea.setTitle("", for: .normal)
+        optionsBtn.setTitle("", for: .normal)
                 
-        optionsTapArea.menu = moreMenu
-        optionsTapArea.showsMenuAsPrimaryAction = true
+        optionsBtn.layer.cornerRadius = 14.0
         
         focusedView.layer.cornerRadius = 17.0
         
@@ -693,7 +620,6 @@ extension HomeViewController: GMSMapViewDelegate {
                     self.selectedMarker.iconView?.addSubview(imageView)
                 }
                 self.selectedMarker = marker
-                isSelectionFlow = true
                 addResultCard()
                 self.removeSpotMarker()
             }
@@ -736,6 +662,30 @@ extension HomeViewController: GMSMapViewDelegate {
 
 //MARK: -Card Functions-
 extension HomeViewController {
+    //Tools Card
+    @objc func addToolsCard() {
+        DispatchQueue.main.async {
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 155)
+            var dif = 15.0
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.toolsView.frame = CGRect(x: 10, y: self.screenSize.height-155-dif, width: self.screenSize.width - 20, height: 155)
+            self.view.addSubview(self.toolsView)
+        }
+    }
+    @objc func removeToolsCard() {
+        DispatchQueue.main.async {
+            self.updateBackgroundViewHeight(with: 52)
+            self.searchBar.alpha = 1.0
+            self.toolsView.removeFromSuperview()
+        }
+    }
     //Result Card
     @objc func addResultCard() {
         let camera = GMSCameraPosition.camera(withLatitude: selectedLocation.latitude, longitude: selectedLocation.longitude, zoom: 16.0)
@@ -1226,6 +1176,20 @@ extension HomeViewController {
         }
     }
     
+    @objc func returnToSearchBarFromReservation() {
+        DispatchQueue.main.async {
+            let lastSubview = self.view.subviews.last
+            if lastSubview == self.activeBar || lastSubview == self.reservationView || lastSubview == self.unlockView || lastSubview == self.delayView || (lastSubview == self.payView && returnToDelay == true) {
+                self.view.subviews.last!.removeFromSuperview()
+                
+                self.removeSpotMarker()
+                self.deselectSpotMarker()
+                self.updateBackgroundViewHeight(with: 52)
+                self.searchBar.alpha = 1.0
+            }
+        }
+    }
+    
     @objc func returnToSearchBarWithError() {
         DispatchQueue.main.async {
             if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
@@ -1236,8 +1200,8 @@ extension HomeViewController {
             self.updateBackgroundViewHeight(with: 52)
             self.searchBar.alpha = 1.0
             //Show alert
-            let alert = UIAlertController(title: "Retrieving Error", message: "There was an error retrieving reservation details. If you have a reservation active please quit the app and try again.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel)
+            let alert = UIAlertController(title: "Retrieving Error".localized(), message: "There was an error retrieving reservation details. If you have a reservation active please quit the app and try again.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
             alert.addAction(okAction)
             
             alert.view.tintColor = UIColor(named: "Dark Yellow")

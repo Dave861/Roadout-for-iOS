@@ -48,7 +48,11 @@ class EditNameViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.nameLbl.text = UserManager.sharedInstance.userName
                     NotificationCenter.default.post(name: .reloadUserNameID, object: nil)
-                    self.dismiss(animated: true, completion: nil)
+                    UIView.animate(withDuration: 0.1) {
+                        self.blurEffect.alpha = 0
+                    } completion: { done in
+                        self.dismiss(animated: true, completion: nil)
+                    }
                 }
             } catch let err {
                 self.manageServerResponseErrors(err)

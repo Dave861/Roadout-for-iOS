@@ -152,12 +152,12 @@ class FindView: UIView {
         chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
         
         locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name
-        spotSectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
+        spotSectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - " + "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
         
         spotSectionLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: spotSectionLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
-        spotSectionLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: spotSectionLbl.range(after: " - Spot ".localized()))
-        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
-        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: " - Spot ".localized()))
+        spotSectionLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: spotSectionLbl.range(after: " - " + "Spot ".localized()))
+        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: "Section ".localized(), before: " - " + "Spot ".localized()))
+        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: " - " + "Spot ".localized()))
     }
     
     //MARK: - Payment Configuration -
@@ -232,7 +232,7 @@ class FindView: UIView {
     func manageServerSideErrors(error: Error) {
         switch error {
         case ReservationManager.ReservationErrors.spotAlreadyTaken:
-            let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Sorry, the 60 seconds have passed and it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Something went wrong, it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
                 alert.view.tintColor = UIColor(named: "Redish")

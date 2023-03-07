@@ -23,7 +23,6 @@ class AboutViewController: UIViewController {
     
     @IBOutlet weak var websiteCard: UIView!
     @IBOutlet weak var appCard: UIView!
-    @IBOutlet weak var otherCard: UIView!
     
     @IBAction func websiteTapped(_ sender: Any) {
         if let url = URL(string: "https://www.roadout.live") {
@@ -66,7 +65,6 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         websiteCard.layer.cornerRadius = 12.0
         appCard.layer.cornerRadius = 12.0
-        otherCard.layer.cornerRadius = 12.0
         
         logoImage.layer.cornerRadius = logoImage.frame.height * 10/45
         
@@ -76,6 +74,11 @@ class AboutViewController: UIViewController {
         instagramBtn.setTitle("", for: .normal)
         twitterBtn.setTitle("", for: .normal)
         youtubeBtn.setTitle("", for: .normal)
+        
+        facebookBtn.layer.cornerRadius = facebookBtn.frame.height/2
+        instagramBtn.layer.cornerRadius = instagramBtn.frame.height/2
+        twitterBtn.layer.cornerRadius = twitterBtn.frame.height/2
+        youtubeBtn.layer.cornerRadius = youtubeBtn.frame.height/2
     }
     
     func localizeLabels() {

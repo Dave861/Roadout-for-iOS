@@ -30,7 +30,7 @@ class HelpCenterProblem {
     }
     
     private func convertSpotIDToReadable(spotID: String) -> String {
-        return "Spot " + EntityManager.sharedInstance.decodeSpotID(spotID)[2] + " - Section " + EntityManager.sharedInstance.decodeSpotID(spotID)[1] + " - " + EntityManager.sharedInstance.decodeSpotID(spotID)[0]
+        return "Spot " + EntityManager.sharedInstance.decodeSpotID(spotID)[2] + " - " + "Section " + EntityManager.sharedInstance.decodeSpotID(spotID)[1] + " - " + EntityManager.sharedInstance.decodeSpotID(spotID)[0]
     }
     
     func fillOutSpotInformation() {

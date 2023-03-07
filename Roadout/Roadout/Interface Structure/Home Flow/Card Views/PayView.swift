@@ -142,12 +142,12 @@ class PayView: UIView {
         let parkSectionName = EntityManager.sharedInstance.decodeSpotID(spotID)[1]
         let parkSpotNr = EntityManager.sharedInstance.decodeSpotID(spotID)[2]
         
-        self.detailsLbl.text = parkLocationName + " - Section ".localized() + parkSectionName + " - Spot ".localized() + parkSpotNr
+        self.detailsLbl.text = parkLocationName + " - " + "Section ".localized() + parkSectionName + " - " + "Spot ".localized() + parkSpotNr
         
-        self.detailsLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.detailsLbl.range(after: " - Section ".localized(), before: " - Spot ".localized()))
-        self.detailsLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.detailsLbl.range(after: " - Spot ".localized()))
-        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - Section ".localized(), before: " - Spot ".localized()))
-        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - Spot ".localized()))
+        self.detailsLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.detailsLbl.range(after: " - " + "Section ".localized(), before: " - " + "Spot ".localized()))
+        self.detailsLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.detailsLbl.range(after: " - " + "Spot ".localized()))
+        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - " + "Section ".localized(), before: " - " + "Spot ".localized()))
+        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - " + "Spot ".localized()))
         
         if returnToDelay {
             self.timeLbl.text = "Delay for ".localized() + "\(Int(delayTime/60))" + " minute/s".localized()
@@ -224,7 +224,7 @@ class PayView: UIView {
     func manageServerSideErrors(error: Error) {
         switch error {
         case ReservationManager.ReservationErrors.spotAlreadyTaken:
-                let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Sorry, the 60 seconds have passed and it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
+                let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Something went wrong, it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")

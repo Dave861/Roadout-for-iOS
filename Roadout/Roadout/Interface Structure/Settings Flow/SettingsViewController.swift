@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController {
     var cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Dark Yellow", "", "Icons", "GoldBrown", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
     var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "scroll.fill", "", "car.fill", "book.fill", "", "ant.fill", "newspaper.fill", "signature", "globe"]
     var cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Reservation History".localized(), "", "Roadout for Car".localized(), "User Guide".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
-    var cellVCs = ["", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "HistoryVC", "", "CarVC", "GuideVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
+    var cellVCs = ["AccountVC", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "HistoryVC", "", "CarVC", "GuideVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
     
     @IBAction func backTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -25,13 +25,20 @@ class SettingsViewController: UIViewController {
     
     //MARK: - View Configuration -
     
-    func addObs() {
+    func manageObs() {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadName), name: .reloadUserNameID, object: nil)
     }
     
+    @objc func reloadName() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        manageObs()
         let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
         Task {
             do {
@@ -45,7 +52,6 @@ class SettingsViewController: UIViewController {
         }
         tableView.delegate = self
         tableView.dataSource = self
-        addObs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,20 +60,6 @@ class SettingsViewController: UIViewController {
     
     //MARK: - Logic Functions -
 
-    @objc func reloadName() {
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-        Task {
-            do {
-                try await UserManager.sharedInstance.getUserNameAsync(id)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            } catch let err {
-                print(err)
-            }
-        }
-    }
-    
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
@@ -153,7 +145,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if cellTypes[indexPath.row] == "UserSettingCell" {
-            //do nothing
+            let sb = UIStoryboard(name: "Settings", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: cellVCs[indexPath.row])
+            self.navigationController?.pushViewController(vc, animated: true)
         } else if cellTypes[indexPath.row] == "ButtonCell" {
             let alert = UIAlertController(title: "Sign Out".localized(), message: "Are you sure you want to sign out?".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Dark Orange")
@@ -180,8 +174,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        if cellTypes[indexPath.row] == "UpCell" || cellTypes[indexPath.row] == "SettingCell" || cellTypes[indexPath.row] == "DownCell" {
+        if cellTypes[indexPath.row] == "UpCell" || cellTypes[indexPath.row] == "SettingCell" || cellTypes[indexPath.row] == "DownCell" || cellTypes[indexPath.row] == "UserSettingCell" {
             switch cellTypes[indexPath.row] {
+                case "UserSettingCell":
+                    let cell = tableView.cellForRow(at: indexPath) as! UserSettingsCell
+                    cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
                 case "UpCell":
                     let cell = tableView.cellForRow(at: indexPath) as! UpCornerCell
                     cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
@@ -198,8 +195,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        if cellTypes[indexPath.row] == "UpCell" || cellTypes[indexPath.row] == "SettingCell" || cellTypes[indexPath.row] == "DownCell" {
+        if cellTypes[indexPath.row] == "UpCell" || cellTypes[indexPath.row] == "SettingCell" || cellTypes[indexPath.row] == "DownCell" || cellTypes[indexPath.row] == "UserSettingCell" {
             switch cellTypes[indexPath.row] {
+                case "UserSettingCell":
+                    let cell = tableView.cellForRow(at: indexPath) as! UserSettingsCell
+                    cell.card.backgroundColor = UIColor(named: "Secondary Detail")
                 case "UpCell":
                     let cell = tableView.cellForRow(at: indexPath) as! UpCornerCell
                     cell.card.backgroundColor = UIColor(named: "Secondary Detail")

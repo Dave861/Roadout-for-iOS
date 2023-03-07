@@ -15,7 +15,6 @@ class TimeView: UIView {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
-        isSelectionFlow = true
         if returnToResult {
             NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         }
@@ -95,9 +94,9 @@ class TimeView: UIView {
                 let resultedTime = try await DistanceManager.sharedInstance.getTimeAndDistanceBetween(ogCoords, destCoords)
                 DispatchQueue.main.async {
                     if self.evaluateTime(resultedTime) == 2 {
-                        self.recommendationLbl.text = "We recommed ".localized() + "20 mins + " + self.getDelayTime(resultedTime)
+                        self.recommendationLbl.text = "We recommed ".localized() + "20 min + ".localized() + self.getDelayTime(resultedTime)
                     } else if self.evaluateTime(resultedTime) == 1 {
-                        self.recommendationLbl.text = "We recommed reserving for ".localized() + resultedTime
+                        self.recommendationLbl.text = "We recommed reserving for ".localized() + resultedTime.replacingOccurrences(of: " mins", with: " mins".localized())
                     } else if self.evaluateTime(resultedTime) == 0 {
                         self.recommendationLbl.text = "We don't recommed reserving yet.".localized()
                     }

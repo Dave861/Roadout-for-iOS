@@ -71,6 +71,7 @@ class SearchViewController: UIViewController {
         
         cancelButton.setAttributedTitle(cancelTitle, for: .normal)
         modesButton.setTitle("", for: .normal)
+        modesButton.layer.cornerRadius = 14.0
         
         modesButton.menu = makeModesMenu()
         modesButton.showsMenuAsPrimaryAction = true
@@ -285,7 +286,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         selectedLocation.latitude = searchResults[indexPath.row].latitude
         selectedLocation.longitude = searchResults[indexPath.row].longitude
         selectedLocation.accentColor = searchResults[indexPath.row].accentColor
-        isSelectionFlow = true
         NotificationCenter.default.post(name: .addResultCardID, object: nil)
         self.view.endEditing(true)
         self.dismiss(animated: false, completion: nil)
@@ -331,7 +331,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         selectedLocation.latitude = searchResults[indexPath.row].latitude
         selectedLocation.longitude = searchResults[indexPath.row].longitude
         selectedLocation.accentColor = searchResults[indexPath.row].accentColor
-        isSelectionFlow = true
         NotificationCenter.default.post(name: .addResultCardID, object: nil)
         self.dismiss(animated: false) {
             self.dismissScreen()

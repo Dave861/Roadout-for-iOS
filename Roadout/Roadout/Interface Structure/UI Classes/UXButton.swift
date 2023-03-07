@@ -12,8 +12,19 @@ class UXButton: UIButton {
     
     private var color: UIColor!
     
+    @IBInspectable var hasShimmer: Bool = false {
+        didSet {
+            if hasShimmer {
+                setupShimmerLayer()
+            }
+        }
+    }
+    
+    @IBInspectable var coloriseEffect: Bool = false
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        self.layer.masksToBounds = true
         self.addTarget(self, action: #selector(buttonHeld), for: .touchDown)
         self.addTarget(self, action: #selector(buttonReleased), for: [.touchUpInside, .touchUpOutside])
     }
@@ -23,7 +34,11 @@ class UXButton: UIButton {
         if !self.showsMenuAsPrimaryAction {
             UIView.animate(withDuration: 0.1, animations: {
                 self.color = self.backgroundColor
-                self.backgroundColor = self.color.withAlphaComponent(0.8)
+                if self.coloriseEffect {
+                    self.backgroundColor = self.tintColor.withAlphaComponent(0.4)
+                } else {
+                    self.backgroundColor = self.color.withAlphaComponent(0.8)
+                }
                 self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             })
         }
@@ -34,6 +49,16 @@ class UXButton: UIButton {
             self.backgroundColor = self.color
             self.transform = CGAffineTransform.identity
         })
+    }
+    
+    private func setupShimmerLayer() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.white.withAlphaComponent(0.5).cgColor, UIColor.clear.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradientLayer.frame = self.bounds
+        self.layer.addSublayer(gradientLayer)
     }
     
 }

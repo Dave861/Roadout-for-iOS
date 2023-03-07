@@ -1,5 +1,5 @@
 //
-//  FutureReserveViewController.swift
+//  FutureRoadViewController.swift
 //  Roadout
 //
 //  Created by David Retegan on 16.01.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FutureReserveViewController: UIViewController {
+class FutureRoadViewController: UIViewController {
     
     let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Icons")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
@@ -29,14 +29,14 @@ class FutureReserveViewController: UIViewController {
     @IBOutlet weak var placeholderAddBtn: UIButton!
     
     @IBAction func placeholderAddTapped(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "AddFutureReserveVC") as! AddFutureReserveViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AddFutureRoadVC") as! AddFutureRoadViewController
         self.present(vc, animated: true)
     }
     
     @IBOutlet weak var planReservationBtn: UIButton!
     
     @IBAction func planReservationTapped(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "AddFutureReserveVC") as! AddFutureReserveViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AddFutureRoadVC") as! AddFutureRoadViewController
         self.present(vc, animated: true)
     }
     
@@ -51,13 +51,13 @@ class FutureReserveViewController: UIViewController {
         super.viewDidLoad()
         manageObs()
         
-        titleLbl.text = "Future Reserve".localized()
+        titleLbl.text = "Future Road".localized()
         
         doneButton.setAttributedTitle(doneTitle, for: .normal)
         planReservationBtn.setAttributedTitle(planReservationTitle, for: .normal)
         
         placeholderAddBtn.setTitle("Tap here to add".localized(), for: .normal)
-        placeholderText.text = "You haven’t planned any Future Reservations".localized()
+        placeholderText.text = "You haven’t planned any reservation".localized()
                 
         tableView.delegate = self
         tableView.dataSource = self
@@ -88,7 +88,7 @@ class FutureReserveViewController: UIViewController {
              UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip5")
          }
         if UserPrefsUtils.sharedInstance.futureNotificationsEnabled() == false {
-            let alert = UIAlertController(title: "Warning".localized(), message: "Future Reserve notifications are disabled, you will NOT be notified by Roadout unless you enable them".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "Warning".localized(), message: "Future Road notifications are disabled, you will NOT be notified by Roadout unless you enable them".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: "Icons")
             let okAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                 self.dismiss(animated: true, completion: nil)
@@ -137,7 +137,7 @@ class FutureReserveViewController: UIViewController {
     }
 
 }
-extension FutureReserveViewController: UITableViewDelegate, UITableViewDataSource {
+extension FutureRoadViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return futureReservations.count
@@ -148,8 +148,8 @@ extension FutureReserveViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FutureReserveCell") as! FutureReserveCell
-        cell.titleLbl.text = "Reserve near " + futureReservations[indexPath.row].place
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FutureRoadCell") as! FutureRoadCell
+        cell.titleLbl.text = "Reserve near ".localized() + futureReservations[indexPath.row].place
         cell.titleLbl.set(textColor: UIColor(named: "Icons")!, range: cell.titleLbl.range(after: "Reserve near "))
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d, hh:mm"
@@ -159,12 +159,12 @@ extension FutureReserveViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! FutureReserveCell
+        let cell = tableView.cellForRow(at: indexPath) as! FutureRoadCell
         cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! FutureReserveCell
+        let cell = tableView.cellForRow(at: indexPath) as! FutureRoadCell
         cell.card.backgroundColor = UIColor(named: "Secondary Detail")
     }
     

@@ -42,7 +42,6 @@ var currentLocationCoord: CLLocationCoordinate2D?
 var returnToDelay = false
 var returnToResult = false
 var isPayFlow = false
-var isSelectionFlow = false
 
 //Utils
 var futureReservations = [FutureReservation]()

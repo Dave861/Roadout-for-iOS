@@ -185,7 +185,7 @@ class SignUpViewController: UIViewController {
     func manageServerSideError(_ error: Error) {
         switch error {
             case AuthManager.AuthErrors.userExistsFailure:
-                let alert = UIAlertController(title: "User Error".localized(), message: "User with this email already exists. Try signing in.".localized(), preferredStyle: .alert)
+                let alert = UIAlertController(title: "Sign Up Error".localized(), message: "User with this email already exists. Try signing in.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")

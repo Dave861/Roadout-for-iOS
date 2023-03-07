@@ -14,7 +14,7 @@ struct RoadoutFindIntent: AppIntent {
     
     static var title: LocalizedStringResource = "Reserve the closest Parking Spot"
     
-    static var description: IntentDescription = "Find and easily reserve the closest available parking spot."
+    static var description: IntentDescription = "Find and easily reserve the closest available parking spot"
 
     @Parameter(title: "Duration", description: "The duration of the reservation", requestValueDialog: IntentDialog("For how many minutes do you want to reserve? The maximum is 20 minutes."))
     var reservationMinutes: Int?

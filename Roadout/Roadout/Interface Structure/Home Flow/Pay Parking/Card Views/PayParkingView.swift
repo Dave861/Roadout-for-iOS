@@ -142,7 +142,7 @@ class PayParkingView: UIView {
     func fillPayData() {
         self.detailsLbl.text = selectedPayLocation.name
         
-        self.timeLbl.text = "Pay for ".localized() + "\(paidTime)" + " hours".localized()
+        self.timeLbl.text = "Pay for ".localized() + "\(paidTime)" + " hour/s".localized()
         self.timeLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.timeLbl.range(after: "Pay for ".localized()))
         self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Pay for ".localized()))
     }

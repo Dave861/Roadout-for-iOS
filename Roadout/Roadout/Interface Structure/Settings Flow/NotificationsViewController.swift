@@ -115,7 +115,7 @@ class NotificationsViewController: UIViewController {
         
         reservationDescription.text = "Get timely notifications about the remaining time. Changes will apply to your next reservation".localized()
         locationDescription.text = "Get location based notifications when you arrive at the current reservation".localized()
-        futureDescription.text = "Get future reserve notfications, set by you inside the app".localized()
+        futureDescription.text = "Get future road notfications, set by you inside the app".localized()
         
         reservationNoneLabel.text = "None".localized()
         reservationNotifLabel.text = "Notifications".localized()

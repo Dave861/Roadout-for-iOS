@@ -132,7 +132,7 @@ class VerifyMailViewController: UIViewController {
                     alert.view.tintColor = UIColor(named: "Redish")
                     self.present(alert, animated: true, completion: nil)
             default:
-                let alert = UIAlertController(title: "Error".localized(), message: "User already exists, sign in or use another email.".localized(), preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error".localized(), message: "User may already exist, sign in or use another email.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
                     alert.view.tintColor = UIColor(named: "Redish")

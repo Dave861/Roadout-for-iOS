@@ -28,11 +28,10 @@ class SpotView: UIView, PusherDelegate {
                 
         let clockImage = UIImage.init(systemName: "clock")!.withTintColor(UIColor(named: "Dark Orange")!, renderingMode: .alwaysOriginal)
         let checkImage = UIImage.init(systemName: "checkmark")!.withTintColor(UIColor(named: "Dark Yellow")!, renderingMode: .alwaysOriginal)
-        let checkingIndicatorView = SPIndicatorView(title: "Confirming".localized(), message: "Checking...".localized(), preset: .custom(clockImage))
+        let checkingIndicatorView = SPIndicatorView(title: "Confirming...".localized(), message: "Please wait".localized(), preset: .custom(clockImage))
         let confirmedIndicatorView = SPIndicatorView(title: "Confirmed".localized(), message: "Done".localized(), preset: .custom(checkImage))
         checkingIndicatorView.present(duration: 0.7, haptic: .none) {
             self.disconnectPusher()
-            isSelectionFlow = false
             NotificationCenter.default.post(name: .addTimeCardID, object: nil)
             confirmedIndicatorView.present(duration: 0.7, haptic: .success)
         }

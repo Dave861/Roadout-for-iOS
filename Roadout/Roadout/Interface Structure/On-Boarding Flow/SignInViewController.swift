@@ -94,7 +94,7 @@ class SignInViewController: UIViewController {
             return
         }
         let alert = UIAlertController(title: "Forgot Password".localized(), message: "We will send an email with a verification code to ".localized() + emailField.text!, preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Proceed".localized(), style: .default) { _ in
+        let yesAction = UIAlertAction(title: "Continue".localized(), style: .default) { _ in
             Task {
                 do {
                     try await UserManager.sharedInstance.sendForgotDataAsync(self.emailField.text!)
@@ -221,7 +221,7 @@ class SignInViewController: UIViewController {
     func manageServerSideErrors(_ error: Error) {
         switch error {
             case AuthManager.AuthErrors.userDoesNotExist:
-                let alert = UIAlertController(title: "Sign In Error".localized(), message: "Wrong email or password.".localized(), preferredStyle: .alert)
+                let alert = UIAlertController(title: "Sign In Error".localized(), message: "Incorrect email or password.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: { _ in
                         self.errorCounter += 1
                         if self.errorCounter >= 2 {

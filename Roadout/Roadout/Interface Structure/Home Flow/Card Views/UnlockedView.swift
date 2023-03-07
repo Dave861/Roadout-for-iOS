@@ -16,9 +16,7 @@ class UnlockedView: UIView {
     
     @IBOutlet weak var payBtn: UXButton!
     @IBOutlet weak var payView: UIView!
-    @IBOutlet weak var payLbl: UILabel!
     
-    @IBOutlet weak var markLbl: UILabel!
     @IBOutlet weak var markView: UIView!
     @IBOutlet weak var markBtn: UXButton!
     
@@ -37,7 +35,7 @@ class UnlockedView: UIView {
         carParkHash = selectedSpot.rHash
         NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
         
-        markLbl.text = "Marked".localized()
+        markBtn.setAttributedTitle(NSAttributedString(string: " Marked".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         markBtn.isEnabled = false
         let alert = UIAlertController(title: "Spot Marked".localized(), message: "Your car location has been marked, you can return later and find it in Roadout".localized(), preferredStyle: .alert)
         alert.view.tintColor = UIColor(named: "DevBrown")!
@@ -74,17 +72,14 @@ class UnlockedView: UIView {
     }
     
     func styleActionButtons() {
-        payBtn.setTitle("", for: .normal)
-        markBtn.setTitle("", for: .normal)
-        
         payBtn.layer.cornerRadius = 9
         markBtn.layer.cornerRadius = 9
         
-        payLbl.text = "Pay Parking".localized()
+        payBtn.setAttributedTitle(NSAttributedString(string: " Pay Parking".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         if carParkHash == "roadout_carpark_clear" {
-            markLbl.text = "Mark Spot".localized()
+            markBtn.setAttributedTitle(NSAttributedString(string: " Mark Spot".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         } else {
-            markLbl.text = "Marked".localized()
+            markBtn.setAttributedTitle(NSAttributedString(string: " Marked".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         }
     }
     

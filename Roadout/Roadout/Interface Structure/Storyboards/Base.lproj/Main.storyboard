@@ -128,7 +128,7 @@ Roadout</string>
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Terms of Use &amp; Privacy Policy">
+                                <buttonConfiguration key="configuration" style="plain" title="Privacy Policy &amp; Terms of Use">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -2190,33 +2190,39 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0G-mB-wEh" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="350" y="18" width="30" height="30"/>
-                                        <color key="backgroundColor" name="Secondary Floating"/>
+                                        <color key="backgroundColor" name="Dark Orange"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="T1L-ej-ycx"/>
                                             <constraint firstAttribute="height" constant="30" id="cNG-tR-IeH"/>
                                         </constraints>
-                                        <color key="tintColor" name="Dark Orange"/>
+                                        <color key="tintColor" name="Background"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="info" catalog="system" symbolScale="large"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasShimmer" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="infoTapped:" destination="Vak-7z-f8j" eventType="touchUpInside" id="Cj4-g2-QFB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjr-dY-qW5" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="305" y="18" width="30" height="30"/>
-                                        <color key="backgroundColor" name="Secondary Floating"/>
+                                        <color key="backgroundColor" name="DevBrown"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="F3b-hg-Te2"/>
                                             <constraint firstAttribute="width" constant="30" id="F5h-8i-Jxq"/>
                                         </constraints>
-                                        <color key="tintColor" name="DevBrown"/>
+                                        <color key="tintColor" name="Background"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
                                             <imageReference key="image" image="questionmark" catalog="system" symbolScale="medium"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasShimmer" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="questionsTapped:" destination="Vak-7z-f8j" eventType="touchUpInside" id="UTR-yH-hpi"/>
                                         </connections>

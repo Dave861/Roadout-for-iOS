@@ -145,7 +145,7 @@ struct RoadoutWidgetView: View {
                             .renderingMode(.template)
                             .frame(width: 14, height: 19, alignment: .center)
                             .foregroundColor(Color(location1?.occupancyColor ?? "Main Yellow"))
-                        Text("\(location1?.freeSpots ?? 0) free spots")
+                        Text("\(location1?.freeSpots ?? 0) " + "free spots")
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.gray)
                     }
@@ -190,7 +190,7 @@ struct RoadoutWidgetView: View {
                             .renderingMode(.template)
                             .frame(width: 14, height: 19, alignment: .center)
                             .foregroundColor(Color(location1?.occupancyColor ?? "Main Yellow"))
-                        Text("\(location1?.freeSpots ?? 0) free spots")
+                        Text("\(location1?.freeSpots ?? 0) " + "free spots")
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.gray)
                     }
@@ -232,7 +232,7 @@ struct RoadoutWidgetView: View {
                             .renderingMode(.template)
                             .frame(width: 14, height: 19, alignment: .center)
                             .foregroundColor(Color(location2?.occupancyColor ?? "Main Yellow"))
-                        Text("\(location2?.freeSpots ?? 0) free spots")
+                        Text("\(location2?.freeSpots ?? 0) " + "free spots")
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.gray)
                     }
@@ -276,7 +276,7 @@ struct RoadoutWidgetView: View {
                         }
                         Text(location1?.locationName ?? "Location Name")
                             .font(.body.bold())
-                        Text("\(location1?.freeSpots ?? 0) free spots")
+                        Text("\(location1?.freeSpots ?? 0) " + "free spots")
                             .font(.body)
                             .foregroundColor(.gray)
                     }
