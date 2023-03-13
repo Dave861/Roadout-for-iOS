@@ -24,7 +24,7 @@ class EditLicensePlateViewController: UIViewController {
     @IBAction func changeTapped(_ sender: Any) {
         if plateField.text != "" {
             do {
-                userLicensePlate = try plateField.text?.formatLicensePlate() ?? "NO-PLATE"
+                userLicensePlate = try plateField.text?.formatLicensePlate() ?? ""
                 UserDefaults.roadout!.set(userLicensePlate, forKey: "ro.roadout.Roadout.userLicensePlate")
                 UIView.animate(withDuration: 0.1) {
                     self.blurEffect.alpha = 0
@@ -40,7 +40,7 @@ class EditLicensePlateViewController: UIViewController {
                 self.present(alert, animated: true)
             }
         } else {
-            userLicensePlate = "NO-PLATE"
+            userLicensePlate = ""
             UserDefaults.roadout!.set(userLicensePlate, forKey: "ro.roadout.Roadout.userLicensePlate")
             UIView.animate(withDuration: 0.1) {
                 self.blurEffect.alpha = 0
@@ -97,7 +97,7 @@ class EditLicensePlateViewController: UIViewController {
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
         
         plateView.layer.cornerRadius = plateView.frame.height/4
-        plateText.text = userLicensePlate
+        plateText.text = userLicensePlate != "" ? userLicensePlate : "NO-PLATE".localized()
         plateField.delegate = self
     }
     

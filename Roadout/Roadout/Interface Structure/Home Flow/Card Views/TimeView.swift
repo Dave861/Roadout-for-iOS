@@ -63,12 +63,12 @@ class TimeView: UIView {
         backBtn.layer.cornerRadius = 15.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
 
-        recommendationLbl.text = "We recommed reserving for ".localized() + "..."
+        recommendationLbl.text = "We recommend reserving for ".localized() + "..."
         recommendationCard.layer.cornerRadius = recommendationCard.frame.height/5
         
+        totalLbl.text = "\(Int(minuteSlider.value))" + " Minute/s".localized() + " - \(Int(minuteSlider.value)) RON"
         totalLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: totalLbl.range(after: " - "))
         totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
-        
     }
     
     override func didMoveToSuperview() {
@@ -94,15 +94,14 @@ class TimeView: UIView {
                 let resultedTime = try await DistanceManager.sharedInstance.getTimeAndDistanceBetween(ogCoords, destCoords)
                 DispatchQueue.main.async {
                     if self.evaluateTime(resultedTime) == 2 {
-                        self.recommendationLbl.text = "We recommed ".localized() + "20 min + ".localized() + self.getDelayTime(resultedTime)
+                        self.recommendationLbl.text = "We recommend ".localized() + "20 min + ".localized() + self.getDelayTime(resultedTime)
                     } else if self.evaluateTime(resultedTime) == 1 {
-                        self.recommendationLbl.text = "We recommed reserving for ".localized() + resultedTime.replacingOccurrences(of: " mins", with: " mins".localized())
+                        self.recommendationLbl.text = "We recommend reserving for ".localized() + resultedTime.replacingOccurrences(of: " mins", with: " mins".localized())
                     } else if self.evaluateTime(resultedTime) == 0 {
-                        self.recommendationLbl.text = "We don't recommed reserving yet.".localized()
+                        self.recommendationLbl.text = "We don't recommend reserving yet.".localized()
                     }
                 }
-            } catch let err {
-                print(err)
+            } catch {
                 DispatchQueue.main.async {
                     self.recommendationLbl.text = "Couldn't get a recommendation.".localized()
                 }

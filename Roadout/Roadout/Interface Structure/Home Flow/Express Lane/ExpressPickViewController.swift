@@ -11,7 +11,7 @@ import CoreLocation
 class ExpressChooseViewController: UIViewController {
     
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    let editLocationTitle = NSAttributedString(string: " Edit Locations".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "DevBrown")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let editLocationTitle = NSAttributedString(string: " " + "Edit Locations".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "DevBrown")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     @IBOutlet weak var titleLbl: UILabel!
     

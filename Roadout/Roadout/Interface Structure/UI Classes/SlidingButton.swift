@@ -34,7 +34,7 @@ protocol SlideButtonDelegate {
         }
     }
     
-    @IBInspectable var buttonText: String = "        Slide to Unlock".localized() {
+    @IBInspectable var buttonText: String = "        " + "Slide to Unlock".localized() {
         didSet{
             setStyle()
         }

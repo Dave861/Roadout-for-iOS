@@ -49,7 +49,7 @@ var cardNumbers = [String]()
 
 //Pay Parking Utils
 var selectedPayLocation: ParkLocation!
-var userLicensePlate = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.userLicensePlate") ?? "NO-PLATE"
+var userLicensePlate = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.userLicensePlate")
 
 //Express Lane IDs
 var favouriteLocationIDs = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.Roadout.favouriteLocationIDs") ?? [String]()

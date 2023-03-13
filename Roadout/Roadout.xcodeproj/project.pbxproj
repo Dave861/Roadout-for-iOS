@@ -21,7 +21,6 @@
 		9A0C7776272E831E00ECBFB2 /* SpotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0C7774272E831E00ECBFB2 /* SpotCell.xib */; };
 		9A0D58D627770CC80093B3D3 /* ParkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A23282733D2D6007C1B08 /* ParkLocation.swift */; };
 		9A0D58D9277721DA0093B3D3 /* ReservationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D58D8277721DA0093B3D3 /* ReservationManager.swift */; };
-		9A0F3C7829A4016200B55F92 /* SwiftSVG in Frameworks */ = {isa = PBXBuildFile; productRef = 9A0F3C7729A4016200B55F92 /* SwiftSVG */; };
 		9A122993299A36A300C82CBD /* CarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A122992299A36A300C82CBD /* CarViewController.swift */; };
 		9A14B914273142A400967417 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B913273142A400967417 /* ContentSizedTableView.swift */; };
 		9A14B916273142C100967417 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B915273142C100967417 /* Extensions.swift */; };
@@ -315,19 +314,12 @@
 		9A15082F272BFAE1008C083B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9A1ABE962726A5EF00D4AA4B /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		9A1E42C529AA18BF004CDE45 /* ParkingToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingToolsView.swift; sourceTree = "<group>"; };
-		9A24ADA827DCF1C500BE8E1A /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Main.strings; sourceTree = "<group>"; };
 		9A24ADAA27DCF20C00BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
-		9A24ADAD27DCF21400BE8E1A /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Home.strings; sourceTree = "<group>"; };
 		9A24ADAF27DCF2CF00BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
-		9A24ADB227DCF2D300BE8E1A /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Settings.strings; sourceTree = "<group>"; };
 		9A24ADB427DCF2EB00BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Cards.xib; sourceTree = "<group>"; };
-		9A24ADB727DCF2EE00BE8E1A /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Cards.strings; sourceTree = "<group>"; };
 		9A24ADB927DCF2F200BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Bars.xib; sourceTree = "<group>"; };
-		9A24ADBC27DCF2FF00BE8E1A /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Bars.strings; sourceTree = "<group>"; };
 		9A24ADBE27DCF30700BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Express.xib; sourceTree = "<group>"; };
-		9A24ADC127DCF30B00BE8E1A /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Express.strings; sourceTree = "<group>"; };
 		9A24ADC827DD09AF00BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Find.xib; sourceTree = "<group>"; };
-		9A24ADCB27DD09B200BE8E1A /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Find.strings; sourceTree = "<group>"; };
 		9A2BF90E299E1F07003B2ADB /* RoadoutAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutAppIntents.swift; sourceTree = "<group>"; };
 		9A2BF910299E1FBE003B2ADB /* RoadoutStatusIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutStatusIntent.swift; sourceTree = "<group>"; };
 		9A2BF912299E1FCB003B2ADB /* RoadoutDirectionsIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutDirectionsIntent.swift; sourceTree = "<group>"; };
@@ -439,7 +431,6 @@
 		9AB96427272EFCE0008462E7 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
 		9ABA39B127C13382001660E7 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		9AC149CB28B4EFA900B9B394 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Pay.xib; sourceTree = "<group>"; };
-		9AC149CE28B4EFAF00B9B394 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Pay.strings; sourceTree = "<group>"; };
 		9AC149D028B4F9E900B9B394 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Tutorials.xib; sourceTree = "<group>"; };
 		9AC149D328B4F9EE00B9B394 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Tutorials.strings; sourceTree = "<group>"; };
 		9AC16CC7291F9CCF004D7F55 /* EditLicensePlateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLicensePlateViewController.swift; sourceTree = "<group>"; };
@@ -526,7 +517,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AA0EFD2277B5D5800B0F52A /* Alamofire in Frameworks */,
-				9A0F3C7829A4016200B55F92 /* SwiftSVG in Frameworks */,
 				9A765C352896747600AF250D /* GeohashKit in Frameworks */,
 				9AAE265B280947E000BBBAC3 /* GoogleMapsBase in Frameworks */,
 				9AAE265F280947E000BBBAC3 /* GoogleMapsM4B in Frameworks */,
@@ -1185,7 +1175,6 @@
 				9AAE2660280947E000BBBAC3 /* GooglePlaces */,
 				9A40C1DB281443FD00E44B23 /* IOSSecuritySuite */,
 				9A765C342896747600AF250D /* GeohashKit */,
-				9A0F3C7729A4016200B55F92 /* SwiftSVG */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1232,7 +1221,6 @@
 				9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 				9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */,
 				9A765C332896747600AF250D /* XCRemoteSwiftPackageReference "GeohashKit" */,
-				9A0F3C7629A4016200B55F92 /* XCRemoteSwiftPackageReference "SwiftSVG" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -1518,7 +1506,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9A24ADAA27DCF20C00BE8E1A /* Base */,
-				9A24ADAD27DCF21400BE8E1A /* ro */,
 			);
 			name = Home.storyboard;
 			sourceTree = "<group>";
@@ -1527,7 +1514,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9A24ADAF27DCF2CF00BE8E1A /* Base */,
-				9A24ADB227DCF2D300BE8E1A /* ro */,
 			);
 			name = Settings.storyboard;
 			sourceTree = "<group>";
@@ -1536,7 +1522,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9A24ADB427DCF2EB00BE8E1A /* Base */,
-				9A24ADB727DCF2EE00BE8E1A /* ro */,
 			);
 			name = Cards.xib;
 			sourceTree = "<group>";
@@ -1545,7 +1530,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9A24ADB927DCF2F200BE8E1A /* Base */,
-				9A24ADBC27DCF2FF00BE8E1A /* ro */,
 			);
 			name = Bars.xib;
 			sourceTree = "<group>";
@@ -1554,7 +1538,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9A24ADBE27DCF30700BE8E1A /* Base */,
-				9A24ADC127DCF30B00BE8E1A /* ro */,
 			);
 			name = Express.xib;
 			sourceTree = "<group>";
@@ -1563,7 +1546,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9A24ADC827DD09AF00BE8E1A /* Base */,
-				9A24ADCB27DD09B200BE8E1A /* ro */,
 			);
 			name = Find.xib;
 			sourceTree = "<group>";
@@ -1581,7 +1563,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9AC149CB28B4EFA900B9B394 /* Base */,
-				9AC149CE28B4EFAF00B9B394 /* ro */,
 			);
 			name = Pay.xib;
 			sourceTree = "<group>";
@@ -1599,7 +1580,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9AC926F1272697F00054E453 /* Base */,
-				9A24ADA827DCF1C500BE8E1A /* ro */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2087,14 +2067,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9A0F3C7629A4016200B55F92 /* XCRemoteSwiftPackageReference "SwiftSVG" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mchoe/SwiftSVG";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/securing/IOSSecuritySuite.git";
@@ -2146,11 +2118,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9A0F3C7729A4016200B55F92 /* SwiftSVG */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9A0F3C7629A4016200B55F92 /* XCRemoteSwiftPackageReference "SwiftSVG" */;
-			productName = SwiftSVG;
-		};
 		9A397D4A280D5262003458BD /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;

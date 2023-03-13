@@ -75,7 +75,7 @@ class AccountViewController: UIViewController {
     }
     
     @objc func reloadLicensePlate() {
-        self.licensePlateLbl.text = userLicensePlate
+        self.licensePlateLbl.text = userLicensePlate != "" ? userLicensePlate : "NO-PLATE".localized()
     }
     
     @objc func reloadName() {
@@ -104,7 +104,7 @@ class AccountViewController: UIViewController {
         licensePlateBtn.setTitle("", for: .normal)
         licensePlateIcon.layer.cornerRadius = licensePlateIcon.frame.height/4
         licensePlateView.layer.cornerRadius = licensePlateView.frame.height/5
-        licensePlateLbl.text = userLicensePlate
+        licensePlateLbl.text = userLicensePlate != "" ? userLicensePlate : "NO-PLATE".localized()
         
         manageBtn.menu = editMenu
         manageBtn.setTitle("", for: .normal)

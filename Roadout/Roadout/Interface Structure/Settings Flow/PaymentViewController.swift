@@ -103,7 +103,7 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title: "  Remove Card".localized()) { _, _, completion in
+        let deleteAction = UIContextualAction(style: .normal, title: "   Remove Card".localized()) { _, _, completion in
             let alert = UIAlertController(title: "Remove".localized(), message: "Do you want to remove this card?".localized(), preferredStyle: .actionSheet)
             let deleteAction = UIAlertAction(title: "Remove".localized(), style: .destructive) { action in
                 cardNumbers.remove(at: indexPath.row)

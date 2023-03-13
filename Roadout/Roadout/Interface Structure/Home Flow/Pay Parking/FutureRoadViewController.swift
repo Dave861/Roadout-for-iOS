@@ -11,7 +11,7 @@ class FutureRoadViewController: UIViewController {
     
     let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Icons")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
-    let planReservationTitle = NSAttributedString(string: " Plan Reservation".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Icons")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let planReservationTitle = NSAttributedString(string: " " + "Plan Reservation".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Icons")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     @IBOutlet weak var titleLbl: UILabel!
     

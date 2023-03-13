@@ -74,17 +74,17 @@ class PayParkingView: UIView {
         UserDefaults.roadout!.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
         cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
 
-        chooseMethodBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        chooseMethodBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true
         
-        payBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         payBtn.showsMenuAsPrimaryAction = true
         payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
     }
     
     @objc func refreshLicensePlate() {
-        self.licensePlateLbl.text = userLicensePlate
-        if userLicensePlate == "NO-PLATE" {
+        self.licensePlateLbl.text = userLicensePlate != "" ? userLicensePlate : "NO-PLATE".localized()
+        if userLicensePlate == "" {
             self.editLicensePlateBtn.setAttributedTitle(addPlateTitle, for: .normal)
         } else {
             self.editLicensePlateBtn.setAttributedTitle(editPlateTitle, for: .normal)
@@ -100,7 +100,7 @@ class PayParkingView: UIView {
         editLicensePlateBtn.layer.cornerRadius = editLicensePlateBtn.frame.height/2
         
         licensePlateLbl.text = userLicensePlate
-        if userLicensePlate == "NO-PLATE" {
+        if userLicensePlate == "" {
             editLicensePlateBtn.setAttributedTitle(addPlateTitle, for: .normal)
         } else {
             editLicensePlateBtn.setAttributedTitle(editPlateTitle, for: .normal)
@@ -121,10 +121,10 @@ class PayParkingView: UIView {
         
         fillPayData()
         
-        chooseMethodBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        chooseMethodBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true
         
-        payBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         payBtn.showsMenuAsPrimaryAction = true
         
         priceLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: priceLbl.range(after: " - "))

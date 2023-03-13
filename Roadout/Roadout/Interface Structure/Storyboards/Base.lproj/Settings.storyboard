@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lau-2H-tem">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lau-2H-tem" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="7" y="71" width="89" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="v4Y-SH-LNl"/>
@@ -32,11 +32,14 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dRo-l4-TW2"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eH-WR-cFg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eH-WR-cFg" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="129" y="780" width="135" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="Ahm-7H-2K2"/>
@@ -48,7 +51,7 @@ Made in Cluj :)</string>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications are enabled. See settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6x-BI-Dfb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications are enabled. See settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6x-BI-Dfb" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="50" y="746" width="293" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="SPM-q2-0Uy"/>
@@ -68,7 +71,7 @@ Made in Cluj :)</string>
                                     <action selector="seeSettingsTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="K3q-Qk-QBe"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAV-RH-8eo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAV-RH-8eo" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="104" width="162" height="32.333333333333343"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
@@ -88,13 +91,13 @@ Made in Cluj :)</string>
                                             <action selector="locationSwitched:" destination="Y6W-OH-hqX" eventType="valueChanged" id="oDF-fK-iOx"/>
                                         </connections>
                                     </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get location based notifications when you arrive at the current reservation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJb-OE-idj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get location based notifications when you arrive at the current reservation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJb-OE-idj" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="10" y="33" width="277" height="61"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfL-ZQ-BsQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfL-ZQ-BsQ" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="10" y="8" width="277" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="dpB-Pa-UqJ"/>
@@ -120,13 +123,13 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6L-ka-BGT">
                                 <rect key="frame" x="16" y="151.33333333333334" width="361" height="207.00000000000003"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get timely notifications about the remaining time. Changes will apply to your next reservation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxU-9Y-kXC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get timely notifications about the remaining time. Changes will apply to your next reservation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxU-9Y-kXC" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="10" y="33" width="335.66666666666669" height="61"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reservation Status Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbg-om-KPn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reservation Status Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbg-om-KPn" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="10" y="8" width="264.33333333333331" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="LsR-DP-Sqh"/>
@@ -148,7 +151,7 @@ Made in Cluj :)</string>
                                                             <constraint firstAttribute="height" constant="73" id="kmH-Ld-Mzd"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4H-qB-4jo">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4H-qB-4jo" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="77.999999999999972" width="35" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="17" id="ouX-jo-0NW"/>
@@ -189,7 +192,7 @@ Made in Cluj :)</string>
                                                             <constraint firstAttribute="height" constant="73" id="cKA-wd-VAb"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gF-5W-dku">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gF-5W-dku" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                                         <rect key="frame" x="15.333333333333343" y="77.999999999999972" width="84.333333333333329" height="17"/>
                                                         <color key="tintColor" name="Redish"/>
                                                         <constraints>
@@ -231,7 +234,7 @@ Made in Cluj :)</string>
                                                             <constraint firstAttribute="height" constant="73" id="iMg-2n-d7T"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ec-Ft-1F7">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ec-Ft-1F7" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                                         <rect key="frame" x="17.333333333333314" y="77.999999999999972" width="80.666666666666671" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="17" id="nLO-ZZ-qTo"/>
@@ -295,13 +298,13 @@ Made in Cluj :)</string>
                                             <action selector="futureSwitched:" destination="Y6W-OH-hqX" eventType="valueChanged" id="HTk-yN-8Nl"/>
                                         </connections>
                                     </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get future road notfications, set by you inside the app" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BU-ng-nn6">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get future road notfications, set by you inside the app" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BU-ng-nn6" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="10" y="33.000000000000057" width="277" height="40.666666666666657"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Future Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXZ-bM-P6p">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Future Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXZ-bM-P6p" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="10" y="8" width="277" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="3cW-4N-976"/>
@@ -388,7 +391,7 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItZ-Q1-kce">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItZ-Q1-kce" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="7" y="71" width="89" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="89" id="Vmp-e1-IHN"/>
@@ -401,11 +404,14 @@ Made in Cluj :)</string>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backTapped:" destination="TAF-lK-d5g" eventType="touchUpInside" id="nVS-2z-wwl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2c-cc-Y0d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2c-cc-Y0d" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="129" y="780" width="135" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="7lC-RT-0Ad"/>
@@ -576,7 +582,7 @@ Made in Cluj :)</string>
                                     <constraint firstItem="nTb-Qs-r3m" firstAttribute="top" secondItem="pbg-Bk-OA8" secondAttribute="top" constant="8" id="unY-4Y-SwW"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0w-mT-iyQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0w-mT-iyQ" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="104" width="186.66666666666666" height="32.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
@@ -628,7 +634,7 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bz-f7-ras">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bz-f7-ras" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="7" y="71" width="89" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="19W-8b-g7k"/>
@@ -641,11 +647,14 @@ Made in Cluj :)</string>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backTapped:" destination="gDW-Gn-zbR" eventType="touchUpInside" id="EV0-Qi-8I9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbi-bI-hjl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbi-bI-hjl" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="129" y="780" width="135" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="0QT-bH-HZm"/>
@@ -714,7 +723,7 @@ Made in Cluj :)</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Methods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plv-FK-oM6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Methods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plv-FK-oM6" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="19.999999999999986" y="104" width="228.66666666666663" height="32.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
@@ -723,13 +732,16 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lro-EB-HFp">
                                 <rect key="frame" x="16" y="729" width="361" height="43"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X10-hg-4Qk">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X10-hg-4Qk" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="43"/>
                                         <color key="tintColor" name="Dark Orange"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Add Card">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addCardTapped:" destination="gDW-Gn-zbR" eventType="touchUpInside" id="tGk-bw-KkW"/>
                                         </connections>
@@ -755,7 +767,7 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="height" constant="64.5" id="hNA-6R-pDz"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven’t added any payment methods yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIT-sC-eF6">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven’t added any payment methods yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIT-sC-eF6" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="44.666666666666657" y="96" width="272" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="49" id="Rzy-bQ-7cb"/>
@@ -765,7 +777,7 @@ Made in Cluj :)</string>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLd-tR-IJb">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLd-tR-IJb" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="104.66666666666669" y="153" width="152" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="152" id="sgc-Na-hs2"/>
@@ -776,6 +788,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Tap here to add">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="placeholderAddTapped:" destination="gDW-Gn-zbR" eventType="touchUpInside" id="3qA-z7-aeT"/>
                                         </connections>
@@ -847,13 +862,13 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFT-mT-duQ">
                                 <rect key="frame" x="0.0" y="549" width="393" height="303"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFs-pT-Xe2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFs-pT-Xe2" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15.000000000000002" width="96" height="26.666666666666671"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkA-RX-1jg">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkA-RX-1jg" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="317.66666666666669" y="19.666666666666629" width="72.333333333333314" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="bBo-K5-WHb"/>
@@ -863,6 +878,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="cancelTapped:" destination="Ed8-W4-qWu" eventType="touchUpInside" id="xH1-rZ-z5p"/>
                                         </connections>
@@ -903,6 +921,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Add">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addTapped:" destination="Ed8-W4-qWu" eventType="touchUpInside" id="Wea-CF-lXb"/>
                                         </connections>
@@ -993,7 +1014,7 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wrb-TV-AkR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wrb-TV-AkR" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="7" y="71" width="89" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="zXI-bW-2Mh"/>
@@ -1006,6 +1027,9 @@ Made in Cluj :)</string>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backTapped:" destination="DdY-e2-n2k" eventType="touchUpInside" id="fNU-c0-gEn"/>
                                 </connections>
@@ -1022,7 +1046,7 @@ Made in Cluj :)</string>
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0z-KD-f5R">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0z-KD-f5R" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="6" width="361" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                     <nil key="textColor"/>
@@ -1096,7 +1120,7 @@ Made in Cluj :)</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZp-wV-n8q">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZp-wV-n8q" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="129" y="780" width="135" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="1bi-b6-FeM"/>
@@ -1108,7 +1132,7 @@ Made in Cluj :)</string>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reservation History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crc-ED-aM6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reservation History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crc-ED-aM6" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="103" width="249" height="32"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
@@ -1117,13 +1141,16 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ee-TG-2Af">
                                 <rect key="frame" x="16" y="729" width="361" height="43"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLk-qw-drZ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLk-qw-drZ" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="43"/>
                                         <color key="tintColor" name="Dark Yellow"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Clear">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="clearTapped:" destination="DdY-e2-n2k" eventType="touchUpInside" id="xUd-Z4-z65"/>
                                         </connections>
@@ -1149,7 +1176,7 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="width" constant="75" id="A9P-2K-5He"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No history, make a reservation in order for it to appear here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai1-aY-UFQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No history, make a reservation in order for it to appear here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai1-aY-UFQ" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="44.666666666666657" y="96" width="272" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="272" id="SQJ-tJ-C8d"/>
@@ -1211,7 +1238,7 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9y-6t-IrI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9y-6t-IrI" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="129" y="780" width="135" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="CWv-Tp-BXp"/>
@@ -1223,13 +1250,13 @@ Made in Cluj :)</string>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Guide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igw-yw-46d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Guide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igw-yw-46d" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="103" width="139.33333333333334" height="32.333333333333343"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjw-u2-9qe">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjw-u2-9qe" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="7" y="71" width="89" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="89" id="Ntt-Jt-YoQ"/>
@@ -1242,6 +1269,9 @@ Made in Cluj :)</string>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backTapped:" destination="rvm-RD-YGN" eventType="touchUpInside" id="44l-3A-g49"/>
                                 </connections>
@@ -1257,7 +1287,7 @@ Made in Cluj :)</string>
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout Basics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWM-e9-XfT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout Basics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWM-e9-XfT" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="6" width="361" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                     <nil key="textColor"/>
@@ -1345,13 +1375,16 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VzI-IY-aIc">
                                 <rect key="frame" x="16" y="729" width="361" height="43"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DX1-sJ-GOz">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DX1-sJ-GOz" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="43"/>
                                         <color key="tintColor" name="GoldBrown"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Reach Out">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="reachOutTapped:" destination="rvm-RD-YGN" eventType="touchUpInside" id="Oht-hX-xcd"/>
                                         </connections>
@@ -1404,7 +1437,7 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mb-An-acP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mb-An-acP" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="7" y="71" width="89" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="89" id="2R6-bf-Zt8"/>
@@ -1417,11 +1450,14 @@ Made in Cluj :)</string>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backTapped:" destination="aS3-A4-F9q" eventType="touchUpInside" id="kxG-hC-WR5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slL-sC-bQu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slL-sC-bQu" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="129" y="780" width="135" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="3LM-E4-LSe"/>
@@ -1433,7 +1469,7 @@ Made in Cluj :)</string>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5be-zF-mnm">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5be-zF-mnm" customClass="UXTextView" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="180.66666666666669" width="353" height="591.33333333333326"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="Brownish"/>
@@ -1492,10 +1528,10 @@ Protecția consumatorului
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy Terms of Use" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3p-iF-0PL">
-                                <rect key="frame" x="20" y="101" width="205" height="64.666666666666686"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy Terms of Use" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3p-iF-0PL" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                                <rect key="frame" x="20" y="101" width="252" height="64.666666666666686"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="205" id="rW7-b8-XYo"/>
+                                    <constraint firstAttribute="width" constant="252" id="rW7-b8-XYo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
@@ -1523,7 +1559,7 @@ Protecția consumatorului
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klU-zK-mbU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4613" y="77"/>
+            <point key="canvasLocation" x="4612.9770992366412" y="76.760563380281695"/>
         </scene>
         <!--Ack View Controller-->
         <scene sceneID="7kz-de-8op">
@@ -1533,7 +1569,7 @@ Protecția consumatorului
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnl-no-0Gd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnl-no-0Gd" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="7" y="71" width="89" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="89" id="K6d-dx-Izg"/>
@@ -1546,6 +1582,9 @@ Protecția consumatorului
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backTapped:" destination="gXn-3b-PYc" eventType="touchUpInside" id="OH9-Qn-bkb"/>
                                 </connections>
@@ -1625,7 +1664,7 @@ Protecția consumatorului
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lE-0R-Doh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lE-0R-Doh" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="129" y="780" width="135" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="DeH-sV-RhC"/>
@@ -1637,13 +1676,13 @@ Made in Cluj :)</string>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acknowledgements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEL-7G-Az9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acknowledgements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEL-7G-Az9" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="19.999999999999986" y="103" width="251.66666666666663" height="32"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks you to all these amazing developers whose libraries made Roadout possible" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="gP8-fA-a9l">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks you to all these amazing developers whose libraries made Roadout possible" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="gP8-fA-a9l" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="143" width="353" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="GGD-OP-dNM"/>
@@ -1688,7 +1727,7 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZN-cb-say">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZN-cb-say" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="7" y="71" width="89" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="89" id="hrF-IE-zBu"/>
@@ -1701,11 +1740,14 @@ Made in Cluj :)</string>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backTapped:" destination="1nv-Ui-qdE" eventType="touchUpInside" id="Tj1-8f-Grb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ae-xV-gdN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ae-xV-gdN" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="129" y="780" width="135" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="fRY-DF-1fl"/>
@@ -1717,13 +1759,13 @@ Made in Cluj :)</string>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYA-Q8-Kqn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYA-Q8-Kqn" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="104" width="77.333333333333329" height="32.333333333333343"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joi-YH-LUi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joi-YH-LUi" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="19.999999999999993" y="152.33333333333334" width="107.33333333333331" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="Nuu-J0-D2G"/>
@@ -1756,7 +1798,7 @@ Made in Cluj :)</string>
                                     <constraint firstAttribute="bottom" secondItem="s83-pN-c0a" secondAttribute="bottom" id="w4g-7f-4QW"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout for iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68q-QP-tEN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout for iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68q-QP-tEN" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="240.33333333333334" width="137" height="23.000000000000028"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="qvy-Vo-nR1"/>
@@ -1795,7 +1837,7 @@ Made in Cluj :)</string>
                                     <constraint firstAttribute="height" constant="77" id="m90-g6-hv5"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Socials" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZjE-JC-4s8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Socials" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZjE-JC-4s8" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="365.33333333333331" width="99" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="Tuh-hp-bVS"/>
@@ -1989,6 +2031,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Done">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="doneTapped:" destination="gQW-82-fa2" eventType="touchUpInside" id="OiG-PT-Wpg"/>
                                         </connections>
@@ -2049,7 +2094,7 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAV-XL-ute">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAV-XL-ute" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="7" y="71" width="89" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="89" id="IQr-1F-XaL"/>
@@ -2062,11 +2107,14 @@ Made in Cluj :)</string>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backTapped:" destination="3Wc-b5-i2g" eventType="touchUpInside" id="XdJ-an-Mtj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ag-PS-yV3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ag-PS-yV3" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="129" y="780" width="135" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="jl4-8X-rcP"/>
@@ -2078,7 +2126,7 @@ Made in Cluj :)</string>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout for Car" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pi0-Wh-dOV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout for Car" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pi0-Wh-dOV" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="104" width="198" height="32.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
@@ -2087,13 +2135,13 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0X-NX-R5Q">
                                 <rect key="frame" x="16" y="284" width="361" height="243"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will soon be able to use Roadout in your CarPlay enabled car to make reservation, delay or even unlock them " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8E-Jr-83U">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will soon be able to use Roadout in your CarPlay enabled car to make reservation, delay or even unlock them " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8E-Jr-83U" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="10" y="33" width="341" height="61"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout for CarPlay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eow-4p-wma">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout for CarPlay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eow-4p-wma" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="10" y="8" width="165" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="F2t-I1-aM3"/>
@@ -2125,14 +2173,14 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zec-ah-iuQ">
                                 <rect key="frame" x="16" y="151.66666666666666" width="361" height="122.33333333333334"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNm-GZ-WHW">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNm-GZ-WHW" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="10" y="32.999999999999993" width="341" height="81.333333333333314"/>
                                         <string key="text">While driving, we recommend using Roadout with Siri. You can ask Siri to find parking with Roadout, check your reservation status, and get directions to your spot</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout for Siri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBq-yN-q1j">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roadout for Siri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBq-yN-q1j" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="10.000000000000007" y="8" width="127.66666666666669" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="JeC-N2-KK9"/>
@@ -2192,7 +2240,7 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0N-ET-h4N">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0N-ET-h4N" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="7" y="71" width="89" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="89" id="TFM-Mg-IDC"/>
@@ -2205,11 +2253,14 @@ Made in Cluj :)</string>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backTapped:" destination="rcm-V6-58K" eventType="touchUpInside" id="b0H-TD-okL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbD-aC-YFp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbD-aC-YFp" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="129" y="780" width="135" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="klh-5u-7P2"/>
@@ -2221,7 +2272,7 @@ Made in Cluj :)</string>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5i-JA-km3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5i-JA-km3" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20.000000000000007" y="104" width="106.66666666666669" height="33"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
@@ -2337,7 +2388,7 @@ Made in Cluj :)</string>
                                             <constraint firstItem="1Le-hb-Qud" firstAttribute="centerY" secondItem="LbU-WQ-FIK" secondAttribute="centerY" id="j3H-eP-PEK"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License Plate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3J-Wb-bDf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License Plate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3J-Wb-bDf" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="43.000000000000007" y="9" width="101.66666666666669" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="nWu-tW-tz1"/>
@@ -2413,7 +2464,7 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="height" constant="1" id="OaB-CY-wQE"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d16-Ip-Dr2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d16-Ip-Dr2" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="42" y="53.666666666666629" width="129" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="hCA-XZ-Oub"/>

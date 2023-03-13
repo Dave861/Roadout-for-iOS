@@ -22,6 +22,8 @@ class UXButton: UIButton {
     
     @IBInspectable var coloriseEffect: Bool = false
     
+    @IBInspectable var translateTitle: Bool = false
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.layer.masksToBounds = true

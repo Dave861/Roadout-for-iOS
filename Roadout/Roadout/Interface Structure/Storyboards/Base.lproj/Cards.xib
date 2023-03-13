@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Name 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVN-ST-fCA">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Name 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVN-ST-fCA" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="354" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="hps-MP-Z5F"/>
@@ -37,6 +37,9 @@
                             <buttonConfiguration key="configuration" style="plain" title="Continue">
                                 <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                             </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="continueTapped:" destination="QV9-ue-75M" eventType="touchUpInside" id="HTn-Lk-z3K"/>
                             </connections>
@@ -48,6 +51,9 @@
                             <buttonConfiguration key="configuration" style="plain" title="Pick">
                                 <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                             </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="pickTapped:" destination="QV9-ue-75M" eventType="touchUpInside" id="lC7-0X-EQE"/>
                             </connections>
@@ -184,7 +190,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="331"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-9N-BvQ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-9N-BvQ" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="fcX-zM-DWf"/>
@@ -204,6 +210,9 @@
                     <buttonConfiguration key="configuration" style="plain" title="Continue">
                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                     </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="continueTapped:" destination="JWz-dS-cdx" eventType="touchUpInside" id="KQF-5x-dZd"/>
                     </connections>
@@ -211,7 +220,7 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cluj.Marasti.Section" translatesAutoresizingMaskIntoConstraints="NO" id="X6V-CA-sok">
                     <rect key="frame" x="10" y="50" width="394" height="184"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a87-Nj-jdd">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a87-Nj-jdd" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="15" y="242" width="81" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="81" id="2VV-vb-zH5"/>
@@ -288,7 +297,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="318"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itr-uY-IlN">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itr-uY-IlN" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="zFy-Bn-vH9"/>
@@ -308,6 +317,9 @@
                     <buttonConfiguration key="configuration" style="plain" title="Continue">
                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                     </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="continueTapped:" destination="yES-RI-Lm8" eventType="touchUpInside" id="veA-fL-v9V"/>
                     </connections>
@@ -352,7 +364,7 @@
                                 <constraint firstAttribute="height" constant="23.329999999999998" id="qMJ-ZR-JV7"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a spot to get info about it" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="cT8-Dx-Sht">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a spot to get info about it" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="cT8-Dx-Sht" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                             <rect key="frame" x="38" y="4" width="328" height="27"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                             <color key="textColor" systemColor="systemGrayColor"/>
@@ -410,7 +422,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="280"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHy-ge-QgL">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHy-ge-QgL" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="349" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="6Pa-8H-59r"/>
@@ -430,6 +442,9 @@
                     <buttonConfiguration key="configuration" style="plain" title="Continue">
                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                     </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="continueTapped:" destination="5uk-r6-x1e" eventType="touchUpInside" id="JtM-9d-xH9"/>
                     </connections>
@@ -450,7 +465,7 @@
                         <action selector="backTapped:" destination="5uk-r6-x1e" eventType="touchUpInside" id="E8f-tV-rW7"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price/Minute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8T-IY-QpD">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price/Minute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8T-IY-QpD" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="16" y="53" width="96" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="htJ-Za-7wK"/>
@@ -469,7 +484,7 @@
                         <action selector="slided:" destination="5uk-r6-x1e" eventType="valueChanged" id="C7f-cN-thZ"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2q1-rQ-7bi">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2q1-rQ-7bi" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="16" y="131" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="LPJ-AU-djI"/>
@@ -479,7 +494,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PB-ZP-Kpv">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PB-ZP-Kpv" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="366" y="131" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="BIq-5u-H7I"/>
@@ -511,7 +526,7 @@
                             <imageReference key="image" image="wand.and.stars" catalog="system" symbolScale="medium"/>
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We recommed reserving for 17 minutes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nw9-ia-Wyq">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We recommed reserving for 17 minutes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="nw9-ia-Wyq">
                             <rect key="frame" x="40" y="0.0" width="338" height="39"/>
                             <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
                             <color key="textColor" name="Dark Yellow"/>
@@ -595,7 +610,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="237"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giZ-dv-vcH">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giZ-dv-vcH" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="dJL-Zb-ny9"/>
@@ -757,7 +772,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Reservation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFj-mo-6Ez">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Reservation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFj-mo-6Ez" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="H1s-Dn-oMO"/>
@@ -809,6 +824,8 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="unlockTapped:" destination="eO2-BE-dRG" eventType="touchUpInside" id="GWw-vc-sba"/>
@@ -840,6 +857,8 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="delayTapped:" destination="eO2-BE-dRG" eventType="touchUpInside" id="FWB-04-jOn"/>
@@ -871,6 +890,8 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="cancelTapped:" destination="eO2-BE-dRG" eventType="touchUpInside" id="fZ9-Qz-OBu"/>
@@ -910,6 +931,8 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="arTapped:" destination="eO2-BE-dRG" eventType="touchUpInside" id="AK4-TO-mrY"/>
@@ -941,6 +964,8 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="directionsTapped:" destination="eO2-BE-dRG" eventType="touchUpInside" id="rYD-8Y-IrP"/>
@@ -984,6 +1009,8 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="worldTapped:" destination="eO2-BE-dRG" eventType="touchUpInside" id="ggn-x0-tC7"/>
@@ -1015,6 +1042,8 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="helpTapped:" destination="eO2-BE-dRG" eventType="touchUpInside" id="XNs-Gj-xgS"/>
@@ -1037,7 +1066,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3hB-za-XSV">
                     <rect key="frame" x="98.000000000000014" y="52" width="218.33333333333337" height="42"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reserved for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwE-AN-dS0">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reserved for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwE-AN-dS0" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="9" width="111" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <color key="textColor" systemColor="systemGrayColor"/>
@@ -1103,7 +1132,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="205"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delay Reservation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9m-0u-xw2">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delay Reservation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9m-0u-xw2" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="of8-kf-myH"/>
@@ -1139,6 +1168,9 @@
                     <buttonConfiguration key="configuration" style="plain" title="Continue">
                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                     </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="continueTapped:" destination="C9a-x4-yeN" eventType="touchUpInside" id="Gxg-RR-YQc"/>
                     </connections>
@@ -1153,7 +1185,7 @@
                         <action selector="slided:" destination="C9a-x4-yeN" eventType="valueChanged" id="QFc-XG-BEe"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWr-ar-epm">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWr-ar-epm" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="16" y="55" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="9qv-6K-oBS"/>
@@ -1163,7 +1195,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dnh-eR-rb3">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dnh-eR-rb3" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="366" y="55" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="RuC-9J-BmV"/>
@@ -1217,7 +1249,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfM-0S-wYl">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfM-0S-wYl" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="9MR-vN-DON"/>
@@ -1242,7 +1274,7 @@
                         <action selector="backTapped:" destination="oJW-V3-0fW" eventType="touchUpInside" id="DFQ-ir-vdS"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="dv6-rc-nW4">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="dv6-rc-nW4" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="10" y="48" width="394" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="Ygb-Yq-0QM"/>
@@ -1318,7 +1350,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlocked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC3-Lo-1CP">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlocked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC3-Lo-1CP" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="BeV-GV-nEW"/>
@@ -1343,7 +1375,7 @@
                         <action selector="doneTapped:" destination="feY-Id-uPD" eventType="touchUpInside" id="hZO-Qs-jJ1"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spot is now unlocked, pay parking right from here or mark the spot to find your car later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Tlp-1f-91q">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spot is now unlocked, pay parking right from here or mark the spot to find your car later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Tlp-1f-91q" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="10" y="48" width="394" height="38.333333333333343"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" systemColor="systemGrayColor"/>
@@ -1366,6 +1398,7 @@
                             </buttonConfiguration>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="payTapped:" destination="feY-Id-uPD" eventType="touchUpInside" id="fbT-fK-Xwt"/>
@@ -1398,6 +1431,7 @@
                             </buttonConfiguration>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="markTapped:" destination="feY-Id-uPD" eventType="touchUpInside" id="Awr-gF-ZIn"/>
@@ -1484,6 +1518,7 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="findWayTapped:" destination="oxl-Dj-0PN" eventType="touchUpInside" id="OgO-vY-VzT"/>
@@ -1515,6 +1550,7 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="expressLaneTapped:" destination="oxl-Dj-0PN" eventType="touchUpInside" id="aZM-cS-yHM"/>
@@ -1558,6 +1594,7 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="futureReserveTapped:" destination="oxl-Dj-0PN" eventType="touchUpInside" id="H21-rP-0lL"/>
@@ -1589,6 +1626,7 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="payParkingTapped:" destination="oxl-Dj-0PN" eventType="touchUpInside" id="Z5O-PG-7my"/>
@@ -1608,7 +1646,7 @@
                         <constraint firstAttribute="height" constant="45" id="tSM-ob-s2T"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Tools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPi-n8-AVj">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Tools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPi-n8-AVj" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="moI-k6-fuf"/>

@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="206"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLD-hL-6Fb">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLD-hL-6Fb" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="jxk-9Y-pqO"/>
@@ -36,6 +36,9 @@
                     <buttonConfiguration key="configuration" style="plain" title="Continue">
                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                     </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="continueTapped:" destination="WD9-Ds-t90" eventType="touchUpInside" id="Ujw-kg-hLq"/>
                     </connections>
@@ -65,7 +68,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.0" maxValue="12" translatesAutoresizingMaskIntoConstraints="NO" id="OaA-dN-8nM">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="12" translatesAutoresizingMaskIntoConstraints="NO" id="OaA-dN-8nM">
                     <rect key="frame" x="50" y="65" width="306" height="30"/>
                     <color key="tintColor" name="Cash Yellow"/>
                     <constraints>
@@ -75,7 +78,7 @@
                         <action selector="slided:" destination="WD9-Ds-t90" eventType="valueChanged" id="0vn-O7-jai"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 hour" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acA-qD-uek">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 hour" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acA-qD-uek" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="8" y="58" width="36" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="RnQ-Xk-t9Q"/>
@@ -85,7 +88,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 hours" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAP-ib-H0w">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 hours" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAP-ib-H0w" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="362" y="58" width="44" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="REB-HZ-MHJ"/>
@@ -130,7 +133,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="271"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay Parking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORZ-i5-FWS">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay Parking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORZ-i5-FWS" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="2ph-Bu-84d"/>
@@ -264,6 +267,9 @@
                     <buttonConfiguration key="configuration" style="plain" title="EDIT">
                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                     </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="editLicensePlateTapped:" destination="m6t-HG-AQQ" eventType="touchUpInside" id="e9U-Uu-zdv"/>
                     </connections>
@@ -322,7 +328,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paid Parking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev5-Hi-dqF">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paid Parking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev5-Hi-dqF" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="49" y="4" width="103" height="44"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <nil key="textColor"/>
@@ -338,6 +344,7 @@
                     </buttonConfiguration>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="optionsTapped:" destination="Jod-3W-ZP0" eventType="touchUpInside" id="roT-J2-RU8"/>

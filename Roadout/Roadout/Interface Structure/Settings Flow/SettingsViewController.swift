@@ -92,8 +92,8 @@ class SettingsViewController: UIViewController {
         UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.futureReservations")
         UserDefaults.roadout!.set([String](), forKey: "ro.roadout.paymentMethods")
         UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.favouriteLocationIDs")
-        UserDefaults.roadout!.set("NO-PLATE", forKey: "ro.roadout.Roadout.userLicensePlate")
-        userLicensePlate = "NO-PLATE"
+        UserDefaults.roadout!.set("", forKey: "ro.roadout.Roadout.userLicensePlate")
+        userLicensePlate = ""
     }
 }
 extension SettingsViewController: MFMailComposeViewControllerDelegate {

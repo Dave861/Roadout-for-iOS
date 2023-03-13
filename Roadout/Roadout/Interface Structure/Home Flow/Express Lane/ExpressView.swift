@@ -82,10 +82,10 @@ class ExpressView: UIView {
         UserDefaults.roadout!.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
         cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
         
-        chooseMethodBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        chooseMethodBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true
         
-        payBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         payBtn.showsMenuAsPrimaryAction = true
         payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
     }
@@ -107,16 +107,17 @@ class ExpressView: UIView {
         chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         chooseMethodBtn.setTitle("", for: .normal)
         
+        chargeLbl.text = "\(Int(slider.value))" + " Minute/s".localized() + " - \(Int(slider.value)) RON"
         chargeLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: chargeLbl.range(after: " - "))
         chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
         
         cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
         selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
 
-        chooseMethodBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        chooseMethodBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true
         
-        payBtn.menu = UIMenu(title: "Choose a Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         payBtn.showsMenuAsPrimaryAction = true
                 
         locationLbl.text = parkLocations[selectedParkLocationIndex].name

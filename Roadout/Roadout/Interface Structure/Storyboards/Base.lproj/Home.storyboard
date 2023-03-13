@@ -162,7 +162,7 @@
                                             <constraint firstAttribute="height" constant="27.5" id="xf8-ms-ghr"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for a Place..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKi-si-XRH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for a Place..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKi-si-XRH" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="45" y="8" width="160" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="uIT-IA-mea"/>
@@ -325,7 +325,7 @@
                                     <constraint firstAttribute="height" constant="79" id="mLl-sk-dRe"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00c-dS-9lr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00c-dS-9lr" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="301" y="74" width="76" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="SyQ-rm-4hQ"/>
@@ -335,11 +335,14 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="dismissTapped:" destination="IEY-7P-kRs" eventType="touchUpInside" id="BJy-J0-7Qb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhR-Bf-1Wh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhR-Bf-1Wh" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="110" width="102" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="qEX-wr-gnx"/>
@@ -440,7 +443,7 @@
                                             <constraint firstAttribute="width" constant="115" id="pq4-H2-SOd"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wow, not so quick! You might be looking for a place that doesn't exist" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlN-2V-yH0">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wow, not so quick! You might be looking for a place that doesn't exist" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlN-2V-yH0" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="46.666666666666657" y="96" width="300" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="lnq-fd-HGx"/>
@@ -650,7 +653,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4A-f6-F8g">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4A-f6-F8g" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="110" width="197" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="197" id="eUO-qc-lsx"/>
@@ -1030,13 +1033,16 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRQ-L5-dy9">
                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="42"/>
                                                     <subviews>
-                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6x-xa-g6c">
+                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6x-xa-g6c" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="42"/>
                                                             <color key="tintColor" name="Kinda Red"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" title="Sign Out">
                                                                 <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
                                                             </buttonConfiguration>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.7839999794960022" green="0.30199998617172241" blue="0.046999998390674591" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1069,7 +1075,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="353" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHP-lU-7Bf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHP-lU-7Bf" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                                     <rect key="frame" x="109" y="0.0" width="135" height="43"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="135" id="B1a-wU-S7x"/>
@@ -1092,7 +1098,7 @@ Made in Cluj :)</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWx-Xn-qoA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWx-Xn-qoA" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="7" y="71" width="89" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="89" id="bF0-Ys-eOe"/>
@@ -1105,6 +1111,9 @@ Made in Cluj :)</string>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24" scale="large" weight="regular"/>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backTapped:" destination="nJf-S9-F6e" eventType="touchUpInside" id="n3c-kj-69N"/>
                                 </connections>
@@ -1152,7 +1161,7 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDj-5P-Kug">
                                 <rect key="frame" x="0.0" y="612" width="393" height="240"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agB-Hm-7h3">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agB-Hm-7h3" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="317.66666666666669" y="18" width="72.333333333333314" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="pd6-Rg-h1J"/>
@@ -1162,6 +1171,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="tapped:" destination="IJ0-Vp-Psm" eventType="touchUpInside" id="fZA-N2-Ydd"/>
                                         </connections>
@@ -1177,11 +1189,14 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Save">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="savedTapped:" destination="IJ0-Vp-Psm" eventType="touchUpInside" id="LO4-7H-VTf"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Current Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ec-co-Pqr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Current Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ec-co-Pqr" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="54" width="119" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="Y1b-Bo-bdR"/>
@@ -1210,7 +1225,7 @@ Made in Cluj :)</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yH-gy-PnB">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yH-gy-PnB" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="105" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="9cA-ve-M6d"/>
@@ -1285,13 +1300,13 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRd-jR-7A9">
                                 <rect key="frame" x="0.0" y="548" width="393" height="304"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDS-7y-vs7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDS-7y-vs7" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="145" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EP3-IM-wPs">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EP3-IM-wPs" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="317.66666666666669" y="20" width="72.333333333333314" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="kGR-xI-Wuq"/>
@@ -1301,6 +1316,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="cancelTapped:" destination="iYN-sY-jCj" eventType="touchUpInside" id="0OF-nT-O7d"/>
                                         </connections>
@@ -1316,6 +1334,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Save">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="saveTapped:" destination="iYN-sY-jCj" eventType="touchUpInside" id="Nej-JX-3MC"/>
                                         </connections>
@@ -1350,7 +1371,7 @@ Made in Cluj :)</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HiJ-zc-MNf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HiJ-zc-MNf" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="240" y="9" width="150" height="38"/>
                                         <color key="backgroundColor" name="Background"/>
                                         <constraints>
@@ -1361,6 +1382,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Forgot Password?">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="forgotTapped:" destination="iYN-sY-jCj" eventType="touchUpInside" id="jfv-ij-wRp"/>
                                         </connections>
@@ -1437,7 +1461,7 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HrQ-rH-hc2">
                                 <rect key="frame" x="0.0" y="596" width="393" height="256"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VB-xF-Dw3">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3VB-xF-Dw3" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="157.66666666666666" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="usL-fl-4FW"/>
@@ -1446,7 +1470,7 @@ Made in Cluj :)</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAB-dt-hJ1">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAB-dt-hJ1" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="317.66666666666669" y="20" width="72.333333333333314" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="XNW-K1-Dma"/>
@@ -1456,6 +1480,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="cancelTapped:" destination="sve-GZ-fsJ" eventType="touchUpInside" id="lNY-gG-zCR"/>
                                         </connections>
@@ -1491,11 +1518,14 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Confirm">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="deleteTapped:" destination="sve-GZ-fsJ" eventType="touchUpInside" id="nOv-Hv-2iY"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-mz-cFR">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-mz-cFR" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="240" y="9" width="150" height="38"/>
                                         <color key="backgroundColor" name="Background"/>
                                         <constraints>
@@ -1506,6 +1536,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Forgot Password?">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="forgotTapped:" destination="sve-GZ-fsJ" eventType="touchUpInside" id="qMe-7r-fRm"/>
                                         </connections>
@@ -1570,7 +1603,7 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CoV-8M-q4W">
                                 <rect key="frame" x="10" y="751" width="373" height="52"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading City Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5P-uH-zHK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading City Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5P-uH-zHK" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="44.666666666666671" y="15.666666666666629" width="148.33333333333331" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -1602,6 +1635,7 @@ Made in Cluj :)</string>
                                         </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="tryAgainTapped:" destination="vy1-m5-4oI" eventType="touchUpInside" id="PPf-0Y-C7C"/>
@@ -1661,7 +1695,7 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDu-NF-4xp">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDu-NF-4xp" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="301" y="74" width="76" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="fV5-Zq-FzM"/>
@@ -1671,11 +1705,14 @@ Made in Cluj :)</string>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="dismissTapped:" destination="3BY-Bc-wD7" eventType="touchUpInside" id="CLF-Oi-R4E"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xym-kD-9XW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xym-kD-9XW" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="110" width="92" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="7JQ-fT-s6g"/>
@@ -1732,7 +1769,7 @@ Made in Cluj :)</string>
                                                                 <constraint firstAttribute="height" constant="26" id="nHN-Z8-m33"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDv-JE-eYZ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDv-JE-eYZ" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                                             <rect key="frame" x="154.66666666666666" y="30.666666666666671" width="114.99999999999997" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="zUz-Xi-417"/>
@@ -1797,7 +1834,7 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="height" constant="64.5" id="T0A-vl-JhD"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No locations found nearby. Location access might be disabled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsQ-eu-Cqd">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No locations found nearby. Location access might be disabled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsQ-eu-Cqd" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="56.666666666666657" y="96" width="280" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="bTX-a3-w68"/>
@@ -1873,7 +1910,7 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3f-vj-5kV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3f-vj-5kV" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="301" y="74" width="76" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="kfA-dw-IyV"/>
@@ -1883,11 +1920,14 @@ Made in Cluj :)</string>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="dismissTapped:" destination="AGI-Vb-c3w" eventType="touchUpInside" id="D6P-xf-wMa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNS-ej-kwh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNS-ej-kwh" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="110" width="112" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="aUJ-TI-0QL"/>
@@ -1988,7 +2028,7 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="width" constant="115" id="eJB-25-Zmf"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven’t added any locations to Express Lane" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keV-9w-bZp">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven’t added any locations to Express Lane" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keV-9w-bZp" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="44.666666666666657" y="96" width="272" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="272" id="cBg-ZK-FpR"/>
@@ -1998,7 +2038,7 @@ Made in Cluj :)</string>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBD-av-s0i">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBD-av-s0i" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="104.66666666666669" y="153" width="152" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="152" id="FmB-9o-adL"/>
@@ -2009,6 +2049,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Tap here to add">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="placeholderAddTapped:" destination="AGI-Vb-c3w" eventType="touchUpInside" id="8Sk-dV-Rt7"/>
                                         </connections>
@@ -2025,7 +2068,7 @@ Made in Cluj :)</string>
                                     <constraint firstItem="keV-9w-bZp" firstAttribute="centerX" secondItem="TjE-hQ-5zu" secondAttribute="centerX" id="sbd-RY-E0p"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHo-1L-gXC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHo-1L-gXC" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="109.66666666666669" y="785" width="174" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="174" id="Q3L-ra-h6x"/>
@@ -2038,6 +2081,9 @@ Made in Cluj :)</string>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="17" scale="medium" weight="medium"/>
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addLocationTapped:" destination="AGI-Vb-c3w" eventType="touchUpInside" id="mCi-lZ-2F4"/>
                                 </connections>
@@ -2096,7 +2142,7 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ya-4k-68H">
                                 <rect key="frame" x="0.0" y="417" width="393" height="435"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdv-ap-q4I">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdv-ap-q4I" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="145" height="23"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
@@ -2113,11 +2159,14 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Done">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="doneTapped:" destination="CDD-9s-vZS" eventType="touchUpInside" id="MsR-g4-2T0"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5N-J9-JpD">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5N-J9-JpD" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="317.66666666666669" y="20" width="72.333333333333314" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="bYp-a3-7AY"/>
@@ -2127,6 +2176,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="cancelTapped:" destination="CDD-9s-vZS" eventType="touchUpInside" id="icH-oe-4zX"/>
                                         </connections>
@@ -2257,13 +2309,13 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8P-2T-hk1">
                                 <rect key="frame" x="0.0" y="582" width="393" height="270"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License Plate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSQ-WB-zR9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License Plate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSQ-WB-zR9" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="137" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5z-xf-OKA">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5z-xf-OKA" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="317.66666666666669" y="20" width="72.333333333333314" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="QCJ-9h-xar"/>
@@ -2273,6 +2325,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="cancelTapped:" destination="046-v8-33p" eventType="touchUpInside" id="k4G-kR-IM3"/>
                                         </connections>
@@ -2288,6 +2343,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Save">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="changeTapped:" destination="046-v8-33p" eventType="touchUpInside" id="noh-ax-hvd"/>
                                         </connections>
@@ -2390,13 +2448,13 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7n-Xy-Lgy">
                                 <rect key="frame" x="0.0" y="599" width="393" height="253"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan Reservation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmL-P6-IxR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan Reservation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmL-P6-IxR" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="172.33333333333334" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b50-0m-1TD">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b50-0m-1TD" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="317.66666666666669" y="20" width="72.333333333333314" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="o8D-9r-Bmt"/>
@@ -2406,6 +2464,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="cancelTapped:" destination="zSF-Dy-bYN" eventType="touchUpInside" id="5OI-ve-pyr"/>
                                         </connections>
@@ -2421,11 +2482,14 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Done">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="doneTapped:" destination="zSF-Dy-bYN" eventType="touchUpInside" id="xEw-cx-bwX"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf3-rT-kMS">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf3-rT-kMS" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="120" width="39" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -2505,7 +2569,7 @@ Made in Cluj :)</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYa-Mo-jT4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYa-Mo-jT4" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="313" y="74" width="64" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="01Z-tG-Dvr"/>
@@ -2515,11 +2579,14 @@ Made in Cluj :)</string>
                                 <buttonConfiguration key="configuration" style="plain" title="Done">
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="doneTapped:" destination="HCM-zm-57B" eventType="touchUpInside" id="oQK-x5-ygb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Future Road" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVq-aX-4OB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Future Road" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVq-aX-4OB" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="20" y="110" width="175" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="CcJ-eJ-gJy"/>
@@ -2618,7 +2685,7 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="height" constant="64.5" id="BWc-oi-iGk"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven’t planned any reservation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyW-rb-div">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven’t planned any reservation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyW-rb-div" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="55.666666666666686" y="96" width="250" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="49" id="9Vm-g9-PS7"/>
@@ -2628,7 +2695,7 @@ Made in Cluj :)</string>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CY-Tf-1iW">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CY-Tf-1iW" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="104.66666666666669" y="153" width="152" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="Hqu-fw-Yek"/>
@@ -2639,6 +2706,9 @@ Made in Cluj :)</string>
                                         <buttonConfiguration key="configuration" style="plain" title="Tap here to add">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="placeholderAddTapped:" destination="HCM-zm-57B" eventType="touchUpInside" id="BkD-Xb-uZb"/>
                                         </connections>
@@ -2655,7 +2725,7 @@ Made in Cluj :)</string>
                                     <constraint firstItem="rDk-Rh-0bq" firstAttribute="top" secondItem="ct7-yL-keP" secondAttribute="top" constant="18" id="n08-7Y-HDC"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSh-80-ftc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSh-80-ftc" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
                                 <rect key="frame" x="96.666666666666686" y="785" width="200" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="6KF-G0-T2w"/>
@@ -2668,6 +2738,9 @@ Made in Cluj :)</string>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="17" scale="medium" weight="medium"/>
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="planReservationTapped:" destination="HCM-zm-57B" eventType="touchUpInside" id="RlR-rK-OL7"/>
                                 </connections>
