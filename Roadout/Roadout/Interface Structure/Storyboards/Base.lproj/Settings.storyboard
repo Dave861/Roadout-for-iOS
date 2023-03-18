@@ -903,7 +903,7 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="height" constant="40" id="iJ9-51-7gg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="cc-number"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
                                                 <integer key="value" value="16"/>
@@ -2189,6 +2189,19 @@ Made in Cluj :)</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybm-DB-DS2">
+                                        <rect key="frame" x="311" y="0.0" width="50" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="11I-At-y9L"/>
+                                            <constraint firstAttribute="width" constant="50" id="ml7-l9-WvP"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Icons"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="exclamationmark.triangle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="warningTapped:" destination="3Wc-b5-i2g" eventType="touchUpInside" id="bFG-6Y-sf5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="Secondary Detail"/>
                                 <constraints>
@@ -2197,7 +2210,9 @@ Made in Cluj :)</string>
                                     <constraint firstItem="hNm-GZ-WHW" firstAttribute="leading" secondItem="zec-ah-iuQ" secondAttribute="leading" constant="10" id="Kw7-LJ-ANf"/>
                                     <constraint firstItem="hNm-GZ-WHW" firstAttribute="top" secondItem="iBq-yN-q1j" secondAttribute="bottom" constant="4" id="Mqt-Po-aBh"/>
                                     <constraint firstAttribute="trailing" secondItem="hNm-GZ-WHW" secondAttribute="trailing" constant="10" id="VUE-Ny-5K6"/>
+                                    <constraint firstItem="ybm-DB-DS2" firstAttribute="top" secondItem="zec-ah-iuQ" secondAttribute="top" id="lhR-GJ-Moe"/>
                                     <constraint firstItem="iBq-yN-q1j" firstAttribute="leading" secondItem="zec-ah-iuQ" secondAttribute="leading" constant="10" id="qk0-ZH-gCT"/>
+                                    <constraint firstAttribute="trailing" secondItem="ybm-DB-DS2" secondAttribute="trailing" id="rKA-or-03r"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2226,6 +2241,7 @@ Made in Cluj :)</string>
                         <outlet property="siriCard" destination="zec-ah-iuQ" id="JT4-WX-uY8"/>
                         <outlet property="siriDescription" destination="hNm-GZ-WHW" id="gg3-Zv-fWc"/>
                         <outlet property="siriTitle" destination="iBq-yN-q1j" id="B6u-NC-5u6"/>
+                        <outlet property="warningBtn" destination="ybm-DB-DS2" id="Bts-bC-6p5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Grc-yw-NlE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2570,6 +2586,7 @@ Made in Cluj :)</string>
         <image name="creditcard" catalog="system" width="128" height="88"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="ellipsis.rectangle.fill" catalog="system" width="128" height="79"/>
+        <image name="exclamationmark.triangle.fill" catalog="system" width="128" height="109"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="scroll" catalog="system" width="128" height="114"/>
         <image name="topA" width="337.5" height="217.5"/>

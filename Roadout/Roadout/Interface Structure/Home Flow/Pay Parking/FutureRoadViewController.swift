@@ -174,6 +174,7 @@ extension FutureRoadViewController: UITableViewDelegate, UITableViewDataSource {
             NotificationHelper.sharedInstance.removeFutureReservation(futureReservation: futureReservations[indexPath.row])
             futureReservations.remove(at: indexPath.row)
             self.saveFutureReservations()
+            self.reloadScreen()
             tableView.reloadData()
             completion(true)
         }

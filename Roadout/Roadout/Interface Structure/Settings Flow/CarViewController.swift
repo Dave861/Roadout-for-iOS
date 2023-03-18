@@ -6,13 +6,31 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CarViewController: UIViewController {
+    
+    var locationManager: CLLocationManager?
     
     @IBOutlet weak var backButton: UIButton!
     
     @IBAction func backTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBOutlet weak var warningBtn: UIButton!
+    @IBAction func warningTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Warning".localized(), message: "Location must be always enabled in order for Roadout to work with Siri".localized(), preferredStyle: .alert)
+        alert.view.tintColor = UIColor(named: "Icons")
+        let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
+        let turnAction = UIAlertAction(title: "Enable".localized(), style: .default) { _ in
+            if let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) {
+                UIApplication.shared.open(appSettings)
+            }
+        }
+        alert.addAction(okAction)
+        alert.addAction(turnAction)
+        self.present(alert, animated: true)
     }
     
     @IBOutlet weak var siriCard: UIView!
@@ -30,6 +48,10 @@ class CarViewController: UIViewController {
         siriCard.layer.cornerRadius = 16.0
         carplayCard.layer.cornerRadius = 16.0
         highlightDescriptions()
+        
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        manageWarning()
     }
     
     func highlightDescriptions() {
@@ -49,4 +71,20 @@ class CarViewController: UIViewController {
         carplayDescription.set(font: .systemFont(ofSize: 17, weight: .medium), range: carplayDescription.range(string: "unlock"))
     }
     
+    func manageWarning() {
+        warningBtn.setTitle("", for: .normal)
+        if locationManager?.authorizationStatus == .authorizedAlways {
+            warningBtn.isHidden = true
+            warningBtn.isUserInteractionEnabled = false
+        } else {
+            warningBtn.isHidden = false
+            warningBtn.isUserInteractionEnabled = true
+        }
+    }
+    
+}
+extension CarViewController: CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        self.manageWarning()
+    }
 }

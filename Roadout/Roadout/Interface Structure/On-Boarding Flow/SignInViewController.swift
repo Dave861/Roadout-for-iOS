@@ -95,15 +95,18 @@ class SignInViewController: UIViewController {
         }
         let alert = UIAlertController(title: "Forgot Password".localized(), message: "We will send an email with a verification code to ".localized() + emailField.text!, preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Continue".localized(), style: .default) { _ in
+            self.indicatorView.present(haptic: .none, completion: nil)
             Task {
                 do {
                     try await UserManager.sharedInstance.sendForgotDataAsync(self.emailField.text!)
                     DispatchQueue.main.async {
+                        self.indicatorView.dismiss()
                         let sb = UIStoryboard(name: "Main", bundle: nil)
                         let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
                         self.present(vc, animated: true, completion: nil)
                     }
                 } catch let err {
+                    self.indicatorView.dismiss()
                     self.manageServerSideErrors(err)
                 }
             }

@@ -43,7 +43,7 @@ class AuthManager {
         do {
             responseJson = try await sendRequest.serializingString().value
         } catch {
-            throw AuthErrors.databaseFailure
+            throw AuthErrors.networkError
         }
         
         let data = responseJson.data(using: .utf8)!
@@ -93,7 +93,7 @@ class AuthManager {
         do {
             responseJson = try await sendRequest.serializingString().value
         } catch {
-            throw AuthErrors.databaseFailure
+            throw AuthErrors.networkError
         }
         
         let data = responseJson.data(using: .utf8)!
@@ -124,7 +124,7 @@ class AuthManager {
         do {
             responseJson = try await sendRequest.serializingString().value
         } catch {
-            throw AuthErrors.databaseFailure
+            throw AuthErrors.networkError
         }
         
         let data = responseJson.data(using: .utf8)!
@@ -152,7 +152,7 @@ class AuthManager {
         do {
             responseJson = try await checkRequest.serializingString().value
         } catch {
-            throw AuthErrors.databaseFailure
+            throw AuthErrors.networkError
         }
         
         let data = responseJson.data(using: .utf8)!

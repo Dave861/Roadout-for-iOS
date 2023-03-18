@@ -13,6 +13,9 @@ class DeleteAccountViewController: UIViewController {
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     let forgotTitle = NSAttributedString(string: "Forgot Password?".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     var errorCounter = 0
+    
+    let indicatorImage = UIImage.init(systemName: "lines.measurement.horizontal")!.withTintColor(UIColor(named: "Redish")!, renderingMode: .alwaysOriginal)
+    var indicatorView: SPIndicatorView!
         
     @IBOutlet weak var cancelBtn: UIButton!
     
@@ -83,15 +86,18 @@ class DeleteAccountViewController: UIViewController {
         let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
         let alert = UIAlertController(title: "Forgot Password".localized(), message: "We will send an email with a verification code to ".localized() + "\(email).", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Continue".localized(), style: .default) { _ in
+            self.indicatorView.present(haptic: .none, completion: nil)
             Task {
                 do {
                     try await UserManager.sharedInstance.sendForgotDataAsync(email)
                     DispatchQueue.main.async {
+                        self.indicatorView.dismiss()
                         let sb = UIStoryboard(name: "Main", bundle: nil)
                         let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
                         self.present(vc, animated: true, completion: nil)
                     }
                 } catch let err {
+                    self.indicatorView.dismiss()
                     self.manageServerSideErrors(err)
                 }
             }
@@ -145,6 +151,10 @@ class DeleteAccountViewController: UIViewController {
         
         forgotBtn.setAttributedTitle(forgotTitle, for: .normal)
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
+        
+        indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorImage))
+        indicatorView.backgroundColor = UIColor(named: "Background")!
+        indicatorView.dismissByDrag = false
     }
     
     

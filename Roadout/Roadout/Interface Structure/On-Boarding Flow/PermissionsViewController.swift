@@ -122,6 +122,7 @@ class PermissionsViewController: UIViewController {
     func manageLocation() {
         if locationManager!.authorizationStatus != .authorizedWhenInUse && locationManager!.authorizationStatus != .authorizedAlways {
             locationManager?.requestAlwaysAuthorization()
+            
         } else {
             self.permissionCounter += 1
             if self.permissionCounter >= 2 {

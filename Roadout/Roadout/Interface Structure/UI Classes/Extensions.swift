@@ -72,7 +72,7 @@ extension UITextField {
         let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 44.0)) //4
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //5
         let cancel = UIBarButtonItem(title: "Cancel".localized(), style: .plain, target: nil, action: #selector(tapCancel)) // 6
-        let barButton = UIBarButtonItem(title: "Set".localized(), style: .plain, target: target, action: selector) //7
+        let barButton = UIBarButtonItem(title: "Done".localized(), style: .plain, target: target, action: selector) //7
         toolBar.setItems([cancel, flexible, barButton], animated: false) //8
         toolBar.tintColor = UIColor(named: "Dark Orange")!//9
         self.inputAccessoryView = toolBar //10
@@ -385,34 +385,4 @@ extension UITableViewCell {
             .flatMap { $0.subviews }
             .compactMap { $0 as? UILabel }.first
     }
-}
-extension Double {
-  var toRadians: Double { return self * .pi / 180 }
-  var toDegrees: Double { return self * 180 / .pi }
-}
-extension CGFloat {
-  var toRadians: CGFloat { return self * .pi / 180 }
-  var toDegrees: CGFloat { return self * 180 / .pi }
-}
-extension CLLocation {
-  func bearingToLocationRadian(_ destinationLocation: CLLocation) -> CGFloat {
-    
-    let lat1 = self.coordinate.latitude.toRadians
-    let lon1 = self.coordinate.longitude.toRadians
-    
-    let lat2 = destinationLocation.coordinate.latitude.toRadians
-    let lon2 = destinationLocation.coordinate.longitude.toRadians
-    
-    let dLon = lon2 - lon1
-    
-    let y = sin(dLon) * cos(lat2)
-    let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
-    let radiansBearing = atan2(y, x)
-    
-    return CGFloat(radiansBearing)
-  }
-  
-  func bearingToLocationDegrees(destinationLocation: CLLocation) -> CGFloat {
-    return bearingToLocationRadian(destinationLocation).toDegrees
-  }
 }

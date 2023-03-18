@@ -20,6 +20,17 @@ class UXButton: UIButton {
         }
     }
     
+    @IBInspectable var adjustFontSizeToWidth: Bool = false {
+        didSet {
+            if adjustFontSizeToWidth {
+                self.titleLabel?.numberOfLines = 1
+                self.titleLabel?.adjustsFontSizeToFitWidth = true
+                self.titleLabel?.lineBreakMode = .byClipping
+                self.titleLabel?.baselineAdjustment = .alignCenters
+            }
+        }
+    }
+    
     @IBInspectable var coloriseEffect: Bool = false
     
     @IBInspectable var translateTitle: Bool = false

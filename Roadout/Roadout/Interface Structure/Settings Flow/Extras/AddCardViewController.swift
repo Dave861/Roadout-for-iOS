@@ -28,6 +28,12 @@ class AddCardViewController: UIViewController {
             } completion: { done in
                 self.dismiss(animated: true, completion: nil)
             }
+        } else {
+            let alert = UIAlertController(title: "Error".localized(), message: "Please make sure all card details are correct and filled".localized(), preferredStyle: .alert)
+            alert.view.tintColor = UIColor(named: "Dark Orange")
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
         }
     }
     
