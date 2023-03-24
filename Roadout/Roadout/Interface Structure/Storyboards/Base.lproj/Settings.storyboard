@@ -2189,19 +2189,6 @@ Made in Cluj :)</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybm-DB-DS2">
-                                        <rect key="frame" x="311" y="0.0" width="50" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="11I-At-y9L"/>
-                                            <constraint firstAttribute="width" constant="50" id="ml7-l9-WvP"/>
-                                        </constraints>
-                                        <color key="tintColor" name="Icons"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="exclamationmark.triangle.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="warningTapped:" destination="3Wc-b5-i2g" eventType="touchUpInside" id="bFG-6Y-sf5"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="Secondary Detail"/>
                                 <constraints>
@@ -2210,23 +2197,47 @@ Made in Cluj :)</string>
                                     <constraint firstItem="hNm-GZ-WHW" firstAttribute="leading" secondItem="zec-ah-iuQ" secondAttribute="leading" constant="10" id="Kw7-LJ-ANf"/>
                                     <constraint firstItem="hNm-GZ-WHW" firstAttribute="top" secondItem="iBq-yN-q1j" secondAttribute="bottom" constant="4" id="Mqt-Po-aBh"/>
                                     <constraint firstAttribute="trailing" secondItem="hNm-GZ-WHW" secondAttribute="trailing" constant="10" id="VUE-Ny-5K6"/>
-                                    <constraint firstItem="ybm-DB-DS2" firstAttribute="top" secondItem="zec-ah-iuQ" secondAttribute="top" id="lhR-GJ-Moe"/>
                                     <constraint firstItem="iBq-yN-q1j" firstAttribute="leading" secondItem="zec-ah-iuQ" secondAttribute="leading" constant="10" id="qk0-ZH-gCT"/>
-                                    <constraint firstAttribute="trailing" secondItem="ybm-DB-DS2" secondAttribute="trailing" id="rKA-or-03r"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Siri Integration is disabled. Learn more" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVH-Cb-zfq" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="746" width="393" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="kBH-Xv-B1m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <color key="highlightedColor" systemColor="systemGrayColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5G-o5-EJW">
+                                <rect key="frame" x="0.0" y="742" width="393" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="DjE-wv-Gmg"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="warningTapped:" destination="3Wc-b5-i2g" eventType="touchUpInside" id="aXm-ii-0Ma"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pZh-iy-oLM"/>
                         <color key="backgroundColor" name="Second Background"/>
                         <constraints>
+                            <constraint firstItem="oVH-Cb-zfq" firstAttribute="leading" secondItem="pZh-iy-oLM" secondAttribute="leading" id="5rB-IU-g1y"/>
+                            <constraint firstItem="1Ag-PS-yV3" firstAttribute="top" secondItem="W5G-o5-EJW" secondAttribute="bottom" constant="7" id="6FT-Za-6ZO"/>
+                            <constraint firstItem="W5G-o5-EJW" firstAttribute="trailing" secondItem="pZh-iy-oLM" secondAttribute="trailing" id="7H5-C2-ugM"/>
                             <constraint firstItem="Pi0-Wh-dOV" firstAttribute="top" secondItem="pZh-iy-oLM" secondAttribute="top" constant="45" id="9H3-OV-6BI"/>
                             <constraint firstItem="iAV-XL-ute" firstAttribute="top" secondItem="pZh-iy-oLM" secondAttribute="top" constant="12" id="Iud-YB-8b2"/>
+                            <constraint firstItem="pZh-iy-oLM" firstAttribute="trailing" secondItem="oVH-Cb-zfq" secondAttribute="trailing" id="JWy-mH-m8x"/>
                             <constraint firstItem="1Ag-PS-yV3" firstAttribute="centerX" secondItem="9cH-NJ-Vkd" secondAttribute="centerX" id="MgA-t5-vnP"/>
                             <constraint firstItem="pZh-iy-oLM" firstAttribute="trailing" secondItem="zec-ah-iuQ" secondAttribute="trailing" constant="16" id="ND6-Da-GvI"/>
+                            <constraint firstItem="W5G-o5-EJW" firstAttribute="leading" secondItem="pZh-iy-oLM" secondAttribute="leading" id="S1p-tU-j0j"/>
                             <constraint firstItem="iAV-XL-ute" firstAttribute="leading" secondItem="pZh-iy-oLM" secondAttribute="leading" constant="7" id="U8W-2S-qtY"/>
                             <constraint firstItem="zec-ah-iuQ" firstAttribute="leading" secondItem="pZh-iy-oLM" secondAttribute="leading" constant="16" id="VL7-jv-egA"/>
                             <constraint firstItem="pZh-iy-oLM" firstAttribute="trailing" secondItem="c0X-NX-R5Q" secondAttribute="trailing" constant="16" id="VnF-EI-603"/>
                             <constraint firstItem="1Ag-PS-yV3" firstAttribute="bottom" secondItem="pZh-iy-oLM" secondAttribute="bottom" constant="5" id="YFf-Fg-O3n"/>
+                            <constraint firstItem="1Ag-PS-yV3" firstAttribute="top" secondItem="oVH-Cb-zfq" secondAttribute="bottom" constant="13" id="bNF-a8-dxl"/>
                             <constraint firstItem="zec-ah-iuQ" firstAttribute="top" secondItem="Pi0-Wh-dOV" secondAttribute="bottom" constant="15" id="bUF-0L-rYz"/>
                             <constraint firstItem="Pi0-Wh-dOV" firstAttribute="leading" secondItem="pZh-iy-oLM" secondAttribute="leading" constant="20" id="cnH-K2-Fp4"/>
                             <constraint firstItem="c0X-NX-R5Q" firstAttribute="leading" secondItem="pZh-iy-oLM" secondAttribute="leading" constant="16" id="qvm-a7-IcZ"/>
@@ -2241,7 +2252,8 @@ Made in Cluj :)</string>
                         <outlet property="siriCard" destination="zec-ah-iuQ" id="JT4-WX-uY8"/>
                         <outlet property="siriDescription" destination="hNm-GZ-WHW" id="gg3-Zv-fWc"/>
                         <outlet property="siriTitle" destination="iBq-yN-q1j" id="B6u-NC-5u6"/>
-                        <outlet property="warningBtn" destination="ybm-DB-DS2" id="Bts-bC-6p5"/>
+                        <outlet property="warningBtn" destination="W5G-o5-EJW" id="KmV-uc-hgN"/>
+                        <outlet property="warningLbl" destination="oVH-Cb-zfq" id="EmO-4T-3Uf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Grc-yw-NlE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2586,7 +2598,6 @@ Made in Cluj :)</string>
         <image name="creditcard" catalog="system" width="128" height="88"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="ellipsis.rectangle.fill" catalog="system" width="128" height="79"/>
-        <image name="exclamationmark.triangle.fill" catalog="system" width="128" height="109"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="scroll" catalog="system" width="128" height="114"/>
         <image name="topA" width="337.5" height="217.5"/>

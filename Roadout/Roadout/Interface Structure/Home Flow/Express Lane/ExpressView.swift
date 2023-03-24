@@ -26,13 +26,17 @@ class ExpressView: UIView {
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
+    @IBOutlet weak var mapIcon: UIImageView!
+    
+    @IBOutlet weak var carIcon: UIImageView!
+    
     @IBOutlet weak var slider: UISlider!
     
     @IBAction func sliderChangedValue(_ sender: Any) {
         let roundedValue = round(slider.value/1.0)*1.0
         slider.value = roundedValue
         chargeLbl.text = "\(Int(slider.value))" + " Minute/s".localized() + " - \(Int(slider.value)) RON"
-        chargeLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: chargeLbl.range(after: " - "))
+        chargeLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: chargeLbl.range(after: " - "))
         chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
     }
     
@@ -101,14 +105,14 @@ class ExpressView: UIView {
         payBtn.layer.cornerRadius = 12.0
         payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
-        payBtn.backgroundColor = UIColor(named: "ExpressFocus")!
+        payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)!
         
         chooseMethodBtn.layer.cornerRadius = 12.0
         chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         chooseMethodBtn.setTitle("", for: .normal)
         
         chargeLbl.text = "\(Int(slider.value))" + " Minute/s".localized() + " - \(Int(slider.value)) RON"
-        chargeLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: chargeLbl.range(after: " - "))
+        chargeLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: chargeLbl.range(after: " - "))
         chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
         
         cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
@@ -123,15 +127,25 @@ class ExpressView: UIView {
         locationLbl.text = parkLocations[selectedParkLocationIndex].name
         spotSectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - " + "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
         
-        spotSectionLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: spotSectionLbl.range(after: "Section ".localized(), before: " - " + "Spot ".localized()))
-        spotSectionLbl.set(textColor: UIColor(named: "ExpressFocus")!, range: spotSectionLbl.range(after: " - " + "Spot ".localized()))
+        spotSectionLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: spotSectionLbl.range(after: "Section ".localized(), before: " - " + "Spot ".localized()))
+        spotSectionLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: spotSectionLbl.range(after: " - " + "Spot ".localized()))
         spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: "Section ".localized(), before: " - " + "Spot ".localized()))
         spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: " - " + "Spot ".localized()))
+        
+        setAccentColors()
         
     }
 
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Express", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+    }
+    
+    func setAccentColors() {
+        mapIcon.tintColor = UIColor(named: selectedLocation.accentColor)
+        carIcon.tintColor = UIColor(named: selectedLocation.accentColor)
+        slider.tintColor = UIColor(named: selectedLocation.accentColor)
+        chooseMethodBtn.tintColor = UIColor(named: selectedLocation.accentColor)
+        payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)
     }
     
     //MARK: - Payment Configuration -
@@ -142,7 +156,7 @@ class ExpressView: UIView {
         
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         payBtn.setAttributedTitle(mainCardTitle, for: .normal)
-        payBtn.backgroundColor = UIColor(named: "ExpressFocus")!
+        payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)!
     }
     
     func showApplePayBtn() {

@@ -19,6 +19,7 @@ class CarViewController: UIViewController {
     }
     
     @IBOutlet weak var warningBtn: UIButton!
+    @IBOutlet weak var warningLbl: UILabel!
     @IBAction func warningTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Warning".localized(), message: "Location must be always enabled in order for Roadout to work with Siri".localized(), preferredStyle: .alert)
         alert.view.tintColor = UIColor(named: "Icons")
@@ -73,12 +74,17 @@ class CarViewController: UIViewController {
     
     func manageWarning() {
         warningBtn.setTitle("", for: .normal)
+        warningLbl.text = "Siri Integration is disabled. Learn more".localized()
+        warningLbl.set(textColor: UIColor(named: "Icons")!, range: warningLbl.range(after: ". "))
+        warningLbl.set(font: .systemFont(ofSize: 18.0, weight: .medium), range: warningLbl.range(after: ". "))
         if locationManager?.authorizationStatus == .authorizedAlways {
             warningBtn.isHidden = true
             warningBtn.isUserInteractionEnabled = false
+            warningLbl.isHidden = true
         } else {
             warningBtn.isHidden = false
             warningBtn.isUserInteractionEnabled = true
+            warningLbl.isHidden = false
         }
     }
     
