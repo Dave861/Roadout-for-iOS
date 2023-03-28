@@ -19,7 +19,7 @@ class SignInViewController: UIViewController {
     let center = UNUserNotificationCenter.current()
     var locationManager: CLLocationManager?
     
-    let indicatorImage = UIImage.init(systemName: "lines.measurement.horizontal")!.withTintColor(UIColor(named: "Main Yellow")!, renderingMode: .alwaysOriginal)
+    let indicatorImage = UIImage.init(systemName: "lines.measurement.horizontal")!.withTintColor(UIColor.Roadout.mainYellow, renderingMode: .alwaysOriginal)
     var indicatorView: SPIndicatorView!
         
     @IBOutlet weak var cardView: UIView!
@@ -116,7 +116,7 @@ class SignInViewController: UIViewController {
         let noAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
         alert.addAction(noAction)
         alert.addAction(yesAction)
-        alert.view.tintColor = UIColor(named: "Main Yellow")!
+        alert.view.tintColor = UIColor.Roadout.mainYellow
         self.present(alert, animated: true, completion: nil)
     }
     

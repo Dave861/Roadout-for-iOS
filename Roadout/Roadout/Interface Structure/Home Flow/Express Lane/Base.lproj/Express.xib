@@ -151,7 +151,7 @@
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="QKl-TO-hia"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" name="FloatingBG"/>
             <constraints>
                 <constraint firstItem="IV2-lZ-ed9" firstAttribute="leading" secondItem="gWk-Zf-jxN" secondAttribute="leading" constant="8" id="7fq-aF-5kJ"/>
                 <constraint firstItem="5UL-v8-XU5" firstAttribute="leading" secondItem="QKl-TO-hia" secondAttribute="leading" constant="12" id="BQM-aq-SlR"/>
@@ -189,6 +189,11 @@
                 <constraint firstItem="6tr-IQ-CnZ" firstAttribute="top" secondItem="IV2-lZ-ed9" secondAttribute="bottom" constant="16" id="zmq-6B-dge"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="17"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="backBtn" destination="5UL-v8-XU5" id="jy7-l6-Hek"/>
                 <outlet property="carIcon" destination="M1M-ir-URf" id="RLh-Ol-iam"/>
@@ -203,6 +208,17 @@
             <point key="canvasLocation" x="2044.9275362318842" y="150"/>
         </view>
     </objects>
+    <designables>
+        <designable name="B3h-1c-Urb">
+            <size key="intrinsicContentSize" width="220.33333333333334" height="34.333333333333336"/>
+        </designable>
+        <designable name="CPo-oY-LVm">
+            <size key="intrinsicContentSize" width="131" height="25.333333333333332"/>
+        </designable>
+        <designable name="Cs9-nH-WRp">
+            <size key="intrinsicContentSize" width="54.666666666666664" height="34.333333333333336"/>
+        </designable>
+    </designables>
     <resources>
         <image name="car.fill" catalog="system" width="128" height="95"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
@@ -213,6 +229,9 @@
         </namedColor>
         <namedColor name="ExpressFocus">
             <color red="0.48199999332427979" green="0.30199998617172241" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="FloatingBG">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Secondary Floating">
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

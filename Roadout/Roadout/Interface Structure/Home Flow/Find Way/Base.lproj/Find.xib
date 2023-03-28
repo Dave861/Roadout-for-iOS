@@ -159,7 +159,7 @@
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="KBx-iq-SKJ"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" name="FloatingBG"/>
             <constraints>
                 <constraint firstItem="c4v-je-v0W" firstAttribute="top" secondItem="orN-Ic-GU3" secondAttribute="bottom" id="1C4-lF-Rtf"/>
                 <constraint firstItem="KBx-iq-SKJ" firstAttribute="trailing" secondItem="tZb-ma-24o" secondAttribute="trailing" constant="16" id="1HJ-fG-BYx"/>
@@ -198,6 +198,11 @@
                 <constraint firstItem="JUT-QC-vpM" firstAttribute="leading" secondItem="lty-uS-wg4" secondAttribute="trailing" constant="1" id="xC6-Ey-Vxv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="17"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="backBtn" destination="lty-uS-wg4" id="wgI-KL-7g3"/>
                 <outlet property="carIcon" destination="9CZ-1U-9kN" id="H1y-pS-bO9"/>
@@ -213,12 +218,26 @@
             <point key="canvasLocation" x="1378.2608695652175" y="191.51785714285714"/>
         </view>
     </objects>
+    <designables>
+        <designable name="AD3-2H-Kza">
+            <size key="intrinsicContentSize" width="89.5" height="25.5"/>
+        </designable>
+        <designable name="EcH-gH-PB4">
+            <size key="intrinsicContentSize" width="54.5" height="34"/>
+        </designable>
+        <designable name="dbg-xc-eLG">
+            <size key="intrinsicContentSize" width="220.5" height="34.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="car.fill" catalog="system" width="128" height="95"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="creditcard" catalog="system" width="128" height="88"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <namedColor name="Background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FloatingBG">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Greyish">

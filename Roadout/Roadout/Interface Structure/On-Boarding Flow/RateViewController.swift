@@ -12,7 +12,7 @@ class RateViewController: UIViewController {
     let submitTitle = NSAttributedString(string: "Submit".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let cancelTitle = NSAttributedString(
         string: "Cancel".localized(),
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.mainYellow, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
     
     var reservingReasons = [RateReason(description: "Easy to use".localized(), isSelected: false),
@@ -188,7 +188,7 @@ class RateViewController: UIViewController {
         reservingBadBtn.tintColor = UIColor.darkGray
         reservingBadBtn.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
         
-        sender.backgroundColor = UIColor(named: "Main Yellow")
+        sender.backgroundColor = UIColor.Roadout.mainYellow
         sender.tintColor = UIColor(named: "Background")
         sender.setImage(UIImage(systemName: icon), for: .normal)
     }
@@ -210,7 +210,7 @@ class RateViewController: UIViewController {
         parkingBadBtn.tintColor = UIColor.darkGray
         parkingBadBtn.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
         
-        sender.backgroundColor = UIColor(named: "Main Yellow")
+        sender.backgroundColor = UIColor.Roadout.mainYellow
         sender.tintColor = UIColor(named: "Background")
         sender.setImage(UIImage(systemName: icon), for: .normal)
     }

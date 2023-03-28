@@ -65,7 +65,7 @@ class UnlockedView: UIView {
          }
         rateAlert.addAction(noAction)
         rateAlert.addAction(yesAction)
-        rateAlert.view.tintColor = UIColor(named: "Main Yellow")
+        rateAlert.view.tintColor = UIColor.Roadout.mainYellow
          
         self.parentViewController().present(rateAlert, animated: true, completion: nil)
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)

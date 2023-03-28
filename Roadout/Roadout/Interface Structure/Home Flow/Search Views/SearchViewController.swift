@@ -13,7 +13,7 @@ class SearchViewController: UIViewController {
     var searchResults = parkLocations
     var smartSearchApplied = true
     
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Main Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.mainYellow, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     //MARK: - IBOutlets -
     

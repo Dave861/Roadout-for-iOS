@@ -20,7 +20,7 @@ class ReservationManager {
         case spotAlreadyTaken
     }
         
-    //-1 for not assigned, 0 is active, 1 is unlocked, 2 is cancelled, 3 is not active
+    ///-1 for not assigned, 0 is active, 1 is unlocked, 2 is cancelled, 3 is not active
     var isReservationActive = -1
     var reservationTimer: Timer!
     var reservationEndDate = Date()
@@ -64,6 +64,7 @@ class ReservationManager {
             DispatchQueue.main.async {
                 RunLoop.main.add(self.reservationTimer, forMode: .common)
             }
+            self.isReservationActive = 0
         } else {
             throw ReservationErrors.spotAlreadyTaken
         }
@@ -293,6 +294,7 @@ class ReservationManager {
         if jsonArray["status"] as! String != "Success" {
             throw ReservationErrors.unknownError
         }
+        self.isReservationActive = 1
     }
     
     func cancelReservationAsync(userID: String, date: Date) async throws {
@@ -322,6 +324,7 @@ class ReservationManager {
         if jsonArray["status"] as! String != "Success" {
             throw ReservationErrors.unknownError
         }
+        self.isReservationActive = 2
     }
     
     @objc func endReservation() {
@@ -346,7 +349,7 @@ class ReservationManager {
                     }
                 } else if ReservationManager.sharedInstance.isReservationActive == 3 {
                     //not active
-                    NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+                    NotificationCenter.default.post(name: .returnFromReservationID, object: nil)
                     if #available(iOS 16.1, *) {
                         LiveActivityHelper.sharedInstance.endLiveActivity()
                     }
@@ -362,5 +365,4 @@ class ReservationManager {
             }
         }
     }
-    
 }

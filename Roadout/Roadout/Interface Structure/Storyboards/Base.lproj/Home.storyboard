@@ -54,105 +54,130 @@
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dsk-s8-hyc">
                                         <rect key="frame" x="13" y="70" width="367" height="52"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something is Happening" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSL-X0-ClF" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                                                <rect key="frame" x="44" y="15.333333333333373" width="205" height="21.666666666666671"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sparkles" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Og0-kD-XTO">
+                                                <rect key="frame" x="8" y="10.333333333333298" width="29" height="30.333333333333329"/>
+                                                <color key="tintColor" name="Main Yellow"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="29" id="DGU-Lc-pPf"/>
+                                                    <constraint firstAttribute="height" constant="28.670000000000002" id="Zgc-oa-LV9"/>
+                                                </constraints>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" name="FloatingBG"/>
+                                        <constraints>
+                                            <constraint firstItem="LSL-X0-ClF" firstAttribute="centerY" secondItem="Dsk-s8-hyc" secondAttribute="centerY" id="1Ty-6f-TUV"/>
+                                            <constraint firstItem="LSL-X0-ClF" firstAttribute="leading" secondItem="Og0-kD-XTO" secondAttribute="trailing" constant="7" id="Sr4-Wz-gsT"/>
+                                            <constraint firstItem="Og0-kD-XTO" firstAttribute="leading" secondItem="Dsk-s8-hyc" secondAttribute="leading" constant="8" id="dxd-y0-e33"/>
+                                            <constraint firstItem="Og0-kD-XTO" firstAttribute="centerY" secondItem="Dsk-s8-hyc" secondAttribute="centerY" id="hcX-us-dLE"/>
+                                        </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-Xa-0TC" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="350" y="18" width="30" height="30"/>
-                                        <color key="backgroundColor" name="Greyish"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="66z-ep-vsV">
+                                        <rect key="frame" x="215" y="18" width="165" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0F-8S-hYT" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <color key="backgroundColor" name="Redish"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="opZ-sm-dOZ"/>
+                                                    <constraint firstAttribute="height" constant="30" id="tOY-X4-YdU"/>
+                                                </constraints>
+                                                <color key="tintColor" name="Background"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <imageReference key="image" image="pin.fill" catalog="system" symbolScale="medium"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasShimmer" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zd2-gq-SFD" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                                                <rect key="frame" x="45" y="0.0" width="30" height="30"/>
+                                                <color key="backgroundColor" name="Dark Orange"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="8BA-rR-5Q2"/>
+                                                    <constraint firstAttribute="width" constant="30" id="rOn-t3-1Oe"/>
+                                                </constraints>
+                                                <color key="tintColor" name="Background"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <imageReference key="image" image="location.fill" catalog="system" symbolScale="medium"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasShimmer" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="mapFocusTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="b7z-RC-4WB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdM-C3-2B6" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                                                <rect key="frame" x="90" y="0.0" width="30" height="30"/>
+                                                <color key="backgroundColor" name="Main Yellow"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="0Cm-Mn-izd"/>
+                                                    <constraint firstAttribute="height" constant="30" id="x9L-CA-LMR"/>
+                                                </constraints>
+                                                <color key="tintColor" name="Background"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <imageReference key="image" image="map.fill" catalog="system" symbolScale="medium"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasShimmer" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="mapTypeTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ycl-mp-Vcd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-Xa-0TC" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                                                <rect key="frame" x="135" y="0.0" width="30" height="30"/>
+                                                <color key="backgroundColor" name="Greyish"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="Ouy-yr-o71"/>
+                                                    <constraint firstAttribute="height" constant="30" id="p10-av-SVz"/>
+                                                </constraints>
+                                                <color key="tintColor" name="Background"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="medium"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="semibold"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasShimmer" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="settingsTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nZp-PK-SFU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="Ouy-yr-o71"/>
-                                            <constraint firstAttribute="height" constant="30" id="p10-av-SVz"/>
+                                            <constraint firstAttribute="height" constant="30" id="hqO-h9-0jQ"/>
                                         </constraints>
-                                        <color key="tintColor" name="Background"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain">
-                                            <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="medium"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="semibold"/>
-                                        </buttonConfiguration>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasShimmer" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="settingsTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nZp-PK-SFU"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdM-C3-2B6" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="305" y="18" width="30" height="30"/>
-                                        <color key="backgroundColor" name="Main Yellow"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="0Cm-Mn-izd"/>
-                                            <constraint firstAttribute="height" constant="30" id="x9L-CA-LMR"/>
-                                        </constraints>
-                                        <color key="tintColor" name="Background"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain">
-                                            <imageReference key="image" image="map.fill" catalog="system" symbolScale="medium"/>
-                                        </buttonConfiguration>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasShimmer" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="mapTypeTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ycl-mp-Vcd"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zd2-gq-SFD" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="260" y="18" width="30" height="30"/>
-                                        <color key="backgroundColor" name="Dark Orange"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="8BA-rR-5Q2"/>
-                                            <constraint firstAttribute="width" constant="30" id="rOn-t3-1Oe"/>
-                                        </constraints>
-                                        <color key="tintColor" name="Background"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain">
-                                            <imageReference key="image" image="location.fill" catalog="system" symbolScale="medium"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="medium"/>
-                                        </buttonConfiguration>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasShimmer" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="mapFocusTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="b7z-RC-4WB"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0F-8S-hYT" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="215" y="18" width="30" height="30"/>
-                                        <color key="backgroundColor" name="Redish"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="opZ-sm-dOZ"/>
-                                            <constraint firstAttribute="height" constant="30" id="tOY-X4-YdU"/>
-                                        </constraints>
-                                        <color key="tintColor" name="Background"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain">
-                                            <imageReference key="image" image="pin.fill" catalog="system" symbolScale="medium"/>
-                                        </buttonConfiguration>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasShimmer" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
-                                    <constraint firstItem="Dsk-s8-hyc" firstAttribute="top" secondItem="P0F-8S-hYT" secondAttribute="bottom" constant="22" id="4EH-Lk-Shr"/>
+                                    <constraint firstItem="Dsk-s8-hyc" firstAttribute="top" secondItem="66z-ep-vsV" secondAttribute="bottom" constant="22" id="0OB-Yo-JXs"/>
                                     <constraint firstItem="Uy4-V1-t9k" firstAttribute="leading" secondItem="HyE-Ut-PCE" secondAttribute="leading" constant="13" id="7cF-zA-jiL"/>
                                     <constraint firstItem="Uy4-V1-t9k" firstAttribute="top" secondItem="HyE-Ut-PCE" secondAttribute="top" constant="15" id="7oM-NT-Of4"/>
                                     <constraint firstAttribute="bottom" secondItem="Dsk-s8-hyc" secondAttribute="bottom" constant="15" id="DOA-BW-Gzo"/>
                                     <constraint firstItem="Dsk-s8-hyc" firstAttribute="top" secondItem="Uy4-V1-t9k" secondAttribute="bottom" constant="19" id="H4p-zc-BrF"/>
                                     <constraint firstAttribute="height" constant="137" id="Mcc-e2-amS"/>
-                                    <constraint firstItem="sdM-C3-2B6" firstAttribute="leading" secondItem="zd2-gq-SFD" secondAttribute="trailing" constant="15" id="N4z-TQ-Uxi"/>
-                                    <constraint firstAttribute="trailing" secondItem="IkC-Xa-0TC" secondAttribute="trailing" constant="13" id="axx-9w-nei"/>
-                                    <constraint firstItem="Dsk-s8-hyc" firstAttribute="top" secondItem="zd2-gq-SFD" secondAttribute="bottom" constant="22" id="bfA-zO-YwE"/>
-                                    <constraint firstItem="Dsk-s8-hyc" firstAttribute="top" secondItem="IkC-Xa-0TC" secondAttribute="bottom" constant="22" id="bqO-FU-SgK"/>
-                                    <constraint firstItem="IkC-Xa-0TC" firstAttribute="leading" secondItem="sdM-C3-2B6" secondAttribute="trailing" constant="15" id="iyw-15-Pq9"/>
-                                    <constraint firstItem="Dsk-s8-hyc" firstAttribute="top" secondItem="sdM-C3-2B6" secondAttribute="bottom" constant="22" id="pg6-Ub-YtE"/>
+                                    <constraint firstAttribute="trailing" secondItem="66z-ep-vsV" secondAttribute="trailing" constant="13" id="enX-Zu-X13"/>
                                     <constraint firstItem="Dsk-s8-hyc" firstAttribute="leading" secondItem="HyE-Ut-PCE" secondAttribute="leading" constant="13" id="r6E-s6-E6X"/>
                                     <constraint firstAttribute="trailing" secondItem="Dsk-s8-hyc" secondAttribute="trailing" constant="13" id="wkD-rX-D5e"/>
-                                    <constraint firstItem="zd2-gq-SFD" firstAttribute="leading" secondItem="P0F-8S-hYT" secondAttribute="trailing" constant="15" id="zdv-22-PKw"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oc8-he-wio">
-                                <rect key="frame" x="10" y="751" width="373" height="52"/>
+                                <rect key="frame" x="13" y="751" width="367" height="52"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HiE-I6-vfT">
                                         <rect key="frame" x="12" y="13.333333333333369" width="23" height="25.666666666666664"/>
@@ -163,7 +188,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for a Place..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKi-si-XRH" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="45" y="8" width="160" height="36"/>
+                                        <rect key="frame" x="45" y="8" width="159.66666666666666" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="uIT-IA-mea"/>
                                         </constraints>
@@ -171,16 +196,8 @@
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsP-mi-FaF">
-                                        <rect key="frame" x="0.0" y="0.0" width="318" height="52"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title=""/>
-                                        <connections>
-                                            <action selector="searchTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="TDk-6W-CKG"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="En4-0l-y4D" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="322" y="4" width="44" height="44"/>
+                                        <rect key="frame" x="319" y="4" width="44" height="44"/>
                                         <color key="backgroundColor" name="Secondary Floating"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="2uQ-GZ-suR"/>
@@ -198,23 +215,36 @@
                                             <action selector="optionsTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="b4A-rX-vca"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cI-Bn-tux">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="52"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="searchTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FQB-Wu-lwR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="FloatingBG"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="En4-0l-y4D" secondAttribute="trailing" constant="7" id="0aa-PG-S3u"/>
+                                    <constraint firstAttribute="trailing" secondItem="En4-0l-y4D" secondAttribute="trailing" constant="4" id="0aa-PG-S3u"/>
                                     <constraint firstItem="HiE-I6-vfT" firstAttribute="centerY" secondItem="Oc8-he-wio" secondAttribute="centerY" id="8ER-JJ-1Fl"/>
+                                    <constraint firstAttribute="bottom" secondItem="7cI-Bn-tux" secondAttribute="bottom" id="8bk-Od-OLQ"/>
                                     <constraint firstItem="FKi-si-XRH" firstAttribute="leading" secondItem="HiE-I6-vfT" secondAttribute="trailing" constant="10" id="9KU-Nv-6bi"/>
-                                    <constraint firstAttribute="bottom" secondItem="qsP-mi-FaF" secondAttribute="bottom" id="CXE-6m-dS8"/>
-                                    <constraint firstItem="qsP-mi-FaF" firstAttribute="top" secondItem="Oc8-he-wio" secondAttribute="top" id="DTd-jo-Rt0"/>
                                     <constraint firstAttribute="bottom" secondItem="En4-0l-y4D" secondAttribute="bottom" constant="4" id="F7Q-KM-xtU"/>
-                                    <constraint firstItem="En4-0l-y4D" firstAttribute="leading" secondItem="qsP-mi-FaF" secondAttribute="trailing" constant="4" id="ILB-oF-LZn"/>
+                                    <constraint firstItem="7cI-Bn-tux" firstAttribute="leading" secondItem="Oc8-he-wio" secondAttribute="leading" id="G6N-Zf-v5S"/>
                                     <constraint firstItem="En4-0l-y4D" firstAttribute="top" secondItem="Oc8-he-wio" secondAttribute="top" constant="4" id="KTO-HI-ha2"/>
                                     <constraint firstItem="HiE-I6-vfT" firstAttribute="leading" secondItem="Oc8-he-wio" secondAttribute="leading" constant="12" id="RKa-Vm-vK9"/>
                                     <constraint firstAttribute="bottom" secondItem="FKi-si-XRH" secondAttribute="bottom" constant="8" id="XM3-Ok-ZbK"/>
                                     <constraint firstAttribute="height" constant="52" id="XRl-HS-20o"/>
                                     <constraint firstItem="FKi-si-XRH" firstAttribute="top" secondItem="Oc8-he-wio" secondAttribute="top" constant="8" id="aeK-zF-x7B"/>
-                                    <constraint firstItem="qsP-mi-FaF" firstAttribute="leading" secondItem="Oc8-he-wio" secondAttribute="leading" id="pEu-18-ebu"/>
+                                    <constraint firstItem="7cI-Bn-tux" firstAttribute="top" secondItem="Oc8-he-wio" secondAttribute="top" id="ckN-RA-Mzb"/>
+                                    <constraint firstItem="En4-0l-y4D" firstAttribute="leading" secondItem="7cI-Bn-tux" secondAttribute="trailing" constant="4" id="tK1-7h-JBC"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -224,11 +254,11 @@
                             <constraint firstItem="Zia-25-Prg" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="1v7-8M-UaA"/>
                             <constraint firstAttribute="trailing" secondItem="iHz-hX-hQD" secondAttribute="trailing" id="3XT-hW-MAf"/>
                             <constraint firstItem="HyE-Ut-PCE" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="3Z9-CS-SGD"/>
-                            <constraint firstItem="Oc8-he-wio" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="5NV-DK-n5m"/>
+                            <constraint firstItem="Oc8-he-wio" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="13" id="5NV-DK-n5m"/>
                             <constraint firstItem="Zia-25-Prg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Loi-E6-q82"/>
                             <constraint firstItem="iHz-hX-hQD" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="bKW-MH-A48"/>
                             <constraint firstItem="HyE-Ut-PCE" firstAttribute="top" secondItem="Zia-25-Prg" secondAttribute="bottom" constant="-8" id="bYp-Vm-uO1"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Oc8-he-wio" secondAttribute="trailing" constant="10" id="cHo-0A-V3J"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Oc8-he-wio" secondAttribute="trailing" constant="13" id="cHo-0A-V3J"/>
                             <constraint firstItem="HyE-Ut-PCE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="k2N-gf-AlX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Oc8-he-wio" secondAttribute="bottom" constant="15" id="lB6-NC-i4D"/>
                             <constraint firstAttribute="bottom" secondItem="iHz-hX-hQD" secondAttribute="bottom" id="mb0-XZ-wJ1"/>
@@ -246,7 +276,7 @@
                         <outlet property="markedSpotButton" destination="P0F-8S-hYT" id="l1f-e1-fWx"/>
                         <outlet property="optionsBtn" destination="En4-0l-y4D" id="lYp-w3-oR8"/>
                         <outlet property="searchBar" destination="Oc8-he-wio" id="uer-jr-Pur"/>
-                        <outlet property="searchTapArea" destination="qsP-mi-FaF" id="dvD-3k-vjL"/>
+                        <outlet property="searchTapArea" destination="7cI-Bn-tux" id="k0F-YQ-zhO"/>
                         <outlet property="settingsButton" destination="IkC-Xa-0TC" id="ntP-Zs-pSZ"/>
                         <outlet property="titleLbl" destination="Uy4-V1-t9k" id="AA0-mZ-zOd"/>
                     </connections>
@@ -1604,7 +1634,7 @@ Made in Cluj :)</string>
                                 <rect key="frame" x="10" y="751" width="373" height="52"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading City Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5P-uH-zHK" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="44.666666666666671" y="15.666666666666629" width="148.33333333333331" height="21"/>
+                                        <rect key="frame" x="44" y="15.666666666666629" width="148.33333333333334" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1661,7 +1691,7 @@ Made in Cluj :)</string>
                                     <constraint firstItem="Dp6-oO-asO" firstAttribute="centerY" secondItem="CoV-8M-q4W" secondAttribute="centerY" id="LNv-rx-Oib"/>
                                     <constraint firstItem="yag-Ac-Vt1" firstAttribute="leading" secondItem="CoV-8M-q4W" secondAttribute="leading" id="Mkb-hh-vhV"/>
                                     <constraint firstItem="RuT-pa-Nn1" firstAttribute="centerY" secondItem="CoV-8M-q4W" secondAttribute="centerY" id="al6-J0-NCW"/>
-                                    <constraint firstItem="d5P-uH-zHK" firstAttribute="leading" secondItem="Dp6-oO-asO" secondAttribute="trailing" constant="7.5" id="mzA-Zg-70Q"/>
+                                    <constraint firstItem="d5P-uH-zHK" firstAttribute="leading" secondItem="Dp6-oO-asO" secondAttribute="trailing" constant="7" id="mzA-Zg-70Q"/>
                                     <constraint firstAttribute="trailing" secondItem="iC6-DG-vPn" secondAttribute="trailing" constant="4" id="o43-ed-8wZ"/>
                                     <constraint firstItem="d5P-uH-zHK" firstAttribute="centerY" secondItem="CoV-8M-q4W" secondAttribute="centerY" id="reD-6k-Hh1"/>
                                 </constraints>
@@ -2781,6 +2811,20 @@ Made in Cluj :)</string>
             <point key="canvasLocation" x="666" y="-565"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="IkC-Xa-0TC">
+            <size key="intrinsicContentSize" width="44.666666666666664" height="34.333333333333336"/>
+        </designable>
+        <designable name="P0F-8S-hYT">
+            <size key="intrinsicContentSize" width="43.666666666666664" height="34.333333333333336"/>
+        </designable>
+        <designable name="sdM-C3-2B6">
+            <size key="intrinsicContentSize" width="45.333333333333336" height="34.333333333333336"/>
+        </designable>
+        <designable name="zd2-gq-SFD">
+            <size key="intrinsicContentSize" width="44.333333333333336" height="34.333333333333336"/>
+        </designable>
+    </designables>
     <resources>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="building.2.fill" catalog="system" width="128" height="108"/>
@@ -2805,6 +2849,7 @@ Made in Cluj :)</string>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="rectangle.portrait" catalog="system" width="115" height="128"/>
         <image name="ruler.fill" catalog="system" width="128" height="57"/>
+        <image name="sparkles" catalog="system" width="115" height="128"/>
         <image name="speedometer" catalog="system" width="128" height="123"/>
         <image name="wallet.pass" catalog="system" width="115" height="128"/>
         <namedColor name="AccentColor">

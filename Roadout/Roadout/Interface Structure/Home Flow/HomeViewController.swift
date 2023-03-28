@@ -39,6 +39,7 @@ class HomeViewController: UIViewController {
     
     let paidBar = PaidView.instanceFromNib()
     let activeBar = ActiveView.instanceFromNib()
+    let endedBar = EndedView.instanceFromNib()
     let cancelledBar = CancelledView.instanceFromNib()
     let noWifiBar = NoWifiView.instanceFromNib()
     let paidParkingBar = PaidParkingBar.instanceFromNib()
@@ -163,8 +164,16 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var settingsButton: UXButton!
     
     @IBAction func settingsTapped(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        if ReservationManager.sharedInstance.isReservationActive != 0 {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsVC") as! SettingsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Settings Restricted".localized(), message: "We are sorry but settings and account operations are restricted during a reservation. This ensures nothing goes wrong and you can use settings right after your reservation ends".localized(), preferredStyle: .alert)
+            alert.view.tintColor = UIColor(named: "Greyish")!
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
     }
     
     @IBOutlet weak var searchTapArea: UIButton!
@@ -209,6 +218,10 @@ class HomeViewController: UIViewController {
     
     
     @IBOutlet weak var markedSpotButton: UXButton!
+    
+    func toggleSettingsButtonHide(to value: Bool) {
+        settingsButton.isHidden = value
+    }
         
     //MARK: - OBSERVERS -
     
@@ -264,7 +277,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showPaidParkingBar), name: .showPaidParkingBarID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: .returnToSearchBarID, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBarFromReservation), name: .returnToSearchBarFromReservationID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(returnFromReservation), name: .returnFromReservationID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBarWithError), name: .returnToSearchBarWithErrorID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showFindCard), name: .showFindCardID, object: nil)
@@ -988,6 +1001,7 @@ extension HomeViewController {
     
     @objc func showUnlockedView() {
         DispatchQueue.main.async {
+            self.toggleSettingsButtonHide(to: false)
             if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
                 self.view.subviews.last!.removeFromSuperview()
             } else {
@@ -1069,6 +1083,7 @@ extension HomeViewController {
     
     @objc func showPaidBar() {
         DispatchQueue.main.async {
+            self.toggleSettingsButtonHide(to: true)
             if self.selectedMarker != nil {
                 self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
@@ -1093,6 +1108,7 @@ extension HomeViewController {
     
     @objc func showActiveBar() {
         DispatchQueue.main.async {
+            self.toggleSettingsButtonHide(to: true)
             if self.view.subviews.last != self.reservationView {
                 if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
                     self.view.subviews.last!.removeFromSuperview()
@@ -1110,8 +1126,27 @@ extension HomeViewController {
         }
     }
     
+    @objc func showEndedBar() {
+        DispatchQueue.main.async {
+            self.toggleSettingsButtonHide(to: false)
+            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
+                self.view.subviews.last!.removeFromSuperview()
+            } else {
+                self.searchBar.alpha = 0.0
+            }
+            self.updateBackgroundViewHeight(with: 52)
+            var dif = 15.0
+            if (UIDevice.current.hasNotch) {
+                dif = 49.0
+            }
+            self.endedBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
+            self.view.addSubview(self.endedBar)
+        }
+    }
+    
     @objc func showCancelledBar() {
         DispatchQueue.main.async {
+            self.toggleSettingsButtonHide(to: false)
             if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
                 self.view.subviews.last!.removeFromSuperview()
             } else {
@@ -1166,6 +1201,7 @@ extension HomeViewController {
     //MARK: -Return to Search Bar-
     @objc func returnToSearchBar() {
         DispatchQueue.main.async {
+            self.toggleSettingsButtonHide(to: false)
             if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
                 self.view.subviews.last!.removeFromSuperview()
             }
@@ -1176,22 +1212,24 @@ extension HomeViewController {
         }
     }
     
-    @objc func returnToSearchBarFromReservation() {
+    @objc func returnFromReservation() {
+        ///Only dismisses view if it's from the reservation ones
         DispatchQueue.main.async {
+            self.toggleSettingsButtonHide(to: false)
             let lastSubview = self.view.subviews.last
             if lastSubview == self.activeBar || lastSubview == self.reservationView || lastSubview == self.unlockView || lastSubview == self.delayView || (lastSubview == self.payView && returnToDelay == true) {
                 self.view.subviews.last!.removeFromSuperview()
                 
                 self.removeSpotMarker()
                 self.deselectSpotMarker()
-                self.updateBackgroundViewHeight(with: 52)
-                self.searchBar.alpha = 1.0
+                self.showEndedBar()
             }
         }
     }
     
     @objc func returnToSearchBarWithError() {
         DispatchQueue.main.async {
+            self.toggleSettingsButtonHide(to: false)
             if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
                 self.view.subviews.last!.removeFromSuperview()
             }
@@ -1200,7 +1238,7 @@ extension HomeViewController {
             self.updateBackgroundViewHeight(with: 52)
             self.searchBar.alpha = 1.0
             //Show alert
-            let alert = UIAlertController(title: "Retrieving Error".localized(), message: "There was an error retrieving reservation details. If you have a reservation active please quit the app and try again.".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "Retrieving Error".localized(), message: "There was an error retrieving reservation details. If you have an active reservation, please quit the app and try again".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
             alert.addAction(okAction)
             
@@ -1213,9 +1251,29 @@ extension HomeViewController {
         DispatchQueue.main.async {
             if self.view.subviews.last == self.noWifiBar {
                 self.view.subviews.last!.removeFromSuperview()
-                self.searchBar.alpha = 1.0
+                guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
+                Task {
+                    do {
+                        try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)
+                        if ReservationManager.sharedInstance.isReservationActive == 0 {
+                            //active
+                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                        } else if ReservationManager.sharedInstance.isReservationActive == 1 {
+                            //unlocked
+                            NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)
+                        } else if ReservationManager.sharedInstance.isReservationActive == 2 {
+                            //cancelled
+                            NotificationCenter.default.post(name: .showCancelledBarID, object: nil)
+                        } else if ReservationManager.sharedInstance.isReservationActive == 3 {
+                            //not active
+                            NotificationCenter.default.post(name: .returnFromReservationID, object: nil)
+                        } else {
+                            //error
+                            NotificationCenter.default.post(name: .returnToSearchBarWithErrorID, object: nil)
+                        }
+                    }
+                }
             }
         }
     }
-    
 }

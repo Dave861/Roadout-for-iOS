@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct FutureReservation: Codable {
     var place: String
@@ -31,4 +32,13 @@ struct WorldLocation {
 struct RateReason {
     var description: String
     var isSelected: Bool
+}
+
+extension UIColor {
+    struct Roadout {
+        static var mainYellow: UIColor  { return UIColor(named: "Main Yellow")! }
+    }
+    struct Backgrounds {
+        
+    }
 }

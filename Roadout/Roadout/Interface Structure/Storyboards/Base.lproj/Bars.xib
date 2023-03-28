@@ -62,6 +62,11 @@
                 <constraint firstItem="veL-ns-eN4" firstAttribute="top" secondItem="Stf-Ye-wID" secondAttribute="top" constant="4" id="yy7-2s-Hah"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="17"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="seeBtn" destination="tc1-lO-XUV" id="ZHy-jP-Bp2"/>
             </connections>
@@ -134,6 +139,11 @@
                 <constraint firstItem="rK4-OK-cVF" firstAttribute="centerY" secondItem="5W2-Oy-UZ9" secondAttribute="centerY" id="sCw-jF-i5i"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="17"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="moreBtn" destination="dx9-2g-UwI" id="Rpo-Uw-qrU"/>
                 <outlet property="timerLbl" destination="Ws3-qE-Hcb" id="WNM-ns-V3a"/>
@@ -188,6 +198,11 @@
                 <constraint firstItem="GEq-FV-baD" firstAttribute="centerY" secondItem="idu-jF-tvt" secondAttribute="centerY" id="hq6-47-t4g"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="17"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="doneBtn" destination="fBn-92-2WR" id="H73-Eg-4sL"/>
             </connections>
@@ -241,14 +256,110 @@
                 <constraint firstItem="mVW-qb-Vg4" firstAttribute="bottom" secondItem="cRs-aV-nQd" secondAttribute="bottom" constant="4" id="xzb-FV-guN"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="17"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="settingsBtn" destination="cRs-aV-nQd" id="R6I-qi-Mve"/>
             </connections>
             <point key="canvasLocation" x="100" y="360"/>
         </view>
+        <view contentMode="scaleToFill" id="IZ4-uP-oBC" customClass="EndedView" customModule="Roadout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reservation Ended" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geK-Iu-wyC" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="50" y="4" width="158" height="44"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aiJ-go-Yt5">
+                    <rect key="frame" x="12" y="15.999999999999996" width="26" height="20.333333333333332"/>
+                    <color key="tintColor" name="Icons"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="23" id="P2t-8s-qZh"/>
+                        <constraint firstAttribute="width" constant="26" id="m8j-V6-Egn"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dk-wa-GjT" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="344.66666666666669" y="4" width="65.333333333333314" height="44"/>
+                    <color key="backgroundColor" name="Secondary Floating"/>
+                    <color key="tintColor" name="Icons"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Done">
+                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="doneTapped:" destination="IZ4-uP-oBC" eventType="touchUpInside" id="RGT-8Q-cgM"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="8la-p0-XOR"/>
+            <color key="backgroundColor" name="FloatingBG"/>
+            <constraints>
+                <constraint firstItem="geK-Iu-wyC" firstAttribute="leading" secondItem="aiJ-go-Yt5" secondAttribute="trailing" constant="12" id="6qM-ip-sMB"/>
+                <constraint firstItem="aiJ-go-Yt5" firstAttribute="leading" secondItem="8la-p0-XOR" secondAttribute="leading" constant="12" id="9qT-a2-kJh"/>
+                <constraint firstAttribute="trailing" secondItem="6dk-wa-GjT" secondAttribute="trailing" constant="4" id="JL4-yZ-P1U"/>
+                <constraint firstItem="geK-Iu-wyC" firstAttribute="top" secondItem="8la-p0-XOR" secondAttribute="top" constant="4" id="JLD-cm-G3c"/>
+                <constraint firstItem="8la-p0-XOR" firstAttribute="bottom" secondItem="6dk-wa-GjT" secondAttribute="bottom" constant="4" id="YIf-eT-AmW"/>
+                <constraint firstItem="aiJ-go-Yt5" firstAttribute="centerY" secondItem="IZ4-uP-oBC" secondAttribute="centerY" id="kZ7-hA-h26"/>
+                <constraint firstItem="6dk-wa-GjT" firstAttribute="top" secondItem="8la-p0-XOR" secondAttribute="top" constant="4" id="sdr-Vm-FYy"/>
+                <constraint firstItem="8la-p0-XOR" firstAttribute="bottom" secondItem="geK-Iu-wyC" secondAttribute="bottom" constant="4" id="soC-UG-6JP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="17"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="doneBtn" destination="6dk-wa-GjT" id="euz-h2-m9V"/>
+            </connections>
+            <point key="canvasLocation" x="100" y="443"/>
+        </view>
     </objects>
+    <designables>
+        <designable name="6dk-wa-GjT">
+            <size key="intrinsicContentSize" width="65.333333333333329" height="34.333333333333336"/>
+        </designable>
+        <designable name="Lch-cb-uQy">
+            <size key="intrinsicContentSize" width="94.666666666666671" height="21.666666666666668"/>
+        </designable>
+        <designable name="Rp5-Nz-3xZ">
+            <size key="intrinsicContentSize" width="156.33333333333334" height="21.666666666666668"/>
+        </designable>
+        <designable name="V6o-gR-yBH">
+            <size key="intrinsicContentSize" width="83.666666666666671" height="21.666666666666668"/>
+        </designable>
+        <designable name="cRs-aV-nQd">
+            <size key="intrinsicContentSize" width="123.66666666666667" height="34.333333333333336"/>
+        </designable>
+        <designable name="dx9-2g-UwI">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="fBn-92-2WR">
+            <size key="intrinsicContentSize" width="65.333333333333329" height="34.333333333333336"/>
+        </designable>
+        <designable name="geK-Iu-wyC">
+            <size key="intrinsicContentSize" width="157.33333333333334" height="21.666666666666668"/>
+        </designable>
+        <designable name="tc1-lO-XUV">
+            <size key="intrinsicContentSize" width="150.33333333333334" height="34.333333333333336"/>
+        </designable>
+        <designable name="veL-ns-eN4">
+            <size key="intrinsicContentSize" width="36.333333333333336" height="21.666666666666668"/>
+        </designable>
+    </designables>
     <resources>
         <image name="arrow.up.backward.and.arrow.down.forward.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="car.fill" catalog="system" width="128" height="95"/>
         <image name="checkmark.seal.fill" catalog="system" width="128" height="124"/>
         <image name="lock.fill" catalog="system" width="125" height="128"/>
         <image name="wifi.slash" catalog="system" width="128" height="101"/>

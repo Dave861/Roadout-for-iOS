@@ -194,7 +194,7 @@ class AccountViewController: UIViewController {
     
     func getRandomGradient() -> CAGradientLayer {
         let lightColors = [
-            UIColor(named: "Main Yellow")!,
+            UIColor.Roadout.mainYellow,
             UIColor(named: "Second Orange")!,
             UIColor(named: "Icons")!,
             UIColor(named: "GoldBrown")!
