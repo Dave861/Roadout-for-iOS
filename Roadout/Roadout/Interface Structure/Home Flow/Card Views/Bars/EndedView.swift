@@ -10,7 +10,7 @@ import UIKit
 class EndedView: UIView {
     
     let buttonTitle = NSAttributedString(string: "Done".localized(),
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.icons])
     
     @IBOutlet weak var doneBtn: UXButton!
     

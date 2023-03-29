@@ -25,7 +25,7 @@ class ARTutorialViewController: UIViewController {
     }
 
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Kinda Red")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.kindaRed, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +41,9 @@ class ARTutorialViewController: UIViewController {
         explainerText.set(font: .systemFont(ofSize: 17, weight: .medium), range: explainerText.range(string: "limited accuracy"))
         explainerText.set(font: .systemFont(ofSize: 17, weight: .medium), range: explainerText.range(string: "do not drive"))
             
-        explainerText.set(textColor: UIColor(named: "Kinda Red")!, range: explainerText.range(string: "arrived"))
-        explainerText.set(textColor: UIColor(named: "Kinda Red")!, range: explainerText.range(string: "limited accuracy"))
-        explainerText.set(textColor: UIColor(named: "Kinda Red")!, range: explainerText.range(string: "do not drive"))
+        explainerText.set(textColor: UIColor.Roadout.kindaRed, range: explainerText.range(string: "arrived"))
+        explainerText.set(textColor: UIColor.Roadout.kindaRed, range: explainerText.range(string: "limited accuracy"))
+        explainerText.set(textColor: UIColor.Roadout.kindaRed, range: explainerText.range(string: "do not drive"))
     }
     
 }

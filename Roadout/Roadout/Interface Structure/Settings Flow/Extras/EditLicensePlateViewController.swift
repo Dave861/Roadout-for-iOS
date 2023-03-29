@@ -36,7 +36,7 @@ class EditLicensePlateViewController: UIViewController {
                 let alert = UIAlertController(title: "Error".localized(), message: "Please enter a valid license plate".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")!
+                alert.view.tintColor = UIColor.Roadout.redish
                 self.present(alert, animated: true)
             }
         } else {

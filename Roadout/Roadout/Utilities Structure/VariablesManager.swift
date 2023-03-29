@@ -43,6 +43,9 @@ var returnToDelay = false
 var returnToResult = false
 var isPayFlow = false
 
+///When a reservation is loading, search is suspended - only used as a safe failure
+var suspendSearch = false
+
 //Utils
 var futureReservations = [FutureReservation]()
 var cardNumbers = [String]()

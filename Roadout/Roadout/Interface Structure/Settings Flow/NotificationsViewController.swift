@@ -57,7 +57,7 @@ class NotificationsViewController: UIViewController {
             let alert = UIAlertController(title: "Live Activities".localized(), message: "Live Activities are only available on iOS 16.1 or newer".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
             alert.addAction(okAction)
-            alert.view.tintColor = UIColor(named: "Redish")
+            alert.view.tintColor = UIColor.Roadout.redish
             self.present(alert, animated: true)
         }
     }
@@ -86,11 +86,11 @@ class NotificationsViewController: UIViewController {
         
         if NotificationHelper.sharedInstance.areNotificationsAllowed ?? true == false {
             self.seeSettingsLbl.text = "Notifications are disabled. See settings".localized()
-            self.seeSettingsLbl.set(textColor: UIColor(named: "Redish")!, range: self.seeSettingsLbl.range(after: ". "))
+            self.seeSettingsLbl.set(textColor: UIColor.Roadout.redish, range: self.seeSettingsLbl.range(after: ". "))
             self.seeSettingsLbl.set(font: .systemFont(ofSize: 18.0, weight: .medium), range: self.seeSettingsLbl.range(after: ". "))
         } else {
             self.seeSettingsLbl.text = "Notifications are enabled. See settings".localized()
-            self.seeSettingsLbl.set(textColor: UIColor(named: "Redish")!, range: self.seeSettingsLbl.range(after: ". "))
+            self.seeSettingsLbl.set(textColor: UIColor.Roadout.redish, range: self.seeSettingsLbl.range(after: ". "))
             self.seeSettingsLbl.set(font: .systemFont(ofSize: 18.0, weight: .medium), range: self.seeSettingsLbl.range(after: ". "))
         }
         
@@ -128,7 +128,7 @@ class NotificationsViewController: UIViewController {
         switch selectedNotificationTypeIndex {
             case 0:
                 self.reservationNoneIcon.image = UIImage(named: "None_Enabled")!
-                self.reservationNoneLabel.textColor = UIColor(named: "Redish")
+                self.reservationNoneLabel.textColor = UIColor.Roadout.redish
                 self.reservationNotifIcon.image = UIImage(named: "Notif_Disabled")!
                 self.reservationNotifLabel.textColor = UIColor.systemGray
                 self.reservationLiveIcon.image = UIImage(named: "Live_Disabled")!
@@ -137,7 +137,7 @@ class NotificationsViewController: UIViewController {
                 self.reservationNoneIcon.image = UIImage(named: "None_Disabled")!
                 self.reservationNoneLabel.textColor = UIColor.systemGray
                 self.reservationNotifIcon.image = UIImage(named: "Notif_Enabled")!
-                self.reservationNotifLabel.textColor = UIColor(named: "Redish")
+                self.reservationNotifLabel.textColor = UIColor.Roadout.redish
                 self.reservationLiveIcon.image = UIImage(named: "Live_Disabled")!
                 self.reservationLiveLabel.textColor = UIColor.systemGray
             case 2:
@@ -146,10 +146,10 @@ class NotificationsViewController: UIViewController {
                 self.reservationNotifIcon.image = UIImage(named: "Notif_Disabled")!
                 self.reservationNotifLabel.textColor = UIColor.systemGray
                 self.reservationLiveIcon.image = UIImage(named: "Live_Enabled")!
-                self.reservationLiveLabel.textColor = UIColor(named: "Redish")
+                self.reservationLiveLabel.textColor = UIColor.Roadout.redish
             default:
                 self.reservationNoneIcon.image = UIImage(named: "None_Enabled")!
-                self.reservationNoneLabel.textColor = UIColor(named: "Redish")
+                self.reservationNoneLabel.textColor = UIColor.Roadout.redish
                 self.reservationNotifIcon.image = UIImage(named: "Notif_Disabled")!
                 self.reservationNotifLabel.textColor = UIColor.systemGray
                 self.reservationLiveIcon.image = UIImage(named: "Live_Disabled")!

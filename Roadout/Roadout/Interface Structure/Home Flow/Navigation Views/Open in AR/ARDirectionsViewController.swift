@@ -92,14 +92,14 @@ class ARDirectionsViewController: UIViewController {
         
         locationLbl.set(font: .systemFont(ofSize: 19, weight: .medium), range: locationLbl.range(after: "Section ", before: " - Spot"))
         locationLbl.set(font: .systemFont(ofSize: 19, weight: .medium), range: locationLbl.range(after: "Spot"))
-        locationLbl.set(textColor: UIColor(named: "Kinda Red")!, range: locationLbl.range(after: "Section ", before: " - Spot"))
-        locationLbl.set(textColor: UIColor(named: "Kinda Red")!, range: locationLbl.range(after: "Spot"))
+        locationLbl.set(textColor: UIColor.Roadout.kindaRed, range: locationLbl.range(after: "Section ", before: " - Spot"))
+        locationLbl.set(textColor: UIColor.Roadout.kindaRed, range: locationLbl.range(after: "Spot"))
         
         distanceLbl.set(font: .systemFont(ofSize: 19, weight: .medium), range: distanceLbl.range(before: " away"))
-        distanceLbl.set(textColor: UIColor(named: "Kinda Red")!, range: distanceLbl.range(before: " away"))
+        distanceLbl.set(textColor: UIColor.Roadout.kindaRed, range: distanceLbl.range(before: " away"))
         
         directionLbl.set(font: .systemFont(ofSize: 19, weight: .medium), range: directionLbl.range(after: "Direction "))
-        directionLbl.set(textColor: UIColor(named: "Kinda Red")!, range: directionLbl.range(after: "Direction "))
+        directionLbl.set(textColor: UIColor.Roadout.kindaRed, range: directionLbl.range(after: "Direction "))
     }
     
 }

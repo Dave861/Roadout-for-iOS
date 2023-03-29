@@ -69,7 +69,7 @@ class SectionView: UIView {
         
         sectionBtn.layer.cornerRadius = 6.0
         letterTitle = NSAttributedString(string: letter,
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.icons])
         sectionBtn.setAttributedTitle(letterTitle, for: .normal)
 
         sectionBtn.menu = lettersMenu
@@ -88,7 +88,7 @@ class SectionView: UIView {
             let action = UIAction(title: "Section ".localized() + "\(sections[index].name)", image: nil, handler: { (_) in
                 self.letter = sections[index].name
                 self.letterTitle = NSAttributedString(string: self.letter,
-                                                 attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+                                                 attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.icons])
                 self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
                 selectedSectionIndex = index
                 self.showSelectedIndicator(letter: self.letter)
@@ -121,23 +121,23 @@ class SectionView: UIView {
             letterBtn.layer.cornerRadius = 6
             letterBtn.backgroundColor = UIColor(named: "IconsTransparent")!
             letterBtn.setTitle(sections[index].name, for: .normal)
-            letterBtn.setTitleColor(UIColor(named: "Icons")!, for: .normal)
+            letterBtn.setTitleColor(UIColor.Roadout.icons, for: .normal)
             
             if letter == sections[index].name {
                 letterBtn.setTitleColor(UIColor(named: "Background")!, for: .normal)
-                letterBtn.backgroundColor = UIColor(named: "Icons")!
+                letterBtn.backgroundColor = UIColor.Roadout.icons
             }
             
             letterBtn.addAction(for: .touchUpInside) {
                 self.letter = sections[index].name
                 self.letterTitle = NSAttributedString(string: self.letter,
-                                                 attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Icons")!])
+                                                 attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.icons])
                 self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
                 selectedSectionIndex = index
                 self.showSelectedIndicator(letter: sections[index].name)
                 self.decolorButtonsInSectionImage()
                 letterBtn.setTitleColor(UIColor(named: "Background")!, for: .normal)
-                letterBtn.backgroundColor = UIColor(named: "Icons")!
+                letterBtn.backgroundColor = UIColor.Roadout.icons
             }
             
             self.sectionImage.addSubview(letterBtn)
@@ -151,7 +151,7 @@ class SectionView: UIView {
     func decolorButtonsInSectionImage() {
         for subview in sectionImage.subviews {
             guard let btn = subview as? UIButton else { return }
-            btn.setTitleColor(UIColor(named: "Icons")!, for: .normal)
+            btn.setTitleColor(UIColor.Roadout.icons, for: .normal)
             btn.backgroundColor = UIColor(named: "IconsTransparent")!
         }
     }
@@ -159,7 +159,7 @@ class SectionView: UIView {
     //MARK: - Indicators -
     
     func showSelectedIndicator(letter: String) {
-        let image = UIImage.init(systemName: "\(letter.lowercased()).circle.fill")!.withTintColor(UIColor(named: "Icons")!, renderingMode: .alwaysOriginal)
+        let image = UIImage.init(systemName: "\(letter.lowercased()).circle.fill")!.withTintColor(UIColor.Roadout.icons, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Section ".localized() + "\(letter)", message: "Selected".localized(), preset: .custom(image))
         indicatorView.present(duration: 0.7, haptic: .none, completion: nil)
     }
@@ -168,7 +168,7 @@ class SectionView: UIView {
         let alert = UIAlertController(title: "Loading...".localized(), message: "The spots are still downloading, this should not happen normally and might be caused by poor network connection. Please wait and try again.".localized(), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
         alert.addAction(okAction)
-        alert.view.tintColor = UIColor(named: "Icons")
+        alert.view.tintColor = UIColor.Roadout.icons
         self.parentViewController().present(alert, animated: true, completion: nil)
     }
     

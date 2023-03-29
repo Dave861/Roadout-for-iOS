@@ -64,7 +64,7 @@ class SettingsViewController: UIViewController {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.view.tintColor = UIColor(named: "Greyish")
+            mail.view.tintColor = UIColor.Roadout.greyish
             mail.setToRecipients(["roadout.ro@gmail.com"])
             mail.setSubject("Roadout for iOS - Report".localized())
             mail.setMessageBody("Please describe your issue and steps to reproduce it. If you have any screenshots please attach them - Roadout Team".localized(), isHTML: false)
@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController {
             present(mail, animated: true)
         } else {
             let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: "Greyish")
+            alert.view.tintColor = UIColor.Roadout.greyish
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
@@ -150,7 +150,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(vc, animated: true)
         } else if cellTypes[indexPath.row] == "ButtonCell" {
             let alert = UIAlertController(title: "Sign Out".localized(), message: "Are you sure you want to sign out?".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: "Dark Orange")
+            alert.view.tintColor = UIColor.Roadout.darkOrange
             let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
             let signOutAction = UIAlertAction(title: "Sign Out".localized(), style: .destructive) { action in
                 self.signOutAllData()

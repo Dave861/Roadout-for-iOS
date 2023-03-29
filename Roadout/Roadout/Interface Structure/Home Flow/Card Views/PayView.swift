@@ -104,7 +104,7 @@ class PayView: UIView {
         payBtn.layer.cornerRadius = 12.0
         payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
-        payBtn.backgroundColor = UIColor(named: "Dark Orange")!
+        payBtn.backgroundColor = UIColor.Roadout.darkOrange
         
         chooseMethodBtn.layer.cornerRadius = 12.0
         chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
@@ -121,7 +121,7 @@ class PayView: UIView {
         payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         payBtn.showsMenuAsPrimaryAction = true
         
-        priceLbl.set(textColor: UIColor(named: "Dark Orange")!, range: priceLbl.range(after: " - "))
+        priceLbl.set(textColor: UIColor.Roadout.darkOrange, range: priceLbl.range(after: " - "))
         priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
         
         if returnToDelay {
@@ -144,18 +144,18 @@ class PayView: UIView {
         
         self.detailsLbl.text = parkLocationName + " - " + "Section ".localized() + parkSectionName + " - " + "Spot ".localized() + parkSpotNr
         
-        self.detailsLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.detailsLbl.range(after: " - " + "Section ".localized(), before: " - " + "Spot ".localized()))
-        self.detailsLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.detailsLbl.range(after: " - " + "Spot ".localized()))
+        self.detailsLbl.set(textColor: UIColor.Roadout.darkOrange, range: self.detailsLbl.range(after: " - " + "Section ".localized(), before: " - " + "Spot ".localized()))
+        self.detailsLbl.set(textColor: UIColor.Roadout.darkOrange, range: self.detailsLbl.range(after: " - " + "Spot ".localized()))
         self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - " + "Section ".localized(), before: " - " + "Spot ".localized()))
         self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - " + "Spot ".localized()))
         
         if returnToDelay {
             self.timeLbl.text = "Delay for ".localized() + "\(Int(delayTime/60))" + " minute/s".localized()
-            self.timeLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.timeLbl.range(after: "Delay for ".localized()))
+            self.timeLbl.set(textColor: UIColor.Roadout.darkOrange, range: self.timeLbl.range(after: "Delay for ".localized()))
             self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Delay for ".localized()))
         } else {
             self.timeLbl.text = "Reserve for ".localized() + "\(Int(reservationTime/60))" + " minute/s".localized()
-            self.timeLbl.set(textColor: UIColor(named: "Dark Orange")!, range: self.timeLbl.range(after: "Reserve for ".localized()))
+            self.timeLbl.set(textColor: UIColor.Roadout.darkOrange, range: self.timeLbl.range(after: "Reserve for ".localized()))
             self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Reserve for ".localized()))
         }
     }
@@ -168,7 +168,7 @@ class PayView: UIView {
 
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         payBtn.setAttributedTitle(mainCardTitle, for: .normal)
-        payBtn.backgroundColor = UIColor(named: "Dark Orange")!
+        payBtn.backgroundColor = UIColor.Roadout.darkOrange
     }
     
     func showApplePayBtn() {
@@ -227,37 +227,37 @@ class PayView: UIView {
                 let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Something went wrong, it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
             case ReservationManager.ReservationErrors.networkError:
                 let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
             case ReservationManager.ReservationErrors.databaseFailure:
                 let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
             case ReservationManager.ReservationErrors.unknownError:
                 let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
             case ReservationManager.ReservationErrors.errorWithJson:
                 let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
             default:
                 let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
         }
     }

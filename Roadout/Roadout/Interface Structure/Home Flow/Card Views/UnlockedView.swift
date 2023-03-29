@@ -38,7 +38,7 @@ class UnlockedView: UIView {
         markBtn.setAttributedTitle(NSAttributedString(string: " Marked".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         markBtn.isEnabled = false
         let alert = UIAlertController(title: "Spot Marked".localized(), message: "Your car location has been marked, you can return later and find it in Roadout".localized(), preferredStyle: .alert)
-        alert.view.tintColor = UIColor(named: "DevBrown")!
+        alert.view.tintColor = UIColor.Roadout.devBrown
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
         alert.addAction(okAction)
         self.parentViewController().present(alert, animated: true)

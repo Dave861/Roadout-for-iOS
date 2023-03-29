@@ -20,7 +20,7 @@ class HistoryViewController: UIViewController {
     ]
     
     let buttonTitle = NSAttributedString(string: "Clear".localized(),
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Yellow")!])
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.darkYellow])
 
     @IBOutlet weak var backButton: UIButton!
     
@@ -114,12 +114,12 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.placeLbl.text = locationName + " - " + "Section ".localized() + sectionLetter + " - " + "Spot ".localized() + spotNumber
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: sectionLetter))
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: spotNumber))
-                cell.placeLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.placeLbl.range(string: sectionLetter))
-                cell.placeLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.placeLbl.range(string: spotNumber))
+                cell.placeLbl.set(textColor: UIColor.Roadout.darkYellow, range: cell.placeLbl.range(string: sectionLetter))
+                cell.placeLbl.set(textColor: UIColor.Roadout.darkYellow, range: cell.placeLbl.range(string: spotNumber))
                 
                 cell.timePriceLbl.text = "\(olderHistoryItems[currentIndex].time) min - \(olderHistoryItems[currentIndex].price) RON"
                 cell.timePriceLbl.set(font: .systemFont(ofSize: 16, weight: .medium), range: cell.timePriceLbl.range(string: "\(olderHistoryItems[currentIndex].price) RON"))
-                cell.timePriceLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.timePriceLbl.range(string: "\(olderHistoryItems[currentIndex].price) RON"))
+                cell.timePriceLbl.set(textColor: UIColor.Roadout.darkYellow, range: cell.timePriceLbl.range(string: "\(olderHistoryItems[currentIndex].price) RON"))
                 return cell
             }
         } else {
@@ -138,12 +138,12 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.placeLbl.text = locationName + " - " + "Section ".localized() + sectionLetter + " - " + "Spot ".localized() + spotNumber
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: sectionLetter))
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: spotNumber))
-                cell.placeLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.placeLbl.range(string: sectionLetter))
-                cell.placeLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.placeLbl.range(string: spotNumber))
+                cell.placeLbl.set(textColor: UIColor.Roadout.darkYellow, range: cell.placeLbl.range(string: sectionLetter))
+                cell.placeLbl.set(textColor: UIColor.Roadout.darkYellow, range: cell.placeLbl.range(string: spotNumber))
                 
                 cell.timePriceLbl.text = "\(weekHistoryItems[currentIndex].time) min - \(weekHistoryItems[currentIndex].price) RON"
                 cell.timePriceLbl.set(font: .systemFont(ofSize: 16, weight: .medium), range: cell.timePriceLbl.range(string: "\(weekHistoryItems[currentIndex].price) RON"))
-                cell.timePriceLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.timePriceLbl.range(string: "\(weekHistoryItems[currentIndex].price) RON"))
+                cell.timePriceLbl.set(textColor: UIColor.Roadout.darkYellow, range: cell.timePriceLbl.range(string: "\(weekHistoryItems[currentIndex].price) RON"))
                 return cell
                 
             } else if indexPath.row == weekHistoryItems.count+1 {
@@ -160,8 +160,8 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.placeLbl.text = locationName + " - " + "Section ".localized() + sectionLetter + " - " + "Spot ".localized() + spotNumber
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: sectionLetter))
                 cell.placeLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.placeLbl.range(string: spotNumber))
-                cell.placeLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.placeLbl.range(string: sectionLetter))
-                cell.placeLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: cell.placeLbl.range(string: spotNumber))
+                cell.placeLbl.set(textColor: UIColor.Roadout.darkYellow, range: cell.placeLbl.range(string: sectionLetter))
+                cell.placeLbl.set(textColor: UIColor.Roadout.darkYellow, range: cell.placeLbl.range(string: spotNumber))
                 
                 cell.timePriceLbl.text = "\(olderHistoryItems[currentIndex].time) min - \(olderHistoryItems[currentIndex].price) RON"
                 

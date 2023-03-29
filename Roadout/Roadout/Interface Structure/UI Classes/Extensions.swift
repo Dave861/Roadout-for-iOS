@@ -74,7 +74,7 @@ extension UITextField {
         let cancel = UIBarButtonItem(title: "Cancel".localized(), style: .plain, target: nil, action: #selector(tapCancel)) // 6
         let barButton = UIBarButtonItem(title: "Done".localized(), style: .plain, target: target, action: selector) //7
         toolBar.setItems([cancel, flexible, barButton], animated: false) //8
-        toolBar.tintColor = UIColor(named: "Dark Orange")!//9
+        toolBar.tintColor = UIColor.Roadout.darkOrange//9
         self.inputAccessoryView = toolBar //10
     }
     

@@ -19,7 +19,7 @@ class PermissionsViewController: UIViewController {
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let skipTitle = NSAttributedString(
         string: "Maybe Later".localized(),
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Dark Orange")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.darkOrange, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
         
     let center = UNUserNotificationCenter.current()
@@ -149,7 +149,7 @@ extension PermissionsViewController: UITableViewDelegate, UITableViewDataSource 
         cell.titleLabel.text = permissionsTitles[indexPath.row]
         cell.infoLabel.text = permissionsTexts[indexPath.row]
         cell.iconImage.image = permissionsIcons[indexPath.row]
-        cell.iconImage.tintColor = UIColor(named: "Dark Orange")!
+        cell.iconImage.tintColor = UIColor.Roadout.darkOrange
         
         return cell
     }

@@ -15,7 +15,7 @@ class VerifyMailViewController: UIViewController {
     let continueTitle = NSAttributedString(string: "Verify".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let skipTitle = NSAttributedString(
         string: "Cancel".localized(),
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.expressFocus, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
     
     let center = UNUserNotificationCenter.current()
@@ -55,7 +55,7 @@ class VerifyMailViewController: UIViewController {
                 let alert = UIAlertController(title: "Error".localized(), message: "Code is not valid or expired. Please check your email.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "ExpressFocus")!
+                alert.view.tintColor = UIColor.Roadout.expressFocus
                 self.present(alert, animated: true, completion: nil)
             }
         }
@@ -111,31 +111,31 @@ class VerifyMailViewController: UIViewController {
                 let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                     self.present(alert, animated: true, completion: nil)
             case AuthManager.AuthErrors.databaseFailure:
                 let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                     self.present(alert, animated: true, completion: nil)
             case AuthManager.AuthErrors.unknownError:
                 let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                     self.present(alert, animated: true, completion: nil)
             case AuthManager.AuthErrors.errorWithJson:
                 let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                     self.present(alert, animated: true, completion: nil)
             default:
                 let alert = UIAlertController(title: "Error".localized(), message: "User may already exist, sign in or use another email.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                     self.present(alert, animated: true, completion: nil)
         }
     }

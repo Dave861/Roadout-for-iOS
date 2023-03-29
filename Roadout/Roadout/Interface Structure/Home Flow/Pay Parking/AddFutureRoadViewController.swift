@@ -51,7 +51,7 @@ class AddFutureRoadViewController: UIViewController {
             }
         } else {
             let alert = UIAlertController(title: "Error".localized(), message: "There is already an active future road for this location, please pick another location".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: "Icons")
+            alert.view.tintColor = UIColor.Roadout.icons
             let okAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                 self.dismiss(animated: true, completion: nil)
             }

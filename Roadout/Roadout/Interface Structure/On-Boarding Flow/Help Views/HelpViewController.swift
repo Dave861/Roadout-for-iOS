@@ -13,7 +13,7 @@ class HelpViewController: UIViewController {
     let doneTitle = NSAttributedString(string: "Thanks! Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let helpTitle = NSAttributedString(
         string: "I still need help".localized(),
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Icons")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.icons, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
     
     var centerCell: HelpCell!
@@ -36,7 +36,7 @@ class HelpViewController: UIViewController {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.view.tintColor = UIColor(named: "Icons")
+            mail.view.tintColor = UIColor.Roadout.icons
             mail.setToRecipients(["help@roadout.ro"])
             mail.setSubject("Roadout - Help Request".localized())
             mail.setMessageBody("Please describe your problem here - Roadout Team".localized(), isHTML: false)
@@ -44,7 +44,7 @@ class HelpViewController: UIViewController {
             present(mail, animated: true)
         } else {
             let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: "Icons")
+            alert.view.tintColor = UIColor.Roadout.icons
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
@@ -107,7 +107,7 @@ extension HelpViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case .noColor:
                 cell.upCard.backgroundColor = UIColor(named: "Secondary Detail")!
                 cell.bottomCard.backgroundColor = UIColor(named: "Secondary Detail")!
-                cell.titleLbl.textColor = UIColor(named: "Icons")!
+                cell.titleLbl.textColor = UIColor.Roadout.icons
                 cell.tagLbl.textColor = UIColor.systemGray3
                 cell.card.backgroundColor = UIColor(named: "Secondary Detail")!
                 cell.problemImage.alpha = 1
@@ -115,7 +115,7 @@ extension HelpViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 cell.gradientView.alpha = 0
                 cell.fullProblemImage.alpha = 0
             case .colorUp:
-                cell.upCard.backgroundColor = UIColor(named: "Icons")!
+                cell.upCard.backgroundColor = UIColor.Roadout.icons
                 cell.bottomCard.backgroundColor = UIColor(named: "Secondary Detail")!
                 cell.titleLbl.textColor = UIColor(named: "Secondary Detail")!
                 cell.tagLbl.textColor = UIColor(named: "Secondary Detail")!
@@ -126,8 +126,8 @@ extension HelpViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 cell.fullProblemImage.alpha = 0
             case .colorDown:
                 cell.upCard.backgroundColor = UIColor(named: "Secondary Detail")!
-                cell.bottomCard.backgroundColor = UIColor(named: "Icons")!
-                cell.titleLbl.textColor = UIColor(named: "Icons")!
+                cell.bottomCard.backgroundColor = UIColor.Roadout.icons
+                cell.titleLbl.textColor = UIColor.Roadout.icons
                 cell.tagLbl.textColor = UIColor.systemGray3
                 cell.card.backgroundColor = UIColor(named: "Secondary Detail")!
                 cell.problemImage.alpha = 1

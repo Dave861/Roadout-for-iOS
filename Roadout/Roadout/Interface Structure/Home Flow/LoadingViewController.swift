@@ -87,7 +87,7 @@ class GetDataViewController: UIViewController {
         }
         alert.addAction(tryAgainAction)
         
-        alert.view.tintColor = UIColor(named: "Kinda Red")
+        alert.view.tintColor = UIColor.Roadout.kindaRed
         self.present(alert, animated: true, completion: nil)
     }
 

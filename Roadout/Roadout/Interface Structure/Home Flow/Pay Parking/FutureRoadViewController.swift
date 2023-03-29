@@ -9,9 +9,9 @@ import UIKit
 
 class FutureRoadViewController: UIViewController {
     
-    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Icons")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.icons, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
-    let planReservationTitle = NSAttributedString(string: " " + "Plan Reservation".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Icons")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let planReservationTitle = NSAttributedString(string: " " + "Plan Reservation".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.icons, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     @IBOutlet weak var titleLbl: UILabel!
     
@@ -89,7 +89,7 @@ class FutureRoadViewController: UIViewController {
          }
         if UserPrefsUtils.sharedInstance.futureNotificationsEnabled() == false {
             let alert = UIAlertController(title: "Warning".localized(), message: "Future Road notifications are disabled, you will NOT be notified by Roadout unless you enable them".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: "Icons")
+            alert.view.tintColor = UIColor.Roadout.icons
             let okAction = UIAlertAction(title: "OK".localized(), style: .default) { action in
                 self.dismiss(animated: true, completion: nil)
             }
@@ -150,7 +150,7 @@ extension FutureRoadViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FutureRoadCell") as! FutureRoadCell
         cell.titleLbl.text = "Reserve near ".localized() + futureReservations[indexPath.row].place
-        cell.titleLbl.set(textColor: UIColor(named: "Icons")!, range: cell.titleLbl.range(after: "Reserve near "))
+        cell.titleLbl.set(textColor: UIColor.Roadout.icons, range: cell.titleLbl.range(after: "Reserve near "))
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d, hh:mm"
         cell.dateLbl.text = dateFormatter.string(from: futureReservations[indexPath.row].date)

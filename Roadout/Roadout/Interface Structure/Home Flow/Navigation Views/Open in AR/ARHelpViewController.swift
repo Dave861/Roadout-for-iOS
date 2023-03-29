@@ -24,7 +24,7 @@ class ARHelpViewController: UIViewController {
     let doneTitle = NSAttributedString(string: "Thanks! Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let helpTitle = NSAttributedString(
         string: "I still need help".localized(),
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Kinda Red")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.kindaRed, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
     
     @IBOutlet weak var tableView: UITableView!
@@ -40,7 +40,7 @@ class ARHelpViewController: UIViewController {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.view.tintColor = UIColor(named: "Kinda Red")
+            mail.view.tintColor = UIColor.Roadout.kindaRed
             mail.setToRecipients(["roadout.ro@gmail.com"])
             mail.setSubject("Roadout for iOS - AR Help Request".localized())
             mail.setMessageBody("Ask any questions about AR Directions here and we will respond as fast as we can - Roadout Team".localized(), isHTML: false)
@@ -48,7 +48,7 @@ class ARHelpViewController: UIViewController {
             present(mail, animated: true)
         } else {
             let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or ask your questions at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: "Kinda Red")
+            alert.view.tintColor = UIColor.Roadout.kindaRed
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)

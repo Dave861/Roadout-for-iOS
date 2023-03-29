@@ -138,7 +138,7 @@ class HomeViewController: UIViewController {
         let alert = UIAlertController(title: "Error".localized(), message: "There was an error, location may not be enabled for Roadout or there aren't any free spots. Please enable it in Settings if you want to use Find Way".localized(), preferredStyle: .alert)
         let action = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
         alert.addAction(action)
-        alert.view.tintColor = UIColor(named: "DevBrown")
+        alert.view.tintColor = UIColor.Roadout.devBrown
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -151,14 +151,16 @@ class HomeViewController: UIViewController {
     @IBAction func searchTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        guard let coord = self.mapView.myLocation?.coordinate else {
+        if !suspendSearch {
+            guard let coord = self.mapView.myLocation?.coordinate else {
+                let vc = storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchViewController
+                self.present(vc, animated: false, completion: nil)
+                return
+            }
+            currentLocationCoord = coord
             let vc = storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchViewController
             self.present(vc, animated: false, completion: nil)
-            return
         }
-        currentLocationCoord = coord
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchVC") as! SearchViewController
-        self.present(vc, animated: false, completion: nil)
     }
     
     @IBOutlet weak var settingsButton: UXButton!
@@ -169,7 +171,7 @@ class HomeViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let alert = UIAlertController(title: "Settings Restricted".localized(), message: "We are sorry but settings and account operations are restricted during a reservation. This ensures nothing goes wrong and you can use settings right after your reservation ends".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: "Greyish")!
+            alert.view.tintColor = UIColor.Roadout.greyish
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
             alert.addAction(okAction)
             self.present(alert, animated: true)
@@ -1242,7 +1244,7 @@ extension HomeViewController {
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
             alert.addAction(okAction)
             
-            alert.view.tintColor = UIColor(named: "Dark Yellow")
+            alert.view.tintColor = UIColor.Roadout.darkYellow
             self.present(alert, animated: true)
         }
     }

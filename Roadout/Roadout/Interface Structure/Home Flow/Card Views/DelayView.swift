@@ -33,7 +33,7 @@ class DelayView: UIView {
         minuteSlider.value = roundedValue
         delayTime = Int(roundedValue)*60
         priceLbl.text = "\(Int(minuteSlider.value))" + " Minute/s".localized() + " - \(Int(minuteSlider.value)) RON"
-        priceLbl.set(textColor: UIColor(named: "Second Orange")!, range: priceLbl.range(after: " - "))
+        priceLbl.set(textColor: UIColor.Roadout.secondOrange, range: priceLbl.range(after: " - "))
         priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
     }
     
@@ -48,7 +48,7 @@ class DelayView: UIView {
         backBtn.layer.cornerRadius = 15.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         
-        priceLbl.set(textColor: UIColor(named: "Second Orange")!, range: priceLbl.range(after: " - "))
+        priceLbl.set(textColor: UIColor.Roadout.secondOrange, range: priceLbl.range(after: " - "))
         priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
         
     }

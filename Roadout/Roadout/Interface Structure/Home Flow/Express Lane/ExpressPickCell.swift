@@ -21,16 +21,16 @@ class ExpressChooseCell: UITableViewCell {
         super.awakeFromNib()
         card.layer.cornerRadius = 12.0
         gaugeIcon.image = gaugeIcon.image?.withRenderingMode(.alwaysTemplate)
-        gaugeIcon.tintColor = UIColor(named: "ExpressFocus")!
-        distanceIcon.tintColor = UIColor(named: "ExpressFocus")!
+        gaugeIcon.tintColor = UIColor.Roadout.expressFocus
+        distanceIcon.tintColor = UIColor.Roadout.expressFocus
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        cellActionButtonLabel?.textColor = UIColor(named: "Redish") ?? .systemRed
+        cellActionButtonLabel?.textColor = UIColor.Roadout.redish ?? .systemRed
     }
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
-        cellActionButtonLabel?.textColor = UIColor(named: "Redish") ?? .systemRed
+        cellActionButtonLabel?.textColor = UIColor.Roadout.redish ?? .systemRed
     }
 }

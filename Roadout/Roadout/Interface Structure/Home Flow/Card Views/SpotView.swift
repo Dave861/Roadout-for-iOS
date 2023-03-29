@@ -26,8 +26,8 @@ class SpotView: UIView, PusherDelegate {
         generator.impactOccurred()
         continueBtn.isUserInteractionEnabled = false
                 
-        let clockImage = UIImage.init(systemName: "clock")!.withTintColor(UIColor(named: "Dark Orange")!, renderingMode: .alwaysOriginal)
-        let checkImage = UIImage.init(systemName: "checkmark")!.withTintColor(UIColor(named: "Dark Yellow")!, renderingMode: .alwaysOriginal)
+        let clockImage = UIImage.init(systemName: "clock")!.withTintColor(UIColor.Roadout.darkOrange, renderingMode: .alwaysOriginal)
+        let checkImage = UIImage.init(systemName: "checkmark")!.withTintColor(UIColor.Roadout.darkYellow, renderingMode: .alwaysOriginal)
         let checkingIndicatorView = SPIndicatorView(title: "Confirming...".localized(), message: "Please wait".localized(), preset: .custom(clockImage))
         let confirmedIndicatorView = SPIndicatorView(title: "Confirmed".localized(), message: "Done".localized(), preset: .custom(checkImage))
         checkingIndicatorView.present(duration: 0.7, haptic: .none) {
@@ -122,19 +122,19 @@ class SpotView: UIView, PusherDelegate {
             continueBtn.isEnabled = false
             continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
             infoIcon.image = UIImage(systemName: "xmark")
-            infoIcon.tintColor = UIColor(named: "Redish")
+            infoIcon.tintColor = UIColor.Roadout.redish
             infoText.text = "Selected spot is occupied".localized()
         case 2:
             continueBtn.isEnabled = false
             continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
             infoIcon.image = UIImage(systemName: "clock.fill")
-            infoIcon.tintColor = UIColor(named: "Dark Orange")
+            infoIcon.tintColor = UIColor.Roadout.darkOrange
             infoText.text = "Selected spot is about to be reserved".localized()
         case 3:
             continueBtn.isEnabled = false
             continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
             infoIcon.image = UIImage(systemName: "exclamationmark.triangle")
-            infoIcon.tintColor = UIColor(named: "Greyish")
+            infoIcon.tintColor = UIColor.Roadout.greyish
             infoText.text = "Selected spot is under maintenance".localized()
         default:
             continueBtn.isEnabled = false
@@ -213,19 +213,19 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
                 cell.mainBtn.tintColor = UIColor.Roadout.mainYellow
                 cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
             case 1:
-                cell.outlineView.backgroundColor = UIColor(named: "Redish")
+                cell.outlineView.backgroundColor = UIColor.Roadout.redish
                 cell.mainBtn.setImage(UIImage(systemName: "xmark"), for: .normal)
-                cell.mainBtn.tintColor = UIColor(named: "Redish")
+                cell.mainBtn.tintColor = UIColor.Roadout.redish
                 cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
             case 2:
-                cell.outlineView.backgroundColor = UIColor(named: "Dark Orange")
+                cell.outlineView.backgroundColor = UIColor.Roadout.darkOrange
                 cell.mainBtn.setImage(UIImage(systemName: "clock"), for: .normal)
-                cell.mainBtn.tintColor = UIColor(named: "Dark Orange")
+                cell.mainBtn.tintColor = UIColor.Roadout.darkOrange
                 cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
             default:
-                cell.outlineView.backgroundColor = UIColor(named: "Greyish")
+                cell.outlineView.backgroundColor = UIColor.Roadout.greyish
                 cell.mainBtn.setImage(UIImage(systemName: "exclamationmark.triangle"), for: .normal)
-                cell.mainBtn.tintColor = UIColor(named: "Greyish")
+                cell.mainBtn.tintColor = UIColor.Roadout.greyish
                 cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
         }
         return cell
@@ -246,13 +246,13 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
                 cell.mainBtn.backgroundColor = UIColor.Roadout.mainYellow
                 cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
             case 1:
-                cell.mainBtn.backgroundColor = UIColor(named: "Redish")
+                cell.mainBtn.backgroundColor = UIColor.Roadout.redish
                 cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
             case 2:
-                cell.mainBtn.backgroundColor = UIColor(named: "Dark Orange")
+                cell.mainBtn.backgroundColor = UIColor.Roadout.darkOrange
                 cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
             default:
-                cell.mainBtn.backgroundColor = UIColor(named: "Greyish")
+                cell.mainBtn.backgroundColor = UIColor.Roadout.greyish
                 cell.mainBtn.tintColor = UIColor(named: "FloatingBG")
         }
         selectedLocation.accentColor = parkLocations[selectedParkLocationIndex].accentColor
@@ -269,13 +269,13 @@ extension SpotView: UICollectionViewDelegate, UICollectionViewDataSource {
                 cell.mainBtn.tintColor = UIColor.Roadout.mainYellow
             case 1:
                 cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
-                cell.mainBtn.tintColor = UIColor(named: "Redish")
+                cell.mainBtn.tintColor = UIColor.Roadout.redish
             case 2:
                 cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
-                cell.mainBtn.tintColor = UIColor(named: "Dark Orange")
+                cell.mainBtn.tintColor = UIColor.Roadout.darkOrange
             default:
                 cell.mainBtn.backgroundColor = UIColor(named: "FloatingBG")
-                cell.mainBtn.tintColor = UIColor(named: "Greyish")
+                cell.mainBtn.tintColor = UIColor.Roadout.greyish
         }
     }
 }

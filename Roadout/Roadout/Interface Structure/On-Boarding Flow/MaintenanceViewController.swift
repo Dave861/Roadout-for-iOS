@@ -63,7 +63,7 @@ class MaintenanceViewController: UIViewController {
     
     func showSorryAlert() {
         let alert = UIAlertController(title: "Sorry".localized(), message: "There still appear to be problems, we are working as hard as we can to fix them. Additionally you can try force quitting and reopening Roadout, you can also get support at maintenance@roadout.ro.".localized(), preferredStyle: .alert)
-        alert.view.tintColor = UIColor(named: "Second Orange")!
+        alert.view.tintColor = UIColor.Roadout.secondOrange
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true)

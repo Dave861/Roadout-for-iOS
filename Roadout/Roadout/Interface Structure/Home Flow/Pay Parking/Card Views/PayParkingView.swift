@@ -110,7 +110,7 @@ class PayParkingView: UIView {
         payBtn.layer.cornerRadius = 12.0
         payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
-        payBtn.backgroundColor = UIColor(named: "Cash Yellow")!
+        payBtn.backgroundColor = UIColor.Roadout.cashYellow
         
         chooseMethodBtn.layer.cornerRadius = 12.0
         chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
@@ -127,7 +127,7 @@ class PayParkingView: UIView {
         payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         payBtn.showsMenuAsPrimaryAction = true
         
-        priceLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: priceLbl.range(after: " - "))
+        priceLbl.set(textColor: UIColor.Roadout.cashYellow, range: priceLbl.range(after: " - "))
         priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
         
         titleLbl.text = "Pay Parking".localized()
@@ -143,7 +143,7 @@ class PayParkingView: UIView {
         self.detailsLbl.text = selectedPayLocation.name
         
         self.timeLbl.text = "Pay for ".localized() + "\(paidTime)" + " hour/s".localized()
-        self.timeLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: self.timeLbl.range(after: "Pay for ".localized()))
+        self.timeLbl.set(textColor: UIColor.Roadout.cashYellow, range: self.timeLbl.range(after: "Pay for ".localized()))
         self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Pay for ".localized()))
     }
 
@@ -153,7 +153,7 @@ class PayParkingView: UIView {
 
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         payBtn.setAttributedTitle(mainCardTitle, for: .normal)
-        payBtn.backgroundColor = UIColor(named: "Cash Yellow")!
+        payBtn.backgroundColor = UIColor.Roadout.cashYellow
     }
     
     func showApplePayBtn() {

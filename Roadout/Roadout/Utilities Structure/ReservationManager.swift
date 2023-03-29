@@ -71,6 +71,8 @@ class ReservationManager {
     }
     
     func checkForReservationAsync(date: Date, userID: String) async throws {
+        suspendSearch = true
+        
         let _headers: HTTPHeaders = ["Content-Type":"application/json"]
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -84,6 +86,7 @@ class ReservationManager {
         do {
             responseJson = try await checkRequest.serializingString().value
         } catch {
+            suspendSearch = false
             throw ReservationErrors.databaseFailure
         }
         
@@ -92,6 +95,7 @@ class ReservationManager {
         do {
             jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [String:Any]
         } catch {
+            suspendSearch = false
             throw ReservationErrors.errorWithJson
         }
         
@@ -174,9 +178,10 @@ class ReservationManager {
             }
         } else {
             self.isReservationActive = -1
+            suspendSearch = false
             throw ReservationErrors.unknownError
         }
-
+        suspendSearch = false
     }
     
     //MARK: - Delay Functions -

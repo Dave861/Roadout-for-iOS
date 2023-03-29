@@ -10,7 +10,7 @@ import UIKit
 class PaymentViewController: UIViewController {
     
     let buttonTitle = NSAttributedString(string: "Add Card".localized(),
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Dark Orange")!])
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.darkOrange])
             
     @IBOutlet weak var backButton: UIButton!
     @IBAction func backTapped(_ sender: Any) {
@@ -119,7 +119,7 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
                 NotificationCenter.default.post(name: .refreshCardsMenuID, object: nil)
             }
             let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
-            alert.view.tintColor = UIColor(named: "Dark Orange")
+            alert.view.tintColor = UIColor.Roadout.darkOrange
             alert.addAction(deleteAction)
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)

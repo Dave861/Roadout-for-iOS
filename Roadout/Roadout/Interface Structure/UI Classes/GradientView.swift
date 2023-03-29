@@ -17,7 +17,7 @@ class GradientView: UIView {
 
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
-        gradientLayer.colors = [UIColor(named: "Icons")!.withAlphaComponent(0.45).cgColor, UIColor(named: "Icons")!.withAlphaComponent(0.77).cgColor]
+        gradientLayer.colors = [UIColor.Roadout.icons.withAlphaComponent(0.45).cgColor, UIColor.Roadout.icons.withAlphaComponent(0.77).cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
         

@@ -10,7 +10,7 @@ import UIKit
 class ButtonCell: UITableViewCell {
     
     let buttonTitle = NSAttributedString(string: "Sign Out".localized(),
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Kinda Red")!])
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.kindaRed])
 
     @IBOutlet weak var card: UIView!
     @IBOutlet weak var cellButton: UIButton!

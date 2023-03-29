@@ -44,7 +44,7 @@ class DangerViewController: UIViewController {
         titleLbl.text = "Threat Detected".localized()
         questionBtn.layer.cornerRadius = 13.0
         descriptionLbl.text = "Please STOP, Roadout has detected one of the following threats".localized()
-        descriptionLbl.set(textColor: UIColor(named: "Redish")!, range: descriptionLbl.range(after: " ", before: ","))
+        descriptionLbl.set(textColor: UIColor.Roadout.redish, range: descriptionLbl.range(after: " ", before: ","))
         descriptionLbl.set(font: .systemFont(ofSize: 17.0, weight: .medium), range: descriptionLbl.range(after: " ", before: ","))
         questionBtn.setAttributedTitle(questionTitle, for: .normal)
         
@@ -54,7 +54,7 @@ class DangerViewController: UIViewController {
     
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.view.tintColor = UIColor(named: "Redish")!
+        alert.view.tintColor = UIColor.Roadout.redish
         let action = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)

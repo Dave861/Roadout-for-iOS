@@ -81,7 +81,7 @@ class ReservationView: UIView {
                         if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownDelayWarning") == false {
                             UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownDelayWarning")
                             let alert = UIAlertController(title: "Delay Reservation".localized(), message: "You can only delay a reservation once. Use carefully.".localized(), preferredStyle: .alert)
-                            alert.view.tintColor = UIColor(named: "Second Orange")
+                            alert.view.tintColor = UIColor.Roadout.secondOrange
                             let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                             alert.addAction(cancelAction)
                             self.parentViewController().present(alert, animated: true, completion: nil)
@@ -89,7 +89,7 @@ class ReservationView: UIView {
                         NotificationCenter.default.post(name: .addDelayCardID, object: nil)
                 } else {
                     let alert = UIAlertController(title: "Delay Restricted".localized(), message: "You have already delayed this reservation. This can only be done once per reservation, please hurry, once the displayed time passes the spot won't be secured.".localized(), preferredStyle: .alert)
-                    alert.view.tintColor = UIColor(named: "Kinda Red")
+                    alert.view.tintColor = UIColor.Roadout.kindaRed
                     let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(cancelAction)
                     self.parentViewController().present(alert, animated: true, completion: nil)
@@ -104,7 +104,7 @@ class ReservationView: UIView {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         let alert = UIAlertController(title: "Cancel Reservation".localized(), message: "Are you sure you want to cancel your reservation? You will only get half the money back and only if the reservation is less than half consumed.".localized(), preferredStyle: .alert)
-        alert.view.tintColor = UIColor(named: "Redish")
+        alert.view.tintColor = UIColor.Roadout.redish
         let cancelAction = UIAlertAction(title: "No".localized(), style: .cancel, handler: nil)
         let proceedAction = UIAlertAction(title: "Yes".localized(), style: .destructive) { action in
             let generator = UIImpactFeedbackGenerator(style: .medium)
@@ -227,37 +227,37 @@ class ReservationView: UIView {
                 let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Something went wrong, it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
             case ReservationManager.ReservationErrors.networkError:
                 let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
             case ReservationManager.ReservationErrors.databaseFailure:
                 let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
             case ReservationManager.ReservationErrors.unknownError:
                 let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
             case ReservationManager.ReservationErrors.errorWithJson:
                 let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
             default:
                 let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                     alert.addAction(okAction)
-                    alert.view.tintColor = UIColor(named: "Redish")
+                    alert.view.tintColor = UIColor.Roadout.redish
                 self.parentViewController().present(alert, animated: true, completion: nil)
         }
     }

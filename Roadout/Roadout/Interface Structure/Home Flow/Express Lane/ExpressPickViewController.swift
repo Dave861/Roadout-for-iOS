@@ -10,8 +10,8 @@ import CoreLocation
 
 class ExpressChooseViewController: UIViewController {
     
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "ExpressFocus")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    let editLocationTitle = NSAttributedString(string: " " + "Edit Locations".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "DevBrown")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.expressFocus, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    let editLocationTitle = NSAttributedString(string: " " + "Edit Locations".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.devBrown, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     @IBOutlet weak var titleLbl: UILabel!
     
@@ -118,7 +118,7 @@ class ExpressChooseViewController: UIViewController {
     func showNoFreeSpotAlert(indicatorView: SPIndicatorView) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: "ExpressFocus")!
+            alert.view.tintColor = UIColor.Roadout.expressFocus
             alert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -210,7 +210,7 @@ extension ExpressChooseViewController: UITableViewDelegate, UITableViewDataSourc
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         
-        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed.fill")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
+        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed.fill")!.withTintColor(UIColor.Roadout.expressFocus, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
         indicatorView.layer.borderColor = UIColor(named: "IndicatorBorder")!.cgColor
         indicatorView.layer.borderWidth = 1.5
@@ -258,7 +258,7 @@ extension ExpressChooseViewController: UITableViewDelegate, UITableViewDataSourc
             vc.previewLocationSections = favouriteLocations[indexPath.row].sections.count
             vc.previewLocationCoords = CLLocationCoordinate2D(latitude: favouriteLocations[indexPath.row].latitude, longitude: favouriteLocations[indexPath.row].longitude)
             vc.previewLocationColorName = "ExpressFocus"
-            vc.previewLocationColor = UIColor(named: "ExpressFocus")!
+            vc.previewLocationColor = UIColor.Roadout.expressFocus
             
             
             return vc
@@ -271,7 +271,7 @@ extension ExpressChooseViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         let indexPath = configuration.identifier as! IndexPath
         
-        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed.fill")!.withTintColor(UIColor(named: "ExpressFocus")!, renderingMode: .alwaysOriginal)
+        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed.fill")!.withTintColor(UIColor.Roadout.expressFocus, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
         indicatorView.layer.borderColor = UIColor(named: "IndicatorBorder")!.cgColor
         indicatorView.layer.borderWidth = 1.5

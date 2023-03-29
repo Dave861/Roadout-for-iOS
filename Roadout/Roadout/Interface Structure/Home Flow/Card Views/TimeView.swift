@@ -37,7 +37,7 @@ class TimeView: UIView {
         let roundedValue = round(minuteSlider.value/1.0)*1.0
         minuteSlider.value = roundedValue
         totalLbl.text = "\(Int(minuteSlider.value))" + " Minute/s".localized() + " - \(Int(minuteSlider.value)) RON"
-        totalLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: totalLbl.range(after: " - "))
+        totalLbl.set(textColor: UIColor.Roadout.darkYellow, range: totalLbl.range(after: " - "))
         totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
     }
     
@@ -50,7 +50,7 @@ class TimeView: UIView {
         let alert = UIAlertController(title: "Recommended Time".localized(), message: "We recommend time based on your current location and estimated time to commute to the selected parking spot, if the time exceeds 30 minutes, we do not recommend reserving just yet.".localized(), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
         alert.addAction(okAction)
-        alert.view.tintColor = UIColor(named: "Dark Yellow")!
+        alert.view.tintColor = UIColor.Roadout.darkYellow
         self.parentViewController().present(alert, animated: true, completion: nil)
     }
     
@@ -67,7 +67,7 @@ class TimeView: UIView {
         recommendationCard.layer.cornerRadius = recommendationCard.frame.height/5
         
         totalLbl.text = "\(Int(minuteSlider.value))" + " Minute/s".localized() + " - \(Int(minuteSlider.value)) RON"
-        totalLbl.set(textColor: UIColor(named: "Dark Yellow")!, range: totalLbl.range(after: " - "))
+        totalLbl.set(textColor: UIColor.Roadout.darkYellow, range: totalLbl.range(after: " - "))
         totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
     }
     

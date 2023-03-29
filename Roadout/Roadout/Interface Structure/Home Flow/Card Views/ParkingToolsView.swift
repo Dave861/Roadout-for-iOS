@@ -25,7 +25,7 @@ class ParkingToolsView: UIView {
     
     @IBAction func findWayTapped(_ sender: Any) {
         let parentVC = self.parentViewController() as! HomeViewController
-        let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor(named: "Greyish")!, renderingMode: .alwaysOriginal)
+        let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor.Roadout.greyish, renderingMode: .alwaysOriginal)
         let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
         DispatchQueue.main.async {
             indicatorView.dismissByDrag = false
@@ -93,7 +93,7 @@ class ParkingToolsView: UIView {
             let alert = UIAlertController(title: "Error".localized(), message: "Roadout can't access your location to show nearby spots, please enable it in Settings.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
             alert.addAction(okAction)
-            alert.view.tintColor = UIColor(named: "Cash Yellow")!
+            alert.view.tintColor = UIColor.Roadout.cashYellow
             
             parentVC.present(alert, animated: true)
             

@@ -215,37 +215,37 @@ class ExpressView: UIView {
             let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Something went wrong, it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
+                alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         case ReservationManager.ReservationErrors.networkError:
             let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
+                alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         case ReservationManager.ReservationErrors.databaseFailure:
             let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
+                alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         case ReservationManager.ReservationErrors.unknownError:
             let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
+                alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         case ReservationManager.ReservationErrors.errorWithJson:
             let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
+                alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         default:
             let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
                 alert.addAction(okAction)
-                alert.view.tintColor = UIColor(named: "Redish")
+                alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         }
     }

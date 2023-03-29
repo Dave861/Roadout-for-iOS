@@ -11,7 +11,7 @@ import MessageUI
 class GuideViewController: UIViewController {
     
     let buttonTitle = NSAttributedString(string: "Reach Out".localized(),
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "GoldBrown")!])
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.goldBrown])
         
     struct GuideTip {
         var title: String
@@ -64,7 +64,7 @@ class GuideViewController: UIViewController {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.view.tintColor = UIColor(named: "GoldBrown")
+            mail.view.tintColor = UIColor.Roadout.goldBrown
             mail.setToRecipients(["support@roadout.ro"])
             mail.setSubject("Roadout - Support Request".localized())
             mail.setMessageBody("Ask any questions here - Roadout Team".localized(), isHTML: false)
@@ -72,7 +72,7 @@ class GuideViewController: UIViewController {
             present(mail, animated: true)
         } else {
             let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or send the email at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: "GoldBrown")
+            alert.view.tintColor = UIColor.Roadout.goldBrown
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
@@ -111,7 +111,7 @@ extension GuideViewController: UITableViewDelegate, UITableViewDataSource {
             
             for highlightedWord in guideTips[indexPath.row].highlightedWords {
                 cell.explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.explanationLbl.range(string: highlightedWord))
-                cell.explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: cell.explanationLbl.range(string: highlightedWord))
+                cell.explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: cell.explanationLbl.range(string: highlightedWord))
             }
             
             return cell

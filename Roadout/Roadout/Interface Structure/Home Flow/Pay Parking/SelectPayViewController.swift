@@ -12,7 +12,7 @@ class SelectPayViewController: UIViewController {
     
     var recentParkLocations = [ParkLocation]()
     var nearbyParkLocations = [ParkLocation]()
-    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Cash Yellow")!, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.cashYellow, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     @IBOutlet weak var titleLbl: UILabel!
     

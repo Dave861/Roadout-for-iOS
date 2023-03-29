@@ -20,9 +20,9 @@ class TutorialView1: UIView {
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "settings"))
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "User Guide"))
         
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "account"))
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "settings"))
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "User Guide"))
+        explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: explanationLbl.range(string: "account"))
+        explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: explanationLbl.range(string: "settings"))
+        explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: explanationLbl.range(string: "User Guide"))
     }
     
     class func instanceFromNib() -> UIView {
@@ -41,8 +41,8 @@ class TutorialView2: UIView {
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "easiest"))
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "nearest"))
         
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "easiest"))
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "nearest"))
+        explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: explanationLbl.range(string: "easiest"))
+        explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: explanationLbl.range(string: "nearest"))
     }
     
     class func instanceFromNib() -> UIView {
@@ -61,8 +61,8 @@ class TutorialView3: UIView {
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "free"))
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "favourite"))
         
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "free"))
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "favourite"))
+        explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: explanationLbl.range(string: "free"))
+        explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: explanationLbl.range(string: "favourite"))
     }
     
     class func instanceFromNib() -> UIView {
@@ -81,8 +81,8 @@ class TutorialView4: UIView {
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "pay"))
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "location"))
         
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "pay"))
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "location"))
+        explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: explanationLbl.range(string: "pay"))
+        explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: explanationLbl.range(string: "location"))
     }
     
     class func instanceFromNib() -> UIView {
@@ -101,8 +101,8 @@ class TutorialView5: UIView {
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "future"))
         explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "worry"))
         
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "future"))
-        explanationLbl.set(textColor: UIColor(named: "GoldBrown")!, range: explanationLbl.range(string: "worry"))
+        explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: explanationLbl.range(string: "future"))
+        explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: explanationLbl.range(string: "worry"))
     }
     
     class func instanceFromNib() -> UIView {

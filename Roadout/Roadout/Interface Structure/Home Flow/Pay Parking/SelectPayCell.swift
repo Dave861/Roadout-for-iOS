@@ -21,8 +21,8 @@ class SelectPayCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         card.layer.cornerRadius = 12.0
-        distanceIcon.tintColor = UIColor(named: "Cash Yellow")!
-        currentLocationIcon.tintColor = UIColor(named: "Cash Yellow")!
+        distanceIcon.tintColor = UIColor.Roadout.cashYellow
+        currentLocationIcon.tintColor = UIColor.Roadout.cashYellow
         
         currentLocationLbl.isHidden = true
         currentLocationIcon.isHidden = true

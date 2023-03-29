@@ -10,7 +10,7 @@ import UIKit
 class PaidParkingBar: UIView {
 
     let buttonTitle = NSAttributedString(string: "Done".localized(),
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor(named: "Cash Yellow")!])
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.cashYellow])
     
     @IBOutlet weak var optionsBtn: UXButton!
     

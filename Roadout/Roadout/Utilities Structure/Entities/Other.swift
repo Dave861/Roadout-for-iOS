@@ -36,9 +36,19 @@ struct RateReason {
 
 extension UIColor {
     struct Roadout {
-        static var mainYellow: UIColor  { return UIColor(named: "Main Yellow")! }
-    }
-    struct Backgrounds {
-        
+        static var mainYellow = UIColor(named: "Main Yellow")!
+        static var secondOrange = UIColor(named: "Second Orange")!//here
+        static var darkOrange = UIColor(named: "Dark Orange")!
+        static var brownish = UIColor(named: "Brownish")!
+        static var darkYellow = UIColor(named: "Dark Yellow")!
+        static var cashYellow = UIColor(named: "Cash Yellow")!
+        static var devBrown = UIColor(named: "DevBrown")!
+        static var expressFocus = UIColor(named: "ExpressFocus")!
+        static var goldBrown = UIColor(named: "GoldBrown")!
+        static var greyish = UIColor(named: "Greyish")!
+        static var icons = UIColor(named: "Icons")!
+        static var kindaRed = UIColor(named: "Kinda Red")!
+        static var redish = UIColor(named: "Redish")!
+        static var limey = UIColor(named: "Limey")!
     }
 }

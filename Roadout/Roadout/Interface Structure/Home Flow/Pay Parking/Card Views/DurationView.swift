@@ -35,7 +35,7 @@ class DurationView: UIView {
         let roundedValue = round(hourSlider.value/1.0)*1.0
         hourSlider.value = roundedValue
         totalLbl.text = "\(Int(hourSlider.value)) " + "Hours ".localized() + "- \(Int(hourSlider.value)) RON"
-        totalLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: totalLbl.range(after: " - "))
+        totalLbl.set(textColor: UIColor.Roadout.cashYellow, range: totalLbl.range(after: " - "))
         totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
     }
     
@@ -51,7 +51,7 @@ class DurationView: UIView {
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
         
         
-        totalLbl.set(textColor: UIColor(named: "Cash Yellow")!, range: totalLbl.range(after: " - "))
+        totalLbl.set(textColor: UIColor.Roadout.cashYellow, range: totalLbl.range(after: " - "))
         totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
     }
     
