@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Name 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVN-ST-fCA" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="354" height="30"/>
+                    <rect key="frame" x="50" y="32" width="354" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="hps-MP-Z5F"/>
                     </constraints>
@@ -53,6 +53,7 @@
                             </buttonConfiguration>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="pickTapped:" destination="QV9-ue-75M" eventType="touchUpInside" id="lC7-0X-EQE"/>
@@ -63,8 +64,8 @@
                         <constraint firstAttribute="height" constant="50" id="B6c-fr-Fzl"/>
                     </constraints>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoM-uf-3lj">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoM-uf-3lj" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="0p1-bQ-xb5"/>
@@ -80,17 +81,17 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ong-ne-1lf">
-                    <rect key="frame" x="10" y="48" width="321" height="30"/>
+                    <rect key="frame" x="10" y="68" width="321" height="10"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ruler.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BU7-zL-8TT">
-                            <rect key="frame" x="0.0" y="4.9999999999999982" width="26" height="20.666666666666664"/>
+                            <rect key="frame" x="0.0" y="4.9999999999999982" width="26" height="0.66666666666666785"/>
                             <color key="tintColor" name="AccentColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="26" id="5bD-xc-ZCN"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="CeL-kM-Ju6">
-                            <rect key="frame" x="31.000000000000004" y="0.0" width="44.333333333333343" height="30"/>
+                            <rect key="frame" x="31.000000000000004" y="0.0" width="44.333333333333343" height="10"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                             <color key="textColor" systemColor="systemGray2Color"/>
                             <nil key="highlightedColor"/>
@@ -101,14 +102,14 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glh-ri-Jf8">
-                            <rect key="frame" x="80.333333333333329" y="0.0" width="1" height="30"/>
+                            <rect key="frame" x="80.333333333333329" y="0.0" width="1" height="10"/>
                             <color key="backgroundColor" systemColor="systemGray2Color"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="1" id="Bve-5I-ey1"/>
                             </constraints>
                         </view>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grid" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Jv7-QJ-Gqg">
-                            <rect key="frame" x="86.333333333333329" y="0.66666666666666607" width="20" height="28.666666666666664"/>
+                            <rect key="frame" x="86.333333333333329" y="0.66666666666666607" width="20" height="8.6666666666666661"/>
                             <color key="tintColor" name="AccentColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="p3h-Lh-0no"/>
@@ -116,7 +117,7 @@
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" weight="medium"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 sections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="9EA-pE-bmT">
-                            <rect key="frame" x="111.33333333333331" y="0.0" width="77" height="30"/>
+                            <rect key="frame" x="111.33333333333331" y="0.0" width="77" height="10"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                             <color key="textColor" systemColor="systemGray2Color"/>
                             <nil key="highlightedColor"/>
@@ -127,14 +128,14 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGi-aH-BrN">
-                            <rect key="frame" x="193.33333333333334" y="0.0" width="1" height="30"/>
+                            <rect key="frame" x="193.33333333333334" y="0.0" width="1" height="10"/>
                             <color key="backgroundColor" systemColor="systemGray2Color"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="1" id="b99-fj-zTr"/>
                             </constraints>
                         </view>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.portrait" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qax-xa-OjT">
-                            <rect key="frame" x="199.33333333333334" y="0.0" width="18" height="30.333333333333332"/>
+                            <rect key="frame" x="199.33333333333334" y="0.0" width="18" height="10.333333333333332"/>
                             <color key="tintColor" name="AccentColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="18" id="oAc-qZ-JW8"/>
@@ -142,7 +143,7 @@
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" weight="medium"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="52 free spots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="QiJ-3a-G9N">
-                            <rect key="frame" x="222.33333333333334" y="0.0" width="98.666666666666657" height="30"/>
+                            <rect key="frame" x="222.33333333333334" y="0.0" width="98.666666666666657" height="10"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                             <color key="textColor" systemColor="systemGray2Color"/>
                             <nil key="highlightedColor"/>
@@ -196,7 +197,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-9N-BvQ" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="293" height="30"/>
+                    <rect key="frame" x="50" y="32" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="fcX-zM-DWf"/>
                     </constraints>
@@ -223,7 +224,7 @@
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cluj.Marasti.Section" translatesAutoresizingMaskIntoConstraints="NO" id="X6V-CA-sok">
-                    <rect key="frame" x="10" y="50" width="394" height="184"/>
+                    <rect key="frame" x="10" y="70" width="394" height="164"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a87-Nj-jdd" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="15" y="242" width="81" height="23"/>
@@ -250,8 +251,8 @@
                         <action selector="sectionTapped:" destination="JWz-dS-cdx" eventType="touchUpInside" id="aCu-Ik-tab"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOO-ll-iuO">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOO-ll-iuO" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="ayg-7t-dBN"/>
@@ -308,7 +309,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itr-uY-IlN" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="293" height="30"/>
+                    <rect key="frame" x="50" y="32" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="zFy-Bn-vH9"/>
                     </constraints>
@@ -334,8 +335,8 @@
                         <action selector="continueTapped:" destination="yES-RI-Lm8" eventType="touchUpInside" id="veA-fL-v9V"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tm5-8L-BZ6">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tm5-8L-BZ6" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="LR8-Mf-qwO"/>
@@ -351,7 +352,7 @@
                     </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0wr-XN-JUq">
-                    <rect key="frame" x="10" y="48" width="394" height="157"/>
+                    <rect key="frame" x="10" y="68" width="394" height="137"/>
                     <color key="backgroundColor" name="FloatingBG"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="157" id="gID-uY-7ty"/>
@@ -438,7 +439,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHy-ge-QgL" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="349" height="30"/>
+                    <rect key="frame" x="50" y="32" width="349" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="6Pa-8H-59r"/>
                     </constraints>
@@ -464,8 +465,8 @@
                         <action selector="continueTapped:" destination="5uk-r6-x1e" eventType="touchUpInside" id="JtM-9d-xH9"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goJ-cn-jBW">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goJ-cn-jBW" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="DkH-mn-VkV"/>
@@ -481,7 +482,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price/Minute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8T-IY-QpD" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="16" y="53" width="96" height="21"/>
+                    <rect key="frame" x="16" y="73" width="96" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="htJ-Za-7wK"/>
                     </constraints>
@@ -490,7 +491,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="LUN-fz-Zol">
-                    <rect key="frame" x="54" y="138" width="306" height="30"/>
+                    <rect key="frame" x="54" y="158" width="306" height="30"/>
                     <color key="tintColor" name="Dark Yellow"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="29" id="BqQ-nT-TJO"/>
@@ -500,7 +501,7 @@
                     </connections>
                 </slider>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2q1-rQ-7bi" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="16" y="131" width="32" height="43"/>
+                    <rect key="frame" x="16" y="151" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="LPJ-AU-djI"/>
                         <constraint firstAttribute="width" constant="32" id="WpK-Hi-0vT"/>
@@ -510,7 +511,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PB-ZP-Kpv" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="366" y="131" width="32" height="43"/>
+                    <rect key="frame" x="366" y="151" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="BIq-5u-H7I"/>
                         <constraint firstAttribute="height" constant="43" id="h4C-MW-IxQ"/>
@@ -520,7 +521,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Minute/s - 10 RON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFt-FY-L1i">
-                    <rect key="frame" x="113.66666666666669" y="175" width="187" height="36"/>
+                    <rect key="frame" x="113.66666666666669" y="195" width="187" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="Jf8-DN-gfs"/>
                     </constraints>
@@ -529,7 +530,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="had-SB-eIs">
-                    <rect key="frame" x="16" y="85" width="382" height="39"/>
+                    <rect key="frame" x="16" y="105" width="382" height="39"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fzc-sB-LMT">
                             <rect key="frame" x="6" y="8.3333333333333321" width="26" height="23"/>
@@ -572,7 +573,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 RON" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voB-Qz-Dks">
-                    <rect key="frame" x="349.66666666666669" y="53" width="48.333333333333314" height="21"/>
+                    <rect key="frame" x="349.66666666666669" y="73" width="48.333333333333314" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="hDU-pE-Z8U"/>
                     </constraints>
@@ -631,7 +632,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giZ-dv-vcH" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="293" height="30"/>
+                    <rect key="frame" x="50" y="32" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="dJL-Zb-ny9"/>
                     </constraints>
@@ -654,8 +655,8 @@
                         <action selector="payTapped:" destination="BAZ-Fv-mVf" eventType="touchUpInside" id="RSs-MZ-EAG"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Jm-5R-8Rf">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Jm-5R-8Rf" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Tze-RA-Dft"/>
@@ -703,7 +704,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marasti - Section A - Spot 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="1xv-m7-rAv">
-                    <rect key="frame" x="51" y="50" width="353" height="24"/>
+                    <rect key="frame" x="51" y="70" width="353" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="hea-a7-WcP"/>
                     </constraints>
@@ -717,7 +718,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NBJ-PW-bBH">
-                    <rect key="frame" x="14" y="48.333333333333329" width="26" height="27"/>
+                    <rect key="frame" x="14" y="68.333333333333329" width="26" height="27"/>
                     <color key="tintColor" name="Dark Orange"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="26" id="9M3-Ej-scO"/>
@@ -725,7 +726,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reserved for 20 minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Toe-yN-pEs">
-                    <rect key="frame" x="51" y="84.333333333333329" width="353" height="24"/>
+                    <rect key="frame" x="51" y="104.33333333333333" width="353" height="23.999999999999986"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="KT5-IN-e5b"/>
                     </constraints>
@@ -739,7 +740,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RW9-8A-t71">
-                    <rect key="frame" x="14" y="86" width="26" height="20"/>
+                    <rect key="frame" x="14" y="106" width="26" height="20"/>
                     <color key="tintColor" name="Dark Orange"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="26" id="Is9-tT-Ph3"/>
@@ -798,7 +799,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Reservation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFj-mo-6Ez" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="293" height="30"/>
+                    <rect key="frame" x="50" y="32" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="H1s-Dn-oMO"/>
                     </constraints>
@@ -806,8 +807,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kg8-Hj-Fv8">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kg8-Hj-Fv8" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Crs-4T-XgN"/>
@@ -1170,7 +1171,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delay Reservation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9m-0u-xw2" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="293" height="30"/>
+                    <rect key="frame" x="50" y="32" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="of8-kf-myH"/>
                     </constraints>
@@ -1178,8 +1179,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xF-5F-7DK">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xF-5F-7DK" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="k61-wW-LVk"/>
@@ -1213,7 +1214,7 @@
                     </connections>
                 </button>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="1JX-hX-znc">
-                    <rect key="frame" x="54" y="62" width="306" height="30"/>
+                    <rect key="frame" x="54" y="82" width="306" height="30"/>
                     <color key="tintColor" name="Second Orange"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="29" id="XWx-Ga-9sN"/>
@@ -1223,7 +1224,7 @@
                     </connections>
                 </slider>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWr-ar-epm" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="16" y="55" width="32" height="43"/>
+                    <rect key="frame" x="16" y="75" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="9qv-6K-oBS"/>
                         <constraint firstAttribute="height" constant="43" id="AOQ-6a-yas"/>
@@ -1233,7 +1234,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dnh-eR-rb3" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="366" y="55" width="32" height="43"/>
+                    <rect key="frame" x="366" y="75" width="32" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="RuC-9J-BmV"/>
                         <constraint firstAttribute="height" constant="43" id="UDR-4z-uM8"/>
@@ -1243,7 +1244,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 Minute/s - 5 RON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRA-TO-Ac2">
-                    <rect key="frame" x="122.66666666666669" y="101" width="169" height="36"/>
+                    <rect key="frame" x="122.66666666666669" y="121" width="169" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="LIb-0f-IWG"/>
                     </constraints>
@@ -1292,7 +1293,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfM-0S-wYl" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="293" height="30"/>
+                    <rect key="frame" x="50" y="32" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="9MR-vN-DON"/>
                     </constraints>
@@ -1300,8 +1301,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLl-UI-r5g">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLl-UI-r5g" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="8DT-aw-DJG"/>
@@ -1317,7 +1318,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="dv6-rc-nW4" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="10" y="48" width="394" height="60"/>
+                    <rect key="frame" x="10" y="68" width="394" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="Ygb-Yq-0QM"/>
                     </constraints>
@@ -1327,7 +1328,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJV-Ce-vYs" customClass="SlidingButton" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="57" y="126" width="300" height="69"/>
+                    <rect key="frame" x="57" y="146" width="300" height="69"/>
                     <color key="backgroundColor" name="FloatingBG"/>
                     <color key="tintColor" name="FloatingBG"/>
                     <constraints>
@@ -1398,7 +1399,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlocked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC3-Lo-1CP" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="293" height="30"/>
+                    <rect key="frame" x="50" y="32" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="BeV-GV-nEW"/>
                     </constraints>
@@ -1406,8 +1407,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNE-8W-5N1">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNE-8W-5N1" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="Ts8-Tv-uaP"/>
@@ -1423,7 +1424,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spot is now unlocked, pay parking right from here or mark the spot to find your car later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Tlp-1f-91q" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="10" y="48" width="394" height="38.333333333333343"/>
+                    <rect key="frame" x="10" y="68" width="394" height="38.333333333333343"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" systemColor="systemGrayColor"/>
                     <nil key="highlightedColor"/>
@@ -1536,8 +1537,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRA-DO-eY8">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRA-DO-eY8" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="KSx-gq-pKF"/>
@@ -1553,13 +1554,13 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Nqq-Xm-1pg">
-                    <rect key="frame" x="8" y="55" width="398" height="45"/>
+                    <rect key="frame" x="6" y="55" width="402" height="45"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49s-7O-rGZ">
-                            <rect key="frame" x="0.0" y="0.0" width="197" height="45"/>
+                            <rect key="frame" x="0.0" y="0.0" width="199" height="45"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvw-nS-5jP" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="197" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="199" height="45"/>
                                     <color key="backgroundColor" name="Secondary Floating"/>
                                     <color key="tintColor" name="Greyish"/>
                                     <state key="normal" title="Button"/>
@@ -1588,10 +1589,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7o-ki-3ZK">
-                            <rect key="frame" x="201" y="0.0" width="197" height="45"/>
+                            <rect key="frame" x="203" y="0.0" width="199" height="45"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZ5-jb-qne" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="197" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="199" height="45"/>
                                     <color key="backgroundColor" name="Secondary Floating"/>
                                     <color key="tintColor" name="ExpressFocus"/>
                                     <state key="normal" title="Button"/>
@@ -1629,13 +1630,13 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="XAr-B8-seI">
-                    <rect key="frame" x="8" y="104" width="398" height="45"/>
+                    <rect key="frame" x="6" y="104" width="402" height="45"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPv-ph-Fl5">
-                            <rect key="frame" x="0.0" y="0.0" width="197" height="45"/>
+                            <rect key="frame" x="0.0" y="0.0" width="199" height="45"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGL-8P-7qc" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="197" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="199" height="45"/>
                                     <color key="backgroundColor" name="Secondary Floating"/>
                                     <color key="tintColor" name="Icons"/>
                                     <state key="normal" title="Button"/>
@@ -1664,10 +1665,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hm5-xS-GNy">
-                            <rect key="frame" x="201" y="0.0" width="197" height="45"/>
+                            <rect key="frame" x="203" y="0.0" width="199" height="45"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Fr-4e-slb" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="197" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="199" height="45"/>
                                     <color key="backgroundColor" name="Secondary Floating"/>
                                     <color key="tintColor" name="Cash Yellow"/>
                                     <state key="normal" title="Button"/>
@@ -1701,7 +1702,7 @@
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Tools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPi-n8-AVj" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="293" height="30"/>
+                    <rect key="frame" x="50" y="32" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="moI-k6-fuf"/>
                     </constraints>
@@ -1713,17 +1714,17 @@
             <viewLayoutGuide key="safeArea" id="z5N-GU-e1Q"/>
             <color key="backgroundColor" name="FloatingBG"/>
             <constraints>
-                <constraint firstItem="XAr-B8-seI" firstAttribute="leading" secondItem="z5N-GU-e1Q" secondAttribute="leading" constant="8" id="Lom-fA-SNZ"/>
+                <constraint firstItem="XAr-B8-seI" firstAttribute="leading" secondItem="z5N-GU-e1Q" secondAttribute="leading" constant="6" id="Lom-fA-SNZ"/>
                 <constraint firstItem="z5N-GU-e1Q" firstAttribute="trailing" secondItem="tPi-n8-AVj" secondAttribute="trailing" constant="71" id="OVR-QV-7w6"/>
                 <constraint firstItem="XAr-B8-seI" firstAttribute="top" secondItem="Nqq-Xm-1pg" secondAttribute="bottom" constant="4" id="Qnk-L9-XGf"/>
                 <constraint firstItem="z5N-GU-e1Q" firstAttribute="bottom" secondItem="XAr-B8-seI" secondAttribute="bottom" constant="6" id="Tzb-gM-TWu"/>
                 <constraint firstItem="tPi-n8-AVj" firstAttribute="top" secondItem="z5N-GU-e1Q" secondAttribute="top" constant="12" id="VXb-wj-3d2"/>
-                <constraint firstItem="z5N-GU-e1Q" firstAttribute="trailing" secondItem="XAr-B8-seI" secondAttribute="trailing" constant="8" id="aAA-bO-3HY"/>
+                <constraint firstItem="z5N-GU-e1Q" firstAttribute="trailing" secondItem="XAr-B8-seI" secondAttribute="trailing" constant="6" id="aAA-bO-3HY"/>
                 <constraint firstItem="qRA-DO-eY8" firstAttribute="leading" secondItem="z5N-GU-e1Q" secondAttribute="leading" constant="12" id="fKc-cp-SOY"/>
                 <constraint firstItem="qRA-DO-eY8" firstAttribute="top" secondItem="z5N-GU-e1Q" secondAttribute="top" constant="12" id="hWc-OK-Ir8"/>
-                <constraint firstItem="Nqq-Xm-1pg" firstAttribute="leading" secondItem="z5N-GU-e1Q" secondAttribute="leading" constant="8" id="qTu-5P-Q4y"/>
+                <constraint firstItem="Nqq-Xm-1pg" firstAttribute="leading" secondItem="z5N-GU-e1Q" secondAttribute="leading" constant="6" id="qTu-5P-Q4y"/>
                 <constraint firstItem="tPi-n8-AVj" firstAttribute="leading" secondItem="z5N-GU-e1Q" secondAttribute="leading" constant="50" id="skB-6G-LLt"/>
-                <constraint firstItem="z5N-GU-e1Q" firstAttribute="trailing" secondItem="Nqq-Xm-1pg" secondAttribute="trailing" constant="8" id="tRE-Fn-EDq"/>
+                <constraint firstItem="z5N-GU-e1Q" firstAttribute="trailing" secondItem="Nqq-Xm-1pg" secondAttribute="trailing" constant="6" id="tRE-Fn-EDq"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <userDefinedRuntimeAttributes>
@@ -1741,131 +1742,6 @@
             <point key="canvasLocation" x="-714" y="163"/>
         </view>
     </objects>
-    <designables>
-        <designable name="2q1-rQ-7bi">
-            <size key="intrinsicContentSize" width="39.666666666666664" height="20.333333333333332"/>
-        </designable>
-        <designable name="6PB-ZP-Kpv">
-            <size key="intrinsicContentSize" width="52.333333333333336" height="20.333333333333332"/>
-        </designable>
-        <designable name="7Fr-4e-slb">
-            <size key="intrinsicContentSize" width="138" height="34.333333333333336"/>
-        </designable>
-        <designable name="7ss-Lg-pbU">
-            <size key="intrinsicContentSize" width="111" height="21"/>
-        </designable>
-        <designable name="8cA-9E-GAR">
-            <size key="intrinsicContentSize" width="137.66666666666666" height="21"/>
-        </designable>
-        <designable name="BjB-jn-Vr8">
-            <size key="intrinsicContentSize" width="103.66666666666667" height="21.666666666666668"/>
-        </designable>
-        <designable name="Dnh-eR-rb3">
-            <size key="intrinsicContentSize" width="50" height="20.333333333333332"/>
-        </designable>
-        <designable name="EJu-np-XeS">
-            <size key="intrinsicContentSize" width="114.33333333333333" height="21"/>
-        </designable>
-        <designable name="IYW-f3-sEX">
-            <size key="intrinsicContentSize" width="95" height="21"/>
-        </designable>
-        <designable name="JfM-0S-wYl">
-            <size key="intrinsicContentSize" width="119.66666666666667" height="25.333333333333332"/>
-        </designable>
-        <designable name="K8T-IY-QpD">
-            <size key="intrinsicContentSize" width="95.666666666666671" height="20.333333333333332"/>
-        </designable>
-        <designable name="Krm-EU-0BJ">
-            <size key="intrinsicContentSize" width="94.666666666666671" height="34.333333333333336"/>
-        </designable>
-        <designable name="LQY-9N-BvQ">
-            <size key="intrinsicContentSize" width="121.66666666666667" height="25.333333333333332"/>
-        </designable>
-        <designable name="MFj-mo-6Ez">
-            <size key="intrinsicContentSize" width="184" height="25.333333333333332"/>
-        </designable>
-        <designable name="PVN-ST-fCA">
-            <size key="intrinsicContentSize" width="161.66666666666666" height="25.333333333333332"/>
-        </designable>
-        <designable name="RAv-wi-gqj">
-            <size key="intrinsicContentSize" width="220.33333333333334" height="34.333333333333336"/>
-        </designable>
-        <designable name="Tlp-1f-91q">
-            <size key="intrinsicContentSize" width="636.66666666666663" height="19.333333333333332"/>
-        </designable>
-        <designable name="UxY-VP-NeA">
-            <size key="intrinsicContentSize" width="94.666666666666671" height="34.333333333333336"/>
-        </designable>
-        <designable name="XHy-ge-QgL">
-            <size key="intrinsicContentSize" width="95.333333333333329" height="25.333333333333332"/>
-        </designable>
-        <designable name="Z9m-0u-xw2">
-            <size key="intrinsicContentSize" width="177.66666666666666" height="25.333333333333332"/>
-        </designable>
-        <designable name="ZWM-F1-dSA">
-            <size key="intrinsicContentSize" width="77.333333333333329" height="21"/>
-        </designable>
-        <designable name="a87-Nj-jdd">
-            <size key="intrinsicContentSize" width="59.333333333333336" height="20.333333333333332"/>
-        </designable>
-        <designable name="cT8-Dx-Sht">
-            <size key="intrinsicContentSize" width="209.66666666666666" height="18"/>
-        </designable>
-        <designable name="cgT-qG-JqN">
-            <size key="intrinsicContentSize" width="77.333333333333329" height="21"/>
-        </designable>
-        <designable name="dv6-rc-nW4">
-            <size key="intrinsicContentSize" width="964.66666666666663" height="19.333333333333332"/>
-        </designable>
-        <designable name="eGL-8P-7qc">
-            <size key="intrinsicContentSize" width="149" height="34.333333333333336"/>
-        </designable>
-        <designable name="fvw-nS-5jP">
-            <size key="intrinsicContentSize" width="125" height="34.333333333333336"/>
-        </designable>
-        <designable name="gZ5-jb-qne">
-            <size key="intrinsicContentSize" width="168" height="35.333333333333336"/>
-        </designable>
-        <designable name="giZ-dv-vcH">
-            <size key="intrinsicContentSize" width="87" height="25.333333333333332"/>
-        </designable>
-        <designable name="hwE-AN-dS0">
-            <size key="intrinsicContentSize" width="111" height="24"/>
-        </designable>
-        <designable name="i6B-92-5mQ">
-            <size key="intrinsicContentSize" width="112.33333333333333" height="22"/>
-        </designable>
-        <designable name="itr-uY-IlN">
-            <size key="intrinsicContentSize" width="93" height="25.333333333333332"/>
-        </designable>
-        <designable name="j4j-01-srl">
-            <size key="intrinsicContentSize" width="57.333333333333336" height="34.333333333333336"/>
-        </designable>
-        <designable name="lC3-Lo-1CP">
-            <size key="intrinsicContentSize" width="93" height="25.333333333333332"/>
-        </designable>
-        <designable name="oWr-ar-epm">
-            <size key="intrinsicContentSize" width="39.666666666666664" height="20.333333333333332"/>
-        </designable>
-        <designable name="pVk-vq-5DD">
-            <size key="intrinsicContentSize" width="54.666666666666664" height="34.333333333333336"/>
-        </designable>
-        <designable name="pbF-cT-aOk">
-            <size key="intrinsicContentSize" width="94.666666666666671" height="34.333333333333336"/>
-        </designable>
-        <designable name="rz0-Hs-qoe">
-            <size key="intrinsicContentSize" width="94.666666666666671" height="34.333333333333336"/>
-        </designable>
-        <designable name="tPi-n8-AVj">
-            <size key="intrinsicContentSize" width="131.66666666666666" height="25.333333333333332"/>
-        </designable>
-        <designable name="trX-H7-MMn">
-            <size key="intrinsicContentSize" width="94.666666666666671" height="34.333333333333336"/>
-        </designable>
-        <designable name="ume-af-6YH">
-            <size key="intrinsicContentSize" width="68" height="21"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Cluj.Marasti.Section" width="338" height="173"/>
         <image name="arrow.triangle.branch" catalog="system" width="128" height="110"/>

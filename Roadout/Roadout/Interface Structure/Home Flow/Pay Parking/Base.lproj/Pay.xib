@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLD-hL-6Fb" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="293" height="30"/>
+                    <rect key="frame" x="50" y="32" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="jxk-9Y-pqO"/>
                     </constraints>
@@ -43,8 +43,8 @@
                         <action selector="continueTapped:" destination="WD9-Ds-t90" eventType="touchUpInside" id="Ujw-kg-hLq"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w75-bj-A3m">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w75-bj-A3m" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="A40-pg-w4j"/>
@@ -139,7 +139,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay Parking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORZ-i5-FWS" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="50" y="12" width="293" height="30"/>
+                    <rect key="frame" x="50" y="32" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="2ph-Bu-84d"/>
                     </constraints>
@@ -162,8 +162,8 @@
                         <action selector="payTapped:" destination="m6t-HG-AQQ" eventType="touchUpInside" id="SaI-6L-Rrp"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkQ-lK-J91">
-                    <rect key="frame" x="12" y="12" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkQ-lK-J91" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="12" y="32" width="30" height="30"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="0eJ-fz-oYy"/>
@@ -211,7 +211,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CJ 01 RDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHs-XI-DMc">
-                    <rect key="frame" x="51" y="50" width="353" height="24"/>
+                    <rect key="frame" x="51" y="70" width="353" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="ADp-xi-Kuk"/>
                     </constraints>
@@ -220,7 +220,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ellipsis.rectangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EwV-un-Saj">
-                    <rect key="frame" x="14" y="50.666666666666664" width="26" height="23"/>
+                    <rect key="frame" x="14" y="70.666666666666671" width="26" height="23"/>
                     <color key="tintColor" name="Cash Yellow"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="29.670000000000002" id="289-FN-2it"/>
@@ -228,7 +228,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marasti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnw-qp-XrS">
-                    <rect key="frame" x="51" y="84.333333333333329" width="353" height="24"/>
+                    <rect key="frame" x="51" y="104.33333333333333" width="353" height="23.999999999999986"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="37c-8P-HhO"/>
                     </constraints>
@@ -237,7 +237,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mmA-QY-8Lw">
-                    <rect key="frame" x="14" y="86.333333333333329" width="26" height="18.666666666666671"/>
+                    <rect key="frame" x="14" y="106.33333333333333" width="26" height="18.666666666666671"/>
                     <color key="tintColor" name="Cash Yellow"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21.333333333333329" id="Wwq-CD-qNK"/>
@@ -245,7 +245,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay for 2 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ne8-5u-5oC">
-                    <rect key="frame" x="51" y="118.33333333333331" width="127" height="24"/>
+                    <rect key="frame" x="51" y="138.33333333333334" width="127" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="SNd-Y0-mlM"/>
                     </constraints>
@@ -254,7 +254,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dW5-rC-0S6">
-                    <rect key="frame" x="13" y="120" width="26" height="19.999999999999986"/>
+                    <rect key="frame" x="13" y="140" width="26" height="20"/>
                     <color key="tintColor" name="Cash Yellow"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21.333333333333329" id="8uv-8L-F0z"/>
@@ -262,7 +262,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJk-ZA-fYL" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="343" y="46" width="61" height="30"/>
+                    <rect key="frame" x="343" y="66" width="61" height="30"/>
                     <color key="backgroundColor" name="Cash Yellow"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="eFC-dJ-7aQ"/>
@@ -345,7 +345,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvB-fU-X2f" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                    <rect key="frame" x="344.66666666666669" y="4" width="65.333333333333314" height="44"/>
+                    <rect key="frame" x="344.66666666666669" y="24" width="65.333333333333314" height="24"/>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <color key="tintColor" name="Cash Yellow"/>
                     <state key="normal" title="Button"/>

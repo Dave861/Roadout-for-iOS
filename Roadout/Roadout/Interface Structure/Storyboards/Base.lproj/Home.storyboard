@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -202,11 +202,11 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="2uQ-GZ-suR"/>
                                         </constraints>
-                                        <color key="tintColor" name="Main Yellow"/>
+                                        <color key="tintColor" name="GoldBrown"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
-                                            <imageReference key="image" image="speedometer" catalog="system" symbolScale="large"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18"/>
+                                            <imageReference key="image" image="roadout.car" symbolScale="medium"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="medium"/>
                                         </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
@@ -2811,20 +2811,6 @@ Made in Cluj :)</string>
             <point key="canvasLocation" x="666" y="-565"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="IkC-Xa-0TC">
-            <size key="intrinsicContentSize" width="44.666666666666664" height="34.333333333333336"/>
-        </designable>
-        <designable name="P0F-8S-hYT">
-            <size key="intrinsicContentSize" width="43.666666666666664" height="34.333333333333336"/>
-        </designable>
-        <designable name="sdM-C3-2B6">
-            <size key="intrinsicContentSize" width="45.333333333333336" height="34.333333333333336"/>
-        </designable>
-        <designable name="zd2-gq-SFD">
-            <size key="intrinsicContentSize" width="44.333333333333336" height="34.333333333333336"/>
-        </designable>
-    </designables>
     <resources>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="building.2.fill" catalog="system" width="128" height="108"/>
@@ -2848,9 +2834,9 @@ Made in Cluj :)</string>
         <image name="pin.fill" catalog="system" width="116" height="128"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="rectangle.portrait" catalog="system" width="115" height="128"/>
+        <image name="roadout.car" width="14" height="12"/>
         <image name="ruler.fill" catalog="system" width="128" height="57"/>
         <image name="sparkles" catalog="system" width="115" height="128"/>
-        <image name="speedometer" catalog="system" width="128" height="123"/>
         <image name="wallet.pass" catalog="system" width="115" height="128"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2881,6 +2867,9 @@ Made in Cluj :)</string>
         </namedColor>
         <namedColor name="FloatingBG">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GoldBrown">
+            <color red="0.80000001192092896" green="0.55299997329711914" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Greyish">
             <color red="0.49799999594688416" green="0.42399999499320984" blue="0.31799998879432678" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

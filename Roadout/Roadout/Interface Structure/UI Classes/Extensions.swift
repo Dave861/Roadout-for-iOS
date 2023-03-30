@@ -386,7 +386,7 @@ extension UITableViewCell {
             .compactMap { $0 as? UILabel }.first
     }
 }
-@IBDesignable extension UIView {
+extension UIView {
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
