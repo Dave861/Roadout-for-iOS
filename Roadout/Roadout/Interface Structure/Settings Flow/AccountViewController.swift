@@ -9,6 +9,9 @@ import UIKit
 
 class AccountViewController: UIViewController {
     
+    var lightColorGradient: UIColor!
+    var darkColorGradient: UIColor!
+    
     @IBOutlet weak var backButton: UIButton!
     
     @IBAction func backTapped(_ sender: Any) {
@@ -22,6 +25,14 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var cutoutBadgeView: UIView!
     @IBOutlet weak var nameBadgeLbl: UILabel!
     @IBOutlet weak var titleBadgeLbl: UILabel!
+    
+    @IBOutlet weak var shuffleBtn: UIButton!
+    @IBAction func shuffleTapped(_ sender: Any) {
+        titleBadgeLbl.text = getRandomPhrase()
+        addBadgeGradient()
+        badgeView.layer.sublayers?.remove(at: 1)
+        readjustShuffleButton()
+    }
     
     //MARK: - Rest of IBOutlets-
     @IBOutlet weak var badgeCanvasView: UIView!
@@ -112,8 +123,10 @@ class AccountViewController: UIViewController {
         
         badgeView.clipsToBounds = true
         badgeView.layer.masksToBounds = true
-        badgeView.layer.cornerRadius = 24.0
-        badgeShadowView.layer.cornerRadius = 24.0
+        badgeView.layer.cornerRadius = 10
+        badgeShadowView.layer.cornerRadius = 10
+        shuffleBtn.layer.cornerRadius = shuffleBtn.frame.height/4
+        shuffleBtn.setTitle("", for: .normal)
         nameBadgeLbl.text = UserManager.sharedInstance.userName
         titleBadgeLbl.text = getRandomPhrase()
         
@@ -125,9 +138,15 @@ class AccountViewController: UIViewController {
             case .light, .unspecified:
                 cutoutBadgeView.layer.compositingFilter = "screenBlendMode"
                 badgeShadowView.layer.shadowColor = UIColor.black.cgColor
+                //Adjust the shuffle button
+                shuffleBtn.tintColor = darkColorGradient
+                shuffleBtn.backgroundColor = lightColorGradient.withAlphaComponent(0.3)
             case .dark:
                 cutoutBadgeView.layer.compositingFilter = "multiplyBlendMode"
                 badgeShadowView.layer.shadowColor = UIColor.white.cgColor
+                //Adjust the shuffle button
+                shuffleBtn.tintColor = lightColorGradient
+                shuffleBtn.backgroundColor = darkColorGradient.withAlphaComponent(0.3)
             @unknown default:
                 break
         }
@@ -139,9 +158,15 @@ class AccountViewController: UIViewController {
             case .light, .unspecified:
                 cutoutBadgeView.layer.compositingFilter = "screenBlendMode"
                 badgeShadowView.layer.shadowColor = UIColor.black.cgColor
+                //Adjust the shuffle button
+                shuffleBtn.tintColor = darkColorGradient
+                shuffleBtn.backgroundColor = lightColorGradient.withAlphaComponent(0.3)
             case .dark:
                 cutoutBadgeView.layer.compositingFilter = "multiplyBlendMode"
                 badgeShadowView.layer.shadowColor = UIColor.white.cgColor
+                //Adjust the shuffle button
+                shuffleBtn.tintColor = lightColorGradient
+                shuffleBtn.backgroundColor = darkColorGradient.withAlphaComponent(0.3)
             @unknown default:
                 break
         }
@@ -171,7 +196,7 @@ class AccountViewController: UIViewController {
     func addBadgeGradient() {
         let gradientLayer = getRandomGradient()
         gradientLayer.frame = badgeView.bounds
-        gradientLayer.cornerRadius = 24.0
+        gradientLayer.cornerRadius = 10
 
         badgeView.layer.insertSublayer(gradientLayer, at: 0)
     }
@@ -180,10 +205,23 @@ class AccountViewController: UIViewController {
         badgeShadowView.layer.shadowColor = UIColor.black.cgColor
         badgeShadowView.layer.shadowOpacity = 0.15
         badgeShadowView.layer.shadowOffset = .zero
-        badgeShadowView.layer.shadowRadius = 24.0
+        badgeShadowView.layer.shadowRadius = 10
         badgeShadowView.layer.shadowPath = UIBezierPath(rect: badgeShadowView.bounds).cgPath
         badgeShadowView.layer.shouldRasterize = true
         badgeShadowView.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    func readjustShuffleButton() {
+        switch traitCollection.userInterfaceStyle {
+            case .light, .unspecified:
+                shuffleBtn.tintColor = darkColorGradient
+                shuffleBtn.backgroundColor = lightColorGradient.withAlphaComponent(0.3)
+            case .dark:
+                shuffleBtn.tintColor = lightColorGradient
+                shuffleBtn.backgroundColor = darkColorGradient.withAlphaComponent(0.3)
+            @unknown default:
+                break
+        }
     }
     
     func getRandomPhrase() -> String {
@@ -200,23 +238,48 @@ class AccountViewController: UIViewController {
             UIColor.Roadout.goldBrown
         ]
         let darkColors = [
-            UIColor.Roadout.darkYellow,
-            UIColor.Roadout.darkOrange,
             UIColor.Roadout.kindaRed,
+            UIColor.Roadout.darkOrange,
+            UIColor.Roadout.darkYellow,
             UIColor.Roadout.redish
         ]
-
+        
         var selectedColors = [UIColor]()
+        var lightRandom = lightColors.randomElement()!
+        var darkRandom = darkColors.randomElement()!
+        
         if Bool.random() {
-            selectedColors.append(lightColors.randomElement()!)
-            selectedColors.append(darkColors.randomElement()!)
+            if lightRandom == UIColor(named: "Second Orange") && darkRandom == UIColor(named: "Dark Orange") {
+                darkRandom = darkColors.randomElement()!
+            } else if lightRandom == UIColor(named: "GoldBrown") && darkRandom == UIColor(named: "Dark Yellow") {
+                darkRandom = darkColors.randomElement()!
+            }
+            
+            selectedColors.append(lightRandom)
+            selectedColors.append(darkRandom)
         } else {
-            selectedColors.append(darkColors.randomElement()!)
-            selectedColors.append(lightColors.randomElement()!)
+            if lightRandom == UIColor(named: "Second Orange") && darkRandom == UIColor(named: "Dark Orange") {
+                lightRandom = lightColors.randomElement()!
+            } else if lightRandom == UIColor(named: "GoldBrown") && darkRandom == UIColor(named: "Dark Yellow") {
+                lightRandom = lightColors.randomElement()!
+            }
+            
+            selectedColors.append(darkRandom)
+            selectedColors.append(lightRandom)
+        }
+        
+        lightColorGradient = lightRandom
+        darkColorGradient = darkRandom
+        
+        // Increase saturation of selected colors
+        let saturatedColors = selectedColors.map { color -> UIColor in
+            var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 0
+            color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+            return UIColor(hue: hue, saturation: min(saturation * 1.5, 1.0), brightness: brightness, alpha: alpha)
         }
         
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = selectedColors.map({ $0.cgColor })
+        gradientLayer.colors = saturatedColors.map({ $0.cgColor })
         gradientLayer.type = .axial
         
         let startPoint = CGPoint(x: 0.0, y: CGFloat.random(in: 0...1))

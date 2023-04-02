@@ -822,12 +822,12 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 280)
+            self.updateBackgroundViewHeight(with: 260)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-280-dif, width: self.screenSize.width - 20, height: 280)
+            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-260-dif, width: self.screenSize.width - 20, height: 260)
             self.view.addSubview(self.timeView)
         }
     }
@@ -874,12 +874,12 @@ extension HomeViewController {
     }
     @objc func removePayCard() {
         DispatchQueue.main.async {
-            self.updateBackgroundViewHeight(with: 280)
+            self.updateBackgroundViewHeight(with: 260)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-280-dif, width: self.screenSize.width - 20, height: 280)
+            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-260-dif, width: self.screenSize.width - 20, height: 260)
             self.view.addSubview(self.timeView)
             self.payView.removeFromSuperview()
         }

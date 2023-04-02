@@ -196,6 +196,14 @@
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cI-Bn-tux">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="52"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="searchTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FQB-Wu-lwR"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="En4-0l-y4D" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="319" y="4" width="44" height="44"/>
                                         <color key="backgroundColor" name="Secondary Floating"/>
@@ -205,22 +213,14 @@
                                         <color key="tintColor" name="GoldBrown"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
-                                            <imageReference key="image" image="roadout.car" symbolScale="medium"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="medium"/>
+                                            <imageReference key="image" image="ellipsis.circle.fill" catalog="system" symbolScale="medium"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="23" scale="medium"/>
                                         </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="optionsTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="b4A-rX-vca"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cI-Bn-tux">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="52"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
-                                        <connections>
-                                            <action selector="searchTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FQB-Wu-lwR"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2819,6 +2819,7 @@ Made in Cluj :)</string>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="clock.circle.fill" catalog="system" width="128" height="123"/>
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="ellipsis.circle.fill" catalog="system" width="128" height="123"/>
         <image name="eye" catalog="system" width="128" height="79"/>
         <image name="eye.fill" catalog="system" width="128" height="80"/>
         <image name="flag.2.crossed" catalog="system" width="128" height="72"/>
@@ -2834,7 +2835,6 @@ Made in Cluj :)</string>
         <image name="pin.fill" catalog="system" width="116" height="128"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="rectangle.portrait" catalog="system" width="115" height="128"/>
-        <image name="roadout.car" width="14" height="12"/>
         <image name="ruler.fill" catalog="system" width="128" height="57"/>
         <image name="sparkles" catalog="system" width="115" height="128"/>
         <image name="wallet.pass" catalog="system" width="115" height="128"/>

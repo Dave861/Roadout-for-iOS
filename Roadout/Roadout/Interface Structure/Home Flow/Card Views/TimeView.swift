@@ -29,22 +29,23 @@ class TimeView: UIView {
         reservationTime = Int(minuteSlider.value*60)
         NotificationCenter.default.post(name: .addPayCardID, object: nil)
     }
-    
-    @IBOutlet weak var priceLbl: UILabel!
-    
+        
     @IBOutlet weak var minuteSlider: UISlider!
     @IBAction func slided(_ sender: Any) {
         let roundedValue = round(minuteSlider.value/1.0)*1.0
         minuteSlider.value = roundedValue
-        totalLbl.text = "\(Int(minuteSlider.value))" + " Minute/s".localized() + " - \(Int(minuteSlider.value)) RON"
-        totalLbl.set(textColor: UIColor.Roadout.darkYellow, range: totalLbl.range(after: " - "))
-        totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
+        phraseLbl.text = "You chose to reserve".localized()
+        timeLbl.text = "\(Int(minuteSlider.value))" + " mins".localized()
+        delayLbl.isHidden = true
+        recommendationIcon.image = UIImage(systemName: "clock.fill")!
     }
-    
-    @IBOutlet weak var totalLbl: UILabel!
-    
+        
     @IBOutlet weak var recommendationCard: UIView!
-    @IBOutlet weak var recommendationLbl: UILabel!
+    @IBOutlet weak var phraseLbl: UILabel!
+    @IBOutlet weak var recommendationIcon: UIImageView!
+    @IBOutlet weak var recommendationBtn: UIButton!
+    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var delayLbl: UILabel!
     
     @IBAction func recommendationTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Recommended Time".localized(), message: "We recommend time based on your current location and estimated time to commute to the selected parking spot, if the time exceeds 30 minutes, we do not recommend reserving just yet.".localized(), preferredStyle: .alert)
@@ -63,12 +64,12 @@ class TimeView: UIView {
         backBtn.layer.cornerRadius = 15.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
 
-        recommendationLbl.text = "We recommend reserving for ".localized() + "..."
+        recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
+        recommendationBtn.setTitle("", for: .normal)
+        phraseLbl.text = "Getting recommendation".localized()
+        timeLbl.text = "..." + " mins".localized()
+        delayLbl.isHidden = true
         recommendationCard.layer.cornerRadius = recommendationCard.frame.height/5
-        
-        totalLbl.text = "\(Int(minuteSlider.value))" + " Minute/s".localized() + " - \(Int(minuteSlider.value)) RON"
-        totalLbl.set(textColor: UIColor.Roadout.darkYellow, range: totalLbl.range(after: " - "))
-        totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
     }
     
     override func didMoveToSuperview() {
@@ -81,31 +82,59 @@ class TimeView: UIView {
     
     func getTimeToCommute() {
         guard let parentVC = self.parentViewController() as? HomeViewController else {
+            self.phraseLbl.text = "You chose to reserve".localized()
+            self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
+            self.delayLbl.isHidden = true
+            self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
             return
         }
         guard let myLocation = parentVC.mapView.myLocation else {
-            self.recommendationLbl.text = "Couldn't get a recommendation.".localized()
+            self.phraseLbl.text = "You chose to reserve".localized()
+            self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
+            self.delayLbl.isHidden = true
+            self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
             return
         }
         let ogCoords = myLocation.coordinate
         let destCoords = CLLocationCoordinate2D(latitude: parkLocations[selectedParkLocationIndex].latitude, longitude: parkLocations[selectedParkLocationIndex].longitude)
         Task {
+            self.continueBtn.isEnabled = false
+            self.continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
+            self.minuteSlider.isEnabled = false
             do {
                 let resultedTime = try await DistanceManager.sharedInstance.getTimeAndDistanceBetween(ogCoords, destCoords)
                 DispatchQueue.main.async {
                     if self.evaluateTime(resultedTime) == 2 {
-                        self.recommendationLbl.text = "We recommend ".localized() + "20 min + ".localized() + self.getDelayTime(resultedTime)
+                        self.phraseLbl.text = "We recommend reserving".localized()
+                        self.timeLbl.text = "20" + " mins".localized()
+                        self.delayLbl.isHidden = false
+                        self.delayLbl.text = "+ " + self.getDelayTime(resultedTime)
+                        self.recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
+                        self.minuteSlider.setValue(20.0, animated: true)
                     } else if self.evaluateTime(resultedTime) == 1 {
-                        self.recommendationLbl.text = "We recommend reserving for ".localized() + resultedTime.replacingOccurrences(of: " mins", with: " mins".localized())
+                        self.phraseLbl.text = "We recommend reserving".localized()
+                        self.timeLbl.text = resultedTime.replacingOccurrences(of: " mins", with: " mins".localized())
+                        self.delayLbl.isHidden = true
+                        self.recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
+                        self.minuteSlider.setValue(Float(Int(resultedTime.replacingOccurrences(of: " mins", with: "")) ?? 15), animated: true)
                     } else if self.evaluateTime(resultedTime) == 0 {
-                        self.recommendationLbl.text = "We don't recommend reserving yet.".localized()
+                        self.phraseLbl.text = "You chose to reserve".localized()
+                        self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
+                        self.delayLbl.isHidden = true
+                        self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
                     }
                 }
             } catch {
                 DispatchQueue.main.async {
-                    self.recommendationLbl.text = "Couldn't get a recommendation.".localized()
+                    self.phraseLbl.text = "You chose to reserve".localized()
+                    self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
+                    self.delayLbl.isHidden = true
+                    self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
                 }
             }
+            self.minuteSlider.isEnabled = true
+            self.continueBtn.isEnabled = true
+            self.continueBtn.backgroundColor = UIColor.Roadout.darkYellow.withAlphaComponent(1.0)
         }
     }
     
@@ -129,7 +158,7 @@ class TimeView: UIView {
     func getDelayTime(_ time: String) -> String {
         let timeToConvert = time.replacingOccurrences(of: " mins".localized(), with: "")
         let convertedTime = Int(timeToConvert) ?? 100
-        return "\(convertedTime-20) min " + "delay".localized()
+        return "\(convertedTime-20) " + "delay".localized()
     }
     
     class func instanceFromNib() -> UIView {
