@@ -34,14 +34,14 @@ class TimeView: UIView {
     @IBAction func slided(_ sender: Any) {
         let roundedValue = round(minuteSlider.value/1.0)*1.0
         minuteSlider.value = roundedValue
-        phraseLbl.text = "You chose to reserve".localized()
+        updatePhraseSelect()
         timeLbl.text = "\(Int(minuteSlider.value))" + " mins".localized()
         delayLbl.isHidden = true
         recommendationIcon.image = UIImage(systemName: "clock.fill")!
     }
         
     @IBOutlet weak var recommendationCard: UIView!
-    @IBOutlet weak var phraseLbl: UILabel!
+    @IBOutlet weak var phraseLbl: UXResizeLabel!
     @IBOutlet weak var recommendationIcon: UIImageView!
     @IBOutlet weak var recommendationBtn: UIButton!
     @IBOutlet weak var timeLbl: UILabel!
@@ -66,7 +66,7 @@ class TimeView: UIView {
 
         recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
         recommendationBtn.setTitle("", for: .normal)
-        phraseLbl.text = "Getting recommendation".localized()
+        updatePhraseLoad()
         timeLbl.text = "..." + " mins".localized()
         delayLbl.isHidden = true
         recommendationCard.layer.cornerRadius = recommendationCard.frame.height/5
@@ -78,18 +78,37 @@ class TimeView: UIView {
         }
     }
     
+    func updatePhraseLoad() {
+        phraseLbl.longText = "Loading time recommendation".localized()
+        phraseLbl.mediumText = "Loading recommendation".localized()
+        phraseLbl.shortText = "Loading".localized()
+        phraseLbl.text = "Loading time recommendation".localized()
+    }
+    func updatePhraseSelect() {
+        phraseLbl.longText = "You chose to reserve for".localized()
+        phraseLbl.mediumText = "You chose to reserve".localized()
+        phraseLbl.shortText = "You chose".localized()
+        phraseLbl.text = "You chose to reserve for".localized()
+    }
+    func updatePhraseRecommend() {
+        phraseLbl.longText = "We recommend reserving for".localized()
+        phraseLbl.mediumText = "We recommend reserving".localized()
+        phraseLbl.shortText = "We recommend".localized()
+        phraseLbl.text = "We recommend reserving for".localized()
+    }
+    
     //MARK: - Time Predictors -
     
     func getTimeToCommute() {
         guard let parentVC = self.parentViewController() as? HomeViewController else {
-            self.phraseLbl.text = "You chose to reserve".localized()
+            self.updatePhraseSelect()
             self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
             self.delayLbl.isHidden = true
             self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
             return
         }
         guard let myLocation = parentVC.mapView.myLocation else {
-            self.phraseLbl.text = "You chose to reserve".localized()
+            self.updatePhraseSelect()
             self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
             self.delayLbl.isHidden = true
             self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
@@ -105,20 +124,20 @@ class TimeView: UIView {
                 let resultedTime = try await DistanceManager.sharedInstance.getTimeAndDistanceBetween(ogCoords, destCoords)
                 DispatchQueue.main.async {
                     if self.evaluateTime(resultedTime) == 2 {
-                        self.phraseLbl.text = "We recommend reserving".localized()
+                        self.updatePhraseRecommend()
                         self.timeLbl.text = "20" + " mins".localized()
                         self.delayLbl.isHidden = false
                         self.delayLbl.text = "+ " + self.getDelayTime(resultedTime)
                         self.recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
                         self.minuteSlider.setValue(20.0, animated: true)
                     } else if self.evaluateTime(resultedTime) == 1 {
-                        self.phraseLbl.text = "We recommend reserving".localized()
+                        self.updatePhraseRecommend()
                         self.timeLbl.text = resultedTime.replacingOccurrences(of: " mins", with: " mins".localized())
                         self.delayLbl.isHidden = true
                         self.recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
                         self.minuteSlider.setValue(Float(Int(resultedTime.replacingOccurrences(of: " mins", with: "")) ?? 15), animated: true)
                     } else if self.evaluateTime(resultedTime) == 0 {
-                        self.phraseLbl.text = "You chose to reserve".localized()
+                        self.updatePhraseSelect()
                         self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
                         self.delayLbl.isHidden = true
                         self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
@@ -126,7 +145,7 @@ class TimeView: UIView {
                 }
             } catch {
                 DispatchQueue.main.async {
-                    self.phraseLbl.text = "You chose to reserve".localized()
+                    self.updatePhraseSelect()
                     self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
                     self.delayLbl.isHidden = true
                     self.recommendationIcon.image = UIImage(systemName: "clock.fill")!

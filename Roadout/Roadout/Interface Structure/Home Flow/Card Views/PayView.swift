@@ -31,6 +31,10 @@ class PayView: UIView {
     
     @IBOutlet weak var detailsLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var actionTypeLbl: UILabel!
+    
+    @IBOutlet weak var detailsCard: UIView!
+    @IBOutlet weak var timeCard: UIView!
     
     @IBOutlet weak var payBtn: UXButton!
     @IBOutlet weak var chooseMethodBtn: UXButton!
@@ -130,6 +134,8 @@ class PayView: UIView {
             titleLbl.text = "Pay Spot".localized()
         }
         
+        detailsCard.layer.cornerRadius = detailsCard.frame.height/5
+        timeCard.layer.cornerRadius = timeCard.frame.height/5
     }
     
     class func instanceFromNib() -> UIView {
@@ -149,14 +155,13 @@ class PayView: UIView {
         self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - " + "Section ".localized(), before: " - " + "Spot ".localized()))
         self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - " + "Spot ".localized()))
         
+        
         if returnToDelay {
-            self.timeLbl.text = "Delay for ".localized() + "\(Int(delayTime/60))" + " minute/s".localized()
-            self.timeLbl.set(textColor: UIColor.Roadout.darkOrange, range: self.timeLbl.range(after: "Delay for ".localized()))
-            self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Delay for ".localized()))
+            self.timeLbl.text = "\(Int(delayTime/60))" + " min".localized()
+            self.actionTypeLbl.text = "Delay for ".localized()
         } else {
-            self.timeLbl.text = "Reserve for ".localized() + "\(Int(reservationTime/60))" + " minute/s".localized()
-            self.timeLbl.set(textColor: UIColor.Roadout.darkOrange, range: self.timeLbl.range(after: "Reserve for ".localized()))
-            self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Reserve for ".localized()))
+            self.timeLbl.text = "\(Int(reservationTime/60))" + " min".localized()
+            self.actionTypeLbl.text = "Reserve for ".localized()
         }
     }
     

@@ -50,3 +50,61 @@ class UXPlainButton: UIButton {
     }
     
 }
+
+class UXResizeLabel: UILabel {
+    
+    @IBInspectable var longText: String? {
+        didSet {
+            longText = longText?.localized()
+        }
+    }
+    @IBInspectable var mediumText: String? {
+        didSet {
+            mediumText = mediumText?.localized()
+        }
+    }
+    @IBInspectable var shortText: String? {
+        didSet {
+            shortText = shortText?.localized()
+        }
+    }
+    
+    override var text: String? {
+        didSet {
+            resizeTextIfNeeded()
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        resizeTextIfNeeded()
+    }
+    
+    private func resizeTextIfNeeded() {
+        guard let currentText = text else { return }
+        
+        let availableWidth = bounds.width
+        let longTextWidth = (longText! as NSString).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: bounds.height),
+                                                                 options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                 attributes: [NSAttributedString.Key.font: font as Any],
+                                                                 context: nil).width
+        let mediumTextWidth = (mediumText! as NSString).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: bounds.height),
+                                                                     options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                     attributes: [NSAttributedString.Key.font: font as Any],
+                                                                     context: nil).width
+        let shortTextWidth = (shortText! as NSString).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: bounds.height),
+                                                                   options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                   attributes: [NSAttributedString.Key.font: font as Any],
+                                                                   context: nil).width
+        
+        if longTextWidth <= availableWidth {
+            super.text = longText
+        } else if mediumTextWidth <= availableWidth {
+            super.text = mediumText
+        } else if shortTextWidth <= availableWidth {
+            super.text = shortText
+        } else {
+            super.text = ""
+        }
+    }
+}

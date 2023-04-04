@@ -12,7 +12,7 @@ protocol SlideButtonDelegate {
     func buttonStatus(status: String, sender: SlidingButton)
 }
 
-@IBDesignable class SlidingButton: UIView{
+class SlidingButton: UIView{
     
     var delegate: SlideButtonDelegate?
     

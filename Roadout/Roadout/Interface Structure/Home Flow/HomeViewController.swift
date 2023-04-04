@@ -822,12 +822,12 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 260)
+            self.updateBackgroundViewHeight(with: 252)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-260-dif, width: self.screenSize.width - 20, height: 260)
+            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-252-dif, width: self.screenSize.width - 20, height: 252)
             self.view.addSubview(self.timeView)
         }
     }
@@ -863,23 +863,23 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 237)
+            self.updateBackgroundViewHeight(with: 270)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.payView.frame = CGRect(x: 10, y: self.screenSize.height-237-dif, width: self.screenSize.width - 20, height: 237)
+            self.payView.frame = CGRect(x: 10, y: self.screenSize.height-270-dif, width: self.screenSize.width - 20, height: 270)
             self.view.addSubview(self.payView)
         }
     }
     @objc func removePayCard() {
         DispatchQueue.main.async {
-            self.updateBackgroundViewHeight(with: 260)
+            self.updateBackgroundViewHeight(with: 252)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-260-dif, width: self.screenSize.width - 20, height: 260)
+            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-252-dif, width: self.screenSize.width - 20, height: 252)
             self.view.addSubview(self.timeView)
             self.payView.removeFromSuperview()
         }
@@ -921,12 +921,12 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 205)
+            self.updateBackgroundViewHeight(with: 225)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.delayView.frame = CGRect(x: 10, y: self.screenSize.height-205-dif, width: self.screenSize.width - 20, height: 205)
+            self.delayView.frame = CGRect(x: 10, y: self.screenSize.height-225-dif, width: self.screenSize.width - 20, height: 225)
             self.view.addSubview(self.delayView)
         }
     }
@@ -950,23 +950,23 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 237)
+            self.updateBackgroundViewHeight(with: 270)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.payView.frame = CGRect(x: 10, y: self.screenSize.height-237-dif, width: self.screenSize.width - 20, height: 237)
+            self.payView.frame = CGRect(x: 10, y: self.screenSize.height-270-dif, width: self.screenSize.width - 20, height: 270)
             self.view.addSubview(self.payView)
         }
     }
     @objc func removePayDelayCard() {
         DispatchQueue.main.async {
-            self.updateBackgroundViewHeight(with: 205)
+            self.updateBackgroundViewHeight(with: 225)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.delayView.frame = CGRect(x: 10, y: self.screenSize.height-205-dif, width: self.screenSize.width - 20, height: 205)
+            self.delayView.frame = CGRect(x: 10, y: self.screenSize.height-225-dif, width: self.screenSize.width - 20, height: 225)
             self.view.addSubview(self.delayView)
             self.payView.removeFromSuperview()
         }
