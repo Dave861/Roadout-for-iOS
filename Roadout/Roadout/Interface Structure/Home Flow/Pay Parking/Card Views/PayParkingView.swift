@@ -13,6 +13,9 @@ class PayParkingView: UIView {
     let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
     var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let choosePaymentTitle = NSAttributedString(string: "Choose Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    
+    let editPlateTitle = NSAttributedString(string: "EDIT".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .semibold)])
+    let addPlateTitle = NSAttributedString(string: "ADD".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .semibold)])
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -31,12 +34,9 @@ class PayParkingView: UIView {
         let vc = sb.instantiateViewController(withIdentifier: "EditLicensePlateVC") as! EditLicensePlateViewController
         self.parentViewController().present(vc, animated: true)
     }
-    
-    let editPlateTitle = NSAttributedString(string: "EDIT".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .semibold)])
-    let addPlateTitle = NSAttributedString(string: "ADD".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .semibold)])
-    
-    @IBOutlet weak var detailsLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var licensePlateCard: UIView!
+    @IBOutlet weak var timeCard: UIView!
     
     @IBOutlet weak var payBtn: UXButton!
     @IBOutlet weak var chooseMethodBtn: UXButton!
@@ -99,13 +99,6 @@ class PayParkingView: UIView {
         backBtn.layer.cornerRadius = 15.0
         editLicensePlateBtn.layer.cornerRadius = editLicensePlateBtn.frame.height/2
         
-        licensePlateLbl.text = userLicensePlate
-        if userLicensePlate == "" {
-            editLicensePlateBtn.setAttributedTitle(addPlateTitle, for: .normal)
-        } else {
-            editLicensePlateBtn.setAttributedTitle(editPlateTitle, for: .normal)
-        }
-        
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         payBtn.layer.cornerRadius = 12.0
         payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
@@ -130,7 +123,8 @@ class PayParkingView: UIView {
         priceLbl.set(textColor: UIColor.Roadout.cashYellow, range: priceLbl.range(after: " - "))
         priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
         
-        titleLbl.text = "Pay Parking".localized()
+        licensePlateCard.layer.cornerRadius = licensePlateCard.frame.height/5
+        timeCard.layer.cornerRadius = timeCard.frame.height/5
     }
     
     class func instanceFromNib() -> UIView {
@@ -140,11 +134,14 @@ class PayParkingView: UIView {
     //MARK: - Payment Configuration -
     
     func fillPayData() {
-        self.detailsLbl.text = selectedPayLocation.name
-        
-        self.timeLbl.text = "Pay for ".localized() + "\(paidTime)" + " hour/s".localized()
-        self.timeLbl.set(textColor: UIColor.Roadout.cashYellow, range: self.timeLbl.range(after: "Pay for ".localized()))
-        self.timeLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.timeLbl.range(after: "Pay for ".localized()))
+        timeLbl.text = "\(paidTime)" + " hr/s".localized()
+        licensePlateLbl.text = userLicensePlate
+        if userLicensePlate == "" {
+            licensePlateLbl.text = "NO-PLATE".localized()
+            editLicensePlateBtn.setAttributedTitle(addPlateTitle, for: .normal)
+        } else {
+            editLicensePlateBtn.setAttributedTitle(editPlateTitle, for: .normal)
+        }
     }
 
     func reloadMainCard() {

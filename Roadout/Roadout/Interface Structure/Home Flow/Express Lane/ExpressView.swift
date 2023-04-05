@@ -17,7 +17,12 @@ class ExpressView: UIView {
     
     @IBOutlet weak var backBtn: UIButton!
     
-    @IBOutlet weak var chargeLbl: UILabel!
+    @IBOutlet weak var locationLbl: UILabel!
+    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var priceLbl: UILabel!
+    
+    @IBOutlet weak var locationCard: UIView!
+    @IBOutlet weak var timeCard: UIView!
     
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -26,8 +31,7 @@ class ExpressView: UIView {
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
-    @IBOutlet weak var mapIcon: UIImageView!
-    
+    @IBOutlet weak var timeIcon: UIImageView!
     @IBOutlet weak var carIcon: UIImageView!
     
     @IBOutlet weak var slider: UISlider!
@@ -35,13 +39,12 @@ class ExpressView: UIView {
     @IBAction func sliderChangedValue(_ sender: Any) {
         let roundedValue = round(slider.value/1.0)*1.0
         slider.value = roundedValue
-        chargeLbl.text = "\(Int(slider.value))" + " Minute/s".localized() + " - \(Int(slider.value)) RON"
-        chargeLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: chargeLbl.range(after: " - "))
-        chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
+        timeLbl.text = "\(Int(slider.value))" + " min".localized()
+        
+        priceLbl.text = "Price - ".localized() + "\(Int(slider.value)) RON"
+        priceLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: priceLbl.range(after: " - "))
+        priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
     }
-    
-    @IBOutlet weak var locationLbl: UILabel!
-    @IBOutlet weak var spotSectionLbl: UILabel!
     
     @IBOutlet weak var payBtn: UXButton!
     @IBOutlet weak var chooseMethodBtn: UXButton!
@@ -111,9 +114,11 @@ class ExpressView: UIView {
         chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         chooseMethodBtn.setTitle("", for: .normal)
         
-        chargeLbl.text = "\(Int(slider.value))" + " Minute/s".localized() + " - \(Int(slider.value)) RON"
-        chargeLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: chargeLbl.range(after: " - "))
-        chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
+        timeLbl.text = "\(Int(slider.value))" + " min".localized()
+        
+        priceLbl.text = "Price - ".localized() + "\(Int(slider.value)) RON"
+        priceLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: priceLbl.range(after: " - "))
+        priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
         
         cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
         selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
@@ -124,16 +129,15 @@ class ExpressView: UIView {
         payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         payBtn.showsMenuAsPrimaryAction = true
                 
-        locationLbl.text = parkLocations[selectedParkLocationIndex].name
-        spotSectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - " + "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
-        
-        spotSectionLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: spotSectionLbl.range(after: "Section ".localized(), before: " - " + "Spot ".localized()))
-        spotSectionLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: spotSectionLbl.range(after: " - " + "Spot ".localized()))
-        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: "Section ".localized(), before: " - " + "Spot ".localized()))
-        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: " - " + "Spot ".localized()))
+        locationLbl.text = parkLocations[selectedParkLocationIndex].name + " - " + "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - " + "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
+        locationLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: locationLbl.range(after: "Section ".localized(), before: " - " + "Spot ".localized()))
+        locationLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: locationLbl.range(after: " - " + "Spot ".localized()))
+        locationLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: locationLbl.range(after: "Section ".localized(), before: " - " + "Spot ".localized()))
+        locationLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: locationLbl.range(after: " - " + "Spot ".localized()))
         
         setAccentColors()
-        
+        locationCard.layer.cornerRadius = locationCard.frame.height/5
+        timeCard.layer.cornerRadius = timeCard.frame.height/5
     }
 
     class func instanceFromNib() -> UIView {
@@ -141,9 +145,10 @@ class ExpressView: UIView {
     }
     
     func setAccentColors() {
-        mapIcon.tintColor = UIColor(named: selectedLocation.accentColor)
+        timeIcon.tintColor = UIColor(named: selectedLocation.accentColor)
         carIcon.tintColor = UIColor(named: selectedLocation.accentColor)
         slider.tintColor = UIColor(named: selectedLocation.accentColor)
+        timeLbl.textColor = UIColor(named: selectedLocation.accentColor)
         chooseMethodBtn.tintColor = UIColor(named: selectedLocation.accentColor)
         payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)
     }

@@ -17,8 +17,12 @@ class FindView: UIView {
     
     @IBOutlet weak var tipSourceView: UIView!
     
-    @IBOutlet weak var mapIcon: UIImageView!
-    @IBOutlet weak var carIcon: UIImageView!
+    @IBOutlet weak var locationLbl: UILabel!
+    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var priceLbl: UILabel!
+    
+    @IBOutlet weak var locationCard: UIView!
+    @IBOutlet weak var timeCard: UIView!
     
     @IBOutlet weak var backBtn: UIButton!
     
@@ -28,21 +32,21 @@ class FindView: UIView {
         NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
-    
-    @IBOutlet weak var chargeLbl: UILabel!
-    
+        
     @IBOutlet weak var slider: UISlider!
+    
+    @IBOutlet weak var timeIcon: UIImageView!
+    @IBOutlet weak var carIcon: UIImageView!
     
     @IBAction func sliderChangedValue(_ sender: Any) {
         let roundedValue = round(slider.value/1.0)*1.0
         slider.value = roundedValue
-        chargeLbl.text = "\(Int(slider.value))" + " Minute/s".localized() + " - \(Int(slider.value)) RON"
-        chargeLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: chargeLbl.range(after: " - "))
-        chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
+        timeLbl.text = "\(Int(slider.value))" + " min".localized()
+        
+        priceLbl.text = "Price - ".localized() + "\(Int(slider.value)) RON"
+        priceLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: priceLbl.range(after: " - "))
+        priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
     }
-    
-    @IBOutlet weak var locationLbl: UILabel!
-    @IBOutlet weak var spotSectionLbl: UILabel!
     
     @IBOutlet weak var payBtn: UXButton!
     @IBOutlet weak var chooseMethodBtn: UXButton!
@@ -120,6 +124,9 @@ class FindView: UIView {
         preparePayButtons()
         fillParkingLabels()
         setAccentColors()
+        
+        locationCard.layer.cornerRadius = locationCard.frame.height/5
+        timeCard.layer.cornerRadius = timeCard.frame.height/5
     }
     
     class func instanceFromNib() -> UIView {
@@ -148,17 +155,18 @@ class FindView: UIView {
     }
     
     func fillParkingLabels() {
-        chargeLbl.text = "\(Int(slider.value))" + " Minute/s".localized() + " - \(Int(slider.value)) RON"
-        chargeLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: chargeLbl.range(after: " - "))
-        chargeLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: chargeLbl.range(after: " - "))
+        timeLbl.text = "\(Int(slider.value))" + " min".localized()
         
-        locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name
-        spotSectionLbl.text = "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - " + "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
+        priceLbl.text = "Price - ".localized() + "\(Int(slider.value)) RON"
+        priceLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: priceLbl.range(after: " - "))
+        priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
         
-        spotSectionLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: spotSectionLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
-        spotSectionLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: spotSectionLbl.range(after: " - " + "Spot ".localized()))
-        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: "Section ".localized(), before: " - " + "Spot ".localized()))
-        spotSectionLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: spotSectionLbl.range(after: " - " + "Spot ".localized()))
+        locationLbl.text = FunctionsManager.sharedInstance.foundLocation.name + " - " + "Section ".localized() + FunctionsManager.sharedInstance.foundSection.name + " - " + "Spot ".localized() + "\(FunctionsManager.sharedInstance.foundSpot.number)"
+        
+        locationLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: locationLbl.range(after: "Section ".localized(), before: " - Spot ".localized()))
+        locationLbl.set(textColor: UIColor(named: selectedLocation.accentColor)!, range: locationLbl.range(after: " - " + "Spot ".localized()))
+        locationLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: locationLbl.range(after: "Section ".localized(), before: " - " + "Spot ".localized()))
+        locationLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: locationLbl.range(after: " - " + "Spot ".localized()))
     }
     
     //MARK: - Payment Configuration -
@@ -223,9 +231,10 @@ class FindView: UIView {
     }
     
     func setAccentColors() {
-        mapIcon.tintColor = UIColor(named: selectedLocation.accentColor)
+        timeIcon.tintColor = UIColor(named: selectedLocation.accentColor)
         carIcon.tintColor = UIColor(named: selectedLocation.accentColor)
         slider.tintColor = UIColor(named: selectedLocation.accentColor)
+        timeLbl.textColor = UIColor(named: selectedLocation.accentColor)
         chooseMethodBtn.tintColor = UIColor(named: selectedLocation.accentColor)
         payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)
     }
