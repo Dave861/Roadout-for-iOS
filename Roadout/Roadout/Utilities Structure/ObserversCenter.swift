@@ -1,5 +1,5 @@
 //
-//  NotificationNameCenter.swift
+//  ObserversCenter.swift
 //  Roadout
 //
 //  Created by David Retegan on 01.01.2022.
@@ -64,6 +64,4 @@ extension Notification.Name {
     static let addSpotMarkerID = Notification.Name("ro.roadout.Roadout.addSpotMarkerID")
     static let removeSpotMarkerID = Notification.Name("ro.roadout.Roadout.removeSpotMarkerID")
     static let refreshMarkedSpotID = Notification.Name("ro.roadout.Roadout.refreshMarkedSpotID")
-    
-    
 }

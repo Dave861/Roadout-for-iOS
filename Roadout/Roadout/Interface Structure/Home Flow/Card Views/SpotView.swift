@@ -26,14 +26,11 @@ class SpotView: UIView, PusherDelegate {
         generator.impactOccurred()
         continueBtn.isUserInteractionEnabled = false
                 
-        let clockImage = UIImage.init(systemName: "clock")!.withTintColor(UIColor.Roadout.darkOrange, renderingMode: .alwaysOriginal)
-        let checkImage = UIImage.init(systemName: "checkmark")!.withTintColor(UIColor.Roadout.darkYellow, renderingMode: .alwaysOriginal)
-        let checkingIndicatorView = SPIndicatorView(title: "Confirming...".localized(), message: "Please wait".localized(), preset: .custom(clockImage))
-        let confirmedIndicatorView = SPIndicatorView(title: "Confirmed".localized(), message: "Done".localized(), preset: .custom(checkImage))
-        checkingIndicatorView.present(duration: 0.7, haptic: .none) {
+        continueBtn.startPulseAnimation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             self.disconnectPusher()
+            self.continueBtn.stopPulseAnimation()
             NotificationCenter.default.post(name: .addTimeCardID, object: nil)
-            confirmedIndicatorView.present(duration: 0.7, haptic: .success)
         }
     }
     @IBAction func backTapped(_ sender: Any) {

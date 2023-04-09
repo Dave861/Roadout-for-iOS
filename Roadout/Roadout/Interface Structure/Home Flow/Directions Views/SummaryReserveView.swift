@@ -1,15 +1,14 @@
 //
-//  FindView.swift
+//  SummaryReserveView.swift
 //  Roadout
 //
-//  Created by David Retegan on 01.12.2021.
+//  Created by David Retegan on 09.04.2023.
 //
 
 import UIKit
-import WidgetKit
 
-class FindView: UIView {
-    
+class SummaryReserveView: UIView {
+        
     var selectedCard: String?
     let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
     var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
@@ -32,7 +31,7 @@ class FindView: UIView {
         NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
-        
+    
     @IBOutlet weak var slider: UISlider!
     
     @IBOutlet weak var timeIcon: UIImageView!
@@ -50,7 +49,7 @@ class FindView: UIView {
     
     @IBOutlet weak var payBtn: UXButton!
     @IBOutlet weak var chooseMethodBtn: UXButton!
-        
+    
     @IBAction func payBtnTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
@@ -96,6 +95,7 @@ class FindView: UIView {
         
         payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         payBtn.showsMenuAsPrimaryAction = true
+        payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)
         payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
     }
     
@@ -114,7 +114,7 @@ class FindView: UIView {
             UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip2")
         }
     }
-   
+    
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
         manageObs()
@@ -130,28 +130,7 @@ class FindView: UIView {
     }
     
     class func instanceFromNib() -> UIView {
-        return UINib(nibName: "Find", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
-    }
-    
-    func preparePayButtons() {
-        mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-        
-        payBtn.layer.cornerRadius = 12.0
-        payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-        payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
-        
-        chooseMethodBtn.layer.cornerRadius = 12.0
-        chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-        chooseMethodBtn.setTitle("", for: .normal)
-        
-        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
-        selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
-                
-        chooseMethodBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
-        chooseMethodBtn.showsMenuAsPrimaryAction = true
-        
-        payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
-        payBtn.showsMenuAsPrimaryAction = true
+        return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[10] as! UIView
     }
     
     func fillParkingLabels() {
@@ -169,7 +148,37 @@ class FindView: UIView {
         locationLbl.set(font: UIFont.systemFont(ofSize: 19, weight: .medium), range: locationLbl.range(after: " - " + "Spot ".localized()))
     }
     
+    func setAccentColors() {
+        timeIcon.tintColor = UIColor(named: selectedLocation.accentColor)
+        carIcon.tintColor = UIColor(named: selectedLocation.accentColor)
+        slider.minimumTrackTintColor = UIColor(named: selectedLocation.accentColor)
+        timeLbl.textColor = UIColor(named: selectedLocation.accentColor)
+        chooseMethodBtn.tintColor = UIColor(named: selectedLocation.accentColor)
+        payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)
+    }
+    
     //MARK: - Payment Configuration -
+    
+    func preparePayButtons() {
+        mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+        
+        payBtn.layer.cornerRadius = 12.0
+        payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
+        
+        chooseMethodBtn.layer.cornerRadius = 12.0
+        chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        chooseMethodBtn.setTitle("", for: .normal)
+        
+        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
+        selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
+        
+        chooseMethodBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        chooseMethodBtn.showsMenuAsPrimaryAction = true
+        
+        payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        payBtn.showsMenuAsPrimaryAction = true
+    }
     
     func reloadMainCard() {
         payBtn.showsMenuAsPrimaryAction = false
@@ -226,56 +235,48 @@ class FindView: UIView {
             }
             index += 1
         }
-        print(index)
         return index
     }
     
-    func setAccentColors() {
-        timeIcon.tintColor = UIColor(named: selectedLocation.accentColor)
-        carIcon.tintColor = UIColor(named: selectedLocation.accentColor)
-        slider.tintColor = UIColor(named: selectedLocation.accentColor)
-        timeLbl.textColor = UIColor(named: selectedLocation.accentColor)
-        chooseMethodBtn.tintColor = UIColor(named: selectedLocation.accentColor)
-        payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)
-    }
+    //MARK: - Error Management -
     
     func manageServerSideErrors(error: Error) {
         switch error {
         case ReservationManager.ReservationErrors.spotAlreadyTaken:
             let alert = UIAlertController(title: "Couldn't reserve".localized(), message: "Something went wrong, it seems like someone already took the spot, hence we are not able to reserve it. We are sorry.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor.Roadout.redish
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         case ReservationManager.ReservationErrors.networkError:
             let alert = UIAlertController(title: "Network Error".localized(), message: "Please check you network connection.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor.Roadout.redish
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         case ReservationManager.ReservationErrors.databaseFailure:
             let alert = UIAlertController(title: "Internal Error".localized(), message: "There was an internal problem, please wait and try again a little later.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor.Roadout.redish
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         case ReservationManager.ReservationErrors.unknownError:
             let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor.Roadout.redish
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         case ReservationManager.ReservationErrors.errorWithJson:
             let alert = UIAlertController(title: "JSON Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor.Roadout.redish
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         default:
             let alert = UIAlertController(title: "Unknown Error".localized(), message: "There was an error with the server respone, please screenshot this and send a bug report to roadout.ro@gmail.com.".localized(), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.view.tintColor = UIColor.Roadout.redish
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor.Roadout.redish
             self.parentViewController().present(alert, animated: true, completion: nil)
         }
     }

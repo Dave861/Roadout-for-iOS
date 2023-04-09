@@ -11,6 +11,7 @@ import UIKit
 class UXButton: UIButton {
     
     private var color: UIColor!
+    private var isAnimating = false
     
     @IBInspectable var hasShimmer: Bool = false {
         didSet {
@@ -72,6 +73,32 @@ class UXButton: UIButton {
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradientLayer.frame = self.bounds
         self.layer.addSublayer(gradientLayer)
+    }
+    
+    func startPulseAnimation() {
+        guard !isAnimating else { return }
+        
+        isAnimating = true
+        isUserInteractionEnabled = false
+        
+        UIView.animate(withDuration: 0.7, delay: 0, options: [.repeat, .autoreverse], animations: {
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            self.color = self.backgroundColor
+            if self.coloriseEffect {
+                self.backgroundColor = self.tintColor.withAlphaComponent(0.4)
+            } else {
+                self.backgroundColor = self.color.withAlphaComponent(0.8)
+            }
+        }, completion: nil)
+    }
+    
+    func stopPulseAnimation() {
+        isAnimating = false
+        isUserInteractionEnabled = true
+        
+        layer.removeAllAnimations()
+        transform = CGAffineTransform.identity
+        backgroundColor = self.color
     }
     
 }

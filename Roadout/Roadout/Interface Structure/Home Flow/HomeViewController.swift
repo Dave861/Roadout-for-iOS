@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
     let delayView = DelayView.instanceFromNib()
     let unlockView = UnlockView.instanceFromNib()
     let unlockedView = UnlockedView.instanceFromNib()
-    let payDurationView = DurationView.instanceFromNib()
+    let payDurationView = PayDurationView.instanceFromNib()
     let payParkingView = PayParkingView.instanceFromNib()
     
     let paidBar = PaidView.instanceFromNib()
@@ -44,9 +44,11 @@ class HomeViewController: UIViewController {
     let noWifiBar = NoWifiView.instanceFromNib()
     let paidParkingBar = PaidParkingBar.instanceFromNib()
     
+    let summaryReserveView = SummaryReserveView.instanceFromNib()
+    
     //MARK: - Express Lane -
     
-    let expressView = ExpressView.instanceFromNib()
+    //let expressView = ExpressView.instanceFromNib()
     
     @objc func addExpressView() {
         let camera = GMSCameraPosition.camera(withLatitude: selectedLocation.latitude, longitude: selectedLocation.longitude, zoom: 16.0)
@@ -73,7 +75,7 @@ class HomeViewController: UIViewController {
         } else {
             self.searchBar.alpha = 0.0
         }
-        self.updateBackgroundViewHeight(with: 315)
+        self.updateBackgroundViewHeight(with: 303)
         //Clear saved car park
         UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
         carParkHash = "roadout_carpark_clear"
@@ -83,16 +85,14 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.expressView.frame = CGRect(x: 10, y: self.screenSize.height-315-dif, width: self.screenSize.width - 20, height: 315)
-            self.view.addSubview(self.expressView)
+            self.summaryReserveView.frame = CGRect(x: 10, y: self.screenSize.height-303-dif, width: self.screenSize.width - 20, height: 303)
+            self.view.addSubview(self.summaryReserveView)
         }
     }
     
     
     //MARK: - Find Way -
-    
-    let findView = FindView.instanceFromNib()
-        
+            
     @objc func showFindCard() {
         let camera = GMSCameraPosition.camera(withLatitude: selectedLocation.latitude, longitude: selectedLocation.longitude, zoom: 16.0)
         self.mapView?.animate(to: camera)
@@ -119,7 +119,7 @@ class HomeViewController: UIViewController {
             self.searchBar.alpha = 0.0
         }
         
-        self.updateBackgroundViewHeight(with: 315)
+        self.updateBackgroundViewHeight(with: 303)
         //Clear saved car park
         UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
         carParkHash = "roadout_carpark_clear"
@@ -129,8 +129,8 @@ class HomeViewController: UIViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.findView.frame = CGRect(x: 10, y: self.screenSize.height-315-dif, width: self.screenSize.width - 20, height: 315)
-            self.view.addSubview(self.findView)
+            self.summaryReserveView.frame = CGRect(x: 10, y: self.screenSize.height-303-dif, width: self.screenSize.width - 20, height: 303)
+            self.view.addSubview(self.summaryReserveView)
         }
     }
     
@@ -822,12 +822,12 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 252)
+            self.updateBackgroundViewHeight(with: 232)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-252-dif, width: self.screenSize.width - 20, height: 252)
+            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-232-dif, width: self.screenSize.width - 20, height: 232)
             self.view.addSubview(self.timeView)
         }
     }
@@ -874,12 +874,12 @@ extension HomeViewController {
     }
     @objc func removePayCard() {
         DispatchQueue.main.async {
-            self.updateBackgroundViewHeight(with: 252)
+            self.updateBackgroundViewHeight(with: 232)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-252-dif, width: self.screenSize.width - 20, height: 252)
+            self.timeView.frame = CGRect(x: 10, y: self.screenSize.height-232-dif, width: self.screenSize.width - 20, height: 232)
             self.view.addSubview(self.timeView)
             self.payView.removeFromSuperview()
         }
@@ -921,12 +921,12 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 225)
+            self.updateBackgroundViewHeight(with: 205)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.delayView.frame = CGRect(x: 10, y: self.screenSize.height-225-dif, width: self.screenSize.width - 20, height: 225)
+            self.delayView.frame = CGRect(x: 10, y: self.screenSize.height-205-dif, width: self.screenSize.width - 20, height: 205)
             self.view.addSubview(self.delayView)
         }
     }
@@ -961,12 +961,12 @@ extension HomeViewController {
     }
     @objc func removePayDelayCard() {
         DispatchQueue.main.async {
-            self.updateBackgroundViewHeight(with: 225)
+            self.updateBackgroundViewHeight(with: 205)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.delayView.frame = CGRect(x: 10, y: self.screenSize.height-225-dif, width: self.screenSize.width - 20, height: 225)
+            self.delayView.frame = CGRect(x: 10, y: self.screenSize.height-205-dif, width: self.screenSize.width - 20, height: 205)
             self.view.addSubview(self.delayView)
             self.payView.removeFromSuperview()
         }
@@ -1030,12 +1030,12 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 225)
+            self.updateBackgroundViewHeight(with: 205)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.payDurationView.frame = CGRect(x: 10, y: self.screenSize.height-225-dif, width: self.screenSize.width - 20, height: 225)
+            self.payDurationView.frame = CGRect(x: 10, y: self.screenSize.height-205-dif, width: self.screenSize.width - 20, height: 205)
             self.view.addSubview(self.payDurationView)
         }
     }
@@ -1070,12 +1070,12 @@ extension HomeViewController {
     }
     @objc func removePayParkingCard() {
         DispatchQueue.main.async {
-            self.updateBackgroundViewHeight(with: 225)
+            self.updateBackgroundViewHeight(with: 205)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.payDurationView.frame = CGRect(x: 10, y: self.screenSize.height-225-dif, width: self.screenSize.width - 20, height: 225)
+            self.payDurationView.frame = CGRect(x: 10, y: self.screenSize.height-205-dif, width: self.screenSize.width - 20, height: 205)
             self.view.addSubview(self.payDurationView)
             self.payParkingView.removeFromSuperview()
         }

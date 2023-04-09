@@ -17,9 +17,6 @@ class ResetPasswordViewController: UIViewController {
         attributes: [NSAttributedString.Key.foregroundColor: UIColor.label, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
     
-    let indicatorImage = UIImage.init(systemName: "lines.measurement.horizontal")!.withTintColor(UIColor.label, renderingMode: .alwaysOriginal)
-    var indicatorView: SPIndicatorView!
-    
     @IBOutlet weak var explainLbl: UILabel!
     
     @IBOutlet weak var codeField: AnyObject?
@@ -73,16 +70,16 @@ class ResetPasswordViewController: UIViewController {
             alert.view.tintColor = UIColor.label
             self.present(alert, animated: true, completion: nil)
         } else {
-            self.indicatorView.present(haptic: .none, completion: nil)
+            self.resetBtn.startPulseAnimation()
             Task {
                 do {
                     try await UserManager.sharedInstance.resetPasswordAsync(passwordField.text!)
                     DispatchQueue.main.async {
-                        self.indicatorView.dismiss()
+                        self.resetBtn.stopPulseAnimation()
                         self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
                     }
                 } catch let err {
-                    self.indicatorView.dismiss()
+                    self.resetBtn.stopPulseAnimation()
                     self.manageServerSideErrors(err)
                 }
             }
@@ -121,10 +118,6 @@ class ResetPasswordViewController: UIViewController {
         resetBtn.setAttributedTitle(continueTitle, for: .normal)
         cancelBtn.setAttributedTitle(skipTitle, for: .normal)
         checkBtn.setAttributedTitle(checkTitle, for: .normal)
-        
-        indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorImage))
-        indicatorView.backgroundColor = UIColor(named: "Background")!
-        indicatorView.dismissByDrag = false
     }
     
     //MARK: - Validation Functions -

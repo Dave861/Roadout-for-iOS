@@ -115,7 +115,7 @@ class ExpressChooseViewController: UIViewController {
         }
     }
     
-    func showNoFreeSpotAlert(indicatorView: SPIndicatorView) {
+    func showNoFreeSpotAlert() {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor.Roadout.expressFocus
@@ -210,25 +210,21 @@ extension ExpressChooseViewController: UITableViewDelegate, UITableViewDataSourc
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         
-        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed.fill")!.withTintColor(UIColor.Roadout.expressFocus, renderingMode: .alwaysOriginal)
-        let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
-        indicatorView.layer.borderColor = UIColor(named: "IndicatorBorder")!.cgColor
-        indicatorView.layer.borderWidth = 1.5
-        indicatorView.dismissByDrag = false
-        indicatorView.present()
-        
+        //load here
         selectedParkLocationIndex = findFavouriteIndexInParkLocations(favouriteLocations[indexPath.row].rID)
+        FunctionsManager.sharedInstance.foundLocation = parkLocations[selectedParkLocationIndex]
         Task {
             do {
                 try await FunctionsManager.sharedInstance.findSpotInLocationAsync(location: favouriteLocations[indexPath.row])
                 DispatchQueue.main.async {
-                    indicatorView.dismiss()
+                    //stop here
                     NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
                     NotificationCenter.default.post(name: .addExpressViewID, object: nil)
                     NotificationCenter.default.post(name: .showExpressLaneFreeSpotID, object: nil)
                 }
             } catch let err {
-                self.showNoFreeSpotAlert(indicatorView: indicatorView)
+                //stop here
+                self.showNoFreeSpotAlert()
                 print(err)
             }
         }
@@ -271,25 +267,21 @@ extension ExpressChooseViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         let indexPath = configuration.identifier as! IndexPath
         
-        let indicatorIcon = UIImage.init(systemName: "flag.2.crossed.fill")!.withTintColor(UIColor.Roadout.expressFocus, renderingMode: .alwaysOriginal)
-        let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
-        indicatorView.layer.borderColor = UIColor(named: "IndicatorBorder")!.cgColor
-        indicatorView.layer.borderWidth = 1.5
-        indicatorView.dismissByDrag = false
-        indicatorView.present()
-        
+        //load here
         selectedParkLocationIndex = findFavouriteIndexInParkLocations(favouriteLocations[indexPath.row].rID)
+        FunctionsManager.sharedInstance.foundLocation = parkLocations[selectedParkLocationIndex]
         Task {
             do {
                 try await FunctionsManager.sharedInstance.findSpotInLocationAsync(location: favouriteLocations[indexPath.row])
                 DispatchQueue.main.async {
-                    indicatorView.dismiss()
+                    //stop here
                     NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
                     NotificationCenter.default.post(name: .addExpressViewID, object: nil)
                     NotificationCenter.default.post(name: .showExpressLaneFreeSpotID, object: nil)
                 }
             } catch let err {
-                self.showNoFreeSpotAlert(indicatorView: indicatorView)
+                //stop here
+                self.showNoFreeSpotAlert()
                 print(err)
             }
         }

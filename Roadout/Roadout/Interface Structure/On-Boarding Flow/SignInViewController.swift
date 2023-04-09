@@ -18,9 +18,6 @@ class SignInViewController: UIViewController {
     
     let center = UNUserNotificationCenter.current()
     var locationManager: CLLocationManager?
-    
-    let indicatorImage = UIImage.init(systemName: "lines.measurement.horizontal")!.withTintColor(UIColor.Roadout.mainYellow, renderingMode: .alwaysOriginal)
-    var indicatorView: SPIndicatorView!
         
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
@@ -46,7 +43,7 @@ class SignInViewController: UIViewController {
         generator.impactOccurred()
         emailField.text = emailField.text?.replacingOccurrences(of: " ", with: "") //Account for user mistakes
         if isValidEmail(emailField.text ?? "") && passwordField.text != "" {
-            self.indicatorView.present(haptic: .none, completion: nil)
+            self.signInBtn.startPulseAnimation()
             UserManager.sharedInstance.userEmail = self.emailField.text!
             UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
             Task {
@@ -55,11 +52,11 @@ class SignInViewController: UIViewController {
                     UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
                     UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
                     DispatchQueue.main.async {
-                        self.indicatorView.dismiss()
+                        self.signInBtn.stopPulseAnimation()
                         self.manageScreens()
                     }
                 } catch let err {
-                    self.indicatorView.dismiss()
+                    self.signInBtn.stopPulseAnimation()
                     self.manageServerSideErrors(err)
                 }
             }
@@ -83,7 +80,7 @@ class SignInViewController: UIViewController {
     
     //MARK: - Forgot Password -
         
-    @IBOutlet weak var forgotBtn: UIButton!
+    @IBOutlet weak var forgotBtn: UXPlainButton!
     
     @IBAction func forgotTapped(_ sender: Any) {
         guard isValidEmail(emailField.text ?? "") else {
@@ -95,18 +92,18 @@ class SignInViewController: UIViewController {
         }
         let alert = UIAlertController(title: "Forgot Password".localized(), message: "We will send an email with a verification code to ".localized() + emailField.text!, preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Continue".localized(), style: .default) { _ in
-            self.indicatorView.present(haptic: .none, completion: nil)
+            self.forgotBtn.startPulseAnimation()
             Task {
                 do {
                     try await UserManager.sharedInstance.sendForgotDataAsync(self.emailField.text!)
                     DispatchQueue.main.async {
-                        self.indicatorView.dismiss()
+                        self.forgotBtn.stopPulseAnimation()
                         let sb = UIStoryboard(name: "Main", bundle: nil)
                         let vc = sb.instantiateViewController(withIdentifier: "ResetPasswordVC") as! ResetPasswordViewController
                         self.present(vc, animated: true, completion: nil)
                     }
                 } catch let err {
-                    self.indicatorView.dismiss()
+                    self.forgotBtn.stopPulseAnimation()
                     self.manageServerSideErrors(err)
                 }
             }
@@ -159,10 +156,6 @@ class SignInViewController: UIViewController {
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
-        
-        indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorImage))
-        indicatorView.backgroundColor = UIColor(named: "Background")!
-        indicatorView.dismissByDrag = false
         
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
         forgotBtn.setAttributedTitle(forgotTitle, for: .normal)

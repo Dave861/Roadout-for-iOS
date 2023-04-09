@@ -9,7 +9,7 @@ import UIKit
 
 class AddFutureRoadViewController: UIViewController {
     
-    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let saveTitle = NSAttributedString(string: "Save".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     @IBOutlet weak var cardView: UIView!
@@ -82,7 +82,7 @@ class AddFutureRoadViewController: UIViewController {
         addShadowToCardView()
 
         doneBtn.layer.cornerRadius = 13.0
-        doneBtn.setAttributedTitle(doneTitle, for: .normal)
+        doneBtn.setAttributedTitle(saveTitle, for: .normal)
         
         datePicker.minimumDate = makeNextDate()
         

@@ -43,7 +43,7 @@ class ResultView: UIView {
         NotificationCenter.default.post(name: .addSectionCardID, object: nil)
     }
     
-    @IBOutlet weak var continueBtn: UIButton!
+    @IBOutlet weak var continueBtn: UXButton!
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
@@ -53,20 +53,17 @@ class ResultView: UIView {
         carParkHash = "roadout_carpark_clear"
         NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
         //Find first free spot
-        let indicatorIcon = UIImage(named: "roadout.car")!.withTintColor(UIColor(named: selectedLocation.accentColor)!, renderingMode: .alwaysOriginal)
-        let indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
-        indicatorView.dismissByDrag = false
-        indicatorView.present()
+        continueBtn.startPulseAnimation()
         Task {
             do {
                 try await FunctionsManager.sharedInstance.findSpotInLocationAsync(location: parkLocations[selectedParkLocationIndex])
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
                     NotificationCenter.default.post(name: .addTimeCardID, object: nil)
-                    indicatorView.dismiss()
+                    self.continueBtn.stopPulseAnimation()
                 }
             } catch {
-                self.showNoFreeSpotAlert(indicatorView: indicatorView)
+                self.showNoFreeSpotAlert()
             }
         }
     }
@@ -136,9 +133,9 @@ class ResultView: UIView {
         }
     }
 
-    func showNoFreeSpotAlert(indicatorView: SPIndicatorView) {
+    func showNoFreeSpotAlert() {
         DispatchQueue.main.async {
-            indicatorView.dismiss()
+            self.continueBtn.stopPulseAnimation()
             
             let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
             alert.view.tintColor = UIColor(named: selectedLocation.accentColor)!

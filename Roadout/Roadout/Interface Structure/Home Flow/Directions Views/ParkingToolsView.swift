@@ -18,21 +18,17 @@ class ParkingToolsView: UIView {
     
     //MARK: - Parking Tools -
     
-    @IBOutlet weak var findWayBtn: UIButton!
+    @IBOutlet weak var findWayBtn: UXButton!
     @IBOutlet weak var expressLaneBtn: UIButton!
     @IBOutlet weak var futureReserveBtn: UIButton!
     @IBOutlet weak var payParkingBtn: UIButton!
     
     @IBAction func findWayTapped(_ sender: Any) {
         let parentVC = self.parentViewController() as! HomeViewController
-        let indicatorIcon = UIImage.init(systemName: "binoculars.fill")!.withTintColor(UIColor.Roadout.greyish, renderingMode: .alwaysOriginal)
-        let indicatorView = SPIndicatorView(title: "Finding...".localized(), message: "Please wait".localized(), preset: .custom(indicatorIcon))
-        DispatchQueue.main.async {
-            indicatorView.dismissByDrag = false
-            indicatorView.present()
-        }
+        findWayBtn.startPulseAnimation()
         FunctionsManager.sharedInstance.foundSpot = nil
         guard let coord = parentVC.mapView.myLocation?.coordinate else {
+            findWayBtn.stopPulseAnimation()
             parentVC.showFindLocationAlert()
             return
         }
@@ -44,19 +40,19 @@ class ParkingToolsView: UIView {
                     DispatchQueue.main.async {
                         parentVC.showFindCard()
                         NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
-                        indicatorView.dismiss()
+                        self.findWayBtn.stopPulseAnimation()
                     }
                 } else {
                     DispatchQueue.main.async {
                         parentVC.showFindLocationAlert()
-                        indicatorView.dismiss()
+                        self.findWayBtn.stopPulseAnimation()
                     }
                 }
             } catch let err {
                 print(err)
                 DispatchQueue.main.async {
                     parentVC.showFindLocationAlert()
-                    indicatorView.dismiss()
+                    self.findWayBtn.stopPulseAnimation()
                 }
             }
         }

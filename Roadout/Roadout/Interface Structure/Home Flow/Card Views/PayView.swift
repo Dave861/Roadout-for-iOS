@@ -31,7 +31,7 @@ class PayView: UIView {
     
     @IBOutlet weak var detailsLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
-    @IBOutlet weak var actionTypeLbl: UILabel!
+    @IBOutlet weak var actionTypeLbl: UXResizeLabel!
     
     @IBOutlet weak var detailsCard: UIView!
     @IBOutlet weak var timeCard: UIView!
@@ -93,6 +93,7 @@ class PayView: UIView {
         chooseMethodBtn.showsMenuAsPrimaryAction = true
         
         payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)
         payBtn.showsMenuAsPrimaryAction = true
         payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
     }
@@ -104,26 +105,8 @@ class PayView: UIView {
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
         
-        mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-        payBtn.layer.cornerRadius = 12.0
-        payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-        payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
-        payBtn.backgroundColor = UIColor.Roadout.darkOrange
-        
-        chooseMethodBtn.layer.cornerRadius = 12.0
-        chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-        chooseMethodBtn.setTitle("", for: .normal)
-        
-        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
-        selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
-        
+        preparePayButtons()
         fillReservationData(for: selectedSpot.rID)
-        
-        chooseMethodBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
-        chooseMethodBtn.showsMenuAsPrimaryAction = true
-        
-        payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
-        payBtn.showsMenuAsPrimaryAction = true
         
         priceLbl.set(textColor: UIColor.Roadout.darkOrange, range: priceLbl.range(after: " - "))
         priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
@@ -152,21 +135,48 @@ class PayView: UIView {
         
         self.detailsLbl.set(textColor: UIColor.Roadout.darkOrange, range: self.detailsLbl.range(after: " - " + "Section ".localized(), before: " - " + "Spot ".localized()))
         self.detailsLbl.set(textColor: UIColor.Roadout.darkOrange, range: self.detailsLbl.range(after: " - " + "Spot ".localized()))
-        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - " + "Section ".localized(), before: " - " + "Spot ".localized()))
-        self.detailsLbl.set(font: .systemFont(ofSize: 19.0, weight: .medium), range: self.detailsLbl.range(after: " - " + "Spot ".localized()))
+        self.detailsLbl.set(font: .systemFont(ofSize: 19, weight: .medium), range: self.detailsLbl.range(after: " - " + "Section ".localized(), before: " - " + "Spot ".localized()))
+        self.detailsLbl.set(font: .systemFont(ofSize: 19, weight: .medium), range: self.detailsLbl.range(after: " - " + "Spot ".localized()))
         
         
         if returnToDelay {
             self.timeLbl.text = "\(Int(delayTime/60))" + " min".localized()
-            self.actionTypeLbl.text = "Delay for ".localized()
+            self.actionTypeLbl.text = "Delay reservation for".localized()
+            self.actionTypeLbl.longText = "Delay reservation for".localized()
+            self.actionTypeLbl.mediumText = "Delay for".localized()
+            self.actionTypeLbl.shortText = "Delay".localized()
         } else {
             self.timeLbl.text = "\(Int(reservationTime/60))" + " min".localized()
-            self.actionTypeLbl.text = "Reserve for ".localized()
+            self.actionTypeLbl.text = "Reserve parking for".localized()
+            self.actionTypeLbl.longText = "Reserve parking for".localized()
+            self.actionTypeLbl.mediumText = "Reserve for".localized()
+            self.actionTypeLbl.shortText = "Reserve".localized()
         }
     }
     
     //MARK: - Payment Configuration -
 
+    func preparePayButtons() {
+        mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+        payBtn.layer.cornerRadius = 12.0
+        payBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
+        payBtn.backgroundColor = UIColor.Roadout.darkOrange
+        
+        chooseMethodBtn.layer.cornerRadius = 12.0
+        chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        chooseMethodBtn.setTitle("", for: .normal)
+        
+        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
+        selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
+        
+        chooseMethodBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        chooseMethodBtn.showsMenuAsPrimaryAction = true
+        
+        payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
+        payBtn.showsMenuAsPrimaryAction = true
+    }
+    
     func reloadMainCard() {
         payBtn.showsMenuAsPrimaryAction = false
         payBtn.menu = nil
@@ -225,6 +235,8 @@ class PayView: UIView {
         }
         return index
     }
+    
+    //MARK: - Error Management -
     
     func manageServerSideErrors(error: Error) {
         switch error {

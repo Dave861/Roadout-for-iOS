@@ -91,7 +91,6 @@ class SectionView: UIView {
                                                  attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.icons])
                 self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
                 selectedSectionIndex = index
-                self.showSelectedIndicator(letter: self.letter)
                 self.removePointsFromImage()
                 self.addPointsToImage(sections: sections)
             })
@@ -134,7 +133,6 @@ class SectionView: UIView {
                                                  attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.icons])
                 self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
                 selectedSectionIndex = index
-                self.showSelectedIndicator(letter: sections[index].name)
                 self.decolorButtonsInSectionImage()
                 letterBtn.setTitleColor(UIColor(named: "Background")!, for: .normal)
                 letterBtn.backgroundColor = UIColor.Roadout.icons
@@ -156,13 +154,7 @@ class SectionView: UIView {
         }
     }
     
-    //MARK: - Indicators -
-    
-    func showSelectedIndicator(letter: String) {
-        let image = UIImage.init(systemName: "\(letter.lowercased()).circle.fill")!.withTintColor(UIColor.Roadout.icons, renderingMode: .alwaysOriginal)
-        let indicatorView = SPIndicatorView(title: "Section ".localized() + "\(letter)", message: "Selected".localized(), preset: .custom(image))
-        indicatorView.present(duration: 0.7, haptic: .none, completion: nil)
-    }
+    //MARK: - Alert -
         
     func showLoadingAlert() {
         let alert = UIAlertController(title: "Loading...".localized(), message: "The spots are still downloading, this should not happen normally and might be caused by poor network connection. Please wait and try again.".localized(), preferredStyle: .alert)

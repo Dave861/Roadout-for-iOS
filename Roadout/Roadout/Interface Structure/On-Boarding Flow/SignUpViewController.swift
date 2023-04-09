@@ -11,10 +11,7 @@ class SignUpViewController: UIViewController {
 
     let signUpTitle = NSAttributedString(string: "Sign Up".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    
-    let indicatorImage = UIImage.init(systemName: "lines.measurement.horizontal")!.withTintColor(UIColor.Roadout.darkYellow, renderingMode: .alwaysOriginal)
-    var indicatorView: SPIndicatorView!
-    
+   
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
@@ -65,7 +62,7 @@ class SignUpViewController: UIViewController {
             alert.view.tintColor = UIColor.Roadout.icons
             self.present(alert, animated: true, completion: nil)
         } else {
-            self.indicatorView.present(haptic: .none, completion: nil)
+            self.signUpBtn.startPulseAnimation()
             UserManager.sharedInstance.userEmail = self.emailField.text!
             UserDefaults.roadout!.set(self.nameField.text!, forKey: "ro.roadout.Roadout.UserName")
             UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
@@ -74,12 +71,12 @@ class SignUpViewController: UIViewController {
                 do {
                     try await AuthManager.sharedInstance.sendRegisterDataAsync(emailField.text!)
                     DispatchQueue.main.async {
-                        self.indicatorView.dismiss()
+                        self.signUpBtn.stopPulseAnimation()
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "VerifyMailVC") as! VerifyMailViewController
                         self.present(vc, animated: true, completion: nil)
                     }
                 } catch let err {
-                    self.indicatorView.dismiss()
+                    self.signUpBtn.stopPulseAnimation()
                     self.manageServerSideError(err)
                 }
             }
@@ -130,10 +127,6 @@ class SignUpViewController: UIViewController {
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
-        
-        indicatorView = SPIndicatorView(title: "Loading...".localized(), message: "Please wait".localized(), preset: .custom(indicatorImage))
-        indicatorView.backgroundColor = UIColor(named: "Background")!
-        indicatorView.dismissByDrag = false
         
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
     }
