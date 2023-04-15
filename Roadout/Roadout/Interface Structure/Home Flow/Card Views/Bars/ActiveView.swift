@@ -17,6 +17,22 @@ class ActiveView: UIView {
         NotificationCenter.default.post(name: .addReservationCardID, object: nil)
     }
     
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip7") == false {
+            moreBtn.tooltip(TutorialView7.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+                configuration.backgroundColor = UIColor(named: "Card Background")!
+                configuration.shadowConfiguration.shadowOpacity = 0.2
+                configuration.shadowConfiguration.shadowColor = UIColor.black.cgColor
+                configuration.shadowConfiguration.shadowOffset = .zero
+                
+                return configuration
+            })
+            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip7")
+        }
+    }
+    
+    
     override func willMove(toSuperview newSuperview: UIView?) {
         self.addObs()
         self.layer.cornerRadius = 17.0

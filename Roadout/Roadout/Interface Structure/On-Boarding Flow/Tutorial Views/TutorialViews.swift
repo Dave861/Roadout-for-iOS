@@ -109,3 +109,41 @@ class TutorialView5: UIView {
         return UINib(nibName: "Tutorials", bundle: nil).instantiate(withOwner: nil, options: nil)[4] as! UIView
     }
 }
+
+class TutorialView6: UIView {
+    
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var explanationLbl: UILabel!
+    
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        self.layer.cornerRadius = 12.0
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "_close".localized()))
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "_top".localized()))
+        
+        explanationLbl.set(textColor: UIColor.Roadout.redish, range: explanationLbl.range(string: "_close".localized()))
+        explanationLbl.set(textColor: UIColor.Roadout.redish, range: explanationLbl.range(string: "_top".localized()))
+    }
+    
+    class func instanceFromNib() -> UIView {
+        return UINib(nibName: "Tutorials", bundle: nil).instantiate(withOwner: nil, options: nil)[5] as! UIView
+    }
+}
+
+class TutorialView7: UIView {
+    
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var explanationLbl: UILabel!
+    
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        self.layer.cornerRadius = 12.0
+        explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: explanationLbl.range(string: "_actions".localized()))
+        
+        explanationLbl.set(textColor: UIColor.Roadout.icons, range: explanationLbl.range(string: "_actions".localized()))
+    }
+    
+    class func instanceFromNib() -> UIView {
+        return UINib(nibName: "Tutorials", bundle: nil).instantiate(withOwner: nil, options: nil)[6] as! UIView
+    }
+}

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UnlockedView: UIView {
+class UnlockedView: UXView {
     
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
@@ -71,19 +71,69 @@ class UnlockedView: UIView {
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
     }
     
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done in db)
+        Task {
+            do {
+                try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id)
+            } catch let err {
+                print(err)
+            }
+        }
+        let rateAlert = UIAlertController(title: "Rate".localized(), message: "Would you like to rate your experience?".localized(), preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes".localized(), style: .cancel) { _ in
+            NotificationCenter.default.post(name: .showRateReservationID, object: nil)
+         }
+        let noAction = UIAlertAction(title: "No".localized(), style: .default) { _ in
+            rateAlert.dismiss(animated: true, completion: nil)
+         }
+        rateAlert.addAction(noAction)
+        rateAlert.addAction(yesAction)
+        rateAlert.view.tintColor = UIColor.Roadout.mainYellow
+         
+        self.parentViewController().present(rateAlert, animated: true, completion: nil)
+        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !payBtn.bounds.contains(touch.location(in: payBtn)) && !markBtn.bounds.contains(touch.location(in: markBtn)) && !doneBtn.bounds.contains(touch.location(in: doneBtn))
+    }
+    
     func styleActionButtons() {
         payBtn.layer.cornerRadius = 9
         markBtn.layer.cornerRadius = 9
         
         payBtn.setAttributedTitle(NSAttributedString(string: " Pay Parking".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         if carParkHash == "roadout_carpark_clear" {
+            markBtn.isEnabled = true
             markBtn.setAttributedTitle(NSAttributedString(string: " Mark Spot".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         } else {
+            markBtn.isEnabled = false
             markBtn.setAttributedTitle(NSAttributedString(string: " Marked".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         }
     }
     
     //MARK: - View Configuration -
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip6") == false {
+            doneBtn.tooltip(TutorialView6.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+                configuration.backgroundColor = UIColor(named: "Card Background")!
+                configuration.shadowConfiguration.shadowOpacity = 0.2
+                configuration.shadowConfiguration.shadowColor = UIColor.black.cgColor
+                configuration.shadowConfiguration.shadowOffset = .zero
+                
+                return configuration
+            })
+            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip6")
+        }
+    }
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
@@ -94,12 +144,13 @@ class UnlockedView: UIView {
         
         styleActionButtons()
         doneBtn.layer.cornerRadius = doneBtn.frame.height/2
+        
+        self.accentColor = UIColor.Roadout.brownish
     }
     
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[8] as! UIView
     }
-    
     
     func getLocationWith(name: String) -> ParkLocation {
         var location: ParkLocation!

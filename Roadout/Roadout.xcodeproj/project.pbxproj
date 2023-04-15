@@ -858,18 +858,16 @@
 		9AC9271B27269B540054E453 /* On-Boarding Flow */ = {
 			isa = PBXGroup;
 			children = (
-				9AC926EE272697F00054E453 /* WelcomeViewController.swift */,
 				9A39B0C9272847C8008E7FD0 /* Cells */,
+				9AC926EE272697F00054E453 /* WelcomeViewController.swift */,
 				9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */,
 				9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */,
 				9ACBFF53272704F90011B58F /* PermissionsViewController.swift */,
 				9A5381132789CA1600462D63 /* VerifyMailViewController.swift */,
-				9A5381152789CA2400462D63 /* ResetPasswordViewController.swift */,
-				9A061AD9286D87D4008BC46F /* Tutorial Views */,
-				9A40C1DD2814458D00E44B23 /* DangerViewController.swift */,
-				9A74D01828B3C015000DB497 /* MaintenanceViewController.swift */,
-				9A8DC956282FF983008F92B6 /* Help Views */,
+				9ADEE94829EACD0A0097D388 /* Problem Views */,
 				9A50EB052846653400B136DF /* RateViewController.swift */,
+				9A8DC956282FF983008F92B6 /* Help Views */,
+				9A061AD9286D87D4008BC46F /* Tutorial Views */,
 			);
 			path = "On-Boarding Flow";
 			sourceTree = "<group>";
@@ -937,6 +935,16 @@
 				9A061AD7286D8314008BC46F /* ToolTipViewExtensions.swift */,
 			);
 			path = ToolTipViews;
+			sourceTree = "<group>";
+		};
+		9ADEE94829EACD0A0097D388 /* Problem Views */ = {
+			isa = PBXGroup;
+			children = (
+				9A5381152789CA2400462D63 /* ResetPasswordViewController.swift */,
+				9A40C1DD2814458D00E44B23 /* DangerViewController.swift */,
+				9A74D01828B3C015000DB497 /* MaintenanceViewController.swift */,
+			);
+			path = "Problem Views";
 			sourceTree = "<group>";
 		};
 		9AF5353529E332DB0053D440 /* Tools Views */ = {

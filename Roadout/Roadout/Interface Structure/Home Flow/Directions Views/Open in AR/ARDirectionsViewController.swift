@@ -47,6 +47,21 @@ class ARDirectionsViewController: UIViewController {
         NotificationCenter.default.post(name: .addUnlockCardID, object: nil)
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip6") == false {
+            closeBtn.tooltip(TutorialView6.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+                configuration.backgroundColor = UIColor(named: "Card Background")!
+                configuration.shadowConfiguration.shadowOpacity = 0.2
+                configuration.shadowConfiguration.shadowColor = UIColor.black.cgColor
+                configuration.shadowConfiguration.shadowOffset = .zero
+                
+                return configuration
+            })
+            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip6")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

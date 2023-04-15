@@ -79,7 +79,7 @@ class FutureRoadViewController: UIViewController {
              titleLbl.tooltip(TutorialView5.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
 
                  configuration.backgroundColor = UIColor(named: "Card Background")!
-                 configuration.shadowConfiguration.shadowOpacity = 0.1
+                 configuration.shadowConfiguration.shadowOpacity = 0.2
                  configuration.shadowConfiguration.shadowColor = UIColor.black.cgColor
                  configuration.shadowConfiguration.shadowOffset = .zero
 
