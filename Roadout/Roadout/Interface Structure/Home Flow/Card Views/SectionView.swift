@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SectionView: UIView {
+class SectionView: UXView {
     
     var letter = "A"
     var letterTitle: NSAttributedString!
@@ -44,6 +44,20 @@ class SectionView: UIView {
     
     @IBAction func sectionTapped(_ sender: Any) {}
     
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        letter = "A"
+        selectedSectionIndex = 0
+        NotificationCenter.default.post(name: .removeSectionCardID, object: nil)
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !continueBtn.bounds.contains(touch.location(in: continueBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+    }
+    
     //MARK: - View Confiuration -
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -75,6 +89,7 @@ class SectionView: UIView {
         sectionBtn.menu = lettersMenu
         sectionBtn.showsMenuAsPrimaryAction = true
         
+        self.accentColor = UIColor.Roadout.icons
     }
 
     class func instanceFromNib() -> UIView {

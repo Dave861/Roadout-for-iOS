@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class TimeView: UIView {
+class TimeView: UXView {
     
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
@@ -21,6 +21,21 @@ class TimeView: UIView {
         NotificationCenter.default.post(name: .removeTimeCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
+    
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        if returnToResult {
+            NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
+        }
+        NotificationCenter.default.post(name: .removeTimeCardID, object: nil)
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !continueBtn.bounds.contains(touch.location(in: continueBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+    }
     
     @IBOutlet weak var continueBtn: UXButton!
     @IBAction func continueTapped(_ sender: Any) {
@@ -35,7 +50,7 @@ class TimeView: UIView {
         let roundedValue = round(minuteSlider.value/1.0)*1.0
         minuteSlider.value = roundedValue
         updatePhraseSelect()
-        timeLbl.text = "\(Int(minuteSlider.value))" + " mins".localized()
+        timeLbl.text = "\(Int(minuteSlider.value))" + " min".localized()
         delayLbl.isHidden = true
         recommendationIcon.image = UIImage(systemName: "clock.fill")!
     }
@@ -67,9 +82,11 @@ class TimeView: UIView {
         recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
         recommendationBtn.setTitle("", for: .normal)
         updatePhraseLoad()
-        timeLbl.text = "..." + " mins".localized()
+        timeLbl.text = "..." + " min".localized()
         delayLbl.isHidden = true
         recommendationCard.layer.cornerRadius = recommendationCard.frame.height/5
+        
+        self.accentColor = UIColor.Roadout.darkYellow
     }
     
     override func didMoveToSuperview() {
@@ -102,14 +119,14 @@ class TimeView: UIView {
     func getTimeToCommute() {
         guard let parentVC = self.parentViewController() as? HomeViewController else {
             self.updatePhraseSelect()
-            self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
+            self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " min".localized()
             self.delayLbl.isHidden = true
             self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
             return
         }
         guard let myLocation = parentVC.mapView.myLocation else {
             self.updatePhraseSelect()
-            self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
+            self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " min".localized()
             self.delayLbl.isHidden = true
             self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
             return
@@ -125,20 +142,20 @@ class TimeView: UIView {
                 DispatchQueue.main.async {
                     if self.evaluateTime(resultedTime) == 2 {
                         self.updatePhraseRecommend()
-                        self.timeLbl.text = "20" + " mins".localized()
+                        self.timeLbl.text = "20" + " min".localized()
                         self.delayLbl.isHidden = false
                         self.delayLbl.text = "+ " + self.getDelayTime(resultedTime)
                         self.recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
                         self.minuteSlider.setValue(20.0, animated: true)
                     } else if self.evaluateTime(resultedTime) == 1 {
                         self.updatePhraseRecommend()
-                        self.timeLbl.text = resultedTime.replacingOccurrences(of: " mins", with: " mins".localized())
+                        self.timeLbl.text = resultedTime.replacingOccurrences(of: " min", with: " min".localized())
                         self.delayLbl.isHidden = true
                         self.recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
-                        self.minuteSlider.setValue(Float(Int(resultedTime.replacingOccurrences(of: " mins", with: "")) ?? 15), animated: true)
+                        self.minuteSlider.setValue(Float(Int(resultedTime.replacingOccurrences(of: " min", with: "")) ?? 15), animated: true)
                     } else if self.evaluateTime(resultedTime) == 0 {
                         self.updatePhraseSelect()
-                        self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
+                        self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " min".localized()
                         self.delayLbl.isHidden = true
                         self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
                     }
@@ -146,7 +163,7 @@ class TimeView: UIView {
             } catch {
                 DispatchQueue.main.async {
                     self.updatePhraseSelect()
-                    self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " mins".localized()
+                    self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " min".localized()
                     self.delayLbl.isHidden = true
                     self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
                 }
@@ -162,7 +179,7 @@ class TimeView: UIView {
         if time.contains("hours".localized()) {
             return 0
         } else {
-            let timeToConvert = time.replacingOccurrences(of: " mins".localized(), with: "")
+            let timeToConvert = time.replacingOccurrences(of: " min".localized(), with: "")
             let convertedTime = Int(timeToConvert) ?? 100
             if convertedTime > 30 {
                 return 0
@@ -175,7 +192,7 @@ class TimeView: UIView {
     }
     
     func getDelayTime(_ time: String) -> String {
-        let timeToConvert = time.replacingOccurrences(of: " mins".localized(), with: "")
+        let timeToConvert = time.replacingOccurrences(of: " min".localized(), with: "")
         let convertedTime = Int(timeToConvert) ?? 100
         return "\(convertedTime-20) " + "delay".localized()
     }

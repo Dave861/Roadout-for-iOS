@@ -41,7 +41,7 @@ class ActiveView: UIView {
     
     
     class func instanceFromNib() -> UIView {
-        return UINib(nibName: "Bars", bundle: nil).instantiate(withOwner: nil, options: nil)[1] as! UIView
+        return UINib(nibName: "Bars", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
 
 }

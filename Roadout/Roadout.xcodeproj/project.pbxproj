@@ -68,7 +68,6 @@
 		9A4131D627BFD8950012EADB /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4131D527BFD8950012EADB /* SearchManager.swift */; };
 		9A46BBA2272EE764002280DD /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA1272EE764002280DD /* TimeView.swift */; };
 		9A46BBA4272EF343002280DD /* PayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA3272EF343002280DD /* PayView.swift */; };
-		9A46BBA6272EF83D002280DD /* PaidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A46BBA5272EF83D002280DD /* PaidView.swift */; };
 		9A49BFA6272FDA2000234A9F /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFA5272FDA2000234A9F /* ReservationView.swift */; };
 		9A49BFA8272FED5900234A9F /* DelayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFA7272FED5900234A9F /* DelayView.swift */; };
 		9A49BFAB272FF41B00234A9F /* UnlockedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A49BFAA272FF41B00234A9F /* UnlockedView.swift */; };
@@ -143,6 +142,7 @@
 		9AA93879299E9FC4000238B1 /* RoadoutUnlockIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA93878299E9FC4000238B1 /* RoadoutUnlockIntent.swift */; };
 		9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */; };
 		9AA9C4192726C63500ECCCE1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */; };
+		9AACB40129EA74AF00EC08E5 /* UXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AACB40029EA74AF00EC08E5 /* UXView.swift */; };
 		9AAE2659280947E000BBBAC3 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE2658280947E000BBBAC3 /* GoogleMaps */; };
 		9AAE265B280947E000BBBAC3 /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE265A280947E000BBBAC3 /* GoogleMapsBase */; };
 		9AAE265D280947E000BBBAC3 /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE265C280947E000BBBAC3 /* GoogleMapsCore */; };
@@ -328,7 +328,6 @@
 		9A4131D527BFD8950012EADB /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		9A46BBA1272EE764002280DD /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		9A46BBA3272EF343002280DD /* PayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayView.swift; sourceTree = "<group>"; };
-		9A46BBA5272EF83D002280DD /* PaidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidView.swift; sourceTree = "<group>"; };
 		9A49BFA5272FDA2000234A9F /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
 		9A49BFA7272FED5900234A9F /* DelayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayView.swift; sourceTree = "<group>"; };
 		9A49BFAA272FF41B00234A9F /* UnlockedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockedView.swift; sourceTree = "<group>"; };
@@ -397,6 +396,7 @@
 		9AA93878299E9FC4000238B1 /* RoadoutUnlockIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadoutUnlockIntent.swift; sourceTree = "<group>"; };
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		9AACB40029EA74AF00EC08E5 /* UXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXView.swift; sourceTree = "<group>"; };
 		9AB6CCC729DC6688001B8FBA /* SquigglyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquigglyView.swift; sourceTree = "<group>"; };
 		9AB827F528128879007BC842 /* GDMStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDMStructs.swift; sourceTree = "<group>"; };
 		9AB827F728128883007BC842 /* GDMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDMManager.swift; sourceTree = "<group>"; };
@@ -639,7 +639,6 @@
 		9A49BFA9272FF40D00234A9F /* Bars */ = {
 			isa = PBXGroup;
 			children = (
-				9A46BBA5272EF83D002280DD /* PaidView.swift */,
 				9AB96427272EFCE0008462E7 /* ActiveView.swift */,
 				9A49BFAC272FF42100234A9F /* CancelledView.swift */,
 				9A81D1A829D325C900799034 /* EndedView.swift */,
@@ -772,6 +771,7 @@
 				9AB6CCC729DC6688001B8FBA /* SquigglyView.swift */,
 				9A30F0EE2986C4A800A05F7C /* UXButton.swift */,
 				9A2D09C129B3799000F98724 /* UXLabel.swift */,
+				9AACB40029EA74AF00EC08E5 /* UXView.swift */,
 			);
 			path = "UI Classes";
 			sourceTree = "<group>";
@@ -1334,12 +1334,12 @@
 				9AF5354F29E332DC0053D440 /* PayParkingView.swift in Sources */,
 				9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */,
 				9AF5355B29E332DC0053D440 /* ExpressPickViewController.swift in Sources */,
-				9A46BBA6272EF83D002280DD /* PaidView.swift in Sources */,
 				9A799324277A0E460088E3FD /* ParkSpot.swift in Sources */,
 				9A7331FE272877F400ACE30A /* NotificationsViewController.swift in Sources */,
 				9A81D1A929D325C900799034 /* EndedView.swift in Sources */,
 				9A49BFA6272FDA2000234A9F /* ReservationView.swift in Sources */,
 				9A8484C22729A8AD00862685 /* DirectionsAppViewController.swift in Sources */,
+				9AACB40129EA74AF00EC08E5 /* UXView.swift in Sources */,
 				9AB6CCC829DC6688001B8FBA /* SquigglyView.swift in Sources */,
 				9A728C512732D849000F9DED /* NotificationHelper.swift in Sources */,
 				9A951E5828423D1300599317 /* HelpCenterProblems.swift in Sources */,

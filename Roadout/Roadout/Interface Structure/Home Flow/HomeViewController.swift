@@ -37,7 +37,6 @@ class HomeViewController: UIViewController {
     let payDurationView = PayDurationView.instanceFromNib()
     let payParkingView = PayParkingView.instanceFromNib()
     
-    let paidBar = PaidView.instanceFromNib()
     let activeBar = ActiveView.instanceFromNib()
     let endedBar = EndedView.instanceFromNib()
     let cancelledBar = CancelledView.instanceFromNib()
@@ -268,7 +267,6 @@ class HomeViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(addExpressView), name: .addExpressViewID, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(showPaidBar), name: .showPaidBarID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showActiveBar), name: .showActiveBarID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showUnlockedView), name: .showUnlockedViewID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showCancelledBar), name: .showCancelledBarID, object: nil)
@@ -618,7 +616,7 @@ extension HomeViewController: CLLocationManagerDelegate {
 extension HomeViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if marker != spotMarker {
-            if self.view.subviews.last != paidBar && self.view.subviews.last != activeBar && self.view.subviews.last != unlockedView && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar && self.isMarkerInteractive {
+            if self.view.subviews.last != activeBar && self.view.subviews.last != unlockedView && self.view.subviews.last != reservationView && self.view.subviews.last != noWifiBar && self.isMarkerInteractive {
                 selectedLocation.name = marker.title!
                 let colorSnippet = marker.snippet!
                 selectedLocation.accentColor = colorSnippet
@@ -1082,31 +1080,7 @@ extension HomeViewController {
     }
     
     //MARK: -Bar functions-
-    
-    @objc func showPaidBar() {
-        DispatchQueue.main.async {
-            self.toggleSettingsButtonHide(to: true)
-            if self.selectedMarker != nil {
-                self.selectedMarker.iconView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-                imageView.contentMode = .scaleAspectFit
-                imageView.image = UIImage(named: "Marker_" + self.selectedMarker.snippet!)?.withResize(scaledToSize: CGSize(width: 20.0, height: 20.0))
-                self.selectedMarker.iconView?.addSubview(imageView)
-            }
-            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-                self.view.subviews.last!.removeFromSuperview()
-            } else {
-                self.searchBar.alpha = 0.0
-            }
-            self.updateBackgroundViewHeight(with: 52)
-            var dif = 15.0
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.paidBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
-            self.view.addSubview(self.paidBar)
-        }
-    }
+
     
     @objc func showActiveBar() {
         DispatchQueue.main.async {

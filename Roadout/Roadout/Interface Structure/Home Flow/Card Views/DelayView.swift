@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DelayView: UIView {
+class DelayView: UXView {
     
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
@@ -17,6 +17,18 @@ class DelayView: UIView {
         NotificationCenter.default.post(name: .removeDelayCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
+    
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        NotificationCenter.default.post(name: .removeDelayCardID, object: nil)
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !continueBtn.bounds.contains(touch.location(in: continueBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+    }
     
     @IBOutlet weak var continueBtn: UXButton!
     @IBAction func continueTapped(_ sender: Any) {
@@ -50,6 +62,8 @@ class DelayView: UIView {
         
         priceLbl.set(textColor: UIColor.Roadout.secondOrange, range: priceLbl.range(after: " - "))
         priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
+        
+        self.accentColor = UIColor.Roadout.secondOrange
         
     }
     

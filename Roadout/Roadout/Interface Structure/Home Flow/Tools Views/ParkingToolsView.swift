@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ParkingToolsView: UIView {
+class ParkingToolsView: UXView {
     
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -15,6 +15,18 @@ class ParkingToolsView: UIView {
         NotificationCenter.default.post(name: .removeToolsCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
+    
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        NotificationCenter.default.post(name: .removeToolsCardID, object: nil)
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !findWayBtn.bounds.contains(touch.location(in: findWayBtn)) && !expressLaneBtn.bounds.contains(touch.location(in: expressLaneBtn)) && !futureReserveBtn.bounds.contains(touch.location(in: futureReserveBtn)) && !payParkingBtn.bounds.contains(touch.location(in: payParkingBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+    }
     
     //MARK: - Parking Tools -
     
@@ -120,6 +132,8 @@ class ParkingToolsView: UIView {
         backBtn.layer.cornerRadius = 15.0
         
         styleButtons()
+        
+        self.accentColor = UIColor.Roadout.goldBrown
     }
     
     class func instanceFromNib() -> UIView {

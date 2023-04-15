@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PayView: UIView {
+class PayView: UXView {
     
     var selectedCard: String?
     let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
@@ -25,6 +25,23 @@ class PayView: UIView {
         }
     }
     @IBOutlet weak var backBtn: UIButton!
+    
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        if returnToDelay {
+            returnToDelay = false
+            NotificationCenter.default.post(name: .removePayDelayCardID, object: nil)
+        } else {
+            NotificationCenter.default.post(name: .removePayCardID, object: nil)
+        }
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !payBtn.bounds.contains(touch.location(in: payBtn)) && !chooseMethodBtn.bounds.contains(touch.location(in: chooseMethodBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+    }
     
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
@@ -54,7 +71,7 @@ class PayView: UIView {
                     do {
                         try await ReservationManager.sharedInstance.delayReservationAsync(date: Date(), minutes: delayTime/60, userID: id)
                         DispatchQueue.main.async {
-                            NotificationCenter.default.post(name: .showPaidBarID, object: nil)
+                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
                         }
                     } catch let err {
                         self.manageServerSideErrors(error: err)
@@ -66,7 +83,7 @@ class PayView: UIView {
                     do {
                         try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: reservationTime/60, spotID: selectedSpot.rID, payment: 10, userID: id)
                         DispatchQueue.main.async {
-                            NotificationCenter.default.post(name: .showPaidBarID, object: nil)
+                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
                         }
                     } catch let err {
                         self.manageServerSideErrors(error: err)
@@ -93,7 +110,7 @@ class PayView: UIView {
         chooseMethodBtn.showsMenuAsPrimaryAction = true
         
         payBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
-        payBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)
+        payBtn.backgroundColor = UIColor.Roadout.darkOrange
         payBtn.showsMenuAsPrimaryAction = true
         payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
     }
@@ -119,6 +136,8 @@ class PayView: UIView {
         
         detailsCard.layer.cornerRadius = detailsCard.frame.height/5
         timeCard.layer.cornerRadius = timeCard.frame.height/5
+        
+        self.accentColor = UIColor.Roadout.darkOrange
     }
     
     class func instanceFromNib() -> UIView {

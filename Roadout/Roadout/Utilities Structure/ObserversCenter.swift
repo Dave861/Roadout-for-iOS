@@ -34,7 +34,6 @@ extension Notification.Name {
     static let addPayParkingCardID = Notification.Name("ro.roadout.Roadout.addPayParkingCardID")
     static let removePayParkingCardID = Notification.Name("ro.roadout.Roadout.removePayParkingCardID")
     static let removeUnlockCardID = Notification.Name("ro.roadout.Roadout.removeUnlockCardID")
-    static let showPaidBarID = Notification.Name("ro.roadout.Roadout.showPaidBarID")
     static let showActiveBarID = Notification.Name("ro.roadout.Roadout.showActiveBarID")
     static let showUnlockedViewID = Notification.Name("ro.roadout.Roadout.showUnlockedViewID")
     static let showCancelledBarID = Notification.Name("ro.roadout.Roadout.showCancelledBarID")

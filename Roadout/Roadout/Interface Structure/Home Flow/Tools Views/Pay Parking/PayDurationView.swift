@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PayDurationView: UIView {
+class PayDurationView: UXView {
     
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
 
@@ -21,6 +21,22 @@ class PayDurationView: UIView {
         }
     }
     @IBOutlet weak var backBtn: UIButton!
+    
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        if isPayFlow {
+            NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+        } else {
+            NotificationCenter.default.post(name: .removePayDurationCardID, object: nil)
+        }
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !continueBtn.bounds.contains(touch.location(in: continueBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+    }
     
     @IBOutlet weak var continueBtn: UXButton!
     @IBAction func continueTapped(_ sender: Any) {
@@ -53,6 +69,8 @@ class PayDurationView: UIView {
         
         totalLbl.set(textColor: UIColor.Roadout.cashYellow, range: totalLbl.range(after: " - "))
         totalLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: totalLbl.range(after: " - "))
+        
+        self.accentColor = UIColor.Roadout.cashYellow
     }
     
     class func instanceFromNib() -> UIView {

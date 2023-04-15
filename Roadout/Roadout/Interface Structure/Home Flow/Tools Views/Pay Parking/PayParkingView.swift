@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PayParkingView: UIView {
+class PayParkingView: UXView {
 
     var selectedCard: String?
     let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
@@ -23,6 +23,18 @@ class PayParkingView: UIView {
         NotificationCenter.default.post(name: .removePayParkingCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
+    
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        NotificationCenter.default.post(name: .removePayParkingCardID, object: nil)
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !payBtn.bounds.contains(touch.location(in: payBtn)) && !chooseMethodBtn.bounds.contains(touch.location(in: chooseMethodBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+    }
     
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
@@ -125,6 +137,8 @@ class PayParkingView: UIView {
         
         licensePlateCard.layer.cornerRadius = licensePlateCard.frame.height/5
         timeCard.layer.cornerRadius = timeCard.frame.height/5
+        
+        self.accentColor = UIColor.Roadout.cashYellow
     }
     
     class func instanceFromNib() -> UIView {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UnlockView: UIView {
+class UnlockView: UXView {
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -15,6 +15,18 @@ class UnlockView: UIView {
         NotificationCenter.default.post(name: .removeUnlockCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
+    
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        NotificationCenter.default.post(name: .removeUnlockCardID, object: nil)
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !slidingBtn.bounds.contains(touch.location(in: slidingBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+    }
     
     @IBOutlet weak var slidingBtn: SlidingButton!
     @IBOutlet weak var explainerLbl: UILabel!
@@ -32,6 +44,8 @@ class UnlockView: UIView {
         
         explainerLbl.text = "Unlocking the spot cannot be undone. Once unlocked anyone can park on the spot, make sure you are at the spot before unlocking it.".localized()
         titleLbl.text = "Unlock Spot".localized()
+        
+        self.accentColor = UIColor.Roadout.darkYellow
     }
     
     class func instanceFromNib() -> UIView {

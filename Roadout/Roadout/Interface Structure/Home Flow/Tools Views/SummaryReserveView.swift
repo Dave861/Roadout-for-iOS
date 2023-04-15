@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SummaryReserveView: UIView {
+class SummaryReserveView: UXView {
         
     var selectedCard: String?
     let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
@@ -30,6 +30,19 @@ class SummaryReserveView: UIView {
         generator.impactOccurred()
         NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+    }
+    
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
+        NotificationCenter.default.post(name: .returnToSearchBarID, object: nil)
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !payBtn.bounds.contains(touch.location(in: payBtn)) && !chooseMethodBtn.bounds.contains(touch.location(in: chooseMethodBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
     }
     
     @IBOutlet weak var slider: UISlider!
@@ -68,7 +81,7 @@ class SummaryReserveView: UIView {
                                                                                      payment: 10,
                                                                                      userID: id)
                     DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: .showPaidBarID, object: nil)
+                        NotificationCenter.default.post(name: .showActiveBarID, object: nil)
                     }
                 } catch let err {
                     self.manageServerSideErrors(error: err)
@@ -127,6 +140,8 @@ class SummaryReserveView: UIView {
         
         locationCard.layer.cornerRadius = locationCard.frame.height/5
         timeCard.layer.cornerRadius = timeCard.frame.height/5
+        
+        self.accentColor = UIColor(named: selectedLocation.accentColor)!
     }
     
     class func instanceFromNib() -> UIView {

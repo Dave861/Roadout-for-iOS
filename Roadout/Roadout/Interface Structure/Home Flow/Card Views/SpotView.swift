@@ -8,7 +8,7 @@
 import UIKit
 import PusherSwift
 
-class SpotView: UIView, PusherDelegate {
+class SpotView: UXView, PusherDelegate {
 
     var pusher: Pusher!
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
@@ -51,6 +51,30 @@ class SpotView: UIView, PusherDelegate {
     }
     @IBOutlet weak var backBtn: UIButton!
     
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        
+        NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
+        
+        self.disconnectPusher()
+        guard let selectedItems = collectionView.indexPathsForSelectedItems else {
+            NotificationCenter.default.post(name: .removeSpotCardID, object: nil)
+            return
+        }
+         for indexPath in selectedItems {
+             collectionView.deselectItem(at: indexPath, animated:true)
+         }
+        NotificationCenter.default.post(name: .removeSpotCardID, object: nil)
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !continueBtn.bounds.contains(touch.location(in: continueBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+    }
+
+    
     //MARK: - View Confiuration -
     
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -74,6 +98,8 @@ class SpotView: UIView, PusherDelegate {
         
         layoutCollectionView()
         updateInfo(spotState: 100)
+        
+        self.accentColor = UIColor.Roadout.mainYellow
     }
 
     override func didMoveToSuperview() {

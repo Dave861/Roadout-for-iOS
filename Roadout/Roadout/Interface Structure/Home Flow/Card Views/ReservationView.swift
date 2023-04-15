@@ -8,7 +8,7 @@
 import UIKit
 import GeohashKit
 
-class ReservationView: UIView {
+class ReservationView: UXView {
     
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -16,6 +16,18 @@ class ReservationView: UIView {
         NotificationCenter.default.post(name: .removeReservationCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
+    
+    //MARK: - Swipe Gesture Configuration -
+    
+    override func viewSwipedBack() {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred()
+        NotificationCenter.default.post(name: .removeReservationCardID, object: nil)
+    }
+    
+    override func excludePansFrom(touch: UITouch) -> Bool {
+        return !unlockBtn.bounds.contains(touch.location(in: unlockBtn)) && !directionsBtn.bounds.contains(touch.location(in: directionsBtn)) && !delayBtn.bounds.contains(touch.location(in: delayBtn)) && !cancelBtn.bounds.contains(touch.location(in: cancelBtn)) && !arBtn.bounds.contains(touch.location(in: arBtn)) && !worldBtn.bounds.contains(touch.location(in: worldBtn)) && !helpBtn.bounds.contains(touch.location(in: helpBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+    }
     
     @IBOutlet weak var timerLbl: UILabel!
         
@@ -186,6 +198,8 @@ class ReservationView: UIView {
         dateFormatter.dateFormat = "HH:mm"
         let formattedDate = dateFormatter.string(from: ReservationManager.sharedInstance.reservationEndDate)
         self.timerLbl.text = formattedDate
+        
+        self.accentColor = UIColor.Roadout.icons
     }
     
     class func instanceFromNib() -> UIView {
