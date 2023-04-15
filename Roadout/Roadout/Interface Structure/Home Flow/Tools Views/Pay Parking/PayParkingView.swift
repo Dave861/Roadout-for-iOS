@@ -50,6 +50,11 @@ class PayParkingView: UXView {
     @IBOutlet weak var licensePlateCard: UIView!
     @IBOutlet weak var timeCard: UIView!
     
+    @IBOutlet weak var timeBtn: UIButton!
+    @IBAction func timeTapped(_ sender: Any) {
+        NotificationCenter.default.post(name: .removePayParkingCardID, object: nil)
+    }
+    
     @IBOutlet weak var payBtn: UXButton!
     @IBOutlet weak var chooseMethodBtn: UXButton!
     
@@ -109,6 +114,8 @@ class PayParkingView: UXView {
         manageObs()
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
+        
+        timeBtn.setTitle("", for: .normal)
         editLicensePlateBtn.layer.cornerRadius = editLicensePlateBtn.frame.height/2
         
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])

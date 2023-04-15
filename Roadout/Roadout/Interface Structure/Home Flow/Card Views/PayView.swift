@@ -50,6 +50,16 @@ class PayView: UXView {
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var actionTypeLbl: UXResizeLabel!
     
+    @IBOutlet weak var timeBtn: UIButton!
+    @IBAction func timeTapped(_ sender: Any) {
+        if returnToDelay {
+            returnToDelay = false
+            NotificationCenter.default.post(name: .removePayDelayCardID, object: nil)
+        } else {
+            NotificationCenter.default.post(name: .removePayCardID, object: nil)
+        }
+    }
+    
     @IBOutlet weak var detailsCard: UIView!
     @IBOutlet weak var timeCard: UIView!
     
@@ -121,6 +131,8 @@ class PayView: UXView {
         manageObs()
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
+        
+        timeBtn.setTitle("", for: .normal)
         
         preparePayButtons()
         fillReservationData(for: selectedSpot.rID)

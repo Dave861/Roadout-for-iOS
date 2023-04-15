@@ -736,17 +736,29 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="shortText" value="Reserve"/>
                             </userDefinedRuntimeAttributes>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50M-Y6-kZq">
+                            <rect key="frame" x="293" y="0.0" width="101" height="45"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain"/>
+                            <connections>
+                                <action selector="timeTapped:" destination="BAZ-Fv-mVf" eventType="touchUpInside" id="Bj7-kC-D7g"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
+                        <constraint firstItem="50M-Y6-kZq" firstAttribute="top" secondItem="scT-bE-Wbd" secondAttribute="top" id="1Ui-hf-t6N"/>
+                        <constraint firstAttribute="bottom" secondItem="50M-Y6-kZq" secondAttribute="bottom" id="5qT-dn-9Z4"/>
                         <constraint firstItem="wNI-i1-iN7" firstAttribute="centerY" secondItem="scT-bE-Wbd" secondAttribute="centerY" id="Cqp-bp-ZS9"/>
                         <constraint firstItem="wNI-i1-iN7" firstAttribute="leading" secondItem="scT-bE-Wbd" secondAttribute="leading" constant="6" id="KhC-aX-IAJ"/>
+                        <constraint firstItem="50M-Y6-kZq" firstAttribute="leading" secondItem="c6n-kA-ClM" secondAttribute="trailing" id="OqP-1c-CSe"/>
                         <constraint firstAttribute="trailing" secondItem="KuB-89-eeh" secondAttribute="trailing" constant="8" id="TY2-Ls-iC7"/>
                         <constraint firstItem="c6n-kA-ClM" firstAttribute="centerY" secondItem="scT-bE-Wbd" secondAttribute="centerY" id="ZdR-h8-GMM"/>
                         <constraint firstItem="c6n-kA-ClM" firstAttribute="leading" secondItem="wNI-i1-iN7" secondAttribute="trailing" constant="8" symbolic="YES" id="bjz-lt-zuS"/>
                         <constraint firstItem="KuB-89-eeh" firstAttribute="centerY" secondItem="scT-bE-Wbd" secondAttribute="centerY" id="cIX-FW-lU6"/>
                         <constraint firstItem="KuB-89-eeh" firstAttribute="leading" secondItem="c6n-kA-ClM" secondAttribute="trailing" constant="8" id="hmB-xD-dnN"/>
                         <constraint firstItem="KuB-89-eeh" firstAttribute="centerY" secondItem="scT-bE-Wbd" secondAttribute="centerY" id="i0V-43-Fg2"/>
+                        <constraint firstAttribute="trailing" secondItem="50M-Y6-kZq" secondAttribute="trailing" id="q9H-09-5Z2"/>
                         <constraint firstAttribute="height" constant="45" id="tmC-Pq-XLK"/>
                     </constraints>
                 </view>
@@ -790,11 +802,12 @@
                 <outlet property="detailsLbl" destination="f0V-8F-gwe" id="bz5-82-Nol"/>
                 <outlet property="payBtn" destination="RAv-wi-gqj" id="W0l-12-Kux"/>
                 <outlet property="priceLbl" destination="oI1-Sq-i2D" id="hpq-dx-0t7"/>
+                <outlet property="timeBtn" destination="50M-Y6-kZq" id="Hut-FK-ZZN"/>
                 <outlet property="timeCard" destination="scT-bE-Wbd" id="PRN-2f-wl2"/>
                 <outlet property="timeLbl" destination="KuB-89-eeh" id="29S-AI-ahC"/>
                 <outlet property="titleLbl" destination="giZ-dv-vcH" id="L4g-fv-YnD"/>
             </connections>
-            <point key="canvasLocation" x="2756.521739130435" y="163.45108695652175"/>
+            <point key="canvasLocation" x="2756.521739130435" y="163.04347826086959"/>
         </view>
         <view contentMode="scaleToFill" id="eO2-BE-dRG" customClass="ReservationView" customModule="Roadout" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>

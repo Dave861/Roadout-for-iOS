@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -292,6 +293,14 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="shortText" value="Pay"/>
                             </userDefinedRuntimeAttributes>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cx8-dz-XNb">
+                            <rect key="frame" x="293" y="0.0" width="101" height="45"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain"/>
+                            <connections>
+                                <action selector="timeTapped:" destination="m6t-HG-AQQ" eventType="touchUpInside" id="aWm-uA-fks"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" name="Secondary Floating"/>
                     <constraints>
@@ -300,9 +309,13 @@
                         <constraint firstItem="USf-gj-1oY" firstAttribute="leading" secondItem="GJw-GS-Z45" secondAttribute="trailing" constant="8" id="CDg-rK-P9d"/>
                         <constraint firstItem="USf-gj-1oY" firstAttribute="centerY" secondItem="UAA-Uz-M0D" secondAttribute="centerY" id="Onv-xg-FTl"/>
                         <constraint firstItem="yVU-rP-QUc" firstAttribute="leading" secondItem="UAA-Uz-M0D" secondAttribute="leading" constant="6" id="Peq-5D-vV9"/>
+                        <constraint firstAttribute="bottom" secondItem="cx8-dz-XNb" secondAttribute="bottom" id="R31-Gx-bGc"/>
+                        <constraint firstItem="cx8-dz-XNb" firstAttribute="top" secondItem="UAA-Uz-M0D" secondAttribute="top" id="VeA-Wp-Off"/>
                         <constraint firstItem="USf-gj-1oY" firstAttribute="centerY" secondItem="UAA-Uz-M0D" secondAttribute="centerY" id="WR3-Wi-gAz"/>
+                        <constraint firstItem="cx8-dz-XNb" firstAttribute="leading" secondItem="GJw-GS-Z45" secondAttribute="trailing" id="YG9-Bp-hMl"/>
                         <constraint firstAttribute="height" constant="45" id="e0c-yU-DE5"/>
                         <constraint firstItem="GJw-GS-Z45" firstAttribute="centerY" secondItem="UAA-Uz-M0D" secondAttribute="centerY" id="f7n-Sw-FX4"/>
+                        <constraint firstAttribute="trailing" secondItem="cx8-dz-XNb" secondAttribute="trailing" id="iWA-jZ-qoO"/>
                         <constraint firstItem="yVU-rP-QUc" firstAttribute="centerY" secondItem="UAA-Uz-M0D" secondAttribute="centerY" id="l5g-bB-ntu"/>
                     </constraints>
                 </view>
@@ -348,6 +361,7 @@
                 <outlet property="licensePlateLbl" destination="VHs-XI-DMc" id="Geb-Pn-jj5"/>
                 <outlet property="payBtn" destination="m4v-64-moM" id="du6-k1-qbD"/>
                 <outlet property="priceLbl" destination="hXg-ks-EJH" id="YkM-YF-heN"/>
+                <outlet property="timeBtn" destination="cx8-dz-XNb" id="cYm-oP-i29"/>
                 <outlet property="timeCard" destination="UAA-Uz-M0D" id="u5e-Fp-0Y3"/>
                 <outlet property="timeLbl" destination="USf-gj-1oY" id="m5P-OJ-bPx"/>
                 <outlet property="titleLbl" destination="ORZ-i5-FWS" id="mhD-fM-gNf"/>
