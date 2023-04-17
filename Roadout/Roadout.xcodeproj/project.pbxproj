@@ -32,6 +32,7 @@
 		9A24ADAE27DCF2CF00BE8E1A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A24ADB027DCF2CF00BE8E1A /* Settings.storyboard */; };
 		9A24ADB327DCF2EB00BE8E1A /* Cards.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A24ADB527DCF2EB00BE8E1A /* Cards.xib */; };
 		9A24ADB827DCF2F200BE8E1A /* Bars.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A24ADBA27DCF2F200BE8E1A /* Bars.xib */; };
+		9A2A993D29EDB37A00A78070 /* StripeCardScan in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2A993C29EDB37A00A78070 /* StripeCardScan */; };
 		9A2BF90F299E1F07003B2ADB /* RoadoutAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BF90E299E1F07003B2ADB /* RoadoutAppIntents.swift */; };
 		9A2BF911299E1FBE003B2ADB /* RoadoutStatusIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BF910299E1FBE003B2ADB /* RoadoutStatusIntent.swift */; };
 		9A2BF913299E1FCB003B2ADB /* RoadoutDirectionsIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BF912299E1FCB003B2ADB /* RoadoutDirectionsIntent.swift */; };
@@ -497,6 +498,7 @@
 				9AAE2661280947E000BBBAC3 /* GooglePlaces in Frameworks */,
 				9AAE265D280947E000BBBAC3 /* GoogleMapsCore in Frameworks */,
 				9A40C1DC281443FD00E44B23 /* IOSSecuritySuite in Frameworks */,
+				9A2A993D29EDB37A00A78070 /* StripeCardScan in Frameworks */,
 				9A8D8D3C27BADDAC0037DFE3 /* PusherSwift in Frameworks */,
 				9AA01DDF2789D78E0004211A /* CHIOTPField in Frameworks */,
 			);
@@ -1094,6 +1096,7 @@
 				9AAE2660280947E000BBBAC3 /* GooglePlaces */,
 				9A40C1DB281443FD00E44B23 /* IOSSecuritySuite */,
 				9A765C342896747600AF250D /* GeohashKit */,
+				9A2A993C29EDB37A00A78070 /* StripeCardScan */,
 			);
 			productName = Roadout;
 			productReference = 9AC926E7272697F00054E453 /* Roadout.app */;
@@ -1140,6 +1143,7 @@
 				9AAE2657280947E000BBBAC3 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
 				9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */,
 				9A765C332896747600AF250D /* XCRemoteSwiftPackageReference "GeohashKit" */,
+				9A2A993B29EDB37A00A78070 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
 			);
 			productRefGroup = 9AC926E8272697F00054E453 /* Products */;
 			projectDirPath = "";
@@ -1950,6 +1954,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9A2A993B29EDB37A00A78070 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
 		9A40C1DA281443FD00E44B23 /* XCRemoteSwiftPackageReference "IOSSecuritySuite" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/securing/IOSSecuritySuite.git";
@@ -2001,6 +2013,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9A2A993C29EDB37A00A78070 /* StripeCardScan */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A2A993B29EDB37A00A78070 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeCardScan;
+		};
 		9A397D4A280D5262003458BD /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9AA0EFD0277B5D5700B0F52A /* XCRemoteSwiftPackageReference "Alamofire" */;

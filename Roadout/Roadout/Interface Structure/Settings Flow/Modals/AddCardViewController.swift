@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StripeCardScan
 
 class AddCardViewController: UIViewController {
     
@@ -41,7 +42,22 @@ class AddCardViewController: UIViewController {
     
     @IBOutlet weak var scanBtn: UXButton!
     @IBAction func scanTapped(_ sender: Any) {
+        let cardScanSheet = CardScanSheet()
 
+        cardScanSheet.present(from: self) { result in
+            switch result {
+                case .completed(let scannedCard):
+                    self.numberField.text = scannedCard.pan
+                case .canceled:
+                    break
+                case .failed:
+                    let alert = UIAlertController(title: "Error".localized(), message: "Something went wrong and your card couldn't be scanned".localized(), preferredStyle: .alert)
+                    alert.view.tintColor = UIColor.Roadout.darkOrange
+                    let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true)
+            }
+        }
     }
     
     @IBOutlet weak var cvvField: PaddedTextField!
