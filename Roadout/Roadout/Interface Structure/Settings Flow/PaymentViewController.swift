@@ -75,6 +75,14 @@ class PaymentViewController: UIViewController {
         }
     }
     
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake && UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shakeToReport") {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ReportBugVC") as! ReportBugViewController
+            self.present(vc, animated: true)
+        }
+    }
+    
     func decideColor(for index: Int) -> Int {
         if index%4 == 0 {
             return 4

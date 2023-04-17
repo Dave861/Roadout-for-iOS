@@ -105,8 +105,8 @@ class UnlockedView: UXView {
     }
     
     func styleActionButtons() {
-        payBtn.layer.cornerRadius = 9
-        markBtn.layer.cornerRadius = 9
+        payBtn.layer.cornerRadius = 11
+        markBtn.layer.cornerRadius = 11
         
         payBtn.setAttributedTitle(NSAttributedString(string: " Pay Parking".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         if carParkHash == "roadout_carpark_clear" {

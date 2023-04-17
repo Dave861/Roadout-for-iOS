@@ -113,10 +113,10 @@ class ParkingToolsView: UXView {
     }
     
     func styleButtons() {
-        findWayBtn.layer.cornerRadius = 9
-        expressLaneBtn.layer.cornerRadius = 9
-        futureReserveBtn.layer.cornerRadius = 9
-        payParkingBtn.layer.cornerRadius = 9
+        findWayBtn.layer.cornerRadius = 11
+        expressLaneBtn.layer.cornerRadius = 11
+        futureReserveBtn.layer.cornerRadius = 11
+        payParkingBtn.layer.cornerRadius = 11
         
         findWayBtn.setAttributedTitle(NSAttributedString(string: " Find Way".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         expressLaneBtn.setAttributedTitle(NSAttributedString(string: " Express Lane".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)

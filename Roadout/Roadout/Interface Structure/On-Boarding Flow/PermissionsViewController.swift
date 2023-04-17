@@ -66,7 +66,6 @@ class PermissionsViewController: UIViewController {
         permissionsTableView.dataSource = self
         locationManager = CLLocationManager()
         locationManager?.delegate = self
-        
     }
     
     //MARK: - Permission Managers -

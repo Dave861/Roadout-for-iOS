@@ -9,8 +9,10 @@ import UIKit
 
 class AddCardViewController: UIViewController {
     
-    let setTitle = NSAttributedString(string: "Add".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let setTitle = NSAttributedString(string: "Save".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
+    
+    private var initialCenter: CGPoint = .zero
 
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -35,6 +37,11 @@ class AddCardViewController: UIViewController {
             alert.addAction(okAction)
             self.present(alert, animated: true)
         }
+    }
+    
+    @IBOutlet weak var scanBtn: UXButton!
+    @IBAction func scanTapped(_ sender: Any) {
+
     }
     
     @IBOutlet weak var cvvField: PaddedTextField!
@@ -69,6 +76,10 @@ class AddCardViewController: UIViewController {
 
         addBtn.layer.cornerRadius = 13.0
         addBtn.setAttributedTitle(setTitle, for: .normal)
+        addBtn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        scanBtn.layer.cornerRadius = 13.0
+        scanBtn.setTitle("", for: .normal)
+        scanBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         
         cvvField.layer.cornerRadius = 12.0
         cvvField.attributedPlaceholder = NSAttributedString(
@@ -91,12 +102,16 @@ class AddCardViewController: UIViewController {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         
-        self.expiryField.setInputViewDatePicker(target: self, selector: #selector(tapDone))
-        
+        prepareDatePicker()
+                
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
         
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
+        
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(cardPanned))
+        panRecognizer.delegate = self
+        cardView.addGestureRecognizer(panRecognizer)
     }
     
     
@@ -109,6 +124,21 @@ class AddCardViewController: UIViewController {
         }
     }
     
+    func prepareDatePicker() {
+        let screenWidth = UIScreen.main.bounds.width
+        let datePicker = MonthYearPickerView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))
+        datePicker.minimumDate = Date()
+        datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        
+        expiryField.inputView = datePicker
+    }
+    
+    @objc func datePickerChanged(datePicker: MonthYearPickerView) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/YY"
+        expiryField.text = dateFormatter.string(from: datePicker.date)
+    }
+    
     func addShadowToCardView() {
         cardView.layer.shadowColor = UIColor.black.cgColor
         cardView.layer.shadowOpacity = 0.1
@@ -118,14 +148,42 @@ class AddCardViewController: UIViewController {
         cardView.layer.shouldRasterize = true
         cardView.layer.rasterizationScale = UIScreen.main.scale
     }
-            
-    @objc func tapDone() {
-        if let datePicker = self.expiryField.inputView as? MonthYearPickerView {
-            let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "MM/YY"
-            self.expiryField.text = dateformatter.string(from: datePicker.date)
+    
+    @objc func cardPanned(_ recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+            case .began:
+                initialCenter = cardView.center
+            case .changed:
+                let translation = recognizer.translation(in: cardView)
+                if translation.y > 0 {
+                    cardView.center = CGPoint(x: initialCenter.x, y: initialCenter.y + translation.y)
+                    let progress = translation.y / (view.bounds.height / 2)
+                    blurEffect.alpha = 0.7 - progress * 0.7 // decrease blur opacity as card is panned down
+                }
+            case .ended:
+                let velocity = recognizer.velocity(in: cardView)
+                if velocity.y >= 1000 {
+                    self.view.endEditing(true)
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.blurEffect.alpha = 0
+                        self.cardView.frame.origin.y = self.view.frame.maxY
+                    }, completion: { done in
+                        self.dismiss(animated: false, completion: nil)
+                    })
+                } else {
+                    UIView.animate(withDuration: 0.2) {
+                        self.cardView.center = self.initialCenter
+                        self.blurEffect.alpha = 0.7
+                    }
+                }
+            default:
+                break
         }
-        self.expiryField.resignFirstResponder()
     }
     
+}
+extension AddCardViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return !addBtn.bounds.contains(touch.location(in: addBtn)) && !scanBtn.bounds.contains(touch.location(in: scanBtn))
+    }
 }

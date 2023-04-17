@@ -12,8 +12,10 @@ class EditPasswordViewController: UIViewController {
     let savedTitle = NSAttributedString(string: "Save".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     let forgotTitle = NSAttributedString(string: "Forgot Password?".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
-    var errorCounter = 0
     
+    private var errorCounter = 0
+    private var initialCenter: CGPoint = .zero
+
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
@@ -157,6 +159,10 @@ class EditPasswordViewController: UIViewController {
         
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
         forgotBtn.setAttributedTitle(forgotTitle, for: .normal)
+        
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(cardPanned))
+        panRecognizer.delegate = self
+        cardView.addGestureRecognizer(panRecognizer)
     }
     
     
@@ -179,7 +185,40 @@ class EditPasswordViewController: UIViewController {
         cardView.layer.rasterizationScale = UIScreen.main.scale
     }
     
+    @objc func cardPanned(_ recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+            case .began:
+                initialCenter = cardView.center
+            case .changed:
+                let translation = recognizer.translation(in: cardView)
+                if translation.y > 0 {
+                    cardView.center = CGPoint(x: initialCenter.x, y: initialCenter.y + translation.y)
+                    let progress = translation.y / (view.bounds.height / 2)
+                    blurEffect.alpha = 0.7 - progress * 0.7 // decrease blur opacity as card is panned down
+                }
+            case .ended:
+                let velocity = recognizer.velocity(in: cardView)
+                if velocity.y >= 1000 {
+                    self.view.endEditing(true)
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.blurEffect.alpha = 0
+                        self.cardView.frame.origin.y = self.view.frame.maxY
+                    }, completion: { done in
+                        self.dismiss(animated: false, completion: nil)
+                    })
+                } else {
+                    UIView.animate(withDuration: 0.2) {
+                        self.cardView.center = self.initialCenter
+                        self.blurEffect.alpha = 0.7
+                    }
+                }
+            default:
+                break
+        }
+    }
+    
     //MARK: - Validation Functions -
+    
     func validateFields() -> Bool {
         if oldPswField.text == "" {
             return false
@@ -249,5 +288,10 @@ class EditPasswordViewController: UIViewController {
                 alert.view.tintColor = UIColor.Roadout.redish
                 self.present(alert, animated: true, completion: nil)
         }
+    }
+}
+extension EditPasswordViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return !saveBtn.bounds.contains(touch.location(in: saveBtn))
     }
 }

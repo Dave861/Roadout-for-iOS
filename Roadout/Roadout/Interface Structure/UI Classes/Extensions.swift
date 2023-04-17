@@ -59,30 +59,6 @@ extension UITextField {
         textField.text = String(t!.prefix(maxLength))
     }
 }
-extension UITextField {
-    
-    func setInputViewDatePicker(target: Any, selector: Selector) {
-        // Create a UIDatePicker object and assign to inputView
-        let screenWidth = UIScreen.main.bounds.width
-        let datePicker = MonthYearPickerView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))//1
-        
-        self.inputView = datePicker //3
-        
-        // Create a toolbar and assign it to inputAccessoryView
-        let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 44.0)) //4
-        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //5
-        let cancel = UIBarButtonItem(title: "Cancel".localized(), style: .plain, target: nil, action: #selector(tapCancel)) // 6
-        let barButton = UIBarButtonItem(title: "Done".localized(), style: .plain, target: target, action: selector) //7
-        toolBar.setItems([cancel, flexible, barButton], animated: false) //8
-        toolBar.tintColor = UIColor.Roadout.darkOrange//9
-        self.inputAccessoryView = toolBar //10
-    }
-    
-    @objc func tapCancel() {
-        self.resignFirstResponder()
-    }
-    
-}
 extension UIDevice {
     var hasNotch: Bool {
         if #available(iOS 13.0,  *) {

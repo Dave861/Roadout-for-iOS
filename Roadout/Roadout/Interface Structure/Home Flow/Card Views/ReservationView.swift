@@ -49,13 +49,13 @@ class ReservationView: UXView {
     
     
     func styleActionButtons() {
-        unlockBtn.layer.cornerRadius = 9
-        directionsBtn.layer.cornerRadius = 9
-        delayBtn.layer.cornerRadius = 9
-        cancelBtn.layer.cornerRadius = 9
-        arBtn.layer.cornerRadius = 9
-        helpBtn.layer.cornerRadius = 9
-        worldBtn.layer.cornerRadius = 9
+        unlockBtn.layer.cornerRadius = 11
+        directionsBtn.layer.cornerRadius = 11
+        delayBtn.layer.cornerRadius = 11
+        cancelBtn.layer.cornerRadius = 11
+        arBtn.layer.cornerRadius = 11
+        helpBtn.layer.cornerRadius = 11
+        worldBtn.layer.cornerRadius = 11
         
         unlockBtn.setAttributedTitle(NSAttributedString(string: " Unlock".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         directionsBtn.setAttributedTitle(NSAttributedString(string: " Navigate".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)

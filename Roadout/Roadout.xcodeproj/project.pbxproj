@@ -26,6 +26,7 @@
 		9A14B91A2731430400967417 /* MonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B9192731430400967417 /* MonthPickerView.swift */; };
 		9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91B2731431B00967417 /* PaddedTextField.swift */; };
 		9A14B91E2731436300967417 /* UserPrefsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91D2731436300967417 /* UserPrefsUtils.swift */; };
+		9A16CCB829ED223A0088E25C /* ReportBugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A16CCB729ED223A0088E25C /* ReportBugViewController.swift */; };
 		9A1ABE972726A5EF00D4AA4B /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1ABE962726A5EF00D4AA4B /* WelcomeTableViewCell.swift */; };
 		9A24ADA927DCF20C00BE8E1A /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A24ADAB27DCF20C00BE8E1A /* Home.storyboard */; };
 		9A24ADAE27DCF2CF00BE8E1A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A24ADB027DCF2CF00BE8E1A /* Settings.storyboard */; };
@@ -296,6 +297,7 @@
 		9A150823272BFAD8008C083B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9A150824272BFAD8008C083B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9A15082F272BFAE1008C083B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9A16CCB729ED223A0088E25C /* ReportBugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBugViewController.swift; sourceTree = "<group>"; };
 		9A1ABE962726A5EF00D4AA4B /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		9A24ADAA27DCF20C00BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		9A24ADAF27DCF2CF00BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
@@ -512,7 +514,7 @@
 			path = "Tutorial Views";
 			sourceTree = "<group>";
 		};
-		9A089E46272A7D7D005B3FFE /* Extras */ = {
+		9A089E46272A7D7D005B3FFE /* Modals */ = {
 			isa = PBXGroup;
 			children = (
 				9A96F872272B09DF008B58FE /* AddCardViewController.swift */,
@@ -522,7 +524,7 @@
 				9AC16CC7291F9CCF004D7F55 /* EditLicensePlateViewController.swift */,
 				9AD1DF942972C7FD00ACBAAC /* MoreInfoViewController.swift */,
 			);
-			path = Extras;
+			path = Modals;
 			sourceTree = "<group>";
 		};
 		9A0C7772272E830500ECBFB2 /* Card Views */ = {
@@ -622,7 +624,7 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		9A39B0CA272847D1008E7FD0 /* Cells */ = {
+		9A39B0CA272847D1008E7FD0 /* Settings Cells */ = {
 			isa = PBXGroup;
 			children = (
 				9A39B0CB272847FC008E7FD0 /* UserSettingsCell.swift */,
@@ -633,7 +635,7 @@
 				9A39B0D52728482C008E7FD0 /* ButtonCell.swift */,
 				9A39B0D727284B38008E7FD0 /* SettingsTextCell.swift */,
 			);
-			path = Cells;
+			path = "Settings Cells";
 			sourceTree = "<group>";
 		};
 		9A49BFA9272FF40D00234A9F /* Bars */ = {
@@ -678,7 +680,7 @@
 			path = "Search Views";
 			sourceTree = "<group>";
 		};
-		9A7332012728796A00ACE30A /* Setting Cells */ = {
+		9A7332012728796A00ACE30A /* Other Cells */ = {
 			isa = PBXGroup;
 			children = (
 				9A96F876272B0A25008B58FE /* CardCell.swift */,
@@ -688,7 +690,7 @@
 				9AD1DF8E2972B74F00ACBAAC /* GuideCell.swift */,
 				9AD1DF902972B79100ACBAAC /* HeaderCell.swift */,
 			);
-			path = "Setting Cells";
+			path = "Other Cells";
 			sourceTree = "<group>";
 		};
 		9A765C382896773700AF250D /* World View */ = {
@@ -760,7 +762,7 @@
 		9AA9C4132726C5A500ECCCE1 /* UI Classes */ = {
 			isa = PBXGroup;
 			children = (
-				9ADB0A152909837C00F548D9 /* ToolTipViews */,
+				9ADB0A152909837C00F548D9 /* Tip Views */,
 				9A14B913273142A400967417 /* ContentSizedTableView.swift */,
 				9A14B915273142C100967417 /* Extensions.swift */,
 				9A14B917273142E100967417 /* KeyboardConstraint.swift */,
@@ -876,9 +878,9 @@
 			isa = PBXGroup;
 			children = (
 				9A3F3A212868E37100C3FB71 /* SettingsViewController.swift */,
-				9A089E46272A7D7D005B3FFE /* Extras */,
-				9A7332012728796A00ACE30A /* Setting Cells */,
-				9A39B0CA272847D1008E7FD0 /* Cells */,
+				9A39B0CA272847D1008E7FD0 /* Settings Cells */,
+				9A7332012728796A00ACE30A /* Other Cells */,
+				9A089E46272A7D7D005B3FFE /* Modals */,
 				9ADE4EA629A7B36F006ED7D1 /* AccountViewController.swift */,
 				9A7331FD272877F400ACE30A /* NotificationsViewController.swift */,
 				9A8484C12729A8AD00862685 /* DirectionsAppViewController.swift */,
@@ -928,13 +930,13 @@
 			path = "Directions Views";
 			sourceTree = "<group>";
 		};
-		9ADB0A152909837C00F548D9 /* ToolTipViews */ = {
+		9ADB0A152909837C00F548D9 /* Tip Views */ = {
 			isa = PBXGroup;
 			children = (
 				9A061AD5286D82DD008BC46F /* ToolTipView.swift */,
 				9A061AD7286D8314008BC46F /* ToolTipViewExtensions.swift */,
 			);
-			path = ToolTipViews;
+			path = "Tip Views";
 			sourceTree = "<group>";
 		};
 		9ADEE94829EACD0A0097D388 /* Problem Views */ = {
@@ -943,6 +945,7 @@
 				9A5381152789CA2400462D63 /* ResetPasswordViewController.swift */,
 				9A40C1DD2814458D00E44B23 /* DangerViewController.swift */,
 				9A74D01828B3C015000DB497 /* MaintenanceViewController.swift */,
+				9A16CCB729ED223A0088E25C /* ReportBugViewController.swift */,
 			);
 			path = "Problem Views";
 			sourceTree = "<group>";
@@ -1301,6 +1304,7 @@
 				9AD1DF952972C7FD00ACBAAC /* MoreInfoViewController.swift in Sources */,
 				9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */,
 				9A14B914273142A400967417 /* ContentSizedTableView.swift in Sources */,
+				9A16CCB829ED223A0088E25C /* ReportBugViewController.swift in Sources */,
 				9AF5355C29E332DC0053D440 /* ExpressPickCell.swift in Sources */,
 				9A8DC958282FF993008F92B6 /* HelpCell.swift in Sources */,
 				9A865A0C294E099D00E8CCDE /* ARHelpCell.swift in Sources */,

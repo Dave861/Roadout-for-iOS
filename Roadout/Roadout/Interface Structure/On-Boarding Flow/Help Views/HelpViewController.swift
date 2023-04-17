@@ -73,6 +73,14 @@ class HelpViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
         collectionView.collectionViewLayout = HelpCollectionViewLayout()
     }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake && UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shakeToReport") {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ReportBugVC") as! ReportBugViewController
+            self.present(vc, animated: true)
+        }
+    }
 
 }
 

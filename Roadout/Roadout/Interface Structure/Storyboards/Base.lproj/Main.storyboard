@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1388,7 +1388,7 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEI-0G-2Va" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="702"/>
+            <point key="canvasLocation" x="1444" y="1351"/>
         </scene>
         <!--Rate View Controller-->
         <scene sceneID="i79-xO-Akv">
@@ -1761,7 +1761,7 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRR-oR-CBH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2777" y="702"/>
+            <point key="canvasLocation" x="2111" y="701"/>
         </scene>
         <!--World View Controller-->
         <scene sceneID="PZh-cM-RGN">
@@ -1810,9 +1810,9 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydA-y4-A6m" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                                <rect key="frame" x="14" y="589" width="365" height="76.666666666666629"/>
+                                <rect key="frame" x="14" y="589" width="365" height="81.333333333333371"/>
                                 <string key="text">World View is provided by Google Maps and it shows a real world image of how the spot you reserved looked like at some point in time in order to help you locate it more easily</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1844,7 +1844,7 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WBH-KV-f73" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3442" y="702"/>
+            <point key="canvasLocation" x="2776" y="701"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="Ci3-5F-9fI">
@@ -2485,6 +2485,133 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T91-kD-JPK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5995" y="387"/>
+        </scene>
+        <!--Report Bug View Controller-->
+        <scene sceneID="mGi-W9-JKP">
+            <objects>
+                <viewController storyboardIdentifier="ReportBugVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TYM-SJ-gMQ" customClass="ReportBugViewController" customModule="Roadout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lB1-pw-yG5">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jva-ke-jjp">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="35y-ml-qlD">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="systemUltraThinMaterial"/>
+                            </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FdK-QL-vDh">
+                                <rect key="frame" x="0.0" y="589" width="393" height="263"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report a Bug" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMK-eI-p1J" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="14.999999999999998" width="132.33333333333334" height="26.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2h-aY-CdC" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
+                                        <rect key="frame" x="317.66666666666669" y="19.333333333333371" width="72.333333333333314" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="oo7-Kc-xW2"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Greyish"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelTapped:" destination="TYM-SJ-gMQ" eventType="touchUpInside" id="3Yw-6B-qix"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZ7-LF-J0j" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="130" width="363" height="50"/>
+                                        <color key="backgroundColor" name="Greyish"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="7ja-GQ-ZpZ"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Background"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Report">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="reportTapped:" destination="TYM-SJ-gMQ" eventType="touchUpInside" id="ns7-QE-UMg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qao-yf-Ean" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
+                                        <rect key="frame" x="96.666666666666686" y="188" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="uFU-Do-WgX"/>
+                                            <constraint firstAttribute="width" constant="200" id="viE-cw-wvl"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Greyish"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Don't Show Again">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="disableTapped:" destination="TYM-SJ-gMQ" eventType="touchUpInside" id="lzf-el-OwB"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You shook your device. Did something go wrong? Please report if you encountered a bug so we can fix it as fast as we can" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEk-FI-7US">
+                                        <rect key="frame" x="15" y="54" width="363" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Background"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="kEk-FI-7US" secondAttribute="trailing" constant="15" id="1TW-df-0hj"/>
+                                    <constraint firstItem="kEk-FI-7US" firstAttribute="leading" secondItem="FdK-QL-vDh" secondAttribute="leading" constant="15" id="8mB-WG-nHP"/>
+                                    <constraint firstItem="eZ7-LF-J0j" firstAttribute="leading" secondItem="FdK-QL-vDh" secondAttribute="leading" constant="15" id="9Xl-va-XIZ"/>
+                                    <constraint firstItem="qao-yf-Ean" firstAttribute="top" secondItem="eZ7-LF-J0j" secondAttribute="bottom" constant="8" id="CCx-OB-FfJ"/>
+                                    <constraint firstItem="eZ7-LF-J0j" firstAttribute="top" secondItem="kEk-FI-7US" secondAttribute="bottom" constant="15" id="GDL-mO-R8n"/>
+                                    <constraint firstItem="TMK-eI-p1J" firstAttribute="top" secondItem="FdK-QL-vDh" secondAttribute="top" constant="15" id="HeI-Hx-WJJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Z2h-aY-CdC" secondAttribute="trailing" constant="3" id="Iw1-pq-ziB"/>
+                                    <constraint firstItem="Z2h-aY-CdC" firstAttribute="top" secondItem="FdK-QL-vDh" secondAttribute="top" constant="19.329999999999998" id="Otu-cL-h5E"/>
+                                    <constraint firstAttribute="bottom" secondItem="qao-yf-Ean" secondAttribute="bottom" constant="35" id="Pz6-uF-m7V"/>
+                                    <constraint firstItem="qao-yf-Ean" firstAttribute="centerX" secondItem="FdK-QL-vDh" secondAttribute="centerX" id="Ukn-Ek-JiQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="eZ7-LF-J0j" secondAttribute="trailing" constant="15" id="nyU-j4-Prl"/>
+                                    <constraint firstAttribute="height" constant="263" id="te4-Oz-ixt"/>
+                                    <constraint firstItem="TMK-eI-p1J" firstAttribute="leading" secondItem="FdK-QL-vDh" secondAttribute="leading" constant="15" id="wUx-md-oGO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Sbn-bc-06Q"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FdK-QL-vDh" firstAttribute="leading" secondItem="Sbn-bc-06Q" secondAttribute="leading" id="FCJ-Bg-APK"/>
+                            <constraint firstItem="Jva-ke-jjp" firstAttribute="leading" secondItem="Sbn-bc-06Q" secondAttribute="leading" id="HZh-tZ-ahU"/>
+                            <constraint firstAttribute="bottom" secondItem="FdK-QL-vDh" secondAttribute="bottom" id="J2Q-x5-Pwa" customClass="MagicKeyboardConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstItem="FdK-QL-vDh" firstAttribute="trailing" secondItem="Sbn-bc-06Q" secondAttribute="trailing" id="LJX-tf-SBz"/>
+                            <constraint firstAttribute="trailing" secondItem="Jva-ke-jjp" secondAttribute="trailing" id="c2Y-Jh-iHP"/>
+                            <constraint firstItem="Jva-ke-jjp" firstAttribute="top" secondItem="lB1-pw-yG5" secondAttribute="top" id="jtO-Xe-CKL"/>
+                            <constraint firstAttribute="bottom" secondItem="Jva-ke-jjp" secondAttribute="bottom" id="yBj-Xc-vBr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="blurEffect" destination="Jva-ke-jjp" id="a7E-De-KL1"/>
+                        <outlet property="cancelBtn" destination="Z2h-aY-CdC" id="cAj-ym-Kfq"/>
+                        <outlet property="cardView" destination="FdK-QL-vDh" id="A01-1A-83m"/>
+                        <outlet property="disableBtn" destination="qao-yf-Ean" id="aYD-Nj-B9H"/>
+                        <outlet property="reportBtn" destination="eZ7-LF-J0j" id="xoe-gc-Z4T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7II-sj-gqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3450" y="701"/>
         </scene>
     </scenes>
     <designables>

@@ -1,28 +1,60 @@
 //
-//  AddExpressViewController.swift
+//  ReportBugViewController.swift
 //  Roadout
 //
-//  Created by David Retegan on 23.07.2022.
+//  Created by David Retegan on 17.04.2023.
 //
 
 import UIKit
+import MessageUI
 
-class AddExpressViewController: UIViewController {
+class ReportBugViewController: UIViewController {
 
-    let doneTitle = NSAttributedString(string: "Done".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let reportTitle = NSAttributedString(string: "Report".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let disableTitle = NSAttributedString(string: "Don't Show Again".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     private var initialCenter: CGPoint = .zero
-    
+
     @IBOutlet weak var cardView: UIView!
-    
-    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
-    
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
+    @IBOutlet weak var reportBtn: UXButton!
+    @IBAction func reportTapped(_ sender: Any) {
+        sendEmail()
+    }
+    
+    @IBOutlet weak var disableBtn: UIButton!
+    @IBAction func disableTapped(_ sender: Any) {
+        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shakeToReport")
+        UIView.animate(withDuration: 0.1) {
+            self.blurEffect.alpha = 0
+        } completion: { done in
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.view.tintColor = UIColor.Roadout.greyish
+            mail.setToRecipients(["roadout.ro@gmail.com"])
+            mail.setSubject("Roadout for iOS - Report".localized())
+            mail.setMessageBody("Please describe your issue and steps to reproduce it. If you have any screenshots please attach them - Roadout Team".localized(), isHTML: false)
+
+            present(mail, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
+            alert.view.tintColor = UIColor.Roadout.greyish
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     @objc func blurTapped() {
-        self.reloadCheckedItems()
         UIView.animate(withDuration: 0.1) {
             self.blurEffect.alpha = 0
         } completion: { done in
@@ -31,27 +63,12 @@ class AddExpressViewController: UIViewController {
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
-        self.reloadCheckedItems()
         UIView.animate(withDuration: 0.1) {
-          self.blurEffect.alpha = 0
+            self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
-    @IBOutlet weak var doneBtn: UXButton!
-    
-    @IBAction func doneTapped(_ sender: Any) {
-        UserDefaults.roadout!.set(favouriteLocationIDs, forKey: "ro.roadout.Roadout.favouriteLocationIDs")
-        NotificationCenter.default.post(name: .reloadExpressLocationsID, object: nil)
-        UIView.animate(withDuration: 0.1) {
-          self.blurEffect.alpha = 0
-        } completion: { done in
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    @IBOutlet weak var tableView: UITableView!
     
     //MARK: - View Configuration -
     
@@ -62,23 +79,21 @@ class AddExpressViewController: UIViewController {
         
         addShadowToCardView()
 
-        doneBtn.layer.cornerRadius = 12
-        doneBtn.setAttributedTitle(doneTitle, for: .normal)
-       
-    
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
-        blurEffect.addGestureRecognizer(tapRecognizer)
+        reportBtn.layer.cornerRadius = 13.0
+        reportBtn.setAttributedTitle(reportTitle, for: .normal)
+
+        disableBtn.setAttributedTitle(disableTitle, for: .normal)
         
-        titleLbl.text = "Edit Locations".localized()
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
+        blurEffect.addGestureRecognizer(tapRecognizer)
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(cardPanned))
         panRecognizer.delegate = self
         cardView.addGestureRecognizer(panRecognizer)
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -129,50 +144,19 @@ class AddExpressViewController: UIViewController {
         }
     }
     
-    func reloadCheckedItems() {
-        favouriteLocationIDs = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.Roadout.favouriteLocationIDs") ?? [String]()
-        tableView.reloadData()
-    }
-    
 }
-extension AddExpressViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return parkLocations.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AddExpressCell") as! AddExpressCell
-        cell.locationNameLbl.text = parkLocations[indexPath.row].name
-        if favouriteLocationIDs.contains(parkLocations[indexPath.row].rID) {
-            cell.check.image = UIImage(systemName: "checkmark.circle.fill")
-            cell.check.tintColor = UIColor.Roadout.devBrown
-        } else {
-            cell.check.image = UIImage(systemName: "plus.circle.fill")
-            cell.check.tintColor = UIColor.Roadout.expressFocus
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 53
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! AddExpressCell
-        if cell.check.image == UIImage(systemName: "plus.circle.fill") {
-            cell.check.image = UIImage(systemName: "checkmark.circle.fill")
-            cell.check.tintColor = UIColor.Roadout.devBrown
-            favouriteLocationIDs.append(parkLocations[indexPath.row].rID)
-        } else {
-            cell.check.image = UIImage(systemName: "plus.circle.fill")
-            cell.check.tintColor = UIColor.Roadout.expressFocus
-            favouriteLocationIDs = favouriteLocationIDs.remove(parkLocations[indexPath.row].rID)
-        }
-    }
-}
-extension AddExpressViewController: UIGestureRecognizerDelegate {
+extension ReportBugViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return !doneBtn.bounds.contains(touch.location(in: doneBtn))
+        return !reportBtn.bounds.contains(touch.location(in: reportBtn)) && !disableBtn.bounds.contains(touch.location(in: disableBtn))
+    }
+}
+extension ReportBugViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+        UIView.animate(withDuration: 0.1) {
+            self.blurEffect.alpha = 0
+        } completion: { done in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }

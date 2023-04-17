@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-open class MonthYearPickerView: UIControl {
+class MonthYearPickerView: UIControl {
 
     /// specify min date. default is nil. When `minimumDate` > `maximumDate`, the values are ignored.
     /// If `date` is earlier than `minimumDate` when it is set, `date` is changed to `minimumDate`.
