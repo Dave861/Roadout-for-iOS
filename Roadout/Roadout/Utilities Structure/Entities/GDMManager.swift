@@ -18,16 +18,13 @@ class DistanceManager {
         case jsonError
         case unknownError
     }
-    
-    let language = "en".localized()
-    
+        
     func getTimeAndDistanceBetween(_ ogCoords: CLLocationCoordinate2D, _ destCoords: CLLocationCoordinate2D) async throws -> String {
-        let getRequest = AF.request("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=\(destCoords.latitude),\(destCoords.longitude)&origins=\(ogCoords.latitude),\(ogCoords.longitude)&units=metric&departure_time=now&traffic_model=best_guess&language=\(language)&key=\(webAPIKey)", method: .get)
+        let getRequest = AF.request("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=\(destCoords.latitude),\(destCoords.longitude)&origins=\(ogCoords.latitude),\(ogCoords.longitude)&units=metric&departure_time=now&traffic_model=best_guess&language=en&key=\(webAPIKey)", method: .get)
         
         var responseJson: String
         do {
             try await responseJson = getRequest.serializingString().value
-            print(responseJson)
         } catch {
             throw DistanceErrors.networkError
         }

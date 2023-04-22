@@ -137,7 +137,7 @@ class UserManager {
         
         if jsonArray["status"] as! String == "Success" {
             self.userName = jsonArray["name"] as! String
-            self.userEmail = jsonArray["email"] as! String
+            self.userEmail = (jsonArray["email"] as! String)
             UserDefaults.roadout!.set(self.userEmail, forKey: "ro.roadout.Roadout.UserMail")
             UserDefaults.roadout!.set(self.userName, forKey: "ro.roadout.Roadout.UserName")
         } else {
@@ -188,7 +188,7 @@ class UserManager {
         }
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let hashedPswd = MD5(string: password)
-        let params : Parameters = ["email":userEmail,"psw":hashedPswd]
+        let params : Parameters = ["email":userEmail!,"psw":hashedPswd]
         
         let resetRequest = AF.request("https://\(roadoutServerURL)/Authentification/ResetPassword.php", method: .post, parameters: params, encoding: JSONEncoding.default, headers: _headers)
         

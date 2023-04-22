@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MessageUI
 
 class ReportBugViewController: UIViewController {
 
@@ -20,9 +19,11 @@ class ReportBugViewController: UIViewController {
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
+    @IBOutlet weak var descriptionField: UITextView!
+    
     @IBOutlet weak var reportBtn: UXButton!
     @IBAction func reportTapped(_ sender: Any) {
-        sendEmail()
+        
     }
     
     @IBOutlet weak var disableBtn: UIButton!
@@ -32,25 +33,6 @@ class ReportBugViewController: UIViewController {
             self.blurEffect.alpha = 0
         } completion: { done in
             self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    func sendEmail() {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.view.tintColor = UIColor.Roadout.greyish
-            mail.setToRecipients(["roadout.ro@gmail.com"])
-            mail.setSubject("Roadout for iOS - Report".localized())
-            mail.setMessageBody("Please describe your issue and steps to reproduce it. If you have any screenshots please attach them - Roadout Team".localized(), isHTML: false)
-
-            present(mail, animated: true)
-        } else {
-            let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor.Roadout.greyish
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -85,6 +67,11 @@ class ReportBugViewController: UIViewController {
         disableBtn.setAttributedTitle(disableTitle, for: .normal)
         
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
+        
+        descriptionField.text = "Please describe your issue and any steps to repoduce it…".localized()
+        descriptionField.textColor = .systemGray
+        descriptionField.delegate = self
+        descriptionField.textContainerInset = UIEdgeInsets(top: 8, left: 6, bottom: 5, right: 6)
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
@@ -150,13 +137,18 @@ extension ReportBugViewController: UIGestureRecognizerDelegate {
         return !reportBtn.bounds.contains(touch.location(in: reportBtn)) && !disableBtn.bounds.contains(touch.location(in: disableBtn))
     }
 }
-extension ReportBugViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
-        UIView.animate(withDuration: 0.1) {
-            self.blurEffect.alpha = 0
-        } completion: { done in
-            self.dismiss(animated: true, completion: nil)
+extension ReportBugViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.systemGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Please describe your issue and any steps to repoduce it…".localized()
+            textView.textColor = UIColor.systemGray
         }
     }
 }

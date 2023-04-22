@@ -5,7 +5,6 @@
 //  Created by David Retegan on 26.10.2021.
 //
 import UIKit
-import MessageUI
 
 class SettingsViewController: UIViewController {
     
@@ -67,25 +66,6 @@ class SettingsViewController: UIViewController {
     }
     
     //MARK: - Logic Functions -
-
-    func sendEmail() {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.view.tintColor = UIColor.Roadout.greyish
-            mail.setToRecipients(["roadout.ro@gmail.com"])
-            mail.setSubject("Roadout for iOS - Report".localized())
-            mail.setMessageBody("Please describe your issue and steps to reproduce it. If you have any screenshots please attach them - Roadout Team".localized(), isHTML: false)
-
-            present(mail, animated: true)
-        } else {
-            let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor.Roadout.greyish
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
     
     func signOutAllData() {
         UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
@@ -106,11 +86,6 @@ class SettingsViewController: UIViewController {
         UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.favouriteLocationIDs")
         UserDefaults.roadout!.set("", forKey: "ro.roadout.Roadout.userLicensePlate")
         userLicensePlate = ""
-    }
-}
-extension SettingsViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
     }
 }
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -176,7 +151,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             self.present(alert, animated: true, completion: nil)
         } else if cellTypes[indexPath.row] != "SpacerCell" &&  cellTypes[indexPath.row] != "TextCell" {
             if cellVCs[indexPath.row] == "ReportVC" {
-                sendEmail()
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "ReportBugVC") as! ReportBugViewController
+                self.present(vc, animated: true)
             } else {
                 let sb = UIStoryboard(name: "Settings", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: cellVCs[indexPath.row])

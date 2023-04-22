@@ -152,7 +152,10 @@ class TimeView: UXView {
                         self.timeLbl.text = resultedTime.replacingOccurrences(of: " min", with: " min".localized())
                         self.delayLbl.isHidden = true
                         self.recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
-                        self.minuteSlider.setValue(Float(Int(resultedTime.replacingOccurrences(of: " min", with: "")) ?? 15), animated: true)
+                        
+                        var valueTime = resultedTime.replacingOccurrences(of: " mins", with: "")
+                        valueTime = valueTime.replacingOccurrences(of: " min", with: "")
+                        self.minuteSlider.setValue(Float(Int(valueTime) ?? 15), animated: true)
                     } else if self.evaluateTime(resultedTime) == 0 {
                         self.updatePhraseSelect()
                         self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " min".localized()
@@ -176,10 +179,11 @@ class TimeView: UXView {
     
     func evaluateTime(_ time: String) -> Int {
         //0 for > 30, 1 for < 20, 2 for < 30
-        if time.contains("hours".localized()) {
+        if time.contains("hours") || time.contains("hour") {
             return 0
         } else {
-            let timeToConvert = time.replacingOccurrences(of: " min".localized(), with: "")
+            var timeToConvert = time.replacingOccurrences(of: " mins", with: "")
+            timeToConvert = timeToConvert.replacingOccurrences(of: " min", with: "")
             let convertedTime = Int(timeToConvert) ?? 100
             if convertedTime > 30 {
                 return 0
@@ -192,7 +196,8 @@ class TimeView: UXView {
     }
     
     func getDelayTime(_ time: String) -> String {
-        let timeToConvert = time.replacingOccurrences(of: " min".localized(), with: "")
+        var timeToConvert = time.replacingOccurrences(of: " mins", with: "")
+        timeToConvert = timeToConvert.replacingOccurrences(of: " min", with: "")
         let convertedTime = Int(timeToConvert) ?? 100
         return "\(convertedTime-20) " + "delay".localized()
     }

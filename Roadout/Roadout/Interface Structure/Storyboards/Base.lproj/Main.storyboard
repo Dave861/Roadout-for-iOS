@@ -1662,43 +1662,28 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDi-YY-wAg">
-                                <rect key="frame" x="20" y="461" width="353" height="86"/>
+                                <rect key="frame" x="20" y="461" width="353" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5U-3I-1xv" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="13" width="45" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link to rating to my account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxy-uA-cQn" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="51" width="212" height="21"/>
+                                        <rect key="frame" x="8" y="14.666666666666686" width="45" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4/4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbW-J7-OFs">
-                                        <rect key="frame" x="311" y="11" width="31" height="24"/>
+                                        <rect key="frame" x="311" y="13" width="31" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <color key="textColor" name="Main Yellow"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9uP-NR-KSp">
-                                        <rect key="frame" x="293" y="46" width="51" height="31"/>
-                                        <color key="tintColor" name="Main Yellow"/>
-                                        <color key="onTintColor" name="Main Yellow"/>
-                                    </switch>
                                 </subviews>
                                 <color key="backgroundColor" name="Secondary Detail"/>
                                 <constraints>
                                     <constraint firstItem="l5U-3I-1xv" firstAttribute="leading" secondItem="qDi-YY-wAg" secondAttribute="leading" constant="8" id="DOi-id-Bqh"/>
-                                    <constraint firstAttribute="trailing" secondItem="9uP-NR-KSp" secondAttribute="trailing" constant="11" id="KTp-T7-Lzj"/>
-                                    <constraint firstItem="l5U-3I-1xv" firstAttribute="top" secondItem="qDi-YY-wAg" secondAttribute="top" constant="13" id="XRs-Ia-jqq"/>
-                                    <constraint firstItem="AbW-J7-OFs" firstAttribute="top" secondItem="qDi-YY-wAg" secondAttribute="top" constant="11" id="ajL-WT-kTr"/>
-                                    <constraint firstAttribute="height" constant="86" id="iTi-Pr-8TU"/>
-                                    <constraint firstAttribute="bottom" secondItem="mxy-uA-cQn" secondAttribute="bottom" constant="14" id="kBA-JR-EwZ"/>
+                                    <constraint firstItem="l5U-3I-1xv" firstAttribute="centerY" secondItem="qDi-YY-wAg" secondAttribute="centerY" id="HSX-Xf-mUQ"/>
+                                    <constraint firstAttribute="height" constant="50" id="iTi-Pr-8TU"/>
                                     <constraint firstAttribute="trailing" secondItem="AbW-J7-OFs" secondAttribute="trailing" constant="11" id="m8h-sr-9oa"/>
-                                    <constraint firstItem="mxy-uA-cQn" firstAttribute="leading" secondItem="qDi-YY-wAg" secondAttribute="leading" constant="8" id="nSW-Xb-8jb"/>
-                                    <constraint firstAttribute="bottom" secondItem="9uP-NR-KSp" secondAttribute="bottom" constant="9" id="tq0-W0-454"/>
+                                    <constraint firstItem="AbW-J7-OFs" firstAttribute="centerY" secondItem="qDi-YY-wAg" secondAttribute="centerY" id="o4k-ux-EH4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1737,8 +1722,6 @@ Phasellus leo diam, hendrerit quis sem vel, vulputate porta nunc. Vestibulum int
                         <outlet property="card1" destination="LSj-tt-4w6" id="RDv-9J-ege"/>
                         <outlet property="card2" destination="Nfj-Lo-Wtr" id="bWD-me-LXk"/>
                         <outlet property="card3" destination="qDi-YY-wAg" id="3Ty-6J-0mc"/>
-                        <outlet property="linkRatingTextLbl" destination="mxy-uA-cQn" id="x62-QF-A4k"/>
-                        <outlet property="linkSwitch" destination="9uP-NR-KSp" id="8ty-Nc-nog"/>
                         <outlet property="overallImpressionLbl" destination="AbW-J7-OFs" id="iEh-JB-2SE"/>
                         <outlet property="overallLbl" destination="0YL-94-B3X" id="0n7-gi-wtz"/>
                         <outlet property="parkingBadBtn" destination="i3d-6S-h0h" id="poA-Jb-3f4"/>
@@ -2503,7 +2486,7 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                                 <blurEffect style="systemUltraThinMaterial"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FdK-QL-vDh">
-                                <rect key="frame" x="0.0" y="589" width="393" height="263"/>
+                                <rect key="frame" x="0.0" y="502" width="393" height="350"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report a Bug" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMK-eI-p1J" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="14.999999999999998" width="132.33333333333334" height="26.333333333333329"/>
@@ -2529,7 +2512,7 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZ7-LF-J0j" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="130" width="363" height="50"/>
+                                        <rect key="frame" x="15" y="224" width="363" height="50"/>
                                         <color key="backgroundColor" name="Greyish"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="7ja-GQ-ZpZ"/>
@@ -2547,9 +2530,9 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qao-yf-Ean" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="96.666666666666686" y="188" width="200" height="40"/>
+                                        <rect key="frame" x="96.666666666666686" y="284" width="200" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="uFU-Do-WgX"/>
+                                            <constraint firstAttribute="height" constant="31" id="uFU-Do-WgX"/>
                                             <constraint firstAttribute="width" constant="200" id="viE-cw-wvl"/>
                                         </constraints>
                                         <color key="tintColor" name="Greyish"/>
@@ -2564,27 +2547,46 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                                             <action selector="disableTapped:" destination="TYM-SJ-gMQ" eventType="touchUpInside" id="lzf-el-OwB"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You shook your device. Did something go wrong? Please report if you encountered a bug so we can fix it as fast as we can" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEk-FI-7US">
-                                        <rect key="frame" x="15" y="54" width="363" height="61"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="systemGrayColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-Vo-jSI">
+                                        <rect key="frame" x="20" y="58.333333333333371" width="353" height="32"/>
+                                        <segments>
+                                            <segment title="Low"/>
+                                            <segment title="Medium"/>
+                                            <segment title="High"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cWa-fh-p4Q" customClass="PlaceholderTextView" customModule="Roadout" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="101.33333333333337" width="363" height="110.66666666666669"/>
+                                        <color key="backgroundColor" name="Card Background"/>
+                                        <color key="tintColor" name="Greyish"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="kEk-FI-7US" secondAttribute="trailing" constant="15" id="1TW-df-0hj"/>
-                                    <constraint firstItem="kEk-FI-7US" firstAttribute="leading" secondItem="FdK-QL-vDh" secondAttribute="leading" constant="15" id="8mB-WG-nHP"/>
                                     <constraint firstItem="eZ7-LF-J0j" firstAttribute="leading" secondItem="FdK-QL-vDh" secondAttribute="leading" constant="15" id="9Xl-va-XIZ"/>
-                                    <constraint firstItem="qao-yf-Ean" firstAttribute="top" secondItem="eZ7-LF-J0j" secondAttribute="bottom" constant="8" id="CCx-OB-FfJ"/>
-                                    <constraint firstItem="eZ7-LF-J0j" firstAttribute="top" secondItem="kEk-FI-7US" secondAttribute="bottom" constant="15" id="GDL-mO-R8n"/>
+                                    <constraint firstItem="qao-yf-Ean" firstAttribute="top" secondItem="eZ7-LF-J0j" secondAttribute="bottom" constant="10" id="CCx-OB-FfJ"/>
                                     <constraint firstItem="TMK-eI-p1J" firstAttribute="top" secondItem="FdK-QL-vDh" secondAttribute="top" constant="15" id="HeI-Hx-WJJ"/>
+                                    <constraint firstItem="eZ7-LF-J0j" firstAttribute="top" secondItem="cWa-fh-p4Q" secondAttribute="bottom" constant="12" id="IHp-Th-GTb"/>
+                                    <constraint firstAttribute="trailing" secondItem="TWl-Vo-jSI" secondAttribute="trailing" constant="20" id="In0-O4-sMO"/>
                                     <constraint firstAttribute="trailing" secondItem="Z2h-aY-CdC" secondAttribute="trailing" constant="3" id="Iw1-pq-ziB"/>
+                                    <constraint firstItem="cWa-fh-p4Q" firstAttribute="leading" secondItem="FdK-QL-vDh" secondAttribute="leading" constant="15" id="NdR-gr-q9F"/>
                                     <constraint firstItem="Z2h-aY-CdC" firstAttribute="top" secondItem="FdK-QL-vDh" secondAttribute="top" constant="19.329999999999998" id="Otu-cL-h5E"/>
                                     <constraint firstAttribute="bottom" secondItem="qao-yf-Ean" secondAttribute="bottom" constant="35" id="Pz6-uF-m7V"/>
+                                    <constraint firstItem="cWa-fh-p4Q" firstAttribute="top" secondItem="TWl-Vo-jSI" secondAttribute="bottom" constant="12" id="Qkz-IE-j4w"/>
                                     <constraint firstItem="qao-yf-Ean" firstAttribute="centerX" secondItem="FdK-QL-vDh" secondAttribute="centerX" id="Ukn-Ek-JiQ"/>
+                                    <constraint firstItem="TWl-Vo-jSI" firstAttribute="leading" secondItem="FdK-QL-vDh" secondAttribute="leading" constant="20" id="a4d-do-Nnk"/>
                                     <constraint firstAttribute="trailing" secondItem="eZ7-LF-J0j" secondAttribute="trailing" constant="15" id="nyU-j4-Prl"/>
-                                    <constraint firstAttribute="height" constant="263" id="te4-Oz-ixt"/>
+                                    <constraint firstAttribute="trailing" secondItem="cWa-fh-p4Q" secondAttribute="trailing" constant="15" id="tP9-Q8-K1C"/>
+                                    <constraint firstAttribute="height" constant="350" id="te4-Oz-ixt"/>
+                                    <constraint firstItem="TWl-Vo-jSI" firstAttribute="top" secondItem="TMK-eI-p1J" secondAttribute="bottom" constant="17" id="vnL-Dh-pbP"/>
                                     <constraint firstItem="TMK-eI-p1J" firstAttribute="leading" secondItem="FdK-QL-vDh" secondAttribute="leading" constant="15" id="wUx-md-oGO"/>
                                 </constraints>
                             </view>
@@ -2605,13 +2607,14 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                         <outlet property="blurEffect" destination="Jva-ke-jjp" id="a7E-De-KL1"/>
                         <outlet property="cancelBtn" destination="Z2h-aY-CdC" id="cAj-ym-Kfq"/>
                         <outlet property="cardView" destination="FdK-QL-vDh" id="A01-1A-83m"/>
+                        <outlet property="descriptionField" destination="cWa-fh-p4Q" id="ICl-ea-GHI"/>
                         <outlet property="disableBtn" destination="qao-yf-Ean" id="aYD-Nj-B9H"/>
                         <outlet property="reportBtn" destination="eZ7-LF-J0j" id="xoe-gc-Z4T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7II-sj-gqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3450" y="701"/>
+            <point key="canvasLocation" x="3449.6183206106871" y="700.70422535211276"/>
         </scene>
     </scenes>
     <designables>

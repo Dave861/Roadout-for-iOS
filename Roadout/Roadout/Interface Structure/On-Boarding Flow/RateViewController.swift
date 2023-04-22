@@ -36,7 +36,6 @@ class RateViewController: UIViewController {
     @IBOutlet weak var parkingExperienceLbl: UILabel!
     @IBOutlet weak var overallLbl: UILabel!
     @IBOutlet weak var scoreTextLbl: UILabel!
-    @IBOutlet weak var linkRatingTextLbl: UILabel!
     
     @IBOutlet weak var card1: UIView!
     @IBOutlet weak var card2: UIView!
@@ -45,8 +44,6 @@ class RateViewController: UIViewController {
     @IBOutlet weak var reservingImpressionLbl: UILabel!
     @IBOutlet weak var parkingImpressionLbl: UILabel!
     @IBOutlet weak var overallImpressionLbl: UILabel!
-    
-    @IBOutlet weak var linkSwitch: UISwitch!
     
     @IBOutlet weak var reasonBtn1: UIButton!
     @IBOutlet weak var reasonBtn2: UIButton!
@@ -167,12 +164,8 @@ class RateViewController: UIViewController {
     }
     
     func setLocalization() {
-        self.bigTitleLbl.text = "Rate Reservation".localized()
-        self.reservingExperienceLbl.text = "Reserving Experience".localized()
-        self.parkingExperienceLbl.text = "Parking Experience".localized()
         self.overallLbl.text = "Overall".localized()
         self.scoreTextLbl.text = "Score".localized()
-        self.linkRatingTextLbl.text = "Link to rating to my account".localized()
         self.reservingReasonLbl.text = "Tell us why".localized()
         self.parkingReasonLbl.text = "Tell us why".localized()
     }

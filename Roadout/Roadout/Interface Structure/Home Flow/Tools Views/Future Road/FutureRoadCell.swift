@@ -21,11 +21,11 @@ class FutureRoadCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        cellActionButtonLabel?.textColor = UIColor.Roadout.redish ?? .systemRed
+        cellActionButtonLabel?.textColor = UIColor.Roadout.redish
     }
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
-        cellActionButtonLabel?.textColor = UIColor.Roadout.redish ?? .systemRed
+        cellActionButtonLabel?.textColor = UIColor.Roadout.redish
     }
     
 }

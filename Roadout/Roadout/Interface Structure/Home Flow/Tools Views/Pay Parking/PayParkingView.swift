@@ -13,9 +13,6 @@ class PayParkingView: UXView {
     let applePayTitle = NSAttributedString(string: "Pay with Apple Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .regular)])
     var mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let choosePaymentTitle = NSAttributedString(string: "Choose Payment Method".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    
-    let editPlateTitle = NSAttributedString(string: "EDIT".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .semibold)])
-    let addPlateTitle = NSAttributedString(string: "ADD".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .semibold)])
 
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
@@ -100,12 +97,7 @@ class PayParkingView: UXView {
     }
     
     @objc func refreshLicensePlate() {
-        self.licensePlateLbl.text = userLicensePlate != "" ? userLicensePlate : "NO-PLATE".localized()
-        if userLicensePlate == "" {
-            self.editLicensePlateBtn.setAttributedTitle(addPlateTitle, for: .normal)
-        } else {
-            self.editLicensePlateBtn.setAttributedTitle(editPlateTitle, for: .normal)
-        }
+        self.licensePlateLbl.text = userLicensePlate != "" ? userLicensePlate : "ADD-PLATE".localized()
     }
     
     
@@ -116,7 +108,7 @@ class PayParkingView: UXView {
         backBtn.layer.cornerRadius = 15.0
         
         timeBtn.setTitle("", for: .normal)
-        editLicensePlateBtn.layer.cornerRadius = editLicensePlateBtn.frame.height/2
+        editLicensePlateBtn.setTitle("", for: .normal)
         
         mainCardTitle = NSAttributedString(string: "Pay with ".localized() + "\(UserPrefsUtils.sharedInstance.returnMainCard())", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
         payBtn.layer.cornerRadius = 12.0
@@ -157,12 +149,6 @@ class PayParkingView: UXView {
     func fillPayData() {
         timeLbl.text = "\(paidTime)" + " hr/s".localized()
         licensePlateLbl.text = userLicensePlate
-        if userLicensePlate == "" {
-            licensePlateLbl.text = "NO-PLATE".localized()
-            editLicensePlateBtn.setAttributedTitle(addPlateTitle, for: .normal)
-        } else {
-            editLicensePlateBtn.setAttributedTitle(editPlateTitle, for: .normal)
-        }
     }
 
     func reloadMainCard() {
