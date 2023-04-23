@@ -1,18 +1,19 @@
 //
-//  ReportBugViewController.swift
+//  HelpContactViewController.swift
 //  Roadout
 //
-//  Created by David Retegan on 17.04.2023.
+//  Created by David Retegan on 23.04.2023.
 //
 
 import UIKit
 
-class ReportBugViewController: UIViewController {
+class HelpContactViewController: UIViewController {
 
-    let reportTitle = NSAttributedString(string: "Report".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let submitTitle = NSAttributedString(string: "Submit".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let cancelTitle = NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium)])
     
     private var initialCenter: CGPoint = .zero
+    var tintColor = UIColor.Roadout.icons
 
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -20,8 +21,19 @@ class ReportBugViewController: UIViewController {
     
     @IBOutlet weak var descriptionField: UITextView!
     
-    @IBOutlet weak var reportBtn: UXButton!
-    @IBAction func reportTapped(_ sender: Any) {
+    @IBOutlet weak var subjectSegments: UISegmentedControl!
+    @IBAction func segmentsChanged(_ sender: Any) {
+        if descriptionField.textColor == UIColor.systemGray {
+            if subjectSegments.selectedSegmentIndex == 0 {
+                descriptionField.text = "I need help with this because...".localized()
+            } else {
+                descriptionField.text = "I think it would be great if...".localized()
+            }
+        }
+    }
+    
+    @IBOutlet weak var submitBtn: UXButton!
+    @IBAction func submitTapped(_ sender: Any) {
         
     }
     
@@ -50,15 +62,21 @@ class ReportBugViewController: UIViewController {
         
         addShadowToCardView()
 
-        reportBtn.layer.cornerRadius = 13.0
-        reportBtn.setAttributedTitle(reportTitle, for: .normal)
+        submitBtn.layer.cornerRadius = 13.0
+        submitBtn.setAttributedTitle(submitTitle, for: .normal)
         
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
         
-        descriptionField.text = "Please describe your issue and any steps to repoduce it…".localized()
+        if subjectSegments.selectedSegmentIndex == 0 {
+            descriptionField.text = "I need help with this because...".localized()
+        } else {
+            descriptionField.text = "I think it would be great if...".localized()
+        }
         descriptionField.textColor = .systemGray
         descriptionField.delegate = self
         descriptionField.textContainerInset = UIEdgeInsets(top: 8, left: 6, bottom: 5, right: 6)
+        
+        tintCard()
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
@@ -84,6 +102,12 @@ class ReportBugViewController: UIViewController {
         cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
         cardView.layer.shouldRasterize = true
         cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    func tintCard() {
+        cancelBtn.tintColor = self.tintColor
+        submitBtn.backgroundColor = self.tintColor
+        descriptionField.tintColor = self.tintColor
     }
     
     @objc func cardPanned(_ recognizer: UIPanGestureRecognizer) {
@@ -119,12 +143,12 @@ class ReportBugViewController: UIViewController {
     }
     
 }
-extension ReportBugViewController: UIGestureRecognizerDelegate {
+extension HelpContactViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return !reportBtn.bounds.contains(touch.location(in: reportBtn))
+        return !submitBtn.bounds.contains(touch.location(in: submitBtn))
     }
 }
-extension ReportBugViewController: UITextViewDelegate {
+extension HelpContactViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.systemGray {
             textView.text = nil
@@ -134,7 +158,11 @@ extension ReportBugViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Please describe your issue and any steps to repoduce it…".localized()
+            if subjectSegments.selectedSegmentIndex == 0 {
+                textView.text = "I need help with this because...".localized()
+            } else {
+                textView.text = "I think it would be great if...".localized()
+            }
             textView.textColor = UIColor.systemGray
         }
     }

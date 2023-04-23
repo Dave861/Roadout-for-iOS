@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MessageUI
 
 class ARHelpViewController: UIViewController {
 
@@ -37,22 +36,10 @@ class ARHelpViewController: UIViewController {
     }
     
     @IBAction func helpTapped(_ sender: Any) {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.view.tintColor = UIColor.Roadout.kindaRed
-            mail.setToRecipients(["roadout.ro@gmail.com"])
-            mail.setSubject("Roadout for iOS - AR Help Request".localized())
-            mail.setMessageBody("Ask any questions about AR Directions here and we will respond as fast as we can - Roadout Team".localized(), isHTML: false)
-
-            present(mail, animated: true)
-        } else {
-            let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or ask your questions at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor.Roadout.kindaRed
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
-        }
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "HelpContactVC") as! HelpContactViewController
+        vc.tintColor = UIColor.Roadout.kindaRed
+        self.present(vc, animated: true)
     }
     
     override func viewDidLoad() {
@@ -65,7 +52,7 @@ class ARHelpViewController: UIViewController {
     }
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if motion == .motionShake && UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shakeToReport") {
+        if motion == .motionShake {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "ReportBugVC") as! ReportBugViewController
             self.present(vc, animated: true)
@@ -95,10 +82,5 @@ extension ARHelpViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         return cell
-    }
-}
-extension ARHelpViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
     }
 }

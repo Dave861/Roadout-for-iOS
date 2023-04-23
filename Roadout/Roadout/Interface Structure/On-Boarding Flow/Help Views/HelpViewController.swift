@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MessageUI
 
 class HelpViewController: UIViewController {
     
@@ -33,22 +32,10 @@ class HelpViewController: UIViewController {
     
     @IBOutlet weak var moreBtn: UIButton!
     @IBAction func moreTapped(_ sender: Any) {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.view.tintColor = UIColor.Roadout.icons
-            mail.setToRecipients(["help@roadout.ro"])
-            mail.setSubject("Roadout - Help Request".localized())
-            mail.setMessageBody("Please describe your problem here - Roadout Team".localized(), isHTML: false)
-
-            present(mail, animated: true)
-        } else {
-            let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or report your bug at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor.Roadout.icons
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
-        }
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "HelpContactVC") as! HelpContactViewController
+        vc.tintColor = UIColor.Roadout.icons
+        self.present(vc, animated: true)
     }
     
     //MARK: - View Configuration -
@@ -75,19 +62,13 @@ class HelpViewController: UIViewController {
     }
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if motion == .motionShake && UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shakeToReport") {
+        if motion == .motionShake {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "ReportBugVC") as! ReportBugViewController
             self.present(vc, animated: true)
         }
     }
 
-}
-
-extension HelpViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
-    }
 }
 extension HelpViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     

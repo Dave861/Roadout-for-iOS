@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MessageUI
 
 class GuideViewController: UIViewController {
     
@@ -61,22 +60,10 @@ class GuideViewController: UIViewController {
     @IBAction func reachOutTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.view.tintColor = UIColor.Roadout.goldBrown
-            mail.setToRecipients(["support@roadout.ro"])
-            mail.setSubject("Roadout - Support Request".localized())
-            mail.setMessageBody("Ask any questions here - Roadout Team".localized(), isHTML: false)
-
-            present(mail, animated: true)
-        } else {
-            let alert = UIAlertController(title: "Error".localized(), message: "This device cannot send emails, please check in settings your set email addresses, or send the email at roadout.ro@gmail.com".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor.Roadout.goldBrown
-            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
-        }
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "HelpContactVC") as! HelpContactViewController
+        vc.tintColor = UIColor.Roadout.goldBrown
+        self.present(vc, animated: true)
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -92,7 +79,7 @@ class GuideViewController: UIViewController {
     }
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if motion == .motionShake && UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shakeToReport") {
+        if motion == .motionShake {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "ReportBugVC") as! ReportBugViewController
             self.present(vc, animated: true)
@@ -136,10 +123,5 @@ extension GuideViewController: UITableViewDelegate, UITableViewDataSource {
             
             self.present(vc, animated: true)
         }
-    }
-}
-extension GuideViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
     }
 }

@@ -2512,7 +2512,7 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZ7-LF-J0j" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="224" width="363" height="50"/>
+                                        <rect key="frame" x="15" y="265" width="363" height="50"/>
                                         <color key="backgroundColor" name="Greyish"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="7ja-GQ-ZpZ"/>
@@ -2529,24 +2529,6 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                                             <action selector="reportTapped:" destination="TYM-SJ-gMQ" eventType="touchUpInside" id="ns7-QE-UMg"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qao-yf-Ean" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="96.666666666666686" y="284" width="200" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="31" id="uFU-Do-WgX"/>
-                                            <constraint firstAttribute="width" constant="200" id="viE-cw-wvl"/>
-                                        </constraints>
-                                        <color key="tintColor" name="Greyish"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Don't Show Again">
-                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
-                                        </buttonConfiguration>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="disableTapped:" destination="TYM-SJ-gMQ" eventType="touchUpInside" id="lzf-el-OwB"/>
-                                        </connections>
-                                    </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-Vo-jSI">
                                         <rect key="frame" x="20" y="58.333333333333371" width="353" height="32"/>
                                         <segments>
@@ -2556,7 +2538,7 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                                         </segments>
                                     </segmentedControl>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cWa-fh-p4Q" customClass="PlaceholderTextView" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="101.33333333333337" width="363" height="110.66666666666669"/>
+                                        <rect key="frame" x="15" y="101.33333333333336" width="363" height="151.66666666666663"/>
                                         <color key="backgroundColor" name="Card Background"/>
                                         <color key="tintColor" name="Greyish"/>
                                         <color key="textColor" systemColor="labelColor"/>
@@ -2572,16 +2554,14 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
                                     <constraint firstItem="eZ7-LF-J0j" firstAttribute="leading" secondItem="FdK-QL-vDh" secondAttribute="leading" constant="15" id="9Xl-va-XIZ"/>
-                                    <constraint firstItem="qao-yf-Ean" firstAttribute="top" secondItem="eZ7-LF-J0j" secondAttribute="bottom" constant="10" id="CCx-OB-FfJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="eZ7-LF-J0j" secondAttribute="bottom" constant="35" id="F39-89-GjO"/>
                                     <constraint firstItem="TMK-eI-p1J" firstAttribute="top" secondItem="FdK-QL-vDh" secondAttribute="top" constant="15" id="HeI-Hx-WJJ"/>
                                     <constraint firstItem="eZ7-LF-J0j" firstAttribute="top" secondItem="cWa-fh-p4Q" secondAttribute="bottom" constant="12" id="IHp-Th-GTb"/>
                                     <constraint firstAttribute="trailing" secondItem="TWl-Vo-jSI" secondAttribute="trailing" constant="20" id="In0-O4-sMO"/>
                                     <constraint firstAttribute="trailing" secondItem="Z2h-aY-CdC" secondAttribute="trailing" constant="3" id="Iw1-pq-ziB"/>
                                     <constraint firstItem="cWa-fh-p4Q" firstAttribute="leading" secondItem="FdK-QL-vDh" secondAttribute="leading" constant="15" id="NdR-gr-q9F"/>
                                     <constraint firstItem="Z2h-aY-CdC" firstAttribute="top" secondItem="FdK-QL-vDh" secondAttribute="top" constant="19.329999999999998" id="Otu-cL-h5E"/>
-                                    <constraint firstAttribute="bottom" secondItem="qao-yf-Ean" secondAttribute="bottom" constant="35" id="Pz6-uF-m7V"/>
                                     <constraint firstItem="cWa-fh-p4Q" firstAttribute="top" secondItem="TWl-Vo-jSI" secondAttribute="bottom" constant="12" id="Qkz-IE-j4w"/>
-                                    <constraint firstItem="qao-yf-Ean" firstAttribute="centerX" secondItem="FdK-QL-vDh" secondAttribute="centerX" id="Ukn-Ek-JiQ"/>
                                     <constraint firstItem="TWl-Vo-jSI" firstAttribute="leading" secondItem="FdK-QL-vDh" secondAttribute="leading" constant="20" id="a4d-do-Nnk"/>
                                     <constraint firstAttribute="trailing" secondItem="eZ7-LF-J0j" secondAttribute="trailing" constant="15" id="nyU-j4-Prl"/>
                                     <constraint firstAttribute="trailing" secondItem="cWa-fh-p4Q" secondAttribute="trailing" constant="15" id="tP9-Q8-K1C"/>
@@ -2608,13 +2588,141 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
                         <outlet property="cancelBtn" destination="Z2h-aY-CdC" id="cAj-ym-Kfq"/>
                         <outlet property="cardView" destination="FdK-QL-vDh" id="A01-1A-83m"/>
                         <outlet property="descriptionField" destination="cWa-fh-p4Q" id="ICl-ea-GHI"/>
-                        <outlet property="disableBtn" destination="qao-yf-Ean" id="aYD-Nj-B9H"/>
                         <outlet property="reportBtn" destination="eZ7-LF-J0j" id="xoe-gc-Z4T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7II-sj-gqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3449.6183206106871" y="700.70422535211276"/>
+        </scene>
+        <!--Help Contact View Controller-->
+        <scene sceneID="JaU-V2-dBL">
+            <objects>
+                <viewController storyboardIdentifier="HelpContactVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="khr-2w-ldq" customClass="HelpContactViewController" customModule="Roadout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BLk-h1-Kwi">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LE2-sX-vHY">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eLZ-4z-jrA">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="systemUltraThinMaterial"/>
+                            </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdB-x3-8ZN">
+                                <rect key="frame" x="0.0" y="502" width="393" height="350"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvY-nb-OHl" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                                        <rect key="frame" x="14.999999999999993" y="15" width="114.33333333333331" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHF-Cc-RoT" customClass="UXPlainButton" customModule="Roadout" customModuleProvider="target">
+                                        <rect key="frame" x="317.66666666666669" y="19.333333333333371" width="72.333333333333314" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="UGi-zO-eO5"/>
+                                        </constraints>
+                                        <color key="tintColor" name="GoldBrown"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelTapped:" destination="khr-2w-ldq" eventType="touchUpInside" id="aoW-gP-0kr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63r-ef-IqY" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="265" width="363" height="50"/>
+                                        <color key="backgroundColor" name="GoldBrown"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="8kP-Oe-WrZ"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Background"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Submit">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="translateTitle" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="submitTapped:" destination="khr-2w-ldq" eventType="touchUpInside" id="EDS-Aa-D8f"/>
+                                        </connections>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NkS-V8-8Wi">
+                                        <rect key="frame" x="20" y="59" width="353" height="32"/>
+                                        <segments>
+                                            <segment title="Get Help"/>
+                                            <segment title="Send Feedback"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentsChanged:" destination="khr-2w-ldq" eventType="valueChanged" id="Ffl-b9-Fse"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="inU-fQ-chs" customClass="PlaceholderTextView" customModule="Roadout" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="102" width="363" height="151"/>
+                                        <color key="backgroundColor" name="Card Background"/>
+                                        <color key="tintColor" name="Greyish"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" name="Background"/>
+                                <constraints>
+                                    <constraint firstItem="NkS-V8-8Wi" firstAttribute="leading" secondItem="EdB-x3-8ZN" secondAttribute="leading" constant="20" id="0cq-lR-YP5"/>
+                                    <constraint firstItem="inU-fQ-chs" firstAttribute="top" secondItem="NkS-V8-8Wi" secondAttribute="bottom" constant="12" id="6RC-IG-5R6"/>
+                                    <constraint firstItem="63r-ef-IqY" firstAttribute="leading" secondItem="EdB-x3-8ZN" secondAttribute="leading" constant="15" id="850-Ii-Fgb"/>
+                                    <constraint firstAttribute="trailing" secondItem="NkS-V8-8Wi" secondAttribute="trailing" constant="20" id="9kQ-lB-5Dd"/>
+                                    <constraint firstAttribute="trailing" secondItem="inU-fQ-chs" secondAttribute="trailing" constant="15" id="Xrw-dV-zuQ"/>
+                                    <constraint firstItem="CvY-nb-OHl" firstAttribute="leading" secondItem="EdB-x3-8ZN" secondAttribute="leading" constant="15" id="bOs-Eh-IQ8"/>
+                                    <constraint firstItem="NkS-V8-8Wi" firstAttribute="top" secondItem="CvY-nb-OHl" secondAttribute="bottom" constant="17" id="dho-NH-iRN"/>
+                                    <constraint firstAttribute="height" constant="350" id="ebe-QM-bfN"/>
+                                    <constraint firstAttribute="trailing" secondItem="QHF-Cc-RoT" secondAttribute="trailing" constant="3" id="fgk-IE-PNR"/>
+                                    <constraint firstAttribute="bottom" secondItem="63r-ef-IqY" secondAttribute="bottom" constant="35" id="iLn-QW-vBN"/>
+                                    <constraint firstItem="63r-ef-IqY" firstAttribute="top" secondItem="inU-fQ-chs" secondAttribute="bottom" constant="12" id="qOH-eR-clN"/>
+                                    <constraint firstItem="CvY-nb-OHl" firstAttribute="top" secondItem="EdB-x3-8ZN" secondAttribute="top" constant="15" id="rBc-AV-Qkp"/>
+                                    <constraint firstItem="inU-fQ-chs" firstAttribute="leading" secondItem="EdB-x3-8ZN" secondAttribute="leading" constant="15" id="uWI-lo-2tS"/>
+                                    <constraint firstItem="QHF-Cc-RoT" firstAttribute="top" secondItem="EdB-x3-8ZN" secondAttribute="top" constant="19.329999999999998" id="ver-Ro-Meq"/>
+                                    <constraint firstAttribute="trailing" secondItem="63r-ef-IqY" secondAttribute="trailing" constant="15" id="zqj-GW-Lcl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mvt-XL-YdR"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="EdB-x3-8ZN" secondAttribute="bottom" id="4oS-Fm-OdJ" customClass="MagicKeyboardConstraint" customModule="Roadout" customModuleProvider="target"/>
+                            <constraint firstItem="LE2-sX-vHY" firstAttribute="leading" secondItem="mvt-XL-YdR" secondAttribute="leading" id="7hl-Yt-AyX"/>
+                            <constraint firstAttribute="bottom" secondItem="LE2-sX-vHY" secondAttribute="bottom" id="A5P-vC-Dtr"/>
+                            <constraint firstItem="EdB-x3-8ZN" firstAttribute="trailing" secondItem="mvt-XL-YdR" secondAttribute="trailing" id="QY6-xD-dxc"/>
+                            <constraint firstAttribute="trailing" secondItem="LE2-sX-vHY" secondAttribute="trailing" id="Wlq-bv-tFW"/>
+                            <constraint firstItem="LE2-sX-vHY" firstAttribute="top" secondItem="BLk-h1-Kwi" secondAttribute="top" id="iRH-XN-NJA"/>
+                            <constraint firstItem="EdB-x3-8ZN" firstAttribute="leading" secondItem="mvt-XL-YdR" secondAttribute="leading" id="kzC-Dn-Gx0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="blurEffect" destination="LE2-sX-vHY" id="TVf-iM-h1r"/>
+                        <outlet property="cancelBtn" destination="QHF-Cc-RoT" id="MkW-cc-bKA"/>
+                        <outlet property="cardView" destination="EdB-x3-8ZN" id="Idd-tD-M0L"/>
+                        <outlet property="descriptionField" destination="inU-fQ-chs" id="KTO-NZ-MMM"/>
+                        <outlet property="subjectSegments" destination="NkS-V8-8Wi" id="UX8-5M-nTb"/>
+                        <outlet property="submitBtn" destination="63r-ef-IqY" id="gyi-qS-Ytv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xG0-jh-WZE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3450" y="1351"/>
         </scene>
     </scenes>
     <designables>
@@ -2678,6 +2786,9 @@ ZSB3aGlsZSBsb29raW5nIGF0IHlvdXIgcGhvbmUgLg
         </namedColor>
         <namedColor name="FloatingBG">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GoldBrown">
+            <color red="0.80000001192092896" green="0.55299997329711914" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Greyish">
             <color red="0.49799999594688416" green="0.42399999499320984" blue="0.31799998879432678" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
