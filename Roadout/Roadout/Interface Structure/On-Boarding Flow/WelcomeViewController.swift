@@ -9,10 +9,12 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    let infoIcons = [UIImage(systemName: "car.fill"), UIImage(systemName: "creditcard"), UIImage(named: "arrow_triangle_branch")]
+    let infoIcons = [UIImage(systemName: "car.fill"), UIImage(systemName: "signpost.right.and.left.fill"), UIImage(systemName: "parkingsign.circle.fill")]
     let infoColors = [UIColor.Roadout.mainYellow, UIColor.Roadout.darkYellow, UIColor.Roadout.secondOrange]
-    let infoTitles = ["Parking Spots".localized(), "Instant Card Payment".localized(), "Live Directions".localized()]
-    let infoTexts = ["Check the occupancy of parking spots in real time.".localized(), "You can reserve a parking spot by paying safely online in our app.".localized(), "Receive directions to the desired parking spot in your favourite maps app.".localized()]
+    let infoTitles = ["Parking Locations".localized(), "Live Occupancy".localized(), "Spot Reservation".localized()]
+    let infoTexts = ["Easily find parking locations nearby and close to your destination".localized(),
+                     "View the occupancy of any parking spot updated in real-time".localized(),
+                     "Always have a spot waiting for you, reserve your parking and make sure it’s free when you arrive".localized()]
     
     
     let signInTitle = NSAttributedString(string: "Sign In".localized(),

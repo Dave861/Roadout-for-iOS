@@ -380,15 +380,177 @@
             </connections>
             <point key="canvasLocation" x="709" y="-256"/>
         </view>
+        <view contentMode="scaleToFill" id="wxv-F6-I0E" customClass="TutorialView8" customModule="Roadout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="286" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Spot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeF-cu-PPW" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="46" y="0.0" width="240" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="VgY-NK-1pB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="steering_wheel" translatesAutoresizingMaskIntoConstraints="NO" id="hdH-rC-DPu">
+                    <rect key="frame" x="0.0" y="26.5" width="41" height="37"/>
+                    <color key="tintColor" name="AccentColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="41" id="GwP-uH-a7V"/>
+                        <constraint firstAttribute="height" constant="37" id="Sct-gn-zvm"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use the continue button to automatically find a free spot here, or pick it yourself" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mz-8O-XPm" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="46" y="27" width="240" height="63"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="iQI-BK-yKH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="ANA-IH-LAk"/>
+            <color key="backgroundColor" name="Card Background"/>
+            <constraints>
+                <constraint firstItem="6mz-8O-XPm" firstAttribute="leading" secondItem="hdH-rC-DPu" secondAttribute="trailing" constant="5" id="Jrp-Nj-W3T"/>
+                <constraint firstAttribute="bottom" secondItem="6mz-8O-XPm" secondAttribute="bottom" id="QhP-eA-Wou"/>
+                <constraint firstAttribute="trailing" secondItem="PeF-cu-PPW" secondAttribute="trailing" id="WrE-Ud-cqe"/>
+                <constraint firstItem="PeF-cu-PPW" firstAttribute="leading" secondItem="hdH-rC-DPu" secondAttribute="trailing" constant="5" id="YPl-Ro-BUF"/>
+                <constraint firstItem="hdH-rC-DPu" firstAttribute="leading" secondItem="ANA-IH-LAk" secondAttribute="leading" id="dQ7-Yi-JNv"/>
+                <constraint firstItem="6mz-8O-XPm" firstAttribute="top" secondItem="PeF-cu-PPW" secondAttribute="bottom" constant="1" id="gJN-qA-qBt"/>
+                <constraint firstItem="hdH-rC-DPu" firstAttribute="centerY" secondItem="wxv-F6-I0E" secondAttribute="centerY" id="jMs-Sa-wkr"/>
+                <constraint firstItem="6mz-8O-XPm" firstAttribute="trailing" secondItem="ANA-IH-LAk" secondAttribute="trailing" id="l40-01-QXA"/>
+                <constraint firstItem="PeF-cu-PPW" firstAttribute="top" secondItem="wxv-F6-I0E" secondAttribute="top" id="xia-RS-TTn"/>
+            </constraints>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="explanationLbl" destination="6mz-8O-XPm" id="j13-Xt-k7m"/>
+                <outlet property="titleLbl" destination="PeF-cu-PPW" id="N20-kZ-rYd"/>
+            </connections>
+            <point key="canvasLocation" x="708.69565217391312" y="-171.42857142857142"/>
+        </view>
+        <view contentMode="scaleToFill" id="Hrj-TD-f4I" customClass="TutorialView9" customModule="Roadout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="286" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Sections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uU4-xk-gcG" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="46" y="0.0" width="240" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="qmZ-bD-nOO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grid" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YMM-dH-R5g">
+                    <rect key="frame" x="0.0" y="27.5" width="41" height="35"/>
+                    <color key="tintColor" name="Icons"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="41" id="o6C-BJ-v00"/>
+                        <constraint firstAttribute="height" constant="37" id="o9Y-fO-d26"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These are zones the location is divided in so you can find a specific spot easier" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0D-ja-7UE" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="46" y="27" width="240" height="63"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="ZoR-fe-kK3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="nBU-Xk-mNj"/>
+            <color key="backgroundColor" name="Card Background"/>
+            <constraints>
+                <constraint firstItem="z0D-ja-7UE" firstAttribute="top" secondItem="uU4-xk-gcG" secondAttribute="bottom" constant="1" id="5WB-0w-7JM"/>
+                <constraint firstItem="z0D-ja-7UE" firstAttribute="trailing" secondItem="nBU-Xk-mNj" secondAttribute="trailing" id="EZB-0R-UAW"/>
+                <constraint firstItem="YMM-dH-R5g" firstAttribute="leading" secondItem="nBU-Xk-mNj" secondAttribute="leading" id="OQD-et-Nl2"/>
+                <constraint firstItem="YMM-dH-R5g" firstAttribute="centerY" secondItem="Hrj-TD-f4I" secondAttribute="centerY" id="Xge-Tr-3zQ"/>
+                <constraint firstItem="z0D-ja-7UE" firstAttribute="leading" secondItem="YMM-dH-R5g" secondAttribute="trailing" constant="5" id="exQ-CL-jyZ"/>
+                <constraint firstItem="uU4-xk-gcG" firstAttribute="leading" secondItem="YMM-dH-R5g" secondAttribute="trailing" constant="5" id="gj4-Q2-RQh"/>
+                <constraint firstItem="uU4-xk-gcG" firstAttribute="top" secondItem="Hrj-TD-f4I" secondAttribute="top" id="hBq-YF-e5R"/>
+                <constraint firstAttribute="bottom" secondItem="z0D-ja-7UE" secondAttribute="bottom" id="lBT-ZV-zrr"/>
+                <constraint firstAttribute="trailing" secondItem="uU4-xk-gcG" secondAttribute="trailing" id="rjM-QZ-rPb"/>
+            </constraints>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="explanationLbl" destination="z0D-ja-7UE" id="P9v-ar-n0D"/>
+                <outlet property="titleLbl" destination="uU4-xk-gcG" id="NUY-5F-007"/>
+            </connections>
+            <point key="canvasLocation" x="708.69565217391312" y="-82.366071428571431"/>
+        </view>
+        <view contentMode="scaleToFill" id="tuI-PL-ySb" customClass="TutorialView10" customModule="Roadout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="291" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device Shook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cm-DP-Tth" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="46" y="0.0" width="245" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="QOj-m5-j6a"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ant.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="d4E-u7-PpZ">
+                    <rect key="frame" x="0.0" y="27.5" width="41" height="35"/>
+                    <color key="tintColor" name="Greyish"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="41" id="fyJ-44-8B5"/>
+                        <constraint firstAttribute="height" constant="33" id="sxb-Ma-WIJ"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did something go wrong? Please report so we can fix it as fast as we can" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDj-JH-Ja7" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                    <rect key="frame" x="46" y="27" width="245" height="63"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="245" id="H0P-e7-yJg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="j3k-Z5-kmu"/>
+            <color key="backgroundColor" name="Card Background"/>
+            <constraints>
+                <constraint firstItem="rDj-JH-Ja7" firstAttribute="leading" secondItem="d4E-u7-PpZ" secondAttribute="trailing" constant="5" id="1cz-Si-qeC"/>
+                <constraint firstItem="7cm-DP-Tth" firstAttribute="leading" secondItem="d4E-u7-PpZ" secondAttribute="trailing" constant="5" id="6NI-bH-hcn"/>
+                <constraint firstItem="rDj-JH-Ja7" firstAttribute="trailing" secondItem="j3k-Z5-kmu" secondAttribute="trailing" id="7kw-Me-XAl"/>
+                <constraint firstAttribute="bottom" secondItem="rDj-JH-Ja7" secondAttribute="bottom" id="GVg-3V-FWM"/>
+                <constraint firstItem="rDj-JH-Ja7" firstAttribute="top" secondItem="7cm-DP-Tth" secondAttribute="bottom" constant="1" id="JaG-ke-TUV"/>
+                <constraint firstItem="d4E-u7-PpZ" firstAttribute="centerY" secondItem="tuI-PL-ySb" secondAttribute="centerY" id="JlB-LF-zfc"/>
+                <constraint firstItem="d4E-u7-PpZ" firstAttribute="leading" secondItem="j3k-Z5-kmu" secondAttribute="leading" id="o64-NG-Wxe"/>
+                <constraint firstAttribute="trailing" secondItem="7cm-DP-Tth" secondAttribute="trailing" id="rNC-iu-Mcm"/>
+                <constraint firstItem="7cm-DP-Tth" firstAttribute="top" secondItem="tuI-PL-ySb" secondAttribute="top" id="y84-x3-sWQ"/>
+            </constraints>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="explanationLbl" destination="rDj-JH-Ja7" id="MHE-hI-fRO"/>
+                <outlet property="titleLbl" destination="7cm-DP-Tth" id="QBM-jM-5lt"/>
+            </connections>
+            <point key="canvasLocation" x="709" y="11"/>
+        </view>
     </objects>
     <resources>
+        <image name="ant.fill" catalog="system" width="106" height="128"/>
         <image name="arrow.up.left.and.arrow.down.right.circle.fill" catalog="system" width="128" height="123"/>
         <image name="binoculars.fill" catalog="system" width="128" height="90"/>
         <image name="eye.fill" catalog="system" width="128" height="80"/>
         <image name="flag.2.crossed.fill" catalog="system" width="128" height="72"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+        <image name="grid" catalog="system" width="128" height="113"/>
+        <image name="steering_wheel" width="13" height="13"/>
         <image name="wallet.pass.fill" catalog="system" width="115" height="128"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Card Background">
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

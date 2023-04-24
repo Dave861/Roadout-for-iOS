@@ -17,6 +17,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sY-5a-u7p">
+                    <rect key="frame" x="0.0" y="0.0" width="45" height="15"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="O2W-a6-EXr"/>
+                        <constraint firstAttribute="width" constant="45" id="eW7-CY-Ll4"/>
+                    </constraints>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Name 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVN-ST-fCA" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="32" width="354" height="30"/>
                     <constraints>
@@ -162,11 +170,13 @@
                 <constraint firstItem="hoM-uf-3lj" firstAttribute="leading" secondItem="04W-Jj-719" secondAttribute="leading" constant="12" id="2Oe-UY-Y0M"/>
                 <constraint firstItem="Ong-ne-1lf" firstAttribute="top" secondItem="PVN-ST-fCA" secondAttribute="bottom" constant="6" id="6Pj-ZB-TRs"/>
                 <constraint firstItem="PVN-ST-fCA" firstAttribute="top" secondItem="04W-Jj-719" secondAttribute="top" constant="12" id="LQi-PF-nka"/>
+                <constraint firstItem="0sY-5a-u7p" firstAttribute="top" secondItem="QV9-ue-75M" secondAttribute="top" id="MCC-Bc-Db1"/>
                 <constraint firstItem="04W-Jj-719" firstAttribute="trailing" secondItem="PVN-ST-fCA" secondAttribute="trailing" constant="10" id="NyQ-kq-24N"/>
                 <constraint firstItem="Ong-ne-1lf" firstAttribute="leading" secondItem="04W-Jj-719" secondAttribute="leading" constant="10" id="OC8-D7-FDh"/>
                 <constraint firstItem="hoM-uf-3lj" firstAttribute="top" secondItem="04W-Jj-719" secondAttribute="top" constant="12" id="Q1b-D9-Tel"/>
                 <constraint firstItem="04W-Jj-719" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ong-ne-1lf" secondAttribute="trailing" constant="10" id="ZZ8-p2-FmI"/>
                 <constraint firstItem="RDZ-16-cCN" firstAttribute="top" secondItem="Ong-ne-1lf" secondAttribute="bottom" constant="6" id="dzP-xT-c6f"/>
+                <constraint firstItem="0sY-5a-u7p" firstAttribute="leading" secondItem="QV9-ue-75M" secondAttribute="leading" id="gCh-La-U4o"/>
                 <constraint firstItem="04W-Jj-719" firstAttribute="trailing" secondItem="RDZ-16-cCN" secondAttribute="trailing" constant="8" id="hwh-WV-fd9"/>
                 <constraint firstItem="RDZ-16-cCN" firstAttribute="leading" secondItem="04W-Jj-719" secondAttribute="leading" constant="8" id="nf8-rj-dxO"/>
                 <constraint firstItem="04W-Jj-719" firstAttribute="bottom" secondItem="RDZ-16-cCN" secondAttribute="bottom" constant="8" id="nm9-Og-w9f"/>
@@ -189,6 +199,7 @@
                 <outlet property="sectionsIcon" destination="Jv7-QJ-Gqg" id="pRW-UW-8Wk"/>
                 <outlet property="sectionsLbl" destination="9EA-pE-bmT" id="bIl-g4-BcQ"/>
                 <outlet property="spotsIcon" destination="qax-xa-OjT" id="cDu-Fu-eoN"/>
+                <outlet property="tipSourceView" destination="0sY-5a-u7p" id="E0i-mN-RNE"/>
             </connections>
             <point key="canvasLocation" x="18.840579710144929" y="150"/>
         </view>
@@ -196,6 +207,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="331"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2K-Ih-EAH">
+                    <rect key="frame" x="0.0" y="0.0" width="45" height="15"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="pOI-DW-2YZ"/>
+                        <constraint firstAttribute="width" constant="45" id="pQ3-YJ-ibs"/>
+                    </constraints>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-9N-BvQ" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="32" width="293" height="30"/>
                     <constraints>
@@ -282,10 +301,12 @@
                 <constraint firstItem="a87-Nj-jdd" firstAttribute="leading" secondItem="616-5R-hqi" secondAttribute="leading" constant="15" id="chL-Jj-2ax"/>
                 <constraint firstItem="LQY-9N-BvQ" firstAttribute="leading" secondItem="616-5R-hqi" secondAttribute="leading" constant="50" id="k4r-lE-VdX"/>
                 <constraint firstItem="616-5R-hqi" firstAttribute="trailing" secondItem="LQY-9N-BvQ" secondAttribute="trailing" constant="71" id="l8p-kg-CgW"/>
+                <constraint firstItem="T2K-Ih-EAH" firstAttribute="leading" secondItem="JWz-dS-cdx" secondAttribute="leading" id="mOt-XV-6iZ"/>
                 <constraint firstItem="a87-Nj-jdd" firstAttribute="top" secondItem="X6V-CA-sok" secondAttribute="bottom" constant="8" symbolic="YES" id="nhX-EZ-4yb"/>
                 <constraint firstItem="kOO-ll-iuO" firstAttribute="top" secondItem="616-5R-hqi" secondAttribute="top" constant="12" id="q8b-rU-4gB"/>
                 <constraint firstItem="X6V-CA-sok" firstAttribute="leading" secondItem="616-5R-hqi" secondAttribute="leading" constant="10" id="rQx-Ao-ds9"/>
                 <constraint firstItem="Krm-EU-0BJ" firstAttribute="top" secondItem="a87-Nj-jdd" secondAttribute="bottom" constant="8" id="re9-8f-U6l"/>
+                <constraint firstItem="T2K-Ih-EAH" firstAttribute="top" secondItem="JWz-dS-cdx" secondAttribute="top" id="s8B-Lc-rk9"/>
                 <constraint firstItem="Krm-EU-0BJ" firstAttribute="top" secondItem="X6V-CA-sok" secondAttribute="bottom" constant="39" id="uz4-9o-rdw"/>
                 <constraint firstItem="616-5R-hqi" firstAttribute="bottom" secondItem="Krm-EU-0BJ" secondAttribute="bottom" constant="8" id="vEm-Hu-tMO"/>
                 <constraint firstItem="c9X-QL-c7z" firstAttribute="top" secondItem="X6V-CA-sok" secondAttribute="bottom" constant="6" id="yl5-YU-qxO"/>
@@ -301,6 +322,7 @@
                 <outlet property="continueBtn" destination="Krm-EU-0BJ" id="I7G-oI-sNv"/>
                 <outlet property="sectionBtn" destination="c9X-QL-c7z" id="Jd1-B9-Gz5"/>
                 <outlet property="sectionImage" destination="X6V-CA-sok" id="m4K-Eo-gWg"/>
+                <outlet property="tipSourceView" destination="T2K-Ih-EAH" id="Uaj-mq-EyR"/>
             </connections>
             <point key="canvasLocation" x="708.69565217391312" y="151.22282608695653"/>
         </view>

@@ -18,10 +18,10 @@ class SectionView: UXView {
     
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
+    @IBOutlet weak var tipSourceView: UIView!
+    
     @IBOutlet weak var sectionImage: UIImageView!
-    
     @IBOutlet weak var sectionBtn: UIButton!
-    
     
     @IBOutlet weak var continueBtn: UXButton!
     @IBAction func continueTapped(_ sender: Any) {
@@ -59,6 +59,21 @@ class SectionView: UXView {
     }
     
     //MARK: - View Confiuration -
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip9") == false {
+            tipSourceView.tooltip(TutorialView9.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+                configuration.backgroundColor = UIColor(named: "Card Background")!
+                configuration.shadowConfiguration.shadowOpacity = 0.2
+                configuration.shadowConfiguration.shadowColor = UIColor.black.cgColor
+                configuration.shadowConfiguration.shadowOffset = .zero
+                
+                return configuration
+            })
+            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip9")
+        }
+    }
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0

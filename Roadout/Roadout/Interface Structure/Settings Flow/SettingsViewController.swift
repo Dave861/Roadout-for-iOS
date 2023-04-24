@@ -78,6 +78,9 @@ class SettingsViewController: UIViewController {
         UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip5")
         UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip6")
         UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip7")
+        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip8")
+        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip9")
+        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip10")
         
         UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.futureReservations")
         UserDefaults.roadout!.set([String](), forKey: "ro.roadout.paymentMethods")

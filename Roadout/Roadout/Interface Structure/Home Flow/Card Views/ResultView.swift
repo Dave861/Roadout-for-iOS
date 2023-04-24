@@ -13,6 +13,8 @@ class ResultView: UXView {
     let pickTitle = NSAttributedString(string: "Pick".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
+    @IBOutlet weak var tipSourceView: UIView!
+    
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
     @IBOutlet weak var sectionsLbl: UILabel!
@@ -88,6 +90,21 @@ class ResultView: UXView {
     }
     
     //MARK: - View Confiuration -
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip8") == false {
+            tipSourceView.tooltip(TutorialView8.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
+                configuration.backgroundColor = UIColor(named: "Card Background")!
+                configuration.shadowConfiguration.shadowOpacity = 0.2
+                configuration.shadowConfiguration.shadowColor = UIColor.black.cgColor
+                configuration.shadowConfiguration.shadowOffset = .zero
+                
+                return configuration
+            })
+            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip8")
+        }
+    }
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
