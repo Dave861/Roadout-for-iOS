@@ -63,6 +63,8 @@
 		9A39B0D827284B38008E7FD0 /* SettingsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39B0D727284B38008E7FD0 /* SettingsTextCell.swift */; };
 		9A3F3A222868E37100C3FB71 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3F3A212868E37100C3FB71 /* SettingsViewController.swift */; };
 		9A3F3A242868E3B200C3FB71 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3F3A232868E3B200C3FB71 /* HistoryCell.swift */; };
+		9A3F79E729F7B24B00FC959B /* LiveActivityLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3F79DF29F7B1F900FC959B /* LiveActivityLocalization.swift */; };
+		9A3F79E829F7B25000FC959B /* LiveActivityLocalizables.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A3F79E529F7B21300FC959B /* LiveActivityLocalizables.strings */; };
 		9A401EE12813D8E900739687 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A401EE02813D8E900739687 /* QuestionCell.swift */; };
 		9A401EE32813EFB800739687 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A401EE22813EFB800739687 /* AboutViewController.swift */; };
 		9A40C1DC281443FD00E44B23 /* IOSSecuritySuite in Frameworks */ = {isa = PBXBuildFile; productRef = 9A40C1DB281443FD00E44B23 /* IOSSecuritySuite */; };
@@ -326,6 +328,9 @@
 		9A39B0D727284B38008E7FD0 /* SettingsTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextCell.swift; sourceTree = "<group>"; };
 		9A3F3A212868E37100C3FB71 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9A3F3A232868E3B200C3FB71 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		9A3F79DF29F7B1F900FC959B /* LiveActivityLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityLocalization.swift; sourceTree = "<group>"; };
+		9A3F79E429F7B21300FC959B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LiveActivityLocalizables.strings; sourceTree = "<group>"; };
+		9A3F79E629F7B21400FC959B /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/LiveActivityLocalizables.strings; sourceTree = "<group>"; };
 		9A401EE02813D8E900739687 /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		9A401EE22813EFB800739687 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9A40C1DD2814458D00E44B23 /* DangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerViewController.swift; sourceTree = "<group>"; };
@@ -750,6 +755,8 @@
 				9A98CF1C29602F6F007339E6 /* RoadoutActivityAttributes.swift */,
 				9A98CF1329602F20007339E6 /* Assets.xcassets */,
 				9A98CF1529602F20007339E6 /* Info.plist */,
+				9A3F79DF29F7B1F900FC959B /* LiveActivityLocalization.swift */,
+				9A3F79E529F7B21300FC959B /* LiveActivityLocalizables.strings */,
 			);
 			path = "Roadout Live Activity";
 			sourceTree = "<group>";
@@ -1181,6 +1188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A3F79E829F7B25000FC959B /* LiveActivityLocalizables.strings in Resources */,
 				9A98CF1429602F20007339E6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1251,6 +1259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A3F79E729F7B24B00FC959B /* LiveActivityLocalization.swift in Sources */,
 				9A98CF1E29602FD3007339E6 /* RoadoutActivityAttributes.swift in Sources */,
 				9A98CF1229602F1E007339E6 /* Roadout_Live_Activity.swift in Sources */,
 			);
@@ -1446,6 +1455,15 @@
 				9A24ADB927DCF2F200BE8E1A /* Base */,
 			);
 			name = Bars.xib;
+			sourceTree = "<group>";
+		};
+		9A3F79E529F7B21300FC959B /* LiveActivityLocalizables.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A3F79E429F7B21300FC959B /* en */,
+				9A3F79E629F7B21400FC959B /* ro */,
+			);
+			name = LiveActivityLocalizables.strings;
 			sourceTree = "<group>";
 		};
 		9A4CA21927DDE12900D2674D /* Localizables.strings */ = {

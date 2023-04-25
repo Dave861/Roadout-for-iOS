@@ -18,6 +18,8 @@ class ReportBugViewController: UIViewController {
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
+    @IBOutlet weak var priorityControl: UISegmentedControl!
+    
     @IBOutlet weak var descriptionField: UITextView!
     
     @IBOutlet weak var reportBtn: UXButton!
@@ -55,10 +57,12 @@ class ReportBugViewController: UIViewController {
         
         cancelBtn.setAttributedTitle(cancelTitle, for: .normal)
         
-        descriptionField.text = "Please describe your issue and any steps to repoduce it…".localized()
+        descriptionField.text = "Please describe your issue and any steps to reproduce it...".localized()
         descriptionField.textColor = .systemGray
         descriptionField.delegate = self
         descriptionField.textContainerInset = UIEdgeInsets(top: 8, left: 6, bottom: 5, right: 6)
+        
+        localizeSegments()
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
@@ -97,6 +101,12 @@ class ReportBugViewController: UIViewController {
         cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
         cardView.layer.shouldRasterize = true
         cardView.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    func localizeSegments() {
+        priorityControl.setTitle("Low".localized(), forSegmentAt: 0)
+        priorityControl.setTitle("Medium".localized(), forSegmentAt: 1)
+        priorityControl.setTitle("High".localized(), forSegmentAt: 2)
     }
     
     @objc func cardPanned(_ recognizer: UIPanGestureRecognizer) {
@@ -147,7 +157,7 @@ extension ReportBugViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Please describe your issue and any steps to repoduce it…".localized()
+            textView.text = "Please describe your issue and any steps to reproduce it...".localized()
             textView.textColor = UIColor.systemGray
         }
     }

@@ -90,7 +90,7 @@ struct RoadoutLockWidget: Widget {
         }
         .supportedFamilies([.accessoryCircular, .accessoryInline])
         .configurationDisplayName("Roadout")
-        .description("Have Roadout at a glance")
+        .description("Have Roadout at a glance".widgetLocalize())
     }
 }
 

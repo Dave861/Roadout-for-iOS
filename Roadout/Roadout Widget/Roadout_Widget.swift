@@ -145,7 +145,7 @@ struct RoadoutWidgetView: View {
                             .renderingMode(.template)
                             .frame(width: 14, height: 19, alignment: .center)
                             .foregroundColor(Color(location1?.occupancyColor ?? "Main Yellow"))
-                        Text("\(location1?.freeSpots ?? 0) " + "free spots")
+                        Text("\(location1?.freeSpots ?? 0) " + "free spots".widgetLocalize())
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.gray)
                     }
@@ -156,7 +156,7 @@ struct RoadoutWidgetView: View {
                             .frame(width: 17, height: 17, alignment: .center)
                             .foregroundColor(Color(location1?.occupancyColor ?? "Main Yellow"))
                         HStack(alignment: .center, spacing: 4) {
-                            Text("at")
+                            Text("at".widgetLocalize())
                                 .font(.system(size: 16, weight: .regular))
                                 .foregroundColor(.gray)
                             Text(date, style: .time)
@@ -190,7 +190,7 @@ struct RoadoutWidgetView: View {
                             .renderingMode(.template)
                             .frame(width: 14, height: 19, alignment: .center)
                             .foregroundColor(Color(location1?.occupancyColor ?? "Main Yellow"))
-                        Text("\(location1?.freeSpots ?? 0) " + "free spots")
+                        Text("\(location1?.freeSpots ?? 0) " + "free spots".widgetLocalize())
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.gray)
                     }
@@ -201,7 +201,7 @@ struct RoadoutWidgetView: View {
                             .frame(width: 17, height: 17, alignment: .center)
                             .foregroundColor(Color(location1?.occupancyColor ?? "Main Yellow"))
                         HStack(alignment: .center, spacing: 4) {
-                            Text("at")
+                            Text("at".widgetLocalize())
                                 .font(.system(size: 16, weight: .regular))
                                 .foregroundColor(.gray)
                             Text(date, style: .time)
@@ -232,7 +232,7 @@ struct RoadoutWidgetView: View {
                             .renderingMode(.template)
                             .frame(width: 14, height: 19, alignment: .center)
                             .foregroundColor(Color(location2?.occupancyColor ?? "Main Yellow"))
-                        Text("\(location2?.freeSpots ?? 0) " + "free spots")
+                        Text("\(location2?.freeSpots ?? 0) " + "free spots".widgetLocalize())
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.gray)
                     }
@@ -243,7 +243,7 @@ struct RoadoutWidgetView: View {
                             .frame(width: 17, height: 17, alignment: .center)
                             .foregroundColor(Color(location2?.occupancyColor ?? "Main Yellow"))
                         HStack(alignment: .center, spacing: 4) {
-                            Text("at")
+                            Text("at".widgetLocalize())
                                 .font(.system(size: 16, weight: .regular))
                                 .foregroundColor(.gray)
                             Text(date, style: .time)
@@ -276,7 +276,7 @@ struct RoadoutWidgetView: View {
                         }
                         Text(location1?.locationName ?? "Location Name")
                             .font(.body.bold())
-                        Text("\(location1?.freeSpots ?? 0) " + "free spots")
+                        Text("\(location1?.freeSpots ?? 0) " + "free spots".widgetLocalize())
                             .font(.body)
                             .foregroundColor(.gray)
                     }

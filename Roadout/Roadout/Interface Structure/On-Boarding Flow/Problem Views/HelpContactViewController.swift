@@ -77,6 +77,7 @@ class HelpContactViewController: UIViewController {
         descriptionField.textContainerInset = UIEdgeInsets(top: 8, left: 6, bottom: 5, right: 6)
         
         tintCard()
+        localizeSegments()
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
         blurEffect.addGestureRecognizer(tapRecognizer)
@@ -108,6 +109,11 @@ class HelpContactViewController: UIViewController {
         cancelBtn.tintColor = self.tintColor
         submitBtn.backgroundColor = self.tintColor
         descriptionField.tintColor = self.tintColor
+    }
+    
+    func localizeSegments() {
+        subjectSegments.setTitle("Get Help".localized(), forSegmentAt: 0)
+        subjectSegments.setTitle("Send Feedback".localized(), forSegmentAt: 1)
     }
     
     @objc func cardPanned(_ recognizer: UIPanGestureRecognizer) {

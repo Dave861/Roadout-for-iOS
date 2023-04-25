@@ -148,7 +148,7 @@ class PayParkingView: UXView {
     
     func fillPayData() {
         timeLbl.text = "\(paidTime)" + " hr/s".localized()
-        licensePlateLbl.text = userLicensePlate
+        licensePlateLbl.text = userLicensePlate != "" ? userLicensePlate : "ADD-PLATE".localized()
     }
 
     func reloadMainCard() {
