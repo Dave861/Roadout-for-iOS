@@ -19,6 +19,11 @@ enum LicensePlateErrors: Error {
     case unknown
 }
 
+enum FlowTypes {
+    case reserve
+    case pay
+}
+
 let colours = ["Main Yellow", "Dark Orange", "Icons", "Kinda Red", "Second Orange"]
 
 var selectedMapType = MapType.roadout
@@ -26,7 +31,8 @@ var selectedMapType = MapType.roadout
 //Used to help with notification management
 var reservationTime = 0 ///Keeps time in Seconds
 var delayTime = 300 ///Keeps time in Seconds
-var paidTime = 0 ///Keeps time in Hours
+var parkingTime = 0 ///Keeps time in Hours
+var parkingDelayTime = 0 ///Keeps time in Hours
 
 ///Keeps the selected park location, not safe for use in flows, color coordonation and non-critical actions
 var selectedLocation = ParkLocation(name: "Selected Location", rID: "", latitude: 0.0, longitude: 0.0, totalSpots: 0, freeSpots: 0, sections: [ParkSection](), sectionImage: "SelectedLocationSection", accentColor: "Main Yellow")
@@ -38,10 +44,11 @@ var selectedSpot = ParkSpot(state: 0, number: 0, rHash: "u82f0bc6m303-f80-h70-p0
 
 var currentLocationCoord: CLLocationCoordinate2D?
 
+var agreedToParkingRules = false
+
 //Flow controllers
 var returnToDelay = false
-var returnToResult = false
-var isPayFlow = false
+var flowType = FlowTypes.reserve
 
 ///When a reservation is loading, search is suspended - only used as a safe failure
 var suspendSearch = false
@@ -60,9 +67,6 @@ var favouriteLocations = [ParkLocation]()
 
 //Will use API to get this
 var cityParkLocationsCount = 11
-
-///Remembers car location
-var carParkHash = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.carParkHash") ?? "roadout_carpark_clear"
 
 //Live Activity
 ///Decides whether or not to show the unlock card if the app is opened from the Dynamic Island

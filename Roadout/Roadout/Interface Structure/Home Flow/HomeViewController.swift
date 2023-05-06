@@ -34,61 +34,12 @@ class HomeViewController: UIViewController {
     let delayView = DelayView.instanceFromNib()
     let unlockView = UnlockView.instanceFromNib()
     let unlockedView = UnlockedView.instanceFromNib()
-    let payDurationView = PayDurationView.instanceFromNib()
-    let payParkingView = PayParkingView.instanceFromNib()
     
-    let activeBar = ActiveView.instanceFromNib()
-    let endedBar = EndedView.instanceFromNib()
+    let activeBar = ActiveReservationView.instanceFromNib()
     let cancelledBar = CancelledView.instanceFromNib()
     let noWifiBar = NoWifiView.instanceFromNib()
-    let paidParkingBar = PaidParkingBar.instanceFromNib()
     
     let summaryReserveView = SummaryReserveView.instanceFromNib()
-    
-    //MARK: - Express Lane -
-    
-    //let expressView = ExpressView.instanceFromNib()
-    
-    @objc func addExpressView() {
-        let camera = GMSCameraPosition.camera(withLatitude: selectedLocation.latitude, longitude: selectedLocation.longitude, zoom: 16.0)
-        self.mapView?.animate(to: camera)
-        
-        var index = 0
-        for location in parkLocations {
-            if location.name == selectedLocation.name {
-                selectedParkLocationIndex = index
-                break
-            }
-            index += 1
-        }
-        
-        for marker in markers {
-            if marker.position.latitude == selectedLocation.latitude && marker.position.longitude == selectedLocation.longitude {
-                self.shakeMarkerView(marker: marker)
-                self.selectedMarker = marker
-            }
-        }
-        
-        if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-            self.view.subviews.last!.removeFromSuperview()
-        } else {
-            self.searchBar.alpha = 0.0
-        }
-        self.updateBackgroundViewHeight(with: 303)
-        //Clear saved car park
-        UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
-        carParkHash = "roadout_carpark_clear"
-        NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
-        var dif = 15.0
-        DispatchQueue.main.async {
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.summaryReserveView.frame = CGRect(x: 10, y: self.screenSize.height-303-dif, width: self.screenSize.width - 20, height: 303)
-            self.view.addSubview(self.summaryReserveView)
-        }
-    }
-    
     
     //MARK: - Find Way -
             
@@ -119,10 +70,6 @@ class HomeViewController: UIViewController {
         }
         
         self.updateBackgroundViewHeight(with: 303)
-        //Clear saved car park
-        UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
-        carParkHash = "roadout_carpark_clear"
-        NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
         var dif = 15.0
         DispatchQueue.main.async {
             if (UIDevice.current.hasNotch) {
@@ -217,9 +164,6 @@ class HomeViewController: UIViewController {
         mapView.animate(to: camera)
     }
     
-    
-    @IBOutlet weak var markedSpotButton: UXButton!
-    
     func toggleSettingsButtonHide(to value: Bool) {
         settingsButton.isHidden = value
     }
@@ -259,22 +203,12 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(addPayDelayCard), name: .addPayDelayCardID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removePayDelayCard), name: .removePayDelayCardID, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(addPayDurationCard), name: .addPayDurationCardID, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removePayDurationCard), name: .removePayDurationCardID, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(addPayParkingCard), name: .addPayParkingCardID, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removePayParkingCard), name: .removePayParkingCardID, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(addExpressView), name: .addExpressViewID, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(showActiveBar), name: .showActiveBarID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showUnlockedView), name: .showUnlockedViewID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showCancelledBar), name: .showCancelledBarID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(showNoWifiBar), name: .showNoWifiBarID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeNoWifiBar), name: .removeNoWifiBarID, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(showPaidParkingBar), name: .showPaidParkingBarID, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(returnToSearchBar), name: .returnToSearchBarID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(returnFromReservation), name: .returnFromReservationID, object: nil)
@@ -288,7 +222,6 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(addMarkers), name: .addMarkersID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(addSpotMarker), name: .addSpotMarkerID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeSpotMarker), name: .removeSpotMarkerID, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshMarkedSpot), name: .refreshMarkedSpotID, object: nil)
     }
     
    //MARK: - Markers Configuration -
@@ -342,58 +275,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func refreshMarkedSpot() {
-        if carParkHash == "roadout_carpark_clear" {
-            self.markedSpotButton.isHidden = true
-        } else {
-            self.markedSpotButton.isHidden = false
-        }
-    }
-    
-    //MARK: -Marked Spot Menu-
-       
-       var markedSpotMenuItems: [UIAction] {
-             return [
-                 UIAction(title: "Remove".localized(), image: UIImage(systemName: "xmark"), handler: { (_) in
-                     UIView.animate(withDuration: 0.1, animations: {
-                         self.markedSpotButton.transform = CGAffineTransform.identity
-                     })
-                     
-                     UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
-                     carParkHash = "roadout_carpark_clear"
-                     NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
-                 }),
-                 UIAction(title: "Navigate".localized(), image: UIImage(systemName: "arrow.triangle.branch"), handler: { (_) in
-                     UIView.animate(withDuration: 0.1, animations: {
-                         self.markedSpotButton.transform = CGAffineTransform.identity
-                     })
-                     
-                     let hashComponents = carParkHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
-                     let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
-                     let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
-                     
-                     self.openDirectionsToCoords(lat: lat, long: long)
-                 })
-             ]
-         }
-         var markedSpotMenu: UIMenu {
-             return UIMenu(title: "Marked Spot".localized(), image: nil, identifier: nil, options: [], children: markedSpotMenuItems)
-         }
-         
-         func openDirectionsToCoords(lat: Double, long: Double) {
-             var link: String
-             switch UserPrefsUtils.sharedInstance.returnPrefferedMapsApp() {
-             case "Google Maps":
-                 link = "https://www.google.com/maps/search/?api=1&query=\(lat),\(long)"
-             case "Waze":
-                 link = "https://www.waze.com/ul?ll=\(lat)%2C-\(long)&navigate=yes&zoom=15"
-             default:
-                 link = "https://maps.apple.com/?ll=\(lat),\(long)&q=Roadout%20Location"
-             }
-             guard UIApplication.shared.canOpenURL(URL(string: link)!) else { return }
-             UIApplication.shared.open(URL(string: link)!)
-         }
-    
     //MARK: -View Configuration-
         
     override func viewWillAppear(_ animated: Bool) {
@@ -443,9 +324,7 @@ class HomeViewController: UIViewController {
         focusedView.layer.shadowPath = UIBezierPath(rect: focusedView.bounds).cgPath
         focusedView.layer.shouldRasterize = true
         focusedView.layer.rasterizationScale = UIScreen.main.scale
-        
-        refreshMarkedSpot()
-        
+
         //Map Setup
         let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 16.0)
         
@@ -474,18 +353,13 @@ class HomeViewController: UIViewController {
             mapView.isMyLocationEnabled = true
         }
         
-        markedSpotButton.showsMenuAsPrimaryAction = true
-        markedSpotButton.menu = markedSpotMenu
-        
         mapFocusButton.setTitle("", for: .normal)
         mapTypeButton.setTitle("", for: .normal)
         settingsButton.setTitle("", for: .normal)
-        markedSpotButton.setTitle("", for: .normal)
         
         mapFocusButton.layer.cornerRadius = 15.0
         mapTypeButton.layer.cornerRadius = 15.0
         settingsButton.layer.cornerRadius = 15.0
-        markedSpotButton.layer.cornerRadius = 15.0
         
         checkUserIsValid()
         //Should check if not empty
@@ -691,12 +565,12 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 155)
+            self.updateBackgroundViewHeight(with: UXHeights.toolsCard.rawValue)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.toolsView.frame = CGRect(x: 10, y: self.screenSize.height-155-dif, width: self.screenSize.width - 20, height: 155)
+            self.toolsView.frame = CGRect(x: 10, y: self.screenSize.height-UXHeights.toolsCard.rawValue-dif, width: self.screenSize.width - 20, height: UXHeights.toolsCard.rawValue)
             self.view.addSubview(self.toolsView)
         }
     }
@@ -730,14 +604,14 @@ extension HomeViewController {
         
         searchBar.alpha = 0.0
         
-        self.updateBackgroundViewHeight(with: 142)
+        self.updateBackgroundViewHeight(with: UXHeights.resultCard.rawValue)
         guard let coord = self.mapView.myLocation?.coordinate else {
             var dif = 15.0
             DispatchQueue.main.async {
                 if (UIDevice.current.hasNotch) {
                     dif = 49.0
                 }
-                self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-142-dif, width: self.screenSize.width - 20, height: 142)
+                self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-UXHeights.resultCard.rawValue-dif, width: self.screenSize.width - 20, height: UXHeights.resultCard.rawValue)
                 self.view.addSubview(self.resultView)
             }
             return
@@ -749,7 +623,7 @@ extension HomeViewController {
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-142-dif, width: self.screenSize.width - 20, height: 142)
+            self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-UXHeights.resultCard.rawValue-dif, width: self.screenSize.width - 20, height: UXHeights.resultCard.rawValue)
             self.view.addSubview(self.resultView)
         }
         
@@ -770,23 +644,23 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 331)
+            self.updateBackgroundViewHeight(with: 301)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.sectionView.frame = CGRect(x: 10, y: self.screenSize.height-331-dif, width: self.screenSize.width - 20, height: 331)
+            self.sectionView.frame = CGRect(x: 10, y: self.screenSize.height-301-dif, width: self.screenSize.width - 20, height: 301)
             self.view.addSubview(self.sectionView)
         }
     }
     @objc func removeSectionCard() {
         DispatchQueue.main.async {
-            self.updateBackgroundViewHeight(with: 142)
+            self.updateBackgroundViewHeight(with: UXHeights.resultCard.rawValue)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-142-dif, width: self.screenSize.width - 20, height: 142)
+            self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-UXHeights.resultCard.rawValue-dif, width: self.screenSize.width - 20, height: UXHeights.resultCard.rawValue)
             self.view.addSubview(self.resultView)
             self.sectionView.removeFromSuperview()
         }
@@ -810,12 +684,12 @@ extension HomeViewController {
     }
     @objc func removeSpotCard() {
         DispatchQueue.main.async {
-            self.updateBackgroundViewHeight(with: 331)
+            self.updateBackgroundViewHeight(with: 301)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.sectionView.frame = CGRect(x: 10, y: self.screenSize.height-331-dif, width: self.screenSize.width - 20, height: 331)
+            self.sectionView.frame = CGRect(x: 10, y: self.screenSize.height-301-dif, width: self.screenSize.width - 20, height: 301)
             self.view.addSubview(self.sectionView)
             self.spotView.removeFromSuperview()
         }
@@ -839,17 +713,7 @@ extension HomeViewController {
     }
     @objc func removeTimeCard() {
         DispatchQueue.main.async {
-            if returnToResult {
-                self.updateBackgroundViewHeight(with: 142)
-                var dif = 15.0
-                if (UIDevice.current.hasNotch) {
-                    dif = 49.0
-                }
-                self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-142-dif, width: self.screenSize.width - 20, height: 142)
-                self.view.addSubview(self.resultView)
-                self.timeView.removeFromSuperview()
-                
-            } else {
+            if flowType == .reserve {
                 self.updateBackgroundViewHeight(with: 318)
                 var dif = 15.0
                 if (UIDevice.current.hasNotch) {
@@ -857,6 +721,15 @@ extension HomeViewController {
                 }
                 self.spotView.frame = CGRect(x: 10, y: self.screenSize.height-318-dif, width: self.screenSize.width - 20, height: 318)
                 self.view.addSubview(self.spotView)
+                self.timeView.removeFromSuperview()
+            } else if flowType == .pay {
+                self.updateBackgroundViewHeight(with: UXHeights.resultCard.rawValue)
+                var dif = 15.0
+                if (UIDevice.current.hasNotch) {
+                    dif = 49.0
+                }
+                self.resultView.frame = CGRect(x: 10, y: self.screenSize.height-UXHeights.resultCard.rawValue-dif, width: self.screenSize.width - 20, height: UXHeights.resultCard.rawValue)
+                self.view.addSubview(self.resultView)
                 self.timeView.removeFromSuperview()
             }
         }
@@ -985,12 +858,12 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 221)
+            self.updateBackgroundViewHeight(with: UXHeights.unlockCard.rawValue)
             var dif = 15.0
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.unlockView.frame = CGRect(x: 10, y: self.screenSize.height-221-dif, width: self.screenSize.width - 20, height: 221)
+            self.unlockView.frame = CGRect(x: 10, y: self.screenSize.height-UXHeights.unlockCard.rawValue-dif, width: self.screenSize.width - 20, height: UXHeights.unlockCard.rawValue)
             self.view.addSubview(self.unlockView)
         }
     }
@@ -1015,77 +888,17 @@ extension HomeViewController {
             } else {
                 self.searchBar.alpha = 0.0
             }
-            self.updateBackgroundViewHeight(with: 155)
+            self.updateBackgroundViewHeight(with: UXHeights.unlockedCard.rawValue)
             var dif = 15.0
             
             if (UIDevice.current.hasNotch) {
                 dif = 49.0
             }
-            self.unlockedView.frame = CGRect(x: 10, y: self.screenSize.height-155-dif, width: self.screenSize.width - 20, height: 155)
+            self.unlockedView.frame = CGRect(x: 10, y: self.screenSize.height-UXHeights.unlockedCard.rawValue-dif, width: self.screenSize.width - 20, height: UXHeights.unlockedCard.rawValue)
             self.view.addSubview(self.unlockedView)
         }
     }
 
-    @objc func addPayDurationCard() {
-        DispatchQueue.main.async {
-            let camera = GMSCameraPosition.camera(withLatitude: (selectedPayLocation!.latitude), longitude: (selectedPayLocation!.longitude), zoom: 16.0)
-            self.mapView?.animate(to: camera)
-            
-            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-                self.view.subviews.last!.removeFromSuperview()
-            } else {
-                self.searchBar.alpha = 0.0
-            }
-            self.updateBackgroundViewHeight(with: 205)
-            var dif = 15.0
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.payDurationView.frame = CGRect(x: 10, y: self.screenSize.height-205-dif, width: self.screenSize.width - 20, height: 205)
-            self.view.addSubview(self.payDurationView)
-        }
-    }
-    @objc func removePayDurationCard() {
-        DispatchQueue.main.async {
-            self.updateBackgroundViewHeight(with: 155)
-            var dif = 15.0
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.unlockedView.frame = CGRect(x: 10, y: self.screenSize.height-155-dif, width: self.screenSize.width - 20, height: 155)
-            self.view.addSubview(self.unlockedView)
-            self.payDurationView.removeFromSuperview()
-        }
-    }
-    
-    @objc func addPayParkingCard() {
-        DispatchQueue.main.async {
-            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-                self.view.subviews.last!.removeFromSuperview()
-            } else {
-                self.searchBar.alpha = 0.0
-            }
-            self.updateBackgroundViewHeight(with: 270)
-            var dif = 15.0
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.payParkingView.frame = CGRect(x: 10, y: self.screenSize.height-270-dif, width: self.screenSize.width - 20, height: 270)
-            self.view.addSubview(self.payParkingView)
-        }
-    }
-    @objc func removePayParkingCard() {
-        DispatchQueue.main.async {
-            self.updateBackgroundViewHeight(with: 205)
-            var dif = 15.0
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.payDurationView.frame = CGRect(x: 10, y: self.screenSize.height-205-dif, width: self.screenSize.width - 20, height: 205)
-            self.view.addSubview(self.payDurationView)
-            self.payParkingView.removeFromSuperview()
-        }
-    }
     
     //MARK: -Bar functions-
 
@@ -1107,24 +920,6 @@ extension HomeViewController {
                 self.activeBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
                 self.view.addSubview(self.activeBar)
             }
-        }
-    }
-    
-    @objc func showEndedBar() {
-        DispatchQueue.main.async {
-            self.toggleSettingsButtonHide(to: false)
-            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-                self.view.subviews.last!.removeFromSuperview()
-            } else {
-                self.searchBar.alpha = 0.0
-            }
-            self.updateBackgroundViewHeight(with: 52)
-            var dif = 15.0
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.endedBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
-            self.view.addSubview(self.endedBar)
         }
     }
     
@@ -1165,22 +960,6 @@ extension HomeViewController {
         }
     }
     
-    @objc func showPaidParkingBar() {
-        DispatchQueue.main.async {
-            if self.view.subviews.last != nil && self.view.subviews.last != self.searchBar && self.view.subviews.last != self.mapView {
-                self.view.subviews.last!.removeFromSuperview()
-            } else {
-                self.searchBar.alpha = 0.0
-            }
-            self.updateBackgroundViewHeight(with: 52)
-            var dif = 15.0
-            if (UIDevice.current.hasNotch) {
-                dif = 49.0
-            }
-            self.paidParkingBar.frame = CGRect(x: 10, y: self.screenSize.height-52-dif, width: self.screenSize.width - 20, height: 52)
-            self.view.addSubview(self.paidParkingBar)
-        }
-    }
     
     //MARK: -Return to Search Bar-
     @objc func returnToSearchBar() {
@@ -1206,7 +985,7 @@ extension HomeViewController {
                 
                 self.removeSpotMarker()
                 self.deselectSpotMarker()
-                self.showEndedBar()
+                self.showUnlockedView()
             }
         }
     }

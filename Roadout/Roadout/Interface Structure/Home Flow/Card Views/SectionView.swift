@@ -10,7 +10,6 @@ import UIKit
 class SectionView: UXView {
     
     var letter = "A"
-    var letterTitle: NSAttributedString!
 
     var lettersMenu: UIMenu {
         return UIMenu(title: "Choose a section".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(sections: parkLocations[selectedParkLocationIndex].sections))
@@ -21,7 +20,6 @@ class SectionView: UXView {
     @IBOutlet weak var tipSourceView: UIView!
     
     @IBOutlet weak var sectionImage: UIImageView!
-    @IBOutlet weak var sectionBtn: UIButton!
     
     @IBOutlet weak var continueBtn: UXButton!
     @IBAction func continueTapped(_ sender: Any) {
@@ -41,9 +39,7 @@ class SectionView: UXView {
         NotificationCenter.default.post(name: .removeSectionCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
-    
-    @IBAction func sectionTapped(_ sender: Any) {}
-    
+        
     //MARK: - Swipe Gesture Configuration -
     
     override func viewSwipedBack() {
@@ -96,14 +92,6 @@ class SectionView: UXView {
             selectedSectionIndex = 0
         }
         
-        sectionBtn.layer.cornerRadius = 6.0
-        letterTitle = NSAttributedString(string: letter,
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.icons])
-        sectionBtn.setAttributedTitle(letterTitle, for: .normal)
-
-        sectionBtn.menu = lettersMenu
-        sectionBtn.showsMenuAsPrimaryAction = true
-        
         self.accentColor = UIColor.Roadout.icons
     }
 
@@ -117,9 +105,6 @@ class SectionView: UXView {
         for index in 0...sections.count-1 {
             let action = UIAction(title: "Section ".localized() + "\(sections[index].name)", image: nil, handler: { (_) in
                 self.letter = sections[index].name
-                self.letterTitle = NSAttributedString(string: self.letter,
-                                                 attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.icons])
-                self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
                 selectedSectionIndex = index
                 self.removePointsFromImage()
                 self.addPointsToImage(sections: sections)
@@ -159,9 +144,6 @@ class SectionView: UXView {
             
             letterBtn.addAction(for: .touchUpInside) {
                 self.letter = sections[index].name
-                self.letterTitle = NSAttributedString(string: self.letter,
-                                                 attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.icons])
-                self.sectionBtn.setAttributedTitle(self.letterTitle, for: .normal)
                 selectedSectionIndex = index
                 self.decolorButtonsInSectionImage()
                 letterBtn.setTitleColor(UIColor(named: "Background")!, for: .normal)

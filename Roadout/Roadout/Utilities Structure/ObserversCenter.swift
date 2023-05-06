@@ -29,21 +29,15 @@ extension Notification.Name {
     static let addPayDelayCardID = Notification.Name("ro.roadout.Roadout.addPayDelayCardID")
     static let removePayDelayCardID = Notification.Name("ro.roadout.Roadout.removePayDelayCardID")
     static let addUnlockCardID = Notification.Name("ro.roadout.Roadout.addUnlockCardID")
-    static let addPayDurationCardID = Notification.Name("ro.roadout.Roadout.addPayDurationCardID")
-    static let removePayDurationCardID = Notification.Name("ro.roadout.Roadout.removePayDurationCardID")
-    static let addPayParkingCardID = Notification.Name("ro.roadout.Roadout.addPayParkingCardID")
-    static let removePayParkingCardID = Notification.Name("ro.roadout.Roadout.removePayParkingCardID")
     static let removeUnlockCardID = Notification.Name("ro.roadout.Roadout.removeUnlockCardID")
     static let showActiveBarID = Notification.Name("ro.roadout.Roadout.showActiveBarID")
     static let showUnlockedViewID = Notification.Name("ro.roadout.Roadout.showUnlockedViewID")
     static let showCancelledBarID = Notification.Name("ro.roadout.Roadout.showCancelledBarID")
     static let showNoWifiBarID = Notification.Name("ro.roadout.Roadout.showNoWifiBarID")
     static let removeNoWifiBarID = Notification.Name("ro.roadout.Roadout.removeNoWifiBarID")
-    static let showPaidParkingBarID = Notification.Name("ro.roadout.Roadout.showPaidParkingBarID")
     static let returnToSearchBarID = Notification.Name("ro.roadout.Roadout.returnToSearchBarID")
     static let returnFromReservationID = Notification.Name("ro.roadout.Roadout.returnFromReservationID")
     static let returnToSearchBarWithErrorID = Notification.Name("ro.roadout.Roadout.returnToSearchBarWithErrorID")
-    static let addExpressViewID = Notification.Name("ro.roadout.Roadout.addExpressViewID")
     static let showFindCardID = Notification.Name("ro.roadout.Roadout.showFindCardID")
     
     //SETTINGS
@@ -62,5 +56,4 @@ extension Notification.Name {
     static let reloadFutureReservationsID = Notification.Name("ro.roadout.Roadout.reloadFutureReservationsID")
     static let addSpotMarkerID = Notification.Name("ro.roadout.Roadout.addSpotMarkerID")
     static let removeSpotMarkerID = Notification.Name("ro.roadout.Roadout.removeSpotMarkerID")
-    static let refreshMarkedSpotID = Notification.Name("ro.roadout.Roadout.refreshMarkedSpotID")
 }

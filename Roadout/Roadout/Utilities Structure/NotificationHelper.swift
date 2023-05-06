@@ -23,7 +23,6 @@ class NotificationHelper {
     enum NotificationType {
         case reservation
         case location
-        case future
         case none
     }
     
@@ -53,8 +52,6 @@ class NotificationHelper {
                 if granted {
                     if currentNotification == .reservation {
                         self.scheduleReservationNotification()
-                    } else if currentNotification == .future {
-                        self.scheduleFutureReservation(futureReservation: futureReservation!)
                     }
                 }
             }
@@ -63,8 +60,6 @@ class NotificationHelper {
                 if granted {
                     if currentNotification == .reservation {
                         self.scheduleReservationNotification()
-                    } else if currentNotification == .future {
-                        self.scheduleFutureReservation(futureReservation: futureReservation!)
                     }
                 }
             }
@@ -204,32 +199,6 @@ class NotificationHelper {
         let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
         
         return CLLocationCoordinate2D(latitude: lat, longitude: long)
-    }
-    
-    //MARK: - Future Notifications -
-    
-    func scheduleFutureReservation(futureReservation: FutureReservation) {
-        center.getNotificationSettings { settings in
-            if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
-                let content = UNMutableNotificationContent()
-                content.title = "Reserve near ".localized() + futureReservation.place
-                content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "carkeysound.aiff"))
-                if #available(iOS 15.0, *) {
-                    content.interruptionLevel = .timeSensitive
-                }
-                let calendar = Calendar(identifier: .gregorian)
-                let dateComp = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: futureReservation.date)
-                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: false)
-                let request = UNNotificationRequest(identifier: futureReservation.identifier, content: content, trigger: trigger)
-                self.center.add(request) { _ in }
-            } else {
-                self.askNotificationPermission(currentNotification: .future, futureReservation: futureReservation)
-            }
-        }
-    }
-    
-    func removeFutureReservation(futureReservation: FutureReservation) {
-        center.removePendingNotificationRequests(withIdentifiers: [futureReservation.identifier])
     }
     
 }

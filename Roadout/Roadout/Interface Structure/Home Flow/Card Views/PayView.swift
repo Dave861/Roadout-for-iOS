@@ -50,6 +50,14 @@ class PayView: UXView {
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var actionTypeLbl: UXResizeLabel!
     
+    @IBOutlet weak var licensePlateLbl: UILabel!
+    @IBOutlet weak var licensePlateBtn: UIButton!
+    @IBAction func licensePlateTapped(_ sender: Any) {
+        let sb = UIStoryboard(name: "Home", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "EditLicensePlateVC") as! EditLicensePlateViewController
+        self.parentViewController().present(vc, animated: true)
+    }
+    
     @IBOutlet weak var timeBtn: UIButton!
     @IBAction func timeTapped(_ sender: Any) {
         if returnToDelay {
@@ -61,6 +69,7 @@ class PayView: UXView {
     }
     
     @IBOutlet weak var detailsCard: UIView!
+    @IBOutlet weak var licensePlateCard: UIView!
     @IBOutlet weak var timeCard: UIView!
     
     @IBOutlet weak var payBtn: UXButton!
@@ -73,32 +82,36 @@ class PayView: UXView {
         NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         
         if payBtn.titleLabel?.text != "Choose Payment Method".localized() {
-            if returnToDelay {
-                returnToDelay = false
-                reservationTime += delayTime
-                let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-                Task {
-                    do {
-                        try await ReservationManager.sharedInstance.delayReservationAsync(date: Date(), minutes: delayTime/60, userID: id)
-                        DispatchQueue.main.async {
-                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+            if flowType == .reserve {
+                if returnToDelay {
+                    returnToDelay = false
+                    reservationTime += delayTime
+                    let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+                    Task {
+                        do {
+                            try await ReservationManager.sharedInstance.delayReservationAsync(date: Date(), minutes: delayTime/60, userID: id)
+                            DispatchQueue.main.async {
+                                NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                            }
+                        } catch let err {
+                            self.manageServerSideErrors(error: err)
                         }
-                    } catch let err {
-                        self.manageServerSideErrors(error: err)
+                    }
+                } else {
+                    let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+                    Task {
+                        do {
+                            try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: reservationTime/60, spotID: selectedSpot.rID, payment: 10, userID: id)
+                            DispatchQueue.main.async {
+                                NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                            }
+                        } catch let err {
+                            self.manageServerSideErrors(error: err)
+                        }
                     }
                 }
-            } else {
-                let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
-                Task {
-                    do {
-                        try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: reservationTime/60, spotID: selectedSpot.rID, payment: 10, userID: id)
-                        DispatchQueue.main.async {
-                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
-                        }
-                    } catch let err {
-                        self.manageServerSideErrors(error: err)
-                    }
-                }
+            } else if flowType == .pay {
+                //make payment call
             }
         }
     }
@@ -110,6 +123,7 @@ class PayView: UXView {
     func manageObs() {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshCardsMenu), name: .refreshCardsMenuID, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshLicensePlate), name: .reloadLicensePlateID, object: nil)
     }
     
     @objc func refreshCardsMenu() {
@@ -125,6 +139,11 @@ class PayView: UXView {
         payBtn.setAttributedTitle(choosePaymentTitle, for: .normal)
     }
     
+    @objc func refreshLicensePlate() {
+        self.licensePlateLbl.text = userLicensePlate != "" ? userLicensePlate : "ADD-PLATE".localized()
+    }
+        
+    
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
@@ -133,27 +152,45 @@ class PayView: UXView {
         backBtn.layer.cornerRadius = 15.0
         
         timeBtn.setTitle("", for: .normal)
+        licensePlateBtn.setTitle("", for: .normal)
         
         preparePayButtons()
-        fillReservationData(for: selectedSpot.rID)
+        setUpFlow()
         
         priceLbl.set(textColor: UIColor.Roadout.darkOrange, range: priceLbl.range(after: " - "))
         priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
         
-        if returnToDelay {
-            titleLbl.text = "Pay Delay".localized()
-        } else {
-            titleLbl.text = "Pay Spot".localized()
-        }
-        
         detailsCard.layer.cornerRadius = detailsCard.frame.height/5
         timeCard.layer.cornerRadius = timeCard.frame.height/5
+        licensePlateCard.layer.cornerRadius = licensePlateCard.frame.height/5
         
         self.accentColor = UIColor.Roadout.darkOrange
     }
     
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[4] as! UIView
+    }
+    
+    func setUpFlow() {
+        if flowType == .reserve {
+            if returnToDelay {
+                titleLbl.text = "Pay Delay".localized()
+            } else {
+                titleLbl.text = "Pay Reservation".localized()
+            }
+            detailsCard.isHidden = false
+            licensePlateCard.isHidden = true
+            fillReservationData(for: selectedSpot.rID)
+        } else if flowType == .pay {
+            if returnToDelay {
+                titleLbl.text = "Pay Delay".localized()
+            } else {
+                titleLbl.text = "Pay Parking".localized()
+            }
+            detailsCard.isHidden = true
+            licensePlateCard.isHidden = false
+            fillParkingData()
+        }
     }
     
     func fillReservationData(for spotID: String) {
@@ -180,6 +217,24 @@ class PayView: UXView {
             self.timeLbl.text = "\(Int(reservationTime/60))" + " min".localized()
             self.actionTypeLbl.text = "Reserve parking for".localized()
             self.actionTypeLbl.longText = "Reserve parking for".localized()
+            self.actionTypeLbl.mediumText = "Reserve for".localized()
+            self.actionTypeLbl.shortText = "Reserve".localized()
+        }
+    }
+    
+    func fillParkingData() {
+        licensePlateLbl.text = userLicensePlate != "" ? userLicensePlate : "ADD-PLATE".localized()
+        
+        if returnToDelay {
+            self.timeLbl.text = "\(Int(parkingDelayTime))" + " hrs".localized()
+            self.actionTypeLbl.text = "Delay parking for".localized()
+            self.actionTypeLbl.longText = "Delay parking for".localized()
+            self.actionTypeLbl.mediumText = "Delay for".localized()
+            self.actionTypeLbl.shortText = "Delay".localized()
+        } else {
+            self.timeLbl.text = "\(Int(parkingTime))" + " hrs".localized()
+            self.actionTypeLbl.text = "Pay parking for".localized()
+            self.actionTypeLbl.longText = "Pay parking for".localized()
             self.actionTypeLbl.mediumText = "Reserve for".localized()
             self.actionTypeLbl.shortText = "Reserve".localized()
         }

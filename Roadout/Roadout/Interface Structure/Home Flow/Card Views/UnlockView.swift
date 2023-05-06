@@ -29,7 +29,6 @@ class UnlockView: UXView {
     }
     
     @IBOutlet weak var slidingBtn: SlidingButton!
-    @IBOutlet weak var explainerLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     
     //MARK: - View Configuration -
@@ -41,8 +40,7 @@ class UnlockView: UXView {
         
         slidingBtn.reset()
         slidingBtn.delegate = self
-        
-        explainerLbl.text = "Unlocking the spot cannot be undone. Once unlocked anyone can park on the spot, make sure you are at the spot before unlocking it.".localized()
+
         titleLbl.text = "Unlock Spot".localized()
         
         self.accentColor = UIColor.Roadout.darkYellow

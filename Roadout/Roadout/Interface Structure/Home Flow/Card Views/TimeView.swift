@@ -15,9 +15,6 @@ class TimeView: UXView {
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
-        if returnToResult {
-            NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
-        }
         NotificationCenter.default.post(name: .removeTimeCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
@@ -27,9 +24,6 @@ class TimeView: UXView {
     override func viewSwipedBack() {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
-        if returnToResult {
-            NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
-        }
         NotificationCenter.default.post(name: .removeTimeCardID, object: nil)
     }
     
@@ -41,18 +35,29 @@ class TimeView: UXView {
     @IBAction func continueTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        reservationTime = Int(minuteSlider.value*60)
+        if flowType == .reserve {
+            reservationTime = Int(timeSlider.value*60)
+        } else if flowType == .pay {
+            parkingTime = Int(timeSlider.value)
+        }
         NotificationCenter.default.post(name: .addPayCardID, object: nil)
     }
         
-    @IBOutlet weak var minuteSlider: UISlider!
+    @IBOutlet weak var timeSlider: UISlider!
     @IBAction func slided(_ sender: Any) {
-        let roundedValue = round(minuteSlider.value/1.0)*1.0
-        minuteSlider.value = roundedValue
-        updatePhraseSelect()
-        timeLbl.text = "\(Int(minuteSlider.value))" + " min".localized()
-        delayLbl.isHidden = true
-        recommendationIcon.image = UIImage(systemName: "clock.fill")!
+        if flowType == .reserve {
+            let roundedValue = round(timeSlider.value/1.0)*1.0
+            updatePhraseSelect()
+            timeLbl.text = "\(Int(timeSlider.value))" + " min".localized()
+            delayLbl.isHidden = true
+            recommendationIcon.image = UIImage(systemName: "clock.fill")!
+        } else {
+            let roundedValue = round(timeSlider.value/1.0)*1.0
+            updatePhraseParking()
+            timeLbl.text = "\(Int(timeSlider.value))" + " hrs".localized()
+            delayLbl.isHidden = true
+            recommendationIcon.image = UIImage(systemName: "clock.fill")!
+        }
     }
         
     @IBOutlet weak var recommendationCard: UIView!
@@ -63,11 +68,13 @@ class TimeView: UXView {
     @IBOutlet weak var delayLbl: UILabel!
     
     @IBAction func recommendationTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Recommended Time".localized(), message: "We recommend time based on your current location and estimated time to commute to the selected parking spot, if the time exceeds 30 minutes, we do not recommend reserving just yet.".localized(), preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
-        alert.addAction(okAction)
-        alert.view.tintColor = UIColor.Roadout.darkYellow
-        self.parentViewController().present(alert, animated: true, completion: nil)
+        if flowType == .reserve {
+            let alert = UIAlertController(title: "Recommended Time".localized(), message: "We recommend time based on your current location and estimated time to commute to the selected parking spot, if the time exceeds 30 minutes, we do not recommend reserving just yet.".localized(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.view.tintColor = UIColor.Roadout.darkYellow
+            self.parentViewController().present(alert, animated: true, completion: nil)
+        }
     }
     
     //MARK: - View Confiuration -
@@ -79,20 +86,50 @@ class TimeView: UXView {
         backBtn.layer.cornerRadius = 15.0
         continueBtn.setAttributedTitle(continueTitle, for: .normal)
 
-        recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
-        recommendationBtn.setTitle("", for: .normal)
-        updatePhraseLoad()
-        timeLbl.text = "..." + " min".localized()
-        delayLbl.isHidden = true
-        recommendationCard.layer.cornerRadius = recommendationCard.frame.height/5
+        setUpFlow()
         
         self.accentColor = UIColor.Roadout.darkYellow
     }
     
     override func didMoveToSuperview() {
-        if self.superview != nil {
+        if self.superview != nil && flowType == .reserve {
             self.getTimeToCommute()
         }
+    }
+    
+    func setUpFlow() {
+        if flowType == .reserve {
+            timeSlider.minimumValue = 1.0
+            timeSlider.maximumValue = 20.0
+            timeSlider.minimumValueImage = UIImage(systemName: "1.circle.fill")
+            timeSlider.maximumValueImage = UIImage(systemName: "20.circle.fill")
+            
+            recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
+            recommendationBtn.setTitle("", for: .normal)
+            updatePhraseLoad()
+            timeLbl.text = "..." + " min".localized()
+            delayLbl.isHidden = true
+            recommendationCard.layer.cornerRadius = recommendationCard.frame.height/5
+        } else if flowType == .pay {
+            timeSlider.minimumValue = 1.0
+            timeSlider.maximumValue = 6.0
+            timeSlider.minimumValueImage = UIImage(systemName: "1.circle.fill")
+            timeSlider.maximumValueImage = UIImage(systemName: "6.circle.fill")
+            
+            recommendationIcon.image = UIImage(systemName: "clock.fill")!
+            recommendationBtn.setTitle("", for: .normal)
+            updatePhraseParking()
+            timeLbl.text = "\(Int(timeSlider.value))" + " hrs".localized()
+            delayLbl.isHidden = true
+            recommendationCard.layer.cornerRadius = recommendationCard.frame.height/5
+        }
+    }
+    
+    func updatePhraseParking() {
+        phraseLbl.longText = "Park your car for".localized()
+        phraseLbl.mediumText = "Park your car".localized()
+        phraseLbl.shortText = "Park".localized()
+        phraseLbl.text = "Park your car for".localized()
     }
     
     func updatePhraseLoad() {
@@ -119,14 +156,14 @@ class TimeView: UXView {
     func getTimeToCommute() {
         guard let parentVC = self.parentViewController() as? HomeViewController else {
             self.updatePhraseSelect()
-            self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " min".localized()
+            self.timeLbl.text = "\(Int(self.timeSlider.value))" + " min".localized()
             self.delayLbl.isHidden = true
             self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
             return
         }
         guard let myLocation = parentVC.mapView.myLocation else {
             self.updatePhraseSelect()
-            self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " min".localized()
+            self.timeLbl.text = "\(Int(self.timeSlider.value))" + " min".localized()
             self.delayLbl.isHidden = true
             self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
             return
@@ -136,7 +173,7 @@ class TimeView: UXView {
         Task {
             self.continueBtn.isEnabled = false
             self.continueBtn.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
-            self.minuteSlider.isEnabled = false
+            self.timeSlider.isEnabled = false
             do {
                 let resultedTime = try await DistanceManager.sharedInstance.getTimeAndDistanceBetween(ogCoords, destCoords)
                 DispatchQueue.main.async {
@@ -146,7 +183,7 @@ class TimeView: UXView {
                         self.delayLbl.isHidden = false
                         self.delayLbl.text = "+ " + self.getDelayTime(resultedTime)
                         self.recommendationIcon.image = UIImage(systemName: "wand.and.stars")!
-                        self.minuteSlider.setValue(20.0, animated: true)
+                        self.timeSlider.setValue(20.0, animated: true)
                     } else if self.evaluateTime(resultedTime) == 1 {
                         self.updatePhraseRecommend()
                         self.timeLbl.text = resultedTime.replacingOccurrences(of: " min", with: " min".localized())
@@ -155,10 +192,10 @@ class TimeView: UXView {
                         
                         var valueTime = resultedTime.replacingOccurrences(of: " mins", with: "")
                         valueTime = valueTime.replacingOccurrences(of: " min", with: "")
-                        self.minuteSlider.setValue(Float(Int(valueTime) ?? 15), animated: true)
+                        self.timeSlider.setValue(Float(Int(valueTime) ?? 15), animated: true)
                     } else if self.evaluateTime(resultedTime) == 0 {
                         self.updatePhraseSelect()
-                        self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " min".localized()
+                        self.timeLbl.text = "\(Int(self.timeSlider.value))" + " min".localized()
                         self.delayLbl.isHidden = true
                         self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
                     }
@@ -166,12 +203,12 @@ class TimeView: UXView {
             } catch {
                 DispatchQueue.main.async {
                     self.updatePhraseSelect()
-                    self.timeLbl.text = "\(Int(self.minuteSlider.value))" + " min".localized()
+                    self.timeLbl.text = "\(Int(self.timeSlider.value))" + " min".localized()
                     self.delayLbl.isHidden = true
                     self.recommendationIcon.image = UIImage(systemName: "clock.fill")!
                 }
             }
-            self.minuteSlider.isEnabled = true
+            self.timeSlider.isEnabled = true
             self.continueBtn.isEnabled = true
             self.continueBtn.backgroundColor = UIColor.Roadout.darkYellow.withAlphaComponent(1.0)
         }

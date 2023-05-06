@@ -10,25 +10,25 @@ import CoreLocation
 
 class ResultView: UXView {
     
-    let pickTitle = NSAttributedString(string: "Pick".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
-    let continueTitle = NSAttributedString(string: "Continue".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let payTitle = NSAttributedString(string: "Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let reserveTitle = NSAttributedString(string: "Reserve".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     @IBOutlet weak var tipSourceView: UIView!
     
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
-    @IBOutlet weak var sectionsLbl: UILabel!
+    @IBOutlet weak var typeLbl: UILabel!
     @IBOutlet weak var freeSpotsLbl: UILabel!
     
     @IBOutlet weak var distanceIcon: UIImageView!
-    @IBOutlet weak var sectionsIcon: UIImageView!
     @IBOutlet weak var spotsIcon: UIImageView!
+    @IBOutlet weak var typeIcon: UIImageView!
     
-    @IBOutlet weak var pickBtn: UXButton!
-    @IBAction func pickTapped(_ sender: Any) {
+    @IBOutlet weak var reserveBtn: UXButton!
+    @IBAction func reserveTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        returnToResult = false
+        flowType = .reserve
         Task.detached {
             do {
                 try await self.downloadSpots()
@@ -36,37 +36,27 @@ class ResultView: UXView {
                 print(err)
             }
         }
-        
-        //Clear saved car park
-        UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
-        carParkHash = "roadout_carpark_clear"
-        NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
-        
-        NotificationCenter.default.post(name: .addSectionCardID, object: nil)
+        if agreedToParkingRules {
+            NotificationCenter.default.post(name: .addSectionCardID, object: nil)
+        } else {
+            let sb = UIStoryboard(name: "Home", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ParkingInfoVC") as! ParkingInfoViewController
+            self.parentViewController().present(vc, animated: true)
+        }
     }
     
-    @IBOutlet weak var continueBtn: UXButton!
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBOutlet weak var payBtn: UXButton!
+    @IBAction func payTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        returnToResult = true
-        //Clear saved car park
-        UserDefaults.roadout!.setValue("roadout_carpark_clear", forKey: "ro.roadout.Roadout.carParkHash")
-        carParkHash = "roadout_carpark_clear"
-        NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
-        //Find first free spot
-        continueBtn.startPulseAnimation()
-        Task {
-            do {
-                try await FunctionsManager.sharedInstance.findSpotInLocationAsync(location: parkLocations[selectedParkLocationIndex])
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
-                    NotificationCenter.default.post(name: .addTimeCardID, object: nil)
-                    self.continueBtn.stopPulseAnimation()
-                }
-            } catch {
-                self.showNoFreeSpotAlert()
-            }
+        flowType = .pay
+        //Task determine nearest spot
+        if agreedToParkingRules {
+            NotificationCenter.default.post(name: .addTimeCardID, object: nil)
+        } else {
+            let sb = UIStoryboard(name: "Home", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ParkingInfoVC") as! ParkingInfoViewController
+            self.parentViewController().present(vc, animated: true)
         }
     }
     
@@ -74,6 +64,7 @@ class ResultView: UXView {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
         NotificationCenter.default.post(name: .removeResultCardID, object: nil)
+        agreedToParkingRules = false
     }
     @IBOutlet weak var backBtn: UIButton!
     
@@ -86,7 +77,7 @@ class ResultView: UXView {
     }
     
     override func excludePansFrom(touch: UITouch) -> Bool {
-        return !continueBtn.bounds.contains(touch.location(in: continueBtn)) && !pickBtn.bounds.contains(touch.location(in: pickBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+        return !reserveBtn.bounds.contains(touch.location(in: reserveBtn)) && !payBtn.bounds.contains(touch.location(in: payBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
     }
     
     //MARK: - View Confiuration -
@@ -109,17 +100,17 @@ class ResultView: UXView {
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
         locationLbl.text = parkLocations[selectedParkLocationIndex].name
-        pickBtn.layer.cornerRadius = 12.0
-        continueBtn.layer.cornerRadius = 12.0
+        reserveBtn.layer.cornerRadius = 12.0
+        payBtn.layer.cornerRadius = 12.0
         
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
         
-        pickBtn.setAttributedTitle(pickTitle, for: .normal)
-        pickBtn.tintColor = UIColor(named: selectedLocation.accentColor)!
+        payBtn.setAttributedTitle(payTitle, for: .normal)
+        payBtn.tintColor = UIColor(named: selectedLocation.accentColor)!
         
-        continueBtn.setAttributedTitle(continueTitle, for: .normal)
-        continueBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)!
+        reserveBtn.setAttributedTitle(reserveTitle, for: .normal)
+        reserveBtn.backgroundColor = UIColor(named: selectedLocation.accentColor)!
         
         if currentLocationCoord != nil {
             let c1 = CLLocation(latitude: parkLocations[selectedParkLocationIndex].latitude, longitude: parkLocations[selectedParkLocationIndex].longitude)
@@ -134,12 +125,11 @@ class ResultView: UXView {
             distanceLbl.text = "- km"
         }
         
-        sectionsLbl.text = "\(parkLocations[selectedParkLocationIndex].sections.count) " + "sections".localized()
         freeSpotsLbl.text = "\(parkLocations[selectedParkLocationIndex].freeSpots) " + "free spots".localized()
         
         distanceIcon.tintColor = UIColor(named: selectedLocation.accentColor)!
-        sectionsIcon.tintColor = UIColor(named: selectedLocation.accentColor)!
         spotsIcon.tintColor = UIColor(named: selectedLocation.accentColor)!
+        typeIcon.tintColor = UIColor(named: selectedLocation.accentColor)!
         
         self.accentColor = UIColor(named: selectedLocation.accentColor)!
     }
@@ -163,16 +153,4 @@ class ResultView: UXView {
             }
         }
     }
-
-    func showNoFreeSpotAlert() {
-        DispatchQueue.main.async {
-            self.continueBtn.stopPulseAnimation()
-            
-            let alert = UIAlertController(title: "Error".localized(), message: "It seems there are no free spots in this location at the moment".localized(), preferredStyle: .alert)
-            alert.view.tintColor = UIColor(named: selectedLocation.accentColor)!
-            alert.addAction(UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil))
-            self.parentViewController().present(alert, animated: true, completion: nil)
-        }
-    }
-    
 }

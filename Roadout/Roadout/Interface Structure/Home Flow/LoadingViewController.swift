@@ -21,6 +21,7 @@ class GetDataViewController: UIViewController {
     
     @IBAction func tryAgainTapped(_ sender: Any) {
         tryAgainBtn.isHidden = true
+        progressView.isHidden = false
         saveCityData()
     }
     
@@ -29,6 +30,7 @@ class GetDataViewController: UIViewController {
         cardView.layer.cornerRadius = 17.0
         tryAgainBtn.layer.cornerRadius = 14.0
         tryAgainBtn.isHidden = true
+        progressView.isHidden = false
         titleLbl.text = "Loading City Data".localized()
         activityIndicator.startAnimating()
         saveCityData()
@@ -86,12 +88,14 @@ class GetDataViewController: UIViewController {
         let alert = UIAlertController(title: "Download Error".localized(), message: "There was an error reaching our server. Try again or force quit the app and reopen. If the problem persists please screenshot this and send a bug report at bugs@roadout.ro".localized(), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK".localized(), style: .cancel) { _ in
             self.tryAgainBtn.isHidden = false
+            self.progressView.isHidden = true
         }
         alert.addAction(okAction)
         
         let tryAgainAction = UIAlertAction(title: "Try Again".localized(), style: .default) { _ in
             self.saveCityData()
             self.tryAgainBtn.isHidden = true
+            self.progressView.isHidden = false
         }
         alert.addAction(tryAgainAction)
         

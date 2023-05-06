@@ -6,42 +6,30 @@
 //
 
 import UIKit
+import GeohashKit
 
 class UnlockedView: UXView {
     
     @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var descriptionLbl: UILabel!
     
     @IBOutlet weak var doneBtn: UIButton!
     
     @IBOutlet weak var payBtn: UXButton!
-    @IBOutlet weak var payView: UIView!
-    
-    @IBOutlet weak var markView: UIView!
-    @IBOutlet weak var markBtn: UXButton!
+    @IBOutlet weak var navigateBtn: UXButton!
     
     //MARK: - Actions -
     
     @IBAction func payTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        isPayFlow = false
-        selectedPayLocation = getLocationWith(name: EntityManager.sharedInstance.decodeSpotID(selectedSpot.rID)[0])
-        NotificationCenter.default.post(name: .addPayDurationCardID, object: nil)
     }
     
-    @IBAction func markTapped(_ sender: Any) {
-        UserDefaults.roadout!.setValue(selectedSpot.rHash, forKey: "ro.roadout.Roadout.carParkHash")
-        carParkHash = selectedSpot.rHash
-        NotificationCenter.default.post(name: .refreshMarkedSpotID, object: nil)
+    @IBAction func navigateTapped(_ sender: Any) {
+        let hashComponents = selectedSpot.rHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
+        let lat = Geohash(geohash: hashComponents[0])!.coordinates.latitude
+        let long = Geohash(geohash: hashComponents[0])!.coordinates.longitude
         
-        markBtn.setAttributedTitle(NSAttributedString(string: " Marked".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
-        markBtn.isEnabled = false
-        let alert = UIAlertController(title: "Spot Marked".localized(), message: "Your car location has been marked, you can return later and find it in Roadout".localized(), preferredStyle: .alert)
-        alert.view.tintColor = UIColor.Roadout.devBrown
-        let okAction = UIAlertAction(title: "OK".localized(), style: .cancel)
-        alert.addAction(okAction)
-        self.parentViewController().present(alert, animated: true)
+        self.openDirectionsToCoords(lat: lat, long: long)
     }
     
     @IBAction func doneTapped(_ sender: Any) {
@@ -101,20 +89,21 @@ class UnlockedView: UXView {
     }
     
     override func excludePansFrom(touch: UITouch) -> Bool {
-        return !payBtn.bounds.contains(touch.location(in: payBtn)) && !markBtn.bounds.contains(touch.location(in: markBtn)) && !doneBtn.bounds.contains(touch.location(in: doneBtn))
+        return !payBtn.bounds.contains(touch.location(in: payBtn)) && !navigateBtn.bounds.contains(touch.location(in: navigateBtn)) && !doneBtn.bounds.contains(touch.location(in: doneBtn))
     }
     
     func styleActionButtons() {
-        payBtn.layer.cornerRadius = 11
-        markBtn.layer.cornerRadius = 11
+        payBtn.layer.cornerRadius = 12
+        navigateBtn.layer.cornerRadius = 12
         
-        payBtn.setAttributedTitle(NSAttributedString(string: " Pay Parking".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
-        if carParkHash == "roadout_carpark_clear" {
-            markBtn.isEnabled = true
-            markBtn.setAttributedTitle(NSAttributedString(string: " Mark Spot".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        payBtn.setAttributedTitle(NSAttributedString(string: "Pay Parking".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium)]), for: .normal)
+        navigateBtn.setAttributedTitle(NSAttributedString(string: "Navigate".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18, weight: .medium)]), for: .normal)
+        
+        if #available(iOS 15.0, *) {
+            payBtn.configuration?.imagePlacement = .top
+            navigateBtn.configuration?.imagePlacement = .top
         } else {
-            markBtn.isEnabled = false
-            markBtn.setAttributedTitle(NSAttributedString(string: " Marked".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+            // Fallback on earlier versions
         }
     }
     
@@ -137,9 +126,6 @@ class UnlockedView: UXView {
     
     override func willMove(toSuperview newSuperview: UIView?) {
         self.layer.cornerRadius = 19.0
-        titleLbl.text = "Unlocked".localized()
-        descriptionLbl.text = "Spot is now unlocked, pay parking right from here or mark the spot to find your car later.".localized()
-                
         reservationTime = 0
         
         styleActionButtons()
@@ -151,18 +137,20 @@ class UnlockedView: UXView {
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "Cards", bundle: nil).instantiate(withOwner: nil, options: nil)[8] as! UIView
     }
-    
-    func getLocationWith(name: String) -> ParkLocation {
-        var location: ParkLocation!
-        
-        for parkLocation in parkLocations {
-            if parkLocation.name == name {
-                location = parkLocation
-                break
-            }
-        }
 
-        return location
+    
+    func openDirectionsToCoords(lat: Double, long: Double) {
+        var link: String
+        switch UserPrefsUtils.sharedInstance.returnPrefferedMapsApp() {
+        case "Google Maps":
+            link = "https://www.google.com/maps/search/?api=1&query=\(lat),\(long)"
+        case "Waze":
+            link = "https://www.waze.com/ul?ll=\(lat)%2C-\(long)&navigate=yes&zoom=15"
+        default:
+            link = "https://maps.apple.com/?ll=\(lat),\(long)&q=Roadout%20Location"
+        }
+        guard UIApplication.shared.canOpenURL(URL(string: link)!) else { return }
+        UIApplication.shared.open(URL(string: link)!)
     }
 
 }

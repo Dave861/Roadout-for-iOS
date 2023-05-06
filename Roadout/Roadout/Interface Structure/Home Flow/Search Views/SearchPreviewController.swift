@@ -27,11 +27,11 @@ class SearchPreviewController: UIViewController {
     @IBOutlet weak var locationNameLbl: UILabel!
     
     @IBOutlet weak var distanceLbl: UILabel!
-    @IBOutlet weak var sectionsLbl: UILabel!
+    @IBOutlet weak var typeLbl: UILabel!
     @IBOutlet weak var spotsLbl: UILabel!
     
     @IBOutlet weak var distanceIcon: UIImageView!
-    @IBOutlet weak var gridIcon: UIImageView!
+    @IBOutlet weak var typeIcon: UIImageView!
     @IBOutlet weak var spotIcon: UIImageView!
         
     override func viewDidLoad() {
@@ -39,10 +39,9 @@ class SearchPreviewController: UIViewController {
         locationNameLbl.text = previewLocationName
         distanceLbl.text = previewLocationDistance
         spotsLbl.text = "\(previewLocationFreeSpots) " + "free spots".localized()
-        sectionsLbl.text = "\(previewLocationSections) " + "sections".localized()
         
         distanceIcon.tintColor = previewLocationColor
-        gridIcon.tintColor = previewLocationColor
+        typeIcon.tintColor = previewLocationColor
         spotIcon.tintColor = previewLocationColor
             
         let camera = GMSCameraPosition.camera(withLatitude: previewLocationCoords.latitude, longitude: previewLocationCoords.longitude, zoom: 16.0)

@@ -12,7 +12,7 @@ import AVKit
 
 class PermissionsViewController: UIViewController {
 
-    let permissionsIcons = [UIImage(systemName: "bell.fill"), UIImage(systemName: "map"), UIImage(systemName: "camera.fill")]
+    let permissionsIcons = [UIImage(systemName: "bell.fill"), UIImage(systemName: "map.fill"), UIImage(systemName: "camera.fill")]
     let permissionsTitles = ["Notifications".localized(), "Location".localized(), "Camera".localized()]
     let permissionsTexts = ["Roadout needs permission to send notifications in order to give you status updates for your reservations. You can control which notifications you get in settings.".localized(), "Roadout needs access to your location in order to be able to show you parking spots near you and allow you to make reservations. We do not share your location with third parties and do not use it to serve you ads.".localized(), "Roadout needs camera access in order for AR Directions to work, camera data is processed locally and you will always know when the camera is open.".localized()]
     

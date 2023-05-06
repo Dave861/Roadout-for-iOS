@@ -39,14 +39,21 @@ class DelayView: UXView {
         
     }
     
-    @IBOutlet weak var minuteSlider: UISlider!
+    @IBOutlet weak var timeSlider: UISlider!
     @IBAction func slided(_ sender: Any) {
-        let roundedValue = round(minuteSlider.value/1.0)*1.0
-        minuteSlider.value = roundedValue
-        delayTime = Int(roundedValue)*60
-        priceLbl.text = "\(Int(minuteSlider.value))" + " Minute/s".localized() + " - \(Int(minuteSlider.value)) RON"
-        priceLbl.set(textColor: UIColor.Roadout.secondOrange, range: priceLbl.range(after: " - "))
-        priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
+        if flowType == .reserve {
+            let roundedValue = round(timeSlider.value/1.0)*1.0
+            delayTime = Int(roundedValue)*60
+            priceLbl.text = "\(Int(timeSlider.value))" + " Minute/s".localized() + " - \(Int(timeSlider.value)) RON"
+            priceLbl.set(textColor: UIColor.Roadout.secondOrange, range: priceLbl.range(after: " - "))
+            priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
+        } else {
+            let roundedValue = round(timeSlider.value/1.0)*1.0
+            parkingDelayTime = Int(roundedValue)
+            priceLbl.text = "\(Int(timeSlider.value))" + " Hour/s".localized() + " - \(Int(timeSlider.value)) RON"
+            priceLbl.set(textColor: UIColor.Roadout.secondOrange, range: priceLbl.range(after: " - "))
+            priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
+        }
     }
     
     @IBOutlet weak var priceLbl: UILabel!
@@ -63,8 +70,35 @@ class DelayView: UXView {
         priceLbl.set(textColor: UIColor.Roadout.secondOrange, range: priceLbl.range(after: " - "))
         priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
         
-        self.accentColor = UIColor.Roadout.secondOrange
+        setUpFlow()
         
+        self.accentColor = UIColor.Roadout.secondOrange
+    }
+    
+    func setUpFlow() {
+        if flowType == .reserve {
+            timeSlider.minimumValue = 1.0
+            timeSlider.maximumValue = 10.0
+            timeSlider.minimumValueImage = UIImage(systemName: "1.circle.fill")
+            timeSlider.maximumValueImage = UIImage(systemName: "10.circle.fill")
+            
+            let roundedValue = round(timeSlider.value/1.0)*1.0
+            delayTime = Int(roundedValue)*60
+            priceLbl.text = "\(Int(timeSlider.value))" + " Minute/s".localized() + " - \(Int(timeSlider.value)) RON"
+            priceLbl.set(textColor: UIColor.Roadout.secondOrange, range: priceLbl.range(after: " - "))
+            priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
+        } else if flowType == .pay {
+            timeSlider.minimumValue = 1.0
+            timeSlider.maximumValue = 4.0
+            timeSlider.minimumValueImage = UIImage(systemName: "1.circle.fill")
+            timeSlider.maximumValueImage = UIImage(systemName: "4.circle.fill")
+            
+            let roundedValue = round(timeSlider.value/1.0)*1.0
+            parkingDelayTime = Int(roundedValue)
+            priceLbl.text = "\(Int(timeSlider.value))" + " Hour/s".localized() + " - \(Int(timeSlider.value)) RON"
+            priceLbl.set(textColor: UIColor.Roadout.secondOrange, range: priceLbl.range(after: " - "))
+            priceLbl.set(font: .systemFont(ofSize: 22.0, weight: .semibold), range: priceLbl.range(after: " - "))
+        }
     }
     
     class func instanceFromNib() -> UIView {

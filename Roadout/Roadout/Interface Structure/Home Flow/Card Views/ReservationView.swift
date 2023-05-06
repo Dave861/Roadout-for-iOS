@@ -26,7 +26,7 @@ class ReservationView: UXView {
     }
     
     override func excludePansFrom(touch: UITouch) -> Bool {
-        return !unlockBtn.bounds.contains(touch.location(in: unlockBtn)) && !directionsBtn.bounds.contains(touch.location(in: directionsBtn)) && !delayBtn.bounds.contains(touch.location(in: delayBtn)) && !cancelBtn.bounds.contains(touch.location(in: cancelBtn)) && !arBtn.bounds.contains(touch.location(in: arBtn)) && !worldBtn.bounds.contains(touch.location(in: worldBtn)) && !helpBtn.bounds.contains(touch.location(in: helpBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+        return !unlockBtn.bounds.contains(touch.location(in: unlockBtn)) && !directionsBtn.bounds.contains(touch.location(in: directionsBtn)) && !delayBtn.bounds.contains(touch.location(in: delayBtn)) && !cancelBtn.bounds.contains(touch.location(in: cancelBtn)) && !moreBtn.bounds.contains(touch.location(in: moreBtn)) && !helpBtn.bounds.contains(touch.location(in: helpBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
     }
     
     @IBOutlet weak var timerLbl: UILabel!
@@ -35,35 +35,35 @@ class ReservationView: UXView {
     @IBOutlet weak var directionsBtn: UXButton!
     @IBOutlet weak var delayBtn: UXButton!
     @IBOutlet weak var cancelBtn: UXButton!
-    @IBOutlet weak var arBtn: UXButton!
-    @IBOutlet weak var worldBtn: UXButton!
+    @IBOutlet weak var moreBtn: UXButton!
     @IBOutlet weak var helpBtn: UXButton!
-    
-    @IBOutlet weak var unlockView: UIView!
-    @IBOutlet weak var directionsView: UIView!
-    @IBOutlet weak var delayView: UIView!
-    @IBOutlet weak var cancelView: UIView!
-    @IBOutlet weak var arView: UIView!
-    @IBOutlet weak var worldView: UIView!
-    @IBOutlet weak var helpView: UIView!
     
     
     func styleActionButtons() {
-        unlockBtn.layer.cornerRadius = 11
-        directionsBtn.layer.cornerRadius = 11
-        delayBtn.layer.cornerRadius = 11
-        cancelBtn.layer.cornerRadius = 11
-        arBtn.layer.cornerRadius = 11
-        helpBtn.layer.cornerRadius = 11
-        worldBtn.layer.cornerRadius = 11
+        unlockBtn.layer.cornerRadius = 12
+        directionsBtn.layer.cornerRadius = 12
+        delayBtn.layer.cornerRadius = 12
+        cancelBtn.layer.cornerRadius = 12
+        helpBtn.layer.cornerRadius = 12
+        moreBtn.layer.cornerRadius = 12
         
-        unlockBtn.setAttributedTitle(NSAttributedString(string: " Unlock".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
-        directionsBtn.setAttributedTitle(NSAttributedString(string: " Navigate".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
-        delayBtn.setAttributedTitle(NSAttributedString(string: " Delay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
-        cancelBtn.setAttributedTitle(NSAttributedString(string: " Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
-        arBtn.setAttributedTitle(NSAttributedString(string: " Open in AR".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
-        helpBtn.setAttributedTitle(NSAttributedString(string: " Help & Support".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
-        worldBtn.setAttributedTitle(NSAttributedString(string: " World View".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        unlockBtn.setAttributedTitle(NSAttributedString(string: "Unlock".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        directionsBtn.setAttributedTitle(NSAttributedString(string: "Navigate".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        delayBtn.setAttributedTitle(NSAttributedString(string: "Delay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        cancelBtn.setAttributedTitle(NSAttributedString(string: "Cancel".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        helpBtn.setAttributedTitle(NSAttributedString(string: "Help".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        moreBtn.setAttributedTitle(NSAttributedString(string: "More".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        
+        if #available(iOS 15.0, *) {
+            unlockBtn.configuration?.imagePlacement = .top
+            directionsBtn.configuration?.imagePlacement = .top
+            delayBtn.configuration?.imagePlacement = .top
+            cancelBtn.configuration?.imagePlacement = .top
+            helpBtn.configuration?.imagePlacement = .top
+            moreBtn.configuration?.imagePlacement = .top
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     //MARK: - Reservation Actions -
@@ -146,37 +146,39 @@ class ReservationView: UXView {
         self.parentViewController().present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func arTapped(_ sender: Any) {
-        guard selectedSpot.rHash != "" else {
-            self.manageLocalError(color: "Kinda Red")
-            return
-        }
-
-        if ARManager.sharedInstance.shownTutorial() {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "ARDirectionsVC") as! ARDirectionsViewController
-            self.parentViewController().present(vc, animated: true, completion: nil)
-        } else {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "ARTutorialVC") as! ARTutorialViewController
-            self.parentViewController().present(vc, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func worldTapped(_ sender: Any) {
-        guard selectedSpot.rHash != "" else {
-            self.manageLocalError(color: "Limey")
-            return
-        }
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "WorldVC") as! WorldViewController
-        self.parentViewController().present(vc, animated: true, completion: nil)
-    }
-    
     @IBAction func helpTapped(_ sender: Any) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "HelpVC") as! HelpViewController
         self.parentViewController().present(vc, animated: true, completion: nil)
+    }
+    
+    func makeMoreMenu() -> UIMenu {
+        let worldAction = UIAction(title: "World View".localized(), image: UIImage(systemName: "globe.desk.fill"), handler: { (_) in
+            guard selectedSpot.rHash != "" else {
+                self.manageLocalError(color: "Limey")
+                return
+            }
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "WorldVC") as! WorldViewController
+            self.parentViewController().present(vc, animated: true, completion: nil)
+        })
+        let ARAction = UIAction(title: "AR Directions".localized(), image: UIImage(systemName: "arkit"), handler: { (_) in
+            guard selectedSpot.rHash != "" else {
+                self.manageLocalError(color: "Kinda Red")
+                return
+            }
+
+            if ARManager.sharedInstance.shownTutorial() {
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "ARDirectionsVC") as! ARDirectionsViewController
+                self.parentViewController().present(vc, animated: true, completion: nil)
+            } else {
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "ARTutorialVC") as! ARTutorialViewController
+                self.parentViewController().present(vc, animated: true, completion: nil)
+            }
+        })
+        return UIMenu(title: "More Actions".localized(), image: nil, identifier: nil, options: [], children: [worldAction, ARAction])
     }
     
     //MARK: - View Configuration -
@@ -193,6 +195,8 @@ class ReservationView: UXView {
         backBtn.layer.cornerRadius = 15.0
         
         styleActionButtons()
+        moreBtn.showsMenuAsPrimaryAction = true
+        moreBtn.menu = makeMoreMenu()
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"

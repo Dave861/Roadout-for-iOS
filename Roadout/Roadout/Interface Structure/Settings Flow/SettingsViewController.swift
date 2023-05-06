@@ -10,8 +10,8 @@ class SettingsViewController: UIViewController {
     
     var cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
     var cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Dark Yellow", "", "Icons", "GoldBrown", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
-    var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "scroll.fill", "", "car.fill", "book.fill", "", "ant.fill", "newspaper.fill", "signature", "globe"]
-    var cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Reservation History".localized(), "", "Roadout for Car".localized(), "User Guide".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
+    var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "scroll.fill", "", "car.fill", "book.fill", "", "ant.fill", "shield.lefthalf.filled", "signature", "globe"]
+    var cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Parking History".localized(), "", "Roadout for Car".localized(), "User Guide".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
     var cellVCs = ["AccountVC", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "HistoryVC", "", "CarVC", "GuideVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
     
     @IBAction func backTapped(_ sender: Any) {

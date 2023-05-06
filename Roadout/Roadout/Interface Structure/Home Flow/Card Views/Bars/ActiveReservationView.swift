@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ActiveView: UIView {
+class ActiveReservationView: UIView {
         
     @IBOutlet weak var timerLbl: UILabel!
     

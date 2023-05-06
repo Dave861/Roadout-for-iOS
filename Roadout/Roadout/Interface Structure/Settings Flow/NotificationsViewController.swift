@@ -70,14 +70,6 @@ class NotificationsViewController: UIViewController {
         UserDefaults.roadout!.set(locationSwitch.isOn, forKey: "ro.roadout.locationNotificationsEnabled")
     }
     
-    @IBOutlet weak var futureNotifCard: UIView!
-    @IBOutlet weak var futureTitle: UILabel!
-    @IBOutlet weak var futureDescription: UILabel!
-    @IBOutlet weak var futureSwitch: UISwitch!
-    @IBAction func futureSwitched(_ sender: Any) {
-        UserDefaults.roadout!.set(futureSwitch.isOn, forKey: "ro.roadout.futureNotificationsEnabled")
-    }
-    
     //MARK: - View Configuration -
     
     override func viewDidLoad() {
@@ -96,11 +88,9 @@ class NotificationsViewController: UIViewController {
         
         self.localizeDescriptions()
         self.setReservationNotifPermissionsUI()
-        self.futureSwitch.setOn(UserPrefsUtils.sharedInstance.futureNotificationsEnabled(), animated: false)
         self.locationSwitch.setOn(UserPrefsUtils.sharedInstance.locationNotificationsEnabled(), animated: false)
         reservationNotifCard.layer.cornerRadius = 16.0
         locationNotifCard.layer.cornerRadius = 16.0
-        futureNotifCard.layer.cornerRadius = 16.0
         reservationNoneBtn.setTitle("", for: .normal)
         reservationNotifBtn.setTitle("", for: .normal)
         reservationLiveBtn.setTitle("", for: .normal)
@@ -119,11 +109,9 @@ class NotificationsViewController: UIViewController {
     func localizeDescriptions() {
         reservationTitle.text = "Reservation Status Notifications".localized()
         locationTitle.text = "Location Notifications".localized()
-        futureTitle.text = "Future Notifications".localized()
         
         reservationDescription.text = "Get timely notifications about the remaining time. Changes will apply to your next reservation".localized()
         locationDescription.text = "Get location based notifications when you arrive at the current reservation".localized()
-        futureDescription.text = "Get future road notfications, set by you inside the app".localized()
         
         reservationNoneLabel.text = "None".localized()
         reservationNotifLabel.text = "Notifications".localized()
