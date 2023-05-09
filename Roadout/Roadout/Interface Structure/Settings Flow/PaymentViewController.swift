@@ -44,7 +44,7 @@ class PaymentViewController: UIViewController {
     
     @objc func refreshTableView() {
         DispatchQueue.main.async {
-            UserDefaults.roadout!.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+            UserDefaults.roadout!.set(cardNumbers, forKey: "eu.roadout.paymentMethods")
             self.tableView.reloadData()
             if cardNumbers.count == 0 {
                 self.addBtnOutline.isHidden = true
@@ -63,8 +63,8 @@ class PaymentViewController: UIViewController {
         tableView.dataSource = self
         addCardBtn.setAttributedTitle(buttonTitle, for: .normal)
         addBtnOutline.layer.cornerRadius = 12.0
-        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
-        UserDefaults.roadout!.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "eu.roadout.paymentMethods") ?? [String]()
+        UserDefaults.roadout!.set(cardNumbers, forKey: "eu.roadout.paymentMethods")
         tableView.reloadData()
         if cardNumbers.count == 0 {
             addBtnOutline.isHidden = true
@@ -115,7 +115,7 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
             let alert = UIAlertController(title: "Remove".localized(), message: "Do you want to remove this card?".localized(), preferredStyle: .actionSheet)
             let deleteAction = UIAlertAction(title: "Remove".localized(), style: .destructive) { action in
                 cardNumbers.remove(at: indexPath.row)
-                UserDefaults.roadout!.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
+                UserDefaults.roadout!.set(cardNumbers, forKey: "eu.roadout.paymentMethods")
                 tableView.reloadData()
                 if cardNumbers.count == 0 {
                     self.addBtnOutline.isHidden = true

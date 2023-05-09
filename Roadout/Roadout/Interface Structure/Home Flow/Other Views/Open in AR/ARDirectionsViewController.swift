@@ -50,7 +50,7 @@ class ARDirectionsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip6") == false {
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.shownTip6") == false {
             closeBtn.tooltip(TutorialView6.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                 configuration.backgroundColor = UIColor(named: "Card Background")!
                 configuration.shadowConfiguration.shadowOpacity = 0.2
@@ -59,7 +59,7 @@ class ARDirectionsViewController: UIViewController {
                 
                 return configuration
             })
-            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip6")
+            UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.shownTip6")
         }
     }
 

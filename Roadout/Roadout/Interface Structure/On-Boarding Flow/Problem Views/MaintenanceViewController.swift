@@ -23,8 +23,8 @@ class MaintenanceViewController: UIViewController {
     
     @IBOutlet weak var checkBtn: UXButton!
     @IBAction func checkTapped(_ sender: Any) {
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
-            guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else {
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.isUserSigned") {
+            guard let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") else {
                 self.showSorryAlert()
                 return
             }
@@ -41,7 +41,7 @@ class MaintenanceViewController: UIViewController {
                 }
             }
         } else {
-            UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.userID")
+            UserDefaults.roadout!.removeObject(forKey: "eu.roadout.Roadout.userID")
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
             self.view.window?.rootViewController = vc

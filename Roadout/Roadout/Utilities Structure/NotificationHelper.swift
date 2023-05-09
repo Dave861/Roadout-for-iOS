@@ -102,10 +102,10 @@ class NotificationHelper {
             content.interruptionLevel = .timeSensitive
         }
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(reservationTime), repeats: false)
-        let request = UNNotificationRequest(identifier: "ro.roadout.reservationDone", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "eu.roadout.reservationDone", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {
-                UserDefaults.roadout!.set(true, forKey: "ro.roadout.setDoneReservation")
+                UserDefaults.roadout!.set(true, forKey: "eu.roadout.setDoneReservation")
             }
         }
     }
@@ -119,10 +119,10 @@ class NotificationHelper {
             content.interruptionLevel = .timeSensitive
         }
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(reservationTime-60), repeats: false)
-        let request = UNNotificationRequest(identifier: "ro.roadout.reservation1", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "eu.roadout.reservation1", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {
-                UserDefaults.roadout!.set(true, forKey: "ro.roadout.set1Reservation")
+                UserDefaults.roadout!.set(true, forKey: "eu.roadout.set1Reservation")
             }
         }
     }
@@ -136,26 +136,26 @@ class NotificationHelper {
             content.interruptionLevel = .timeSensitive
         }
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(reservationTime-300), repeats: false)
-        let request = UNNotificationRequest(identifier: "ro.roadout.reservation5", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "eu.roadout.reservation5", content: content, trigger: trigger)
         center.add(request) { err in
             if err == nil {
-                UserDefaults.roadout!.set(true, forKey: "ro.roadout.set5Reservation")
+                UserDefaults.roadout!.set(true, forKey: "eu.roadout.set5Reservation")
             }
         }
     }
     
     func cancelReservationNotification() {
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.set5Reservation") {
-            center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.reservation5"])
-            UserDefaults.roadout!.set(false, forKey: "ro.roadout.set5Reservation")
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.set5Reservation") {
+            center.removePendingNotificationRequests(withIdentifiers: ["eu.roadout.reservation5"])
+            UserDefaults.roadout!.set(false, forKey: "eu.roadout.set5Reservation")
         }
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.set1Reservation") {
-            center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.reservation1"])
-            UserDefaults.roadout!.set(false, forKey: "ro.roadout.set1Reservation")
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.set1Reservation") {
+            center.removePendingNotificationRequests(withIdentifiers: ["eu.roadout.reservation1"])
+            UserDefaults.roadout!.set(false, forKey: "eu.roadout.set1Reservation")
         }
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.setDoneReservation") {
-            center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.reservationDone"])
-            UserDefaults.roadout!.set(false, forKey: "ro.roadout.setDoneReservation")
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.setDoneReservation") {
+            center.removePendingNotificationRequests(withIdentifiers: ["eu.roadout.reservationDone"])
+            UserDefaults.roadout!.set(false, forKey: "eu.roadout.setDoneReservation")
         }
     }
     
@@ -172,12 +172,12 @@ class NotificationHelper {
                     if #available(iOS 15.0, *) {
                         content.interruptionLevel = .timeSensitive
                     }
-                    let region = CLCircularRegion(center: self.decodeCoordsFromGeohash(), radius: 5.0, identifier: "ro.roadout.parkingSpotRegion")
+                    let region = CLCircularRegion(center: self.decodeCoordsFromGeohash(), radius: 5.0, identifier: "eu.roadout.parkingSpotRegion")
                     let trigger = UNLocationNotificationTrigger(region: region, repeats: false)
-                    let request = UNNotificationRequest(identifier: "ro.roadout.setLocationReservation", content: content, trigger: trigger)
+                    let request = UNNotificationRequest(identifier: "eu.roadout.setLocationReservation", content: content, trigger: trigger)
                     self.center.add(request) { err in
                         if err == nil {
-                            UserDefaults.roadout!.set(true, forKey: "ro.roadout.setLocationReservation")
+                            UserDefaults.roadout!.set(true, forKey: "eu.roadout.setLocationReservation")
                         }
                     }
                 }
@@ -186,9 +186,9 @@ class NotificationHelper {
     }
     
     func cancelLocationNotification() {
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.setLocationReservation") {
-            center.removePendingNotificationRequests(withIdentifiers: ["ro.roadout.setLocationReservation"])
-            UserDefaults.roadout!.set(false, forKey: "ro.roadout.setLocationReservation")
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.setLocationReservation") {
+            center.removePendingNotificationRequests(withIdentifiers: ["eu.roadout.setLocationReservation"])
+            UserDefaults.roadout!.set(false, forKey: "eu.roadout.setLocationReservation")
         }
     }
     

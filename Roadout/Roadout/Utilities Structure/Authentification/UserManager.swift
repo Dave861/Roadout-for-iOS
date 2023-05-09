@@ -19,7 +19,7 @@ class UserManager {
     
     //User Data
     var userEmail: String!
-    var userName = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserName") ?? "Roadout_User_Name"
+    var userName = UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.UserName") ?? "Roadout_User_Name"
     
     enum UserDBErrors: Error {
         case databaseFailure
@@ -138,8 +138,8 @@ class UserManager {
         if jsonArray["status"] as! String == "Success" {
             self.userName = jsonArray["name"] as! String
             self.userEmail = (jsonArray["email"] as! String)
-            UserDefaults.roadout!.set(self.userEmail, forKey: "ro.roadout.Roadout.UserMail")
-            UserDefaults.roadout!.set(self.userName, forKey: "ro.roadout.Roadout.UserName")
+            UserDefaults.roadout!.set(self.userEmail, forKey: "eu.roadout.Roadout.UserMail")
+            UserDefaults.roadout!.set(self.userName, forKey: "eu.roadout.Roadout.UserName")
         } else {
             throw UserDBErrors.userDoesNotExist
         }
@@ -184,7 +184,7 @@ class UserManager {
     
     func resetPasswordAsync(_ password: String) async throws {
         if userEmail == nil {
-            userEmail = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail") ?? "Roadout_Impossible."
+            userEmail = UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.UserMail") ?? "Roadout_Impossible."
         }
         let _headers : HTTPHeaders = ["Content-Type":"application/json"]
         let hashedPswd = MD5(string: password)

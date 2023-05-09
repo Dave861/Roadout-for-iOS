@@ -38,7 +38,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         manageObs()
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
         Task {
             do {
                 try await UserManager.sharedInstance.getUserNameAsync(id)
@@ -68,24 +68,24 @@ class SettingsViewController: UIViewController {
     //MARK: - Logic Functions -
     
     func signOutAllData() {
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
-        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.userID")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.isUserSigned")
+        UserDefaults.roadout!.removeObject(forKey: "eu.roadout.Roadout.userID")
                 
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip1")
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip2")
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip3")
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip4")
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip5")
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip6")
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip7")
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip8")
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip9")
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.shownTip10")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.shownTip1")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.shownTip2")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.shownTip3")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.shownTip4")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.shownTip5")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.shownTip6")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.shownTip7")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.shownTip8")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.shownTip9")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.shownTip10")
         
-        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.futureReservations")
-        UserDefaults.roadout!.set([String](), forKey: "ro.roadout.paymentMethods")
-        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.favouriteLocationIDs")
-        UserDefaults.roadout!.set("", forKey: "ro.roadout.Roadout.userLicensePlate")
+        UserDefaults.roadout!.removeObject(forKey: "eu.roadout.Roadout.futureReservations")
+        UserDefaults.roadout!.set([String](), forKey: "eu.roadout.paymentMethods")
+        UserDefaults.roadout!.removeObject(forKey: "eu.roadout.Roadout.favouriteLocationIDs")
+        UserDefaults.roadout!.set("", forKey: "eu.roadout.Roadout.userLicensePlate")
         userLicensePlate = ""
     }
 }

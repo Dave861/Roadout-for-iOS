@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.isUserSigned") {
             let homeSb = UIStoryboard(name: "Home", bundle: nil)
             let homeVC = homeSb.instantiateViewController(withIdentifier: "NavVC") as! UINavigationController
             window?.rootViewController = homeVC
@@ -30,8 +30,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         NotificationCenter.default.post(name: .updateLocationID, object: nil)
         
         //Check for reservation status
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") {
-            guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.isUserSigned") {
+            guard let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") else { return }
             Task {
                 do {
                     try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)

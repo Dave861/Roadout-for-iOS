@@ -97,7 +97,7 @@ struct RoadoutFindIntent: AppIntent {
             )
          
         //Reserve spot
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
         do {
             try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: reservationMinutes!, spotID: selectedSpot.rID, payment: Int(resPrice), userID: id)
         } catch {
@@ -128,11 +128,11 @@ class RoadoutFindIntentHelper: NSObject {
     
     func checkConditions() async throws -> Bool {
         //Checking for user
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned") == false {
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.isUserSigned") == false {
             return false
         }
         //Checking for active reservation
-        guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else {
+        guard let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") else {
             throw RoadoutIntentErrors.failureRequiringAppLaunch
         }
         do {

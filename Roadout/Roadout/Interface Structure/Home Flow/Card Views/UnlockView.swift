@@ -91,7 +91,7 @@ extension UnlockView: SlideButtonDelegate {
         if status == "Unlocked" {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
-            let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+            let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
             Task {
                 do {
                     try await ReservationManager.sharedInstance.unlockReservationAsync(userID: id, date: Date())

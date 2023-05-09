@@ -59,10 +59,10 @@ var cardNumbers = [String]()
 
 //Pay Parking Utils
 var selectedPayLocation: ParkLocation!
-var userLicensePlate = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.userLicensePlate")
+var userLicensePlate = UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.userLicensePlate")
 
 //Express Lane IDs
-var favouriteLocationIDs = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.Roadout.favouriteLocationIDs") ?? [String]()
+var favouriteLocationIDs = UserDefaults.roadout!.stringArray(forKey: "eu.roadout.Roadout.favouriteLocationIDs") ?? [String]()
 var favouriteLocations = [ParkLocation]()
 
 //Will use API to get this

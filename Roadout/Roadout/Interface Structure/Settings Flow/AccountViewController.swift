@@ -87,10 +87,11 @@ class AccountViewController: UIViewController {
     
     @objc func reloadLicensePlate() {
         self.licensePlateLbl.text = userLicensePlate != "" ? userLicensePlate : "NO-PLATE".localized()
+        self.licensePlateLbl.text = userLicensePlate != nil ? userLicensePlate : "NO-PLATE".localized()
     }
     
     @objc func reloadName() {
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
         Task {
             do {
                 try await UserManager.sharedInstance.getUserNameAsync(id)
@@ -116,6 +117,7 @@ class AccountViewController: UIViewController {
         licensePlateIcon.layer.cornerRadius = licensePlateIcon.frame.height/4
         licensePlateView.layer.cornerRadius = licensePlateView.frame.height/5
         licensePlateLbl.text = userLicensePlate != "" ? userLicensePlate : "NO-PLATE".localized()
+        licensePlateLbl.text = userLicensePlate != nil ? userLicensePlate : "NO-PLATE".localized()
         
         manageBtn.menu = editMenu
         manageBtn.setTitle("", for: .normal)

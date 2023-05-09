@@ -289,7 +289,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip1") == false {
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.shownTip1") == false {
             settingsButton.tooltip(TutorialView1.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                 
                 configuration.backgroundColor = UIColor(named: "Card Background")!
@@ -299,7 +299,7 @@ class HomeViewController: UIViewController {
                 
                 return configuration
             })
-            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip1")
+            UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.shownTip1")
         }
     }
     
@@ -411,7 +411,7 @@ class HomeViewController: UIViewController {
     //MARK: -Data & UI Configuration-
     
     func checkUserIsValid() {
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
         Task {
             do {
                 try await AuthManager.sharedInstance.checkIfUserExistsAsync(with: id)
@@ -425,8 +425,8 @@ class HomeViewController: UIViewController {
     }
     
     func userNotFoundAbort() {
-        UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
-        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.userID")
+        UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.isUserSigned")
+        UserDefaults.roadout!.removeObject(forKey: "eu.roadout.Roadout.userID")
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "WelcomeVC") as! WelcomeViewController
         self.view.window?.rootViewController = vc
@@ -1014,7 +1014,7 @@ extension HomeViewController {
         DispatchQueue.main.async {
             if self.view.subviews.last == self.noWifiBar {
                 self.view.subviews.last!.removeFromSuperview()
-                guard let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") else { return }
+                guard let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") else { return }
                 Task {
                     do {
                         try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)

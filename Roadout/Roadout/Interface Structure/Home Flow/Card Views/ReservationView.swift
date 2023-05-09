@@ -85,13 +85,13 @@ class ReservationView: UXView {
     @IBAction func delayTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
         Task {
             do {
                 let delayWasMade = try await ReservationManager.sharedInstance.checkReservationWasDelayedAsync(userID: id)
                 if delayWasMade == false {
-                        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownDelayWarning") == false {
-                            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownDelayWarning")
+                        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.shownDelayWarning") == false {
+                            UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.shownDelayWarning")
                             let alert = UIAlertController(title: "Delay Reservation".localized(), message: "You can only delay a reservation once. Use carefully.".localized(), preferredStyle: .alert)
                             alert.view.tintColor = UIColor.Roadout.secondOrange
                             let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
@@ -121,7 +121,7 @@ class ReservationView: UXView {
         let proceedAction = UIAlertAction(title: "Yes".localized(), style: .destructive) { action in
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
-            let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+            let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
             Task {
                 do {
                     try await ReservationManager.sharedInstance.cancelReservationAsync(userID: id, date: Date())

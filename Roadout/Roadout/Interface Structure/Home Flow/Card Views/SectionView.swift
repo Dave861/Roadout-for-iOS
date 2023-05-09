@@ -58,7 +58,7 @@ class SectionView: UXView {
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip9") == false {
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.shownTip9") == false {
             tipSourceView.tooltip(TutorialView9.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                 configuration.backgroundColor = UIColor(named: "Card Background")!
                 configuration.shadowConfiguration.shadowOpacity = 0.2
@@ -67,7 +67,7 @@ class SectionView: UXView {
                 
                 return configuration
             })
-            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip9")
+            UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.shownTip9")
         }
     }
     

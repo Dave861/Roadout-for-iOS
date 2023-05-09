@@ -46,12 +46,12 @@ class SignInViewController: UIViewController {
         if isValidEmail(emailField.text ?? "") && passwordField.text != "" {
             self.signInBtn.startPulseAnimation()
             UserManager.sharedInstance.userEmail = self.emailField.text!
-            UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
+            UserDefaults.roadout!.set(self.emailField.text!, forKey: "eu.roadout.Roadout.UserMail")
             Task {
                 do {
                     try await AuthManager.sharedInstance.sendSignInDataAsync(emailField.text!, passwordField.text!)
-                    UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
-                    UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
+                    UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.isUserSigned")
+                    UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "eu.roadout.Roadout.userID")
                     DispatchQueue.main.async {
                         self.signInBtn.stopPulseAnimation()
                         self.manageScreens()
@@ -109,7 +109,7 @@ class SignInViewController: UIViewController {
                 }
             }
             UserManager.sharedInstance.userEmail = self.emailField.text!
-            UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
+            UserDefaults.roadout!.set(self.emailField.text!, forKey: "eu.roadout.Roadout.UserMail")
         }
         let noAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
         alert.addAction(noAction)

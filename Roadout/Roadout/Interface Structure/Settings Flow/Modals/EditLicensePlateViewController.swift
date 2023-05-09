@@ -27,7 +27,7 @@ class EditLicensePlateViewController: UIViewController {
         if plateField.text != "" {
             do {
                 userLicensePlate = try plateField.text?.formatLicensePlate() ?? ""
-                UserDefaults.roadout!.set(userLicensePlate, forKey: "ro.roadout.Roadout.userLicensePlate")
+                UserDefaults.roadout!.set(userLicensePlate, forKey: "eu.roadout.Roadout.userLicensePlate")
                 UIView.animate(withDuration: 0.1) {
                     self.blurEffect.alpha = 0
                 } completion: { done in
@@ -43,7 +43,7 @@ class EditLicensePlateViewController: UIViewController {
             }
         } else {
             userLicensePlate = ""
-            UserDefaults.roadout!.set(userLicensePlate, forKey: "ro.roadout.Roadout.userLicensePlate")
+            UserDefaults.roadout!.set(userLicensePlate, forKey: "eu.roadout.Roadout.userLicensePlate")
             UIView.animate(withDuration: 0.1) {
                 self.blurEffect.alpha = 0
             } completion: { done in
@@ -100,6 +100,7 @@ class EditLicensePlateViewController: UIViewController {
         
         plateView.layer.cornerRadius = plateView.frame.height/4
         plateText.text = userLicensePlate != "" ? userLicensePlate : "NO-PLATE".localized()
+        plateText.text = userLicensePlate != nil ? userLicensePlate : "NO-PLATE".localized()
         plateField.delegate = self
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(cardPanned))

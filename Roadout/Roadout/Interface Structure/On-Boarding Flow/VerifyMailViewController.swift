@@ -31,19 +31,19 @@ class VerifyMailViewController: UIViewController {
     @IBAction func verifyTapped(_ sender: Any) {
         if let codeField = codeField as? CHIOTPFieldOne {
             if Int(codeField.text!) == AuthManager.sharedInstance.token && Date() < AuthManager.sharedInstance.dateToken {
-                let name = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserName")!
-                let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
-                let password = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserPassword")!
+                let name = UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.UserName")!
+                let email = UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.UserMail")!
+                let password = UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.UserPassword")!
                 Task {
                     do {
                         try await AuthManager.sharedInstance.sendSignUpDataAsync(name, email, password)
-                        UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.isUserSigned")
-                        UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "ro.roadout.Roadout.userID")
-                        let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
+                        UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.isUserSigned")
+                        UserDefaults.roadout!.set(AuthManager.sharedInstance.userID, forKey: "eu.roadout.Roadout.userID")
+                        let email = UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.UserMail")!
                         await AuthManager.sharedInstance.deleteBadDataAsync(email)
-                        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.UserName")
-                        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.UserMail")
-                        UserDefaults.roadout!.removeObject(forKey: "ro.roadout.Roadout.UserPassword")
+                        UserDefaults.roadout!.removeObject(forKey: "eu.roadout.Roadout.UserName")
+                        UserDefaults.roadout!.removeObject(forKey: "eu.roadout.Roadout.UserMail")
+                        UserDefaults.roadout!.removeObject(forKey: "eu.roadout.Roadout.UserPassword")
                         DispatchQueue.main.async {
                             self.manageScreens()
                         }
@@ -62,7 +62,7 @@ class VerifyMailViewController: UIViewController {
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
-        let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
+        let email = UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.UserMail")!
         Task {
             await AuthManager.sharedInstance.deleteBadDataAsync(email)
         }

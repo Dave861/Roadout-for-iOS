@@ -35,7 +35,7 @@ class UnlockedView: UXView {
     @IBAction func doneTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
         //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done)
         Task {
             do {
@@ -64,7 +64,7 @@ class UnlockedView: UXView {
     override func viewSwipedBack() {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
         //API call for continuity when app is opened again (to prevent showing unlocked view and mark reservation as done in db)
         Task {
             do {
@@ -111,7 +111,7 @@ class UnlockedView: UXView {
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip6") == false {
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.shownTip6") == false {
             doneBtn.tooltip(TutorialView6.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                 configuration.backgroundColor = UIColor(named: "Card Background")!
                 configuration.shadowConfiguration.shadowOpacity = 0.2
@@ -120,7 +120,7 @@ class UnlockedView: UXView {
                 
                 return configuration
             })
-            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip6")
+            UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.shownTip6")
         }
     }
     

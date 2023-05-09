@@ -56,11 +56,11 @@ class RoadoutDirectionsIntentHelper: NSObject {
     
     func checkConditions() -> Bool {
         //Checking for user
-        return UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned")
+        return UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.isUserSigned")
     }
     
     func checkForReservation() async throws {
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID")
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID")
         do {
             try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)
         } catch let err {

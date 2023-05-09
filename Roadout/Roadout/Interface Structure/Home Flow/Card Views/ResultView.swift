@@ -84,7 +84,7 @@ class ResultView: UXView {
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip8") == false {
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.shownTip8") == false {
             tipSourceView.tooltip(TutorialView8.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                 configuration.backgroundColor = UIColor(named: "Card Background")!
                 configuration.shadowConfiguration.shadowOpacity = 0.2
@@ -93,7 +93,7 @@ class ResultView: UXView {
                 
                 return configuration
             })
-            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip8")
+            UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.shownTip8")
         }
     }
     

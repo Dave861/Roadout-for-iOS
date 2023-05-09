@@ -21,11 +21,11 @@ class ARManager {
     var helpMode: ARHelpMode = .info
     
     func markTutorial() {
-        UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.ARTutorialShownCount")
+        UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.ARTutorialShownCount")
     }
     
     func shownTutorial() -> Bool {
-        return UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.ARTutorialShownCount")
+        return UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.ARTutorialShownCount")
     }
     
 }

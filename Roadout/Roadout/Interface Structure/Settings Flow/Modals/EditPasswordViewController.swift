@@ -44,7 +44,7 @@ class EditPasswordViewController: UIViewController {
     
     @IBAction func saveTapped(_ sender: Any) {
         if validateFields() {
-            let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+            let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
             Task {
                 do {
                     try await UserManager.sharedInstance.updatePasswordAsync(id, oldPswField.text!, newPswField.text!)
@@ -81,7 +81,7 @@ class EditPasswordViewController: UIViewController {
     @IBOutlet weak var forgotBtn: UXPlainButton!
     
     @IBAction func forgotTapped(_ sender: Any) {
-        let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
+        let email = UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.UserMail")!
         let alert = UIAlertController(title: "Forgot Password".localized(), message: "We will send an email with a verification code to ".localized() + "\(email).", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Continue".localized(), style: .default) { _ in
             self.forgotBtn.startPulseAnimation()

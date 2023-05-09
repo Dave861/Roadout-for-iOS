@@ -19,7 +19,7 @@ class ActiveReservationView: UIView {
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip7") == false {
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.shownTip7") == false {
             moreBtn.tooltip(TutorialView7.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                 configuration.backgroundColor = UIColor(named: "Card Background")!
                 configuration.shadowConfiguration.shadowOpacity = 0.2
@@ -28,7 +28,7 @@ class ActiveReservationView: UIView {
                 
                 return configuration
             })
-            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip7")
+            UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.shownTip7")
         }
     }
     

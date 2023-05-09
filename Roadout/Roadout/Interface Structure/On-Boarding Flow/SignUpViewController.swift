@@ -66,9 +66,9 @@ class SignUpViewController: UIViewController {
         } else {
             self.signUpBtn.startPulseAnimation()
             UserManager.sharedInstance.userEmail = self.emailField.text!
-            UserDefaults.roadout!.set(self.nameField.text!, forKey: "ro.roadout.Roadout.UserName")
-            UserDefaults.roadout!.set(self.emailField.text!, forKey: "ro.roadout.Roadout.UserMail")
-            UserDefaults.roadout!.set(self.passwordField.text!, forKey: "ro.roadout.Roadout.UserPassword")
+            UserDefaults.roadout!.set(self.nameField.text!, forKey: "eu.roadout.Roadout.UserName")
+            UserDefaults.roadout!.set(self.emailField.text!, forKey: "eu.roadout.Roadout.UserMail")
+            UserDefaults.roadout!.set(self.passwordField.text!, forKey: "eu.roadout.Roadout.UserPassword")
             Task {
                 do {
                     try await AuthManager.sharedInstance.sendRegisterDataAsync(emailField.text!)

@@ -8,5 +8,5 @@
 import Foundation
 
 extension UserDefaults {
-    static let roadout = UserDefaults.init(suiteName: "group.live.ro.roadout.Roadout")
+    static let roadout = UserDefaults.init(suiteName: "group.eu.roadout.Roadout-for-iOS")
 }

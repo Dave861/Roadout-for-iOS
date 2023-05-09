@@ -44,7 +44,7 @@ struct RoadoutDelayIntent: AppIntent {
             //Check if already delayed
             var delayWasMade: Bool?
             do {
-                let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID")
+                let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID")
                 delayWasMade = try await ReservationManager.sharedInstance.checkReservationWasDelayedAsync(userID: id as! String)
             } catch {
                 throw RoadoutIntentErrors.alreadyDelayed
@@ -78,7 +78,7 @@ struct RoadoutDelayIntent: AppIntent {
                     )
                 
                 //Delay
-                let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+                let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
                 do {
                     try await ReservationManager.sharedInstance.delayReservationAsync(date: Date(), minutes: delayMinutes!, userID: id)
                 } catch {
@@ -109,11 +109,11 @@ class RoadoutDelayIntentHelper: NSObject {
     
     func checkConditions() -> Bool {
         //Checking for user
-        return UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.isUserSigned")
+        return UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.isUserSigned")
     }
     
     func checkForReservation() async throws {
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID")
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID")
         do {
             try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)
         } catch let err {

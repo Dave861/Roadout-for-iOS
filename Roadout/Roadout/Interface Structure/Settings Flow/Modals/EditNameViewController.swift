@@ -42,11 +42,11 @@ class EditNameViewController: UIViewController {
     
     @IBAction func savedTapped(_ sender: Any) {
         guard userNameField.text != "" else { return }
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
         Task {
             do {
                 try await UserManager.sharedInstance.updateNameAsync(id, userNameField.text!)
-                UserDefaults.roadout!.set(userNameField.text!, forKey: "ro.roadout.Roadout.UserName")
+                UserDefaults.roadout!.set(userNameField.text!, forKey: "eu.roadout.Roadout.UserName")
                 DispatchQueue.main.async {
                     self.nameLbl.text = UserManager.sharedInstance.userName
                     NotificationCenter.default.post(name: .reloadUserNameID, object: nil)
@@ -80,7 +80,7 @@ class EditNameViewController: UIViewController {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .regular)]
         )
         
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
         Task {
             do {
                 try await UserManager.sharedInstance.getUserNameAsync(id)

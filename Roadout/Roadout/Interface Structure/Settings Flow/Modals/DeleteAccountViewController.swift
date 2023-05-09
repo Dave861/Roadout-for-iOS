@@ -32,8 +32,8 @@ class DeleteAccountViewController: UIViewController {
             Task {
                 do {
                     try await UserManager.sharedInstance.deleteAccountAsync(emailField.text!, passwordField.text!)
-                    UserDefaults.roadout!.set(false, forKey: "ro.roadout.Roadout.isUserSigned")
-                    UserDefaults.roadout!.set("000", forKey: "ro.roadout.Roadout.userID")
+                    UserDefaults.roadout!.set(false, forKey: "eu.roadout.Roadout.isUserSigned")
+                    UserDefaults.roadout!.set("000", forKey: "eu.roadout.Roadout.userID")
                     //Add all other remo
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Success".localized(), message: "User deleted successfully.".localized(), preferredStyle: .alert)
@@ -82,7 +82,7 @@ class DeleteAccountViewController: UIViewController {
     @IBOutlet weak var forgotBtn: UXPlainButton!
     
     @IBAction func forgotTapped(_ sender: Any) {
-        let email = UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.UserMail")!
+        let email = UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.UserMail")!
         let alert = UIAlertController(title: "Forgot Password".localized(), message: "We will send an email with a verification code to ".localized() + "\(email).", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Continue".localized(), style: .default) { _ in
             self.forgotBtn.startPulseAnimation()

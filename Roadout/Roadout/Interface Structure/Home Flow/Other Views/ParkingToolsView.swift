@@ -91,7 +91,7 @@ class ParkingToolsView: UXView {
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        if UserDefaults.roadout!.bool(forKey: "ro.roadout.Roadout.shownTip2") == false {
+        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.shownTip2") == false {
             findWayBtn.tooltip(TutorialView2.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                 configuration.backgroundColor = UIColor(named: "Card Background")!
                 configuration.shadowConfiguration.shadowOpacity = 0.2
@@ -100,7 +100,7 @@ class ParkingToolsView: UXView {
                 
                 return configuration
             })
-            UserDefaults.roadout!.set(true, forKey: "ro.roadout.Roadout.shownTip2")
+            UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.shownTip2")
         }
     }
     

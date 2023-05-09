@@ -333,7 +333,7 @@ class ReservationManager {
     }
     
     @objc func endReservation() {
-        let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
         Task {
             do {
                 try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id)

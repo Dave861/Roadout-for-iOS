@@ -72,7 +72,7 @@ class SummaryReserveView: UXView {
         if payBtn.titleLabel?.text != "Choose Payment Method".localized() {
             NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
             
-            let id = UserDefaults.roadout!.object(forKey: "ro.roadout.Roadout.userID") as! String
+            let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
             Task {
                 do {
                     try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(),
@@ -100,8 +100,8 @@ class SummaryReserveView: UXView {
     }
     
     @objc func refreshCardsMenu() {
-        UserDefaults.roadout!.set(cardNumbers, forKey: "ro.roadout.paymentMethods")
-        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
+        UserDefaults.roadout!.set(cardNumbers, forKey: "eu.roadout.paymentMethods")
+        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "eu.roadout.paymentMethods") ?? [String]()
         
         chooseMethodBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
         chooseMethodBtn.showsMenuAsPrimaryAction = true
@@ -169,7 +169,7 @@ class SummaryReserveView: UXView {
         chooseMethodBtn.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         chooseMethodBtn.setTitle("", for: .normal)
         
-        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "ro.roadout.paymentMethods") ?? [String]()
+        cardNumbers = UserDefaults.roadout!.stringArray(forKey: "eu.roadout.paymentMethods") ?? [String]()
         selectedCard = UserPrefsUtils.sharedInstance.returnMainCard()
         
         chooseMethodBtn.menu = UIMenu(title: "Choose Payment Method".localized(), image: nil, identifier: nil, options: [], children: makeMenuActions(cards: cardNumbers))
@@ -212,13 +212,13 @@ class SummaryReserveView: UXView {
         
         for card in cards {
             let action = UIAction(title: card, image: UIImage(systemName: "creditcard.fill"), handler: { (_) in
-                UserDefaults.roadout!.set(self.getIndexInArray(card, cards), forKey: "ro.roadout.defaultPaymentMethod")
+                UserDefaults.roadout!.set(self.getIndexInArray(card, cards), forKey: "eu.roadout.defaultPaymentMethod")
                 self.reloadMainCard()
             })
             menuItems.append(action)
         }
         
-        let applePayAction = UIAction(title: "Apple Pay", image: UIImage(systemName: "applelogo")) { (_) in
+        let applePayAction = UIAction(title: "Apple Pay (mock)", image: UIImage(systemName: "applelogo")) { (_) in
             self.showApplePayBtn()
         }
         menuItems.append(applePayAction)

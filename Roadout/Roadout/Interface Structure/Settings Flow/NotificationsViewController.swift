@@ -36,14 +36,14 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var reservationNoneLabel: UILabel!
     @IBOutlet weak var reservationNoneBtn: UIButton!
     @IBAction func reservationNoneTapped(_ sender: Any) {
-        UserDefaults.roadout!.set(0, forKey: "ro.roadout.reservationNotificationsOption")
+        UserDefaults.roadout!.set(0, forKey: "eu.roadout.reservationNotificationsOption")
         self.setReservationNotifPermissionsUI()
     }
     @IBOutlet weak var reservationNotifIcon: UIImageView!
     @IBOutlet weak var reservationNotifLabel: UILabel!
     @IBOutlet weak var reservationNotifBtn: UIButton!
     @IBAction func reservationNotifTapped(_ sender: Any) {
-        UserDefaults.roadout!.set(1, forKey: "ro.roadout.reservationNotificationsOption")
+        UserDefaults.roadout!.set(1, forKey: "eu.roadout.reservationNotificationsOption")
         self.setReservationNotifPermissionsUI()
     }
     @IBOutlet weak var reservationLiveIcon: UIImageView!
@@ -51,7 +51,7 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var reservationLiveBtn: UIButton!
     @IBAction func reservationLiveTapped(_ sender: Any) {
         if #available(iOS 16.1, *) {
-            UserDefaults.roadout!.set(2, forKey: "ro.roadout.reservationNotificationsOption")
+            UserDefaults.roadout!.set(2, forKey: "eu.roadout.reservationNotificationsOption")
             self.setReservationNotifPermissionsUI()
         } else {
             let alert = UIAlertController(title: "Live Activities".localized(), message: "Live Activities are only available on iOS 16.1 or newer".localized(), preferredStyle: .alert)
@@ -67,7 +67,7 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var locationDescription: UILabel!
     @IBOutlet weak var locationSwitch: UISwitch!
     @IBAction func locationSwitched(_ sender: Any) {
-        UserDefaults.roadout!.set(locationSwitch.isOn, forKey: "ro.roadout.locationNotificationsEnabled")
+        UserDefaults.roadout!.set(locationSwitch.isOn, forKey: "eu.roadout.locationNotificationsEnabled")
     }
     
     //MARK: - View Configuration -

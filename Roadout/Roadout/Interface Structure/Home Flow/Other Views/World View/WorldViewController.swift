@@ -28,9 +28,9 @@ class WorldViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.cachedWorldHash") ?? "" == selectedSpot.rHash &&
-            UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.cachedWorldImage") != nil {
-            guard let data = UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.cachedWorldImage") else { return }
+        if UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.cachedWorldHash") ?? "" == selectedSpot.rHash &&
+            UserDefaults.roadout!.data(forKey: "eu.roadout.Roadout.cachedWorldImage") != nil {
+            guard let data = UserDefaults.roadout!.data(forKey: "eu.roadout.Roadout.cachedWorldImage") else { return }
             self.worldImage.image = UIImage(data: data as Data)
         }
         
@@ -43,8 +43,8 @@ class WorldViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if UserDefaults.roadout!.string(forKey: "ro.roadout.Roadout.cachedWorldHash") ?? "" != selectedSpot.rHash ||
-            UserDefaults.roadout!.data(forKey: "ro.roadout.Roadout.cachedWorldImage") == nil {
+        if UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.cachedWorldHash") ?? "" != selectedSpot.rHash ||
+            UserDefaults.roadout!.data(forKey: "eu.roadout.Roadout.cachedWorldImage") == nil {
             decodeGeohash()
         }
     }
@@ -60,7 +60,7 @@ class WorldViewController: UIViewController {
     //MARK: - Getting Image -
     
     func decodeGeohash() {
-        UserDefaults.roadout!.setValue(selectedSpot.rHash, forKey: "ro.roadout.Roadout.cachedWorldHash")
+        UserDefaults.roadout!.setValue(selectedSpot.rHash, forKey: "eu.roadout.Roadout.cachedWorldHash")
         
         let hashComponents = selectedSpot.rHash.components(separatedBy: "-") //[hash, fNR, hNR, pNR]
         let fov = String(hashComponents[1].dropFirst())
@@ -82,7 +82,7 @@ class WorldViewController: UIViewController {
             if response.error == nil {
                 if let data = response.data {
                     self.worldImage.image = UIImage(data: data)
-                    UserDefaults.roadout!.setValue(data, forKey: "ro.roadout.Roadout.cachedWorldImage")
+                    UserDefaults.roadout!.setValue(data, forKey: "eu.roadout.Roadout.cachedWorldImage")
                 }
             }
         }

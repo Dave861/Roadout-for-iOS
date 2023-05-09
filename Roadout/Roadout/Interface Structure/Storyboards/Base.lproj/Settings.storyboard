@@ -931,6 +931,12 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="height" constant="50" id="1Pr-Er-NDA"/>
                                         </constraints>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(no real payment)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGh-sq-bKs">
+                                        <rect key="frame" x="119.00000000000001" y="17" width="134.33333333333337" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
@@ -945,9 +951,11 @@ Made in Cluj :)</string>
                                     <constraint firstItem="p7A-Rt-qou" firstAttribute="top" secondItem="9Cq-hK-sHD" secondAttribute="bottom" constant="10" id="Kls-15-1yR"/>
                                     <constraint firstItem="gav-gf-MKP" firstAttribute="width" secondItem="p7A-Rt-qou" secondAttribute="width" id="L30-6M-emh"/>
                                     <constraint firstAttribute="trailing" secondItem="IkA-RX-1jg" secondAttribute="trailing" constant="3" id="MUZ-q6-7lH"/>
+                                    <constraint firstItem="lGh-sq-bKs" firstAttribute="top" secondItem="zFT-mT-duQ" secondAttribute="top" constant="17" id="Oec-Jo-M1Y"/>
                                     <constraint firstAttribute="trailing" secondItem="gav-gf-MKP" secondAttribute="trailing" constant="15" id="QeV-80-9Bu"/>
                                     <constraint firstItem="9Cq-hK-sHD" firstAttribute="leading" secondItem="zFT-mT-duQ" secondAttribute="leading" constant="15" id="Ss1-T1-Lmr"/>
                                     <constraint firstAttribute="bottom" secondItem="8uU-Be-XWK" secondAttribute="bottom" constant="35" id="Uz6-bD-vG7"/>
+                                    <constraint firstItem="lGh-sq-bKs" firstAttribute="leading" secondItem="tFs-pT-Xe2" secondAttribute="trailing" constant="8" id="Wa4-0F-HUE"/>
                                     <constraint firstItem="VEK-59-OhE" firstAttribute="top" secondItem="IkA-RX-1jg" secondAttribute="bottom" constant="28" id="j7g-YM-fhs"/>
                                     <constraint firstItem="gav-gf-MKP" firstAttribute="top" secondItem="9Cq-hK-sHD" secondAttribute="bottom" constant="10" id="lOh-UG-sHD"/>
                                     <constraint firstItem="8uU-Be-XWK" firstAttribute="leading" secondItem="zFT-mT-duQ" secondAttribute="leading" constant="15" id="ry5-hl-gQY"/>
