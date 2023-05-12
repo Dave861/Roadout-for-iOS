@@ -49,6 +49,7 @@ class SettingsViewController: UIViewController {
                 print(err)
             }
         }
+        forSmechers()
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -87,6 +88,17 @@ class SettingsViewController: UIViewController {
         UserDefaults.roadout!.removeObject(forKey: "eu.roadout.Roadout.favouriteLocationIDs")
         UserDefaults.roadout!.set("", forKey: "eu.roadout.Roadout.userLicensePlate")
         userLicensePlate = ""
+    }
+    
+    func forSmechers() {
+        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
+        if id == "72" || id == "58" || id == "16" {
+            cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
+            cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Dark Yellow", "", "Icons", "GoldBrown", "", "Greyish", "Brownish", "ExpressFocus", "DevBrown", "Main Yellow"]
+            cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "scroll.fill", "", "car.fill", "book.fill", "", "ant.fill", "shield.lefthalf.filled", "signature", "flipphone", "globe"]
+            cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Parking History".localized(), "", "Roadout for Car".localized(), "User Guide".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "Demo Connect".localized(), "About Roadout".localized()]
+            cellVCs = ["AccountVC", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "HistoryVC", "", "CarVC", "GuideVC", "", "ReportVC", "LegalVC", "AckVC", "DemoVC", "AboutVC"]
+        }
     }
 }
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {

@@ -37,15 +37,10 @@ class TimeView: UXView {
         generator.impactOccurred()
         if flowType == .reserve {
             reservationTime = Int(timeSlider.value*60)
-            NotificationCenter.default.post(name: .addPayCardID, object: nil)
         } else if flowType == .pay {
             parkingTime = Int(timeSlider.value)
-            let alert = UIAlertController(title: "Oops!", message: "Not implemented yet!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-            alert.view.tintColor = UIColor.Roadout.darkYellow
-            self.parentViewController().present(alert, animated: true)
         }
-        ///NotificationCenter.default.post(name: .addPayCardID, object: nil)
+        NotificationCenter.default.post(name: .addPayCardID, object: nil)
     }
         
     @IBOutlet weak var timeSlider: UISlider!

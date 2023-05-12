@@ -112,6 +112,10 @@ class PayView: UXView {
                 }
             } else if flowType == .pay {
                 //make payment call
+                let alert = UIAlertController(title: "Oops!", message: "Not implemented yet!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                alert.view.tintColor = UIColor.Roadout.darkYellow
+                self.parentViewController().present(alert, animated: true)
             }
         }
     }
