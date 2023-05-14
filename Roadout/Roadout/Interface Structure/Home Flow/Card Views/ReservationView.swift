@@ -119,6 +119,7 @@ class ReservationView: UXView {
         alert.view.tintColor = UIColor.Roadout.redish
         let cancelAction = UIAlertAction(title: "No".localized(), style: .cancel, handler: nil)
         let proceedAction = UIAlertAction(title: "Yes".localized(), style: .destructive) { action in
+            NotificationCenter.default.post(name: .btBarrierDown, object: nil)
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
             let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String

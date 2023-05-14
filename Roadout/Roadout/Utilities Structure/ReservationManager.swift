@@ -334,6 +334,7 @@ class ReservationManager {
     
     @objc func endReservation() {
         let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
+        NotificationCenter.default.post(name: .btBarrierDown, object: nil)
         Task {
             do {
                 try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id)

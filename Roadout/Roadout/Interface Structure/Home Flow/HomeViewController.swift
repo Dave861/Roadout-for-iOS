@@ -10,6 +10,7 @@ import GoogleMaps
 import CoreLocation
 import SwiftUI
 import GeohashKit
+import CoreBluetooth
 
 class HomeViewController: UIViewController {
 
@@ -40,6 +41,11 @@ class HomeViewController: UIViewController {
     let noWifiBar = NoWifiView.instanceFromNib()
     
     let summaryReserveView = SummaryReserveView.instanceFromNib()
+    
+    // bluetooth stuff
+    var centralManager : CBCentralManager!
+    var btBarrier : CBPeripheral!
+    var btbarrierCharateristic : CBCharacteristic!
     
     //MARK: - Find Way -
             
@@ -222,9 +228,30 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(addMarkers), name: .addMarkersID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(addSpotMarker), name: .addSpotMarkerID, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(removeSpotMarker), name: .removeSpotMarkerID, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(raiseBtBarrier), name: .btBarrierUp, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(lowerBtBarrier), name: .btBarrierDown, object: nil)
     }
     
    //MARK: - Markers Configuration -
+    
+    @objc func raiseBtBarrier() {
+        if let btBarrier = btBarrier {
+            DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+                let data = Data("1".utf8)
+                btBarrier.writeValue(data, for: self.btbarrierCharateristic, type: .withoutResponse)
+            }
+        }
+    }
+    
+    @objc func lowerBtBarrier() {
+        if let btBarrier = btBarrier {
+            DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+                let data = Data("0".utf8)
+                btBarrier.writeValue(data, for: self.btbarrierCharateristic, type: .withoutResponse)
+            }
+        }
+    }
     
     @objc func addMarkers() {
         mapView.clear()
@@ -289,6 +316,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        centralManager = CBCentralManager(delegate: self, queue: nil)
+        centralManager.scanForPeripherals(withServices: nil)
+        
         if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.shownTip1") == false {
             settingsButton.tooltip(TutorialView1.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
                 

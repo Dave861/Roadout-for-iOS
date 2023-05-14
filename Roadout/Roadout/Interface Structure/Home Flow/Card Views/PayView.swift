@@ -82,6 +82,7 @@ class PayView: UXView {
         NotificationCenter.default.post(name: .removeSpotMarkerID, object: nil)
         
         if payBtn.titleLabel?.text != "Choose Payment Method".localized() {
+            NotificationCenter.default.post(name: .btBarrierUp, object: nil)
             if flowType == .reserve {
                 if returnToDelay {
                     returnToDelay = false

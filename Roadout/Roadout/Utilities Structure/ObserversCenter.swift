@@ -56,4 +56,8 @@ extension Notification.Name {
     static let reloadFutureReservationsID = Notification.Name("eu.roadout.Roadout.reloadFutureReservationsID")
     static let addSpotMarkerID = Notification.Name("eu.roadout.Roadout.addSpotMarkerID")
     static let removeSpotMarkerID = Notification.Name("eu.roadout.Roadout.removeSpotMarkerID")
+    
+    //BLUETOOTH
+    static let btBarrierUp = Notification.Name("eu.roadout.Roadout.btBarrierUp")
+    static let btBarrierDown = Notification.Name("eu.roadout.Roadout.btBarrierDown")
 }
