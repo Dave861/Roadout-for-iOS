@@ -10,7 +10,7 @@ import UIKit
 class GuideViewController: UIViewController {
     
     let buttonTitle = NSAttributedString(string: "Reach Out".localized(),
-                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.goldBrown])
+                                         attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .medium), NSAttributedString.Key.foregroundColor : UIColor.Roadout.kindaRed])
         
     struct GuideTip {
         var title: String
@@ -62,7 +62,7 @@ class GuideViewController: UIViewController {
         generator.impactOccurred()
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "HelpContactVC") as! HelpContactViewController
-        vc.tintColor = UIColor.Roadout.goldBrown
+        vc.tintColor = UIColor.Roadout.kindaRed
         self.present(vc, animated: true)
     }
     
@@ -106,7 +106,7 @@ extension GuideViewController: UITableViewDelegate, UITableViewDataSource {
             
             for highlightedWord in guideTips[indexPath.row].highlightedWords {
                 cell.explanationLbl.set(font: .systemFont(ofSize: 17, weight: .medium), range: cell.explanationLbl.range(string: highlightedWord))
-                cell.explanationLbl.set(textColor: UIColor.Roadout.goldBrown, range: cell.explanationLbl.range(string: highlightedWord))
+                cell.explanationLbl.set(textColor: UIColor.Roadout.kindaRed, range: cell.explanationLbl.range(string: highlightedWord))
             }
             
             return cell
@@ -119,7 +119,7 @@ extension GuideViewController: UITableViewDelegate, UITableViewDataSource {
             vc.titleText = guideTips[indexPath.row].title
             vc.descriptionText = guideTips[indexPath.row].expandedDescription
             vc.highlightedWords = guideTips[indexPath.row].expandedHighlightedWords
-            vc.highlightColor = "GoldBrown"
+            vc.highlightColor = "Kinda Red"
             
             self.present(vc, animated: true)
         }

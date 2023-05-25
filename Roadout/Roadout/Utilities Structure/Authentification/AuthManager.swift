@@ -56,12 +56,13 @@ class AuthManager {
         
         if jsonArray["status"] as! String == "Success" {
             let code = jsonArray["accessCode"] as! String
-            let token = jsonArray["token"] as! String
+            let dateLimit = jsonArray["token"] as! String
             let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
             let dateFormat = "yyyy-MM-dd HH:mm:ss"
             formatter.dateFormat = dateFormat
             self.token = Int(code)!
-            self.dateToken = formatter.date(from: token) ?? Date.yesterday
+            self.dateToken = formatter.date(from: dateLimit) ?? Date.yesterday
         } else if jsonArray["status"] as! String == "User already exists" {
            throw AuthErrors.userExistsFailure
         } else {

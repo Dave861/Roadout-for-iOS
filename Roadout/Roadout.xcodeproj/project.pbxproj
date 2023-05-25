@@ -28,6 +28,10 @@
 		9A14B91E2731436300967417 /* UserPrefsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14B91D2731436300967417 /* UserPrefsUtils.swift */; };
 		9A16CCB829ED223A0088E25C /* ReportBugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A16CCB729ED223A0088E25C /* ReportBugViewController.swift */; };
 		9A1ABE972726A5EF00D4AA4B /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1ABE962726A5EF00D4AA4B /* WelcomeTableViewCell.swift */; };
+		9A1C778D2A1F633F004EA554 /* SingleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C778C2A1F633F004EA554 /* SingleCell.swift */; };
+		9A1C778F2A1F6A80004EA554 /* VIPManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C778E2A1F6A80004EA554 /* VIPManageViewController.swift */; };
+		9A1C77912A1F6A8A004EA554 /* VIPInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C77902A1F6A89004EA554 /* VIPInfoViewController.swift */; };
+		9A1C77942A1F6CE9004EA554 /* VIPInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C77932A1F6CE9004EA554 /* VIPInfoCell.swift */; };
 		9A24ADA927DCF20C00BE8E1A /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A24ADAB27DCF20C00BE8E1A /* Home.storyboard */; };
 		9A24ADAE27DCF2CF00BE8E1A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A24ADB027DCF2CF00BE8E1A /* Settings.storyboard */; };
 		9A24ADB327DCF2EB00BE8E1A /* Cards.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A24ADB527DCF2EB00BE8E1A /* Cards.xib */; };
@@ -91,7 +95,6 @@
 		9A5FC6442787685200CDB49D /* UserDefSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5FC6432787685200CDB49D /* UserDefSuite.swift */; };
 		9A65C5F227804B140060ABCA /* ObserversCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* ObserversCenter.swift */; };
 		9A65C5F627804E150060ABCA /* ObserversCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A65C5F127804B140060ABCA /* ObserversCenter.swift */; };
-		9A685AFA2A0E5F8900EFB8C8 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A685AF92A0E5F8900EFB8C8 /* DemoViewController.swift */; };
 		9A6A4A2F27293171008F69B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A4A2E27293171008F69B3 /* SearchViewController.swift */; };
 		9A6A4A3127293184008F69B3 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A4A3027293184008F69B3 /* SearchCell.swift */; };
 		9A6B5490288942F700B88CB8 /* VariablesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9231172888416100CC9D92 /* VariablesManager.swift */; };
@@ -296,6 +299,10 @@
 		9A15082F272BFAE1008C083B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9A16CCB729ED223A0088E25C /* ReportBugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBugViewController.swift; sourceTree = "<group>"; };
 		9A1ABE962726A5EF00D4AA4B /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
+		9A1C778C2A1F633F004EA554 /* SingleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCell.swift; sourceTree = "<group>"; };
+		9A1C778E2A1F6A80004EA554 /* VIPManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPManageViewController.swift; sourceTree = "<group>"; };
+		9A1C77902A1F6A89004EA554 /* VIPInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPInfoViewController.swift; sourceTree = "<group>"; };
+		9A1C77932A1F6CE9004EA554 /* VIPInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPInfoCell.swift; sourceTree = "<group>"; };
 		9A24ADAA27DCF20C00BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		9A24ADAF27DCF2CF00BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		9A24ADB427DCF2EB00BE8E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Cards.xib; sourceTree = "<group>"; };
@@ -349,7 +356,6 @@
 		9A5FC64127875F8D00CDB49D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		9A5FC6432787685200CDB49D /* UserDefSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefSuite.swift; sourceTree = "<group>"; };
 		9A65C5F127804B140060ABCA /* ObserversCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserversCenter.swift; sourceTree = "<group>"; };
-		9A685AF92A0E5F8900EFB8C8 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		9A6A227E296EFCD80047BB09 /* Roadout WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Roadout WidgetExtension.entitlements"; sourceTree = "<group>"; };
 		9A6A4A2E27293171008F69B3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9A6A4A3027293184008F69B3 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
@@ -600,6 +606,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9A1C77922A1F6A93004EA554 /* VIP */ = {
+			isa = PBXGroup;
+			children = (
+				9A1C778E2A1F6A80004EA554 /* VIPManageViewController.swift */,
+				9A1C77902A1F6A89004EA554 /* VIPInfoViewController.swift */,
+				9A1C77932A1F6CE9004EA554 /* VIPInfoCell.swift */,
+			);
+			path = VIP;
+			sourceTree = "<group>";
+		};
 		9A397D3C280D4970003458BD /* RoadoutWidgetIntentHandler */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +647,7 @@
 				9A39B0D327284825008E7FD0 /* SettingCell.swift */,
 				9A39B0D52728482C008E7FD0 /* ButtonCell.swift */,
 				9A39B0D727284B38008E7FD0 /* SettingsTextCell.swift */,
+				9A1C778C2A1F633F004EA554 /* SingleCell.swift */,
 			);
 			path = "Settings Cells";
 			sourceTree = "<group>";
@@ -900,7 +917,7 @@
 				9AF7142D27AFC41E00FEA4C4 /* AckViewController.swift */,
 				9AA0AEFD272D195400DA04A2 /* LegalViewController.swift */,
 				9A401EE22813EFB800739687 /* AboutViewController.swift */,
-				9A685AF92A0E5F8900EFB8C8 /* DemoViewController.swift */,
+				9A1C77922A1F6A93004EA554 /* VIP */,
 			);
 			path = "Settings Flow";
 			sourceTree = "<group>";
@@ -1253,15 +1270,18 @@
 				9A865A0A294E080300E8CCDE /* ARManager.swift in Sources */,
 				9AE2AFFB272BD2550088A3ED /* EditNameViewController.swift in Sources */,
 				9A1ABE972726A5EF00D4AA4B /* WelcomeTableViewCell.swift in Sources */,
+				9A1C77942A1F6CE9004EA554 /* VIPInfoCell.swift in Sources */,
 				9AA9C4172726C62700ECCCE1 /* SignInViewController.swift in Sources */,
 				9A2BF913299E1FCB003B2ADB /* RoadoutDirectionsIntent.swift in Sources */,
 				9ACBFF54272704F90011B58F /* PermissionsViewController.swift in Sources */,
 				9AB96428272EFCE0008462E7 /* ActiveReservationView.swift in Sources */,
 				9A14B918273142E100967417 /* KeyboardConstraint.swift in Sources */,
+				9A1C778F2A1F6A80004EA554 /* VIPManageViewController.swift in Sources */,
 				9A5381142789CA1600462D63 /* VerifyMailViewController.swift in Sources */,
 				9AF798F3272C4BF70096D4C3 /* GuideViewController.swift in Sources */,
 				9A65C5F227804B140060ABCA /* ObserversCenter.swift in Sources */,
 				9AD1DF952972C7FD00ACBAAC /* MoreInfoViewController.swift in Sources */,
+				9A1C77912A1F6A8A004EA554 /* VIPInfoViewController.swift in Sources */,
 				9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */,
 				9A14B914273142A400967417 /* ContentSizedTableView.swift in Sources */,
 				9A16CCB829ED223A0088E25C /* ReportBugViewController.swift in Sources */,
@@ -1275,7 +1295,6 @@
 				9A3F3A242868E3B200C3FB71 /* HistoryCell.swift in Sources */,
 				9A9231182888416100CC9D92 /* VariablesManager.swift in Sources */,
 				9A81E5F927B8DED600F571C3 /* FunctionsManager.swift in Sources */,
-				9A685AFA2A0E5F8900EFB8C8 /* DemoViewController.swift in Sources */,
 				9A49BFAB272FF41B00234A9F /* UnlockedView.swift in Sources */,
 				9A300CE42789970C0038A085 /* DeleteAccountViewController.swift in Sources */,
 				9A5381162789CA2400462D63 /* ResetPasswordViewController.swift in Sources */,
@@ -1291,6 +1310,7 @@
 				9A765C372896769D00AF250D /* WorldViewController.swift in Sources */,
 				9A74D01928B3C015000DB497 /* MaintenanceViewController.swift in Sources */,
 				9A96F873272B09DF008B58FE /* AddCardViewController.swift in Sources */,
+				9A1C778D2A1F633F004EA554 /* SingleCell.swift in Sources */,
 				9ADE4EA729A7B36F006ED7D1 /* AccountViewController.swift in Sources */,
 				9A8DC953282FF89F008F92B6 /* HelpDetailViewController.swift in Sources */,
 				9AED6DB327E723A400B5004F /* WidgetConfig.intentdefinition in Sources */,
@@ -1465,7 +1485,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = RoadoutWidgetIntentHandler/RoadoutWidgetIntentHandler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1493,7 +1513,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = RoadoutWidgetIntentHandler/RoadoutWidgetIntentHandler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1524,7 +1544,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Roadout Widget/Roadout WidgetExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1555,7 +1575,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Roadout Widget/Roadout WidgetExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1585,7 +1605,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Live Activity/Info.plist";
@@ -1616,7 +1636,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Live Activity/Info.plist";
@@ -1777,7 +1797,7 @@
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1830,7 +1850,7 @@
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				FRAMEWORK_SEARCH_PATHS = (

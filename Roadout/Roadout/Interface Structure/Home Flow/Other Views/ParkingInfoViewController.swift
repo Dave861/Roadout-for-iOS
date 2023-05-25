@@ -12,9 +12,9 @@ class ParkingInfoViewController: UIViewController {
     let understandTitle = NSAttributedString(string: "I Understand".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     private var initialCenter: CGPoint = .zero
+    var tintColor = UIColor.Roadout.mainYellow
 
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     
     @IBOutlet weak var understandBtn: UXButton!
@@ -40,6 +40,10 @@ class ParkingInfoViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var icon1: UIImageView!
+    @IBOutlet weak var icon2: UIImageView!
+    @IBOutlet weak var icon3: UIImageView!
+    
     
     //MARK: - View Configuration -
     
@@ -47,6 +51,8 @@ class ParkingInfoViewController: UIViewController {
         super.viewDidLoad()
         cardView.layer.cornerRadius = 20.0
         cardView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        setColors()
         
         addShadowToCardView()
 
@@ -63,6 +69,13 @@ class ParkingInfoViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.blurEffect.alpha = 0.7
         }
+    }
+    
+    func setColors() {
+        understandBtn.backgroundColor = tintColor
+        icon1.tintColor = tintColor
+        icon2.tintColor = tintColor
+        icon3.tintColor = tintColor
     }
     
     func addShadowToCardView() {

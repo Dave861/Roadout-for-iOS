@@ -318,7 +318,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         let config = UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchPreviewVC") as! SearchPreviewController
-            vc.preferredContentSize = CGSize(width: cell.frame.width, height: 265)
+            vc.preferredContentSize = CGSize(width: cell.frame.width, height: 255)
             
             vc.previewLocationName = self.searchResults[indexPath.row].name
             vc.previewLocationDistance = cell.distanceLbl.text ?? "- km"

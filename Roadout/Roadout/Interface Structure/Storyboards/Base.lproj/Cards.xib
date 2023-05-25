@@ -55,7 +55,7 @@
                             <rect key="frame" x="202" y="0.0" width="196" height="50"/>
                             <color key="backgroundColor" name="Secondary Floating"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Pay">
+                            <buttonConfiguration key="configuration" style="plain" title="Park">
                                 <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                             </buttonConfiguration>
                             <userDefinedRuntimeAttributes>
@@ -88,7 +88,7 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ong-ne-1lf">
-                    <rect key="frame" x="10" y="48" width="315" height="42"/>
+                    <rect key="frame" x="10" y="48" width="339" height="42"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="her-OW-rtp">
                             <rect key="frame" x="0.0" y="0.0" width="87.333333333333329" height="42"/>
@@ -173,27 +173,27 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="9sn-Pv-Wgc">
-                            <rect key="frame" x="238.66666666666666" y="0.0" width="76.333333333333343" height="42"/>
+                            <rect key="frame" x="238.66666666666666" y="0.0" width="100.33333333333334" height="42"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TYPE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKB-Po-xMc" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="76.333333333333329" height="19.666666666666668"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRICE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKB-Po-xMc" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="100.33333333333333" height="19.666666666666668"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <color key="textColor" systemColor="systemGrayColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="YQS-vF-c4G">
-                                    <rect key="frame" x="0.0" y="21.666666666666671" width="76.333333333333329" height="20.333333333333329"/>
+                                    <rect key="frame" x="0.0" y="21.666666666666671" width="100.33333333333333" height="20.333333333333329"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.3.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Jv7-QJ-Gqg">
-                                            <rect key="frame" x="0.0" y="1.3333333333333304" width="24" height="18"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Jv7-QJ-Gqg">
+                                            <rect key="frame" x="0.0" y="0.33333333333333215" width="24" height="20"/>
                                             <color key="tintColor" name="AccentColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="24" id="p3h-Lh-0no"/>
                                             </constraints>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" weight="medium"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="9EA-pE-bmT">
-                                            <rect key="frame" x="28.000000000000032" y="0.0" width="48.333333333333343" height="20.333333333333332"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 RON/hr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="9EA-pE-bmT">
+                                            <rect key="frame" x="28.000000000000021" y="0.0" width="72.333333333333314" height="20.333333333333332"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -240,11 +240,11 @@
                 <outlet property="freeSpotsLbl" destination="QiJ-3a-G9N" id="m1I-9W-BIt"/>
                 <outlet property="locationLbl" destination="PVN-ST-fCA" id="70k-L8-Xlh"/>
                 <outlet property="payBtn" destination="j4j-01-srl" id="OBh-yO-4Yn"/>
+                <outlet property="priceIcon" destination="Jv7-QJ-Gqg" id="9Qr-gA-Ael"/>
+                <outlet property="priceLbl" destination="9EA-pE-bmT" id="bPq-lY-BIc"/>
                 <outlet property="reserveBtn" destination="UxY-VP-NeA" id="puf-dc-Npd"/>
                 <outlet property="spotsIcon" destination="qax-xa-OjT" id="cDu-Fu-eoN"/>
                 <outlet property="tipSourceView" destination="0sY-5a-u7p" id="E0i-mN-RNE"/>
-                <outlet property="typeIcon" destination="Jv7-QJ-Gqg" id="qFr-ZK-T4u"/>
-                <outlet property="typeLbl" destination="9EA-pE-bmT" id="2C6-4Q-qyv"/>
             </connections>
             <point key="canvasLocation" x="18.840579710144929" y="150"/>
         </view>
@@ -1739,8 +1739,8 @@
         <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="location.fill" catalog="system" width="128" height="119"/>
         <image name="lock.fill" catalog="system" width="125" height="128"/>
+        <image name="p.circle.fill" catalog="system" width="128" height="123"/>
         <image name="parkingsign.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="questionmark" catalog="system" width="94" height="128"/>
         <image name="rectangle.portrait" catalog="system" width="115" height="128"/>
         <image name="ruler.fill" catalog="system" width="128" height="57"/>

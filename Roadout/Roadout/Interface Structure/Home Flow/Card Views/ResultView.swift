@@ -10,19 +10,19 @@ import CoreLocation
 
 class ResultView: UXView {
     
-    let payTitle = NSAttributedString(string: "Pay".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
+    let parkTitle = NSAttributedString(string: "Park".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     let reserveTitle = NSAttributedString(string: "Reserve".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)])
     
     @IBOutlet weak var tipSourceView: UIView!
     
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
-    @IBOutlet weak var typeLbl: UILabel!
+    @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var freeSpotsLbl: UILabel!
     
     @IBOutlet weak var distanceIcon: UIImageView!
     @IBOutlet weak var spotsIcon: UIImageView!
-    @IBOutlet weak var typeIcon: UIImageView!
+    @IBOutlet weak var priceIcon: UIImageView!
     
     @IBOutlet weak var reserveBtn: UXButton!
     @IBAction func reserveTapped(_ sender: Any) {
@@ -41,6 +41,7 @@ class ResultView: UXView {
         } else {
             let sb = UIStoryboard(name: "Home", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "ParkingInfoVC") as! ParkingInfoViewController
+            vc.tintColor = UIColor(named: selectedLocation.accentColor)!
             self.parentViewController().present(vc, animated: true)
         }
     }
@@ -56,6 +57,7 @@ class ResultView: UXView {
         } else {
             let sb = UIStoryboard(name: "Home", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "ParkingInfoVC") as! ParkingInfoViewController
+            vc.tintColor = UIColor(named: selectedLocation.accentColor)!
             self.parentViewController().present(vc, animated: true)
         }
     }
@@ -74,6 +76,7 @@ class ResultView: UXView {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
         NotificationCenter.default.post(name: .removeResultCardID, object: nil)
+        agreedToParkingRules = false
     }
     
     override func excludePansFrom(touch: UITouch) -> Bool {
@@ -106,7 +109,7 @@ class ResultView: UXView {
         backBtn.setTitle("", for: .normal)
         backBtn.layer.cornerRadius = 15.0
         
-        payBtn.setAttributedTitle(payTitle, for: .normal)
+        payBtn.setAttributedTitle(parkTitle, for: .normal)
         payBtn.tintColor = UIColor(named: selectedLocation.accentColor)!
         
         reserveBtn.setAttributedTitle(reserveTitle, for: .normal)
@@ -129,7 +132,7 @@ class ResultView: UXView {
         
         distanceIcon.tintColor = UIColor(named: selectedLocation.accentColor)!
         spotsIcon.tintColor = UIColor(named: selectedLocation.accentColor)!
-        typeIcon.tintColor = UIColor(named: selectedLocation.accentColor)!
+        priceIcon.tintColor = UIColor(named: selectedLocation.accentColor)!
         
         self.accentColor = UIColor(named: selectedLocation.accentColor)!
     }

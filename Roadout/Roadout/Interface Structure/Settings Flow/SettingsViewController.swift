@@ -8,11 +8,11 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    var cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
-    var cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Dark Yellow", "", "Icons", "GoldBrown", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
-    var cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "scroll.fill", "", "car.fill", "book.fill", "", "ant.fill", "shield.lefthalf.filled", "signature", "globe"]
-    var cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Parking History".localized(), "", "Roadout for Car".localized(), "User Guide".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
-    var cellVCs = ["AccountVC", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "HistoryVC", "", "CarVC", "GuideVC", "", "ReportVC", "LegalVC", "AckVC", "AboutVC"]
+    var cellTypes = ["UserSettingCell", "SpacerCell", "SingleCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
+    var cellColors = ["", "", "GoldBrown", "", "Redish", "Dark Orange", "Second Orange", "Dark Yellow", "", "Icons", "Kinda Red", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
+    var cellIcons = ["", "", "engine.combustion.fill", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "scroll.fill", "", "car.fill", "magazine.fill", "", "ant.fill", "shield.lefthalf.filled", "signature", "globe"]
+    var cellSettings = ["", "", "Roadout VIP", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Parking History".localized(), "", "Roadout for Car".localized(), "User Guide".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
+    var cellVCs = ["AccountVC", "", "VIPVC", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "HistoryVC", "", "CarVC", "GuideVC", "", "ReportBugVC", "LegalVC", "AckVC", "AboutVC"]
     
     @IBAction func backTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -49,7 +49,6 @@ class SettingsViewController: UIViewController {
                 print(err)
             }
         }
-        forSmechers()
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -89,17 +88,6 @@ class SettingsViewController: UIViewController {
         UserDefaults.roadout!.set("", forKey: "eu.roadout.Roadout.userLicensePlate")
         userLicensePlate = ""
     }
-    
-    func forSmechers() {
-        let id = UserDefaults.roadout!.object(forKey: "eu.roadout.Roadout.userID") as! String
-        if id == "72" || id == "58" || id == "16" {
-            cellTypes = ["UserSettingCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
-            cellColors = ["", "", "Redish", "Dark Orange", "Second Orange", "Dark Yellow", "", "Icons", "GoldBrown", "", "Greyish", "Brownish", "ExpressFocus", "DevBrown", "Main Yellow"]
-            cellIcons = ["", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "scroll.fill", "", "car.fill", "book.fill", "", "ant.fill", "shield.lefthalf.filled", "signature", "flipphone", "globe"]
-            cellSettings = ["", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Parking History".localized(), "", "Roadout for Car".localized(), "User Guide".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "Demo Connect".localized(), "About Roadout".localized()]
-            cellVCs = ["AccountVC", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "HistoryVC", "", "CarVC", "GuideVC", "", "ReportVC", "LegalVC", "AckVC", "DemoVC", "AboutVC"]
-        }
-    }
 }
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -112,6 +100,12 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case "UserSettingCell":
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserSettingCell") as! UserSettingsCell
             cell.nameLbl.text = UserManager.sharedInstance.userName
+            return cell
+        case "SingleCell":
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SingleCell") as! SingleCell
+            cell.icon.backgroundColor = UIColor(named: cellColors[indexPath.row])
+            cell.settingLbl.text = cellSettings[indexPath.row]
+            cell.iconImage.image = UIImage(systemName: cellIcons[indexPath.row])
             return cell
         case "UpCell":
             let cell = tableView.dequeueReusableCell(withIdentifier: "UpCell") as! UpCornerCell
@@ -163,9 +157,13 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
         } else if cellTypes[indexPath.row] != "SpacerCell" &&  cellTypes[indexPath.row] != "TextCell" {
-            if cellVCs[indexPath.row] == "ReportVC" {
+            if cellVCs[indexPath.row] == "ReportBugVC" {
                 let sb = UIStoryboard(name: "Main", bundle: nil)
-                let vc = sb.instantiateViewController(withIdentifier: "ReportBugVC") as! ReportBugViewController
+                let vc = sb.instantiateViewController(withIdentifier: cellVCs[indexPath.row])
+                self.present(vc, animated: true)
+            } else if cellVCs[indexPath.row] == "VIPVC" {
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "VIPInfoVC") as! VIPInfoViewController
                 self.present(vc, animated: true)
             } else {
                 let sb = UIStoryboard(name: "Settings", bundle: nil)
@@ -176,10 +174,13 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        if cellTypes[indexPath.row] == "UpCell" || cellTypes[indexPath.row] == "SettingCell" || cellTypes[indexPath.row] == "DownCell" || cellTypes[indexPath.row] == "UserSettingCell" {
+        if cellTypes[indexPath.row] == "UpCell" || cellTypes[indexPath.row] == "SettingCell" || cellTypes[indexPath.row] == "DownCell" || cellTypes[indexPath.row] == "UserSettingCell" || cellTypes[indexPath.row] == "SingleCell" {
             switch cellTypes[indexPath.row] {
                 case "UserSettingCell":
                     let cell = tableView.cellForRow(at: indexPath) as! UserSettingsCell
+                    cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
+                case "SingleCell":
+                    let cell = tableView.cellForRow(at: indexPath) as! SingleCell
                     cell.card.backgroundColor = UIColor(named: "Highlight Secondary Detail")
                 case "UpCell":
                     let cell = tableView.cellForRow(at: indexPath) as! UpCornerCell
@@ -197,10 +198,13 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        if cellTypes[indexPath.row] == "UpCell" || cellTypes[indexPath.row] == "SettingCell" || cellTypes[indexPath.row] == "DownCell" || cellTypes[indexPath.row] == "UserSettingCell" {
+        if cellTypes[indexPath.row] == "UpCell" || cellTypes[indexPath.row] == "SettingCell" || cellTypes[indexPath.row] == "DownCell" || cellTypes[indexPath.row] == "UserSettingCell" || cellTypes[indexPath.row] == "SingleCell" {
             switch cellTypes[indexPath.row] {
                 case "UserSettingCell":
                     let cell = tableView.cellForRow(at: indexPath) as! UserSettingsCell
+                    cell.card.backgroundColor = UIColor(named: "Secondary Detail")
+                case "SingleCell":
+                    let cell = tableView.cellForRow(at: indexPath) as! SingleCell
                     cell.card.backgroundColor = UIColor(named: "Secondary Detail")
                 case "UpCell":
                     let cell = tableView.cellForRow(at: indexPath) as! UpCornerCell
