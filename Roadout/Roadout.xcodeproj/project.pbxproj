@@ -160,6 +160,9 @@
 		9AAE265D280947E000BBBAC3 /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE265C280947E000BBBAC3 /* GoogleMapsCore */; };
 		9AAE265F280947E000BBBAC3 /* GoogleMapsM4B in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE265E280947E000BBBAC3 /* GoogleMapsM4B */; };
 		9AAE2661280947E000BBBAC3 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 9AAE2660280947E000BBBAC3 /* GooglePlaces */; };
+		9AB668CA2A208DD6002317D2 /* VIPIncludedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB668C92A208DD6002317D2 /* VIPIncludedViewController.swift */; };
+		9AB668CC2A208E4B002317D2 /* VIPPlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB668CB2A208E4B002317D2 /* VIPPlansViewController.swift */; };
+		9AB668CE2A209E82002317D2 /* VIPIncludedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB668CD2A209E82002317D2 /* VIPIncludedCell.swift */; };
 		9AB6CCC829DC6688001B8FBA /* SquigglyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6CCC729DC6688001B8FBA /* SquigglyView.swift */; };
 		9AB827F628128879007BC842 /* GDMStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB827F528128879007BC842 /* GDMStructs.swift */; };
 		9AB827F828128883007BC842 /* GDMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB827F728128883007BC842 /* GDMManager.swift */; };
@@ -410,6 +413,9 @@
 		9AA9C4162726C62700ECCCE1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9AA9C4182726C63500ECCCE1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9AACB40029EA74AF00EC08E5 /* UXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXView.swift; sourceTree = "<group>"; };
+		9AB668C92A208DD6002317D2 /* VIPIncludedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPIncludedViewController.swift; sourceTree = "<group>"; };
+		9AB668CB2A208E4B002317D2 /* VIPPlansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPPlansViewController.swift; sourceTree = "<group>"; };
+		9AB668CD2A209E82002317D2 /* VIPIncludedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPIncludedCell.swift; sourceTree = "<group>"; };
 		9AB6CCC729DC6688001B8FBA /* SquigglyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquigglyView.swift; sourceTree = "<group>"; };
 		9AB827F528128879007BC842 /* GDMStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDMStructs.swift; sourceTree = "<group>"; };
 		9AB827F728128883007BC842 /* GDMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDMManager.swift; sourceTree = "<group>"; };
@@ -612,6 +618,9 @@
 				9A1C778E2A1F6A80004EA554 /* VIPManageViewController.swift */,
 				9A1C77902A1F6A89004EA554 /* VIPInfoViewController.swift */,
 				9A1C77932A1F6CE9004EA554 /* VIPInfoCell.swift */,
+				9AB668C92A208DD6002317D2 /* VIPIncludedViewController.swift */,
+				9AB668CB2A208E4B002317D2 /* VIPPlansViewController.swift */,
+				9AB668CD2A209E82002317D2 /* VIPIncludedCell.swift */,
 			);
 			path = VIP;
 			sourceTree = "<group>";
@@ -1282,10 +1291,12 @@
 				9A65C5F227804B140060ABCA /* ObserversCenter.swift in Sources */,
 				9AD1DF952972C7FD00ACBAAC /* MoreInfoViewController.swift in Sources */,
 				9A1C77912A1F6A8A004EA554 /* VIPInfoViewController.swift in Sources */,
+				9AB668CC2A208E4B002317D2 /* VIPPlansViewController.swift in Sources */,
 				9A14B91C2731431B00967417 /* PaddedTextField.swift in Sources */,
 				9A14B914273142A400967417 /* ContentSizedTableView.swift in Sources */,
 				9A16CCB829ED223A0088E25C /* ReportBugViewController.swift in Sources */,
 				9A8DC958282FF993008F92B6 /* HelpCell.swift in Sources */,
+				9AB668CA2A208DD6002317D2 /* VIPIncludedViewController.swift in Sources */,
 				9A865A0C294E099D00E8CCDE /* ARHelpCell.swift in Sources */,
 				9A50EB062846653400B136DF /* RateViewController.swift in Sources */,
 				9A2D09C229B3799000F98724 /* UXLabel.swift in Sources */,
@@ -1297,6 +1308,7 @@
 				9A81E5F927B8DED600F571C3 /* FunctionsManager.swift in Sources */,
 				9A49BFAB272FF41B00234A9F /* UnlockedView.swift in Sources */,
 				9A300CE42789970C0038A085 /* DeleteAccountViewController.swift in Sources */,
+				9AB668CE2A209E82002317D2 /* VIPIncludedCell.swift in Sources */,
 				9A5381162789CA2400462D63 /* ResetPasswordViewController.swift in Sources */,
 				9A39B0D427284825008E7FD0 /* SettingCell.swift in Sources */,
 				9A92CF2228312A57003F2080 /* GradientView.swift in Sources */,
@@ -1485,7 +1497,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = RoadoutWidgetIntentHandler/RoadoutWidgetIntentHandler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1513,7 +1525,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = RoadoutWidgetIntentHandler/RoadoutWidgetIntentHandler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoadoutWidgetIntentHandler/Info.plist;
@@ -1544,7 +1556,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Roadout Widget/Roadout WidgetExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1575,7 +1587,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Roadout Widget/Roadout WidgetExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Widget/Info.plist";
@@ -1605,7 +1617,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Live Activity/Info.plist";
@@ -1636,7 +1648,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Roadout Live Activity/Info.plist";
@@ -1797,7 +1809,7 @@
 				CODE_SIGN_ENTITLEMENTS = Roadout/Roadout.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1850,7 +1862,7 @@
 				CODE_SIGN_ENTITLEMENTS = Roadout/RoadoutRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = SFF99HD9J3;
 				FRAMEWORK_SEARCH_PATHS = (

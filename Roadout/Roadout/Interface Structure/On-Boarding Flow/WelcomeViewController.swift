@@ -9,7 +9,7 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    let infoIcons = [UIImage(systemName: "car.fill"), UIImage(systemName: "signpost.right.and.left.fill"), UIImage(systemName: "parkingsign.circle.fill")]
+    let infoIcons = [UIImage(systemName: "car.fill"), UIImage(systemName: "signpost.right.and.left.fill"), UIImage(systemName: "p.circle.fill")]
     let infoColors = [UIColor.Roadout.mainYellow, UIColor.Roadout.darkYellow, UIColor.Roadout.secondOrange]
     let infoTitles = ["Parking Locations".localized(), "Live Occupancy".localized(), "Spot Reservation".localized()]
     let infoTexts = ["Easily find parking locations nearby and close to your destination".localized(),

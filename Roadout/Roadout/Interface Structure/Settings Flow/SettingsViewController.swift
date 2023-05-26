@@ -10,7 +10,7 @@ class SettingsViewController: UIViewController {
     
     var cellTypes = ["UserSettingCell", "SpacerCell", "SingleCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "UpCell", "DownCell", "SpacerCell", "UpCell", "SettingCell", "SettingCell", "DownCell", "SpacerCell", "ButtonCell", "SpacerCell", "TextCell"]
     var cellColors = ["", "", "GoldBrown", "", "Redish", "Dark Orange", "Second Orange", "Dark Yellow", "", "Icons", "Kinda Red", "", "Greyish", "Brownish", "ExpressFocus", "Main Yellow"]
-    var cellIcons = ["", "", "engine.combustion.fill", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "scroll.fill", "", "car.fill", "magazine.fill", "", "ant.fill", "shield.lefthalf.filled", "signature", "globe"]
+    var cellIcons = ["", "", "engine_combustion", "", "bell.fill", "creditcard.fill", "arrow.triangle.branch", "scroll.fill", "", "car.fill", "magazine.fill", "", "ant.fill", "shield_lefthalf", "signature", "globe"]
     var cellSettings = ["", "", "Roadout VIP", "", "Notifications".localized(), "Payment Methods".localized(), "Default Directions App".localized(), "Parking History".localized(), "", "Roadout for Car".localized(), "User Guide".localized(), "", "Report a Bug".localized(), "Privacy Policy & Terms of Use".localized(), "Acknowledgements".localized(), "About Roadout".localized()]
     var cellVCs = ["AccountVC", "", "VIPVC", "", "NotificationsVC", "PaymentVC", "DirectionsVC", "HistoryVC", "", "CarVC", "GuideVC", "", "ReportBugVC", "LegalVC", "AckVC", "AboutVC"]
     
@@ -105,25 +105,25 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SingleCell") as! SingleCell
             cell.icon.backgroundColor = UIColor(named: cellColors[indexPath.row])
             cell.settingLbl.text = cellSettings[indexPath.row]
-            cell.iconImage.image = UIImage(systemName: cellIcons[indexPath.row])
+            cell.iconImage.image = UIImage(systemName: cellIcons[indexPath.row]) ?? UIImage(named: cellIcons[indexPath.row])
             return cell
         case "UpCell":
             let cell = tableView.dequeueReusableCell(withIdentifier: "UpCell") as! UpCornerCell
             cell.icon.backgroundColor = UIColor(named: cellColors[indexPath.row])
             cell.settingLbl.text = cellSettings[indexPath.row]
-            cell.iconImage.image = UIImage(systemName: cellIcons[indexPath.row])
+            cell.iconImage.image = UIImage(systemName: cellIcons[indexPath.row]) ?? UIImage(named: cellIcons[indexPath.row])
             return cell
         case "DownCell":
             let cell = tableView.dequeueReusableCell(withIdentifier: "DownCell") as! DownCornerCell
             cell.icon.backgroundColor = UIColor(named: cellColors[indexPath.row])
             cell.settingLbl.text = cellSettings[indexPath.row]
-            cell.iconImage.image = UIImage(systemName: cellIcons[indexPath.row])
+            cell.iconImage.image = UIImage(systemName: cellIcons[indexPath.row]) ?? UIImage(named: cellIcons[indexPath.row])
             return cell
         case "SettingCell":
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell") as! SettingCell
             cell.icon.backgroundColor = UIColor(named: cellColors[indexPath.row])
             cell.settingLbl.text = cellSettings[indexPath.row]
-            cell.iconImage.image = UIImage(systemName: cellIcons[indexPath.row])
+            cell.iconImage.image = UIImage(systemName: cellIcons[indexPath.row]) ?? UIImage(named: cellIcons[indexPath.row])
             return cell
         case "ButtonCell":
             let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonCell") as! ButtonCell

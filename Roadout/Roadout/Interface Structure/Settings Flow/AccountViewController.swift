@@ -130,7 +130,11 @@ class AccountViewController: UIViewController {
         shuffleBtn.layer.cornerRadius = shuffleBtn.frame.height/4
         shuffleBtn.setTitle("", for: .normal)
         nameBadgeLbl.text = UserManager.sharedInstance.userName
-        titleBadgeLbl.text = getRandomPhrase()
+        if UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.userFormalTitle") != nil {
+            titleBadgeLbl.text = UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.userFormalTitle")
+        } else {
+            titleBadgeLbl.text = getRandomPhrase()
+        }
         
         addBadgeShadow()
         addBadgeGradient()
@@ -237,7 +241,8 @@ class AccountViewController: UIViewController {
     func getRandomPhrase() -> String {
         let adjectives = ["Smart", "Wise", "Excited", "Visionary", "Creative", "Ingenious", "Revolutionary", "Ambitious", "Daring"]
         let nouns = ["Driver", "Parker", "Chaffeur", "Navigator", "Steersman", "Pilot"]
-        return adjectives.randomElement()! + " " + nouns.randomElement()!
+        UserDefaults.roadout!.set(adjectives.randomElement()! + " " + nouns.randomElement()!, forKey: "eu.roadout.Roadout.userFormalTitle")
+        return UserDefaults.roadout!.string(forKey: "eu.roadout.Roadout.userFormalTitle") ?? adjectives.randomElement()! + " " + nouns.randomElement()!
     }
     
     func getRandomGradient() -> CAGradientLayer {

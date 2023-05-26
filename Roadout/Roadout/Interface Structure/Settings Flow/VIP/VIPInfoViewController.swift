@@ -15,7 +15,7 @@ class VIPInfoViewController: UIViewController {
         attributes: [NSAttributedString.Key.foregroundColor: UIColor.Roadout.goldBrown, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]
     )
     
-    let icons = ["car.top.lane.dashed.departure.right.fill", "banknote.fill", "shield.lefthalf.filled"]
+    let icons = ["car_parking_dashed", "banknote", "web_camera"]
     let titles = ["Premium Parkings".localized(), "Universal Price".localized(), "Car Security".localized()]
     let descriptions = ["Enjoy an array of premium, central parkings, only available to VIP users".localized(), "With your subscription you can enjoy 2 hours of free parking each day and extra hours at one universal fee for all VIP parkings".localized(), "All premium parkings are enclosed and only you will be able to unlock their gates, thus making sure your vehicle is safe".localized()]
     
@@ -53,7 +53,7 @@ extension VIPInfoViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VIPInfoCell") as! VIPInfoCell
         cell.titleLabel.text = titles[indexPath.row]
         cell.infoLabel.text = descriptions[indexPath.row]
-        cell.iconImage.image = UIImage(systemName: self.icons[indexPath.row])!
+        cell.iconImage.image = UIImage(named: self.icons[indexPath.row])!
         
         return cell
     }
