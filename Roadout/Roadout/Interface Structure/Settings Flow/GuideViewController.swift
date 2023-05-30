@@ -76,6 +76,44 @@ class GuideViewController: UIViewController {
         tableView.dataSource = self
         reachOutBtn.setAttributedTitle(buttonTitle, for: .normal)
         reachOutCard.layer.cornerRadius = 12.0
+        
+        if self.tableView.layer.mask == nil {
+            let maskLayer: CAGradientLayer = CAGradientLayer()
+
+            maskLayer.locations = [0.0, 0.2, 0.8, 1.0]
+            let width = self.tableView.frame.size.width
+            let height = self.tableView.frame.size.height
+            maskLayer.bounds = CGRect(x: 0.0, y: 0.0, width: width, height: height)
+            maskLayer.anchorPoint = CGPoint.zero
+
+            self.tableView.layer.mask = maskLayer
+        }
+
+        scrollViewDidScroll(self.tableView)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let outerColor = UIColor(white: 1.0, alpha: 0.0).cgColor
+        let innerColor = UIColor(white: 1.0, alpha: 1.0).cgColor
+
+        var colors = [CGColor]()
+
+        if scrollView.contentOffset.y + scrollView.contentInset.top <= 0 {
+            colors = [innerColor, innerColor, innerColor, outerColor]
+        } else if scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height {
+            colors = [outerColor, innerColor, innerColor, innerColor]
+        } else {
+            colors = [outerColor, innerColor, innerColor, outerColor]
+        }
+
+        if let mask = scrollView.layer.mask as? CAGradientLayer {
+            mask.colors = colors
+
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            mask.position = CGPoint(x: 0.0, y: scrollView.contentOffset.y)
+            CATransaction.commit()
+        }
     }
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
