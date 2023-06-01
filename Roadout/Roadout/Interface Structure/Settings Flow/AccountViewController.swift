@@ -20,7 +20,10 @@ class AccountViewController: UIViewController {
     
     //MARK: - Member Badge -
     @IBOutlet weak var badgeView: UIView!
-    @IBOutlet weak var badgeShadowView: UIView!
+    @IBOutlet weak var topBadgePart: UIImageView!
+    @IBOutlet weak var bottomBadgePart: UIImageView!
+    @IBOutlet weak var leftBadgePart: UIView!
+    @IBOutlet weak var rightBadgePart: UIView!
 
     @IBOutlet weak var cutoutBadgeView: UIView!
     @IBOutlet weak var nameBadgeLbl: UILabel!
@@ -123,10 +126,15 @@ class AccountViewController: UIViewController {
         manageBtn.setTitle("", for: .normal)
         manageBtn.showsMenuAsPrimaryAction = true
         
-        badgeView.clipsToBounds = true
-        badgeView.layer.masksToBounds = true
+        
+        topBadgePart.layer.cornerRadius = 10
+        topBadgePart.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        bottomBadgePart.layer.cornerRadius = 10
+        bottomBadgePart.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        leftBadgePart.layer.cornerRadius = 10
+        rightBadgePart.layer.cornerRadius = 10
         badgeView.layer.cornerRadius = 10
-        badgeShadowView.layer.cornerRadius = 10
+        
         shuffleBtn.layer.cornerRadius = shuffleBtn.frame.height/4
         shuffleBtn.setTitle("", for: .normal)
         nameBadgeLbl.text = UserManager.sharedInstance.userName
@@ -140,17 +148,16 @@ class AccountViewController: UIViewController {
         addBadgeGradient()
         addBadgeMotionEffect()
         
+        nameBadgeLbl.textColor = darkColorGradient
+        titleBadgeLbl.textColor = darkColorGradient
+        
         switch traitCollection.userInterfaceStyle {
             case .light, .unspecified:
-                cutoutBadgeView.layer.compositingFilter = "screenBlendMode"
-                badgeShadowView.layer.shadowColor = UIColor.black.cgColor
-                //Adjust the shuffle button
+                badgeView.layer.shadowColor = UIColor.black.cgColor
                 shuffleBtn.tintColor = darkColorGradient
                 shuffleBtn.backgroundColor = lightColorGradient.withAlphaComponent(0.3)
             case .dark:
-                cutoutBadgeView.layer.compositingFilter = "multiplyBlendMode"
-                badgeShadowView.layer.shadowColor = UIColor.white.cgColor
-                //Adjust the shuffle button
+                badgeView.layer.shadowColor = UIColor.gray.cgColor
                 shuffleBtn.tintColor = lightColorGradient
                 shuffleBtn.backgroundColor = darkColorGradient.withAlphaComponent(0.3)
             @unknown default:
@@ -162,15 +169,11 @@ class AccountViewController: UIViewController {
         super.traitCollectionDidChange(previousTraitCollection)
         switch traitCollection.userInterfaceStyle {
             case .light, .unspecified:
-                cutoutBadgeView.layer.compositingFilter = "screenBlendMode"
-                badgeShadowView.layer.shadowColor = UIColor.black.cgColor
-                //Adjust the shuffle button
+                badgeView.layer.shadowColor = UIColor.black.cgColor
                 shuffleBtn.tintColor = darkColorGradient
                 shuffleBtn.backgroundColor = lightColorGradient.withAlphaComponent(0.3)
             case .dark:
-                cutoutBadgeView.layer.compositingFilter = "multiplyBlendMode"
-                badgeShadowView.layer.shadowColor = UIColor.white.cgColor
-                //Adjust the shuffle button
+                badgeView.layer.shadowColor = UIColor.gray.cgColor
                 shuffleBtn.tintColor = lightColorGradient
                 shuffleBtn.backgroundColor = darkColorGradient.withAlphaComponent(0.3)
             @unknown default:
@@ -204,7 +207,6 @@ class AccountViewController: UIViewController {
                                       verticalEffect ]
 
         badgeView.addMotionEffect(effectGroup)
-        badgeShadowView.addMotionEffect(effectGroup)
     }
     
     func addBadgeGradient() {
@@ -216,16 +218,19 @@ class AccountViewController: UIViewController {
     }
 
     func addBadgeShadow() {
-        badgeShadowView.layer.shadowColor = UIColor.black.cgColor
-        badgeShadowView.layer.shadowOpacity = 0.15
-        badgeShadowView.layer.shadowOffset = .zero
-        badgeShadowView.layer.shadowRadius = 10
-        badgeShadowView.layer.shadowPath = UIBezierPath(rect: badgeShadowView.bounds).cgPath
-        badgeShadowView.layer.shouldRasterize = true
-        badgeShadowView.layer.rasterizationScale = UIScreen.main.scale
+        badgeView.layer.shadowColor = UIColor.black.cgColor
+        badgeView.layer.shadowOpacity = 0.15
+        badgeView.layer.shadowOffset = .zero
+        badgeView.layer.shadowRadius = 10
+        badgeView.layer.shadowPath = UIBezierPath(rect: badgeView.bounds).cgPath
+        badgeView.layer.shouldRasterize = true
+        badgeView.layer.rasterizationScale = UIScreen.main.scale
     }
     
     func readjustShuffleButton() {
+        nameBadgeLbl.textColor = darkColorGradient
+        titleBadgeLbl.textColor = darkColorGradient
+        
         switch traitCollection.userInterfaceStyle {
             case .light, .unspecified:
                 shuffleBtn.tintColor = darkColorGradient

@@ -2138,31 +2138,31 @@ Made in Cluj :)</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rBT-0k-5lT">
                                 <rect key="frame" x="16" y="152" width="361" height="330"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="On5-Ii-MYy">
-                                        <rect key="frame" x="60.666666666666686" y="30" width="240" height="260"/>
-                                        <color key="backgroundColor" name="Background"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="roadout.car" translatesAutoresizingMaskIntoConstraints="NO" id="USn-Cr-sgi">
+                                        <rect key="frame" x="155.66666666666666" y="140" width="50" height="50"/>
+                                        <color key="tintColor" systemColor="systemGray2Color"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="Q61-hb-vCa"/>
-                                            <constraint firstAttribute="height" constant="260" id="mlO-fI-Dh7"/>
+                                            <constraint firstAttribute="height" constant="50" id="IgW-hZ-38a"/>
+                                            <constraint firstAttribute="width" constant="50" id="pbN-sL-8D5"/>
                                         </constraints>
-                                    </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3Q-YH-Uit">
-                                        <rect key="frame" x="60.666666666666686" y="30" width="240" height="260"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3Q-YH-Uit">
+                                        <rect key="frame" x="60.666666666666686" y="35" width="240" height="260"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topA" translatesAutoresizingMaskIntoConstraints="NO" id="B4d-6i-9Cw">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="148"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topA" translatesAutoresizingMaskIntoConstraints="NO" id="B4d-6i-9Cw">
+                                                <rect key="frame" x="0.0" y="-1" width="240" height="148"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="148" id="pDK-gu-3bb"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomA" translatesAutoresizingMaskIntoConstraints="NO" id="ocT-DV-59J">
-                                                <rect key="frame" x="0.0" y="229" width="240" height="31"/>
+                                                <rect key="frame" x="0.0" y="230" width="240" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="7Bd-D3-LIp"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEI-Yy-Noy">
-                                                <rect key="frame" x="0.0" y="147" width="240" height="82"/>
+                                                <rect key="frame" x="0.0" y="146" width="240" height="84"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="David Retegan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzE-6B-RBc">
                                                         <rect key="frame" x="8" y="0.0" width="224" height="27"/>
@@ -2170,7 +2170,7 @@ Made in Cluj :)</string>
                                                             <constraint firstAttribute="height" constant="27" id="QSQ-ET-RL8"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Founder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5d-iI-3bB">
@@ -2179,11 +2179,11 @@ Made in Cluj :)</string>
                                                             <constraint firstAttribute="height" constant="22" id="ZAT-QH-AuK"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" name="Background"/>
+                                                <color key="backgroundColor" name="BadgeColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="EzE-6B-RBc" secondAttribute="trailing" constant="8" id="0sN-Ee-ajb"/>
                                                     <constraint firstItem="t5d-iI-3bB" firstAttribute="top" secondItem="EzE-6B-RBc" secondAttribute="bottom" constant="2" id="5H0-oP-Uzz"/>
@@ -2194,38 +2194,42 @@ Made in Cluj :)</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uqH-d6-ud5">
-                                                <rect key="frame" x="236" y="0.0" width="5" height="147"/>
-                                                <color key="backgroundColor" name="Background"/>
+                                                <rect key="frame" x="236" y="0.0" width="5" height="260"/>
+                                                <color key="backgroundColor" name="BadgeColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="5" id="n6q-Eq-rlF"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGd-R1-AzX">
-                                                <rect key="frame" x="-1" y="0.0" width="5" height="147"/>
-                                                <color key="backgroundColor" name="Background"/>
+                                                <rect key="frame" x="-1" y="0.0" width="5" height="260"/>
+                                                <color key="backgroundColor" name="BadgeColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="5" id="dOr-up-lSg"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" name="Background"/>
+                                        <color key="backgroundColor" name="Dark Orange"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="mEI-Yy-Noy" secondAttribute="trailing" id="0Nd-2b-82v"/>
-                                            <constraint firstItem="mEI-Yy-Noy" firstAttribute="top" secondItem="uqH-d6-ud5" secondAttribute="bottom" id="2MS-lG-yUe"/>
-                                            <constraint firstItem="mEI-Yy-Noy" firstAttribute="top" secondItem="HGd-R1-AzX" secondAttribute="bottom" id="3DI-oo-Blt"/>
                                             <constraint firstAttribute="trailing" secondItem="uqH-d6-ud5" secondAttribute="trailing" constant="-1" id="7nm-uJ-7Hz"/>
                                             <constraint firstItem="mEI-Yy-Noy" firstAttribute="top" secondItem="B4d-6i-9Cw" secondAttribute="bottom" constant="-1" id="CRh-al-SUB"/>
-                                            <constraint firstAttribute="bottom" secondItem="ocT-DV-59J" secondAttribute="bottom" id="DH7-Pm-0Mt"/>
+                                            <constraint firstAttribute="bottom" secondItem="uqH-d6-ud5" secondAttribute="bottom" id="EFz-6N-97U"/>
+                                            <constraint firstItem="B4d-6i-9Cw" firstAttribute="leading" secondItem="D3Q-YH-Uit" secondAttribute="leading" id="HAr-Xk-1ee"/>
                                             <constraint firstItem="mEI-Yy-Noy" firstAttribute="leading" secondItem="D3Q-YH-Uit" secondAttribute="leading" id="JPR-ev-TLc"/>
                                             <constraint firstItem="uqH-d6-ud5" firstAttribute="top" secondItem="D3Q-YH-Uit" secondAttribute="top" id="Nn3-tt-Zy1"/>
                                             <constraint firstItem="HGd-R1-AzX" firstAttribute="leading" secondItem="D3Q-YH-Uit" secondAttribute="leading" constant="-1" id="QZw-Ae-nWa"/>
+                                            <constraint firstAttribute="trailing" secondItem="B4d-6i-9Cw" secondAttribute="trailing" id="Swk-55-FRz"/>
                                             <constraint firstItem="B4d-6i-9Cw" firstAttribute="top" secondItem="D3Q-YH-Uit" secondAttribute="top" id="Thw-MK-qdd"/>
-                                            <constraint firstItem="ocT-DV-59J" firstAttribute="leading" secondItem="D3Q-YH-Uit" secondAttribute="leading" id="YPl-Rh-k1e"/>
+                                            <constraint firstAttribute="trailing" secondItem="ocT-DV-59J" secondAttribute="trailing" id="TpL-kl-3Pa"/>
+                                            <constraint firstAttribute="bottom" secondItem="HGd-R1-AzX" secondAttribute="bottom" id="WqZ-93-Qm4"/>
                                             <constraint firstAttribute="trailing" secondItem="B4d-6i-9Cw" secondAttribute="trailing" id="aVs-Ab-Nqq"/>
+                                            <constraint firstItem="B4d-6i-9Cw" firstAttribute="top" secondItem="D3Q-YH-Uit" secondAttribute="top" constant="-1" id="aZ7-Jo-iNx"/>
                                             <constraint firstItem="B4d-6i-9Cw" firstAttribute="leading" secondItem="D3Q-YH-Uit" secondAttribute="leading" id="bQw-lk-PYR"/>
+                                            <constraint firstItem="ocT-DV-59J" firstAttribute="leading" secondItem="D3Q-YH-Uit" secondAttribute="leading" id="dst-6Q-S6u"/>
                                             <constraint firstAttribute="height" constant="260" id="g6i-CW-9ZH"/>
-                                            <constraint firstAttribute="trailing" secondItem="ocT-DV-59J" secondAttribute="trailing" id="i9a-rR-hSB"/>
+                                            <constraint firstAttribute="bottom" secondItem="ocT-DV-59J" secondAttribute="bottom" constant="-1" id="ghe-CK-AdT"/>
                                             <constraint firstAttribute="width" constant="240" id="lCc-8Q-6So"/>
+                                            <constraint firstAttribute="trailing" secondItem="uqH-d6-ud5" secondAttribute="trailing" constant="-1" id="oRo-Sq-nbN"/>
                                             <constraint firstItem="HGd-R1-AzX" firstAttribute="top" secondItem="D3Q-YH-Uit" secondAttribute="top" id="vpP-fO-pGB"/>
                                             <constraint firstItem="ocT-DV-59J" firstAttribute="top" secondItem="mEI-Yy-Noy" secondAttribute="bottom" id="xIZ-wD-k9h"/>
                                         </constraints>
@@ -2249,12 +2253,12 @@ Made in Cluj :)</string>
                                 </subviews>
                                 <color key="backgroundColor" name="Secondary Detail"/>
                                 <constraints>
-                                    <constraint firstItem="On5-Ii-MYy" firstAttribute="top" secondItem="rBT-0k-5lT" secondAttribute="top" constant="30" id="9N6-9H-Q20"/>
+                                    <constraint firstItem="D3Q-YH-Uit" firstAttribute="centerX" secondItem="rBT-0k-5lT" secondAttribute="centerX" id="3qo-ZC-2Tr"/>
+                                    <constraint firstItem="D3Q-YH-Uit" firstAttribute="centerY" secondItem="rBT-0k-5lT" secondAttribute="centerY" id="4mz-XC-mRl"/>
                                     <constraint firstAttribute="trailing" secondItem="NWy-n5-xrT" secondAttribute="trailing" constant="8" id="Oad-kB-AFW"/>
-                                    <constraint firstItem="On5-Ii-MYy" firstAttribute="centerX" secondItem="rBT-0k-5lT" secondAttribute="centerX" id="cTY-8i-vLj"/>
-                                    <constraint firstItem="D3Q-YH-Uit" firstAttribute="top" secondItem="rBT-0k-5lT" secondAttribute="top" constant="30" id="e5I-1H-VMz"/>
                                     <constraint firstAttribute="bottom" secondItem="NWy-n5-xrT" secondAttribute="bottom" constant="8" id="gDl-Ld-Y4O"/>
-                                    <constraint firstItem="D3Q-YH-Uit" firstAttribute="centerX" secondItem="rBT-0k-5lT" secondAttribute="centerX" id="kZa-89-k2c"/>
+                                    <constraint firstItem="USn-Cr-sgi" firstAttribute="centerY" secondItem="rBT-0k-5lT" secondAttribute="centerY" id="jJQ-bk-wLc"/>
+                                    <constraint firstItem="USn-Cr-sgi" firstAttribute="centerX" secondItem="rBT-0k-5lT" secondAttribute="centerX" id="jTc-6G-gE1"/>
                                     <constraint firstAttribute="height" constant="330" id="vjb-jU-C3u"/>
                                 </constraints>
                             </view>
@@ -2424,9 +2428,10 @@ Made in Cluj :)</string>
                     <connections>
                         <outlet property="backButton" destination="b0N-ET-h4N" id="7dc-US-6vB"/>
                         <outlet property="badgeCanvasView" destination="rBT-0k-5lT" id="a8A-dP-s74"/>
-                        <outlet property="badgeShadowView" destination="On5-Ii-MYy" id="g4P-L4-tmi"/>
                         <outlet property="badgeView" destination="D3Q-YH-Uit" id="FNd-rG-Oa5"/>
+                        <outlet property="bottomBadgePart" destination="ocT-DV-59J" id="Tji-Bh-0sy"/>
                         <outlet property="cutoutBadgeView" destination="mEI-Yy-Noy" id="lc4-xa-cYs"/>
+                        <outlet property="leftBadgePart" destination="HGd-R1-AzX" id="iGl-Bq-pDX"/>
                         <outlet property="licensePlateBtn" destination="ajY-PM-AAn" id="ad0-oE-5fS"/>
                         <outlet property="licensePlateIcon" destination="LbU-WQ-FIK" id="wth-OH-KoW"/>
                         <outlet property="licensePlateLbl" destination="3Bt-67-kMN" id="ZV5-aF-Kgv"/>
@@ -2435,8 +2440,10 @@ Made in Cluj :)</string>
                         <outlet property="manageIcon" destination="6xF-qh-SE6" id="uk9-lx-Bbm"/>
                         <outlet property="nameBadgeLbl" destination="EzE-6B-RBc" id="7NT-fu-gF8"/>
                         <outlet property="optionsView" destination="y0x-ld-xTD" id="ukM-Mc-UQg"/>
+                        <outlet property="rightBadgePart" destination="uqH-d6-ud5" id="GlS-IN-jky"/>
                         <outlet property="shuffleBtn" destination="NWy-n5-xrT" id="aEe-79-UoP"/>
                         <outlet property="titleBadgeLbl" destination="t5d-iI-3bB" id="cZu-tV-3kl"/>
+                        <outlet property="topBadgePart" destination="B4d-6i-9Cw" id="9Cf-VX-Rir"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rpj-V2-cXP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2459,7 +2466,7 @@ Made in Cluj :)</string>
         <image name="Social_YT" width="250" height="250"/>
         <image name="Waze" width="144" height="144"/>
         <image name="book.fill" catalog="system" width="128" height="95"/>
-        <image name="bottomA" width="337.5" height="42"/>
+        <image name="bottomA" width="328.66665649414062" height="40.666667938232422"/>
         <image name="camera.fill" catalog="system" width="128" height="93"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
@@ -2469,9 +2476,13 @@ Made in Cluj :)</string>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="ellipsis.rectangle.fill" catalog="system" width="128" height="79"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="roadout.car" width="14" height="12"/>
         <image name="topA" width="328.66665649414062" height="202.66667175292969"/>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BadgeColor">
+            <color red="1" green="0.98039215686274506" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Brownish">
             <color red="0.40400001406669617" green="0.28200000524520874" blue="0.019999999552965164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
