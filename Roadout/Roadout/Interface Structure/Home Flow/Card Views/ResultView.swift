@@ -28,6 +28,8 @@ class ResultView: UXView {
     @IBAction func reserveTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        let homeVC = self.parentViewController() as! HomeViewController
+        homeVC.isTipHidden = true
         flowType = .reserve
         Task.detached {
             do {
@@ -36,37 +38,26 @@ class ResultView: UXView {
                 print(err)
             }
         }
-        if agreedToParkingRules {
-            NotificationCenter.default.post(name: .addSectionCardID, object: nil)
-        } else {
-            let sb = UIStoryboard(name: "Home", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "ParkingInfoVC") as! ParkingInfoViewController
-            vc.tintColor = UIColor(named: selectedLocation.accentColor)!
-            self.parentViewController().present(vc, animated: true)
-        }
+        NotificationCenter.default.post(name: .addSectionCardID, object: nil)
     }
     
     @IBOutlet weak var payBtn: UXButton!
     @IBAction func payTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        let homeVC = self.parentViewController() as! HomeViewController
+        homeVC.isTipHidden = true
         flowType = .pay
         //Task determine nearest spot
-        if agreedToParkingRules {
-            NotificationCenter.default.post(name: .addTimeCardID, object: nil)
-        } else {
-            let sb = UIStoryboard(name: "Home", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "ParkingInfoVC") as! ParkingInfoViewController
-            vc.tintColor = UIColor(named: selectedLocation.accentColor)!
-            self.parentViewController().present(vc, animated: true)
-        }
+        NotificationCenter.default.post(name: .addTimeCardID, object: nil)
     }
     
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
+        let homeVC = self.parentViewController() as! HomeViewController
+        homeVC.isTipHidden = true
         NotificationCenter.default.post(name: .removeResultCardID, object: nil)
-        agreedToParkingRules = false
     }
     @IBOutlet weak var backBtn: UIButton!
     
@@ -75,8 +66,9 @@ class ResultView: UXView {
     override func viewSwipedBack() {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
+        let homeVC = self.parentViewController() as! HomeViewController
+        homeVC.isTipHidden = true
         NotificationCenter.default.post(name: .removeResultCardID, object: nil)
-        agreedToParkingRules = false
     }
     
     override func excludePansFrom(touch: UITouch) -> Bool {
@@ -97,6 +89,15 @@ class ResultView: UXView {
                 return configuration
             })
             UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.shownTip8")
+        }
+        if self.superview != nil {
+            let homeVC = self.parentViewController() as! HomeViewController
+            homeVC.isTipHidden = false
+            homeVC.tipText.text = "By continuing you agree to the parking rules."
+            homeVC.tipIcon.image = UIImage(systemName: "info.windshield")
+            homeVC.tipHighlightedText = "parking rules"
+            homeVC.tipDestinationViewID = "ParkingInfoVC"
+            homeVC.tipTintColor = UIColor(named: selectedLocation.accentColor)!
         }
     }
     

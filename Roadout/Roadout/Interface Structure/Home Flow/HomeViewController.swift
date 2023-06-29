@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     var isMarkerInteractive = true
     
     //Card Views
-    let toolsView = ParkingToolsView.instanceFromNib()
+    let toolsView = CarModeView.instanceFromNib()
     let resultView = ResultView.instanceFromNib()
     let sectionView = SectionView.instanceFromNib()
     let spotView = SpotView.instanceFromNib()
@@ -172,6 +172,47 @@ class HomeViewController: UIViewController {
     
     func toggleSettingsButtonHide(to value: Bool) {
         settingsButton.isHidden = value
+    }
+    
+    //MARK: Tip View
+    @IBOutlet weak var tipShadowView: UIView!
+    
+    @IBOutlet weak var tipView: UIView!
+    @IBOutlet weak var tipIcon: UIImageView!
+    @IBOutlet weak var tipText: UILabel!
+    
+    @IBAction func tipViewTapped(_ sender: Any) {
+        if tipDestinationViewID != "__NONE__" {
+            let vc = storyboard?.instantiateViewController(withIdentifier: tipDestinationViewID)
+            if tipDestinationViewID == "ParkingInfoVC" {
+                (vc as! ParkingInfoViewController).tintColor = tipTintColor
+            }
+            self.present(vc!, animated: true)
+        }
+    }
+    
+    var tipDestinationViewID: String = ""
+    
+    var tipHighlightedText: String = "" {
+        didSet {
+            tipText.set(font: .systemFont(ofSize: 16, weight: .medium), range: tipText.range(string: tipHighlightedText))
+            tipText.set(textColor: tipTintColor, range: tipText.range(string: tipHighlightedText))
+        }
+    }
+    
+    var tipTintColor: UIColor = UIColor.Roadout.icons {
+        didSet {
+            tipText.set(textColor: tipTintColor, range: tipText.range(string: tipHighlightedText))
+            tipIcon.tintColor = tipTintColor
+        }
+    }
+    
+    var isTipHidden: Bool = true {
+        didSet {
+            UIView.animate(withDuration: 0.2) {
+                self.tipView.isHidden = self.isTipHidden
+            }
+        }
     }
         
     //MARK: - OBSERVERS -
@@ -354,6 +395,8 @@ class HomeViewController: UIViewController {
         focusedView.layer.shadowPath = UIBezierPath(rect: focusedView.bounds).cgPath
         focusedView.layer.shouldRasterize = true
         focusedView.layer.rasterizationScale = UIScreen.main.scale
+        
+        isTipHidden = true
 
         //Map Setup
         let camera = GMSCameraPosition.camera(withLatitude: 46.7712, longitude: 23.6236, zoom: 16.0)
@@ -402,6 +445,19 @@ class HomeViewController: UIViewController {
         super.viewDidLayoutSubviews()
         backgroundView.layer.cornerRadius = 12.0
         backgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+                
+        tipShadowView.layer.cornerRadius = 12.0
+        tipShadowView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        tipShadowView.layer.shadowColor = UIColor.black.cgColor
+        tipShadowView.layer.shadowOpacity = 0.15
+        tipShadowView.layer.shadowOffset = .zero
+        tipShadowView.layer.shadowRadius = 12.0
+        tipShadowView.layer.shadowPath = UIBezierPath(rect: tipShadowView.bounds).cgPath
+        tipShadowView.layer.shouldRasterize = true
+        tipShadowView.layer.rasterizationScale = UIScreen.main.scale
+        
+        tipView.layer.cornerRadius = 12.0
+        tipView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
         
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -1050,7 +1106,7 @@ extension HomeViewController {
                         try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id as! String)
                         if ReservationManager.sharedInstance.isReservationActive == 0 {
                             //active
-                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                            NotificationCenter.default.post(name: .addReservationCardID, object: nil)
                         } else if ReservationManager.sharedInstance.isReservationActive == 1 {
                             //unlocked
                             NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)

@@ -7,11 +7,13 @@
 
 import UIKit
 
-class ParkingToolsView: UXView {
+class CarModeView: UXView {
     
     @IBAction func backTapped(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
+        let homeVC = self.parentViewController() as! HomeViewController
+        homeVC.isTipHidden = true
         NotificationCenter.default.post(name: .removeToolsCardID, object: nil)
     }
     @IBOutlet weak var backBtn: UIButton!
@@ -21,24 +23,28 @@ class ParkingToolsView: UXView {
     override func viewSwipedBack() {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
+        let homeVC = self.parentViewController() as! HomeViewController
+        homeVC.isTipHidden = true
         NotificationCenter.default.post(name: .removeToolsCardID, object: nil)
     }
     
     override func excludePansFrom(touch: UITouch) -> Bool {
-        return !findWayBtn.bounds.contains(touch.location(in: findWayBtn)) && !locationBtn.bounds.contains(touch.location(in: locationBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
+        return !parkBtn.bounds.contains(touch.location(in: parkBtn)) && !reserveBtn.bounds.contains(touch.location(in: reserveBtn)) && !backBtn.bounds.contains(touch.location(in: backBtn))
     }
     
     //MARK: - Parking Tools -
     
-    @IBOutlet weak var findWayBtn: UXButton!
-    @IBOutlet weak var locationBtn: UXButton!
+    @IBOutlet weak var parkBtn: UXButton!
+    @IBOutlet weak var reserveBtn: UXButton!
     
-    @IBAction func findWayTapped(_ sender: Any) {
+    @IBAction func reserveTapped(_ sender: Any) {
         let parentVC = self.parentViewController() as! HomeViewController
-        findWayBtn.startPulseAnimation()
+        parentVC.isTipHidden = true
+        
+        reserveBtn.startPulseAnimation()
         FunctionsManager.sharedInstance.foundSpot = nil
         guard let coord = parentVC.mapView.myLocation?.coordinate else {
-            findWayBtn.stopPulseAnimation()
+            reserveBtn.stopPulseAnimation()
             parentVC.showFindLocationAlert()
             return
         }
@@ -50,38 +56,38 @@ class ParkingToolsView: UXView {
                     DispatchQueue.main.async {
                         parentVC.showFindCard()
                         NotificationCenter.default.post(name: .addSpotMarkerID, object: nil)
-                        self.findWayBtn.stopPulseAnimation()
+                        self.reserveBtn.stopPulseAnimation()
                     }
                 } else {
                     DispatchQueue.main.async {
                         parentVC.showFindLocationAlert()
-                        self.findWayBtn.stopPulseAnimation()
+                        self.reserveBtn.stopPulseAnimation()
                     }
                 }
             } catch let err {
                 print(err)
                 DispatchQueue.main.async {
                     parentVC.showFindLocationAlert()
-                    self.findWayBtn.stopPulseAnimation()
+                    self.reserveBtn.stopPulseAnimation()
                 }
             }
         }
     }
     
-    @IBAction func locationTapped(_ sender: Any) {
+    @IBAction func parkTapped(_ sender: Any) {
         
     }
     
     func styleButtons() {
-        findWayBtn.layer.cornerRadius = 12
-        locationBtn.layer.cornerRadius = 12
+        parkBtn.layer.cornerRadius = 12
+        reserveBtn.layer.cornerRadius = 12
         
-        findWayBtn.setAttributedTitle(NSAttributedString(string: "Find Way".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
-        locationBtn.setAttributedTitle(NSAttributedString(string: "This Parking".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        parkBtn.setAttributedTitle(NSAttributedString(string: "Park".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
+        reserveBtn.setAttributedTitle(NSAttributedString(string: "Reserve".localized(), attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .medium)]), for: .normal)
         
         if #available(iOS 15.0, *) {
-            findWayBtn.configuration?.imagePlacement = .top
-            locationBtn.configuration?.imagePlacement = .top
+            parkBtn.configuration?.imagePlacement = .top
+            reserveBtn.configuration?.imagePlacement = .top
         } else {
             // Fallback on earlier versions
         }
@@ -91,16 +97,14 @@ class ParkingToolsView: UXView {
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        if UserDefaults.roadout!.bool(forKey: "eu.roadout.Roadout.shownTip2") == false {
-            findWayBtn.tooltip(TutorialView2.instanceFromNib(), orientation: Tooltip.Orientation.top, configuration: { configuration in
-                configuration.backgroundColor = UIColor(named: "Card Background")!
-                configuration.shadowConfiguration.shadowOpacity = 0.2
-                configuration.shadowConfiguration.shadowColor = UIColor.black.cgColor
-                configuration.shadowConfiguration.shadowOffset = .zero
-                
-                return configuration
-            })
-            UserDefaults.roadout!.set(true, forKey: "eu.roadout.Roadout.shownTip2")
+        if self.superview != nil {
+            let homeVC = self.parentViewController() as! HomeViewController
+            homeVC.isTipHidden = false
+            homeVC.tipText.text = "Car Mode restricts some features. Learn more"
+            homeVC.tipIcon.image = UIImage(systemName: "radio.fill")
+            homeVC.tipHighlightedText = "Learn more"
+            homeVC.tipDestinationViewID = "__NONE__"
+            homeVC.tipTintColor = UIColor.Roadout.icons
         }
     }
     

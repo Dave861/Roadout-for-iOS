@@ -92,7 +92,7 @@ class PayView: UXView {
                         do {
                             try await ReservationManager.sharedInstance.delayReservationAsync(date: Date(), minutes: delayTime/60, userID: id)
                             DispatchQueue.main.async {
-                                NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                                NotificationCenter.default.post(name: .addReservationCardID, object: nil)
                             }
                         } catch let err {
                             self.manageServerSideErrors(error: err)
@@ -104,7 +104,7 @@ class PayView: UXView {
                         do {
                             try await ReservationManager.sharedInstance.makeReservationAsync(date: Date(), time: reservationTime/60, spotID: selectedSpot.rID, payment: 10, userID: id)
                             DispatchQueue.main.async {
-                                NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                                NotificationCenter.default.post(name: .addReservationCardID, object: nil)
                             }
                         } catch let err {
                             self.manageServerSideErrors(error: err)

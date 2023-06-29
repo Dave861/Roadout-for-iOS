@@ -39,9 +39,58 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="689"/>
                                 <color key="backgroundColor" name="MapBG"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOW-n8-CPa">
+                                <rect key="frame" x="0.0" y="641" width="393" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.windshield" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-EV-r3A">
+                                        <rect key="frame" x="8" y="10.33333333333333" width="23" height="19.666666666666671"/>
+                                        <color key="tintColor" name="Icons"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="OKa-Is-Xvm"/>
+                                            <constraint firstAttribute="width" constant="23" id="fIf-Zl-0Uq"/>
+                                        </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing you agree to the parking rules." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZY7-Ii-XwG">
+                                        <rect key="frame" x="37" y="6" width="351" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" systemColor="systemGray3Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biG-fN-uaE">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="tipViewTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="zB0-Ap-da9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="FloatingBG"/>
+                                <constraints>
+                                    <constraint firstItem="biG-fN-uaE" firstAttribute="top" secondItem="UOW-n8-CPa" secondAttribute="top" id="0GT-8v-enK"/>
+                                    <constraint firstAttribute="height" constant="50" id="1bv-ON-SU4"/>
+                                    <constraint firstItem="ReH-EV-r3A" firstAttribute="leading" secondItem="UOW-n8-CPa" secondAttribute="leading" constant="8" id="Bri-Q3-cXm"/>
+                                    <constraint firstItem="ReH-EV-r3A" firstAttribute="top" secondItem="UOW-n8-CPa" secondAttribute="top" constant="8" id="LdK-9g-fFu"/>
+                                    <constraint firstAttribute="bottom" secondItem="ReH-EV-r3A" secondAttribute="bottom" constant="18" id="Mgb-ps-Gco"/>
+                                    <constraint firstAttribute="trailing" secondItem="biG-fN-uaE" secondAttribute="trailing" id="VWN-oU-zcb"/>
+                                    <constraint firstItem="biG-fN-uaE" firstAttribute="leading" secondItem="UOW-n8-CPa" secondAttribute="leading" id="WgO-tg-vTE"/>
+                                    <constraint firstAttribute="bottom" secondItem="biG-fN-uaE" secondAttribute="bottom" constant="10" id="WxP-H1-0yd"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZY7-Ii-XwG" secondAttribute="trailing" constant="5" id="dn1-J5-jqC"/>
+                                    <constraint firstItem="ZY7-Ii-XwG" firstAttribute="leading" secondItem="ReH-EV-r3A" secondAttribute="trailing" constant="6" id="ghh-eh-70I"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZY7-Ii-XwG" secondAttribute="bottom" constant="16" id="iJX-T7-db9"/>
+                                    <constraint firstItem="ZY7-Ii-XwG" firstAttribute="top" secondItem="UOW-n8-CPa" secondAttribute="top" constant="6" id="sjV-vx-vEd"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHz-hX-hQD">
                                 <rect key="frame" x="0.0" y="818" width="393" height="34"/>
                                 <color key="backgroundColor" name="Background"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rtj-nb-bcE">
+                                <rect key="frame" x="0.0" y="681" width="393" height="40"/>
+                                <color key="backgroundColor" name="Background"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5VT-9p-Idp"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyE-Ut-PCE">
                                 <rect key="frame" x="0.0" y="681" width="393" height="137"/>
@@ -194,10 +243,10 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="2uQ-GZ-suR"/>
                                         </constraints>
-                                        <color key="tintColor" name="GoldBrown"/>
+                                        <color key="tintColor" name="Icons"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
-                                            <imageReference key="image" image="ellipsis.circle.fill" catalog="system" symbolScale="medium"/>
+                                            <imageReference key="image" image="radio.fill" catalog="system" symbolScale="medium"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="23" scale="medium"/>
                                         </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
@@ -239,7 +288,11 @@
                             <constraint firstAttribute="trailing" secondItem="iHz-hX-hQD" secondAttribute="trailing" id="3XT-hW-MAf"/>
                             <constraint firstItem="HyE-Ut-PCE" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="3Z9-CS-SGD"/>
                             <constraint firstItem="Oc8-he-wio" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="13" id="5NV-DK-n5m"/>
+                            <constraint firstItem="HyE-Ut-PCE" firstAttribute="top" secondItem="rtj-nb-bcE" secondAttribute="bottom" constant="-40" id="9B8-N3-JR8"/>
                             <constraint firstItem="Zia-25-Prg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Loi-E6-q82"/>
+                            <constraint firstItem="UOW-n8-CPa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="R5d-xL-and"/>
+                            <constraint firstItem="HyE-Ut-PCE" firstAttribute="top" secondItem="UOW-n8-CPa" secondAttribute="bottom" constant="-10" id="R8d-f1-eXZ"/>
+                            <constraint firstItem="rtj-nb-bcE" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="VaN-wA-rsG"/>
                             <constraint firstItem="iHz-hX-hQD" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="bKW-MH-A48"/>
                             <constraint firstItem="HyE-Ut-PCE" firstAttribute="top" secondItem="Zia-25-Prg" secondAttribute="bottom" constant="-8" id="bYp-Vm-uO1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Oc8-he-wio" secondAttribute="trailing" constant="13" id="cHo-0A-V3J"/>
@@ -247,7 +300,9 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Oc8-he-wio" secondAttribute="bottom" constant="15" id="lB6-NC-i4D"/>
                             <constraint firstAttribute="bottom" secondItem="iHz-hX-hQD" secondAttribute="bottom" id="mb0-XZ-wJ1"/>
                             <constraint firstItem="HyE-Ut-PCE" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="rLI-eP-ypc"/>
+                            <constraint firstItem="UOW-n8-CPa" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ram-SP-EOf"/>
                             <constraint firstItem="iHz-hX-hQD" firstAttribute="top" secondItem="HyE-Ut-PCE" secondAttribute="bottom" id="yiZ-UX-jqf"/>
+                            <constraint firstItem="rtj-nb-bcE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zQw-5q-p9S"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Xmo-Qu-kgW"/>
@@ -261,6 +316,10 @@
                         <outlet property="searchBar" destination="Oc8-he-wio" id="uer-jr-Pur"/>
                         <outlet property="searchTapArea" destination="7cI-Bn-tux" id="k0F-YQ-zhO"/>
                         <outlet property="settingsButton" destination="IkC-Xa-0TC" id="ntP-Zs-pSZ"/>
+                        <outlet property="tipIcon" destination="ReH-EV-r3A" id="cxk-h3-oZ6"/>
+                        <outlet property="tipShadowView" destination="rtj-nb-bcE" id="NCe-YF-k1k"/>
+                        <outlet property="tipText" destination="ZY7-Ii-XwG" id="8m9-WY-jsk"/>
+                        <outlet property="tipView" destination="UOW-n8-CPa" id="TcT-dW-JGz"/>
                         <outlet property="titleLbl" destination="Uy4-V1-t9k" id="AA0-mZ-zOd"/>
                     </connections>
                 </viewController>
@@ -301,11 +360,11 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="t6q-GY-ILf"/>
                                                 </constraints>
-                                                <color key="tintColor" name="GoldBrown"/>
+                                                <color key="tintColor" name="Icons"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
-                                                    <imageReference key="image" image="line.3.horizontal.decrease.circle.fill" catalog="system" symbolScale="large"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18"/>
+                                                    <imageReference key="image" image="transmission" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18" weight="semibold"/>
                                                 </buttonConfiguration>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="coloriseEffect" value="NO"/>
@@ -1968,16 +2027,16 @@ Made in Cluj :)</string>
                                 <blurEffect style="systemUltraThinMaterial"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3u9-Lz-79E">
-                                <rect key="frame" x="0.0" y="612" width="393" height="240"/>
+                                <rect key="frame" x="0.0" y="562" width="393" height="290"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJj-Wu-4sO" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="14.999999999999998" width="202" height="26.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Rules" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJj-Wu-4sO" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="14.999999999999998" width="140" height="26.333333333333329"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3J-Ei-1eR" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="155" width="363" height="50"/>
+                                        <rect key="frame" x="15" y="205" width="363" height="50"/>
                                         <color key="backgroundColor" name="GoldBrown"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="muD-i4-KFe"/>
@@ -1994,14 +2053,14 @@ Made in Cluj :)</string>
                                             <action selector="understandTapped:" destination="63a-Kr-YSR" eventType="touchUpInside" id="RuW-Up-dV9"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing you agree to the parking’s rules" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ab-i9-aeN" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing you agree to following rules" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ab-i9-aeN" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                                         <rect key="frame" x="15" y="49.333333333333371" width="363" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="l4p-Rv-OLo">
-                                        <rect key="frame" x="15" y="81.666666666666629" width="266.33333333333331" height="50"/>
+                                        <rect key="frame" x="15" y="135" width="266.33333333333331" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ta3-Iu-UUz">
                                                 <rect key="frame" x="0.0" y="0.0" width="81.333333333333329" height="50"/>
@@ -2013,7 +2072,7 @@ Made in Cluj :)</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="JY3-gY-UyK">
-                                                        <rect key="frame" x="0.0" y="29.666666666666742" width="81.333333333333329" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="29.666666666666629" width="81.333333333333329" height="20.333333333333329"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar.day.timeline.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="h6k-iL-6ct">
                                                                 <rect key="frame" x="0.0" y="1.6666666666666643" width="26" height="17.333333333333336"/>
@@ -2053,10 +2112,10 @@ Made in Cluj :)</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PXh-pG-Wnp">
-                                                        <rect key="frame" x="0.0" y="29.666666666666742" width="88.666666666666671" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="29.666666666666629" width="88.666666666666671" height="20.333333333333329"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hxf-aG-wbn">
-                                                                <rect key="frame" x="0.0" y="1.3333333333333321" width="23" height="17.666666666666664"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="light.beacon.max.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hxf-aG-wbn">
+                                                                <rect key="frame" x="0.0" y="-0.66666666666666785" width="23" height="20"/>
                                                                 <color key="tintColor" name="GoldBrown"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="23" id="fkH-Ym-JuB"/>
@@ -2095,7 +2154,7 @@ Made in Cluj :)</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hUf-Ea-JlC">
-                                                        <rect key="frame" x="0.0" y="29.666666666666742" width="70.333333333333329" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="29.666666666666629" width="70.333333333333329" height="20.333333333333329"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.thumbsup.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kVK-lG-PpM">
                                                                 <rect key="frame" x="0.0" y="-3.5527136788005009e-15" width="24" height="20.333333333333336"/>
@@ -2125,22 +2184,107 @@ Made in Cluj :)</string>
                                             <constraint firstAttribute="height" constant="50" id="l63-Qx-6kn"/>
                                         </constraints>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="O1T-fJ-cDR">
+                                        <rect key="frame" x="15" y="77" width="233" height="50"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="xRF-uw-GdC">
+                                                <rect key="frame" x="0.0" y="0.0" width="102.33333333333333" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRICE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHR-Wu-wDh" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="102.33333333333333" height="27.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zQC-4S-6d2">
+                                                        <rect key="frame" x="0.0" y="29.666666666666629" width="102.33333333333333" height="20.333333333333329"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HvM-zV-Vfs">
+                                                                <rect key="frame" x="0.0" y="0.99999999999999822" width="26" height="19"/>
+                                                                <color key="tintColor" name="GoldBrown"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="26" id="kEI-21-q7l"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 RON/hr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="w1g-Zc-yIC">
+                                                                <rect key="frame" x="29.999999999999993" y="0.0" width="72.333333333333314" height="20.333333333333332"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                                                        <real key="value" value="20"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rmr-iW-981">
+                                                <rect key="frame" x="108.33333333333333" y="0.0" width="1" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="1" id="uML-Ko-Ihs"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="R7b-tU-hgc">
+                                                <rect key="frame" x="115.33333333333334" y="0.0" width="117.66666666666666" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAX DURATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOp-Qa-AXi" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="27.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="iHp-Ou-rZj">
+                                                        <rect key="frame" x="0.0" y="29.666666666666629" width="117.66666666666667" height="20.333333333333329"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ohJ-rx-9rq">
+                                                                <rect key="frame" x="0.0" y="0.33333333333333215" width="23" height="20"/>
+                                                                <color key="tintColor" name="GoldBrown"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="23" id="7qu-g4-sfu"/>
+                                                                </constraints>
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" weight="medium"/>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="KWV-cV-juu">
+                                                                <rect key="frame" x="27.000000000000007" y="0.0" width="90.666666666666686" height="20.333333333333332"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                                                        <real key="value" value="20"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="D4h-DU-WzH"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
                                     <constraint firstItem="ZJj-Wu-4sO" firstAttribute="top" secondItem="3u9-Lz-79E" secondAttribute="top" constant="15" id="08L-ZV-dm8"/>
                                     <constraint firstItem="7Ab-i9-aeN" firstAttribute="leading" secondItem="3u9-Lz-79E" secondAttribute="leading" constant="15" id="3rx-BS-WYX"/>
+                                    <constraint firstItem="O1T-fJ-cDR" firstAttribute="leading" secondItem="3u9-Lz-79E" secondAttribute="leading" constant="15" id="4xO-6i-Gou"/>
                                     <constraint firstItem="b3J-Ei-1eR" firstAttribute="leading" secondItem="3u9-Lz-79E" secondAttribute="leading" constant="15" id="63G-Qz-i5T"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="l4p-Rv-OLo" secondAttribute="trailing" constant="15" id="9sZ-yS-wnq"/>
                                     <constraint firstItem="l4p-Rv-OLo" firstAttribute="leading" secondItem="3u9-Lz-79E" secondAttribute="leading" constant="15" id="HF5-6R-Vj9"/>
                                     <constraint firstItem="ZJj-Wu-4sO" firstAttribute="leading" secondItem="3u9-Lz-79E" secondAttribute="leading" constant="15" id="Nt1-GZ-dAj"/>
+                                    <constraint firstItem="l4p-Rv-OLo" firstAttribute="top" secondItem="O1T-fJ-cDR" secondAttribute="bottom" constant="8" symbolic="YES" id="Qtj-z0-uLj"/>
                                     <constraint firstAttribute="trailing" secondItem="b3J-Ei-1eR" secondAttribute="trailing" constant="15" id="Tru-lT-bdD"/>
-                                    <constraint firstItem="l4p-Rv-OLo" firstAttribute="top" secondItem="7Ab-i9-aeN" secondAttribute="bottom" constant="12" id="Ts1-50-iQG"/>
-                                    <constraint firstItem="b3J-Ei-1eR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="l4p-Rv-OLo" secondAttribute="bottom" constant="4" id="mVh-7G-U0E"/>
+                                    <constraint firstItem="b3J-Ei-1eR" firstAttribute="top" secondItem="l4p-Rv-OLo" secondAttribute="bottom" constant="20" id="mVh-7G-U0E"/>
+                                    <constraint firstItem="O1T-fJ-cDR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7Ab-i9-aeN" secondAttribute="bottom" constant="7.3300000000000001" id="nlY-cM-NTf"/>
                                     <constraint firstAttribute="bottom" secondItem="b3J-Ei-1eR" secondAttribute="bottom" constant="35" id="s5l-Df-njt"/>
                                     <constraint firstItem="7Ab-i9-aeN" firstAttribute="top" secondItem="ZJj-Wu-4sO" secondAttribute="bottom" constant="8" id="vIN-Oz-Fqv"/>
                                     <constraint firstAttribute="trailing" secondItem="7Ab-i9-aeN" secondAttribute="trailing" constant="15" id="zTK-NT-f14"/>
-                                    <constraint firstAttribute="height" constant="240" id="zdn-fl-U7a"/>
+                                    <constraint firstAttribute="height" constant="290" id="zdn-fl-U7a"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2162,6 +2306,8 @@ Made in Cluj :)</string>
                         <outlet property="icon1" destination="h6k-iL-6ct" id="kGl-x1-Yt6"/>
                         <outlet property="icon2" destination="Hxf-aG-wbn" id="J8N-Qx-cGP"/>
                         <outlet property="icon3" destination="kVK-lG-PpM" id="phx-BH-lnp"/>
+                        <outlet property="icon4" destination="HvM-zV-Vfs" id="bus-0o-DvL"/>
+                        <outlet property="icon5" destination="ohJ-rx-9rq" id="pl7-hq-Crc"/>
                         <outlet property="understandBtn" destination="b3J-Ei-1eR" id="n6c-V3-GT3"/>
                     </connections>
                 </viewController>
@@ -2176,20 +2322,22 @@ Made in Cluj :)</string>
         <image name="calendar.day.timeline.left" catalog="system" width="128" height="91"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
-        <image name="ellipsis.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="clock.fill" catalog="system" width="128" height="123"/>
         <image name="gauge.fill" width="66.666664123535156" height="66.333335876464844"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
-        <image name="line.3.horizontal.decrease.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="info.windshield" catalog="system" width="128" height="70"/>
+        <image name="light.beacon.max.fill" catalog="system" width="128" height="102"/>
         <image name="location.fill" catalog="system" width="128" height="119"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="p.circle.fill" catalog="system" width="128" height="123"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="radio.fill" catalog="system" width="128" height="115"/>
         <image name="rectangle.portrait" catalog="system" width="115" height="128"/>
         <image name="ruler.fill" catalog="system" width="128" height="57"/>
         <image name="sparkles" catalog="system" width="115" height="128"/>
-        <image name="ticket.fill" catalog="system" width="128" height="86"/>
+        <image name="transmission" catalog="system" width="128" height="122"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.75700002908706665" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -2249,6 +2397,9 @@ Made in Cluj :)</string>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -44,8 +44,6 @@ var selectedSpot = ParkSpot(state: 0, number: 0, rHash: "u82f0bc6m303-f80-h70-p0
 
 var currentLocationCoord: CLLocationCoordinate2D?
 
-var agreedToParkingRules = false
-
 //Flow controllers
 var returnToDelay = false
 var flowType = FlowTypes.reserve

@@ -340,7 +340,7 @@ class ReservationManager {
                 try await ReservationManager.sharedInstance.checkForReservationAsync(date: Date(), userID: id)
                 if ReservationManager.sharedInstance.isReservationActive == 0 {
                     //active
-                    NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                    NotificationCenter.default.post(name: .addReservationCardID, object: nil)
                 } else if ReservationManager.sharedInstance.isReservationActive == 1 {
                     //unlocked
                     NotificationCenter.default.post(name: .showUnlockedViewID, object: nil)

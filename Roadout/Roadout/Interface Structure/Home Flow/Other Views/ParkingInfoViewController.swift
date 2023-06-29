@@ -19,15 +19,9 @@ class ParkingInfoViewController: UIViewController {
     
     @IBOutlet weak var understandBtn: UXButton!
     @IBAction func understandTapped(_ sender: Any) {
-        agreedToParkingRules = true
         UIView.animate(withDuration: 0.1) {
             self.blurEffect.alpha = 0
         } completion: { done in
-            if flowType == .reserve {
-                NotificationCenter.default.post(name: .addSectionCardID, object: nil)
-            } else if flowType == .pay {
-                NotificationCenter.default.post(name: .addTimeCardID, object: nil)
-            }
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -43,6 +37,8 @@ class ParkingInfoViewController: UIViewController {
     @IBOutlet weak var icon1: UIImageView!
     @IBOutlet weak var icon2: UIImageView!
     @IBOutlet weak var icon3: UIImageView!
+    @IBOutlet weak var icon4: UIImageView!
+    @IBOutlet weak var icon5: UIImageView!
     
     
     //MARK: - View Configuration -
@@ -76,6 +72,8 @@ class ParkingInfoViewController: UIViewController {
         icon1.tintColor = tintColor
         icon2.tintColor = tintColor
         icon3.tintColor = tintColor
+        icon4.tintColor = tintColor
+        icon5.tintColor = tintColor
     }
     
     func addShadowToCardView() {

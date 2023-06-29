@@ -81,7 +81,7 @@ class SummaryReserveView: UXView {
                                                                                      payment: 10,
                                                                                      userID: id)
                     DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                        NotificationCenter.default.post(name: .addReservationCardID, object: nil)
                     }
                 } catch let err {
                     self.manageServerSideErrors(error: err)

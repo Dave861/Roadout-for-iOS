@@ -131,11 +131,17 @@ class SectionView: UXView {
             let z1 = CGFloat(newX) * sectionWidth / 100
             let z2 = CGFloat(sections[index].imagePoint.y) * self.sectionImage.frame.size.height / 100
             
-            let letterBtn = UIButton(frame: CGRect(x: z1 - 30, y: z2 - 15, width: 30, height: 30))
-            letterBtn.layer.cornerRadius = 6
+            let letterBtn = ZoneButton(frame: CGRect(x: z1 - 34, y: z2 - 17, width: 34, height: 34))
+            letterBtn.layer.cornerRadius = 17
             letterBtn.backgroundColor = UIColor(named: "IconsTransparent")!
             letterBtn.setTitle(sections[index].name, for: .normal)
             letterBtn.setTitleColor(UIColor.Roadout.icons, for: .normal)
+            
+            //Simulate full section
+            if sections[index].name == "D" {
+                letterBtn.isEnabled = false
+                letterBtn.backgroundColor = UIColor.systemGray3
+            }
             
             if letter == sections[index].name {
                 letterBtn.setTitleColor(UIColor(named: "Background")!, for: .normal)
@@ -163,6 +169,9 @@ class SectionView: UXView {
             guard let btn = subview as? UIButton else { return }
             btn.setTitleColor(UIColor.Roadout.icons, for: .normal)
             btn.backgroundColor = UIColor(named: "IconsTransparent")!
+            if btn.isEnabled == false {
+                btn.backgroundColor = UIColor.systemGray3
+            }
         }
     }
     

@@ -25,7 +25,7 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var appCard: UIView!
     
     @IBAction func websiteTapped(_ sender: Any) {
-        if let url = URL(string: "https://www.roadout.live") {
+        if let url = URL(string: "https://www.roadout.eu") {
             UIApplication.shared.open(url)
         }
     }

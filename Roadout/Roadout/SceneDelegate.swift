@@ -41,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                             openedByLiveActivity = false
                             NotificationCenter.default.post(name: .addUnlockCardID, object: nil)
                         } else {
-                            NotificationCenter.default.post(name: .showActiveBarID, object: nil)
+                            NotificationCenter.default.post(name: .addReservationCardID, object: nil)
                         }
                     } else if ReservationManager.sharedInstance.isReservationActive == 1 {
                         //unlocked

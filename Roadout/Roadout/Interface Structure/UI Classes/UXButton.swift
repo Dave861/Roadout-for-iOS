@@ -138,3 +138,43 @@ class UXPlainButton: UIButton {
     }
     
 }
+
+class ZoneButton: UIButton {
+    
+    private var slashLayer: CAShapeLayer?
+    
+    var slashColor = UIColor.Roadout.icons
+    
+    override var isEnabled: Bool {
+        didSet {
+            updateSlashOverlay()
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        updateSlashOverlay()
+    }
+    
+    private func updateSlashOverlay() {
+        slashLayer?.removeFromSuperlayer()
+        slashLayer = nil
+        
+        if !isEnabled {
+            let slashPath = UIBezierPath()
+            slashPath.move(to: CGPoint(x: bounds.minX, y: bounds.maxY))
+            slashPath.addLine(to: CGPoint(x: bounds.maxX, y: bounds.minY))
+            
+            let newSlashLayer = CAShapeLayer()
+            newSlashLayer.path = slashPath.cgPath
+            newSlashLayer.strokeColor = self.slashColor.cgColor // Customize the color of the slash
+            newSlashLayer.lineWidth = 3.0 // Customize the width of the slash
+            newSlashLayer.lineCap = .round
+            
+            layer.addSublayer(newSlashLayer)
+            slashLayer = newSlashLayer
+            
+            layer.cornerRadius = 17
+        }
+    }
+}

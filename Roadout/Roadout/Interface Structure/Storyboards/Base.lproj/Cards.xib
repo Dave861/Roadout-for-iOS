@@ -925,7 +925,7 @@
                     </constraints>
                     <color key="tintColor" systemColor="systemGrayColor"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="">
+                    <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system" title="">
                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="16" scale="medium" weight="semibold"/>
                     </buttonConfiguration>
                     <connections>
@@ -1402,7 +1402,7 @@
             </connections>
             <point key="canvasLocation" x="5560.8695652173919" y="135.32608695652175"/>
         </view>
-        <view contentMode="scaleToFill" id="oxl-Dj-0PN" customClass="ParkingToolsView" customModule="Roadout" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="oxl-Dj-0PN" customClass="CarModeView" customModule="Roadout" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="135"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -1415,14 +1415,14 @@
                     </constraints>
                     <color key="tintColor" systemColor="systemGrayColor"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="">
+                    <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system" title="">
                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="16" scale="medium" weight="semibold"/>
                     </buttonConfiguration>
                     <connections>
                         <action selector="backTapped:" destination="oxl-Dj-0PN" eventType="touchUpInside" id="qd7-gM-KKQ"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Tools" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPi-n8-AVj" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPi-n8-AVj" customClass="UXLabel" customModule="Roadout" customModuleProvider="target">
                     <rect key="frame" x="50" y="12" width="293" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="moI-k6-fuf"/>
@@ -1439,25 +1439,25 @@
                             <color key="backgroundColor" name="Main Yellow"/>
                             <color key="tintColor" name="FloatingBG"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="location.fill" catalog="system" title="This Parking" imagePadding="2">
+                            <buttonConfiguration key="configuration" style="plain" image="car.fill" catalog="system" title="Reserve" imagePadding="2">
                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="22" scale="medium" weight="medium"/>
                                 <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
                             </buttonConfiguration>
                             <connections>
-                                <action selector="locationTapped:" destination="oxl-Dj-0PN" eventType="touchUpInside" id="wYJ-1Y-INw"/>
+                                <action selector="reserveTapped:" destination="oxl-Dj-0PN" eventType="touchUpInside" id="dPW-jw-YLe"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJD-Pg-odC" customClass="UXButton" customModule="Roadout" customModuleProvider="target">
                             <rect key="frame" x="203" y="0.0" width="195" height="70"/>
-                            <color key="backgroundColor" name="Greyish"/>
+                            <color key="backgroundColor" name="GoldBrown"/>
                             <color key="tintColor" name="FloatingBG"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="binoculars.fill" catalog="system" title="Find Way" imagePadding="2">
+                            <buttonConfiguration key="configuration" style="plain" image="p.circle.fill" catalog="system" title="Park" imagePadding="2">
                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="22" scale="medium" weight="medium"/>
                                 <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
                             </buttonConfiguration>
                             <connections>
-                                <action selector="findWayTapped:" destination="oxl-Dj-0PN" eventType="touchUpInside" id="caG-Gu-NCd"/>
+                                <action selector="parkTapped:" destination="oxl-Dj-0PN" eventType="touchUpInside" id="GPU-67-XQG"/>
                             </connections>
                         </button>
                     </subviews>
@@ -1485,8 +1485,8 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="backBtn" destination="qRA-DO-eY8" id="sKd-HN-kiO"/>
-                <outlet property="findWayBtn" destination="RJD-Pg-odC" id="f4k-Mc-ISn"/>
-                <outlet property="locationBtn" destination="SRV-y1-lOH" id="EQT-Du-F4c"/>
+                <outlet property="parkBtn" destination="RJD-Pg-odC" id="f4k-Mc-ISn"/>
+                <outlet property="reserveBtn" destination="SRV-y1-lOH" id="EQT-Du-F4c"/>
             </connections>
             <point key="canvasLocation" x="-714" y="163"/>
         </view>
@@ -1729,15 +1729,14 @@
         <image name="20.circle.fill" catalog="system" width="128" height="123"/>
         <image name="Cluj.Marasti.Section" width="338" height="173"/>
         <image name="arrow.triangle.branch" catalog="system" width="128" height="110"/>
-        <image name="binoculars.fill" catalog="system" width="128" height="90"/>
         <image name="car.fill" catalog="system" width="128" height="95"/>
+        <image name="chevron.down" catalog="system" width="128" height="70"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="clock.fill" catalog="system" width="128" height="123"/>
         <image name="creditcard" catalog="system" width="128" height="88"/>
         <image name="ellipsis.circle.fill" catalog="system" width="128" height="123"/>
         <image name="ellipsis.rectangle.fill" catalog="system" width="128" height="79"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
-        <image name="location.fill" catalog="system" width="128" height="119"/>
         <image name="lock.fill" catalog="system" width="125" height="128"/>
         <image name="p.circle.fill" catalog="system" width="128" height="123"/>
         <image name="parkingsign.circle.fill" catalog="system" width="128" height="123"/>
