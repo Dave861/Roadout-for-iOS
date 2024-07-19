@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        GMSServices.provideAPIKey("AIzaSyCGi6_yxY1g5857pCuiBoYQZYMU7dUxPGI")
-        GMSPlacesClient.provideAPIKey("AIzaSyCGi6_yxY1g5857pCuiBoYQZYMU7dUxPGI")
+        GMSServices.provideAPIKey("API_KEY")
+        GMSPlacesClient.provideAPIKey("API_KEY")
         ConnectionManager.sharedInstance.observeReachability()
         
         NotificationHelper.sharedInstance.checkNotificationStatus()
